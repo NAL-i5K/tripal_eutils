@@ -1,0 +1,5 @@
+name = Tripal eutils
+description = Provides linker field alternatives and tripalImporters for adding ncbi records to your site
+project = tripal_eutils
+package = Tripal Extensions
+core = 7.x
