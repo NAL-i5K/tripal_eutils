@@ -35,7 +35,7 @@ class Euitils {
 
     $valid_dbs = array_flip($this->valid_dbs);
 
-    if (!array_key_exists( $db, $valid_dbs)) {
+    if (!array_key_exists($db, $valid_dbs)) {
       tripal_set_message('Invalid db: !db', [!'db' => $db], TRIPAL_ERROR);
       return FALSE;
     }
@@ -49,7 +49,8 @@ class Euitils {
    *
    * @param $accessions - array of accession strings.
    *
-   * @todo Only supports single accession.  Instead use array, but think about throttling issue first.
+   * @todo Only supports single accession.  Instead use array, but think about
+   *   throttling issue first.
    * @return array
    */
   public function lookup_accessions($accessions) {
@@ -65,15 +66,14 @@ class Euitils {
     //Input: List of UIDs (&id); Entrez database (&db); Retrieval type (&rettype); Retrieval mode (&retmode)
 
 
-    $address = $this->url .  'efetch.fcgi?';
+    $address = $this->url . 'efetch.fcgi?';
 
-    $headers = ['Content-Type' => 'application/json'];
-    $method = 'POST';
+    $headers = [];
+    $method = 'GET';
 
     $data = [
       'db' => $this->db,
-      'retmode' => 'xml',
-      'rettype' => 'xml',
+     // 'rettype' => 'json',
       'id' => implode(',', $accessions),
     ];
 
@@ -81,19 +81,19 @@ class Euitils {
     $options = [
       'headers' => $headers,
       'method' => $method,
-      'data' => json_encode($data),
+      'data' => http_build_query($data),
     ];
 
-    $response = drupal_http_request($address, $options);
 
+    //$response = drupal_http_request($address, $options);
+    //
+    //var_dump($response);
+    // return $response;
 
-
-  //  $url = $this->url .  'efetch.fcgi?'. http_build_query($params);
-//    $dom = new DOMDocument;
-//    $dom->load($url);
-//    var_dump($dom);
-//
-//    return $dom;
+    $url = $this->url . 'efetch.fcgi?' . http_build_query($params);
+    $dom = new DOMDocument;
+    $dom->load($url);
+    
 
   }
 
