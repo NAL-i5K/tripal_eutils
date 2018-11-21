@@ -23,4 +23,23 @@ class EutilsTest extends TripalTestCase {
     $count = $connection->check_status();
     $this->assertNotFalse($count);
   }
+
+  public function testSettingDB(){
+    $connection = new \Euitils();
+    $result = $connection->set_db('waffles');
+
+    $this->assertFalse($result);
+
+    $result = $connection->set_db('nuccore');
+    $this->assertTrue($result);
+
+  }
+  public function testAgain(){
+
+    //https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=34577062,24475906&rettype=fasta&retmode=text
+    $connection = new \Euitils();
+    $connection->set_db('nuccore');
+
+
+  }
 }
