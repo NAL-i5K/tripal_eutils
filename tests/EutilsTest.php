@@ -34,14 +34,17 @@ class EutilsTest extends TripalTestCase {
     $this->assertTrue($result);
 
   }
-  public function testLookUp(){
+
+
+  public function testBioProjectAttributes(){
+
 
     $connection = new \Euitils();
     $connection->set_db('bioproject');
     //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
     $result = $connection->lookup_accessions(['506315']);
 
-    $this->assertNotEmpty($result);
+    $attributes = $connection->getAttributes('506315');
 
   }
 }

@@ -24,6 +24,8 @@ class Euitils {
 
   private $valid_dbs = ['pubmed', 'bioproject', 'biosample', 'genome'];
 
+  private $dom = null;
+
 
   /**
    * Set the NCBI db.  Only the following DBs are allowed:
@@ -93,8 +95,22 @@ class Euitils {
     $url = $this->url . 'efetch.fcgi?' . http_build_query($params);
     $dom = new DOMDocument;
     $dom->load($url);
-    
 
+
+    $this->dom = $dom;
+    //todo:we just check if we got xml back.  not great.
+    if ($dom->xmlVersion){
+      return TRUE;
+    }
+  }
+
+  public function getAttributes($accession = null){
+
+    $dom = $this->dom;
+
+    $x= simplexml_import_dom($dom);
+
+    var_dump($x);
   }
 
   public function check_status() {
