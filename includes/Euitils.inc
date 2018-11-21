@@ -15,11 +15,16 @@ class Euitils {
    */
   //private $url = 'http://eutils.be-md.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?';
 
-  private $url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?';
+  private $url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+
+  //efetch.fcgi?db=<database>&id=<uid_list>&rettype=<retrieval_type>
+  //&retmode=<retrieval_mode>
 
   private $db = NULL;
 
-  private $valid_dbs = ['pubmed', 'nuccore'];
+  private $valid_dbs = ['pubmed', 'bioproject', 'biosample', 'genome'];
+
+  private $dom = null;
 
 
   /**
@@ -32,7 +37,7 @@ class Euitils {
 
     $valid_dbs = array_flip($this->valid_dbs);
 
-    if (!array_key_exists( $db, $valid_dbs)) {
+    if (!array_key_exists($db, $valid_dbs)) {
       tripal_set_message('Invalid db: !db', [!'db' => $db], TRIPAL_ERROR);
       return FALSE;
     }
@@ -46,30 +51,66 @@ class Euitils {
    *
    * @param $accessions - array of accession strings.
    *
+   * @todo Only supports single accession.  Instead use array, but think about
+   *   throttling issue first.
    * @return array
    */
   public function lookup_accessions($accessions) {
 
-    $values = [];
-
-   $accession = $accessions[0];
 
     $params = [
-      'db' => $this,
+      'db' => $this->db,
       'retmode' => 'xml',
-      'term' => $accession,
-     // 'retstart' => 0,
-    //  'retmax' => 0,
-    //  'usehistory' => 'y',
+      'rettype' => 'xml',
+      'id' => implode(',', $accessions),
     ];
 
-    $url = $this->url . http_build_query($params);
+    //Input: List of UIDs (&id); Entrez database (&db); Retrieval type (&rettype); Retrieval mode (&retmode)
 
-    print ($url);
+
+    $address = $this->url . 'efetch.fcgi?';
+
+    $headers = [];
+    $method = 'GET';
+
+    $data = [
+      'db' => $this->db,
+     // 'rettype' => 'json',
+      'id' => implode(',', $accessions),
+    ];
+
+
+    $options = [
+      'headers' => $headers,
+      'method' => $method,
+      'data' => http_build_query($data),
+    ];
+
+
+    //$response = drupal_http_request($address, $options);
+    //
+    //var_dump($response);
+    // return $response;
+
+    $url = $this->url . 'efetch.fcgi?' . http_build_query($params);
     $dom = new DOMDocument;
-   // $dom->load($url);
+    $dom->load($url);
 
-    return $values;
+
+    $this->dom = $dom;
+    //todo:we just check if we got xml back.  not great.
+    if ($dom->xmlVersion){
+      return TRUE;
+    }
+  }
+
+  public function getAttributes($accession = null){
+
+    $dom = $this->dom;
+
+    $x= simplexml_import_dom($dom);
+
+    //TODO:  Handle parsing differently for different database types.
 
   }
 
@@ -82,7 +123,8 @@ class Euitils {
       'retmax' => 0,
       'usehistory' => 'y',
     ];
-    $url = $this->url . http_build_query($params);
+
+    $url = $this->url . 'esearch.fcgi?' . http_build_query($params);
 
     $dom = new DOMDocument;
     $dom->load($url);
