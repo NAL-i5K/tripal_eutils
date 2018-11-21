@@ -15,11 +15,14 @@ class Euitils {
    */
   //private $url = 'http://eutils.be-md.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?';
 
-  private $url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?';
+  private $url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+
+  //efetch.fcgi?db=<database>&id=<uid_list>&rettype=<retrieval_type>
+  //&retmode=<retrieval_mode>
 
   private $db = NULL;
 
-  private $valid_dbs = ['pubmed', 'nuccore'];
+  private $valid_dbs = ['pubmed', 'bioproject', 'biosample', 'genome'];
 
 
   /**
@@ -46,30 +49,51 @@ class Euitils {
    *
    * @param $accessions - array of accession strings.
    *
+   * @todo Only supports single accession.  Instead use array, but think about throttling issue first.
    * @return array
    */
   public function lookup_accessions($accessions) {
 
-    $values = [];
-
-   $accession = $accessions[0];
 
     $params = [
-      'db' => $this,
+      'db' => $this->db,
       'retmode' => 'xml',
-      'term' => $accession,
-     // 'retstart' => 0,
-    //  'retmax' => 0,
-    //  'usehistory' => 'y',
+      'rettype' => 'xml',
+      'id' => implode(',', $accessions),
     ];
 
-    $url = $this->url . http_build_query($params);
+    //Input: List of UIDs (&id); Entrez database (&db); Retrieval type (&rettype); Retrieval mode (&retmode)
 
-    print ($url);
-    $dom = new DOMDocument;
-   // $dom->load($url);
 
-    return $values;
+    $address = $this->url .  'efetch.fcgi?';
+
+    $headers = ['Content-Type' => 'application/json'];
+    $method = 'POST';
+
+    $data = [
+      'db' => $this->db,
+      'retmode' => 'xml',
+      'rettype' => 'xml',
+      'id' => implode(',', $accessions),
+    ];
+
+
+    $options = [
+      'headers' => $headers,
+      'method' => $method,
+      'data' => json_encode($data),
+    ];
+
+    $response = drupal_http_request($address, $options);
+
+
+
+  //  $url = $this->url .  'efetch.fcgi?'. http_build_query($params);
+//    $dom = new DOMDocument;
+//    $dom->load($url);
+//    var_dump($dom);
+//
+//    return $dom;
 
   }
 
@@ -82,7 +106,8 @@ class Euitils {
       'retmax' => 0,
       'usehistory' => 'y',
     ];
-    $url = $this->url . http_build_query($params);
+
+    $url = $this->url . 'esearch.fcgi?' . http_build_query($params);
 
     $dom = new DOMDocument;
     $dom->load($url);

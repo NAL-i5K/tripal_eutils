@@ -30,15 +30,16 @@ class EutilsTest extends TripalTestCase {
 
     $this->assertFalse($result);
 
-    $result = $connection->set_db('nuccore');
+    $result = $connection->set_db('biosample');
     $this->assertTrue($result);
 
   }
   public function testLookUp(){
 
     $connection = new \Euitils();
-    $connection->set_db('nuccore');
-    $result = $connection->lookup_accessions(['34577062']);
+    $connection->set_db('bioproject');
+    //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
+    $result = $connection->lookup_accessions(['506315']);
 
     $this->assertNotEmpty($result);
 
