@@ -1,5 +1,7 @@
 <?php
 
+include_once('includes/Euitils.inc');
+
 
 function tripal_eutils_query(){
   $params = array(
