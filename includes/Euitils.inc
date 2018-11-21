@@ -52,6 +52,22 @@ class Euitils {
 
     $values = [];
 
+   $accession = $accessions[0];
+
+    $params = [
+      'db' => $this,
+      'retmode' => 'xml',
+      'term' => $accession,
+     // 'retstart' => 0,
+    //  'retmax' => 0,
+    //  'usehistory' => 'y',
+    ];
+
+    $url = $this->url . http_build_query($params);
+
+    print ($url);
+    $dom = new DOMDocument;
+   // $dom->load($url);
 
     return $values;
 

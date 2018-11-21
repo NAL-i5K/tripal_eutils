@@ -34,12 +34,13 @@ class EutilsTest extends TripalTestCase {
     $this->assertTrue($result);
 
   }
-  public function testAgain(){
+  public function testLookUp(){
 
-    //https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=34577062,24475906&rettype=fasta&retmode=text
     $connection = new \Euitils();
     $connection->set_db('nuccore');
+    $result = $connection->lookup_accessions(['34577062']);
 
+    $this->assertNotEmpty($result);
 
   }
 }
