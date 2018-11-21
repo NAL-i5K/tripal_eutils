@@ -110,7 +110,8 @@ class Euitils {
 
     $x= simplexml_import_dom($dom);
 
-    var_dump($x);
+    //TODO:  Handle parsing differently for different database types.
+
   }
 
   public function check_status() {
