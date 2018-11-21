@@ -96,11 +96,14 @@ class Euitils {
     $dom = new DOMDocument;
     $dom->load($url);
 
-
     $this->dom = $dom;
     //todo:we just check if we got xml back.  not great.
     if ($dom->xmlVersion){
-      return TRUE;
+
+      $x = simplexml_import_dom($dom);
+
+
+      return $x;
     }
   }
 

@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<RecordSet><DocumentSummary uid="506315">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA506315" archive="NCBI" id="506315"/>
+            <LocalID>bp0</LocalID>
+            <LocalID>bp0</LocalID>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Bordetella pertussis strain:BPD2</Name>
+            <Title>Bordetella pertussis strain:BPD2 Genome sequencing</Title>
+            <Description>Complete genome sequence of Bordetella pertussis</Description>
+            <LocusTagPrefix biosample_id="SAMN10457990">EHO96</LocusTagPrefix>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="520" taxID="520">
+                        <OrganismName>Bordetella pertussis</OrganismName>
+                        <Strain>BPD2</Strain>
+                        <Supergroup>eBacteria</Supergroup>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eSequence"/>
+                </Objectives>
+                <IntendedDataTypeSet>
+                    <DataType>genome sequencing</DataType>
+                </IntendedDataTypeSet>
+                <ProjectDataTypeSet>
+                    <DataType>genome sequencing</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission last_update="2018-11-21" submission_id="SUB4827559" submitted="2018-11-21">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="institute">
+                <Name>Christian Medical College</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Access>public</Access>
+        </Description>
+        <Action action_id="SUB4827559-3"/>
+        <Action action_id="SUB4827559-bp0"/>
+        <Action action_id="SUB4827559-bs0"/>
+    </Submission>
+</DocumentSummary>
+
+</RecordSet>

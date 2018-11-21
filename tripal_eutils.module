@@ -1,6 +1,7 @@
 <?php
 
 include_once('includes/Euitils.inc');
+include_once('includes/xml_parsers/EutilsXMLParser.inc');
 
 
 function tripal_eutils_query(){
