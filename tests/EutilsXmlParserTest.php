@@ -40,7 +40,6 @@ class EutilsXmlParserTest extends TripalTestCase {
 
 
   /**
-   * @group wip
    * @throws \Exception
    */
   public function testBioProject_submission_key(){
@@ -68,6 +67,79 @@ class EutilsXmlParserTest extends TripalTestCase {
     $this->assertNotEmpty($submission_info);
     $this->assertArrayHasKey('organization', $submission_info);
     $this->assertEquals('Christian Medical College',$submission_info['organization']);
+  }
+
+
+  /**
+   * @group wip
+   */
+  public function testBioproject_attributes_parser(){
+
+    $parser = new \EutilsXMLParser('bioproject');
+
+    $string = ' <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA506315" archive="NCBI" id="506315"/>
+            <LocalID>bp0</LocalID>
+            <LocalID>bp0</LocalID>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Bordetella pertussis strain:BPD2</Name>
+            <Title>Bordetella pertussis strain:BPD2 Genome sequencing</Title>
+            <Description>Complete genome sequence of Bordetella pertussis</Description>
+            <LocusTagPrefix biosample_id="SAMN10457990">EHO96</LocusTagPrefix>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="520" taxID="520">
+                        <OrganismName>Bordetella pertussis</OrganismName>
+                        <Strain>BPD2</Strain>
+                        <Supergroup>eBacteria</Supergroup>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eSequence"/>
+                </Objectives>
+                <IntendedDataTypeSet>
+                    <DataType>genome sequencing</DataType>
+                </IntendedDataTypeSet>
+                <ProjectDataTypeSet>
+                    <DataType>genome sequencing</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>';
+
+    $xml = simplexml_load_string($string);
+
+    $parser_r = reflect($parser);
+    $submission_info = $parser_r->bioproject_project($xml);
+
+    $this->assertNotEmpty($submission_info);
+
+
+
+    $string = ' <Project>
+        <ProjectID>
+        </ProjectID>
+        <ProjectDescr>        
+        </ProjectDescr>
+        <ProjectType>         
+        </ProjectType>
+        <Waffle>I should cause an exception</Waffle>
+    </Project>';
+
+    $xml = simplexml_load_string($string);
+
+    $parser_r = reflect($parser);
+    $submission_info = $parser_r->bioproject_project($xml);
+
+//    $this->assertFalse($submission_info);
+
+    //I think that the above fails because of the reflect class...
+
   }
 
 
