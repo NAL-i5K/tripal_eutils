@@ -44,7 +44,11 @@ class EutilsTest extends TripalTestCase {
     //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
     $result = $connection->lookup_accessions(['506315']);
 
-    $attributes = $connection->getAttributes('506315');
+    //$result is the XML!
+
+    new xml_parser('bioproject', $result);
+    new bioproject_xml_parser($result);
+
 
   }
 }

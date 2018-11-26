@@ -27,14 +27,10 @@ class EutilsXMLParser {
     $this->db = $db;
   }
 
-
   public function loadXML($dom) {
 
-
     $x = simplexml_import_dom($dom);
-
     $this->xml = $x;
-
     $doc = $x->RecordSet;
 
     if (!property_exists($x, 'DocumentSummary')) {
@@ -100,12 +96,10 @@ class EutilsXMLParser {
         $info['organization'] = (string) $org;
       }
     }
-
     return $info;
   }
 
   private function bioproject_project($xml) {
-
     $info = [];
 
     //dont expect parent attributes to matter

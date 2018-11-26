@@ -93,6 +93,8 @@ class Euitils {
     // return $response;
 
     $url = $this->url . 'efetch.fcgi?' . http_build_query($params);
+
+    var_dump($url);
     $dom = new DOMDocument;
     $dom->load($url);
 
@@ -101,7 +103,6 @@ class Euitils {
     if ($dom->xmlVersion){
 
       $x = simplexml_import_dom($dom);
-
 
       return $x;
     }
