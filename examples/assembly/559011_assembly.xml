@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eSummaryResult PUBLIC "-//NLM//DTD esummary assembly 20180216//EN" "https://eutils.ncbi.nlm.nih.gov/eutils/dtd/20180216/esummary_assembly.dtd">
+<eSummaryResult>
+<DocumentSummarySet status="OK">
+<DbBuild>Build181125-1910.1</DbBuild>
+
+<DocumentSummary uid="559011">
+	<RsUid>3643828</RsUid>
+	<GbUid>2510648</GbUid>
+	<AssemblyAccession>GCF_001411555.1</AssemblyAccession>
+	<LastMajorReleaseAccession>GCF_001411555.1</LastMajorReleaseAccession>
+	<LatestAccession/>
+	<ChainId>1411555</ChainId>
+	<AssemblyName>wgs.5d</AssemblyName>
+	<UCSCName/>
+	<EnsemblName/>
+	<Taxid>51240</Taxid>
+	<Organism>Juglans regia (English walnut)</Organism>
+	<SpeciesTaxid>51240</SpeciesTaxid>
+	<SpeciesName>Juglans regia</SpeciesName>
+	<AssemblyType>haploid</AssemblyType>
+	<AssemblyClass>haploid</AssemblyClass>
+	<AssemblyStatus>Scaffold</AssemblyStatus>
+	<WGS>LIHL01</WGS>
+	<GB_BioProjects>
+		<Bioproj>
+			<BioprojectAccn>PRJNA291087</BioprojectAccn>
+			<BioprojectId>291087</BioprojectId>
+		</Bioproj>
+	</GB_BioProjects>
+	<GB_Projects>
+	</GB_Projects>
+	<RS_BioProjects>
+		<Bioproj>
+			<BioprojectAccn>PRJNA350852</BioprojectAccn>
+			<BioprojectId>350852</BioprojectId>
+		</Bioproj>
+	</RS_BioProjects>
+	<RS_Projects>
+	</RS_Projects>
+	<BioSampleAccn>SAMN03704235</BioSampleAccn>
+	<BioSampleId>3704235</BioSampleId>
+	<Biosource>
+		<InfraspeciesList>
+			<Infraspecie>
+				<Sub_type>cultivar</Sub_type>
+				<Sub_value>Chandler</Sub_value>
+			</Infraspecie>
+		</InfraspeciesList>
+		<Sex/>
+		<Isolate/>
+	</Biosource>
+	<Coverage>120</Coverage>
+	<PartialGenomeRepresentation>false</PartialGenomeRepresentation>
+	<Primary>3634108</Primary>
+	<AssemblyDescription/>
+	<ReleaseLevel>Major</ReleaseLevel>
+	<ReleaseType>Major</ReleaseType>
+	<AsmReleaseDate_GenBank>2015/10/22 00:00</AsmReleaseDate_GenBank>
+	<AsmReleaseDate_RefSeq>2016/10/28 00:00</AsmReleaseDate_RefSeq>
+	<SeqReleaseDate>2015/10/22 00:00</SeqReleaseDate>
+	<AsmUpdateDate>2016/11/04 00:00</AsmUpdateDate>
+	<SubmissionDate>2015/10/22 00:00</SubmissionDate>
+	<LastUpdateDate>2016/11/04 00:00</LastUpdateDate>
+	<SubmitterOrganization>Johns Hopkins University</SubmitterOrganization>
+	<RefSeq_category>representative genome</RefSeq_category>
+	<AnomalousList>
+	</AnomalousList>
+	<ExclFromRefSeq>
+	</ExclFromRefSeq>
+	<PropertyList>
+		<string>full-genome-representation</string>
+		<string>has-chloroplast</string>
+		<string>has-mitochondrion</string>
+		<string>has_annotation</string>
+		<string>latest</string>
+		<string>latest_genbank</string>
+		<string>latest_refseq</string>
+		<string>refseq_has_annotation</string>
+		<string>representative</string>
+		<string>wgs</string>
+	</PropertyList>
+	<FromType/>
+	<Synonym>
+		<Genbank>GCA_001411555.1</Genbank>
+		<RefSeq>GCF_001411555.1</RefSeq>
+		<Similarity>different</Similarity>
+	</Synonym>
+	<ContigN50>38661</ContigN50>
+	<ScaffoldN50>250522</ScaffoldN50>
+	<FtpPath_GenBank>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/411/555/GCA_001411555.1_wgs.5d</FtpPath_GenBank>
+	<FtpPath_RefSeq>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/411/555/GCF_001411555.1_wgs.5d</FtpPath_RefSeq>
+	<FtpPath_Assembly_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/411/555/GCF_001411555.1_wgs.5d/GCF_001411555.1_wgs.5d_assembly_report.txt</FtpPath_Assembly_rpt>
+	<FtpPath_Stats_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/411/555/GCF_001411555.1_wgs.5d/GCF_001411555.1_wgs.5d_assembly_stats.txt</FtpPath_Stats_rpt>
+	<FtpPath_Regions_rpt/>
+	<SortOrder>2C90014115559898</SortOrder>
+	<Meta><![CDATA[ <Stats> <Stat category="alt_loci_count" sequence_tag="all">0</Stat> <Stat category="chromosome_count" sequence_tag="all">0</Stat> <Stat category="contig_count" sequence_tag="all">139898</Stat> <Stat category="contig_l50" sequence_tag="all">4059</Stat> <Stat category="contig_n50" sequence_tag="all">38661</Stat> <Stat category="non_chromosome_replicon_count" sequence_tag="all">0</Stat> <Stat category="replicon_count" sequence_tag="all">0</Stat> <Stat category="scaffold_count" sequence_tag="all">105803</Stat> <Stat category="scaffold_count" sequence_tag="placed">0</Stat> <Stat category="scaffold_count" sequence_tag="unlocalized">0</Stat> <Stat category="scaffold_count" sequence_tag="unplaced">105803</Stat> <Stat category="scaffold_l50" sequence_tag="all">443</Stat> <Stat category="scaffold_n50" sequence_tag="all">250522</Stat> <Stat category="total_length" sequence_tag="all">699672627</Stat> <Stat category="ungapped_length" sequence_tag="all">674803561</Stat> </Stats> <FtpSites>   <FtpPath type="Assembly_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/411/555/GCF_001411555.1_wgs.5d/GCF_001411555.1_wgs.5d_assembly_report.txt</FtpPath>   <FtpPath type="GenBank">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/411/555/GCA_001411555.1_wgs.5d</FtpPath>   <FtpPath type="RefSeq">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/411/555/GCF_001411555.1_wgs.5d</FtpPath>   <FtpPath type="Stats_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/411/555/GCF_001411555.1_wgs.5d/GCF_001411555.1_wgs.5d_assembly_stats.txt</FtpPath> </FtpSites> <assembly-level>8</assembly-level> <assembly-status>Scaffold</assembly-status> <representative-status>representative genome</representative-status> <submitter-organization>Johns Hopkins University</submitter-organization>    ]]></Meta>
+</DocumentSummary>
+
+</DocumentSummarySet>
+</eSummaryResult>

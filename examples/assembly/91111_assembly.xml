@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eSummaryResult PUBLIC "-//NLM//DTD esummary assembly 20180216//EN" "https://eutils.ncbi.nlm.nih.gov/eutils/dtd/20180216/esummary_assembly.dtd">
+<eSummaryResult>
+<DocumentSummarySet status="OK">
+<DbBuild>Build181125-1910.1</DbBuild>
+
+<DocumentSummary uid="91111">
+	<RsUid/>
+	<GbUid>889828</GbUid>
+	<AssemblyAccession>GCA_000516895.1</AssemblyAccession>
+	<LastMajorReleaseAccession>GCA_000516895.1</LastMajorReleaseAccession>
+	<LatestAccession/>
+	<ChainId>516895</ChainId>
+	<AssemblyName>LocustGenomeV1</AssemblyName>
+	<UCSCName/>
+	<EnsemblName/>
+	<Taxid>7004</Taxid>
+	<Organism>Locusta migratoria (migratory locust)</Organism>
+	<SpeciesTaxid>7004</SpeciesTaxid>
+	<SpeciesName>Locusta migratoria</SpeciesName>
+	<AssemblyType>haploid</AssemblyType>
+	<AssemblyClass>haploid</AssemblyClass>
+	<AssemblyStatus>Contig</AssemblyStatus>
+	<WGS>AVCP01</WGS>
+	<GB_BioProjects>
+		<Bioproj>
+			<BioprojectAccn>PRJNA185471</BioprojectAccn>
+			<BioprojectId>185471</BioprojectId>
+		</Bioproj>
+	</GB_BioProjects>
+	<GB_Projects>
+	</GB_Projects>
+	<RS_BioProjects>
+	</RS_BioProjects>
+	<RS_Projects>
+	</RS_Projects>
+	<BioSampleAccn>SAMN02261463</BioSampleAccn>
+	<BioSampleId>2261463</BioSampleId>
+	<Biosource>
+		<InfraspeciesList>
+		</InfraspeciesList>
+		<Sex>female</Sex>
+		<Isolate/>
+	</Biosource>
+	<Coverage>114</Coverage>
+	<PartialGenomeRepresentation>false</PartialGenomeRepresentation>
+	<Primary>889818</Primary>
+	<AssemblyDescription/>
+	<ReleaseLevel>Major</ReleaseLevel>
+	<ReleaseType>Major</ReleaseType>
+	<AsmReleaseDate_GenBank>2014/01/08 00:00</AsmReleaseDate_GenBank>
+	<AsmReleaseDate_RefSeq>1/01/01 00:00</AsmReleaseDate_RefSeq>
+	<SeqReleaseDate>2013/12/18 00:00</SeqReleaseDate>
+	<AsmUpdateDate>2014/01/08 00:00</AsmUpdateDate>
+	<SubmissionDate>2013/12/18 00:00</SubmissionDate>
+	<LastUpdateDate>2014/01/08 00:00</LastUpdateDate>
+	<SubmitterOrganization>institute of zoology, Chinese Academy of Sciences</SubmitterOrganization>
+	<RefSeq_category>representative genome</RefSeq_category>
+	<AnomalousList>
+	</AnomalousList>
+	<ExclFromRefSeq>
+	</ExclFromRefSeq>
+	<PropertyList>
+		<string>full-genome-representation</string>
+		<string>latest</string>
+		<string>latest_genbank</string>
+		<string>representative</string>
+		<string>wgs</string>
+	</PropertyList>
+	<FromType/>
+	<Synonym>
+		<Genbank>GCA_000516895.1</Genbank>
+		<RefSeq/>
+		<Similarity/>
+	</Synonym>
+	<ContigN50>9587</ContigN50>
+	<ScaffoldN50>9587</ScaffoldN50>
+	<FtpPath_GenBank>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/516/895/GCA_000516895.1_LocustGenomeV1</FtpPath_GenBank>
+	<FtpPath_RefSeq/>
+	<FtpPath_Assembly_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/516/895/GCA_000516895.1_LocustGenomeV1/GCA_000516895.1_LocustGenomeV1_assembly_report.txt</FtpPath_Assembly_rpt>
+	<FtpPath_Stats_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/516/895/GCA_000516895.1_LocustGenomeV1/GCA_000516895.1_LocustGenomeV1_assembly_stats.txt</FtpPath_Stats_rpt>
+	<FtpPath_Regions_rpt/>
+	<SortOrder>2C70005168959899</SortOrder>
+	<Meta><![CDATA[ <Stats> <Stat category="alt_loci_count" sequence_tag="all">0</Stat> <Stat category="chromosome_count" sequence_tag="all">0</Stat> <Stat category="contig_count" sequence_tag="all">1397492</Stat> <Stat category="contig_l50" sequence_tag="all">174483</Stat> <Stat category="contig_n50" sequence_tag="all">9587</Stat> <Stat category="non_chromosome_replicon_count" sequence_tag="all">0</Stat> <Stat category="replicon_count" sequence_tag="all">0</Stat> <Stat category="scaffold_count" sequence_tag="all">1397492</Stat> <Stat category="scaffold_count" sequence_tag="placed">0</Stat> <Stat category="scaffold_count" sequence_tag="unlocalized">0</Stat> <Stat category="scaffold_count" sequence_tag="unplaced">0</Stat> <Stat category="scaffold_l50" sequence_tag="all">174483</Stat> <Stat category="scaffold_n50" sequence_tag="all">9587</Stat> <Stat category="total_length" sequence_tag="all">5759798599</Stat> <Stat category="ungapped_length" sequence_tag="all">5759798599</Stat> </Stats> <FtpSites>   <FtpPath type="Assembly_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/516/895/GCA_000516895.1_LocustGenomeV1/GCA_000516895.1_LocustGenomeV1_assembly_report.txt</FtpPath>   <FtpPath type="GenBank">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/516/895/GCA_000516895.1_LocustGenomeV1</FtpPath>   <FtpPath type="Stats_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/516/895/GCA_000516895.1_LocustGenomeV1/GCA_000516895.1_LocustGenomeV1_assembly_stats.txt</FtpPath> </FtpSites> <assembly-level>1</assembly-level> <assembly-status>Contig</assembly-status> <representative-status>representative genome</representative-status> <submitter-organization>institute of zoology, Chinese Academy of Sciences</submitter-organization>    ]]></Meta>
+</DocumentSummary>
+
+</DocumentSummarySet>
+</eSummaryResult>
