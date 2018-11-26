@@ -1,0 +1,90 @@
+<DocumentSummary uid="317138">
+    <RsUid>317138</RsUid>
+    <GbUid>313658</GbUid>
+    <AssemblyAccession>GCF_000002285.3</AssemblyAccession>
+    <LastMajorReleaseAccession>GCF_000002285.3</LastMajorReleaseAccession>
+    <LatestAccession/>
+    <ChainId>2285</ChainId>
+    <AssemblyName>CanFam3.1</AssemblyName>
+    <UCSCName>canFam3</UCSCName>
+    <EnsemblName/>
+    <Taxid>9615</Taxid>
+    <Organism>Canis lupus familiaris (dog)</Organism>
+    <SpeciesTaxid>9612</SpeciesTaxid>
+    <SpeciesName>Canis lupus</SpeciesName>
+    <AssemblyType>haploid</AssemblyType>
+    <AssemblyClass>haploid</AssemblyClass>
+    <AssemblyStatus>Chromosome</AssemblyStatus>
+    <WGS>AAEX03</WGS>
+    <GB_BioProjects>
+        <Bioproj>
+            <BioprojectAccn>PRJNA13179</BioprojectAccn>
+            <BioprojectId>13179</BioprojectId>
+        </Bioproj>
+    </GB_BioProjects>
+    <GB_Projects/>
+    <RS_BioProjects>
+        <Bioproj>
+            <BioprojectAccn>PRJNA12384</BioprojectAccn>
+            <BioprojectId>12384</BioprojectId>
+        </Bioproj>
+    </RS_BioProjects>
+    <RS_Projects/>
+    <BioSampleAccn>SAMN02953603</BioSampleAccn>
+    <BioSampleId>2953603</BioSampleId>
+    <Biosource>
+        <InfraspeciesList>
+            <Infraspecie>
+                <Sub_type>breed</Sub_type>
+                <Sub_value>boxer</Sub_value>
+            </Infraspecie>
+        </InfraspeciesList>
+        <Sex>female</Sex>
+        <Isolate/>
+    </Biosource>
+    <Coverage>0</Coverage>
+    <PartialGenomeRepresentation>false</PartialGenomeRepresentation>
+    <Primary>317128</Primary>
+    <AssemblyDescription/>
+    <ReleaseLevel>Major</ReleaseLevel>
+    <ReleaseType>Major</ReleaseType>
+    <AsmReleaseDate_GenBank>2011/11/03 00:00</AsmReleaseDate_GenBank>
+    <AsmReleaseDate_RefSeq>2011/11/18 00:00</AsmReleaseDate_RefSeq>
+    <SeqReleaseDate>2011/11/02 00:00</SeqReleaseDate>
+    <AsmUpdateDate>2018/07/12 00:00</AsmUpdateDate>
+    <SubmissionDate>2011/11/02 00:00</SubmissionDate>
+    <LastUpdateDate>2018/07/12 00:00</LastUpdateDate>
+    <SubmitterOrganization>Dog Genome Sequencing Consortium</SubmitterOrganization>
+    <RefSeq_category>representative genome</RefSeq_category>
+    <AnomalousList/>
+    <ExclFromRefSeq/>
+    <PropertyList>
+        <string>full-genome-representation</string>
+        <string>has-chromosome</string>
+        <string>has-mitochondrion</string>
+        <string>has-synonym</string>
+        <string>has_annotation</string>
+        <string>latest</string>
+        <string>latest_genbank</string>
+        <string>latest_refseq</string>
+        <string>refseq_has_annotation</string>
+        <string>representative</string>
+        <string>wgs</string>
+    </PropertyList>
+    <FromType/>
+    <Synonym>
+        <Genbank>GCA_000002285.2</Genbank>
+        <RefSeq>GCF_000002285.3</RefSeq>
+        <Similarity>different</Similarity>
+    </Synonym>
+    <ContigN50>267478</ContigN50>
+    <ScaffoldN50>45876610</ScaffoldN50>
+    <FtpPath_GenBank>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/002/285/GCA_000002285.2_CanFam3.1</FtpPath_GenBank>
+    <FtpPath_RefSeq>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/285/GCF_000002285.3_CanFam3.1</FtpPath_RefSeq>
+    <FtpPath_Assembly_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/285/GCF_000002285.3_CanFam3.1/GCF_000002285.3_CanFam3.1_assembly_report.txt</FtpPath_Assembly_rpt>
+    <FtpPath_Stats_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/285/GCF_000002285.3_CanFam3.1/GCF_000002285.3_CanFam3.1_assembly_stats.txt</FtpPath_Stats_rpt>
+    <FtpPath_Regions_rpt/>
+    <SortOrder>2C30000022859796</SortOrder>
+    <Meta>&lt;Stats&gt; &lt;Stat category=&quot;alt_loci_count&quot; sequence_tag=&quot;all&quot;&gt;0&lt;/Stat&gt; &lt;Stat category=&quot;chromosome_count&quot; sequence_tag=&quot;all&quot;&gt;39&lt;/Stat&gt; &lt;Stat category=&quot;contig_count&quot; sequence_tag=&quot;all&quot;&gt;27106&lt;/Stat&gt; &lt;Stat category=&quot;contig_l50&quot; sequence_tag=&quot;all&quot;&gt;2436&lt;/Stat&gt; &lt;Stat category=&quot;contig_n50&quot; sequence_tag=&quot;all&quot;&gt;267478&lt;/Stat&gt; &lt;Stat category=&quot;non_chromosome_replicon_count&quot; sequence_tag=&quot;all&quot;&gt;1&lt;/Stat&gt; &lt;Stat category=&quot;replicon_count&quot; sequence_tag=&quot;all&quot;&gt;40&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_count&quot; sequence_tag=&quot;all&quot;&gt;3310&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_count&quot; sequence_tag=&quot;placed&quot;&gt;82&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_count&quot; sequence_tag=&quot;unlocalized&quot;&gt;0&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_count&quot; sequence_tag=&quot;unplaced&quot;&gt;3228&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_l50&quot; sequence_tag=&quot;all&quot;&gt;20&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_n50&quot; sequence_tag=&quot;all&quot;&gt;45876610&lt;/Stat&gt; &lt;Stat category=&quot;total_length&quot; sequence_tag=&quot;all&quot;&gt;2410976875&lt;/Stat&gt; &lt;Stat category=&quot;ungapped_length&quot; sequence_tag=&quot;all&quot;&gt;2392715236&lt;/Stat&gt; &lt;/Stats&gt; &lt;FtpSites&gt; &lt;FtpPath type=&quot;Assembly_rpt&quot;&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/285/GCF_000002285.3_CanFam3.1/GCF_000002285.3_CanFam3.1_assembly_report.txt&lt;/FtpPath&gt; &lt;FtpPath type=&quot;GenBank&quot;&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/002/285/GCA_000002285.2_CanFam3.1&lt;/FtpPath&gt; &lt;FtpPath type=&quot;RefSeq&quot;&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/285/GCF_000002285.3_CanFam3.1&lt;/FtpPath&gt; &lt;FtpPath type=&quot;Stats_rpt&quot;&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/285/GCF_000002285.3_CanFam3.1/GCF_000002285.3_CanFam3.1_assembly_stats.txt&lt;/FtpPath&gt; &lt;/FtpSites&gt; &lt;assembly-level&gt;3&lt;/assembly-level&gt; &lt;assembly-status&gt;Chromosome&lt;/assembly-status&gt; &lt;representative-status&gt;representative genome&lt;/representative-status&gt; &lt;submitter-organization&gt;Dog Genome Sequencing Consortium&lt;/submitter-organization&gt;</Meta>
+</DocumentSummary>
+

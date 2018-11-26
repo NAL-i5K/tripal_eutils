@@ -1,0 +1,89 @@
+<DocumentSummary uid="1949871">
+    <RsUid>7434688</RsUid>
+    <GbUid>7372188</GbUid>
+    <AssemblyAccession>GCF_003254395.2</AssemblyAccession>
+    <LastMajorReleaseAccession>GCF_003254395.2</LastMajorReleaseAccession>
+    <LatestAccession/>
+    <ChainId>3254395</ChainId>
+    <AssemblyName>Amel_HAv3.1</AssemblyName>
+    <UCSCName/>
+    <EnsemblName/>
+    <Taxid>7460</Taxid>
+    <Organism>Apis mellifera (honey bee)</Organism>
+    <SpeciesTaxid>7460</SpeciesTaxid>
+    <SpeciesName>Apis mellifera</SpeciesName>
+    <AssemblyType>haploid</AssemblyType>
+    <AssemblyClass>haploid</AssemblyClass>
+    <AssemblyStatus>Chromosome</AssemblyStatus>
+    <WGS>QIUM02</WGS>
+    <GB_BioProjects>
+        <Bioproj>
+            <BioprojectAccn>PRJNA471592</BioprojectAccn>
+            <BioprojectId>471592</BioprojectId>
+        </Bioproj>
+    </GB_BioProjects>
+    <GB_Projects/>
+    <RS_BioProjects>
+        <Bioproj>
+            <BioprojectAccn>PRJNA477511</BioprojectAccn>
+            <BioprojectId>477511</BioprojectId>
+        </Bioproj>
+    </RS_BioProjects>
+    <RS_Projects/>
+    <BioSampleAccn>SAMN09259743</BioSampleAccn>
+    <BioSampleId>9259743</BioSampleId>
+    <Biosource>
+        <InfraspeciesList>
+            <Infraspecie>
+                <Sub_type>strain</Sub_type>
+                <Sub_value>DH4</Sub_value>
+            </Infraspecie>
+        </InfraspeciesList>
+        <Sex>male</Sex>
+        <Isolate/>
+    </Biosource>
+    <Coverage>192</Coverage>
+    <PartialGenomeRepresentation>false</PartialGenomeRepresentation>
+    <Primary>7426978</Primary>
+    <AssemblyDescription/>
+    <ReleaseLevel>Major</ReleaseLevel>
+    <ReleaseType>Major</ReleaseType>
+    <AsmReleaseDate_GenBank>2018/09/10 00:00</AsmReleaseDate_GenBank>
+    <AsmReleaseDate_RefSeq>2018/09/13 00:00</AsmReleaseDate_RefSeq>
+    <SeqReleaseDate>2018/09/10 00:00</SeqReleaseDate>
+    <AsmUpdateDate>2018/09/19 00:00</AsmUpdateDate>
+    <SubmissionDate>2018/09/10 00:00</SubmissionDate>
+    <LastUpdateDate>2018/09/19 00:00</LastUpdateDate>
+    <SubmitterOrganization>Uppsala University</SubmitterOrganization>
+    <RefSeq_category>representative genome</RefSeq_category>
+    <AnomalousList/>
+    <ExclFromRefSeq/>
+    <PropertyList>
+        <string>full-genome-representation</string>
+        <string>has-linkage-group</string>
+        <string>has-mitochondrion</string>
+        <string>has_annotation</string>
+        <string>latest</string>
+        <string>latest_genbank</string>
+        <string>latest_refseq</string>
+        <string>refseq_has_annotation</string>
+        <string>representative</string>
+        <string>wgs</string>
+    </PropertyList>
+    <FromType/>
+    <Synonym>
+        <Genbank>GCA_003254395.2</Genbank>
+        <RefSeq>GCF_003254395.2</RefSeq>
+        <Similarity>different</Similarity>
+    </Synonym>
+    <ContigN50>5382476</ContigN50>
+    <ScaffoldN50>13619445</ScaffoldN50>
+    <FtpPath_GenBank>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/003/254/395/GCA_003254395.2_Amel_HAv3.1</FtpPath_GenBank>
+    <FtpPath_RefSeq>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/254/395/GCF_003254395.2_Amel_HAv3.1</FtpPath_RefSeq>
+    <FtpPath_Assembly_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/254/395/GCF_003254395.2_Amel_HAv3.1/GCF_003254395.2_Amel_HAv3.1_assembly_report.txt</FtpPath_Assembly_rpt>
+    <FtpPath_Stats_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/254/395/GCF_003254395.2_Amel_HAv3.1/GCF_003254395.2_Amel_HAv3.1_assembly_stats.txt</FtpPath_Stats_rpt>
+    <FtpPath_Regions_rpt/>
+    <SortOrder>2C30032543959797</SortOrder>
+    <Meta>&lt;Stats&gt; &lt;Stat category=&quot;alt_loci_count&quot; sequence_tag=&quot;all&quot;&gt;0&lt;/Stat&gt; &lt;Stat category=&quot;chromosome_count&quot; sequence_tag=&quot;all&quot;&gt;16&lt;/Stat&gt; &lt;Stat category=&quot;contig_count&quot; sequence_tag=&quot;all&quot;&gt;228&lt;/Stat&gt; &lt;Stat category=&quot;contig_l50&quot; sequence_tag=&quot;all&quot;&gt;13&lt;/Stat&gt; &lt;Stat category=&quot;contig_n50&quot; sequence_tag=&quot;all&quot;&gt;5382476&lt;/Stat&gt; &lt;Stat category=&quot;non_chromosome_replicon_count&quot; sequence_tag=&quot;all&quot;&gt;1&lt;/Stat&gt; &lt;Stat category=&quot;replicon_count&quot; sequence_tag=&quot;all&quot;&gt;17&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_count&quot; sequence_tag=&quot;all&quot;&gt;177&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_count&quot; sequence_tag=&quot;placed&quot;&gt;17&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_count&quot; sequence_tag=&quot;unlocalized&quot;&gt;71&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_count&quot; sequence_tag=&quot;unplaced&quot;&gt;89&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_l50&quot; sequence_tag=&quot;all&quot;&gt;7&lt;/Stat&gt; &lt;Stat category=&quot;scaffold_n50&quot; sequence_tag=&quot;all&quot;&gt;13619445&lt;/Stat&gt; &lt;Stat category=&quot;total_length&quot; sequence_tag=&quot;all&quot;&gt;225250884&lt;/Stat&gt; &lt;Stat category=&quot;ungapped_length&quot; sequence_tag=&quot;all&quot;&gt;223937270&lt;/Stat&gt; &lt;/Stats&gt; &lt;FtpSites&gt; &lt;FtpPath type=&quot;Assembly_rpt&quot;&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/254/395/GCF_003254395.2_Amel_HAv3.1/GCF_003254395.2_Amel_HAv3.1_assembly_report.txt&lt;/FtpPath&gt; &lt;FtpPath type=&quot;GenBank&quot;&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/003/254/395/GCA_003254395.2_Amel_HAv3.1&lt;/FtpPath&gt; &lt;FtpPath type=&quot;RefSeq&quot;&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/254/395/GCF_003254395.2_Amel_HAv3.1&lt;/FtpPath&gt; &lt;FtpPath type=&quot;Stats_rpt&quot;&gt;ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/254/395/GCF_003254395.2_Amel_HAv3.1/GCF_003254395.2_Amel_HAv3.1_assembly_stats.txt&lt;/FtpPath&gt; &lt;/FtpSites&gt; &lt;assembly-level&gt;3&lt;/assembly-level&gt; &lt;assembly-status&gt;Chromosome&lt;/assembly-status&gt; &lt;representative-status&gt;representative genome&lt;/representative-status&gt; &lt;submitter-organization&gt;Uppsala University&lt;/submitter-organization&gt;</Meta>
+</DocumentSummary>
+
