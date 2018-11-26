@@ -3,7 +3,7 @@ namespace Tests;
 
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
-module_load_include('inc', 'tripal_eutils', 'includes/Euitils');
+module_load_include('inc', 'tripal_eutils', 'includes/Eutils');
 
 
 class EutilsTest extends TripalTestCase {
@@ -19,18 +19,18 @@ class EutilsTest extends TripalTestCase {
    * See https://phpunit.readthedocs.io/en/latest/ for more information.
    */
   public function testBasicExample() {
-    $connection = new \Euitils();
-    $count = $connection->check_status();
+    $connection = new \Eutils();
+    $count = $connection->checkStatus();
     $this->assertNotFalse($count);
   }
 
   public function testSettingDB(){
-    $connection = new \Euitils();
-    $result = $connection->set_db('waffles');
+    $connection = new \Eutils();
+    $result = $connection->setDB('waffles');
 
     $this->assertFalse($result);
 
-    $result = $connection->set_db('biosample');
+    $result = $connection->setDB('biosample');
     $this->assertTrue($result);
 
   }
@@ -39,15 +39,15 @@ class EutilsTest extends TripalTestCase {
   public function testBioProjectAttributes(){
 
 
-    $connection = new \Euitils();
-    $connection->set_db('bioproject');
+    $connection = new \Eutils();
+    $connection->setDB('bioproject');
     //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
-    $result = $connection->lookup_accessions(['506315']);
+    $result = $connection->lookupAccessions(['506315']);
 
     //$result is the XML!
 
-    new xml_parser('bioproject', $result);
-    new bioproject_xml_parser($result);
+    //new xml_parser('bioproject', $result);
+    //new bioproject_xml_parser($result);
 
 
   }

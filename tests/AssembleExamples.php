@@ -5,7 +5,7 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-module_load_include('inc', 'tripal_eutils', 'includes/Euitils');
+module_load_include('inc', 'tripal_eutils', 'includes/Eutils');
 
 
 class AssembleExamples extends TripalTestCase {
@@ -60,12 +60,12 @@ class AssembleExamples extends TripalTestCase {
       ],
 
     ];
-    $connection = new \Euitils();
+    $connection = new \Eutils();
 
     foreach ($lookup as $db => $accessions) {
-      $connection->set_db($db);
+      $connection->setDB($db);
       foreach ($accessions as $accession) {
-        $result = $connection->lookup_accessions([$accession]);
+        $result = $connection->lookupAccessions([$accession]);
         $x = simplexml_import_dom($result);
         $x->asXML($accession . '_' . $db . '.xml');
         sleep(.3);

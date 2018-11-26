@@ -1,4 +1,4 @@
 <?php
 
-include_once('includes/Euitils.inc');
+include_once('includes/Eutils.inc');
 include_once('includes/xml_parsers/EutilsXMLParser.inc');

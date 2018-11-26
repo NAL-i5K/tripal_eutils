@@ -46,12 +46,12 @@ class EutilsXMLParser {
       switch ($key) {
         case "Submission":
 
-          $this->bioproject_submission($child);
+          $this->bioprojectSubmission($child);
 
 
           break;
         case "Project":
-          $this->bioproject_project($child);
+          $this->bioprojectProject($child);
           break;
 
         default:
@@ -67,7 +67,7 @@ class EutilsXMLParser {
    *
    * @param $xml
    */
-  private function bioproject_submission($xml) {
+  private function bioprojectSubmission($xml) {
 
     $info = [];
 
@@ -98,7 +98,7 @@ class EutilsXMLParser {
     return $info;
   }
 
-  private function bioproject_project($xml) {
+  private function bioprojectProject($xml) {
     $info = [];
 
     //dont expect parent attributes to matter

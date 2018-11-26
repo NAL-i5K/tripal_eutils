@@ -21,11 +21,11 @@ class EutilsXmlParserTest extends TripalTestCase {
     $parser = new \EutilsXMLParser('bioproject');
     $this->assertNotNull($parser);
 
-    $connection = new \Euitils();
+    $connection = new \Eutils();
 
-    $connection->set_db('bioproject');
+    $connection->setDB('bioproject');
     //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
-    $result = $connection->lookup_accessions(['506315']);
+    $result = $connection->lookupAccessions(['506315']);
 
     $parser->loadXML($result);
   }
@@ -62,7 +62,7 @@ class EutilsXmlParserTest extends TripalTestCase {
     $xml = simplexml_load_string($submission_test_string);
 
     $parser_r = reflect($parser);
-    $submission_info = $parser_r->bioproject_submission($xml);
+    $submission_info = $parser_r->bioprojectSubmission($xml);
 
     $this->assertNotEmpty($submission_info);
     $this->assertArrayHasKey('organization', $submission_info);
@@ -115,7 +115,7 @@ class EutilsXmlParserTest extends TripalTestCase {
     $xml = simplexml_load_string($string);
 
     $parser_r = reflect($parser);
-    $submission_info = $parser_r->bioproject_project($xml);
+    $submission_info = $parser_r->bioprojectProject($xml);
 
     $this->assertNotEmpty($submission_info);
 
@@ -134,7 +134,7 @@ class EutilsXmlParserTest extends TripalTestCase {
     $xml = simplexml_load_string($string);
 
     $parser_r = reflect($parser);
-    $submission_info = $parser_r->bioproject_project($xml);
+    $submission_info = $parser_r->bioprojectProject($xml);
 
 //    $this->assertFalse($submission_info);
 
