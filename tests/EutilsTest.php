@@ -20,17 +20,17 @@ class EutilsTest extends TripalTestCase {
    */
   public function testBasicExample() {
     $connection = new \Eutils();
-    $count = $connection->check_status();
+    $count = $connection->checkStatus();
     $this->assertNotFalse($count);
   }
 
   public function testSettingDB(){
     $connection = new \Eutils();
-    $result = $connection->set_db('waffles');
+    $result = $connection->setDB('waffles');
 
     $this->assertFalse($result);
 
-    $result = $connection->set_db('biosample');
+    $result = $connection->setDB('biosample');
     $this->assertTrue($result);
 
   }
@@ -40,14 +40,14 @@ class EutilsTest extends TripalTestCase {
 
 
     $connection = new \Eutils();
-    $connection->set_db('bioproject');
+    $connection->setDB('bioproject');
     //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
-    $result = $connection->lookup_accessions(['506315']);
+    $result = $connection->lookupAccessions(['506315']);
 
     //$result is the XML!
 
-    new xml_parser('bioproject', $result);
-    new bioproject_xml_parser($result);
+    //new xml_parser('bioproject', $result);
+    //new bioproject_xml_parser($result);
 
 
   }

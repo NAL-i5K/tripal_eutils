@@ -63,9 +63,9 @@ class AssembleExamples extends TripalTestCase {
     $connection = new \Eutils();
 
     foreach ($lookup as $db => $accessions) {
-      $connection->set_db($db);
+      $connection->setDB($db);
       foreach ($accessions as $accession) {
-        $result = $connection->lookup_accessions([$accession]);
+        $result = $connection->lookupAccessions([$accession]);
         $x = simplexml_import_dom($result);
         $x->asXML($accession . '_' . $db . '.xml');
         sleep(.3);
