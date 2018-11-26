@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="185471">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA185471" archive="NCBI" id="185471"/>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Locusta migratoria</Name>
+            <Title>Locusta migratoria Epigenomics</Title>
+            <Description>Locusta migratoria Genome sequencing. The strain used for genome sequencing originated from the inbred laboratory strains of solitarious locusts at the Institute of Zoology, CAS, China. Both colonies were reared under a 14:10 light/dark photo regime at 30&#x2103; and on a diet of fresh greenhouse-grown wheat seedlings and wheat bran. To produce an even more inbred line, a sibling female adult and male adult mated each other and eight generations of sib mating were then followed to occur. DNA for genome sequencing was extracted from the whole body of one female adult.</Description>
+            <ExternalLink label="Eco-genomics and Adaptation Group">
+                <URL>http://www.ipm.ioz.ac.cn/kang/kanglcn.html</URL>
+            </ExternalLink>
+            <Publication id="24423660" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2013-12-18T00:00:00Z</ProjectReleaseDate>
+            <Relevance>
+                <Agricultural>yes</Agricultural>
+            </Relevance>
+            <LocusTagPrefix biosample_id="SAMN02261463">G433</LocusTagPrefix>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="7004" taxID="7004">
+                        <OrganismName>Locusta migratoria</OrganismName>
+                        <Supergroup>eEukaryotes</Supergroup>
+                        <Organization>eMulticellular</Organization>
+                        <Reproduction>eSexual</Reproduction>
+                        <GenomeSize units="Mb">6300.000000</GenomeSize>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eRawSequenceReads"/>
+                    <Data data_type="eSequence"/>
+                    <Data data_type="eAnalysis"/>
+                    <Data data_type="eAssembly"/>
+                    <Data data_type="eAnnotation"/>
+                    <Data data_type="eEpigeneticMarkers"/>
+                    <Data data_type="eExpression"/>
+                </Objectives>
+                <IntendedDataTypeSet>
+                    <DataType>genome sequencing</DataType>
+                </IntendedDataTypeSet>
+                <ProjectDataTypeSet>
+                    <DataType>Genome sequencing and assembly</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission last_update="2013-01-08" submitted="2013-01-08" submission_id="SUB155545">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="institute" url="http://www.ioz.ac.cn/">
+                <Name>institute of zoology, Chinese Academy of Sciences</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Access>public</Access>
+        </Description>
+        <Action action_id="SUB155545-1"/>
+    </Submission>
+</DocumentSummary>
+
+</RecordSet>

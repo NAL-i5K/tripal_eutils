@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="221623">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA221623" archive="NCBI" id="221623"/>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Bos mutus strain:yakQH1</Name>
+            <Title>Bos mutus strain:yakQH1 RefSeq Genome</Title>
+            <Description>The reference sequence (RefSeq) genome assembly is derived from the submitted GenBank assembly (see linked project PRJNA74739). Annotation provided on the RefSeq genomic records is based on NCBI annotation pipeline.</Description>
+            <Publication id="9023104" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="22751099" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2012-05-21T00:00:00Z</ProjectReleaseDate>
+            <Relevance>
+                <ModelOrganism>yes</ModelOrganism>
+            </Relevance>
+            <RefSeq representation="eReference">
+                <AnnotationSource>
+                    <Name>NCBI annotation pipeline</Name>
+                </AnnotationSource>
+            </RefSeq>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="72004" taxID="72004">
+                        <OrganismName>Bos mutus</OrganismName>
+                        <Strain>yakQH1</Strain>
+                        <Supergroup>eEukaryotes</Supergroup>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eAnnotation"/>
+                </Objectives>
+                <ProjectDataTypeSet>
+                    <DataType>RefSeq Genome sequencing and assembly</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission last_update="2011-10-23" submitted="2011-10-23">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="institute" url="http://www.ncbi.nlm.nih.gov">
+                <Name abbr="NCBI">National Center for Biotechnology Information</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Access>public</Access>
+        </Description>
+    </Submission>
+    <ProjectLinks>
+        <Link>
+            <ProjectIDRef archive="NCBI" id="221623" accession="PRJNA221623"/>
+            <PeerProject>
+                <CommonInputData>eRefseqGenbank</CommonInputData>
+                <MemberID archive="NCBI" id="74739" accession="PRJNA74739"/>
+            </PeerProject>
+        </Link>
+    </ProjectLinks>
+</DocumentSummary>
+
+</RecordSet>

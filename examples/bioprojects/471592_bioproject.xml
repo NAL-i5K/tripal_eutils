@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="471592">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA471592" archive="NCBI" id="471592"/>
+            <LocalID>bp0</LocalID>
+            <LocalID>bp0</LocalID>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Apis mellifera strain:DH4</Name>
+            <Title>Apis mellifera genome sequencing and assembly using long-read technologies</Title>
+            <Description>Production of a new reference assembly of the honeybee Apis mellifera using multiple long-read technologies: PacBio, 10X Chromium, Bionano and Hi-C</Description>
+            <ExternalLink label="Matthew Webster's group webpage">
+                <URL>http://www.imbim.uu.se/forskargrupper/genetik-och-genomik/Webster_Matthew/</URL>
+            </ExternalLink>
+            <Publication id="8417993" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2018-06-19T00:00:00Z</ProjectReleaseDate>
+            <Relevance>
+                <ModelOrganism>yes</ModelOrganism>
+            </Relevance>
+            <LocusTagPrefix biosample_id="SAMN09259743">DJ571</LocusTagPrefix>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="7460" taxID="7460">
+                        <OrganismName>Apis mellifera</OrganismName>
+                        <Strain>DH4</Strain>
+                        <Supergroup>eEukaryotes</Supergroup>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eRawSequenceReads"/>
+                </Objectives>
+                <IntendedDataTypeSet>
+                    <DataType>genome sequencing and assembly</DataType>
+                    <DataType>raw sequence reads</DataType>
+                    <DataType>genome sequencing</DataType>
+                </IntendedDataTypeSet>
+                <ProjectDataTypeSet>
+                    <DataType>Genome sequencing and assembly</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission last_update="2018-05-16" submission_id="SUB4045961" submitted="2018-05-16">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="institute">
+                <Name>Uppsala University</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Access>public</Access>
+        </Description>
+        <Action action_id="SUB4045961-bp0"/>
+    </Submission>
+    <ProjectLinks>
+        <Link>
+            <ProjectIDRef archive="NCBI" id="477511" accession="PRJNA477511"/>
+            <PeerProject>
+                <CommonInputData>eRefseqGenbank</CommonInputData>
+                <MemberID archive="NCBI" id="471592" accession="PRJNA471592"/>
+            </PeerProject>
+        </Link>
+    </ProjectLinks>
+</DocumentSummary>
+
+</RecordSet>

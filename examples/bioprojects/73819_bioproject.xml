@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="73819">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA73819" archive="NCBI" id="73819"/>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Cannabis sativa</Name>
+            <Title>Cannabis sativa genome and transcriptome sequencing project</Title>
+            <Description>This project provides the assembled draft genome and transcriptome of Cannabis sativa. The high-potency medical marijuana strain Purple Kush was used for sequencing. The genome and transcriptome of the hemp cultivars 'Finola' and 'USO-31' were re-sequenced for comparative purposes. This project will provide genomic information useful in breeding cannabis varieties for medical and agricultural applications.</Description>
+            <ExternalLink label="Project Website">
+                <URL>http://genome.ccbr.utoronto.ca</URL>
+            </ExternalLink>
+            <Publication date="2011-10-22T00:00:00Z" id="22014239" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2011-10-13T00:00:00Z</ProjectReleaseDate>
+            <Relevance>
+                <Medical>yes</Medical>
+            </Relevance>
+            <LocusTagPrefix biosample_id="SAMN09375800">DNI37</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN09387297">DNX71</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738286">DOF08</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738506">DOF09</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738528">DOF10</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738592">DOF11</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738619">DOF12</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738620">DOF13</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738621">DOF14</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738622">DOF15</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738623">DOF16</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738626">DOF17</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN00738627">DOF18</LocusTagPrefix>
+            <LocusTagPrefix biosample_id="SAMN02981385">KUY</LocusTagPrefix>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMultispecies">
+                    <Organism species="3483" taxID="3483">
+                        <OrganismName>Cannabis sativa</OrganismName>
+                        <Supergroup>eEukaryotes</Supergroup>
+                        <Organization>eMulticellular</Organization>
+                        <Reproduction>eSexual</Reproduction>
+                        <GenomeSize units="Mb">820.000000</GenomeSize>
+                    </Organism>
+                    <Provider>samples of Cannabis sativa Purple Kush were donated by an anonymous medical marijuana patient. Hemp samples were obtained from plants grown in the lab of Jon Page.</Provider>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eRawSequenceReads"/>
+                    <Data data_type="eAssembly"/>
+                </Objectives>
+                <IntendedDataTypeSet>
+                    <DataType>genome sequencing</DataType>
+                </IntendedDataTypeSet>
+                <ProjectDataTypeSet>
+                    <DataType>Genome sequencing and assembly</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission last_update="2011-10-04" submitted="2011-10-04">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="institute" url="http://www.utoronto.ca/">
+                <Name>University of Toronto</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Access>public</Access>
+        </Description>
+    </Submission>
+</DocumentSummary>
+
+</RecordSet>

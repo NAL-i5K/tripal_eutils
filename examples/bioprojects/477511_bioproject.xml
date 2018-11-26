@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="477511">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA477511" archive="NCBI" id="477511"/>
+            <LocalID>bp0</LocalID>
+            <LocalID>bp0</LocalID>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Apis mellifera strain:DH4</Name>
+            <Title>Apis mellifera strain:DH4 RefSeq Genome sequencing and assembly</Title>
+            <Description>The reference sequence (RefSeq) genome assembly is derived from the submitted GenBank assembly (see linked project PRJNA471592). Annotation provided on the RefSeq genomic records is based on NCBI annotation pipeline.</Description>
+            <ExternalLink label="Matthew Webster's group webpage">
+                <URL>http://www.imbim.uu.se/forskargrupper/genetik-och-genomik/Webster_Matthew/</URL>
+            </ExternalLink>
+            <Publication id="8417993" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="24479613" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2018-06-19T00:00:00Z</ProjectReleaseDate>
+            <Relevance>
+                <ModelOrganism>yes</ModelOrganism>
+            </Relevance>
+            <RefSeq representation="eReference">
+                <AnnotationSource>
+                    <Name>NCBI annotation pipeline</Name>
+                </AnnotationSource>
+            </RefSeq>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="7460" taxID="7460">
+                        <OrganismName>Apis mellifera</OrganismName>
+                        <Strain>DH4</Strain>
+                        <Supergroup>eEukaryotes</Supergroup>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eAnnotation"/>
+                </Objectives>
+                <IntendedDataTypeSet>
+                    <DataType>genome sequencing and assembly</DataType>
+                </IntendedDataTypeSet>
+                <ProjectDataTypeSet>
+                    <DataType>RefSeq genome sequencing and assembly</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission last_update="2018-05-16" submission_id="SUB4045961" submitted="2018-05-16">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="institute" url="http://www.ncbi.nlm.nih.gov">
+                <Name abbr="NCBI">National Center for Biotechnology Information</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Access>public</Access>
+        </Description>
+        <Action action_id="SUB4045961-bp0"/>
+    </Submission>
+    <ProjectLinks>
+        <Link>
+            <ProjectIDRef archive="NCBI" id="477511" accession="PRJNA477511"/>
+            <PeerProject>
+                <CommonInputData>eRefseqGenbank</CommonInputData>
+                <MemberID archive="NCBI" id="471592" accession="PRJNA471592"/>
+            </PeerProject>
+        </Link>
+    </ProjectLinks>
+</DocumentSummary>
+
+</RecordSet>

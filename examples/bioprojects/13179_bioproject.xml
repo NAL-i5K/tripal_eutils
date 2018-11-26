@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="13179">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA13179" archive="NCBI" id="13179"/>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Canis lupus familiaris</Name>
+            <Title>Boxer 7.6x whole genome shotgun assembly by the Dog Genome Sequencing Consortium</Title>
+            <Description>&lt;p&gt;The Dog Genome Sequencing Consortium, led by the &lt;a href="http://www.broad.mit.edu/mammals/dog/"&gt;Broad Institute&lt;/a&gt;, sequenced the &lt;i&gt;Canis lupus familiaris&lt;/i&gt; genome at 7.6x coverage using a whole genome shotgun (WGS) strategy and DNA derived from a female boxer. The breed was chosen following an analysis of 60 dog breeds that demonstrated that the boxer is one of the breeds with the least amount of variation in its genome. The WGS sequences have been deposited at GenBank/EMBL/DDBJ under the project accession &lt;a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&amp;val=50211262"&gt;AAEX01000000&lt;/a&gt;.&lt;/p&gt;</Description>
+            <ExternalLink category="Other Databases" label="GOLD">
+                <URL>http://genomesonline.org/cgi-bin/GOLD/bin/GOLDCards.cgi?goldstamp=Gc00597</URL>
+            </ExternalLink>
+            <Publication date="2005-12-13T00:00:00Z" id="16341006" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="9878232" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="9023104" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2004-07-10T00:00:00Z</ProjectReleaseDate>
+            <LocusTagPrefix assembly_id="GCA_000002285" biosample_id="SAMN02953603">AGS45</LocusTagPrefix>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="9612" taxID="9615">
+                        <OrganismName>Canis lupus familiaris</OrganismName>
+                        <Supergroup>eEukaryotes</Supergroup>
+                        <RepliconSet>
+                            <Replicon order="39">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>X</Name>
+                                <Size units="Mb">130.000000</Size>
+                            </Replicon>
+                            <Replicon order="38">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>38</Name>
+                                <Size units="Mb">27.000000</Size>
+                            </Replicon>
+                            <Replicon order="37">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>37</Name>
+                                <Size units="Mb">34.000000</Size>
+                            </Replicon>
+                            <Replicon order="36">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>36</Name>
+                                <Size units="Mb">34.000000</Size>
+                            </Replicon>
+                            <Replicon order="35">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>35</Name>
+                                <Size units="Mb">30.000000</Size>
+                            </Replicon>
+                            <Replicon order="26">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>26</Name>
+                                <Size units="Mb">42.000000</Size>
+                            </Replicon>
+                            <Replicon order="25">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>25</Name>
+                                <Size units="Mb">55.000000</Size>
+                            </Replicon>
+                            <Replicon order="24">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>24</Name>
+                                <Size units="Mb">51.000000</Size>
+                            </Replicon>
+                            <Replicon order="23">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>23</Name>
+                                <Size units="Mb">55.000000</Size>
+                            </Replicon>
+                            <Replicon order="22">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>22</Name>
+                                <Size units="Mb">64.000000</Size>
+                            </Replicon>
+                            <Replicon order="21">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>21</Name>
+                                <Size units="Mb">54.000000</Size>
+                            </Replicon>
+                            <Replicon order="20">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>20</Name>
+                                <Size units="Mb">61.000000</Size>
+                            </Replicon>
+                            <Replicon order="19">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>19</Name>
+                                <Size units="Mb">57.000000</Size>
+                            </Replicon>
+                            <Replicon order="18">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>18</Name>
+                                <Size units="Mb">59.000000</Size>
+                            </Replicon>
+                            <Replicon order="17">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>17</Name>
+                                <Size units="Mb">67.000000</Size>
+                            </Replicon>
+                            <Replicon order="7">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>7</Name>
+                                <Size units="Mb">84.000000</Size>
+                            </Replicon>
+                            <Replicon order="6">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>6</Name>
+                                <Size units="Mb">81.000000</Size>
+                            </Replicon>
+                            <Replicon order="5">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>5</Name>
+                                <Size units="Mb">92.000000</Size>
+                            </Replicon>
+                            <Replicon order="4">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>4</Name>
+                                <Size units="Mb">91.000000</Size>
+                            </Replicon>
+                            <Replicon order="3">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>3</Name>
+                                <Size units="Mb">95.000000</Size>
+                            </Replicon>
+                            <Replicon order="2">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>2</Name>
+                                <Size units="Mb">88.000000</Size>
+                            </Replicon>
+                            <Replicon order="1">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>1</Name>
+                                <Size units="Mb">130.000000</Size>
+                            </Replicon>
+                            <Replicon order="34">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>34</Name>
+                                <Size units="Mb">45.000000</Size>
+                            </Replicon>
+                            <Replicon order="33">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>33</Name>
+                                <Size units="Mb">34.000000</Size>
+                            </Replicon>
+                            <Replicon order="32">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>32</Name>
+                                <Size units="Mb">42.000000</Size>
+                            </Replicon>
+                            <Replicon order="31">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>31</Name>
+                                <Size units="Mb">42.000000</Size>
+                            </Replicon>
+                            <Replicon order="30">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>30</Name>
+                                <Size units="Mb">43.000000</Size>
+                            </Replicon>
+                            <Replicon order="29">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>29</Name>
+                                <Size units="Mb">45.000000</Size>
+                            </Replicon>
+                            <Replicon order="28">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>28</Name>
+                                <Size units="Mb">44.000000</Size>
+                            </Replicon>
+                            <Replicon order="27">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>27</Name>
+                                <Size units="Mb">49.000000</Size>
+                            </Replicon>
+                            <Replicon order="16">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>16</Name>
+                                <Size units="Mb">63.000000</Size>
+                            </Replicon>
+                            <Replicon order="15">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>15</Name>
+                                <Size units="Mb">67.000000</Size>
+                            </Replicon>
+                            <Replicon order="14">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>14</Name>
+                                <Size units="Mb">64.000000</Size>
+                            </Replicon>
+                            <Replicon order="13">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>13</Name>
+                                <Size units="Mb">66.000000</Size>
+                            </Replicon>
+                            <Replicon order="12">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>12</Name>
+                                <Size units="Mb">76.000000</Size>
+                            </Replicon>
+                            <Replicon order="11">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>11</Name>
+                                <Size units="Mb">77.000000</Size>
+                            </Replicon>
+                            <Replicon order="10">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>10</Name>
+                                <Size units="Mb">72.000000</Size>
+                            </Replicon>
+                            <Replicon order="9">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>9</Name>
+                                <Size units="Mb">64.000000</Size>
+                            </Replicon>
+                            <Replicon order="8">
+                                <Type location="eNuclearProkaryote">eChromosome</Type>
+                                <Name>8</Name>
+                                <Size units="Mb">77.000000</Size>
+                            </Replicon>
+                            <Count repliconType="eOther">39</Count>
+                        </RepliconSet>
+                        <GenomeSize units="Kb">2445000.000000</GenomeSize>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eAssembly"/>
+                </Objectives>
+                <ProjectDataTypeSet>
+                    <DataType>Genome sequencing and assembly</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission submitted="2004-11-10">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="participant" type="center" url="http://www.broadinstitute.org">
+                <Name abbr="Broad Institute">Broad Institute</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Organization role="owner" type="consortium">
+                <Name abbr="Dog Genome Sequencing Consortium">Dog Genome Sequencing Consortium</Name>
+            </Organization>
+            <Organization role="participant" type="center" url="http://www.agencourt.com/">
+                <Name abbr="Agencourt Bioscience Corporation">Agencourt Bioscience Corporation</Name>
+            </Organization>
+            <Organization role="participant" type="center" url="http://idefix.univ-rennes1.fr:8080/Dogs/RH3270-page.html">
+                <Name abbr="Centre National de la Recherche Scientifique (CNRS)">Centre National de la Recherche Scientifique (CNRS)</Name>
+            </Organization>
+            <Organization role="participant" type="center" url="http://bacpac.chori.org/">
+                <Name abbr="Children's Hospital Oakland Research Institute (CHORI)">Children's Hospital Oakland Research Institute (CHORI)</Name>
+            </Organization>
+            <Organization role="participant" type="center" url="http://www.fhcrc.org/science/dog_genome/">
+                <Name abbr="Fred Hutchinson Cancer Research Center (FHCRC)">Fred Hutchinson Cancer Research Center (FHCRC)</Name>
+            </Organization>
+            <Organization role="participant" type="center" url="http://www.ncsu.edu/">
+                <Name abbr="North Carolina State University (NCSU)">North Carolina State University (NCSU)</Name>
+            </Organization>
+            <Organization role="participant" type="center">
+                <Name abbr="Agencourt, USA, Beverly">Agencourt, USA, Beverly</Name>
+            </Organization>
+            <Access>public</Access>
+        </Description>
+    </Submission>
+    <ProjectLinks>
+        <Link>
+            <ProjectIDRef archive="NCBI" id="12384" accession="PRJNA12384"/>
+            <PeerProject>
+                <CommonInputData>eRefseqGenbank</CommonInputData>
+                <MemberID archive="NCBI" id="13179" accession="PRJNA13179"/>
+            </PeerProject>
+        </Link>
+    </ProjectLinks>
+</DocumentSummary>
+
+</RecordSet>

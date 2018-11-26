@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="350852">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA350852" archive="NCBI" id="350852"/>
+            <LocalID>bp0</LocalID>
+            <LocalID>bp0</LocalID>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Juglans regia</Name>
+            <Title>Juglans regia RefSeq Genome sequencing</Title>
+            <Description>The reference sequence (RefSeq) genome assembly is derived from the submitted GenBank assembly (see linked project PRJNA291087). Annotation provided on the RefSeq genomic records is based on NCBI annotation pipeline.</Description>
+            <ExternalLink label="Dendrome">
+                <URL>http://dendrome.ucdavis.edu/ftp/Genome_Data/genome/Reju/</URL>
+            </ExternalLink>
+            <ExternalLink label="JHU CCB ftp">
+                <URL>ftp://ftp.ccb.jhu.edu/pub/dpuiu/Walnut/English_walnut/</URL>
+            </ExternalLink>
+            <Publication id="9023104" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="27145194" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2015-10-22T00:00:00Z</ProjectReleaseDate>
+            <Relevance>
+                <Other>yes</Other>
+            </Relevance>
+            <LocusTagPrefix assembly_id="GCF_001411555" biosample_id="SAMN03704235">BLL54</LocusTagPrefix>
+            <RefSeq representation="eReference">
+                <AnnotationSource>
+                    <Name>NCBI annotation pipeline</Name>
+                </AnnotationSource>
+            </RefSeq>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="51240" taxID="51240">
+                        <OrganismName>Juglans regia</OrganismName>
+                        <Supergroup>eEukaryotes</Supergroup>
+                        <BiologicalProperties>
+                            <Environment>
+                                <OptimumTemperature>C</OptimumTemperature>
+                            </Environment>
+                        </BiologicalProperties>
+                        <Organization>eMulticellular</Organization>
+                        <Reproduction>eSexual</Reproduction>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eAnnotation"/>
+                </Objectives>
+                <IntendedDataTypeSet>
+                    <DataType>genome sequencing</DataType>
+                </IntendedDataTypeSet>
+                <ProjectDataTypeSet>
+                    <DataType>RefSeq genome sequencing</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission last_update="2015-07-27" submission_id="SUB972265" submitted="2015-07-27">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="institute" url="http://www.ncbi.nlm.nih.gov">
+                <Name abbr="NCBI">National Center for Biotechnology Information</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Access>public</Access>
+        </Description>
+        <Action action_id="SUB972265-1"/>
+        <Action action_id="SUB972265-3"/>
+    </Submission>
+    <ProjectLinks>
+        <Link>
+            <ProjectIDRef archive="NCBI" id="350852" accession="PRJNA350852"/>
+            <PeerProject>
+                <CommonInputData>eRefseqGenbank</CommonInputData>
+                <MemberID archive="NCBI" id="291087" accession="PRJNA291087"/>
+            </PeerProject>
+        </Link>
+    </ProjectLinks>
+</DocumentSummary>
+
+</RecordSet>
