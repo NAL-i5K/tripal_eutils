@@ -1,15 +1,14 @@
 <?php
 
-
-class Euitils {
+class Eutils{
 
   /**
-   * Euitils interface.
+   * Eutils interface.
    *
    */
 
   /**
-   * The euitils url
+   * The Eutils url
    *
    * @var string
    */
@@ -31,14 +30,13 @@ class Euitils {
 
   private $dom = NULL;
 
-
   /**
    * Set the NCBI db.  Only the following DBs are allowed:
    * 'pubmed' - use the core publication importer instead.
    *
    * @param $db
    */
-  public function set_db($db) {
+  public function setDB($db) {
 
     $valid_dbs = array_flip($this->valid_dbs);
 
@@ -52,7 +50,6 @@ class Euitils {
 
     if ($db == 'assembly') {
       $this->url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?';
-
     }
     return TRUE;
   }
@@ -66,7 +63,7 @@ class Euitils {
    *   throttling issue first.
    * @return array
    */
-  public function lookup_accessions($accessions) {
+  public function lookupAccessions($accessions) {
 
 
     $params = [
@@ -81,9 +78,7 @@ class Euitils {
         'db' => $this->db,
         'id' => implode(',', $accessions),
       ];
-
     }
-
 
     $url = $this->url . http_build_query($params);
 
@@ -106,12 +101,11 @@ class Euitils {
     $dom = $this->dom;
 
     $x = simplexml_import_dom($dom);
-
     //TODO:  Handle parsing differently for different database types.
 
   }
 
-  public function check_status() {
+  public function checkStatus() {
     $params = [
       'db' => 'pmc',
       'retmode' => 'xml',
@@ -132,7 +126,5 @@ class Euitils {
         ->item(0)->textContent,
     ];
     return $result['count'];
-
   }
-
 }

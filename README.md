@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/NAL-i5K/tripal_euitils.svg?branch=master)](https://travis-ci.org/NAL-i5K/tripal_euitils)
+[![Build Status](https://travis-ci.org/NAL-i5K/tripal_Eutils.svg?branch=master)](https://travis-ci.org/NAL-i5K/tripal_Eutils)
 
-This module uses the NCBI Euitils platform to load in data via their accessions.
+This module uses the NCBI Eutils platform to load in data via their accessions.
 
 ### Roadmap
 

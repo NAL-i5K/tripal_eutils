@@ -21,7 +21,7 @@ class EutilsXmlParserTest extends TripalTestCase {
     $parser = new \EutilsXMLParser('bioproject');
     $this->assertNotNull($parser);
 
-    $connection = new \Euitils();
+    $connection = new \Eutils();
 
     $connection->set_db('bioproject');
     //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
