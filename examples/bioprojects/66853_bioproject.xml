@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="66853">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA66853" archive="NCBI" id="66853"/>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Fragaria vesca subsp. vesca</Name>
+            <Title>Fragaria vesca subsp. vesca RefSeq Genome</Title>
+            <Description>The RefSeq record for the &lt;i&gt;Fragaria vesca&lt;/i&gt; ssp. &lt;i&gt;vesca&lt;/i&gt; is prepared.</Description>
+            <Publication date="2010-12-28T00:00:00Z" id="21186353" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="9023104" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2010-12-22T00:00:00Z</ProjectReleaseDate>
+            <Relevance>
+                <Agricultural>yes</Agricultural>
+                <Evolution>yes</Evolution>
+            </Relevance>
+            <RefSeq representation="eReference">
+                <AnnotationSource>
+                    <Name>NCBI annotation pipeline</Name>
+                </AnnotationSource>
+            </RefSeq>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="ePartialGenome" sample_scope="eMonoisolate">
+                    <Organism species="57918" taxID="101020">
+                        <OrganismName>Fragaria vesca subsp. vesca</OrganismName>
+                        <Supergroup>eEukaryotes</Supergroup>
+                        <Organization>eMulticellular</Organization>
+                        <Reproduction>eSexual</Reproduction>
+                        <RepliconSet>
+                            <Replicon order="1">
+                                <Type location="ePlastid">eChromosome</Type>
+                                <Name>CHL</Name>
+                                <Size units="Mb">0.155691</Size>
+                            </Replicon>
+                            <Count repliconType="eOther">1</Count>
+                        </RepliconSet>
+                        <GenomeSize units="Kb">160.000000</GenomeSize>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eSequence"/>
+                </Objectives>
+                <ProjectDataTypeSet>
+                    <DataType>RefSeq Genome sequencing and assembly</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission submitted="2011-05-12">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="center">
+                <Name abbr="Virginia Bioinformatics Institute">Virginia Bioinformatics Institute</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Organization role="participant" type="center">
+                <Name abbr="Virginia Bioinformatics Institute at Virginia Polytechnic Institute and State University, USA, Blacksburg">Virginia Bioinformatics Institute at Virginia Polytechnic Institute and State University, USA, Blacksburg</Name>
+            </Organization>
+            <Access>public</Access>
+        </Description>
+    </Submission>
+    <ProjectLinks>
+        <Link>
+            <ProjectIDRef archive="NCBI" id="66853" accession="PRJNA66853"/>
+            <PeerProject>
+                <CommonInputData>eRefseqGenbank</CommonInputData>
+                <MemberID archive="NCBI" id="60037" accession="PRJNA60037"/>
+            </PeerProject>
+        </Link>
+    </ProjectLinks>
+</DocumentSummary>
+
+</RecordSet>

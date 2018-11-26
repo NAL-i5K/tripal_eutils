@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eSummaryResult PUBLIC "-//NLM//DTD esummary assembly 20180216//EN" "https://eutils.ncbi.nlm.nih.gov/eutils/dtd/20180216/esummary_assembly.dtd">
+<eSummaryResult>
+<DocumentSummarySet status="OK">
+<DbBuild>Build181125-1910.1</DbBuild>
+
+<DocumentSummary uid="751381">
+	<RsUid>4681368</RsUid>
+	<GbUid>3282278</GbUid>
+	<AssemblyAccession>GCF_001654055.1</AssemblyAccession>
+	<LastMajorReleaseAccession>GCF_001654055.1</LastMajorReleaseAccession>
+	<LatestAccession/>
+	<ChainId>1654055</ChainId>
+	<AssemblyName>ASM165405v1</AssemblyName>
+	<UCSCName/>
+	<EnsemblName/>
+	<Taxid>3981</Taxid>
+	<Organism>Hevea brasiliensis (rubber tree)</Organism>
+	<SpeciesTaxid>3981</SpeciesTaxid>
+	<SpeciesName>Hevea brasiliensis</SpeciesName>
+	<AssemblyType>haploid</AssemblyType>
+	<AssemblyClass>haploid</AssemblyClass>
+	<AssemblyStatus>Scaffold</AssemblyStatus>
+	<WGS>LVXX01</WGS>
+	<GB_BioProjects>
+		<Bioproj>
+			<BioprojectAccn>PRJNA310386</BioprojectAccn>
+			<BioprojectId>310386</BioprojectId>
+		</Bioproj>
+	</GB_BioProjects>
+	<GB_Projects>
+	</GB_Projects>
+	<RS_BioProjects>
+		<Bioproj>
+			<BioprojectAccn>PRJNA394253</BioprojectAccn>
+			<BioprojectId>394253</BioprojectId>
+		</Bioproj>
+	</RS_BioProjects>
+	<RS_Projects>
+	</RS_Projects>
+	<BioSampleAccn>SAMN04451765</BioSampleAccn>
+	<BioSampleId>4451765</BioSampleId>
+	<Biosource>
+		<InfraspeciesList>
+			<Infraspecie>
+				<Sub_type>cultivar</Sub_type>
+				<Sub_value>reyan7-33-97</Sub_value>
+			</Infraspecie>
+		</InfraspeciesList>
+		<Sex/>
+		<Isolate/>
+	</Biosource>
+	<Coverage>99</Coverage>
+	<PartialGenomeRepresentation>false</PartialGenomeRepresentation>
+	<Primary>4681358</Primary>
+	<AssemblyDescription/>
+	<ReleaseLevel>Major</ReleaseLevel>
+	<ReleaseType>Major</ReleaseType>
+	<AsmReleaseDate_GenBank>2016/06/01 00:00</AsmReleaseDate_GenBank>
+	<AsmReleaseDate_RefSeq>2017/07/14 00:00</AsmReleaseDate_RefSeq>
+	<SeqReleaseDate>2016/06/01 00:00</SeqReleaseDate>
+	<AsmUpdateDate>2017/07/19 00:00</AsmUpdateDate>
+	<SubmissionDate>2016/06/01 00:00</SubmissionDate>
+	<LastUpdateDate>2017/07/19 00:00</LastUpdateDate>
+	<SubmitterOrganization>Rubber Research Institute</SubmitterOrganization>
+	<RefSeq_category>representative genome</RefSeq_category>
+	<AnomalousList>
+	</AnomalousList>
+	<ExclFromRefSeq>
+	</ExclFromRefSeq>
+	<PropertyList>
+		<string>full-genome-representation</string>
+		<string>has-chloroplast</string>
+		<string>has_annotation</string>
+		<string>latest</string>
+		<string>latest_genbank</string>
+		<string>latest_refseq</string>
+		<string>refseq_has_annotation</string>
+		<string>representative</string>
+		<string>wgs</string>
+	</PropertyList>
+	<FromType/>
+	<Synonym>
+		<Genbank>GCA_001654055.1</Genbank>
+		<RefSeq>GCF_001654055.1</RefSeq>
+		<Similarity>different</Similarity>
+	</Synonym>
+	<ContigN50>60046</ContigN50>
+	<ScaffoldN50>1281786</ScaffoldN50>
+	<FtpPath_GenBank>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/654/055/GCA_001654055.1_ASM165405v1</FtpPath_GenBank>
+	<FtpPath_RefSeq>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/654/055/GCF_001654055.1_ASM165405v1</FtpPath_RefSeq>
+	<FtpPath_Assembly_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/654/055/GCF_001654055.1_ASM165405v1/GCF_001654055.1_ASM165405v1_assembly_report.txt</FtpPath_Assembly_rpt>
+	<FtpPath_Stats_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/654/055/GCF_001654055.1_ASM165405v1/GCF_001654055.1_ASM165405v1_assembly_stats.txt</FtpPath_Stats_rpt>
+	<FtpPath_Regions_rpt/>
+	<SortOrder>2C90016540559898</SortOrder>
+	<Meta><![CDATA[ <Stats> <Stat category="alt_loci_count" sequence_tag="all">0</Stat> <Stat category="chromosome_count" sequence_tag="all">0</Stat> <Stat category="contig_count" sequence_tag="all">48315</Stat> <Stat category="contig_l50" sequence_tag="all">6073</Stat> <Stat category="contig_n50" sequence_tag="all">60046</Stat> <Stat category="non_chromosome_replicon_count" sequence_tag="all">1</Stat> <Stat category="replicon_count" sequence_tag="all">1</Stat> <Stat category="scaffold_count" sequence_tag="all">7453</Stat> <Stat category="scaffold_count" sequence_tag="placed">1</Stat> <Stat category="scaffold_count" sequence_tag="unlocalized">0</Stat> <Stat category="scaffold_count" sequence_tag="unplaced">7452</Stat> <Stat category="scaffold_l50" sequence_tag="all">320</Stat> <Stat category="scaffold_n50" sequence_tag="all">1281786</Stat> <Stat category="total_length" sequence_tag="all">1373527118</Stat> <Stat category="ungapped_length" sequence_tag="all">1293730791</Stat> </Stats> <FtpSites>   <FtpPath type="Assembly_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/654/055/GCF_001654055.1_ASM165405v1/GCF_001654055.1_ASM165405v1_assembly_report.txt</FtpPath>   <FtpPath type="GenBank">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/654/055/GCA_001654055.1_ASM165405v1</FtpPath>   <FtpPath type="RefSeq">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/654/055/GCF_001654055.1_ASM165405v1</FtpPath>   <FtpPath type="Stats_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/654/055/GCF_001654055.1_ASM165405v1/GCF_001654055.1_ASM165405v1_assembly_stats.txt</FtpPath> </FtpSites> <assembly-level>8</assembly-level> <assembly-status>Scaffold</assembly-status> <representative-status>representative genome</representative-status> <submitter-organization>Rubber Research Institute</submitter-organization>    ]]></Meta>
+</DocumentSummary>
+
+</DocumentSummarySet>
+</eSummaryResult>

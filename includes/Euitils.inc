@@ -13,18 +13,23 @@ class Euitils {
    *
    * @var string
    */
-  //private $url = 'http://eutils.be-md.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?';
 
-  private $url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+  private $url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?';
 
   //efetch.fcgi?db=<database>&id=<uid_list>&rettype=<retrieval_type>
   //&retmode=<retrieval_mode>
 
   private $db = NULL;
 
-  private $valid_dbs = ['pubmed', 'bioproject', 'biosample', 'genome'];
+  private $valid_dbs = [
+    'pubmed',
+    'bioproject',
+    'biosample',
+    'genome',
+    'assembly',
+  ];
 
-  private $dom = null;
+  private $dom = NULL;
 
 
   /**
@@ -43,6 +48,12 @@ class Euitils {
     }
 
     $this->db = $db;
+    //if db isn't supported by efetch, do something...
+
+    if ($db == 'assembly') {
+      $this->url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?';
+
+    }
     return TRUE;
   }
 
@@ -65,34 +76,16 @@ class Euitils {
       'id' => implode(',', $accessions),
     ];
 
-    //Input: List of UIDs (&id); Entrez database (&db); Retrieval type (&rettype); Retrieval mode (&retmode)
+    if ($this->db == 'assembly') {
+      $params = [
+        'db' => $this->db,
+        'id' => implode(',', $accessions),
+      ];
+
+    }
 
 
-    $address = $this->url . 'efetch.fcgi?';
-
-    $headers = [];
-    $method = 'GET';
-
-    $data = [
-      'db' => $this->db,
-     // 'rettype' => 'json',
-      'id' => implode(',', $accessions),
-    ];
-
-
-    $options = [
-      'headers' => $headers,
-      'method' => $method,
-      'data' => http_build_query($data),
-    ];
-
-
-    //$response = drupal_http_request($address, $options);
-    //
-    //var_dump($response);
-    // return $response;
-
-    $url = $this->url . 'efetch.fcgi?' . http_build_query($params);
+    $url = $this->url . http_build_query($params);
 
     var_dump($url);
     $dom = new DOMDocument;
@@ -100,7 +93,7 @@ class Euitils {
 
     $this->dom = $dom;
     //todo:we just check if we got xml back.  not great.
-    if ($dom->xmlVersion){
+    if ($dom->xmlVersion) {
 
       $x = simplexml_import_dom($dom);
 
@@ -108,11 +101,11 @@ class Euitils {
     }
   }
 
-  public function getAttributes($accession = null){
+  public function getAttributes($accession = NULL) {
 
     $dom = $this->dom;
 
-    $x= simplexml_import_dom($dom);
+    $x = simplexml_import_dom($dom);
 
     //TODO:  Handle parsing differently for different database types.
 

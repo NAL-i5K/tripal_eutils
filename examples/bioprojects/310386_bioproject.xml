@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="310386">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA310386" archive="NCBI" id="310386"/>
+            <LocalID>bp0</LocalID>
+            <LocalID>bp0</LocalID>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Hevea brasiliensis cultivar:reyan7-33-97</Name>
+            <Title>Hevea brasiliensis cultivar:reyan7-33-97 Genome sequencing</Title>
+            <Description>A high-quality reference genome of H. brasiliensis will form the basis for various functional genomics studies, including massive gene mining, genome-wide association study (GWAS), transcriptome and proteome analysis, evolution exploration, et al.</Description>
+            <Publication id="27255837" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="21241787" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2016-06-01T00:00:00Z</ProjectReleaseDate>
+            <Relevance>
+                <Agricultural>yes</Agricultural>
+            </Relevance>
+            <LocusTagPrefix biosample_id="SAMN04451765">A7973</LocusTagPrefix>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="3981" taxID="3981">
+                        <OrganismName>Hevea brasiliensis</OrganismName>
+                        <Cultivar>reyan7-33-97</Cultivar>
+                        <Supergroup>eEukaryotes</Supergroup>
+                        <BiologicalProperties>
+                            <Environment>
+                                <OptimumTemperature>C</OptimumTemperature>
+                            </Environment>
+                        </BiologicalProperties>
+                        <Organization>eMulticellular</Organization>
+                        <Reproduction>eSexual</Reproduction>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eSequence"/>
+                </Objectives>
+                <IntendedDataTypeSet>
+                    <DataType>genome sequencing</DataType>
+                </IntendedDataTypeSet>
+                <ProjectDataTypeSet>
+                    <DataType>Genome sequencing and assembly</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission last_update="2016-02-02" submission_id="SUB1328906" submitted="2016-02-02">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="institute">
+                <Name>Rubber Research Institute</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Access>public</Access>
+        </Description>
+        <Action action_id="SUB1328906-1"/>
+        <Action action_id="SUB1328906-3"/>
+        <Action action_id="SUB1328906-bs0"/>
+    </Submission>
+    <ProjectLinks>
+        <Link>
+            <ProjectIDRef archive="NCBI" id="394253" accession="PRJNA394253"/>
+            <PeerProject>
+                <CommonInputData>eRefseqGenbank</CommonInputData>
+                <MemberID archive="NCBI" id="310386" accession="PRJNA310386"/>
+            </PeerProject>
+        </Link>
+    </ProjectLinks>
+</DocumentSummary>
+
+</RecordSet>

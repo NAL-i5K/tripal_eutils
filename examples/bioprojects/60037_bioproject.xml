@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="60037">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA60037" archive="NCBI" id="60037"/>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Fragaria vesca subsp. vesca strain:Hawaii 4</Name>
+            <Title>Fragaria vesca genome sequencing project</Title>
+            <Description>The woodland strawberry, &lt;i&gt;Fragaria vesca&lt;/i&gt; (2n=2x=14) is a versatile experimental plant system. This diminutive herbaceous perennial has a small genome (206Mb), is amenable to genetic transformation, and shares substantial sequence identity with the cultivated strawberry (F. &#xD7; ananassa) as well as other economically important members of the Rosaceae family. The sequencing and assembly was performed by an international consortium.</Description>
+            <Publication date="2010-12-28T00:00:00Z" id="21186353" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="9023104" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2010-12-22T00:00:00Z</ProjectReleaseDate>
+            <LocusTagPrefix>FVH4</LocusTagPrefix>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="57918" taxID="101020">
+                        <OrganismName>Fragaria vesca subsp. vesca</OrganismName>
+                        <Strain>Hawaii 4</Strain>
+                        <Supergroup>eEukaryotes</Supergroup>
+                        <RepliconSet>
+                            <Replicon order="1">
+                                <Type location="eNuclearProkaryote">eLinkageGroup</Type>
+                                <Name>1</Name>
+                                <Size units="Mb">23.000000</Size>
+                            </Replicon>
+                            <Replicon order="2">
+                                <Type location="eNuclearProkaryote">eLinkageGroup</Type>
+                                <Name>2</Name>
+                                <Size units="Mb">33.000000</Size>
+                            </Replicon>
+                            <Replicon order="3">
+                                <Type location="eNuclearProkaryote">eLinkageGroup</Type>
+                                <Name>3</Name>
+                                <Size units="Mb">28.000000</Size>
+                            </Replicon>
+                            <Replicon order="4">
+                                <Type location="eNuclearProkaryote">eLinkageGroup</Type>
+                                <Name>4</Name>
+                                <Size units="Mb">23.000000</Size>
+                            </Replicon>
+                            <Replicon order="5">
+                                <Type location="eNuclearProkaryote">eLinkageGroup</Type>
+                                <Name>5</Name>
+                                <Size units="Mb">29.000000</Size>
+                            </Replicon>
+                            <Replicon order="6">
+                                <Type location="eNuclearProkaryote">eLinkageGroup</Type>
+                                <Name>6</Name>
+                                <Size units="Mb">38.000000</Size>
+                            </Replicon>
+                            <Replicon order="7">
+                                <Type location="eNuclearProkaryote">eLinkageGroup</Type>
+                                <Name>7</Name>
+                                <Size units="Mb">23.000000</Size>
+                            </Replicon>
+                            <Replicon order="8">
+                                <Type location="ePlastid">eChromosome</Type>
+                                <Name>CHL</Name>
+                                <Size units="Mb">0.160000</Size>
+                            </Replicon>
+                            <Count repliconType="eOther">8</Count>
+                        </RepliconSet>
+                        <GenomeSize units="Kb">197000.000000</GenomeSize>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eAssembly"/>
+                </Objectives>
+                <ProjectDataTypeSet>
+                    <DataType>Genome sequencing and assembly</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission submitted="2010-11-09">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="center" url="http://www.vbi.vt.edu">
+                <Name abbr="Virginia Bioinformatics Institute">Virginia Bioinformatics Institute</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Access>public</Access>
+        </Description>
+    </Submission>
+    <ProjectLinks>
+        <Link>
+            <ProjectIDRef archive="NCBI" id="66853" accession="PRJNA66853"/>
+            <PeerProject>
+                <CommonInputData>eRefseqGenbank</CommonInputData>
+                <MemberID archive="NCBI" id="60037" accession="PRJNA60037"/>
+            </PeerProject>
+        </Link>
+    </ProjectLinks>
+</DocumentSummary>
+
+</RecordSet>

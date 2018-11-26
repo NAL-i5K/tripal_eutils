@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eSummaryResult PUBLIC "-//NLM//DTD esummary assembly 20180216//EN" "https://eutils.ncbi.nlm.nih.gov/eutils/dtd/20180216/esummary_assembly.dtd">
+<eSummaryResult>
+<DocumentSummarySet status="OK">
+<DbBuild>Build181125-1910.1</DbBuild>
+
+<DocumentSummary uid="557018">
+	<RsUid>557018</RsUid>
+	<GbUid>238288</GbUid>
+	<AssemblyAccession>GCF_000184155.1</AssemblyAccession>
+	<LastMajorReleaseAccession>GCF_000184155.1</LastMajorReleaseAccession>
+	<LatestAccession/>
+	<ChainId>184155</ChainId>
+	<AssemblyName>FraVesHawaii_1.0</AssemblyName>
+	<UCSCName/>
+	<EnsemblName/>
+	<Taxid>101020</Taxid>
+	<Organism>Fragaria vesca subsp. vesca (wild strawberry)</Organism>
+	<SpeciesTaxid>57918</SpeciesTaxid>
+	<SpeciesName>Fragaria vesca</SpeciesName>
+	<AssemblyType>haploid</AssemblyType>
+	<AssemblyClass>haploid</AssemblyClass>
+	<AssemblyStatus>Chromosome</AssemblyStatus>
+	<WGS>AEMH01</WGS>
+	<GB_BioProjects>
+		<Bioproj>
+			<BioprojectAccn>PRJNA60037</BioprojectAccn>
+			<BioprojectId>60037</BioprojectId>
+		</Bioproj>
+	</GB_BioProjects>
+	<GB_Projects>
+	</GB_Projects>
+	<RS_BioProjects>
+		<Bioproj>
+			<BioprojectAccn>PRJNA66853</BioprojectAccn>
+			<BioprojectId>66853</BioprojectId>
+		</Bioproj>
+	</RS_BioProjects>
+	<RS_Projects>
+	</RS_Projects>
+	<BioSampleAccn>SAMN00120060</BioSampleAccn>
+	<BioSampleId>120060</BioSampleId>
+	<Biosource>
+		<InfraspeciesList>
+		</InfraspeciesList>
+		<Sex/>
+		<Isolate/>
+	</Biosource>
+	<Coverage>49</Coverage>
+	<PartialGenomeRepresentation>false</PartialGenomeRepresentation>
+	<Primary>556998</Primary>
+	<AssemblyDescription>Fragaria vesca Hawaii-4 June 2010</AssemblyDescription>
+	<ReleaseLevel>Major</ReleaseLevel>
+	<ReleaseType>Major</ReleaseType>
+	<AsmReleaseDate_GenBank>2010/12/23 00:00</AsmReleaseDate_GenBank>
+	<AsmReleaseDate_RefSeq>2013/03/13 00:00</AsmReleaseDate_RefSeq>
+	<SeqReleaseDate>2011/02/24 00:00</SeqReleaseDate>
+	<AsmUpdateDate>2013/03/25 00:00</AsmUpdateDate>
+	<SubmissionDate>2011/02/24 00:00</SubmissionDate>
+	<LastUpdateDate>2013/03/25 00:00</LastUpdateDate>
+	<SubmitterOrganization>Virginia Bioinformatics Institute</SubmitterOrganization>
+	<RefSeq_category>representative genome</RefSeq_category>
+	<AnomalousList>
+	</AnomalousList>
+	<ExclFromRefSeq>
+	</ExclFromRefSeq>
+	<PropertyList>
+		<string>full-genome-representation</string>
+		<string>has-chloroplast</string>
+		<string>has-linkage-group</string>
+		<string>has_annotation</string>
+		<string>latest</string>
+		<string>latest_genbank</string>
+		<string>latest_refseq</string>
+		<string>refseq_has_annotation</string>
+		<string>representative</string>
+		<string>wgs</string>
+	</PropertyList>
+	<FromType/>
+	<Synonym>
+		<Genbank>GCA_000184155.1</Genbank>
+		<RefSeq>GCF_000184155.1</RefSeq>
+		<Similarity>different</Similarity>
+	</Synonym>
+	<ContigN50>28051</ContigN50>
+	<ScaffoldN50>27879571</ScaffoldN50>
+	<FtpPath_GenBank>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/184/155/GCA_000184155.1_FraVesHawaii_1.0</FtpPath_GenBank>
+	<FtpPath_RefSeq>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/184/155/GCF_000184155.1_FraVesHawaii_1.0</FtpPath_RefSeq>
+	<FtpPath_Assembly_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/184/155/GCF_000184155.1_FraVesHawaii_1.0/GCF_000184155.1_FraVesHawaii_1.0_assembly_report.txt</FtpPath_Assembly_rpt>
+	<FtpPath_Stats_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/184/155/GCF_000184155.1_FraVesHawaii_1.0/GCF_000184155.1_FraVesHawaii_1.0_assembly_stats.txt</FtpPath_Stats_rpt>
+	<FtpPath_Regions_rpt/>
+	<SortOrder>2C30001841559898</SortOrder>
+	<Meta><![CDATA[ <Stats> <Stat category="alt_loci_count" sequence_tag="all">0</Stat> <Stat category="chromosome_count" sequence_tag="all">7</Stat> <Stat category="contig_count" sequence_tag="all">16479</Stat> <Stat category="contig_l50" sequence_tag="all">2104</Stat> <Stat category="contig_n50" sequence_tag="all">28051</Stat> <Stat category="non_chromosome_replicon_count" sequence_tag="all">1</Stat> <Stat category="replicon_count" sequence_tag="all">8</Stat> <Stat category="scaffold_count" sequence_tag="all">3048</Stat> <Stat category="scaffold_count" sequence_tag="placed">8</Stat> <Stat category="scaffold_count" sequence_tag="unlocalized">0</Stat> <Stat category="scaffold_count" sequence_tag="unplaced">3040</Stat> <Stat category="scaffold_l50" sequence_tag="all">4</Stat> <Stat category="scaffold_n50" sequence_tag="all">27879571</Stat> <Stat category="total_length" sequence_tag="all">214373013</Stat> <Stat category="ungapped_length" sequence_tag="all">202038240</Stat> </Stats> <FtpSites>   <FtpPath type="Assembly_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/184/155/GCF_000184155.1_FraVesHawaii_1.0/GCF_000184155.1_FraVesHawaii_1.0_assembly_report.txt</FtpPath>   <FtpPath type="GenBank">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/184/155/GCA_000184155.1_FraVesHawaii_1.0</FtpPath>   <FtpPath type="RefSeq">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/184/155/GCF_000184155.1_FraVesHawaii_1.0</FtpPath>   <FtpPath type="Stats_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/184/155/GCF_000184155.1_FraVesHawaii_1.0/GCF_000184155.1_FraVesHawaii_1.0_assembly_stats.txt</FtpPath> </FtpSites> <assembly-level>3</assembly-level> <assembly-status>Chromosome</assembly-status> <representative-status>representative genome</representative-status> <submitter-organization>Virginia Bioinformatics Institute</submitter-organization>    ]]></Meta>
+</DocumentSummary>
+
+</DocumentSummarySet>
+</eSummaryResult>

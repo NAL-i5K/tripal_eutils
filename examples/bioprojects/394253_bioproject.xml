@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<RecordSet><DocumentSummary uid="394253">
+    <Project>
+        <ProjectID>
+            <ArchiveID accession="PRJNA394253" archive="NCBI" id="394253"/>
+            <LocalID>bp0</LocalID>
+            <LocalID>bp0</LocalID>
+        </ProjectID>
+        <ProjectDescr>
+            <Name>Hevea brasiliensis cultivar:reyan7-33-97</Name>
+            <Title>Hevea brasiliensis cultivar:reyan7-33-97 RefSeq Genome sequencing</Title>
+            <Description>The reference sequence (RefSeq) genome assembly is derived from the submitted GenBank assembly (see linked project PRJNA310386). Annotation provided on the RefSeq genomic records is based on NCBI annotation pipeline.</Description>
+            <Publication id="27255837" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="21241787" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="22607098" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="23375136" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <Publication id="27108962" status="ePublished">
+                <Reference/>
+                <DbType>ePubmed</DbType>
+            </Publication>
+            <ProjectReleaseDate>2016-06-01T00:00:00Z</ProjectReleaseDate>
+            <Relevance>
+                <Agricultural>yes</Agricultural>
+            </Relevance>
+            <LocusTagPrefix biosample_id="SAMN04451765">CGU48</LocusTagPrefix>
+            <RefSeq representation="eReference">
+                <AnnotationSource>
+                    <Name>NCBI annotation pipeline</Name>
+                </AnnotationSource>
+            </RefSeq>
+        </ProjectDescr>
+        <ProjectType>
+            <ProjectTypeSubmission>
+                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
+                    <Organism species="3981" taxID="3981">
+                        <OrganismName>Hevea brasiliensis</OrganismName>
+                        <Cultivar>reyan7-33-97</Cultivar>
+                        <Supergroup>eEukaryotes</Supergroup>
+                        <BiologicalProperties>
+                            <Environment>
+                                <OptimumTemperature>C</OptimumTemperature>
+                            </Environment>
+                        </BiologicalProperties>
+                        <Organization>eMulticellular</Organization>
+                        <Reproduction>eSexual</Reproduction>
+                    </Organism>
+                </Target>
+                <Method method_type="eSequencing"/>
+                <Objectives>
+                    <Data data_type="eAnnotation"/>
+                </Objectives>
+                <IntendedDataTypeSet>
+                    <DataType>genome sequencing</DataType>
+                </IntendedDataTypeSet>
+                <ProjectDataTypeSet>
+                    <DataType>RefSeq genome sequencing</DataType>
+                </ProjectDataTypeSet>
+            </ProjectTypeSubmission>
+        </ProjectType>
+    </Project>
+    <Submission last_update="2016-02-02" submission_id="SUB1328906" submitted="2016-02-02">
+        <Description>
+            <!-- Submitter information has been removed -->
+            <Organization role="owner" type="institute" url="http://www.ncbi.nlm.nih.gov">
+                <Name abbr="NCBI">National Center for Biotechnology Information</Name>
+                <!-- Contact information has been removed -->
+            </Organization>
+            <Access>public</Access>
+        </Description>
+        <Action action_id="SUB1328906-1"/>
+        <Action action_id="SUB1328906-3"/>
+        <Action action_id="SUB1328906-bs0"/>
+    </Submission>
+    <ProjectLinks>
+        <Link>
+            <ProjectIDRef archive="NCBI" id="394253" accession="PRJNA394253"/>
+            <PeerProject>
+                <CommonInputData>eRefseqGenbank</CommonInputData>
+                <MemberID archive="NCBI" id="310386" accession="PRJNA310386"/>
+            </PeerProject>
+        </Link>
+    </ProjectLinks>
+</DocumentSummary>
+
+</RecordSet>

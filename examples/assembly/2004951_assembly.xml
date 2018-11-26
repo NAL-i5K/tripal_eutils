@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eSummaryResult PUBLIC "-//NLM//DTD esummary assembly 20180216//EN" "https://eutils.ncbi.nlm.nih.gov/eutils/dtd/20180216/esummary_assembly.dtd">
+<eSummaryResult>
+<DocumentSummarySet status="OK">
+<DbBuild>Build181125-1910.1</DbBuild>
+
+<DocumentSummary uid="2004951">
+	<RsUid/>
+	<GbUid>7519018</GbUid>
+	<AssemblyAccession>GCA_000230575.2</AssemblyAccession>
+	<LastMajorReleaseAccession>GCA_000230575.2</LastMajorReleaseAccession>
+	<LatestAccession/>
+	<ChainId>230575</ChainId>
+	<AssemblyName>ASM23057v2</AssemblyName>
+	<UCSCName/>
+	<EnsemblName/>
+	<Taxid>3483</Taxid>
+	<Organism>Cannabis sativa (hemp)</Organism>
+	<SpeciesTaxid>3483</SpeciesTaxid>
+	<SpeciesName>Cannabis sativa</SpeciesName>
+	<AssemblyType>haploid</AssemblyType>
+	<AssemblyClass>haploid</AssemblyClass>
+	<AssemblyStatus>Chromosome</AssemblyStatus>
+	<WGS>AGQN02</WGS>
+	<GB_BioProjects>
+		<Bioproj>
+			<BioprojectAccn>PRJNA73819</BioprojectAccn>
+			<BioprojectId>73819</BioprojectId>
+		</Bioproj>
+	</GB_BioProjects>
+	<GB_Projects>
+	</GB_Projects>
+	<RS_BioProjects>
+	</RS_BioProjects>
+	<RS_Projects>
+	</RS_Projects>
+	<BioSampleAccn>SAMN02981385</BioSampleAccn>
+	<BioSampleId>2981385</BioSampleId>
+	<Biosource>
+		<InfraspeciesList>
+			<Infraspecie>
+				<Sub_type>cultivar</Sub_type>
+				<Sub_value>Purple Kush</Sub_value>
+			</Infraspecie>
+		</InfraspeciesList>
+		<Sex/>
+		<Isolate/>
+	</Biosource>
+	<Coverage>79</Coverage>
+	<PartialGenomeRepresentation>false</PartialGenomeRepresentation>
+	<Primary>7519008</Primary>
+	<AssemblyDescription/>
+	<ReleaseLevel>Major</ReleaseLevel>
+	<ReleaseType>Major</ReleaseType>
+	<AsmReleaseDate_GenBank>2018/10/03 00:00</AsmReleaseDate_GenBank>
+	<AsmReleaseDate_RefSeq>1/01/01 00:00</AsmReleaseDate_RefSeq>
+	<SeqReleaseDate>2018/10/03 00:00</SeqReleaseDate>
+	<AsmUpdateDate>2018/10/03 00:00</AsmUpdateDate>
+	<SubmissionDate>2018/10/03 00:00</SubmissionDate>
+	<LastUpdateDate>2018/10/03 00:00</LastUpdateDate>
+	<SubmitterOrganization>University of Toronto</SubmitterOrganization>
+	<RefSeq_category>representative genome</RefSeq_category>
+	<AnomalousList>
+	</AnomalousList>
+	<ExclFromRefSeq>
+	</ExclFromRefSeq>
+	<PropertyList>
+		<string>full-genome-representation</string>
+		<string>has-linkage-group</string>
+		<string>latest</string>
+		<string>latest_genbank</string>
+		<string>representative</string>
+		<string>wgs</string>
+	</PropertyList>
+	<FromType/>
+	<Synonym>
+		<Genbank>GCA_000230575.2</Genbank>
+		<RefSeq/>
+		<Similarity/>
+	</Synonym>
+	<ContigN50>136947</ContigN50>
+	<ScaffoldN50>154590</ScaffoldN50>
+	<FtpPath_GenBank>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/230/575/GCA_000230575.2_ASM23057v2</FtpPath_GenBank>
+	<FtpPath_RefSeq/>
+	<FtpPath_Assembly_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/230/575/GCA_000230575.2_ASM23057v2/GCA_000230575.2_ASM23057v2_assembly_report.txt</FtpPath_Assembly_rpt>
+	<FtpPath_Stats_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/230/575/GCA_000230575.2_ASM23057v2/GCA_000230575.2_ASM23057v2_assembly_stats.txt</FtpPath_Stats_rpt>
+	<FtpPath_Regions_rpt/>
+	<SortOrder>2C30002305759799</SortOrder>
+	<Meta><![CDATA[ <Stats> <Stat category="alt_loci_count" sequence_tag="all">0</Stat> <Stat category="chromosome_count" sequence_tag="all">10</Stat> <Stat category="contig_count" sequence_tag="all">12665</Stat> <Stat category="contig_l50" sequence_tag="all">1881</Stat> <Stat category="contig_n50" sequence_tag="all">136947</Stat> <Stat category="non_chromosome_replicon_count" sequence_tag="all">0</Stat> <Stat category="replicon_count" sequence_tag="all">10</Stat> <Stat category="scaffold_count" sequence_tag="all">11820</Stat> <Stat category="scaffold_count" sequence_tag="placed">5525</Stat> <Stat category="scaffold_count" sequence_tag="unlocalized">0</Stat> <Stat category="scaffold_count" sequence_tag="unplaced">6295</Stat> <Stat category="scaffold_l50" sequence_tag="all">1673</Stat> <Stat category="scaffold_n50" sequence_tag="all">154590</Stat> <Stat category="total_length" sequence_tag="all">897495208</Stat> <Stat category="ungapped_length" sequence_tag="all">889832182</Stat> </Stats> <FtpSites>   <FtpPath type="Assembly_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/230/575/GCA_000230575.2_ASM23057v2/GCA_000230575.2_ASM23057v2_assembly_report.txt</FtpPath>   <FtpPath type="GenBank">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/230/575/GCA_000230575.2_ASM23057v2</FtpPath>   <FtpPath type="Stats_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/230/575/GCA_000230575.2_ASM23057v2/GCA_000230575.2_ASM23057v2_assembly_stats.txt</FtpPath> </FtpSites> <assembly-level>3</assembly-level> <assembly-status>Chromosome</assembly-status> <representative-status>representative genome</representative-status> <submitter-organization>University of Toronto</submitter-organization>    ]]></Meta>
+</DocumentSummary>
+
+</DocumentSummarySet>
+</eSummaryResult>

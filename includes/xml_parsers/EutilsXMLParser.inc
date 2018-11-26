@@ -41,7 +41,6 @@ class EutilsXMLParser {
 
     foreach ($doc->children() as $key => $child) {
 
-
       // Go through the main keys.
 
       switch ($key) {
