@@ -3,8 +3,6 @@ namespace Tests;
 
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
-module_load_include('inc', 'tripal_eutils', 'includes/resources/Eutils');
-
 
 class EutilsTest extends TripalTestCase {
   // Uncomment to auto start and rollback db transactions per test method.

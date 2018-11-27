@@ -143,11 +143,21 @@ class EUtilsRequest{
    */
   protected function sendRequest($method, $path) {
     $url = $this->prepURL($path);
-    $response = drupal_http_request($url, [
+
+    $params = [
       'method' => $method,
       'headers' => $this->headers,
-      'data' => http_build_query($this->params),
-    ]);
+    ];
+
+    if ($method !== 'POST') {
+      $url .= '?' . http_build_query($this->params);
+    }
+    else {
+      $params['data'] = http_build_query($this->params);
+    }
+
+    $response = drupal_http_request($url, $params);
+
     return new EUtilsResource($response);
   }
 

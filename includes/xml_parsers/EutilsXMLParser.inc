@@ -6,11 +6,9 @@
  * The plan is to extend this base class to be specific for each DB type.
  */
 
-class EutilsXMLParser {
-
+class EutilsXMLParser{
 
   private $db = NULL;
-
 
   //XML, the eUTILS dom interpreted by simplexml
   private $xml = NULL;
@@ -34,7 +32,6 @@ class EutilsXMLParser {
     $doc = $x->RecordSet;
 
     if (!property_exists($x, 'DocumentSummary')) {
-      print("No document summary key!");
       return FALSE;
     }
     $doc = $x->DocumentSummary;
@@ -48,7 +45,6 @@ class EutilsXMLParser {
 
           $this->bioprojectSubmission($child);
 
-
           break;
         case "Project":
           $this->bioprojectProject($child);
@@ -60,7 +56,6 @@ class EutilsXMLParser {
       }
     }
   }
-
 
   /**
    * Accepts XML with the root key Submission
@@ -105,38 +100,34 @@ class EutilsXMLParser {
     // $attributes = $xml->attributes();
 
     $children = $xml->children();
-
     foreach ($children as $key => $child) {
-
       switch ($key) {
 
         case 'ProjectDescr':
           //Information about the project itself.  Includes title, description
 
-        break;
+          break;
 
         case 'ProjectType':
           //Includes organism, metadata for project.
 
+          $target = $child->ProjectTypeSubmission->Target;
 
-        $target = $child->ProjectTypeSubmission->Target;
+          if (!$target) {
+            break;
+          }
 
-        if (!$target){
-          break;
-        }
+          $organism = $target->Organism;
 
-       $organism =  $target->Organism;
+          if (!$organism) {
+            break;
+          }
 
-        if (!$organism){
-          break;
-        }
+          $attributes = $organism->attributes();
 
-        $attributes = $organism->attributes();
+          //What about other children and their attributes?
 
-        //What about other children and their attributes?
-
-        $info['type']['organism']['taxID'] = $attributes['taxID'];
-
+          $info['type']['organism']['taxID'] = $attributes['taxID'];
 
           break;
 
@@ -145,16 +136,13 @@ class EutilsXMLParser {
 
           break;
 
-        case 'default':
+        default:
           //Unexpected tag.  throw an error.
-
           tripal_log(t("Unexpected tag: !key", ['!key' => $key]));
           return FALSE;
       }
     }
 
     return $info;
-
   }
-
 }

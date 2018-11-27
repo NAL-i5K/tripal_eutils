@@ -45,7 +45,6 @@ class EUtils{
     }
 
     $response = $provider->get();
-    var_dump($response->originalResponseObject());
     if ($response->isSuccessful()) {
       return $response->xml();
     }
