@@ -1,2 +1,53 @@
 <?xml version="1.0"?>
-<BioSampleSet><BioSample access="public" submission_date="2013-07-21T05:43:56.420" last_update="2014-06-09T18:30:32.860" publication_date="2013-12-18T10:20:48.660" id="2261463" accession="SAMN02261463">   <Ids>     <Id db="BioSample" is_primary="1">SAMN02261463</Id>     <Id db_label="Sample name">LmiInbred</Id>   </Ids>   <Description>     <Title>Inbreed whole body of Locusta migratoria</Title>     <Organism taxonomy_id="7004" taxonomy_name="Locusta migratoria">       <OrganismName>Locusta migratoria</OrganismName>     </Organism>     <Comment>       <Paragraph>The strain used for genome sequencing originated from the inbred laboratory strains of solitarious locusts at the Institute of Zoology, CAS, China. Both colonies were reared under a 14:10 light/dark photo regime at 30&#x2103; and on a diet of fresh greenhouse-grown wheat seedlings and wheat bran. To produce an even more inbred line, a sibling female adult and male adult mated each other and eight generations of sib mating then followed. DNA for genome sequencing was extracted from the whole body of one female adult.</Paragraph>     </Comment>   </Description>   <Owner>     <Name>Institute of zoology, Chinese Academy of Sciences</Name>     <Contacts>       <Contact email="yangpc@mail.biols.ac.cn">         <Name>           <First>Pengcheng</First>           <Last>Yang</Last>         </Name>       </Contact>     </Contacts>   </Owner>   <Models>     <Model>Generic</Model>   </Models>   <Package display_name="Generic">Generic.1.0</Package>   <Attributes>     <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">China: Beijing</Attribute>     <Attribute attribute_name="phenotype" harmonized_name="phenotype" display_name="phenotype">solitarious locust</Attribute>     <Attribute attribute_name="sex" harmonized_name="sex" display_name="sex">female</Attribute>     <Attribute attribute_name="tissue_type" harmonized_name="tissue" display_name="tissue">whole body</Attribute>     <Attribute attribute_name="cultivar" harmonized_name="cultivar" display_name="cultivar">laboratory</Attribute>   </Attributes>   <Links>     <Link type="entrez" target="bioproject" label="PRJNA185471">185471</Link>   </Links>   <Status status="live" when="2013-12-18T10:20:48.660"/> </BioSample> </BioSampleSet>
+<BioSampleSet>
+  <BioSample access="public" submission_date="2013-07-21T05:43:56.420" last_update="2014-06-09T18:30:32.860"
+             publication_date="2013-12-18T10:20:48.660" id="2261463" accession="SAMN02261463">
+    <Ids>
+      <Id db="BioSample" is_primary="1">SAMN02261463</Id>
+      <Id db_label="Sample name">LmiInbred</Id>
+    </Ids>
+    <Description>
+      <Title>Inbreed whole body of Locusta migratoria</Title>
+      <Organism taxonomy_id="7004" taxonomy_name="Locusta migratoria">
+        <OrganismName>Locusta migratoria</OrganismName>
+      </Organism>
+      <Comment>
+        <Paragraph>The strain used for genome sequencing originated from the inbred laboratory strains of solitarious
+          locusts at the Institute of Zoology, CAS, China. Both colonies were reared under a 14:10 light/dark photo
+          regime at 30&#x2103; and on a diet of fresh greenhouse-grown wheat seedlings and wheat bran. To produce an
+          even more inbred line, a sibling female adult and male adult mated each other and eight generations of sib
+          mating then followed. DNA for genome sequencing was extracted from the whole body of one female adult.
+        </Paragraph>
+      </Comment>
+    </Description>
+    <Owner>
+      <Name>Institute of zoology, Chinese Academy of Sciences</Name>
+      <Contacts>
+        <Contact email="yangpc@mail.biols.ac.cn">
+          <Name>
+            <First>Pengcheng</First>
+            <Last>Yang</Last>
+          </Name>
+        </Contact>
+      </Contacts>
+    </Owner>
+    <Models>
+      <Model>Generic</Model>
+    </Models>
+    <Package display_name="Generic">Generic.1.0</Package>
+    <Attributes>
+      <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">China:
+        Beijing
+      </Attribute>
+      <Attribute attribute_name="phenotype" harmonized_name="phenotype" display_name="phenotype">solitarious locust
+      </Attribute>
+      <Attribute attribute_name="sex" harmonized_name="sex" display_name="sex">female</Attribute>
+      <Attribute attribute_name="tissue_type" harmonized_name="tissue" display_name="tissue">whole body</Attribute>
+      <Attribute attribute_name="cultivar" harmonized_name="cultivar" display_name="cultivar">laboratory</Attribute>
+    </Attributes>
+    <Links>
+      <Link type="entrez" target="bioproject" label="PRJNA185471">185471</Link>
+    </Links>
+    <Status status="live" when="2013-12-18T10:20:48.660"/>
+  </BioSample>
+</BioSampleSet>

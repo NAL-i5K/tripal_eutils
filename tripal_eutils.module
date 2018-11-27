@@ -1,4 +1,11 @@
 <?php
+require_once 'includes/resources/EUtilsResource.inc';
+require_once 'includes/resources/EUtilsRequest.inc';
+require_once 'includes/resources/EFetch.inc';
+require_once 'includes/resources/ESearch.inc';
+require_once 'includes/resources/ESummary.inc';
+require_once 'includes/resources/EUtils.inc';
+require_once 'includes/xml_parsers/EutilsXMLParser.inc';
 
-include_once('includes/Eutils.inc');
-include_once('includes/xml_parsers/EutilsXMLParser.inc');
+
+
