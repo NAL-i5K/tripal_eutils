@@ -44,5 +44,5 @@ function tripal_eutils_menu(){
     ];
 
   }
-  
+
 }
