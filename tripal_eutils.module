@@ -2,3 +2,45 @@
 
 include_once('includes/Eutils.inc');
 include_once('includes/xml_parsers/EutilsXMLParser.inc');
+
+
+/**
+ * Implements hook_menu()
+ */
+function tripal_eutils_menu(){
+
+
+  /**
+   * Admin can configure which emails get sent out, more stuff?
+   */
+
+  /**
+   * Set site-wide admin settings.
+   */
+  $items['admin/tripal/tripal_eutils'] = [
+    'title' => 'Tripal Euitils settings',
+    'page callback' => 'drupal_get_form',
+    'file' => 'includes/tripal_euitils_admin_settings.form.inc',
+    'access arguments' => ['access tripal_eutils admin'],
+    'page arguments' => ['tripal_eutils_admin_settings_form'],
+  ];
+
+  //TODO: this should be set somewhere else...
+  $tripal_euitils_types = ['assembly', 'biosample'];
+
+  foreach ($tripal_euitils_types as $type){
+
+    $items['admin/tripal/tripal_eutils/cvterm_mappings/'.$type] = [
+      'title' => $type . ' Mappings',
+      'page callback' => 'drupal_get_form',
+      'file' => 'includes/tripal_euitils_db_term_map.form.inc',
+      'access arguments' => ['access tripal_eutils admin'],
+      'page arguments' => ['tripal_euitils_db_term_map_form', $type],
+    ];
+
+  }
+
+
+
+
+}
