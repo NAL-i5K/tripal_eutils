@@ -16,7 +16,7 @@ class EUtilsXmlParserTest extends TripalTestCase{
    * See https://phpunit.readthedocs.io/en/latest/ for more information.
    */
   public function testInit() {
-    $parser = new \EUtilsXMLParser('bioproject');
+    $parser = new \EUtilsXMLParser();
     $this->assertNotNull($parser);
 
     $connection = new \EUtils();
@@ -29,7 +29,7 @@ class EUtilsXmlParserTest extends TripalTestCase{
   }
 
   public function testParserBasicsBioProject() {
-    $parser = new \EUtilsXMLParser('bioproject');
+    $parser = new \EUtilsXMLParser();
     $xml = simplexml_load_file(__DIR__ . '/example_files/example_pertussis.xml');
     $parser->loadXML($xml);
   }
@@ -38,7 +38,7 @@ class EUtilsXmlParserTest extends TripalTestCase{
    * @throws \Exception
    */
   public function testBioProject_submission_key() {
-    $parser = new \EUtilsXMLParser('bioproject');
+    $parser = new \EUtilsXMLParser();
 
     $submission_test_string = '<Submission last_update="2018-11-21" submission_id="SUB4827559" submitted="2018-11-21">
         <Description>
@@ -68,8 +68,8 @@ class EUtilsXmlParserTest extends TripalTestCase{
   /**
    * @group wip
    */
-  public function testBioproject_attributes_parser() {
-    $parser = new \EUtilsXMLParser('bioproject');
+  public function testBioProjectAttributesParser() {
+    $parser = new \EUtilsXMLParser();
 
     $string = ' <Project>
         <ProjectID>
@@ -108,8 +108,7 @@ class EUtilsXmlParserTest extends TripalTestCase{
 
     $xml = simplexml_load_string($string);
 
-    $parser_r = reflect($parser);
-    $submission_info = $parser_r->bioprojectProject($xml);
+    $submission_info = $parser->bioProject($xml);
 
     $this->assertNotEmpty($submission_info);
 
@@ -126,8 +125,7 @@ class EUtilsXmlParserTest extends TripalTestCase{
     $xml = simplexml_load_string($string);
 
     $this->expectException('Exception');
-    $parser_r = reflect($parser);
-    $submission_info = $parser_r->bioprojectProject($xml);
+    $submission_info = $parser->bioProject($xml);
     $this->assertFalse($submission_info);
   }
 
@@ -136,7 +134,7 @@ class EUtilsXmlParserTest extends TripalTestCase{
    */
   public function testFindingAttributes() {
 
-    $parser = new \EUtilsXMLParser('assembly');
+    $parser = new \EUtilsXMLParser();
     $xml = simplexml_load_file(__DIR__ . '/../examples/assembly/91111_assembly.xml');
 
     $parser->loadXML($xml);

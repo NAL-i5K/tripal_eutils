@@ -13,18 +13,9 @@ class EUtilsXMLParser{
   //XML, the eUTILS dom interpreted by simplexml
   private $xml = NULL;
 
-  /**
-   * EUtilsXMLParser constructor.
-   *
-   * I think in the future a subclass will handle the db type.
-   *
-   * @param $db
-   */
-  public function __construct($db) {
-
+  public function setDB($db) {
     $this->db = $db;
   }
-
   public function loadXML($dom) {
 
     $x = simplexml_import_dom($dom);
@@ -123,60 +114,15 @@ class EUtilsXMLParser{
   }
 
   /**
-   * @param $xml
+   * Parse a bioProject
+   *
+   * @param \SimpleXMLElement $xml
    *
    * @return array
    * @throws \Exception
    */
-  private function bioprojectProject($xml) {
-    $info = [];
-
-    //dont expect parent attributes to matter
-    // $attributes = $xml->attributes();
-
-    $children = $xml->children();
-    foreach ($children as $key => $child) {
-      switch ($key) {
-
-        case 'ProjectDescr':
-          //Information about the project itself.  Includes title, description
-
-          break;
-
-        case 'ProjectType':
-          //Includes organism, metadata for project.
-
-          $target = $child->ProjectTypeSubmission->Target;
-
-          if (!$target) {
-            break;
-          }
-
-          $organism = $target->Organism;
-
-          if (!$organism) {
-            break;
-          }
-
-          $attributes = $organism->attributes();
-
-          //What about other children and their attributes?
-
-          $info['type']['organism']['taxID'] = $attributes['taxID'];
-
-          break;
-
-        case 'ProjectID':
-          //Accession info for the project.  Should match what was submitted, thats about it.
-
-          break;
-
-        default:
-          throw new Exception('Unknown tag ' . $key);
-      }
-    }
-
-    return $info;
+  public function bioProject(SimpleXMLElement $xml) {
+    return (new EUtilsBioProjectParser())->parse($xml);
   }
 
   public function bioSample(SimpleXMLElement $xml) {
