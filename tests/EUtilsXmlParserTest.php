@@ -5,7 +5,7 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EUtilsXmlParserTest extends TripalTestCase{
+class EUtilsXmlParserTest extends TripalTestCase {
 
   // Uncomment to auto start and rollback db transactions per test method.
   // use DBTransaction;
@@ -140,6 +140,128 @@ class EUtilsXmlParserTest extends TripalTestCase{
       $this->assertArrayHasKey('attributes', $biosample);
       $this->assertArrayHasKey('description', $biosample);
       $this->assertTrue(is_array($biosample['attributes']));
+
     }
+  }
+
+  /**
+   * @group assembly
+   * @dataProvider AssemblyProvider
+   */
+
+  public function testAssemblyParser($path, $base_keys) {
+
+
+    $parser = new \EUtilsAssemblyParser();
+    $assembly = $parser->parse(simplexml_load_file($path));
+
+    $this->assertArrayHasKey('name', $assembly);
+    $this->assertArrayHasKey('accessions', $assembly);
+    $this->assertArrayHasKey('attributes', $assembly);
+    $this->assertArrayHasKey('description', $assembly);
+    $this->assertTrue(is_array($assembly['attributes']));
+    $this->assertArrayHasKey('ignored', $assembly);
+
+    $attributes = $assembly['attributes'];
+
+    $this->assertArrayHasKey('stats', $attributes);
+    $this->assertArrayHasKey('files', $attributes);
+
+
+    $this->assertNotNull($assembly['name']);
+    $this->assertNotNull($assembly['accessions']);
+    $this->assertNotNull($assembly['attributes']);
+    $this->assertNotNull($assembly['description']);
+
+
+    foreach ($assembly['attributes']['stats'] as $at => $x){
+      print("$at\n");
+
+    }
+  }
+
+  /**
+   *
+   */
+  public function AssemblyProvider() {
+
+    $path = DRUPAL_ROOT . '/' . drupal_get_path('module', 'tripal_eutils');
+
+    $files = [
+      [
+        $path . "/examples/assembly/1949871_assembly.xml",
+        [
+          'name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+        ],
+      ],
+      [
+        $path . "/examples/assembly/2004951_assembly.xml",
+        [
+          'name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+        ],
+      ],
+      [
+        $path . "/examples/assembly/317138_assembly.xml",
+        [
+          'name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+        ],
+      ],
+      [
+        $path . "/examples/assembly/524058_assembly.xml",
+        [
+          'name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+        ],
+      ],
+      [
+        $path . "/examples/assembly/557018_assembly.xml",
+        [
+          'name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+        ],
+      ],
+      [
+        $path . "/examples/assembly/559011_assembly.xml",
+        [
+          'name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+        ],
+      ],
+      [
+        $path . "/examples/assembly/751381_assembly.xml",
+        [
+          'name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+        ],
+      ],
+      [
+        $path . "/examples/assembly/91111_assembly.xml",
+        [
+          'name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+        ],
+      ],
+    ];
+
+    return $files;
   }
 }

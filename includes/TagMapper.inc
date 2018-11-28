@@ -5,7 +5,7 @@
  * Responsible for providing instructions for a given tag.
  */
 
-class TagMapper{
+class TagMapper {
 
   private $db = NULL;
 
@@ -30,13 +30,24 @@ class TagMapper{
   }
 
   private function provideAssemblyDict() {
-    return [
-      'alt_loci_count' => NULL,
-      'chromosome_count' => NULL,
-      'contig_count' => NULL,
-      'contig_l50' => NULL,
-      'contig_n50' => NULL,
-      'non_chromsome_replicon_count' => NULL,
-    ];
+    
+    [
+      "alt_loci_countall",
+      "chromosome_countall",
+      "contig_countall",
+      "contig_l50all",
+      "contig_n50all",
+      "non_chromosome_replicon_countall",
+      "replicon_countall",
+      "scaffold_countall",
+      "scaffold_countplaced",
+      "scaffold_countunlocalized",
+      "scaffold_countunplaced",
+      "scaffold_l50all",
+      "scaffold_n50all",
+      "total_lengthall",
+      "ungapped_lengthall"
+      ];
+
   }
 }
