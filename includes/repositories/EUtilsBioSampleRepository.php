@@ -19,7 +19,10 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
    *
    * @var array
    */
-  protected static $cache = [];
+  protected static $cache = [
+    'db' => [],
+    'accessions' => [],
+  ];
 
   /**
    * @param array $data
@@ -139,7 +142,6 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
 
     return static::$cache['db'][$name];
   }
-
 
   public function createProps($props) {
 
