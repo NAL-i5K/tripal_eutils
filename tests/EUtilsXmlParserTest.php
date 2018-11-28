@@ -5,7 +5,7 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EUtilsXmlParserTest extends TripalTestCase{
+class EUtilsXmlParserTest extends TripalTestCase {
 
   // Uncomment to auto start and rollback db transactions per test method.
   // use DBTransaction;
@@ -140,6 +140,31 @@ class EUtilsXmlParserTest extends TripalTestCase{
       $this->assertArrayHasKey('attributes', $biosample);
       $this->assertArrayHasKey('description', $biosample);
       $this->assertTrue(is_array($biosample['attributes']));
+    }
+  }
+
+  /**
+   * @group assembly
+   */
+  public function testAssemblyParser() {
+
+    $path = DRUPAL_ROOT . '/' . drupal_get_path('module', 'tripal_eutils');
+    foreach (glob("$path/examples/assembly/*.xml") as $file) {
+      $parser = new \EUtilsAssemblyParser();
+      $assembly = $parser->parse(simplexml_load_file($file));
+
+      $this->assertArrayHasKey('name', $assembly);
+      $this->assertArrayHasKey('accessions', $assembly);
+      $this->assertArrayHasKey('attributes', $assembly);
+      $this->assertArrayHasKey('description', $assembly);
+      $this->assertTrue(is_array($assembly['attributes']));
+      $this->assertArrayHasKey('ignored', $assembly);
+
+     $attributes = $assembly['attributes'];
+
+     $this->assertArrayHasKey('stats', $attributes);
+      $this->assertArrayHasKey('files', $attributes);
+
     }
   }
 }
