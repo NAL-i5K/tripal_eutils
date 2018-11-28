@@ -5,7 +5,7 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EutilsXmlParserTest extends TripalTestCase{
+class EUtilsXmlParserTest extends TripalTestCase{
 
   // Uncomment to auto start and rollback db transactions per test method.
   // use DBTransaction;
@@ -16,7 +16,7 @@ class EutilsXmlParserTest extends TripalTestCase{
    * See https://phpunit.readthedocs.io/en/latest/ for more information.
    */
   public function testInit() {
-    $parser = new \EutilsXMLParser('bioproject');
+    $parser = new \EUtilsXMLParser('bioproject');
     $this->assertNotNull($parser);
 
     $connection = new \EUtils();
@@ -29,7 +29,7 @@ class EutilsXmlParserTest extends TripalTestCase{
   }
 
   public function testParserBasicsBioProject() {
-    $parser = new \EutilsXMLParser('bioproject');
+    $parser = new \EUtilsXMLParser('bioproject');
     $xml = simplexml_load_file(__DIR__ . '/example_files/example_pertussis.xml');
     $parser->loadXML($xml);
   }
@@ -38,7 +38,7 @@ class EutilsXmlParserTest extends TripalTestCase{
    * @throws \Exception
    */
   public function testBioProject_submission_key() {
-    $parser = new \EutilsXMLParser('bioproject');
+    $parser = new \EUtilsXMLParser('bioproject');
 
     $submission_test_string = '<Submission last_update="2018-11-21" submission_id="SUB4827559" submitted="2018-11-21">
         <Description>
@@ -69,7 +69,7 @@ class EutilsXmlParserTest extends TripalTestCase{
    * @group wip
    */
   public function testBioproject_attributes_parser() {
-    $parser = new \EutilsXMLParser('bioproject');
+    $parser = new \EUtilsXMLParser('bioproject');
 
     $string = ' <Project>
         <ProjectID>
@@ -131,13 +131,12 @@ class EutilsXmlParserTest extends TripalTestCase{
     $this->assertFalse($submission_info);
   }
 
-
   /**
    * @group waffle
    */
-  public function testFindingAttributes(){
+  public function testFindingAttributes() {
 
-    $parser = new \EutilsXMLParser('assembly');
+    $parser = new \EUtilsXMLParser('assembly');
     $xml = simplexml_load_file(__DIR__ . '/../examples/assembly/91111_assembly.xml');
 
     $parser->loadXML($xml);
@@ -147,4 +146,21 @@ class EutilsXmlParserTest extends TripalTestCase{
     var_dump($attributes);
   }
 
+  /**
+   * @test
+   * @group biosamples
+   */
+  public function testBioSampleParser() {
+    $path = DRUPAL_ROOT . '/' . drupal_get_path('module', 'tripal_eutils');
+    foreach (glob("$path/examples/biosamples/*.xml") as $file) {
+      $parser = new \EUtilsBioSampleParser();
+      $biosample = $parser->parse(simplexml_load_file($file));
+
+      $this->assertArrayHasKey('name', $biosample);
+      $this->assertArrayHasKey('accession', $biosample);
+      $this->assertArrayHasKey('attributes', $biosample);
+      $this->assertArrayHasKey('description', $biosample);
+      $this->assertTrue(is_array($biosample['attributes']));
+    }
+  }
 }

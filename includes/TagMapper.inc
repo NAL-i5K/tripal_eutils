@@ -5,47 +5,38 @@
  * Responsible for providing instructions for a given tag.
  */
 
-class TagMapper {
+class TagMapper{
 
   private $db = NULL;
 
   private $dict = NULL;
 
   public function __construct($db) {
-
     $this->db = $db;
-    $this->set_dict();
+    $this->setDict();
   }
 
-  private function set_dict() {
-
+  private function setDict() {
     $db = $this->db;
 
-
     switch ($db) {
-
       case "assembly":
-
-        $this->dict = $this->provide_assembly_dict();
+        $this->dict = $this->provideAssemblyDict();
         break;
 
-      case 'default':
+      default:
         break;
     }
   }
 
-  private function provide_assembly_dict() {
-
+  private function provideAssemblyDict() {
     return [
-
-      'alt_loci_count' => null,
-      'chromosome_count' => null,
-      'contig_count' => null,
-      'contig_l50' => null,
-      'contig_n50' => null,
-      'non_chromsome_replicon_count' => null,
+      'alt_loci_count' => NULL,
+      'chromosome_count' => NULL,
+      'contig_count' => NULL,
+      'contig_l50' => NULL,
+      'contig_n50' => NULL,
+      'non_chromsome_replicon_count' => NULL,
     ];
   }
-
-
 }

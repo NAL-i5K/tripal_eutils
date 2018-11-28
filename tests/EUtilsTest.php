@@ -1,15 +1,14 @@
 <?php
+
 namespace Tests;
 
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EutilsTest extends TripalTestCase {
+class EUtilsTest extends TripalTestCase{
+
   // Uncomment to auto start and rollback db transactions per test method.
   //use DBTransaction;
-
-
-
 
   /**
    * Basic test example.
@@ -22,16 +21,13 @@ class EutilsTest extends TripalTestCase {
     $this->assertNotFalse($count);
   }
 
-  public function testSettingDB(){
+  public function testSettingDB() {
     $connection = new \EUtils();
     $this->expectException('Exception');
     $connection->lookupAccessions('waffles', ['000000']);
   }
 
-
-  public function testBioProjectAttributes(){
-
-
+  public function testBioProjectAttributes() {
     $connection = new \EUtils();
     //$connection->setDB('bioproject');
     //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
@@ -41,7 +37,5 @@ class EutilsTest extends TripalTestCase {
 
     //new xml_parser('bioproject', $result);
     //new bioproject_xml_parser($result);
-
-
   }
 }

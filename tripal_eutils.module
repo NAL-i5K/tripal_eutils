@@ -5,15 +5,15 @@ require_once 'includes/resources/EFetch.inc';
 require_once 'includes/resources/ESearch.inc';
 require_once 'includes/resources/ESummary.inc';
 require_once 'includes/resources/EUtils.inc';
-require_once 'includes/xml_parsers/EutilsXMLParser.inc';
-
+require_once 'includes/xml_parsers/EUtilsXMLParser.inc';
+require_once 'includes/xml_parsers/EUtilsParserInterface.inc';
+require_once 'includes/xml_parsers/EUtilsBioSampleParser.inc';
+require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
 
 /**
  * Implements hook_menu()
  */
-function tripal_eutils_menu(){
-
-
+function tripal_eutils_menu() {
   /**
    * Admin can configure which emails get sent out, more stuff?
    */
@@ -32,16 +32,13 @@ function tripal_eutils_menu(){
   //TODO: this should be set somewhere else...
   $tripal_euitils_types = ['assembly', 'biosample'];
 
-  foreach ($tripal_euitils_types as $type){
-
-    $items['admin/tripal/tripal_eutils/cvterm_mappings/'.$type] = [
+  foreach ($tripal_euitils_types as $type) {
+    $items['admin/tripal/tripal_eutils/cvterm_mappings/' . $type] = [
       'title' => $type . ' Mappings',
       'page callback' => 'drupal_get_form',
       'file' => 'includes/tripal_euitils_db_term_map.form.inc',
       'access arguments' => ['access tripal_eutils admin'],
       'page arguments' => ['tripal_euitils_db_term_map_form', $type],
     ];
-
   }
-
 }

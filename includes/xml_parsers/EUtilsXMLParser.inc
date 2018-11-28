@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Class EutilsXMLParser
+ * Class EUtilsXMLParser
  * This is the base EUTILS XML parser class.
  * The plan is to extend this base class to be specific for each DB type.
  */
 
-class EutilsXMLParser {
+class EUtilsXMLParser{
 
   private $db = NULL;
 
@@ -14,7 +14,7 @@ class EutilsXMLParser {
   private $xml = NULL;
 
   /**
-   * EutilsXMLParser constructor.
+   * EUtilsXMLParser constructor.
    *
    * I think in the future a subclass will handle the db type.
    *
@@ -33,6 +33,7 @@ class EutilsXMLParser {
 
   /**
    * Returns the attributes used in this xml file.
+   *
    * @return array
    */
   public function list_attributes() {
@@ -57,7 +58,6 @@ class EutilsXMLParser {
 
       case 'bioproject'://no attribute list
         break;
-
     }
     $xml = $this->xml;
 
@@ -79,15 +79,12 @@ class EutilsXMLParser {
           $value = (string) $child;
 
           $list[] = ['label' => $label, 'value' => $value];
-
         }
-
       }
     }
 
     return $list;
   }
-
 
   /**
    * Accepts XML with the root key Submission
@@ -175,10 +172,14 @@ class EutilsXMLParser {
           break;
 
         default:
-          throw new Exception('Unknown tag '.$key);
+          throw new Exception('Unknown tag ' . $key);
       }
     }
 
     return $info;
+  }
+
+  public function bioSample(SimpleXMLElement $xml) {
+    return (new EUtilsBioSampleParser())->parse($xml);
   }
 }
