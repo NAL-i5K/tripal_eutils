@@ -112,6 +112,11 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
       $label = "";
       foreach ($keys as $key) {
         $label .= $attributes->$key;
+        //if this isn't the last key in the array, add an underscore.
+        if(next( $keys ) ){
+          $label .= '_';
+        }
+
       }
 
       $results[$label] = (string) $child;

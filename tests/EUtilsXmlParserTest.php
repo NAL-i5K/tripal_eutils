@@ -147,8 +147,13 @@ class EUtilsXmlParserTest extends TripalTestCase {
   /**
    * @group assembly
    * @dataProvider AssemblyProvider
+   *
+   * @param $path - the path to the xml file
+   * @param $base_keys = key => value pairs.  used to check that each key contains what is expected.
+   *
+   * @todo add some key value pairs for base_keys
    */
-
+  
   public function testAssemblyParser($path, $base_keys) {
 
 
@@ -173,11 +178,6 @@ class EUtilsXmlParserTest extends TripalTestCase {
     $this->assertNotNull($assembly['attributes']);
     $this->assertNotNull($assembly['description']);
 
-
-    foreach ($assembly['attributes']['stats'] as $at => $x){
-      print("$at\n");
-
-    }
   }
 
   /**
