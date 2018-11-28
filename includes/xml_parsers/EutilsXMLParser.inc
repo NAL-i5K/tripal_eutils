@@ -6,7 +6,7 @@
  * The plan is to extend this base class to be specific for each DB type.
  */
 
-class EutilsXMLParser{
+class EutilsXMLParser {
 
   private $db = NULL;
 
@@ -29,33 +29,65 @@ class EutilsXMLParser{
 
     $x = simplexml_import_dom($dom);
     $this->xml = $x;
-    $doc = $x->RecordSet;
+  }
 
-    if (!property_exists($x, 'DocumentSummary')) {
-      return FALSE;
+  /**
+   * Returns the attributes used in this xml file.
+   * @return array
+   */
+  public function list_attributes() {
+
+    $list = [];
+
+    //The part of teh XML document we're going to search for.  should have an array of children with the attributes.
+    $needle = NULL;
+
+    //The XML tag's attribute we will derive the name from.
+    $attr_name = NULL;
+
+    switch ($this->db) {
+
+      case 'assembly':
+        $needle = 'Stats';//or Meta?  Not sure....
+        $attr_name = "category";
+        break;
+
+      case 'biosample':
+        $needle = 'Attributes';
+
+      case 'bioproject'://no attribute list
+        break;
+
     }
-    $doc = $x->DocumentSummary;
+    $xml = $this->xml;
 
-    foreach ($doc->children() as $key => $child) {
+    if ($needle && $xml) {
 
-      // Go through the main keys.
+      //search anywhere in the xml object for the needle.
+      $results = $xml->xpath('//' . $needle);
 
-      switch ($key) {
-        case "Submission":
+      if ($results) {
 
-          $this->bioprojectSubmission($child);
 
-          break;
-        case "Project":
-          $this->bioprojectProject($child);
-          break;
+        $children = $results->children();
 
-        default:
-          var_dump(["default", $key]);
-          break;
+        foreach ($children as $child) {
+
+          $attributes = $child->attributes();
+
+          $label = $attributes[$attr_name];
+          $value = (string) $child;
+
+          $list[] = ['label' => $label, 'value' => $value];
+
+        }
+
       }
     }
+
+    return $list;
   }
+
 
   /**
    * Accepts XML with the root key Submission

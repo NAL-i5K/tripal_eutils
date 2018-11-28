@@ -1,0 +1,68 @@
+<?php
+
+
+/**
+ * Implements hook_install()
+ */
+function tripal_eutils_install(){
+}
+
+
+
+/**
+ * Implements hook_schema()
+ */
+function tripal_eutils_schema(){
+
+  $schema['tripal_eutils_tag_dictionary'] = [
+    'description' => 'Stores all attribute tags encountered and their mappings',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'tag' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'The XML tag name.'
+      ],
+      'type' => [
+        'description' => 'NCBI database type.',
+        'type' => 'varchar',
+        'size' => 60,
+        'not null' => TRUE,
+      ],
+      'status' => [
+        'description' => 'assigned, unassigned, ignored',
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE,
+      ],
+
+      'cvterm_id' => [
+        'description' => 'The cvterm this tag is mapped to.',
+        'type' => 'int',
+        'not null' => FALSE,
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ];
+
+  return $schema;
+
+}
+
+
+//
+///**
+// * Uninstall the module.
+// */
+//function tripal_hq_uninstall() {
+//  if (db_table_exists('tripal_hq_submission')) {
+//    db_drop_table('tripal_hq_submission');
+//  }
+//}
