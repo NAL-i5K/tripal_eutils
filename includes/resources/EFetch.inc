@@ -2,13 +2,6 @@
 
 class EFetch extends EUtilsRequest{
 
-  protected $valid_dbs = [
-    'pubmed',
-    'bioproject',
-    'biosample',
-    'genome',
-  ];
-
   /**
    * EFetch constructor.
    *

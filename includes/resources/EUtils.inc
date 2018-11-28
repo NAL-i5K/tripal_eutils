@@ -2,30 +2,6 @@
 
 class EUtils{
 
-  ///**
-  // * Set the NCBI db.  Only the following DBs are allowed:
-  // * 'pubmed' - use the core publication importer instead.
-  // *
-  // * @param $db
-  // */
-  //public function setDB($db) {
-  //
-  //  $valid_dbs = array_flip($this->valid_dbs);
-  //
-  //  if (!array_key_exists($db, $valid_dbs)) {
-  //    tripal_set_message('Invalid db: !db', [!'db' => $db], TRIPAL_ERROR);
-  //    return FALSE;
-  //  }
-  //
-  //  $this->db = $db;
-  //  //if db isn't supported by efetch, do something...
-  //
-  //  if ($db == 'assembly') {
-  //    $this->url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?';
-  //  }
-  //  return TRUE;
-  //}
-
   /**
    * Search the set DB for the provided accessions
    *
@@ -36,15 +12,12 @@ class EUtils{
    * @throws \Exception
    */
   public function lookupAccessions($db, array $accessions) {
-    $provider = $this->getResourceProvider($db);
     $accessions = implode(',', $accessions);
-    $provider->addParam('id', $accessions);
 
-    if ($db !== 'assembly') {
-      $provider->addParam('retmode', 'xml')->addParam('rettype', 'xml');
-    }
+    $response = $this->getResourceProvider($db)
+      ->addParam('id', $accessions)
+      ->get();
 
-    $response = $provider->get();
     if ($response->isSuccessful()) {
       return $response->xml();
     }

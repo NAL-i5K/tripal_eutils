@@ -125,6 +125,7 @@ class EutilsXmlParserTest extends TripalTestCase{
 
     $xml = simplexml_load_string($string);
 
+    $this->expectException('Exception');
     $parser_r = reflect($parser);
     $submission_info = $parser_r->bioprojectProject($xml);
     $this->assertFalse($submission_info);
