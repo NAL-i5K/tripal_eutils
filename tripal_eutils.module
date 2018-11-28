@@ -6,6 +6,10 @@ require_once 'includes/resources/ESearch.inc';
 require_once 'includes/resources/ESummary.inc';
 require_once 'includes/resources/EUtils.inc';
 require_once 'includes/xml_parsers/EutilsXMLParser.inc';
+require_once 'includes/xml_parsers/EUtilsParserInterface.inc';
+require_once 'includes/xml_parsers/EUtilsBioSampleParser.inc';
+require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
+
 
 
 
