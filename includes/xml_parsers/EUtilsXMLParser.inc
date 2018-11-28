@@ -114,7 +114,7 @@ class EUtilsXMLParser{
   }
 
   /**
-   * Parse a bioProject
+   * Parse BioProject XML.
    *
    * @param \SimpleXMLElement $xml
    *
@@ -125,6 +125,13 @@ class EUtilsXMLParser{
     return (new EUtilsBioProjectParser())->parse($xml);
   }
 
+  /**
+   * Parse BioSample XML.
+   *
+   * @param \SimpleXMLElement $xml
+   *
+   * @return array
+   */
   public function bioSample(SimpleXMLElement $xml) {
     return (new EUtilsBioSampleParser())->parse($xml);
   }
