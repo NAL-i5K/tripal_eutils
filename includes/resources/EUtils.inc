@@ -18,12 +18,11 @@ class EUtils{
       ->addParam('id', $accessions)
       ->get();
 
-    if ($response->isSuccessful()) {
-      return $response->xml();
-    }
-    else {
+    if (!$response->isSuccessful()) {
       throw new Exception('Unable to retrieve accessions');
     }
+
+    return $response->xml();
   }
 
   public function getAttributes($accession = NULL) {

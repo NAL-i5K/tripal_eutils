@@ -60,7 +60,7 @@ class EUtilsResource{
    * @return string
    */
   public function originalBody() {
-    return $this->response->body;
+    return $this->response->data;
   }
 
   /**
