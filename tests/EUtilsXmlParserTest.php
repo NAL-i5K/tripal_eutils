@@ -140,6 +140,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
       $this->assertArrayHasKey('attributes', $biosample);
       $this->assertArrayHasKey('description', $biosample);
       $this->assertTrue(is_array($biosample['attributes']));
+
     }
   }
 
@@ -151,24 +152,20 @@ class EUtilsXmlParserTest extends TripalTestCase {
   public function testAssemblyParser($path, $base_keys) {
 
 
-        foreach (glob($path) as $file) {
-          $parser = new \EUtilsAssemblyParser();
-          $assembly = $parser->parse(simplexml_load_file($file));
+    $parser = new \EUtilsAssemblyParser();
+    $assembly = $parser->parse(simplexml_load_file($path));
 
-          $this->assertArrayHasKey('name', $assembly);
-          $this->assertArrayHasKey('accessions', $assembly);
-          $this->assertArrayHasKey('attributes', $assembly);
-          $this->assertArrayHasKey('description', $assembly);
-          $this->assertTrue(is_array($assembly['attributes']));
-          $this->assertArrayHasKey('ignored', $assembly);
+    $this->assertArrayHasKey('name', $assembly);
+    $this->assertArrayHasKey('accessions', $assembly);
+    $this->assertArrayHasKey('attributes', $assembly);
+    $this->assertArrayHasKey('description', $assembly);
+    $this->assertTrue(is_array($assembly['attributes']));
+    $this->assertArrayHasKey('ignored', $assembly);
 
-         $attributes = $assembly['attributes'];
+    $attributes = $assembly['attributes'];
 
-
-         $this->assertArrayHasKey('stats', $attributes);
-          $this->assertArrayHasKey('files', $attributes);
-
-        }
+    $this->assertArrayHasKey('stats', $attributes);
+    $this->assertArrayHasKey('files', $attributes);
 
 
     $this->assertNotNull($assembly['name']);
@@ -177,7 +174,10 @@ class EUtilsXmlParserTest extends TripalTestCase {
     $this->assertNotNull($assembly['description']);
 
 
+    foreach ($assembly['attributes']['stats'] as $at => $x){
+      print("$at\n");
 
+    }
   }
 
   /**
@@ -190,67 +190,75 @@ class EUtilsXmlParserTest extends TripalTestCase {
     $files = [
       [
         $path . "/examples/assembly/1949871_assembly.xml",
-        ['name' => '',
+        [
+          'name' => '',
           'accessions' => '',
           'attributes' => '',
           'description' => '',
-          ],
+        ],
       ],
       [
         $path . "/examples/assembly/2004951_assembly.xml",
-        ['name' => '',
+        [
+          'name' => '',
           'accessions' => '',
           'attributes' => '',
           'description' => '',
-          ],
+        ],
       ],
       [
         $path . "/examples/assembly/317138_assembly.xml",
-        ['name' => '',
+        [
+          'name' => '',
           'accessions' => '',
           'attributes' => '',
           'description' => '',
-          ],
+        ],
       ],
       [
         $path . "/examples/assembly/524058_assembly.xml",
-        ['name' => '',
+        [
+          'name' => '',
           'accessions' => '',
           'attributes' => '',
           'description' => '',
-          ],
+        ],
       ],
       [
         $path . "/examples/assembly/557018_assembly.xml",
-        ['name' => '',
+        [
+          'name' => '',
           'accessions' => '',
           'attributes' => '',
           'description' => '',
-          ],
+        ],
       ],
       [
         $path . "/examples/assembly/559011_assembly.xml",
-        ['name' => '',
+        [
+          'name' => '',
           'accessions' => '',
           'attributes' => '',
           'description' => '',
-          ],
+        ],
       ],
       [
         $path . "/examples/assembly/751381_assembly.xml",
-        ['name' => '',
+        [
+          'name' => '',
           'accessions' => '',
           'attributes' => '',
           'description' => '',
-          ],
+        ],
       ],
       [
         $path . "/examples/assembly/91111_assembly.xml",
-        ['name' => '',
+        [
+          'name' => '',
           'accessions' => '',
           'attributes' => '',
           'description' => '',
-          ],
+        ],
       ],
     ];
 
