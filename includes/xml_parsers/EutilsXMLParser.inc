@@ -93,6 +93,12 @@ class EutilsXMLParser{
     return $info;
   }
 
+  /**
+   * @param $xml
+   *
+   * @return array
+   * @throws \Exception
+   */
   private function bioprojectProject($xml) {
     $info = [];
 
@@ -137,9 +143,7 @@ class EutilsXMLParser{
           break;
 
         default:
-          //Unexpected tag.  throw an error.
-          tripal_log(t("Unexpected tag: !key", ['!key' => $key]));
-          return FALSE;
+          throw new Exception('Unknown tag '.$key);
       }
     }
 
