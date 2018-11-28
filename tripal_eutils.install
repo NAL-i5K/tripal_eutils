@@ -57,12 +57,12 @@ function tripal_eutils_schema(){
 }
 
 
-
-/**
- * Uninstall the module.
- */
-function tripal_hq_uninstall() {
-  if (db_table_exists('tripal_hq_submission')) {
-    db_drop_table('tripal_hq_submission');
-  }
-}
+//
+///**
+// * Uninstall the module.
+// */
+//function tripal_hq_uninstall() {
+//  if (db_table_exists('tripal_hq_submission')) {
+//    db_drop_table('tripal_hq_submission');
+//  }
+//}

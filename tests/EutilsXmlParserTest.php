@@ -129,4 +129,21 @@ class EutilsXmlParserTest extends TripalTestCase{
     $submission_info = $parser_r->bioprojectProject($xml);
     $this->assertFalse($submission_info);
   }
+
+
+  /**
+   * @group waffle
+   */
+  public function testFindingAttributes(){
+
+    $parser = new \EutilsXMLParser('assembly');
+    $xml = simplexml_load_file(__DIR__ . '/../examples/assembly/91111_assembly.xml');
+
+    $parser->loadXML($xml);
+
+    $attributes = $parser->list_attributes();
+
+    var_dump($attributes);
+  }
+
 }
