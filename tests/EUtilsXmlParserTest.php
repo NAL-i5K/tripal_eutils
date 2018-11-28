@@ -35,7 +35,7 @@ class EUtilsXmlParserTest extends TripalTestCase{
    * @throws \Exception
    */
   public function testBioProject_submission_key() {
-    $parser = new \EUtilsXMLParser();
+    $parser = new \EUtilsBioProjectParser();
 
     $submission_test_string = '<Submission last_update="2018-11-21" submission_id="SUB4827559" submitted="2018-11-21">
         <Description>

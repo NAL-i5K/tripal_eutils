@@ -77,15 +77,6 @@ class EUtilsXMLParser{
   //  return $list;
   //}
   //
-  /**
-   * Accepts XML with the root key Submission
-   *
-   * @param $xml
-   */
-  public function bioProjectSubmission($xml) {
-    return (new EUtilsBioProjectSubmissionParser())->parse($xml);
-
-  }
 
   /**
    * Parse BioProject XML.
