@@ -21,7 +21,7 @@ class EUtilsXmlParserTest extends TripalTestCase{
     //$connection->setDB('bioproject');
     //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
     $result = $connection->lookupAccessions('bioproject', ['506315']);
-    var_dump($result);
+
     $this->assertInstanceOf(\SimpleXMLElement::class, $result);
   }
 
