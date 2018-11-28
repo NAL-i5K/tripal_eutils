@@ -18,6 +18,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
 
       switch ($key) {
 
+
         case 'Meta':
 
           $info['attributes'] = $this->parseMeta($child);
@@ -33,10 +34,11 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           break;
 
         case 'AssemblyAccession':
+          //an array because i want to add more accessions later.
           $info['accessions'][] = ['Assembly' => (string) $child];
+          break;
 
-
-        case 'default':
+        default:
           $info['ignored'] = $child->getName();
           break;
       }
@@ -50,6 +52,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
 
   /**
    * Parse the <Meta> tag, which containts CDATA but all of the Assembly props.
+   *
    * @param $x
    *
    * @return array
@@ -74,11 +77,14 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
       switch ($key) {
 
         case 'Stats':
-          $list['stats'] = $this->processFinalChildren($child, 'category');
+          $list['stats'] = $this->processFinalChildren($child, [
+            'category',
+            'sequence_tag',
+          ]);
           break;
 
         case 'FtpSites':
-          $list['files'] = $this->processFinalChildren($child, 'type');
+          $list['files'] = $this->processFinalChildren($child, ['type']);
         case 'default':
       }
     }
@@ -89,30 +95,31 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
 
   /**
    * Process terminal level children (IE a flat array of children).
+   *
    * @param $x - xml of children
-   * @param $key - attribute key to derive the label from.
+   * @param $keys - attribute keys to derive the label from
    *
    * @return array
    */
-  private function processFinalChildren($x, $key) {
-
-
+  private function processFinalChildren($x, $keys) {
     $results = [];
-
     $children = $x->children();
 
-    foreach ($children as $child){
+    foreach ($children as $child) {
 
       $attributes = $child->attributes();
-      $label = $attributes[$key];
 
-      $stats[$label] = (string) $child;
+      $label = "";
+      foreach ($keys as $key) {
+        $label .= $attributes->$key;
+      }
+
+      $results[$label] = (string) $child;
     }
 
     return $results;
 
   }
-
 
 }
 

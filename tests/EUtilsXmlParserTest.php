@@ -145,26 +145,115 @@ class EUtilsXmlParserTest extends TripalTestCase {
 
   /**
    * @group assembly
+   * @dataProvider AssemblyProvider
    */
-  public function testAssemblyParser() {
+
+  public function testAssemblyParser($path, $base_keys) {
+
+
+        foreach (glob($path) as $file) {
+          $parser = new \EUtilsAssemblyParser();
+          $assembly = $parser->parse(simplexml_load_file($file));
+
+          $this->assertArrayHasKey('name', $assembly);
+          $this->assertArrayHasKey('accessions', $assembly);
+          $this->assertArrayHasKey('attributes', $assembly);
+          $this->assertArrayHasKey('description', $assembly);
+          $this->assertTrue(is_array($assembly['attributes']));
+          $this->assertArrayHasKey('ignored', $assembly);
+
+         $attributes = $assembly['attributes'];
+
+
+         $this->assertArrayHasKey('stats', $attributes);
+          $this->assertArrayHasKey('files', $attributes);
+
+        }
+
+
+    $this->assertNotNull($assembly['name']);
+    $this->assertNotNull($assembly['accessions']);
+    $this->assertNotNull($assembly['attributes']);
+    $this->assertNotNull($assembly['description']);
+
+
+
+  }
+
+  /**
+   *
+   */
+  public function AssemblyProvider() {
 
     $path = DRUPAL_ROOT . '/' . drupal_get_path('module', 'tripal_eutils');
-    foreach (glob("$path/examples/assembly/*.xml") as $file) {
-      $parser = new \EUtilsAssemblyParser();
-      $assembly = $parser->parse(simplexml_load_file($file));
 
-      $this->assertArrayHasKey('name', $assembly);
-      $this->assertArrayHasKey('accessions', $assembly);
-      $this->assertArrayHasKey('attributes', $assembly);
-      $this->assertArrayHasKey('description', $assembly);
-      $this->assertTrue(is_array($assembly['attributes']));
-      $this->assertArrayHasKey('ignored', $assembly);
+    $files = [
+      [
+        $path . "/examples/assembly/1949871_assembly.xml",
+        ['name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+          ],
+      ],
+      [
+        $path . "/examples/assembly/2004951_assembly.xml",
+        ['name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+          ],
+      ],
+      [
+        $path . "/examples/assembly/317138_assembly.xml",
+        ['name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+          ],
+      ],
+      [
+        $path . "/examples/assembly/524058_assembly.xml",
+        ['name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+          ],
+      ],
+      [
+        $path . "/examples/assembly/557018_assembly.xml",
+        ['name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+          ],
+      ],
+      [
+        $path . "/examples/assembly/559011_assembly.xml",
+        ['name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+          ],
+      ],
+      [
+        $path . "/examples/assembly/751381_assembly.xml",
+        ['name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+          ],
+      ],
+      [
+        $path . "/examples/assembly/91111_assembly.xml",
+        ['name' => '',
+          'accessions' => '',
+          'attributes' => '',
+          'description' => '',
+          ],
+      ],
+    ];
 
-     $attributes = $assembly['attributes'];
-
-     $this->assertArrayHasKey('stats', $attributes);
-      $this->assertArrayHasKey('files', $attributes);
-
-    }
+    return $files;
   }
 }
