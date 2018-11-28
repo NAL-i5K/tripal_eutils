@@ -1,19 +1,15 @@
 <?php
 
-
 /**
  * Implements hook_install()
  */
-function tripal_eutils_install(){
+function tripal_eutils_install() {
 }
-
-
 
 /**
  * Implements hook_schema()
  */
-function tripal_eutils_schema(){
-
+function tripal_eutils_schema() {
   $schema['tripal_eutils_tag_dictionary'] = [
     'description' => 'Stores all attribute tags encountered and their mappings',
     'fields' => [
@@ -26,12 +22,12 @@ function tripal_eutils_schema(){
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-        'description' => 'The XML tag name.'
+        'description' => 'The XML tag name.',
       ],
       'type' => [
         'description' => 'NCBI database type.',
         'type' => 'varchar',
-        'size' => 60,
+        'length' => 60,
         'not null' => TRUE,
       ],
       'status' => [
@@ -53,7 +49,6 @@ function tripal_eutils_schema(){
   ];
 
   return $schema;
-
 }
 
 
