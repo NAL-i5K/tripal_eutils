@@ -39,7 +39,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           break;
 
         default:
-          $info['ignored'] = $child->getName();
+          $info['ignored'][] = $child->getName();
           break;
       }
 
