@@ -111,9 +111,9 @@ class EUtilsXmlParserTest extends TripalTestCase{
     $string = '<Project>
         <ProjectID>
         </ProjectID>
-        <ProjectDescr>        
+        <ProjectDescr>
         </ProjectDescr>
-        <ProjectType>         
+        <ProjectType>
         </ProjectType>
         <Waffle>I should cause an exception</Waffle>
     </Project>';
@@ -136,9 +136,10 @@ class EUtilsXmlParserTest extends TripalTestCase{
       $biosample = $parser->parse(simplexml_load_file($file));
 
       $this->assertArrayHasKey('name', $biosample);
-      $this->assertArrayHasKey('accession', $biosample);
+      $this->assertArrayHasKey('accessions', $biosample);
       $this->assertArrayHasKey('attributes', $biosample);
       $this->assertArrayHasKey('description', $biosample);
+      $this->assertTrue(is_array($biosample['accessions']));
       $this->assertTrue(is_array($biosample['attributes']));
     }
   }

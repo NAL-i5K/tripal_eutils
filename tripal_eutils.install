@@ -51,6 +51,17 @@ function tripal_eutils_schema() {
   return $schema;
 }
 
+/**
+ * Add the NCBI BioSample DB
+ */
+function tripal_eutils_add_biosample_db() {
+  tripal_insert_db([
+    'name' => 'NCBI BioSample',
+    'description' => 'The BioSample database contains descriptions of biological source materials used in experimental assays.',
+    'urlprefix' => 'http://www.ncbi.nlm.nih.gov/biosample/{accession}',
+    'url' => 'http://www.ncbi.nlm.nih.gov/',
+  ]);
+}
 
 //
 ///**
