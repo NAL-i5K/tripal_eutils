@@ -3,6 +3,10 @@
 /**
  * Class TagMapper
  * Responsible for providing instructions for a given tag.
+ *
+ * And attribute.
+ *
+ * @todo should we rename this to just mapper?  attribute mapper, and have the tag mapper seperate?
  */
 
 class TagMapper {
@@ -32,6 +36,22 @@ class TagMapper {
     }
   }
 
+  /**
+   * @param $term_string
+   *
+   * @return bool
+   */
+  public function lookup($term_string) {
+    $dict = $this->dict;
+
+    if (!isset($dict[$term_string])) {
+      return FALSE;
+    }
+
+    return $dict[$term_string];
+
+  }
+
   private function provideAssemblyAttributeDict() {
 
     return [
@@ -56,25 +76,28 @@ class TagMapper {
 
   /**
    * Biosample attributes.  derived from the "harmonized name" of <Attribute>s
+   *
    * @return array
    */
   private function provideBiosampleAttributeDict() {
 
+    //please keep this alphabetized for sanity.
+    //If updated, please also delete/update terms in the install file.
     return [
-      'age',
-      'bio_material',
-      'breed',
-      'collection_date',
-      'cultivar',
-      'dev_stage',
-      'geo_loc_name',
-      'isolation_source',
-      'orgmod_note',
-      'phenotype',
-      'sex',
-      'strain',
-      'sub_species',
-      'tissue',
+      'age' => tripal_get_cvterm(['id' => 'local:age']),
+      'bio_material' => NULL,
+      'breed' => tripal_get_cvterm(['id' => 'local:breed']),
+      'collection_date' => tripal_get_cvterm(['id' => 'local:collection_date']),
+      'cultivar' => tripal_get_cvterm(['id' => 'local:cultivar']),
+      'dev_stage' => tripal_get_cvterm(['id' => 'local:dev_stage']),
+      'geo_loc_name' => tripal_get_cvterm(['id' => 'local:geo_loc_name']),
+      'isolation_source' => tripal_get_cvterm(['id' => 'local:isolation_source']),
+      'orgmod_note' => tripal_get_cvterm(['id' => 'local:orgmod_note']),
+      'phenotype' => tripal_get_cvterm(['id' => 'local:phenotype']),
+      'sex' => tripal_get_cvterm(['id' => 'local:sex']),
+      'strain' => tripal_get_cvterm(['id' => 'local:strain']),
+      'sub_species' => tripal_get_cvterm(['id' => 'local:sub_species']),
+      'tissue' => tripal_get_cvterm(['id' => 'local:tissue']),
     ];
 
   }
