@@ -7,9 +7,16 @@
  */
 class EFTP {
 
-
+  /**
+   * The FTP URL.
+   * @var string
+   */
   protected $url;
 
+  /**
+   * Contains the content of the downloaded file.
+   * @var string
+   */
   protected $file;
 
 
@@ -32,7 +39,6 @@ class EFTP {
    * @return array
    */
   public function getField($field) {
-
     $results = [];
 
     $file = $this->file;
@@ -56,6 +62,5 @@ class EFTP {
     }
 
     return $results;
-
   }
 }
