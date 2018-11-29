@@ -1,17 +1,22 @@
 <?php
-//Eutils suite.  Connecting to NCBI.
+// Eutils suite.  Connecting to NCBI.
 require_once 'includes/resources/EUtilsResource.inc';
 require_once 'includes/resources/EUtilsRequest.inc';
 require_once 'includes/resources/EFetch.inc';
 require_once 'includes/resources/ESearch.inc';
 require_once 'includes/resources/ESummary.inc';
 require_once 'includes/resources/EUtils.inc';
-//Parsers.  Convert XML into keyed arrays.
+
+// Parsers.  Convert XML into keyed arrays.
 require_once 'includes/xml_parsers/EUtilsXMLParser.inc';
 require_once 'includes/xml_parsers/EUtilsParserInterface.inc';
 require_once 'includes/xml_parsers/EUtilsBioSampleParser.inc';
 require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
 require_once 'includes/xml_parsers/EUtilsAssemblyParser.inc';
+
+// Repositories. Handling DB operations
+require_once 'includes/repositories/EUtilsRepositoryInterface.php';
+require_once 'includes/repositories/EUtilsBioSampleRepository.php';
 
 require_once 'includes/TagMapper.inc';
 
