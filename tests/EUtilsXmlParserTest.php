@@ -153,7 +153,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
    *
    * @todo add some key value pairs for base_keys
    */
-  
+
   public function testAssemblyParser($path, $base_keys) {
 
 
@@ -178,6 +178,8 @@ class EUtilsXmlParserTest extends TripalTestCase {
     $this->assertNotNull($assembly['attributes']);
     $this->assertNotNull($assembly['description']);
 
+
+    var_dump($assembly['attributes']);
   }
 
   /**

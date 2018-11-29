@@ -21,17 +21,20 @@ class TagMapper {
 
     switch ($db) {
       case "assembly":
-        $this->dict = $this->provideAssemblyDict();
+        $this->dict = $this->provideAssemblyAttributeDict();
         break;
+
+      case 'biosample':
+        $this->dict = $this->provideBiosampleAttributeDict();
 
       default:
         break;
     }
   }
 
-  private function provideAssemblyDict() {
+  private function provideAssemblyAttributeDict() {
 
-    [
+    return [
       "alt_loci_count_all",
       "chromosome_count_all",
       "contig_count_all",
@@ -46,8 +49,39 @@ class TagMapper {
       "scaffold_l50_all",
       "scaffold_n50_all",
       "total_length_all",
-      "ungapped_length_all"
-      ];
+      "ungapped_length_all",
+    ];
 
   }
+
+  /**
+   * Biosample attributes.  derived from the "harmonized name" of <Attribute>s
+   * @return array
+   */
+  private function provideBiosampleAttributeDict() {
+
+    return [
+      'age',
+      'bio_material',
+      'breed',
+      'collection_date',
+      'cultivar',
+      'dev_stage',
+      'geo_loc_name',
+      'isolation_source',
+      'orgmod_note',
+      'phenotype',
+      'sex',
+      'strain',
+      'sub_species',
+      'tissue',
+    ];
+
+  }
+
+  private function provideAssemblyTagDict() {
+
+  }
+
+
 }
