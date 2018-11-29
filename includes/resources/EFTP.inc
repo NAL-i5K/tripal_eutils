@@ -16,21 +16,17 @@ class EFTP {
   /**
    * @param string $url
    *
-   * @return $this
    */
   public function setURL($url) {
     $this->url = $url;
     $file = file_get_contents($url);
-
-    var_dump($file);
-
     $this->file = $file;
-
   }
 
 
   /**
    * Find all records of line starting with a specific item.
+   *
    * @param $field
    *
    * @return array
