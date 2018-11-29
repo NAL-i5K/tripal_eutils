@@ -35,6 +35,14 @@ function tripal_eutils_menu() {
     'page arguments' => ['tripal_eutils_admin_settings_form'],
   ];
 
+  $items['admin/tripal/tripal_eutils/import'] = [
+    'title' => 'Import NCBI Accession',
+    'page callback' => 'drupal_get_form',
+    'file' => 'includes/tripal_euitils_import.form.inc',
+    'access arguments' => ['access tripal_eutils admin'],
+    'page arguments' => ['tripal_eutils_import_form'],
+  ];
+
   //TODO: this should be set somewhere else...
   $tripal_euitils_types = ['assembly', 'biosample'];
 
