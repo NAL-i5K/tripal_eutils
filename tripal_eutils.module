@@ -55,4 +55,6 @@ function tripal_eutils_menu() {
       'page arguments' => ['tripal_euitils_db_term_map_form', $type],
     ];
   }
+
+  return $items;
 }
