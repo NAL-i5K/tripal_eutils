@@ -35,7 +35,7 @@ class TagMapper {
   private function provideAssemblyAttributeDict() {
 
     return [
-      "alt_loci_count_all" ,
+      "alt_loci_count_all",
       "chromosome_count_all",
       "contig_count_all",
       "contig_l50_all",
@@ -49,23 +49,39 @@ class TagMapper {
       "scaffold_l50_all",
       "scaffold_n50_all",
       "total_length_all",
-      "ungapped_length_all"
-      ];
-
-  }
-
-  private function provideBiosampleAttributeDict(){
-
-    return [
-
+      "ungapped_length_all",
     ];
 
   }
 
-  private function provideAssemblyTagDict(){
+  /**
+   * Biosample attributes.  derived from the "harmonized name" of <Attribute>s
+   * @return array
+   */
+  private function provideBiosampleAttributeDict() {
+
+    return [
+      'age',
+      'bio_material',
+      'breed',
+      'collection_date',
+      'cultivar',
+      'dev_stage',
+      'geo_loc_name',
+      'isolation_source',
+      'orgmod_note',
+      'phenotype',
+      'sex',
+      'strain',
+      'sub_species',
+      'tissue',
+    ];
 
   }
 
+  private function provideAssemblyTagDict() {
+
+  }
 
 
 }
