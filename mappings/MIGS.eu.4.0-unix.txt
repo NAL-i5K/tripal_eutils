@@ -1,0 +1,30 @@
+cv	name	description	dbxref	is_obsolete	is_relationship
+MIGS.eu.4.0	strain	microbial or eukaryotic strain name	NULL	0	0
+MIGS.eu.4.0	isolate	identification or description of the specific individual from which this sample was obtained	NULL	0	0
+MIGS.eu.4.0	cultivar	cultivar name - cultivated variety of plant	NULL	0	0
+MIGS.eu.4.0	ecotype	a population within a given species displaying genetically based, phenotypic traits that reflect adaptation to a local habitat, e.g., Columbia	NULL	0	0
+MIGS.eu.4.0	collection date	Date of sampling, in "DD-Mmm-YYYY", "Mmm-YYYY" or "YYYY" format (eg., 30-Oct-1990, Oct-1990 or 1990) or ISO 8601 standard "YYYY-mm-dd", "YYYY-mm" or "YYYY-mm-ddThh:mm:ss" (eg., 1990-10-30, 1990-10 or 1990-10-30T14:41:36)	NULL	0	0
+MIGS.eu.4.0	environment biome	descriptor of the broad ecological context of a sample. Examples include: desert, taiga, deciduous woodland, or coral reef. EnvO (v 2013-06-14) terms can be found via the link: www.environmentontology.org/Browse-EnvO	NULL	0	0
+MIGS.eu.4.0	environment feature	descriptor of the local environment. Examples include: harbor, cliff, or lake. EnvO (v 2013-06-14) terms can be found via the link: www.environmentontology.org/Browse-EnvO	NULL	0	0
+MIGS.eu.4.0	environment material	material that was displaced by the sample, or material in which a sample was embedded, prior to the sampling event.  Examples include: air, soil, or water. EnvO (v 2013-06-14) terms can be found via the link: www.environmentontology.org/Browse-EnvO	NULL	0	0
+MIGS.eu.4.0	estimated size	Estimated size of genome	NULL	0	0
+MIGS.eu.4.0	geographic location	Geographical origin of the sample; use the appropriate name from this list http://www.insdc.org/documents/country-qualifier-vocabulary. Use a colon to separate the country or ocean from more detailed information about the location, eg "Canada: Vancouver" or "Germany: halfway down Zugspitze, Alps"	NULL	0	0
+MIGS.eu.4.0	isolation and growth condition	PMID or url for isolation and growth condition specifications	NULL	0	0
+MIGS.eu.4.0	latitude and longitude	The geographical coordinates of the location where the sample was collected. Specify as degrees latitude and longitude in format "d[d.dddd] N|S d[dd.dddd] W|E", eg, 38.98 N 77.11 W	NULL	0	0
+MIGS.eu.4.0	number of replicons	Number of replicons in nuclear genome	NULL	0	0
+MIGS.eu.4.0	ploidy	Ploidy level of genome (eg., haploid, diploid)	NULL	0	0
+MIGS.eu.4.0	propagation	phage: lytic/lysogenic/temperate/obligately lytic; plasmid: incompatibility group; eukaryote: asexual/sexual	NULL	0	0
+MIGS.eu.4.0	observed biotic relationship	Free-living or from host (define relationship)	NULL	0	0
+MIGS.eu.4.0	extrachromosomal elements	Plasmids that have significance phenotypic consequence	NULL	0	0
+MIGS.eu.4.0	health state	Health or disease status of sample at time of collection	NULL	0	0
+MIGS.eu.4.0	host	The natural (as opposed to laboratory) host to the organism from which the sample was obtained. Use the full taxonomic name, eg, "Homo sapiens".	NULL	0	0
+MIGS.eu.4.0	host taxonomy ID	NCBI taxonomy ID of the host, e.g. 9606	NULL	0	0
+MIGS.eu.4.0	isolation source	Describes the physical, environmental and/or local geographical source of the biological sample from which the sample was derived.	NULL	0	0
+MIGS.eu.4.0	pathogenicity	To what is the entity pathogenic	NULL	0	0
+MIGS.eu.4.0	reference for biomaterial	Primary publication or genome report	NULL	0	0
+MIGS.eu.4.0	sample collection device or method	Method or device employed for collecting sample	NULL	0	0
+MIGS.eu.4.0	sample material processing	Processing applied to the sample during or after isolation	NULL	0	0
+MIGS.eu.4.0	sample size	Amount or size of sample (volume, mass or area) that was collected	NULL	0	0
+MIGS.eu.4.0	source material identifiers	unique identifier assigned to a material sample used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples.	NULL	0	0
+MIGS.eu.4.0	subspecific genetic lineage	Information about the genetic distinctness of the lineage (eg., biovar, serovar)	NULL	0	0
+MIGS.eu.4.0	trophic level	Feeding position in food chain (eg., chemolithotroph)	NULL	0	0
