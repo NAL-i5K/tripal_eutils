@@ -1,0 +1,12 @@
+cv	name	description	dbxref	is_obsolete	is_relationship
+NCBI-BioProject	keyword	Keyword	NULL	0	0
+NCBI-BioProject	organism_name	Organism	NULL	0	0
+NCBI-BioProject	project_acc	Project Accession	NULL	0	0
+NCBI-BioProject	project_data_type	Project Data Type	NULL	0	0
+NCBI-BioProject	project_description	Organism/Project Description	NULL	0	0
+NCBI-BioProject	project_id	Project ID	NULL	0	0
+NCBI-BioProject	project_subtype	Project Subtype	NULL	0	0
+NCBI-BioProject	project_title	Title	NULL	0	0
+NCBI-BioProject	project_type	Project Type	NULL	0	0
+NCBI-BioProject	registration_date	Registration Date	NULL	0	0
+NCBI-BioProject	submitter_organization	Submitter Organization(s)	NULL	0	0
