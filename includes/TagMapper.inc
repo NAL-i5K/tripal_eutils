@@ -21,18 +21,21 @@ class TagMapper {
 
     switch ($db) {
       case "assembly":
-        $this->dict = $this->provideAssemblyDict();
+        $this->dict = $this->provideAssemblyAttributeDict();
         break;
+
+      case 'biosample':
+        $this->dict = $this->provideBiosampleAttributeDict();
 
       default:
         break;
     }
   }
 
-  private function provideAssemblyDict() {
+  private function provideAssemblyAttributeDict() {
 
-    [
-      "alt_loci_count_all",
+    return [
+      "alt_loci_count_all" ,
       "chromosome_count_all",
       "contig_count_all",
       "contig_l50_all",
@@ -50,4 +53,19 @@ class TagMapper {
       ];
 
   }
+
+  private function provideBiosampleAttributeDict(){
+
+    return [
+
+    ];
+
+  }
+
+  private function provideAssemblyTagDict(){
+
+  }
+
+
+
 }
