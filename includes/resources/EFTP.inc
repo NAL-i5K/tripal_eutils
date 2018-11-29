@@ -22,6 +22,8 @@ class EFTP {
     $this->url = $url;
     $file = file_get_contents($url);
 
+    var_dump($file);
+
     $this->file = $file;
 
   }
