@@ -38,6 +38,16 @@ function tripal_eutils_menu() {
     'file' => 'includes/tripal_euitils_admin_settings.form.inc',
     'access arguments' => ['access tripal_eutils admin'],
     'page arguments' => ['tripal_eutils_admin_settings_form'],
+    'type' => MENU_NORMAL_ITEM,
+
+  ];
+
+  $items['admin/tripal/tripal_eutils/import'] = [
+    'title' => 'Import NCBI Accession',
+    'page callback' => 'drupal_get_form',
+    'file' => 'includes/tripal_euitils_import.form.inc',
+    'access arguments' => ['access tripal_eutils admin'],
+    'page arguments' => ['tripal_eutils_import_form'],
   ];
 
   //TODO: this should be set somewhere else...
@@ -52,4 +62,6 @@ function tripal_eutils_menu() {
       'page arguments' => ['tripal_euitils_db_term_map_form', $type],
     ];
   }
+
+  return $items;
 }
