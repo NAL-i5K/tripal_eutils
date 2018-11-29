@@ -1,0 +1,453 @@
+cv	name	description	dbxref	is_obsolete	is_relationship
+NCBI-BioSample-Packages-Attributes	host family relationship		NULL	0	0
+NCBI-BioSample-Packages-Attributes	investigation type	Nucleic Acid Sequence Report is the root element of all MIGS/MIMS compliant reports as standardized by Genomic Standards Consortium. This field is either eukaryote,bacteria,virus,plasmid,organelle, metagenome, miens-survey or miens-culture	NULL	0	0
+NCBI-BioSample-Packages-Attributes	inorganic particles	concentration of particles such as sand, grit, metal particles, ceramics, etc.; can include multiple particles	NULL	0	0
+NCBI-BioSample-Packages-Attributes	passage history	Number of passages and passage method	NULL	0	0
+NCBI-BioSample-Packages-Attributes	derived from	indicates where one BioSample was derived from another BioSample	NULL	0	0
+NCBI-BioSample-Packages-Attributes	study disease	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample type	Sample type, such as cell culture, mixed culture, tissue sample, whole organism, single cell, metagenomic assembly	NULL	0	0
+NCBI-BioSample-Packages-Attributes	oxygen	oxygen (gas) amount or concentration at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	race		NULL	0	0
+NCBI-BioSample-Packages-Attributes	host body habitat	original body habitat where the sample was obtained from	NULL	0	0
+NCBI-BioSample-Packages-Attributes	nose throat disorder	history of nose-throat disorders; can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	kidney disorder	history of kidney disorders; can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	birth date		NULL	0	0
+NCBI-BioSample-Packages-Attributes	carbon/nitrogen ratio	ratio of amount or concentrations of carbon to nitrogen	NULL	0	0
+NCBI-BioSample-Packages-Attributes	extreme salinity	measured salinity	NULL	0	0
+NCBI-BioSample-Packages-Attributes	NARMS isolate number	isolate identifier for the collection of isolates in the National Antimicrobial Resistance Monitoring System, authority http://www.cdc.gov/narms/about/index.html, e.g., CVM N6429	NULL	0	0
+NCBI-BioSample-Packages-Attributes	label	a label for sample, or name of an individual animal (e.g., Clint)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	affection status	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	potassium	concentration of potassium	NULL	0	0
+NCBI-BioSample-Packages-Attributes	growth protocol		NULL	0	0
+NCBI-BioSample-Packages-Attributes	volatile organic compounds	concentration of carbon-based chemicals that easily evaporate at room temperature; can report multiple volatile organic compounds by entering numeric values preceded by name of compound	NULL	0	0
+NCBI-BioSample-Packages-Attributes	molecular data type	Type of molecular (omics) data tied to this sample	NULL	0	0
+NCBI-BioSample-Packages-Attributes	salinity	salinity measurement	NULL	0	0
+NCBI-BioSample-Packages-Attributes	propagation	phage: lytic/lysogenic/temperate/obligately lytic; plasmid: incompatibility group; eukaryote: asexual/sexual	NULL	0	0
+NCBI-BioSample-Packages-Attributes	menopause	date of onset of menopause	NULL	0	0
+NCBI-BioSample-Packages-Attributes	depth	Depth is defined as the vertical distance below surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectivly. Depth can be reported as an interval for subsurface samples.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host life stage	description of host life stage	NULL	0	0
+NCBI-BioSample-Packages-Attributes	biovar	A biovar is a variant prokaryotic strain that differs physiologically and/or biochemically from other strains in a particular species.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	dissolved inorganic phosphorus	concentration of dissolved inorganic phosphorus	NULL	0	0
+NCBI-BioSample-Packages-Attributes	bacterial respiration	measurement of bacterial respiration in the water column	NULL	0	0
+NCBI-BioSample-Packages-Attributes	building occupancy type	primary function for which a building or discrete part of a building is intended to be used	NULL	0	0
+NCBI-BioSample-Packages-Attributes	serotype	Taxonomy below subspecies; a variety (in bacteria, fungi or virus) usually based on its antigenic properties. Same as serovar and serogroup. e.g. serotype="H1N1" in Influenza A virus CY098518.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pathotype	Some bacterial specific pathotypes (example Eschericia coli - STEC, UPEC)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	description		NULL	0	0
+NCBI-BioSample-Packages-Attributes	respirable particulate matter	concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM	NULL	0	0
+NCBI-BioSample-Packages-Attributes	extreme event	unusual physical events that may have affected microbial populations	NULL	0	0
+NCBI-BioSample-Packages-Attributes	birth location		NULL	0	0
+NCBI-BioSample-Packages-Attributes	sodium	sodium concentration	NULL	0	0
+NCBI-BioSample-Packages-Attributes	submitted subject id	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	surface humidity	surfaces: water activity as a function of air and material moisture	NULL	0	0
+NCBI-BioSample-Packages-Attributes	heavy metals method	reference or method used in determining heavy metals	NULL	0	0
+NCBI-BioSample-Packages-Attributes	dermatology disorder	history of dermatology disorders; can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total mass		NULL	0	0
+NCBI-BioSample-Packages-Attributes	link to climate information	link to climate resource	NULL	0	0
+NCBI-BioSample-Packages-Attributes	maternal health status	specification of the maternal health status	NULL	0	0
+NCBI-BioSample-Packages-Attributes	secondary treatment	the process for substantially degrading the biological content of the sewage	NULL	0	0
+NCBI-BioSample-Packages-Attributes	heating and cooling system type	methods of conditioning or heating a room or building	NULL	0	0
+NCBI-BioSample-Packages-Attributes	elevation	The elevation of the sampling site as measured by the vertical distance from mean sea level.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host body product	substance produced by the host, e.g. stool, mucus, where the sample was obtained from	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample size	Amount or size of sample (volume, mass or area) that was collected	NULL	0	0
+NCBI-BioSample-Packages-Attributes	phospholipid fatty acid	concentration of phospholipid fatty acids; can include multiple values	NULL	0	0
+NCBI-BioSample-Packages-Attributes	chemical administration	list of chemical compounds administered to the host or site where sampling occurred, and when (e.g. antibiotics, N fertilizer, air filter); can include multiple compounds. For Chemical Entities of Biological Interest ontology (CHEBI) (v1.72), please see http://bioportal.bioontology.org/visualize/44603	NULL	0	0
+NCBI-BioSample-Packages-Attributes	local classification	soil classification based on local soil classification system	NULL	0	0
+NCBI-BioSample-Packages-Attributes	salinity method	reference or method used in determining salinity	NULL	0	0
+NCBI-BioSample-Packages-Attributes	weight loss in last three months	specification of weight loss in the last three months, if yes should be further specified to include amount of weight loss	NULL	0	0
+NCBI-BioSample-Packages-Attributes	flooding	historical and/or physical evidence of flooding	NULL	0	0
+NCBI-BioSample-Packages-Attributes	water current	measurement of magnitude and direction of flow within a fluid	NULL	0	0
+NCBI-BioSample-Packages-Attributes	subclone	Name for the derived clone or subculture from which the sample was taken.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	surface moisture	water held on a surface	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pulse	resting pulse, measured as beats per minute	NULL	0	0
+NCBI-BioSample-Packages-Attributes	same as	indicates that the same physical sample has multiple BioSample records	NULL	0	0
+NCBI-BioSample-Packages-Attributes	extrachromosomal elements	Plasmids that have significance phenotypic consequence	NULL	0	0
+NCBI-BioSample-Packages-Attributes	horizon	specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath	NULL	0	0
+NCBI-BioSample-Packages-Attributes	calcium	concentration of calcium	NULL	0	0
+NCBI-BioSample-Packages-Attributes	urogenital tract disorder	history of urogenitaltract disorders; can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	radiation regimen	information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment duration, interval and total experimental duration; can include multiple radiation regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	plant body site	name of body site that the sample was obtained from. For Plant Ontology (PO) (v 20) terms, see http://purl.bioontology.org/ontology/PO	NULL	0	0
+NCBI-BioSample-Packages-Attributes	tissue lib	Formal identifier that points to source institute and tissue library identifier.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	study design	Epidemiological or omics reseach design context that this biosample was used in.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	dissolved oxygen	concentration of dissolved oxygen	NULL	0	0
+NCBI-BioSample-Packages-Attributes	phenotype	Phenotype of sampled organism. For Phenotypic quality Ontology (PATO) (v1.269) terms, please see http://bioportal.bioontology.org/visualize/44601	NULL	0	0
+NCBI-BioSample-Packages-Attributes	forma	Taxonomy level below subspecies (or variety in botany). Use is similar to ecotype etc.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	body mass index	body mass index, calculated as weight/(height)squared	NULL	0	0
+NCBI-BioSample-Packages-Attributes	Super Population Code	The 3 letter super population abbreviation from the Coriell Institute indicating ancestry		NULL	0	0
+NCBI-BioSample-Packages-Attributes	dissolved inorganic carbon	dissolved inorganic carbon concentration	NULL	0	0
+NCBI-BioSample-Packages-Attributes	teleomorph	Genus and species of the sexual (fruiting) form of fungi - note that anamorph and teleomorph forms of the same taxon may have used taxonomic different names.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	soil type	soil series name or other lower-level classification	NULL	0	0
+NCBI-BioSample-Packages-Attributes	serogroup		NULL	0	0
+NCBI-BioSample-Packages-Attributes	dry mass	measurement of dry mass	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gravity	information about treatment involving use of gravity factor to study various types of responses in presence, absence or modified levels of gravity; can include multiple treatments	NULL	0	0
+NCBI-BioSample-Packages-Attributes	air temperature	temperature of the air at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	repository		NULL	0	0
+NCBI-BioSample-Packages-Attributes	last meal		NULL	0	0
+NCBI-BioSample-Packages-Attributes	porosity	porosity of deposited sediment is volume of voids divided by the total volume of sample	NULL	0	0
+NCBI-BioSample-Packages-Attributes	ecotype	a population within a given species displaying genetically based, phenotypic traits that reflect adaptation to a local habitat, e.g., Columbia	NULL	0	0
+NCBI-BioSample-Packages-Attributes	silicate	concentration of silicate	NULL	0	0
+NCBI-BioSample-Packages-Attributes	development stage	Developmental stage at the time of sampling.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	Super Population Description	The full, unabbreviated super population descriptor from the Coriell Institute	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample size sorting method	method by which samples are sorted	NULL	0	0
+NCBI-BioSample-Packages-Attributes	salt regimen	information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment duration, interval and total experimental duration; can include multiple salt regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	plant product	substance produced by the plant, where the sample was obtained from	NULL	0	0
+NCBI-BioSample-Packages-Attributes	submitted sample id	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total N method	reference or method used in determining the total N	NULL	0	0
+NCBI-BioSample-Packages-Attributes	suspended solids	concentration of substances including a wide variety of material, such as silt, decaying plant and animal matter, etc,; can include multiple substances	NULL	0	0
+NCBI-BioSample-Packages-Attributes	typical occupant density	customary or normal density of occupants	NULL	0	0
+NCBI-BioSample-Packages-Attributes	latitude and longitude	The geographical coordinates of the location where the sample was collected. Specify as degrees latitude and longitude in format "d[d.dddd] N|S d[dd.dddd] W|E", eg, 38.98 N 77.11 W	NULL	0	0
+NCBI-BioSample-Packages-Attributes	microbial biomass method	reference or method used in determining microbial biomass	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host occupation	most frequent job performed by subject	NULL	0	0
+NCBI-BioSample-Packages-Attributes	collected by	Name of persons or institute who collected the sample	NULL	0	0
+NCBI-BioSample-Packages-Attributes	fungicide regimen	information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment duration, interval and total experimental duration; can include multiple fungicide regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	original subject id	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	rainfall regimen	information about treatment involving an exposure to a given amount of rainfall; can include multiple regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	methane	methane (gas) amount or concentration at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gap accession	technical dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	tissue culture growth media	description of plant tissue culture growth media used	NULL	0	0
+NCBI-BioSample-Packages-Attributes	isolate	identification or description of the specific individual from which this sample was obtained	NULL	0	0
+NCBI-BioSample-Packages-Attributes	drainage classification	drainage classification from a standard system such as the USDA system	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gap sample id	technical dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host color	the color of host	NULL	0	0
+NCBI-BioSample-Packages-Attributes	cultivar	cultivar name - cultivated variety of plant	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host last meal	content of last meal and time since feeding; can include multiple values	NULL	0	0
+NCBI-BioSample-Packages-Attributes	project name	A concise name that describes the overall project, for example "Analysis of sequences collected from Antarctic soil"	NULL	0	0
+NCBI-BioSample-Packages-Attributes	alkalinity	alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gastrointestinal tract disorder	history of gastrointestinal tract disorders; can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	fertilizer regimen	information about treatment involving the use of fertilizers; should include the name fertilizer, amount administered, treatment duration, interval and total experimental duration; can include multiple fertilizer regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	nitrate	concentration of nitrate	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host disease	Name of relevant disease, e.g. Salmonella gastroenteritis. Controlled vocabulary, http://bioportal.bioontology.org/ontologies/1009 or http://www.ncbi.nlm.nih.gov/mesh	NULL	0	0
+NCBI-BioSample-Packages-Attributes	ventilation rate	ventilation rate of the system in the sampled premises	NULL	0	0
+NCBI-BioSample-Packages-Attributes	reference material	Indicates that a standards body or external group asserts this sample is reference material, eg, 'NIST reference material for genome sequencing validation'.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	travel outside the country in last six months	specification of the countries travelled in the last six months; can include multiple travels	NULL	0	0
+NCBI-BioSample-Packages-Attributes	substrate		NULL	0	0
+NCBI-BioSample-Packages-Attributes	hrt	whether subject had hormone replacement theraphy, and if yes start date	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample storage location		NULL	0	0
+NCBI-BioSample-Packages-Attributes	culture collection	Name of source institute and unique culture identifier. See the description for the proper format and list of allowed institutes, http://www.insdc.org/controlled-vocabulary-culturecollection-qualifier	NULL	0	0
+NCBI-BioSample-Packages-Attributes	occupancy at sampling	number of occupants present at time of sample within the given space	NULL	0	0
+NCBI-BioSample-Packages-Attributes	current land use	present state of sample site	NULL	0	0
+NCBI-BioSample-Packages-Attributes	is tumor	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gap change status	technical dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	source name	Sample source name or description	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host	The natural (as opposed to laboratory) host to the organism from which the sample was obtained. Use the full taxonomic name, eg, "Homo sapiens".	NULL	0	0
+NCBI-BioSample-Packages-Attributes	nitrite	concentration of nitrite	NULL	0	0
+NCBI-BioSample-Packages-Attributes	reactor type	anaerobic digesters can be designed and engineered to operate using a number of different process configurations, as batch or continuous, mesophilic, high solid or low solid, and single stage or multistage	NULL	0	0
+NCBI-BioSample-Packages-Attributes	soil type method	reference or method used in determining soil series name or other lower-level classification	NULL	0	0
+NCBI-BioSample-Packages-Attributes	outbreak	Submitter designated name for an occurrence of more cases of disease than expected in a given area or among a specific group of people over a particular period of time.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	submitter handle	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	wind speed	speed of wind measured at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	cell line	Name of the cell line.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	treatment		NULL	0	0
+NCBI-BioSample-Packages-Attributes	current vegetation method	reference or method used in vegetation classification	NULL	0	0
+NCBI-BioSample-Packages-Attributes	slope aspect	the direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., NW or 315°. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sludge retention time	the time activated sludge remains in reactor	NULL	0	0
+NCBI-BioSample-Packages-Attributes	drug usage	any drug used by subject and the frequency of usage; can include multiple drugs used	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gap subject id	technical dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	compound		NULL	0	0
+NCBI-BioSample-Packages-Attributes	wind direction	wind direction is the direction from which a wind originates	NULL	0	0
+NCBI-BioSample-Packages-Attributes	humidity	amount of water vapour in the air, at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	mean peak friction velocity	measurement of mean peak friction velocity	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sewage type	type of wastewater treatment plant as municipial or industrial	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample storage duration		NULL	0	0
+NCBI-BioSample-Packages-Attributes	time since last toothbrushing	specification of the time since last toothbrushing	NULL	0	0
+NCBI-BioSample-Packages-Attributes	isolation source	Describes the physical, environmental and/or local geographical source of the biological sample from which the sample was derived.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host infra specific rank	taxonomic rank information below subspecies level, such as variety, form, rank etc.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	organic particles	concentration of particles such as faeces, hairs, food, vomit, paper fibers, plant material, humus, etc.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	watering regimen	information about treatment involving an exposure to watering frequencies; can include multiple regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	number of replicons	Number of replicons in nuclear genome	NULL	0	0
+NCBI-BioSample-Packages-Attributes	density	density of sample	NULL	0	0
+NCBI-BioSample-Packages-Attributes	primary treatment	the process to produce both a generally homogeneous liquid capable of being treated biologically and a sludge that can be separately treated or processed	NULL	0	0
+NCBI-BioSample-Packages-Attributes	infra specific name	taxonomic information subspecies level	NULL	0	0
+NCBI-BioSample-Packages-Attributes	current vegetation	vegetation classification from one or more standard classification systems, or agricultural crop	NULL	0	0
+NCBI-BioSample-Packages-Attributes	surface material	surface materials at the point of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host disease stage	Stage of disease at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	disease stage	stage of disease at the time of sampling.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host age	Age of host at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	source material identifiers	unique identifier assigned to a material sample used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	dissolved organic nitrogen	dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2	NULL	0	0
+NCBI-BioSample-Packages-Attributes	observed biotic relationship	Free-living or from host (define relationship)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	light type	application of light to achieve some practical or aesthetic effect. Lighting includes the use of both artificial light sources such as lamps and light fixtures, as well as natural illumination by capturing daylight. Can also include absence of light	NULL	0	0
+NCBI-BioSample-Packages-Attributes	annual and seasonal precipitation	mean annual and seasonal precipitation (mm)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	breeding method		NULL	0	0
+NCBI-BioSample-Packages-Attributes	wastewater type	the origin of wastewater such as human waste, rainfall, storm drains, etc.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	EDTA inhibitor tested	Was carbapenemase activity tested in the presence of EDTA? If carbapenemase activity was tested in the presence of EDTA, the response should be "yes", otherwise "no”.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample material processing	Processing applied to the sample during or after isolation	NULL	0	0
+NCBI-BioSample-Packages-Attributes	link to classification information	link to digitized soil maps or other soil classification information	NULL	0	0
+NCBI-BioSample-Packages-Attributes	special diet	specification of special diet; can include multiple special diets	NULL	0	0
+NCBI-BioSample-Packages-Attributes	isolation and growth condition	PMID or url for isolation and growth condition specifications	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host dry mass	measurement of dry mass	NULL	0	0
+NCBI-BioSample-Packages-Attributes	previous land use	previous land use and dates	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sex	physical sex of sampled organism	NULL	0	0
+NCBI-BioSample-Packages-Attributes	organism count	total count of any organism per gram or volume of sample,should include name of organism followed by count; can include multiple organism counts	NULL	0	0
+NCBI-BioSample-Packages-Attributes	subtype	Used as classifier in viruses (e.g. HIV type 1, Group M, Subtype A).	NULL	0	0
+NCBI-BioSample-Packages-Attributes	child of	indicates parentage; only applicable to sexual organisms, for bacteria use 'derived from'	NULL	0	0
+NCBI-BioSample-Packages-Attributes	storage conditions	explain how and for how long the soil sample was stored before DNA extraction.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	FAO classification	soil classification from the FAO World Reference Database for Soil Resources	NULL	0	0
+NCBI-BioSample-Packages-Attributes	conductivity	electrical conductivity of water	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pressure	pressure to which the sample is subject, in atmospheres	NULL	0	0
+NCBI-BioSample-Packages-Attributes	image file	technical dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	type status		NULL	0	0
+NCBI-BioSample-Packages-Attributes	relative air humidity	partial vapor and air pressure, density of the vapor and air, or by the actual mass of the vapor and air	NULL	0	0
+NCBI-BioSample-Packages-Attributes	space typical state	customary or normal state of the space	NULL	0	0
+NCBI-BioSample-Packages-Attributes	dissolved organic carbon	concentration of dissolved organic carbon	NULL	0	0
+NCBI-BioSample-Packages-Attributes	tissue	Type of tissue the sample was taken from.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	wet mass	measurement of wet mass	NULL	0	0
+NCBI-BioSample-Packages-Attributes	nitrogen	concentration of nitrogen (total)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	analyte type	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	slope gradient	commonly called “slope.” The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pulmonary disorder	history of pulmonary disorders; can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	redox potential	redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential	NULL	0	0
+NCBI-BioSample-Packages-Attributes	clone lib	Formal identifier that points to source institute and clone library identifier.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	death date		NULL	0	0
+NCBI-BioSample-Packages-Attributes	pathovar	Taxonomy below subspecies; a variety (in bacteria, fungi or virus) usually based on its pathogenic properties. Sometimes used as equivalent to subspecies.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	industrial effluent percent	percentage of industrial effluents received by wastewater treatment plant	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total carbon	total carbon content	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host tissue sampled	Type of tissue the initial sample was taken from. Controlled vocabulary, http://bioportal.bioontology.org/ontologies/1005)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	phosphate	concentration of phosphate	NULL	0	0
+NCBI-BioSample-Packages-Attributes	air temperature regimen	information about treatment involving an exposure to varying temperatures; should include the temperature, treatment duration, interval and total experimental duration; can include different temperature regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pathogenicity	To what is the entity pathogenic	NULL	0	0
+NCBI-BioSample-Packages-Attributes	height or length	measurement of height or length	NULL	0	0
+NCBI-BioSample-Packages-Attributes	estimated size	Estimated size of genome	NULL	0	0
+NCBI-BioSample-Packages-Attributes	fire	historical and/or physical evidence of fire	NULL	0	0
+NCBI-BioSample-Packages-Attributes	growth hormone regimen	information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment duration, interval and total experimental duration; can include multiple growth hormone regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	annual and seasonal temperature	mean annual and seasonal temperature (oC)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	age	age at the time of sampling; relevant scale depends on species and study, e.g. could be seconds for amoebae or centuries for trees	NULL	0	0
+NCBI-BioSample-Packages-Attributes	tertiary treatment	the process providing a final treatment stage to raise the effluent quality before it is discharged to the receiving environment	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sediment type	information about the sediment type based on major constituents	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host body temperature	core body temperature of the host when sample was collected	NULL	0	0
+NCBI-BioSample-Packages-Attributes	identified by	name of the taxonomist who identified the specimen	NULL	0	0
+NCBI-BioSample-Packages-Attributes	body habitat	original body habitat where the sample was obtained from	NULL	0	0
+NCBI-BioSample-Packages-Attributes	profile position	cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas	NULL	0	0
+NCBI-BioSample-Packages-Attributes	environment feature	descriptor of the local environment. Examples include: harbor, cliff, or lake. EnvO (v 2013-06-14) terms can be found via the link: www.environmentontology.org/Browse-EnvO	NULL	0	0
+NCBI-BioSample-Packages-Attributes	infra specific rank	taxonomic rank information below subspecies level, such as variety, form, rank etc.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	medication code	can include multiple medication codes	NULL	0	0
+NCBI-BioSample-Packages-Attributes	substrain	One level below strain.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	previous land use method	reference or method used in determining previous land use and dates	NULL	0	0
+NCBI-BioSample-Packages-Attributes	mechanical damage	information about any mechanical damage exerted on the plant; can include multiple damages and sites	NULL	0	0
+NCBI-BioSample-Packages-Attributes	texture method	reference or method used in determining soil texture	NULL	0	0
+NCBI-BioSample-Packages-Attributes	alkyl diethers	concentration of alkyl diethers	NULL	0	0
+NCBI-BioSample-Packages-Attributes	filter type	device which removes solid particulates or airborne molecular contaminants	NULL	0	0
+NCBI-BioSample-Packages-Attributes	subspecific genetic lineage	Information about the genetic distinctness of the lineage (eg., biovar, serovar)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total organic carbon	Definition for soil: total organic C content of the soil units of g C/kg soil. Definition otherwise: total organic carbon content	NULL	0	0
+NCBI-BioSample-Packages-Attributes	stud book number		NULL	0	0
+NCBI-BioSample-Packages-Attributes	host HIV status	HIV status of subject, if yes HAART initiation status should also be indicated as [YES or NO]	NULL	0	0
+NCBI-BioSample-Packages-Attributes	ammonium	concentration of ammonium	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host blood pressure systolic	resting systolic blood pressure of the host, measured as mm mercury	NULL	0	0
+NCBI-BioSample-Packages-Attributes	urine collection method	specification of urine collection method	NULL	0	0
+NCBI-BioSample-Packages-Attributes	occupation	most frequent job performed by subject	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gaseous environment	use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	petroleum hydrocarbon	concentration of petroleum hydrocarbon	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pretreatment	the process of pre-treatment removes materials that can be easily collected from the raw wastewater	NULL	0	0
+NCBI-BioSample-Packages-Attributes	lab host	Scientific name and description of the laboratory host used to propagate the source organism or material from which the sample was obtained, e.g., Escherichia coli DH5a, or Homo sapiens HeLa cells	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host diet	type of diet depending on the sample for animals omnivore, herbivore etc., for humans high-fat, meditteranean etc.; can include multiple diet types	NULL	0	0
+NCBI-BioSample-Packages-Attributes	dissolved carbon dioxide	concentration of dissolved carbon dioxide	NULL	0	0
+NCBI-BioSample-Packages-Attributes	mean friction velocity	measurement of mean friction velocity	NULL	0	0
+NCBI-BioSample-Packages-Attributes	bacterial production	bacterial production in the water column measured by isotope uptake	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total nitrogen	total nitrogen content of the sample	NULL	0	0
+NCBI-BioSample-Packages-Attributes	diether lipids	concentration of diether lipids; can include multiple types of diether lipids	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total dissolved nitrogen	total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen	NULL	0	0
+NCBI-BioSample-Packages-Attributes	biomaterial provider	name and address of the lab or PI, or a culture collection identifier	NULL	0	0
+NCBI-BioSample-Packages-Attributes	subgroup	Taxonomy below subspecies; sometimes used in viruses to denote subgroups taken from a single isolate.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	chemical oxygen demand	a measure of the relative oxygen-depletion effect of a waste contaminant	NULL	0	0
+NCBI-BioSample-Packages-Attributes	crop rotation	whether or not crop is rotated, and if yes, rotation schedule	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host blood pressure diastolic	resting diastolic blood pressureof the host, measured as mm mercury	NULL	0	0
+NCBI-BioSample-Packages-Attributes	population	for human: ; for plants: filial generation, number of progeny, genetic structure	NULL	0	0
+NCBI-BioSample-Packages-Attributes	birth control	specification of birth control medication used	NULL	0	0
+NCBI-BioSample-Packages-Attributes	carbapenemase	Does the enzyme exhibit carbapenemase activity? If the enzyme does exhibit carbapenemase activity, the response should be "yes", otherwise "no."	NULL	0	0
+NCBI-BioSample-Packages-Attributes	tillage	note method(s) used for tilling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	body product	substance produced by the body, e.g. stool, mucus, where the sample was obtained from	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host growth conditions	literature reference giving growth conditions of the host	NULL	0	0
+NCBI-BioSample-Packages-Attributes	growth media	information about growth media for growing the plants or tissue cultured samples	NULL	0	0
+NCBI-BioSample-Packages-Attributes	horizon method	reference or method used in determining the horizon	NULL	0	0
+NCBI-BioSample-Packages-Attributes	fetal health status	specification of foetal health status, should also include abortion	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pH	pH measurement	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total phosphorus	total phosphorus concentration, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus. Can also be measured without filtering, reported as phosphorus	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sexual activity	current sexual partner and frequency of sex	NULL	0	0
+NCBI-BioSample-Packages-Attributes	texture	the relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (&lt;2 um) with textural name (e.g., silty clay loam) optional.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	trophic level	Feeding position in food chain (eg., chemolithotroph)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pollutants	pollutant types and, amount or concentrations measured at the time of sampling; can report multiple pollutants by entering numeric values preceded by name of pollutant	NULL	0	0
+NCBI-BioSample-Packages-Attributes	risk group		NULL	0	0
+NCBI-BioSample-Packages-Attributes	suspended particulate matter	concentration of suspended particulate matter	NULL	0	0
+NCBI-BioSample-Packages-Attributes	seasonal environment	treatment involving an exposure to a particular season (e.g. winter, summer, rabi, rainy etc.)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	dew point	temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	genotype	observed genotype	NULL	0	0
+NCBI-BioSample-Packages-Attributes	morphology		NULL	0	0
+NCBI-BioSample-Packages-Attributes	organic matter	concentration of organic matter	NULL	0	0
+NCBI-BioSample-Packages-Attributes	biochemical oxygen demand	a measure of the relative oxygen-depletion effect of a waste contaminant	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total phosphate	total amount or concentration of phosphate	NULL	0	0
+NCBI-BioSample-Packages-Attributes	smoker	specification of smoking status	NULL	0	0
+NCBI-BioSample-Packages-Attributes	surface-air contaminant	contaminant identified on surface	NULL	0	0
+NCBI-BioSample-Packages-Attributes	perturbation	type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with time that perturbation occurred; can include multiple perturbation types	NULL	0	0
+NCBI-BioSample-Packages-Attributes	heavy metals	heavy metals present and concentrationsany drug used by subject and the frequency of usage; can include multiple heavy metals and concentrations	NULL	0	0
+NCBI-BioSample-Packages-Attributes	fluorescence	raw or converted fluorescence of water	NULL	0	0
+NCBI-BioSample-Packages-Attributes	downward PAR	visible waveband radiance and irradiance measurements in the water column	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host subject id	a unique identifier by which each subject can be referred to, de-identified, e.g. #131	NULL	0	0
+NCBI-BioSample-Packages-Attributes	environment biome	descriptor of the broad ecological context of a sample. Examples include: desert, taiga, deciduous woodland, or coral reef. EnvO (v 2013-06-14) terms can be found via the link: www.environmentontology.org/Browse-EnvO	NULL	0	0
+NCBI-BioSample-Packages-Attributes	disease	list of diseases diagnosed; can include multiple diagnoses. the value of the field depends on host; for humans the terms should be chosen from DO (Disease Ontology), free text for non-human. For DO terms, please see http://gemina.svn.sourceforge.net/viewvc/gemina/trunk/Gemina/ontologies/gemina_symptom.obo?view=log	NULL	0	0
+NCBI-BioSample-Packages-Attributes	beta-lactamase family	Specify the beta-lactamase family for this gene.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gaseous substances	amount or concentration of substances such as hydrogen sulfide, carbon dioxide, methane, etc.; can include multiple substances	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pregnancy	date due of pregnancy	NULL	0	0
+NCBI-BioSample-Packages-Attributes	surface temperature	temperature of the surface at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	collection date	Date of sampling, in "DD-Mmm-YYYY", "Mmm-YYYY" or "YYYY" format (eg., 30-Oct-1990, Oct-1990 or 1990) or ISO 8601 standard "YYYY-mm-dd", "YYYY-mm" or "YYYY-mm-ddThh:mm:ss" (eg., 1990-10-30, 1990-10 or 1990-10-30T14:41:36)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host sex	Gender or physical sex of the host	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gynecological disorder	history of gynecological disorders; can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	efficiency percent	percentage of volatile solids removed from the anaerobic digestor	NULL	0	0
+NCBI-BioSample-Packages-Attributes	HIV status	HIV status of subject, if yes HAART initiation status should also be indicated as [YES or NO]	NULL	0	0
+NCBI-BioSample-Packages-Attributes	local classification method	reference or method used in determining the local soil classification	NULL	0	0
+NCBI-BioSample-Packages-Attributes	cell type	Type of cell of the sample or from which the sample was obtained.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	anamorph	Genus and species of the asexually reproducing stage of fungi - note that anamorph and teleomorph forms of the same taxon may have used taxonomic different names.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	atmospheric data	measurement of atmospheric data; can include multiple data	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sieving	collection design of pooled samples and/or sieve size and amount of sample sieved	NULL	0	0
+NCBI-BioSample-Packages-Attributes	authority	Authority for the species identification.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	oxygenation status of sample	oxygenation status of sample	NULL	0	0
+NCBI-BioSample-Packages-Attributes	health state	Health or disease status of sample at time of collection	NULL	0	0
+NCBI-BioSample-Packages-Attributes	building setting	location (geography) where a building is set	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host height	the height of subject	NULL	0	0
+NCBI-BioSample-Packages-Attributes	biological material	Identifier for the biological material from which the nucleic acid sequenced was obtained.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	water content of soil method	reference or method used in determining the water content of soil	NULL	0	0
+NCBI-BioSample-Packages-Attributes	emulsions	amount or concentration of substances such as paints, adhesives, mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion types	NULL	0	0
+NCBI-BioSample-Packages-Attributes	biospecimen repository	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host description	Additional information not included in other defined vocabulary fields	NULL	0	0
+NCBI-BioSample-Packages-Attributes	n alkanes	concentration of n-alkanes; can include multiple n-alkanes	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pH regimen	information about treatment involving exposure of plants to varying levels of pH of the growth media; can include multiple regimen	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host health state	Information regarding health state of the individual sampled at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	reference for biomaterial	Primary publication or genome report	NULL	0	0
+NCBI-BioSample-Packages-Attributes	particulate organic nitrogen	concentration of particulate organic nitrogen	NULL	0	0
+NCBI-BioSample-Packages-Attributes	chemical mutagen	treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment duration, interval and total experimental duration; can include multiple mutagen regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	carbon monoxide	carbon monoxide (gas) amount or concentration at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	blood pressure diastolic	resting diastolic blood pressure, measured as mm mercury	NULL	0	0
+NCBI-BioSample-Packages-Attributes	presence of pets or farm animals	specification of presence of pets or farm animals in the environment of subject, if yes the animals should be specified; can include multiple animals present	NULL	0	0
+NCBI-BioSample-Packages-Attributes	amniotic fluid color	specification of the color of the amniotic fluid sample	NULL	0	0
+NCBI-BioSample-Packages-Attributes	glucosidase activity	measurement of glucosidase activity	NULL	0	0
+NCBI-BioSample-Packages-Attributes	carbon dioxide	carbon dioxide (gas) amount or concentration at the time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	breed	breed name - chiefly used in domesticated animals or plants	NULL	0	0
+NCBI-BioSample-Packages-Attributes	antibiotic regimen	information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment duration, interval and total experimental duration; can include multiple antibiotic regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	barometric pressure	force per unit area exerted against a surface by the weight of air above that surface	NULL	0	0
+NCBI-BioSample-Packages-Attributes	agrochemical additions	addition of fertilizers, pesticides, etc. - amount and time of applications	NULL	0	0
+NCBI-BioSample-Packages-Attributes	clone	Name for the clone or subculture from which the sample was taken.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sulfide	concentration of sulfide	NULL	0	0
+NCBI-BioSample-Packages-Attributes	occupant density at sampling	average number of occupants at time of sampling per square footage	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host disease outcome	Final outcome of disease, e.g., death, chronic disease, recovery	NULL	0	0
+NCBI-BioSample-Packages-Attributes	soluble reactive phosphorus	concentration of soluble reactive phosphorus	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host wet mass	measurement of wet mass	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host substrate	the growth substrate of the host	NULL	0	0
+NCBI-BioSample-Packages-Attributes	medical history performed	whether full medical history was collected	NULL	0	0
+NCBI-BioSample-Packages-Attributes	miscellaneous parameter	any other measurement performed or parameter collected, that is not listed here	NULL	0	0
+NCBI-BioSample-Packages-Attributes	ventilation type	ventilation system used in the sampled premises	NULL	0	0
+NCBI-BioSample-Packages-Attributes	experimental factor	Variable aspect of experimental design	NULL	0	0
+NCBI-BioSample-Packages-Attributes	particle classification	particles are classified, based on their size, into six general categories:clay, silt, sand, gravel, cobbles, and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values	NULL	0	0
+NCBI-BioSample-Packages-Attributes	chloride	concentration of chloride	NULL	0	0
+NCBI-BioSample-Packages-Attributes	soluble inorganic material	concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	Population Description	The full, unabbreviated population descriptor from the Coriell Institute	NULL	0	0
+NCBI-BioSample-Packages-Attributes	climate environment	treatment involving an exposure to a particular climate; can include multiple climates	NULL	0	0
+NCBI-BioSample-Packages-Attributes	links to additional analysis		NULL	0	0
+NCBI-BioSample-Packages-Attributes	organic carbon	concentration of organic carbon	NULL	0	0
+NCBI-BioSample-Packages-Attributes	life stage	description of life stage	NULL	0	0
+NCBI-BioSample-Packages-Attributes	temperature	temperature of the sample at time of sampling	NULL	0	0
+NCBI-BioSample-Packages-Attributes	subsource note		NULL	0	0
+NCBI-BioSample-Packages-Attributes	organism modifier note		NULL	0	0
+NCBI-BioSample-Packages-Attributes	host phenotype		NULL	0	0
+NCBI-BioSample-Packages-Attributes	environmental package	MIGS/MIMS/MIENS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported	NULL	0	0
+NCBI-BioSample-Packages-Attributes	aminopeptidase activity	measurement of aminopeptidase activity	NULL	0	0
+NCBI-BioSample-Packages-Attributes	blood pressure systolic	resting systolic blood pressure, measured as mm mercury	NULL	0	0
+NCBI-BioSample-Packages-Attributes	surface moisture pH	pH measurement of surface	NULL	0	0
+NCBI-BioSample-Packages-Attributes	submitter-asserted type strain		NULL	0	0
+NCBI-BioSample-Packages-Attributes	light intensity	measurement of light intensity	NULL	0	0
+NCBI-BioSample-Packages-Attributes	menarche	date of most recent menstruation	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample name	sample name in source database	NULL	0	0
+NCBI-BioSample-Packages-Attributes	histological type	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total inorganic nitrogen	total inorganic nitrogen content	NULL	0	0
+NCBI-BioSample-Packages-Attributes	ethnicity	ethnicity of the subject	NULL	0	0
+NCBI-BioSample-Packages-Attributes	variety		NULL	0	0
+NCBI-BioSample-Packages-Attributes	primary production	measurement of primary production	NULL	0	0
+NCBI-BioSample-Packages-Attributes	altitude	The altitude of the sample is the vertical distance between Earth's surface above Sea Level and the sampled position in the air.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	biospecimen repository sample id	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	magnesium	concentration of magnesium	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gravidity	whether or not subject is gravid, and if yes date due or date post-conception, specifying which is used	NULL	0	0
+NCBI-BioSample-Packages-Attributes	cell subtype		NULL	0	0
+NCBI-BioSample-Packages-Attributes	gap consent code	technical dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sulfate	concentration of sulfate	NULL	0	0
+NCBI-BioSample-Packages-Attributes	hysterectomy	specification of whether hysterectomy was performed	NULL	0	0
+NCBI-BioSample-Packages-Attributes	time since last wash	specification of the time since last wash	NULL	0	0
+NCBI-BioSample-Packages-Attributes	diet		NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample storage temperature		NULL	0	0
+NCBI-BioSample-Packages-Attributes	karyotype		NULL	0	0
+NCBI-BioSample-Packages-Attributes	solar irradiance	the amount of solar energy that arrives at a specific area of a surface during a specific time interval	NULL	0	0
+NCBI-BioSample-Packages-Attributes	soluble organic material	concentration of substances such as urea, fruit sugars, soluble proteins, drugs, pharmaceuticals, etc.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pesticide regimen	information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment duration, interval and total experimental duration; can include multiple pesticide regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total depth of water column	measurement of total depth of water column	NULL	0	0
+NCBI-BioSample-Packages-Attributes	organic nitrogen	concentration of organic nitrogen	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sub species		NULL	0	0
+NCBI-BioSample-Packages-Attributes	mineral nutrient regimen	information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment duration, interval and total experimental duration; can include multiple mineral nutrient regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	forma specialis	Usually applied to fungus adapted to a specific host.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	family role	relationships to other samples in the same study; can include multiple relationships	NULL	0	0
+NCBI-BioSample-Packages-Attributes	twin sibling existence	specification of twin sibling presence	NULL	0	0
+NCBI-BioSample-Packages-Attributes	dissolved inorganic nitrogen	concentration of dissolved inorganic nitrogen	NULL	0	0
+NCBI-BioSample-Packages-Attributes	biomass	amount of biomass; should include the name for the part of biomass measured, e.g. microbial, total. can include multiple measurements	NULL	0	0
+NCBI-BioSample-Packages-Attributes	phaeopigments	concentration of phaeopigments; can include multiple phaeopigments	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host genotype		NULL	0	0
+NCBI-BioSample-Packages-Attributes	photon flux	measurement of photon flux	NULL	0	0
+NCBI-BioSample-Packages-Attributes	dissolved hydrogen	concentration of dissolved hydrogen	NULL	0	0
+NCBI-BioSample-Packages-Attributes	urogenital disorder	history of urogenital disorders, can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	aluminium saturation	aluminum saturation (esp. for tropical soils)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	dominant hand	dominant hand of the subject	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host pulse	resting pulse of the host, measured as beats per minute	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host body mass index	body mass index of the host, calculated as weight/(height)squared	NULL	0	0
+NCBI-BioSample-Packages-Attributes	ploidy	Ploidy level of genome (eg., haploid, diploid)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	chlorophyll	concentration of chlorophyll	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample collection device or method	Method or device employed for collecting sample	NULL	0	0
+NCBI-BioSample-Packages-Attributes	isolate name alias		NULL	0	0
+NCBI-BioSample-Packages-Attributes	total organic carbon method	reference or method used in determining total organic C	NULL	0	0
+NCBI-BioSample-Packages-Attributes	non mineral nutrient regimen	information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral nutrient, amount administered, treatment duration, interval and total experimental duration; can include multiple non-mineral nutrient regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	bromide	concentration of bromide	NULL	0	0
+NCBI-BioSample-Packages-Attributes	breeding history		NULL	0	0
+NCBI-BioSample-Packages-Attributes	host infra specific name	taxonomic information subspecies level	NULL	0	0
+NCBI-BioSample-Packages-Attributes	indoor surface	type of indoor surface	NULL	0	0
+NCBI-BioSample-Packages-Attributes	nose/mouth/teeth/throat disorder	history of nose/mouth/teeth/throat disorders; can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	blood disorder	history of blood disorders; can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	douche	date of most recent douche	NULL	0	0
+NCBI-BioSample-Packages-Attributes	bacterial carbon production	measurement of bacterial carbon production	NULL	0	0
+NCBI-BioSample-Packages-Attributes	liver disorder	history of liver disorders; can include multiple disorders	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gap study version	technical dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	water content of soil	water content (g/g or cm3/cm3)	NULL	0	0
+NCBI-BioSample-Packages-Attributes	absolute air humidity	actual mass of water vapor - mh20 - present in the air water vapor mixture	NULL	0	0
+NCBI-BioSample-Packages-Attributes	study completion status	specification of study completion status, if no the reason should be specified	NULL	0	0
+NCBI-BioSample-Packages-Attributes	standing water regimen	treatment involving an exposure to standing water during a plant's life span, types can be flood water or standing water; can include multiple regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	specimen voucher	Identifier for the physical specimen. Use format: "[&lt;institution-code&gt;:[&lt;collection-code&gt;:]]&lt;specimen_id&gt;", eg, "UAM:Mamm:52179". Intended as a reference to the physical specimen that remains after it was analyzed. If the specimen was destroyed in the process of analysis, electronic images (e-vouchers) are an adequate substitute for a physical voucher specimen. Ideally the specimens will be deposited in a curated museum, herbarium, or frozen tissue collection, but often they will remain in a personal or laboratory collection for some time before they are deposited in a curated collection. There are three forms of specimen_voucher qualifiers. If the text of the qualifier includes one or more colons it is a 'structured voucher'. Structured vouchers include institution-codes (and optional collection-codes) taken from a controlled vocabulary maintained by the INSDC that denotes the museum or herbarium collection where the specimen resides, please visit: http://www.insdc.org/controlled-vocabulary-specimenvoucher-qualifier.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	substructure type	substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level	NULL	0	0
+NCBI-BioSample-Packages-Attributes	subject is affected	Case vs control status for the subject of this sample, for case-control studies	NULL	0	0
+NCBI-BioSample-Packages-Attributes	study name	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pH method	reference or method used in determining pH	NULL	0	0
+NCBI-BioSample-Packages-Attributes	pooling of DNA extracts	were multiple DNA extractions mixed? how many?	NULL	0	0
+NCBI-BioSample-Packages-Attributes	water temperature regimen	information about treatment involving an exposure to water with varying degree of temperature; can include multiple regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample volume or weight for DNA extraction	volume (mL) or weight (g) of sample processed for DNA extraction	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host shape	morphological shape of host	NULL	0	0
+NCBI-BioSample-Packages-Attributes	serovar	Taxonomy below subspecies; a variety (in bacteria, fungi or virus) usually based on its antigenic properties. Same as serovar and serotype. Sometimes used as species identifier in bacteria with shaky taxonomy, e.g. Leptospira, serovar saopaolo S76607 (65357 in Entrez).	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host taxonomy ID	NCBI taxonomy ID of the host, e.g. 9606	NULL	0	0
+NCBI-BioSample-Packages-Attributes	turbidity	turbidity measurement	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample use	dbgap_public dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gestation state	specification of the gestation state	NULL	0	0
+NCBI-BioSample-Packages-Attributes	sample salinity		NULL	0	0
+NCBI-BioSample-Packages-Attributes	humidity regimen	information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment duration, interval and total experimental duration; can include multiple regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	strain	microbial or eukaryotic strain name	NULL	0	0
+NCBI-BioSample-Packages-Attributes	microbial biomass	the part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 µm. IF you keep this, you would need to have correction factors used for conversion to the final units, which should be mg C (or N)/kg soil).	NULL	0	0
+NCBI-BioSample-Packages-Attributes	geographic location	Geographical origin of the sample; use the appropriate name from this list http://www.insdc.org/documents/country-qualifier-vocabulary. Use a colon to separate the country or ocean from more detailed information about the location, eg "Canada: Vancouver" or "Germany: halfway down Zugspitze, Alps"	NULL	0	0
+NCBI-BioSample-Packages-Attributes	bishomohopanol	concentration of bishomohopanol	NULL	0	0
+NCBI-BioSample-Packages-Attributes	family id		NULL	0	0
+NCBI-BioSample-Packages-Attributes	dose		NULL	0	0
+NCBI-BioSample-Packages-Attributes	herbicide regimen	information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment duration, interval and total experimental duration; can include multiple regimens	NULL	0	0
+NCBI-BioSample-Packages-Attributes	total particulate carbon	total particulate carbon content	NULL	0	0
+NCBI-BioSample-Packages-Attributes	water content	water content measurement	NULL	0	0
+NCBI-BioSample-Packages-Attributes	component organism	a component organism of the mixed sample; use the full taxonomic name, eg, "Bordetella pertussis"	NULL	0	0
+NCBI-BioSample-Packages-Attributes	particulate organic carbon	concentration of particulate organic carbon	NULL	0	0
+NCBI-BioSample-Packages-Attributes	host length	the length of subject	NULL	0	0
+NCBI-BioSample-Packages-Attributes	aluminium saturation method	reference or method used in determining Al saturation	NULL	0	0
+NCBI-BioSample-Packages-Attributes	tidal stage	stage of tide	NULL	0	0
+NCBI-BioSample-Packages-Attributes	environment material	material that was displaced by the sample, or material in which a sample was embedded, prior to the sampling event.  Examples include: air, soil, or water. EnvO (v 2013-06-14) terms can be found via the link: www.environmentontology.org/Browse-EnvO	NULL	0	0
+NCBI-BioSample-Packages-Attributes	mating type		NULL	0	0
+NCBI-BioSample-Packages-Attributes	host total mass	total mass of the host at collection, the unit depends on host	NULL	0	0
+NCBI-BioSample-Packages-Attributes	gap consent short name	technical dictionary	NULL	0	0
+NCBI-BioSample-Packages-Attributes	major diet change in last six months	specification of major diet changes in the last six months, if yes the change should be specified	NULL	0	0
+NCBI-BioSample-Packages-Attributes	indoor space	a distinguishable space within a structure, the purpose for which discrete areas of a building is used	NULL	0	0
+NCBI-BioSample-Packages-Attributes	haplotype	Name of the haplotype. Primarily used for identification. A combination of alleles at multiple loci on the same chromosome that are closely linked and tend to be inherited as a unit.	NULL	0	0
+NCBI-BioSample-Packages-Attributes	relationship to oxygen	Aerobic or anaerobic	NULL	0	0
+NCBI-BioSample-Packages-Attributes	encoded traits	Traits like antibiotic resistance/xenobiotic degration phenotypes/converting phage genes	NULL	0	0

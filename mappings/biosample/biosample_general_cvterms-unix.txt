@@ -1,0 +1,10 @@
+cv	name	description	dbxref	is_obsolete	is_relationship
+NCBI_BioSample	accession	Accession number of sequence	NULL	0	0
+NCBI_BioSample	modificationdate	Date of last update	NULL	0	0
+NCBI_BioSample	organism	Scientific and common names of organism, and all higher levels of taxonomy	NULL	0	0
+NCBI_BioSample	organization	Submitter Organization(s)	NULL	0	0
+NCBI_BioSample	package	NA	NULL	0	0
+NCBI_BioSample	publicationdate	Date sequence added to GenBank	NULL	0	0
+NCBI_BioSample	sampledata	Classification by source qualifiers and molecule type	NULL	0	0
+NCBI_BioSample	title	Words in definition line	NULL	0	0
+NCBI_BioSample	uid	Unique number assigned to publication	NULL	0	0

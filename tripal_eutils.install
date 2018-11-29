@@ -5,6 +5,75 @@
  */
 function tripal_eutils_install() {
   tripal_eutils_add_biosample_db();
+  tripal_eutils_insert_biosample_attribute_terms();
+}
+
+function tripal_eutils_insert_biosample_attribute_terms() {
+  tripal_insert_cvterm([
+    'id' => 'local:age',
+    'name' => 'Age',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:breed',
+    'name' => 'Age',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:collection_date',
+    'name' => 'Collection Date',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:cultivar',
+    'name' => 'Cultivar',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:dev_stage',
+    'name' => 'Developmental Stage',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:geo_loc_name',
+    'name' => 'Geographic Location (Name)',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:isolation_source',
+    'name' => 'Isolation Source',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:orgmod_note',
+    'name' => 'Organism Modification Note',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:phenotype',
+    'name' => 'Phenotype',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:sex',
+    'name' => 'Sex',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:strain',
+    'name' => 'Strain',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:sub_species',
+    'name' => 'Subspecies',
+    'cv_name' => 'local',
+  ]);
+  tripal_insert_cvterm([
+    'id' => 'local:tissue',
+    'name' => 'Tissue',
+    'cv_name' => 'local',
+  ]);
 }
 
 /**
