@@ -25,10 +25,14 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
   ];
 
   /**
+   * Takes data from the EUtilsBioSampleParser and creates the chado records
+   * needed including biosample, accessions and props.
+   *
    * @param array $data
    *
    * @return object
    * @throws \Exception
+   * @see \EUtilsBioSampleParser::parse() to get the data array needed.
    */
   public function create($data) {
     $this->validateFields($data);
@@ -48,6 +52,14 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     return $bio_sample;
   }
 
+  /**
+   * Create a bio sample record.
+   *
+   * @param array $data See chado.biomaterial schema
+   *
+   * @return mixed
+   * @throws \Exception
+   */
   public function createBioSample(array $data) {
     $id = db_insert('chado.biomaterial')->values($data)->execute();
 
@@ -61,6 +73,14 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
       ->fetchObject();
   }
 
+  /**
+   * Creates a set of accessions attaches them with the given biosample.
+   *
+   * @param object $bio_sample The BioSample created by createBioSample()
+   * @param array $accessions
+   *
+   * @return array
+   */
   public function createAccessions($bio_sample, array $accessions) {
     $data = [];
 
@@ -71,8 +91,28 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     return $data;
   }
 
+  /**
+   * Creates a new accession record if does not exist and attaches it to
+   * the given biosample.
+   *
+   * @param object $bio_sample
+   * @param object $accession
+   *
+   * @return mixed
+   * @throws \Exception
+   */
   public function createAccession($bio_sample, $accession) {
-    $dbxref = $this->getAccessionByName($accession);
+    if (!isset($accession['db'])) {
+      return NULL;
+    }
+
+    $db = $this->getDB('NCBI ' . $accession['db']);
+
+    if (!$db) {
+      return NULL;
+    }
+
+    $dbxref = $this->getAccessionByName($accession['value'], $db->db_id);
 
     if ($dbxref) {
       $this->linkBioSampleToAccession($bio_sample->biomaterial_id,
@@ -81,18 +121,29 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
       return $dbxref;
     }
 
-    $id = db_insert('chado.dbxref')->values([
-      'db_id' => $this->getDB('NCBI BioSample')->db_id,
-      'accession' => $accession,
-    ])->execute();
+    if ($db) {
+      $id = db_insert('chado.dbxref')->values([
+        'db_id' => $db->db_id,
+        'accession' => $accession['value'],
+      ])->execute();
 
-    static::$cache['accessions'][$accession] = $this->getAccessionByID($id);
+      $this->linkBioSampleToAccession($bio_sample->biomaterial_id, $id);
 
-    $this->linkBioSampleToAccession($bio_sample->biomaterial_id, $id);
+      return static::$cache['accessions'][$accession['value']] = $this->getAccessionByID($id);
+    }
 
-    return static::$cache['accessions'][$accession];
+    return NULL;
   }
 
+  /**
+   * Attach an accession to a biosample.
+   *
+   * @param int $bio_sample_id
+   * @param int $accession_id
+   *
+   * @return \DatabaseStatementInterface|int
+   * @throws \Exception
+   */
   public function linkBioSampleToAccession($bio_sample_id, $accession_id) {
     return db_insert('chado.biomaterial_dbxref')->values([
       'biomaterial_id' => $bio_sample_id,
@@ -100,6 +151,13 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     ])->execute();
   }
 
+  /**
+   * Get accession by dbxref id.
+   *
+   * @param int $id
+   *
+   * @return mixed
+   */
   public function getAccessionByID($id) {
     return db_select('chado.dbxref', 'd')
       ->fields('d')
@@ -108,7 +166,16 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
       ->fetchObject();
   }
 
-  public function getAccessionByName($name) {
+  /**
+   * Look up an accession in chado.dbxref. Retrieves record from cache
+   * if predetermined.
+   *
+   * @param string $name The accession identifier (dbxref.accession).
+   * @param int $db_id Name of the DB ID.
+   *
+   * @return mixed
+   */
+  public function getAccessionByName($name, $db_id) {
     if (isset(static::$cache['accessions'][$name])) {
       return static::$cache['accessions'][$name];
     }
@@ -116,6 +183,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     $accession = db_select('chado.dbxref', 'd')
       ->fields('d')
       ->condition('accession', $name)
+      ->condition('db_id', $db_id)
       ->execute()
       ->fetchObject();
 
@@ -126,6 +194,13 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     return $accession;
   }
 
+  /**
+   * Get chado.db record by name. Retrieves data from cache if predetermined.
+   *
+   * @param string $name
+   *
+   * @return mixed
+   */
   public function getDB($name) {
     if (isset(static::$cache['db'][$name])) {
       return static::$cache['db'][$name];
@@ -137,13 +212,13 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
       ->fetchObject();
 
     if ($db) {
-      static::$cache['db'][$name] = $db;
+      return static::$cache['db'][$name] = $db;
     }
 
-    return static::$cache['db'][$name];
+    return NULL;
   }
 
-  public function createProps($props) {
-
+  public function createProps($bio_sample, $props) {
+    
   }
 }

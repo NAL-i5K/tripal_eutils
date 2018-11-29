@@ -4,6 +4,7 @@
  * Implements hook_install()
  */
 function tripal_eutils_install() {
+  tripal_eutils_add_biosample_db();
 }
 
 /**
