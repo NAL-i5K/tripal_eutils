@@ -12,9 +12,11 @@
 function tripal_eutils_import_form($form, &$form_state) {
 
   $form['instructions'] = [
-    '#markup' => '<p>Instructions for using this form.</p>
-<p>Please enter an accession and specify a database.</p>
-<p>Supported databases:  Biosample </p>',
+    '#markup' => '<p>Please enter an accession and specify a database.</p>
+<p>Supported databases:  Biosample </p>
+
+<p>Press the <b>Preview Record</b> button to view the retrieved data and metadata.  Pressing <b>Create Chado Record</b> will create the record.</p>
+',
   ];
 
 
@@ -43,7 +45,7 @@ function tripal_eutils_import_form($form, &$form_state) {
   $form['callback'] = ['#type' => 'button', '#value' => "Preview Record"];
 
 
-  if (isset   ($form_state['values']['parsed'])) {
+  if (isset($form_state['values']['parsed'])) {
 
     $parsed = $form_state['values']['parsed'];
 
@@ -59,7 +61,7 @@ function tripal_eutils_import_form($form, &$form_state) {
 
         $form['data'][] = [
           '#type' => 'item',
-          '#title' => $key,
+          '#title' => ucfirst($key),
           '#markup' => $item,
         ];
         continue;
@@ -77,8 +79,9 @@ function tripal_eutils_import_form($form, &$form_state) {
 
         $table = theme('table', ['rows' => $rows, 'header' => $header]);
         $form['data'][] = [
+          '#type' => 'item',
           '#markup' => $table,
-          '#prefix' => '<h3>Attributes</h3>',
+          '#title' => ucfirst($key),
         ];
 
         continue;
@@ -97,7 +100,8 @@ function tripal_eutils_import_form($form, &$form_state) {
         $table = theme('table', ['rows' => $rows, 'header' => $header]);
         $form['data'][] = [
           '#markup' => $table,
-          '#prefix' => '<h3>Accessions</h3>',
+          '#prefix' => ucfirst($key),
+          '#type' => 'item',
         ];
         continue;
 
@@ -109,7 +113,7 @@ function tripal_eutils_import_form($form, &$form_state) {
 
           $form['data'][] = [
             '#type' => 'item',
-            '#title' => $key,
+            '#title' => ucfirst($key),
             '#markup' => $record,
           ];
           continue;
@@ -119,8 +123,7 @@ function tripal_eutils_import_form($form, &$form_state) {
       }
 
     }
-
-
+    //End submission state
   }
 
 
@@ -149,21 +152,18 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
   if (!$db) {
     form_set_error('db', 'please select a valid db');
   }
+
+
+  if (!$accession) {
+    form_set_error('accession', 'please enter an accession');
+  }
   $connection = new \EUtils();
-
-  //parse xml
-
 
   try {
     $result = $connection->lookupAccessions($db, [$accession]);
-
-
     $parser = new \EUtilsBioSampleParser();
 
-    $repo = new \EUtilsBioSampleRepository();
-
     $parsed = $parser->parse($result);
-
 
     $form_state['values']['parsed'] = $parsed;
 
@@ -171,11 +171,44 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
   } catch (\Exception $e) {
 
     tripal_set_message($e, TRIPAL_ERROR);
-
   }
 
 }
 
 function tripal_eutils_import_form_submit($form, &$form_state) {
+
+
+  $vals = $form_state['values'];
+
+  $db = $vals['db'];
+  $accession = $vals['accession'];
+
+
+  if (!$db) {
+    form_set_error('db', 'please select a valid db');
+  }
+
+
+  if (!$accession) {
+    form_set_error('accession', 'please enter an accession');
+  }
+  $connection = new \EUtils();
+
+  //TODO: how do we know which parser and repo to use?  EUTils would handle that?
+
+  try {
+    $result = $connection->lookupAccessions($db, [$accession]);
+    $parser = new \EUtilsBioSampleParser();
+
+    $parsed = $parser->parse($result);
+
+    $repo = new \EUtilsBioSampleRepository();
+
+
+  } catch (\Exception $e) {
+
+    tripal_set_message($e, TRIPAL_ERROR);
+  }
+
 
 }
