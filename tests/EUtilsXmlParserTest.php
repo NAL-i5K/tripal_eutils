@@ -178,8 +178,6 @@ class EUtilsXmlParserTest extends TripalTestCase {
     $this->assertNotNull($assembly['attributes']);
     $this->assertNotNull($assembly['description']);
 
-
-    var_dump($assembly['attributes']);
   }
 
   /**
