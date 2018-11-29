@@ -22,6 +22,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
   protected static $cache = [
     'db' => [],
     'accessions' => [],
+    'biosamples',
   ];
 
   /**
@@ -40,7 +41,8 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     // Create the base record
     $bio_sample = $this->createBioSample([
       'name' => $data['name'],
-      'description' => $data['description'],
+      'description' => is_array($data['description']) ? implode("\n",
+        $data['description']) : $data['description'],
     ]);
 
     // Create the accessions
@@ -61,16 +63,54 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
    * @throws \Exception
    */
   public function createBioSample(array $data) {
-    $id = db_insert('chado.biomaterial')->values($data)->execute();
+    // Name is unique so find the biomaterial first.
+    $biosample = $this->getBioSample($data['name']);
+
+    if (!empty($biosample)) {
+      return $biosample;
+    }
+
+    $id = db_insert('chado.biomaterial')->fields([
+      'name' => $data['name'] ?? '',
+      'description' => $data['description'] ?? '',
+    ])->execute();
 
     if (!$id) {
       throw new Exception('Unable to create chado.biomaterial record');
     }
 
-    return db_select('chado.biomaterial', 'B')
-      ->condition('B.biomaterial_id', $id)
+    $biosample = db_select('chado.biomaterial', 'B')
+      ->fields('B')
+      ->condition('biomaterial_id', $id)
       ->execute()
       ->fetchObject();
+
+    return static::$cache['biosamples'][$biosample->name] = $biosample;
+  }
+
+  /**
+   * Get biosample from db or cache.
+   *
+   * @param string $name
+   *
+   * @return null
+   */
+  public function getBioSample($name) {
+    if (isset(static::$cache['biosamples'][$name])) {
+      return static::$cache['biosamples'][$name];
+    }
+
+    $biosample = db_select('chado.biomaterial', 'b')
+      ->fields('b')
+      ->condition('name', $name)
+      ->execute()
+      ->fetchObject();
+
+    if (!empty($biosample)) {
+      return static::$cache['biosamples'][$name] = $biosample;
+    }
+
+    return NULL;
   }
 
   /**
@@ -85,7 +125,10 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     $data = [];
 
     foreach ($accessions as $accession) {
-      $data[] = $this->createAccession($bio_sample, $accession);
+      try {
+        $data[] = $this->createAccession($bio_sample, $accession);
+      } catch (Exception $exception) {
+      }
     }
 
     return $data;
@@ -103,26 +146,26 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
    */
   public function createAccession($bio_sample, $accession) {
     if (!isset($accession['db'])) {
-      return NULL;
+      throw new Exception('DB not provided for accession ' . $accession['value']);
     }
 
     $db = $this->getDB('NCBI ' . $accession['db']);
 
-    if (!$db) {
-      return NULL;
+    if (empty($db)) {
+      throw new Exception('Unable to find DB NCBI ' . $accession['db'] . '. Please create DB first.');
     }
 
     $dbxref = $this->getAccessionByName($accession['value'], $db->db_id);
 
-    if ($dbxref) {
+    if (!empty($dbxref)) {
       $this->linkBioSampleToAccession($bio_sample->biomaterial_id,
         $dbxref->dbxref_id);
 
       return $dbxref;
     }
 
-    if ($db) {
-      $id = db_insert('chado.dbxref')->values([
+    if (!empty($db)) {
+      $id = db_insert('chado.dbxref')->fields([
         'db_id' => $db->db_id,
         'accession' => $accession['value'],
       ])->execute();
@@ -145,7 +188,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
    * @throws \Exception
    */
   public function linkBioSampleToAccession($bio_sample_id, $accession_id) {
-    return db_insert('chado.biomaterial_dbxref')->values([
+    return db_insert('chado.biomaterial_dbxref')->fields([
       'biomaterial_id' => $bio_sample_id,
       'dbxref_id' => $accession_id,
     ])->execute();
@@ -187,7 +230,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
       ->execute()
       ->fetchObject();
 
-    if ($accession) {
+    if (!empty($accession)) {
       static::$cache['accessions'][$accession->accession] = $accession;
     }
 
@@ -209,6 +252,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     $db = db_select('chado.db', 'db')
       ->fields('db')
       ->condition('name', $name)
+      ->execute()
       ->fetchObject();
 
     if ($db) {
@@ -219,6 +263,6 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
   }
 
   public function createProps($bio_sample, $props) {
-    
+
   }
 }

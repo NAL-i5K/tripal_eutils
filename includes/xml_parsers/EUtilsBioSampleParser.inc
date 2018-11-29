@@ -13,7 +13,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface{
     $data = [
       'name' => (string) $xml->BioSample->Description->Title,
       'accessions' => $this->extractAttributes($xml->BioSample->Ids),
-      'description' => isset($xml->BioSample->Description->Comment) ? $this->extractParagraphs($xml->BioSample->Description->Comment) : NULL,
+      'description' => isset($xml->BioSample->Description->Comment) ? $this->extractParagraphs($xml->BioSample->Description->Comment) : [],
       'attributes' => $this->extractAttributes($xml->BioSample->Attributes),
     ];
 

@@ -9,6 +9,8 @@ require_once 'includes/xml_parsers/EUtilsXMLParser.inc';
 require_once 'includes/xml_parsers/EUtilsParserInterface.inc';
 require_once 'includes/xml_parsers/EUtilsBioSampleParser.inc';
 require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
+require_once 'includes/repositories/EUtilsRepositoryInterface.php';
+require_once 'includes/repositories/EUtilsBioSampleRepository.php';
 
 /**
  * Implements hook_menu()
