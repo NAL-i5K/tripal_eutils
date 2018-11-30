@@ -4,14 +4,11 @@
 class BiosamplePropertyLookup {
 
 
-  public function lookupAll() {
+  public function lookupAll($file = 'https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml') {
 
     $terms = [];
 
-    $url = 'https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml';
-
-
-    $xml = file_get_contents($url);
+    $xml = file_get_contents($file);
 
     $x = simplexml_load_string($xml);
 
@@ -27,7 +24,10 @@ class BiosamplePropertyLookup {
 
       //we could look at Package if we care where the term comes from.
 
-      $terms[(string)$harmonized_name] = ['label' => (string)$term_label, 'def' => (string)$definition];
+      $terms[(string) $harmonized_name] = [
+        'label' => (string) $term_label,
+        'def' => (string) $definition,
+      ];
 
     }
 
