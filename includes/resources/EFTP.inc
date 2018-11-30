@@ -9,12 +9,14 @@ class EFTP {
 
   /**
    * The FTP URL.
+   *
    * @var string
    */
   protected $url;
 
   /**
    * Contains the content of the downloaded file.
+   *
    * @var string
    */
   protected $file;
@@ -29,8 +31,6 @@ class EFTP {
     $this->url = $url;
     $file = file_get_contents($url);
     $this->file = $file;
-
-    var_dump($url, $file);
   }
 
 

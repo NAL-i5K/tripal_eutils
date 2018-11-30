@@ -9,6 +9,7 @@ services:
 
 env:
   - DRUPAL_ROOT=/var/www/html
+  - IS_TRAVIS=TRUE
 
 before_script:
   - docker pull statonlab/tripal3
