@@ -36,6 +36,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
    * @see \EUtilsBioSampleParser::parse() to get the data array needed.
    */
   public function create($data) {
+    // Throw an exception if a required field is missing
     $this->validateFields($data);
 
     // Create the base record
@@ -96,10 +97,12 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
    * @return null
    */
   public function getBioSample($name) {
+    // If the biosample is available in our static cache, return it
     if (isset(static::$cache['biosamples'][$name])) {
       return static::$cache['biosamples'][$name];
     }
 
+    // Find the biosample and add it to the cache
     $biosample = db_select('chado.biomaterial', 'b')
       ->fields('b')
       ->condition('name', $name)
@@ -128,6 +131,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
       try {
         $data[] = $this->createAccession($bio_sample, $accession);
       } catch (Exception $exception) {
+        // For the time being, ignore all exceptions
       }
     }
 
@@ -262,6 +266,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     return NULL;
   }
 
+  // TODO: Implement props
   public function createProps($bio_sample, $props) {
 
   }
