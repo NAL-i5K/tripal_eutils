@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Class EUtilsBioProjectParser
+ *
+ * Note that projects dont have reliable attribute listings.
+ */
 class EUtilsBioProjectParser implements EUtilsParserInterface {
 
   /**
@@ -14,6 +19,8 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
       'description' => '',
       'accessions' => [],
       'attributes' => [],
+      //Expected keys for linked records:  Contact, biomaterial, analysis, organism
+      'linked_records' => [],
     ];
 
 
@@ -21,13 +28,21 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
     $projects = $xml->xpath('DocumentSummary/Project');
     $project = $projects[0];
 
-    if (!$project){
-      var_dump($xml);
+    if (!$project) {
+
+      $e = 'Unexpected XML structure';
+
+      throwException($e);
     }
 
     $children = $project->children();
     foreach ($children as $key => $child) {
       switch ($key) {
+
+        case 'ProjectID':
+          //Accession for the project.
+          $primary_xref = $child->ArchiveID;
+          break;
 
         case 'ProjectDescr':
           //Information about the project itself.  Includes title, description
@@ -35,7 +50,6 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
           $name_string = (string) $child->Name . ': ' . (string) $child->Title;
           $info['name'] = $name_string;
           $info['description'] = (string) $child->Description;
-
 
           break;
 
@@ -49,12 +63,32 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
           }
 
           $organism = $target->Organism;
+          $organism_record = [];
 
-          if (!$organism) {
-            break;
+          if ($organism) {
+            //Extract organism info
+
+            $attributes = $organism->attributes();
+
+
+            foreach ($attributes as $attribute_key => $value) {
+
+              $organism_record['attributes'][$attribute_key] = $value;
+              //taxID, species are both ncbi ID- dont want to accidentally think that number is the organism.species value!
+
+            }
+
+            $organism_children = $organism->children();
+
+            foreach ($organism_children as $child => $value){
+
+              $organism_record[(string) $child] = (string) $value;
+            }
+
+            //put complete organism record in $info
+            $info['linked_records']['organism'] = $organism_record;
+
           }
-
-          $attributes = $organism->attributes();
 
           //What about other children and their attributes?
 

@@ -10,20 +10,6 @@ class EUtilsXmlParserTest extends TripalTestCase {
   // Uncomment to auto start and rollback db transactions per test method.
   // use DBTransaction;
 
-  /**
-   * Basic test example.
-   * Tests must begin with the word "test".
-   * See https://phpunit.readthedocs.io/en/latest/ for more information.
-   */
-  public function testInit() {
-    $connection = new \EUtils();
-
-    //$connection->setDB('bioproject');
-    //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
-    $result = $connection->lookupAccessions('bioproject', ['506315']);
-
-    $this->assertInstanceOf(\SimpleXMLElement::class, $result);
-  }
 
   /**
    * @throws \Exception
@@ -53,6 +39,42 @@ class EUtilsXmlParserTest extends TripalTestCase {
     $this->assertArrayHasKey('organization', $submission_info);
     $this->assertEquals('Christian Medical College',
       $submission_info['organization']);
+  }
+
+  /**
+   * @test
+   * @group project
+   *
+   */
+  public function testBioProjectGeneralParsing() {
+
+    $path = DRUPAL_ROOT . '/' . drupal_get_path('module', 'tripal_eutils');
+    foreach (glob("$path/examples/bioprojects/*.xml") as $file) {
+      $parser = new \EUtilsBioProjectParser();
+      $project = $parser->parse(simplexml_load_file($file));
+
+      $this->assertArrayHasKey('name', $project);
+      $this->assertArrayHasKey('accessions', $project);
+      $this->assertArrayHasKey('attributes', $project);
+      $this->assertArrayHasKey('description', $project);
+      $this->assertArrayHasKey('linked_records', $project);
+
+      $this->assertTrue(is_array($project['accessions']));
+      $this->assertTrue(is_array($project['attributes']));
+
+      $accessions = $project['accessions'];
+      $props = $project['tagProps'];
+
+
+      $linked_records = $project['linked_records'];
+
+      $this->assertArrayHasKey('organism', $linked_records);
+
+      //      $this->assertNotEmpty($accessions);
+      //      $this->assertNotEmpty($props);
+
+
+    }
   }
 
   /**
