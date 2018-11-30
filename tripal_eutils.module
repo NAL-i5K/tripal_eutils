@@ -9,6 +9,9 @@ require_once 'includes/resources/EUtils.inc';
 require_once 'includes/resources/EFTP.inc';
 
 
+require_once 'includes/resources/BiosamplePropertyLookup.inc';
+
+
 // Parsers.  Convert XML into keyed arrays.
 require_once 'includes/xml_parsers/EUtilsXMLParser.inc';
 require_once 'includes/xml_parsers/EUtilsParserInterface.inc';
@@ -20,6 +23,7 @@ require_once 'includes/xml_parsers/EUtilsAssemblyParser.inc';
 require_once 'includes/repositories/EUtilsRepositoryInterface.php';
 require_once 'includes/repositories/EUtilsBioSampleRepository.php';
 
+//Repository helpers.  Assist with looking up terms.
 require_once 'includes/TagMapper.inc';
 
 
