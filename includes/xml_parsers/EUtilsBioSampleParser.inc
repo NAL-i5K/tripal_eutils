@@ -11,10 +11,10 @@ class EUtilsBioSampleParser implements EUtilsParserInterface{
    */
   public function parse(SimpleXMLElement $xml) {
     $accessions = $this->extractAttributes($xml->BioSample->Ids);
+    $primary_accession = (string) $xml->BioSample['accession'];
 
     $data = [
-      'name' => $this->getNameFromAccessions($accessions,
-        $xml->BioSample->accession),
+      'name' => $this->getNameFromAccessions($accessions, $primary_accession),
       'accessions' => $accessions,
       'description' => isset($xml->BioSample->Description->Comment) ? $this->extractParagraphs($xml->BioSample->Description->Comment) : [],
       'attributes' => $this->extractAttributes($xml->BioSample->Attributes),

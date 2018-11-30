@@ -127,7 +127,7 @@ class EUtilsBioSampleRepositoryTest extends TripalTestCase{
 
       // Check that BioSample got created
       $biosample = $repo->getBioSample($data['name']);
-      $this->assertNotEmpty($biosample);
+      $this->assertNotEmpty($biosample, "Unable to find Bio Sample: {$data['name']}. File $file");
     }
   }
 }
