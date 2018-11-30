@@ -36,13 +36,16 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
    * @see \EUtilsBioSampleParser::parse() to get the data array needed.
    */
   public function create($data) {
+    // Throw an exception if a required field is missing
     $this->validateFields($data);
 
     // Create the base record
+    $description = is_array($data['description']) ? implode("\n",
+      $data['description']) : $data['description'];
+
     $bio_sample = $this->createBioSample([
       'name' => $data['name'],
-      'description' => is_array($data['description']) ? implode("\n",
-        $data['description']) : $data['description'],
+      'description' => $description,
     ]);
 
     // Create the accessions
@@ -96,17 +99,19 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
    * @return null
    */
   public function getBioSample($name) {
+    // If the biosample is available in our static cache, return it
     if (isset(static::$cache['biosamples'][$name])) {
       return static::$cache['biosamples'][$name];
     }
 
+    // Find the biosample and add it to the cache
     $biosample = db_select('chado.biomaterial', 'b')
       ->fields('b')
       ->condition('name', $name)
       ->execute()
       ->fetchObject();
 
-    if (!empty($biosample)) {
+    if ($biosample) {
       return static::$cache['biosamples'][$name] = $biosample;
     }
 
@@ -128,6 +133,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
       try {
         $data[] = $this->createAccession($bio_sample, $accession);
       } catch (Exception $exception) {
+        // For the time being, ignore all exceptions
       }
     }
 
@@ -262,6 +268,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     return NULL;
   }
 
+  // TODO: Implement props
   public function createProps($bio_sample, $props) {
 
   }
