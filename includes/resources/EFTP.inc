@@ -25,9 +25,12 @@ class EFTP {
    *
    */
   public function setURL($url) {
+
     $this->url = $url;
     $file = file_get_contents($url);
     $this->file = $file;
+
+    var_dump($url, $file);
   }
 
 
@@ -46,8 +49,6 @@ class EFTP {
     $lines = explode("\n", $file);
 
     foreach ($lines as $line) {
-
-      var_dump($line);
 
       if (strpos($line, $field) === 0) {
 
