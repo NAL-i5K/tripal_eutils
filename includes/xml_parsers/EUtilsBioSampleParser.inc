@@ -12,8 +12,8 @@ class EUtilsBioSampleParser implements EUtilsParserInterface{
   public function parse(SimpleXMLElement $xml) {
     $data = [
       'name' => (string) $xml->BioSample->Description->Title,
-      'accession' => (string) $xml->BioSample['accession'],
-      'description' => isset($xml->BioSample->Description->Comment) ? $this->extractParagraphs($xml->BioSample->Description->Comment) : NULL,
+      'accessions' => $this->extractAttributes($xml->BioSample->Ids),
+      'description' => isset($xml->BioSample->Description->Comment) ? $this->extractParagraphs($xml->BioSample->Description->Comment) : [],
       'attributes' => $this->extractAttributes($xml->BioSample->Attributes),
     ];
 

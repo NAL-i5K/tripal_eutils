@@ -47,6 +47,8 @@ class EFTP {
 
     foreach ($lines as $line) {
 
+      var_dump($line);
+
       if (strpos($line, $field) === 0) {
 
         $string = str_replace($field, '', $line);
