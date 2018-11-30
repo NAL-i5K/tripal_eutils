@@ -24,13 +24,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
 
     $this->assertInstanceOf(\SimpleXMLElement::class, $result);
   }
-
-  public function testParserBasicsBioProject() {
-    $parser = new \EUtilsXMLParser();
-    $xml = simplexml_load_file(__DIR__ . '/example_files/example_pertussis.xml');
-    //$parser->loadXML($xml);
-  }
-
+  
   /**
    * @throws \Exception
    */
