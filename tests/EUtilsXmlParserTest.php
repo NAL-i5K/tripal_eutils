@@ -70,6 +70,17 @@ class EUtilsXmlParserTest extends TripalTestCase {
 
       $this->assertArrayHasKey('organism', $linked_records);
 
+      /**
+       * These will be used to lookup biosamples and assemblies.
+       */
+      if (isset($linked_records['locus_tag_prefix'])){
+        $locus_tag = $linked_records['locus_tag_prefix'];
+
+        $this->assertArrayHasKey('value', $locus_tag);
+        $this->assertArrayHasKey('attributes', $locus_tag);
+
+      }
+
       //      $this->assertNotEmpty($accessions);
       //      $this->assertNotEmpty($props);
 
