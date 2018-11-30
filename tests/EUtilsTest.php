@@ -30,7 +30,7 @@ class EUtilsTest extends TripalTestCase{
   public function testBioProjectAttributes() {
     $connection = new \EUtils();
     //$connection->setDB('bioproject');
-    //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
+
     $result = $connection->lookupAccessions('bioproject', ['506315']);
 
     //$result is the XML!
