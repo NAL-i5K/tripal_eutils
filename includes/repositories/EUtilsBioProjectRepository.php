@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
+class EUtilsBioProjectRepository extends EUtilsRepositoryInterface{
 
   /**
    * Required attributes when using the create method.
@@ -26,14 +26,14 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
   ];
 
   /**
-   * Takes data from the EUtilsBioSampleParser and creates the chado records
-   * needed including biosample, accessions and props.
+   * Takes data from the EUtilsBioProjectParser and creates the chado records
+   * needed including project, accessions and props.
    *
    * @param array $data
    *
    * @return object
    * @throws \Exception
-   * @see \EUtilsBioSampleParser::parse() to get the data array needed.
+   * @see \EUtilsBioProjectParser::parse() to get the data array needed.
    */
   public function create($data) {
     // Throw an exception if a required field is missing

@@ -24,7 +24,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
 
     $this->assertInstanceOf(\SimpleXMLElement::class, $result);
   }
-  
+
   /**
    * @throws \Exception
    */
