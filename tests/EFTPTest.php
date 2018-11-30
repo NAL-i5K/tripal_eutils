@@ -29,7 +29,6 @@ $url = 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/285/GCF_000002285.3_C
     $result = $ftp->getField('# Assembly method:');
 
     $this->assertNotEmpty($result);
-
   }
 
   /**
