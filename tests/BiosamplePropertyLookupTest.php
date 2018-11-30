@@ -22,9 +22,8 @@ class BiosamplePropertyLookupTest extends TripalTestCase {
 
 
     //Version 1.0 as of November 29 2018: 456 terms.
-    
-    $this->assertEquals('456', count($terms));
 
+    $this->assertEquals('456', count($terms));
 
   }
 }
