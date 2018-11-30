@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsBioProjectParser implements EUtilsParserInterface{
+class EUtilsBioProjectParser implements EUtilsParserInterface {
 
   /**
    * @param \SimpleXMLElement $xml
@@ -9,17 +9,33 @@ class EUtilsBioProjectParser implements EUtilsParserInterface{
    * @throws \Exception
    */
   public function parse(SimpleXMLElement $xml) {
-    $info = [];
+    $info = [
+      'name' => '',
+      'description' => '',
+      'accessions' => [],
+      'attributes' => [],
+    ];
 
-    //dont expect parent attributes to matter
-    // $attributes = $xml->attributes();
 
-    $children = $xml->children();
+    //Jump to Project node
+    $projects = $xml->xpath('DocumentSummary/Project');
+    $project = $projects[0];
+
+    if (!$project){
+      var_dump($xml);
+    }
+
+    $children = $project->children();
     foreach ($children as $key => $child) {
       switch ($key) {
 
         case 'ProjectDescr':
           //Information about the project itself.  Includes title, description
+
+          $name_string = (string) $child->Name . ': ' . (string) $child->Title;
+          $info['name'] = $name_string;
+          $info['description'] = (string) $child->Description;
+
 
           break;
 
@@ -42,7 +58,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface{
 
           //What about other children and their attributes?
 
-          $info['type']['organism']['taxID'] = $attributes['taxID'];
+          //          $info['type']['organism']['taxID'] = $attributes['taxID'];
 
           break;
 
@@ -64,7 +80,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface{
    *
    * @return array
    */
-  public  function bioProjectSubmission(SimpleXMLElement $xml) {
+  public function bioProjectSubmission(SimpleXMLElement $xml) {
     $info = [];
 
     //First get attributes of parent.

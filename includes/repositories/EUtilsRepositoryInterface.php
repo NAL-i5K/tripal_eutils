@@ -101,4 +101,5 @@ abstract class EUtilsRepositoryInterface{
 
     return NULL;
   }
+
 }
