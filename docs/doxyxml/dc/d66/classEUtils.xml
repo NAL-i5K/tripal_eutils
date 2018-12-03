@@ -17,6 +17,7 @@
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
+<parametertype>string</parametertype>
 <parametername>$db</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -26,15 +27,16 @@
 <simplesect kind="return"><para>string </para></simplesect>
 <parameterlist kind="exception"><parameteritem>
 <parameternamelist>
+<parametername>Exception</parametername>
 </parameternamelist>
 <parameterdescription>
-</parameterdescription>
+<para></para></parameterdescription>
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="53" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="53" bodyend="66"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="55" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="55" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="dc/d66/classEUtils_1a54e85cdc16d5cfa0275dabca24ce62c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -51,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="38" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="38" bodyend="45"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="40" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="40" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="dc/d66/classEUtils_1a0faebd127cee510beac6a3e36c556d8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -86,18 +88,11 @@
 <para>An array of accessions</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para></para></simplesect>
-<parameterlist kind="exception"><parameteritem>
-<parameternamelist>
-</parameternamelist>
-<parameterdescription>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
+<simplesect kind="return"><para>SimpleXMLElement </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="24" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="24" bodyend="36"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="26" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="26" bodyend="38"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -115,31 +110,33 @@
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
+<parametertype>string</parametertype>
 <parametername>$db</parametername>
 </parameternamelist>
 <parameterdescription>
 <para></para></parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>|| </para></simplesect>
+<simplesect kind="return"><para>EFetch|ESearch|ESummary </para></simplesect>
 <parameterlist kind="exception"><parameteritem>
 <parameternamelist>
+<parametername>Exception</parametername>
 </parameternamelist>
 <parameterdescription>
-</parameterdescription>
+<para></para></parameterdescription>
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="74" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="74" bodyend="84"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="76" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="76" bodyend="86"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="13" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="13" bodyend="85"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="13" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="13" bodyend="87"/>
     <listofallmembers>
       <member refid="dc/d66/classEUtils_1a7c72dba979633df69744e0c7756fa5ea" prot="public" virt="non-virtual"><scope>EUtils</scope><name>checkStatus</name></member>
       <member refid="dc/d66/classEUtils_1a54e85cdc16d5cfa0275dabca24ce62c1" prot="public" virt="non-virtual"><scope>EUtils</scope><name>getAttributes</name></member>
