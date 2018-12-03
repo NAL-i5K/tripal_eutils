@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="db/df4/classEUtilsRepositoryInterface" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsRepositoryInterface</compoundname>
+    <derivedcompoundref refid="d2/dd9/classEUtilsBioSampleRepository" prot="public" virt="non-virtual">EUtilsBioSampleRepository</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="db/df4/classEUtilsRepositoryInterface_1a0cfc492fac0e67a9bc5d41c89374f5f1" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsRepositoryInterface::$required_fields</definition>
+        <argsstring></argsstring>
+        <name>$required_fields</name>
+        <initializer>= []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryInterface.php" line="10" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryInterface.php" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/df4/classEUtilsRepositoryInterface_1a74e3e7046a72582a1e5f36ee0be2e5a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepositoryInterface::create</definition>
+        <argsstring>($data)</argsstring>
+        <name>create</name>
+        <param>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a new resource.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>object </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryInterface.php" line="19" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="db/df4/classEUtilsRepositoryInterface_1aa37ea51d684e236afd5d8ca7a15158e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepositoryInterface::validateFields</definition>
+        <argsstring>($data)</argsstring>
+        <name>validateFields</name>
+        <param>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine whether required fields are provided.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryInterface.php" line="27" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryInterface.php" bodystart="27" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="39">
+        <label>EUtilsRepositoryInterface</label>
+        <link refid="db/df4/classEUtilsRepositoryInterface"/>
+      </node>
+      <node id="40">
+        <label>EUtilsBioSampleRepository</label>
+        <link refid="d2/dd9/classEUtilsBioSampleRepository"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryInterface.php" line="3" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryInterface.php" bodystart="3" bodyend="35"/>
+    <listofallmembers>
+      <member refid="db/df4/classEUtilsRepositoryInterface_1a0cfc492fac0e67a9bc5d41c89374f5f1" prot="protected" virt="non-virtual"><scope>EUtilsRepositoryInterface</scope><name>$required_fields</name></member>
+      <member refid="db/df4/classEUtilsRepositoryInterface_1a74e3e7046a72582a1e5f36ee0be2e5a6" prot="public" virt="non-virtual"><scope>EUtilsRepositoryInterface</scope><name>create</name></member>
+      <member refid="db/df4/classEUtilsRepositoryInterface_1aa37ea51d684e236afd5d8ca7a15158e0" prot="public" virt="non-virtual"><scope>EUtilsRepositoryInterface</scope><name>validateFields</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

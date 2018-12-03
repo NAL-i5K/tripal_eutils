@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="de/ded/classEUtilsResource" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsResource</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="de/ded/classEUtilsResource_1a09a3848553d9a10f92633d15a724ddc0" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsResource::$response</definition>
+        <argsstring></argsstring>
+        <name>$response</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" line="17" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/ded/classEUtilsResource_1ab51d73158a545d48029eef8d8025314b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsResource::__construct</definition>
+        <argsstring>($response)</argsstring>
+        <name>__construct</name>
+        <param>
+          <declname>$response</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="de/ded/classEUtilsResource" kindref="compound">EUtilsResource</ref> constructor.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>object</parametertype>
+<parametername>$response</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object returned by drupal_http_request()</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para>drupal_http_request() </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" line="26" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="de/ded/classEUtilsResource_1a0b3eb5fb23097024ae86ab141fccd920" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsResource::dom</definition>
+        <argsstring>()</argsstring>
+        <name>dom</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse response into DOMDocument.</para><para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" line="81" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" bodystart="81" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="de/ded/classEUtilsResource_1a3894bc193d89107fd8864e37a642167c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsResource::headers</definition>
+        <argsstring>()</argsstring>
+        <name>headers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get an array of response headers.</para><para><simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" line="35" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="de/ded/classEUtilsResource_1a44dad25825d201e77ff24f76f07064e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsResource::isSuccessful</definition>
+        <argsstring>()</argsstring>
+        <name>isSuccessful</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the request is successful.</para><para><simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" line="53" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="de/ded/classEUtilsResource_1ae3bd3b5923adf6d3ea5c35e5ddadb6d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsResource::originalBody</definition>
+        <argsstring>()</argsstring>
+        <name>originalBody</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get raw body response.</para><para><simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" line="63" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" bodystart="63" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="de/ded/classEUtilsResource_1a3cf99c9d25e8675b565ed83334fbc9e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsResource::originalResponseObject</definition>
+        <argsstring>()</argsstring>
+        <name>originalResponseObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the response object.</para><para><simplesect kind="return"><para>object </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" line="92" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" bodystart="92" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="de/ded/classEUtilsResource_1ae6266a241b0dba106e7381f6a1d15cf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsResource::status</definition>
+        <argsstring>()</argsstring>
+        <name>status</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the response status code.</para><para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" line="44" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="de/ded/classEUtilsResource_1a2aa208899315229a95ed73fdc09f03a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsResource::xml</definition>
+        <argsstring>()</argsstring>
+        <name>xml</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse response into XML.</para><para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" line="72" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" bodystart="72" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class <ref refid="de/ded/classEUtilsResource" kindref="compound">EUtilsResource</ref></para><para>Provides a set of methods to interact with a response from the <ref refid="dc/d66/classEUtils" kindref="compound">EUtils</ref> API. </para>    </detaileddescription>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" line="10" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsResource.inc" bodystart="10" bodyend="95"/>
+    <listofallmembers>
+      <member refid="de/ded/classEUtilsResource_1a09a3848553d9a10f92633d15a724ddc0" prot="protected" virt="non-virtual"><scope>EUtilsResource</scope><name>$response</name></member>
+      <member refid="de/ded/classEUtilsResource_1ab51d73158a545d48029eef8d8025314b" prot="public" virt="non-virtual"><scope>EUtilsResource</scope><name>__construct</name></member>
+      <member refid="de/ded/classEUtilsResource_1a0b3eb5fb23097024ae86ab141fccd920" prot="public" virt="non-virtual"><scope>EUtilsResource</scope><name>dom</name></member>
+      <member refid="de/ded/classEUtilsResource_1a3894bc193d89107fd8864e37a642167c" prot="public" virt="non-virtual"><scope>EUtilsResource</scope><name>headers</name></member>
+      <member refid="de/ded/classEUtilsResource_1a44dad25825d201e77ff24f76f07064e8" prot="public" virt="non-virtual"><scope>EUtilsResource</scope><name>isSuccessful</name></member>
+      <member refid="de/ded/classEUtilsResource_1ae3bd3b5923adf6d3ea5c35e5ddadb6d0" prot="public" virt="non-virtual"><scope>EUtilsResource</scope><name>originalBody</name></member>
+      <member refid="de/ded/classEUtilsResource_1a3cf99c9d25e8675b565ed83334fbc9e4" prot="public" virt="non-virtual"><scope>EUtilsResource</scope><name>originalResponseObject</name></member>
+      <member refid="de/ded/classEUtilsResource_1ae6266a241b0dba106e7381f6a1d15cf3" prot="public" virt="non-virtual"><scope>EUtilsResource</scope><name>status</name></member>
+      <member refid="de/ded/classEUtilsResource_1a2aa208899315229a95ed73fdc09f03a5" prot="public" virt="non-virtual"><scope>EUtilsResource</scope><name>xml</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

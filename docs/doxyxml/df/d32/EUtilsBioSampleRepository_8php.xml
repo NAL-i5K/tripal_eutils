@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="df/d32/EUtilsBioSampleRepository_8php" kind="file" language="PHP">
+    <compoundname>EUtilsBioSampleRepository.php</compoundname>
+    <innerclass refid="d2/dd9/classEUtilsBioSampleRepository" prot="public">EUtilsBioSampleRepository</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="d2/dd9/classEUtilsBioSampleRepository" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d2/dd9/classEUtilsBioSampleRepository" kindref="compound">EUtilsBioSampleRepository</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="db/df4/classEUtilsRepositoryInterface" kindref="compound">EUtilsRepositoryInterface</ref>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="d2/dd9/classEUtilsBioSampleRepository_1a2ee9e7af69703fbb0565cb9cfa894151" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1a2ee9e7af69703fbb0565cb9cfa894151" kindref="member">$required_fields</ref><sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;name&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;description&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;attributes&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;accessions&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/>];</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="d2/dd9/classEUtilsBioSampleRepository_1afc1db4b8c2f5a22d37ba0e301dbca016" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1afc1db4b8c2f5a22d37ba0e301dbca016" kindref="member">$cache</ref><sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>[],</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;accessions&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>[],</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;biosamples&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>];</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="d2/dd9/classEUtilsBioSampleRepository_1acb5b166f6780f267c742cc7a73ec625b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1acb5b166f6780f267c742cc7a73ec625b" kindref="member">create</ref>($data)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Throw<sp/>an<sp/>exception<sp/>if<sp/>a<sp/>required<sp/>field<sp/>is<sp/>missing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="db/df4/classEUtilsRepositoryInterface_1aa37ea51d684e236afd5d8ca7a15158e0" kindref="member">validateFields</ref>($data);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>the<sp/>base<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>$description<sp/>=<sp/>is_array($data[</highlight><highlight class="stringliteral">&apos;description&apos;</highlight><highlight class="normal">])<sp/>?<sp/>implode(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$data[</highlight><highlight class="stringliteral">&apos;description&apos;</highlight><highlight class="normal">])<sp/>:<sp/>$data[</highlight><highlight class="stringliteral">&apos;description&apos;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>$bio_sample<sp/>=<sp/>$this-&gt;<ref refid="d2/dd9/classEUtilsBioSampleRepository_1a19c1e7c7284be762871126dfdcd8db98" kindref="member">createBioSample</ref>([</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;name&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$data[</highlight><highlight class="stringliteral">&apos;name&apos;</highlight><highlight class="normal">],</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;description&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$description,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>]);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>the<sp/>accessions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d2/dd9/classEUtilsBioSampleRepository_1a73d5cfaaeffdf083be4fa6af42e3fce2" kindref="member">createAccessions</ref>($bio_sample,<sp/>$data[</highlight><highlight class="stringliteral">&apos;accessions&apos;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>the<sp/>props<sp/>(from<sp/>attributes)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d2/dd9/classEUtilsBioSampleRepository_1a33cbf01315cce8902d17838dc7c94e93" kindref="member">createProps</ref>($bio_sample,<sp/>$data[</highlight><highlight class="stringliteral">&apos;attributes&apos;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$bio_sample;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="d2/dd9/classEUtilsBioSampleRepository_1a19c1e7c7284be762871126dfdcd8db98" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1a19c1e7c7284be762871126dfdcd8db98" kindref="member">createBioSample</ref>(array<sp/>$data)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Name<sp/>is<sp/>unique<sp/>so<sp/>find<sp/>the<sp/>biomaterial<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>$biosample<sp/>=<sp/>$this-&gt;<ref refid="d2/dd9/classEUtilsBioSampleRepository_1a5f2f494b7d1f7942f1d314e6309d580c" kindref="member">getBioSample</ref>($data[</highlight><highlight class="stringliteral">&apos;name&apos;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!empty($biosample))<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$biosample;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>$id<sp/>=<sp/>db_insert(</highlight><highlight class="stringliteral">&apos;chado.biomaterial&apos;</highlight><highlight class="normal">)-&gt;fields([</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;name&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$data[</highlight><highlight class="stringliteral">&apos;name&apos;</highlight><highlight class="normal">]<sp/>??<sp/></highlight><highlight class="stringliteral">&apos;&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;description&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$data[</highlight><highlight class="stringliteral">&apos;description&apos;</highlight><highlight class="normal">]<sp/>??<sp/></highlight><highlight class="stringliteral">&apos;&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>])-&gt;execute();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!$id)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&apos;Unable<sp/>to<sp/>create<sp/>chado.biomaterial<sp/>record&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>$biosample<sp/>=<sp/>db_select(</highlight><highlight class="stringliteral">&apos;chado.biomaterial&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;B&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;fields(</highlight><highlight class="charliteral">&apos;B&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;condition(</highlight><highlight class="stringliteral">&apos;biomaterial_id&apos;</highlight><highlight class="normal">,<sp/>$id)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;execute()</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;fetchObject();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static::$cache[</highlight><highlight class="stringliteral">&apos;biosamples&apos;</highlight><highlight class="normal">][$biosample-&gt;name]<sp/>=<sp/>$biosample;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="d2/dd9/classEUtilsBioSampleRepository_1a5f2f494b7d1f7942f1d314e6309d580c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1a5f2f494b7d1f7942f1d314e6309d580c" kindref="member">getBioSample</ref>($name)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>biosample<sp/>is<sp/>available<sp/>in<sp/>our<sp/>static<sp/>cache,<sp/>return<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(isset(static::$cache[</highlight><highlight class="stringliteral">&apos;biosamples&apos;</highlight><highlight class="normal">][$name]))<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static::$cache[</highlight><highlight class="stringliteral">&apos;biosamples&apos;</highlight><highlight class="normal">][$name];</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>the<sp/>biosample<sp/>and<sp/>add<sp/>it<sp/>to<sp/>the<sp/>cache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>$biosample<sp/>=<sp/>db_select(</highlight><highlight class="stringliteral">&apos;chado.biomaterial&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;b&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;fields(</highlight><highlight class="charliteral">&apos;b&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;condition(</highlight><highlight class="stringliteral">&apos;name&apos;</highlight><highlight class="normal">,<sp/>$name)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;execute()</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;fetchObject();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($biosample)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static::$cache[</highlight><highlight class="stringliteral">&apos;biosamples&apos;</highlight><highlight class="normal">][$name]<sp/>=<sp/>$biosample;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="d2/dd9/classEUtilsBioSampleRepository_1a73d5cfaaeffdf083be4fa6af42e3fce2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1a73d5cfaaeffdf083be4fa6af42e3fce2" kindref="member">createAccessions</ref>($bio_sample,<sp/>array<sp/>$accessions)<sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>$data<sp/>=<sp/>[];</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal"><sp/>($accessions<sp/>as<sp/>$accession)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$data[]<sp/>=<sp/>$this-&gt;<ref refid="d2/dd9/classEUtilsBioSampleRepository_1a70802f1de15af21d7cc66b9e39595c8d" kindref="member">createAccession</ref>($bio_sample,<sp/>$accession);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(Exception<sp/>$exception)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>the<sp/>time<sp/>being,<sp/>ignore<sp/>all<sp/>exceptions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$data;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="d2/dd9/classEUtilsBioSampleRepository_1a70802f1de15af21d7cc66b9e39595c8d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1a70802f1de15af21d7cc66b9e39595c8d" kindref="member">createAccession</ref>($bio_sample,<sp/>$accession)<sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!isset($accession[</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">]))<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&apos;DB<sp/>not<sp/>provided<sp/>for<sp/>accession<sp/>&apos;</highlight><highlight class="normal"><sp/>.<sp/>$accession[</highlight><highlight class="stringliteral">&apos;value&apos;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>$db<sp/>=<sp/>$this-&gt;<ref refid="d2/dd9/classEUtilsBioSampleRepository_1af2e3d96087d21a5aabf6747db8a14461" kindref="member">getDB</ref>(</highlight><highlight class="stringliteral">&apos;NCBI<sp/>&apos;</highlight><highlight class="normal"><sp/>.<sp/>$accession[</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(empty($db))<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&apos;Unable<sp/>to<sp/>find<sp/>DB<sp/>NCBI<sp/>&apos;</highlight><highlight class="normal"><sp/>.<sp/>$accession[</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">]<sp/>.<sp/></highlight><highlight class="stringliteral">&apos;.<sp/>Please<sp/>create<sp/>DB<sp/>first.&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>$dbxref<sp/>=<sp/>$this-&gt;<ref refid="d2/dd9/classEUtilsBioSampleRepository_1a2d08444d37d20cf4befa93e3ee06a5bd" kindref="member">getAccessionByName</ref>($accession[</highlight><highlight class="stringliteral">&apos;value&apos;</highlight><highlight class="normal">],<sp/>$db-&gt;db_id);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!empty($dbxref))<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d2/dd9/classEUtilsBioSampleRepository_1a15729a676cac6e13511774553fe8f32f" kindref="member">linkBioSampleToAccession</ref>($bio_sample-&gt;biomaterial_id,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$dbxref-&gt;dbxref_id);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$dbxref;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!empty($db))<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$id<sp/>=<sp/>db_insert(</highlight><highlight class="stringliteral">&apos;chado.dbxref&apos;</highlight><highlight class="normal">)-&gt;fields([</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;db_id&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$db-&gt;db_id,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;accession&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$accession[</highlight><highlight class="stringliteral">&apos;value&apos;</highlight><highlight class="normal">],</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>])-&gt;execute();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d2/dd9/classEUtilsBioSampleRepository_1a15729a676cac6e13511774553fe8f32f" kindref="member">linkBioSampleToAccession</ref>($bio_sample-&gt;biomaterial_id,<sp/>$id);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static::$cache[</highlight><highlight class="stringliteral">&apos;accessions&apos;</highlight><highlight class="normal">][$accession[</highlight><highlight class="stringliteral">&apos;value&apos;</highlight><highlight class="normal">]]<sp/>=<sp/>$this-&gt;<ref refid="d2/dd9/classEUtilsBioSampleRepository_1a6fca75d7343d7089d06c4e704876737c" kindref="member">getAccessionByID</ref>($id);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196" refid="d2/dd9/classEUtilsBioSampleRepository_1a15729a676cac6e13511774553fe8f32f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1a15729a676cac6e13511774553fe8f32f" kindref="member">linkBioSampleToAccession</ref>($bio_sample_id,<sp/>$accession_id)<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>db_insert(</highlight><highlight class="stringliteral">&apos;chado.biomaterial_dbxref&apos;</highlight><highlight class="normal">)-&gt;fields([</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;biomaterial_id&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$bio_sample_id,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;dbxref_id&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$accession_id,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>])-&gt;execute();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="d2/dd9/classEUtilsBioSampleRepository_1a6fca75d7343d7089d06c4e704876737c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1a6fca75d7343d7089d06c4e704876737c" kindref="member">getAccessionByID</ref>($id)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>db_select(</highlight><highlight class="stringliteral">&apos;chado.dbxref&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;d&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;fields(</highlight><highlight class="charliteral">&apos;d&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;condition(</highlight><highlight class="stringliteral">&apos;dbxref_id&apos;</highlight><highlight class="normal">,<sp/>$id)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;execute()</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;fetchObject();</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="d2/dd9/classEUtilsBioSampleRepository_1a2d08444d37d20cf4befa93e3ee06a5bd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1a2d08444d37d20cf4befa93e3ee06a5bd" kindref="member">getAccessionByName</ref>($name,<sp/>$db_id)<sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(isset(static::$cache[</highlight><highlight class="stringliteral">&apos;accessions&apos;</highlight><highlight class="normal">][$name]))<sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static::$cache[</highlight><highlight class="stringliteral">&apos;accessions&apos;</highlight><highlight class="normal">][$name];</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>$accession<sp/>=<sp/>db_select(</highlight><highlight class="stringliteral">&apos;chado.dbxref&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;d&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;fields(</highlight><highlight class="charliteral">&apos;d&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;condition(</highlight><highlight class="stringliteral">&apos;accession&apos;</highlight><highlight class="normal">,<sp/>$name)</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;condition(</highlight><highlight class="stringliteral">&apos;db_id&apos;</highlight><highlight class="normal">,<sp/>$db_id)</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;execute()</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;fetchObject();</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!empty($accession))<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>static::$cache[</highlight><highlight class="stringliteral">&apos;accessions&apos;</highlight><highlight class="normal">][$accession-&gt;accession]<sp/>=<sp/>$accession;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$accession;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253" refid="d2/dd9/classEUtilsBioSampleRepository_1af2e3d96087d21a5aabf6747db8a14461" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1af2e3d96087d21a5aabf6747db8a14461" kindref="member">getDB</ref>($name)<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(isset(static::$cache[</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">][$name]))<sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static::$cache[</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">][$name];</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>$db<sp/>=<sp/>db_select(</highlight><highlight class="stringliteral">&apos;chado.db&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;fields(</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;condition(</highlight><highlight class="stringliteral">&apos;name&apos;</highlight><highlight class="normal">,<sp/>$name)</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;execute()</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;fetchObject();</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($db)<sp/>{</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static::$cache[</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">][$name]<sp/>=<sp/>$db;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>Implement<sp/>props</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="d2/dd9/classEUtilsBioSampleRepository_1a33cbf01315cce8902d17838dc7c94e93" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/dd9/classEUtilsBioSampleRepository_1a33cbf01315cce8902d17838dc7c94e93" kindref="member">createProps</ref>($bio_sample,<sp/>$props)<sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.php"/>
+  </compounddef>
+</doxygen>

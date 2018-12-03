@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dd/d94/classTagMapper" kind="class" language="PHP" prot="public">
+    <compoundname>TagMapper</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="dd/d94/classTagMapper_1a813262cefd3ef86c1c1b6530557ee86d" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>TagMapper::$db</definition>
+        <argsstring></argsstring>
+        <name>$db</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" line="14" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d94/classTagMapper_1ab0f8ca7b5c8ac1eb27cb4e952212ca70" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>TagMapper::$dict</definition>
+        <argsstring></argsstring>
+        <name>$dict</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" line="16" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/d94/classTagMapper_1ab491381ceecfe9027a0ee067b70414dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TagMapper::__construct</definition>
+        <argsstring>($db)</argsstring>
+        <name>__construct</name>
+        <param>
+          <declname>$db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" line="18" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d94/classTagMapper_1a89136763adf6530fbfbc9fd9f211dc22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TagMapper::lookup</definition>
+        <argsstring>($term_string)</argsstring>
+        <name>lookup</name>
+        <param>
+          <declname>$term_string</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$term_string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" line="44" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" bodystart="44" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="dd/d94/classTagMapper_1a57d736ee000e4bfd177a6b49aaaaebbe" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TagMapper::provideAssemblyAttributeDict</definition>
+        <argsstring>()</argsstring>
+        <name>provideAssemblyAttributeDict</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" line="55" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" bodystart="55" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d94/classTagMapper_1aefcf6c78b375adb505ccbf17e8c7d23f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TagMapper::provideAssemblyTagDict</definition>
+        <argsstring>()</argsstring>
+        <name>provideAssemblyTagDict</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" line="105" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" bodystart="105" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d94/classTagMapper_1abfaeeef43c1d2e70d3c6c20319dc1af5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TagMapper::provideBiosampleAttributeDict</definition>
+        <argsstring>()</argsstring>
+        <name>provideBiosampleAttributeDict</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Biosample attributes. derived from the &quot;harmonized name&quot; of &lt;Attribute&gt;s</para><para><simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" line="82" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" bodystart="82" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d94/classTagMapper_1aa64b3121c496afbcdd3191c3e2eb1fde" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TagMapper::setDict</definition>
+        <argsstring>()</argsstring>
+        <name>setDict</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" line="23" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" bodystart="23" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class <ref refid="dd/d94/classTagMapper" kindref="compound">TagMapper</ref> Responsible for providing instructions for a given tag.</para><para>And attribute.</para><para><xrefsect id="dd/da0/todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>should we rename this to just mapper? attribute mapper, and have the tag mapper seperate? </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" line="12" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/TagMapper.inc" bodystart="12" bodyend="110"/>
+    <listofallmembers>
+      <member refid="dd/d94/classTagMapper_1a813262cefd3ef86c1c1b6530557ee86d" prot="private" virt="non-virtual"><scope>TagMapper</scope><name>$db</name></member>
+      <member refid="dd/d94/classTagMapper_1ab0f8ca7b5c8ac1eb27cb4e952212ca70" prot="private" virt="non-virtual"><scope>TagMapper</scope><name>$dict</name></member>
+      <member refid="dd/d94/classTagMapper_1ab491381ceecfe9027a0ee067b70414dd" prot="public" virt="non-virtual"><scope>TagMapper</scope><name>__construct</name></member>
+      <member refid="dd/d94/classTagMapper_1a89136763adf6530fbfbc9fd9f211dc22" prot="public" virt="non-virtual"><scope>TagMapper</scope><name>lookup</name></member>
+      <member refid="dd/d94/classTagMapper_1a57d736ee000e4bfd177a6b49aaaaebbe" prot="private" virt="non-virtual"><scope>TagMapper</scope><name>provideAssemblyAttributeDict</name></member>
+      <member refid="dd/d94/classTagMapper_1aefcf6c78b375adb505ccbf17e8c7d23f" prot="private" virt="non-virtual"><scope>TagMapper</scope><name>provideAssemblyTagDict</name></member>
+      <member refid="dd/d94/classTagMapper_1abfaeeef43c1d2e70d3c6c20319dc1af5" prot="private" virt="non-virtual"><scope>TagMapper</scope><name>provideBiosampleAttributeDict</name></member>
+      <member refid="dd/d94/classTagMapper_1aa64b3121c496afbcdd3191c3e2eb1fde" prot="private" virt="non-virtual"><scope>TagMapper</scope><name>setDict</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

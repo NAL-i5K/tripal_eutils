@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d7/de5/ESummary_8inc" kind="file" language="PHP">
+    <compoundname>ESummary.inc</compoundname>
+    <innerclass refid="db/d8b/classESummary" prot="public">ESummary</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="db/d8b/classESummary" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="db/d8b/classESummary" kindref="compound">ESummary</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest" kindref="compound">EUtilsRequest</ref>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="db/d8b/classESummary_1a65013e39d50ac4ee6571667843af760b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="db/d8b/classESummary_1a65013e39d50ac4ee6571667843af760b" kindref="member">__construct</ref>($db)<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>parent::__construct($db);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d3/db2/classEUtilsRequest_1a53f5444cd0970dfe0df97f36e597470c" kindref="member">setBaseURL</ref>(</highlight><highlight class="stringliteral">&apos;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/ESummary.inc"/>
+  </compounddef>
+</doxygen>

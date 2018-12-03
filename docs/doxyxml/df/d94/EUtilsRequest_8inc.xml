@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="df/d94/EUtilsRequest_8inc" kind="file" language="PHP">
+    <compoundname>EUtilsRequest.inc</compoundname>
+    <innerclass refid="d3/db2/classEUtilsRequest" prot="public">EUtilsRequest</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="d3/db2/classEUtilsRequest" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d3/db2/classEUtilsRequest" kindref="compound">EUtilsRequest</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="d3/db2/classEUtilsRequest_1a8b80ff23f5ebad01927b5b750e8f4d12" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a8b80ff23f5ebad01927b5b750e8f4d12" kindref="member">$valid_dbs</ref><sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;pmc&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;pubmed&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;bioproject&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;biosample&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;genome&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;assembly&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>];</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="d3/db2/classEUtilsRequest_1a420a82972b29e19dbda93a66abdc5369" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a420a82972b29e19dbda93a66abdc5369" kindref="member">$base_url</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" kindref="member">$headers</ref><sp/>=<sp/>[];</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" kindref="member">$params</ref><sp/>=<sp/>[];</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="d3/db2/classEUtilsRequest_1a34691a7affab535b0c1abb923330c1bf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a34691a7affab535b0c1abb923330c1bf" kindref="member">__construct</ref>($db)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!in_array($db,<sp/>$this-&gt;valid_dbs))<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&quot;$db<sp/>is<sp/>an<sp/>invalid<sp/>EUtils<sp/>database.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d3/db2/classEUtilsRequest_1a7b2023c3a8b5f2838350a34e762cf373" kindref="member">addParam</ref>(</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">,<sp/>$db);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="d3/db2/classEUtilsRequest_1a53f5444cd0970dfe0df97f36e597470c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a53f5444cd0970dfe0df97f36e597470c" kindref="member">setBaseURL</ref>($url)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;base_url<sp/>=<sp/>$url;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$this;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="d3/db2/classEUtilsRequest_1a337306742fa7bcf8ef211bc0798246a2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a337306742fa7bcf8ef211bc0798246a2" kindref="member">addHeader</ref>($key,<sp/>$value)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;headers[$key]<sp/>=<sp/>$value;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$this;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="d3/db2/classEUtilsRequest_1a7f78c146bf3f172c3f3caec90ae1bf5c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a7f78c146bf3f172c3f3caec90ae1bf5c" kindref="member">addHeaders</ref>(<ref refid="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" kindref="member">$headers</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;headers<sp/>=<sp/><ref refid="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" kindref="member">$headers</ref><sp/>+<sp/><ref refid="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" kindref="member">$this-&gt;headers</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$this;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="d3/db2/classEUtilsRequest_1a7b2023c3a8b5f2838350a34e762cf373" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a7b2023c3a8b5f2838350a34e762cf373" kindref="member">addParam</ref>($key,<sp/>$value)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;params[$key]<sp/>=<sp/>$value;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$this;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="d3/db2/classEUtilsRequest_1ad5253251538dce0ba455204000d4f078" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1ad5253251538dce0ba455204000d4f078" kindref="member">addParams</ref>(<ref refid="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" kindref="member">$params</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;params<sp/>=<sp/><ref refid="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" kindref="member">$params</ref><sp/>+<sp/><ref refid="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" kindref="member">$this-&gt;params</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$this;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="d3/db2/classEUtilsRequest_1a71525595250079db9a6ebf480f595054" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">($url<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$this-&gt;<ref refid="d3/db2/classEUtilsRequest_1ac306d3d9b0bb3e2df1214b9bba7dad49" kindref="member">sendRequest</ref>(</highlight><highlight class="stringliteral">&apos;GET&apos;</highlight><highlight class="normal">,<sp/>$url);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="d3/db2/classEUtilsRequest_1a47adc09e797be2c6275b42101b606dc1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a47adc09e797be2c6275b42101b606dc1" kindref="member">post</ref>($url<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$this-&gt;<ref refid="d3/db2/classEUtilsRequest_1ac306d3d9b0bb3e2df1214b9bba7dad49" kindref="member">sendRequest</ref>(</highlight><highlight class="stringliteral">&apos;POST&apos;</highlight><highlight class="normal">,<sp/>$url);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="d3/db2/classEUtilsRequest_1ac306d3d9b0bb3e2df1214b9bba7dad49" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1ac306d3d9b0bb3e2df1214b9bba7dad49" kindref="member">sendRequest</ref>($method,<sp/>$path)<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>$url<sp/>=<sp/>$this-&gt;<ref refid="d3/db2/classEUtilsRequest_1a2640f50810453b0bbfa18b8d4ed7a90e" kindref="member">prepURL</ref>($path);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" kindref="member">$params</ref><sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;method&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$method,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;headers&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/><ref refid="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" kindref="member">$this-&gt;headers</ref>,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>];</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($method<sp/>!==<sp/></highlight><highlight class="stringliteral">&apos;POST&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$url<sp/>.=<sp/></highlight><highlight class="charliteral">&apos;?&apos;</highlight><highlight class="normal"><sp/>.<sp/>http_build_query($this-&gt;params);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" kindref="member">$params</ref>[</highlight><highlight class="stringliteral">&apos;data&apos;</highlight><highlight class="normal">]<sp/>=<sp/>http_build_query($this-&gt;params);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>$response<sp/>=<sp/>drupal_http_request($url,<sp/><ref refid="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" kindref="member">$params</ref>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="de/ded/classEUtilsResource" kindref="compound">EUtilsResource</ref>($response);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="d3/db2/classEUtilsRequest_1a2640f50810453b0bbfa18b8d4ed7a90e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a2640f50810453b0bbfa18b8d4ed7a90e" kindref="member">prepURL</ref>($path)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>$path<sp/>=<sp/>trim($path,<sp/></highlight><highlight class="charliteral">&apos;/&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($this-&gt;<ref refid="d3/db2/classEUtilsRequest_1a3caf8d836b945a66581b59c373ecd204" kindref="member">beginsWith</ref>($path,<sp/></highlight><highlight class="stringliteral">&apos;http&apos;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$url<sp/>=<sp/>$path;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$url<sp/>=<sp/>$this-&gt;base_url<sp/>.<sp/></highlight><highlight class="stringliteral">&quot;/$path&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$url;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196" refid="d3/db2/classEUtilsRequest_1a3caf8d836b945a66581b59c373ecd204" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest_1a3caf8d836b945a66581b59c373ecd204" kindref="member">beginsWith</ref>($str,<sp/>$with)<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>substr($str,<sp/>0,<sp/>strlen($with))<sp/>===<sp/>$with;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc"/>
+  </compounddef>
+</doxygen>

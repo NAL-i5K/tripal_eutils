@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_09e761304027c904456130627fd4dcf5" kind="dir">
+    <compoundname>/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes</compoundname>
+    <innerdir refid="dir_3a397a71f4cf9dd5903e101540295b29">/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories</innerdir>
+    <innerdir refid="dir_e66b8cc2844492e4ed736a1a49f9eda2">/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources</innerdir>
+    <innerdir refid="dir_08861ec0bf9aa16a172fe1fd53d24d96">/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers</innerdir>
+    <innerfile refid="dd/d16/TagMapper_8inc">TagMapper.inc</innerfile>
+    <innerfile refid="d6/df8/tripal__euitils__admin__settings_8form_8inc">tripal_euitils_admin_settings.form.inc</innerfile>
+    <innerfile refid="d8/d36/tripal__euitils__db__term__map_8form_8inc">tripal_euitils_db_term_map.form.inc</innerfile>
+    <innerfile refid="db/d99/tripal__euitils__import_8form_8inc">tripal_euitils_import.form.inc</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/"/>
+  </compounddef>
+</doxygen>

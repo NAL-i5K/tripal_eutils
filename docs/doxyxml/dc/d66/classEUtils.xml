@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dc/d66/classEUtils" kind="class" language="PHP" prot="public">
+    <compoundname>EUtils</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d66/classEUtils_1a7c72dba979633df69744e0c7756fa5ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtils::checkStatus</definition>
+        <argsstring>(string $db)</argsstring>
+        <name>checkStatus</name>
+        <param>
+          <type>string</type>
+          <declname>$db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="53" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="53" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d66/classEUtils_1a54e85cdc16d5cfa0275dabca24ce62c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtils::getAttributes</definition>
+        <argsstring>($accession=NULL)</argsstring>
+        <name>getAttributes</name>
+        <param>
+          <declname>$accession</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="38" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="38" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d66/classEUtils_1a0faebd127cee510beac6a3e36c556d8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtils::lookupAccessions</definition>
+        <argsstring>(string $db, array $accessions)</argsstring>
+        <name>lookupAccessions</name>
+        <param>
+          <type>string</type>
+          <declname>$db</declname>
+        </param>
+        <param>
+          <type>array</type>
+          <declname>$accessions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Search the set DB for the provided accessions</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the DB </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$accessions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of accessions</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="24" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="24" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="dc/d66/classEUtils_1ad313f772f5f614015896079978363da5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtils::getResourceProvider</definition>
+        <argsstring>(string $db)</argsstring>
+        <name>getResourceProvider</name>
+        <param>
+          <type>string</type>
+          <declname>$db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>|| </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="74" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="74" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="13" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="13" bodyend="85"/>
+    <listofallmembers>
+      <member refid="dc/d66/classEUtils_1a7c72dba979633df69744e0c7756fa5ea" prot="public" virt="non-virtual"><scope>EUtils</scope><name>checkStatus</name></member>
+      <member refid="dc/d66/classEUtils_1a54e85cdc16d5cfa0275dabca24ce62c1" prot="public" virt="non-virtual"><scope>EUtils</scope><name>getAttributes</name></member>
+      <member refid="dc/d66/classEUtils_1ad313f772f5f614015896079978363da5" prot="protected" virt="non-virtual"><scope>EUtils</scope><name>getResourceProvider</name></member>
+      <member refid="dc/d66/classEUtils_1a0faebd127cee510beac6a3e36c556d8f" prot="public" virt="non-virtual"><scope>EUtils</scope><name>lookupAccessions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
