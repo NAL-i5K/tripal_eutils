@@ -12,6 +12,9 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
     'description',
   ];
 
+  protected $base_table = 'project';
+
+
   /**
    * Cache of data per run.
    *
@@ -46,9 +49,11 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
       'description' => $description,
     ]);
 
+    $this->base_record_id = $project->project_id;
+
     $this->createAccessions($project, $data['accessions']);
 
-   // $this->createProps($project, $data['attributes']);
+    $this->insertProps($project, $data['attributes']);
 
     return $project;
   }
@@ -112,6 +117,20 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
     }
 
     return NULL;
+  }
+
+  public function insertProps($project, $properties) {
+
+    foreach ($properties as $property) {
+
+      $cvterm_id = $property['cvterm_id'];
+      $value = $property['value'];
+
+      $this->insertProperty($cvterm_id, $value);
+
+    }
+
+    return TRUE;
   }
 
   /**

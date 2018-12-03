@@ -1,6 +1,24 @@
 <?php
 
-abstract class EUtilsRepositoryInterface{
+abstract class EUtilsRepositoryInterface {
+
+
+  /**
+   * Chado base table for this repository.  For example, project, biosample,
+   * analysis
+   *
+   * @var string
+   */
+  protected $base_table = '';
+
+
+  /**
+   * Chado base table record_id.  for example the project.project_id.
+   *
+   * @var int
+   */
+  protected $base_record_id = NULL;
+
 
   /**
    * List of fields required for the base Chado record.
@@ -36,6 +54,7 @@ abstract class EUtilsRepositoryInterface{
    * Determine whether required fields are provided.
    *
    * @param array $data
+   *
    * @throws \Exception
    */
   public function validateFields($data) {
@@ -116,16 +135,29 @@ abstract class EUtilsRepositoryInterface{
     return NULL;
   }
 
-  public function insertProperty($cvterm_id,$value ){
+
+  /**
+   * Inserts a property associated with the interface using the tripal API.
+   *
+   * @param $cvterm_id
+   * @param $value
+   *
+   * @return bool
+   */
+  public function insertProperty($cvterm_id, $value) {
 
     $base_record_id = $this->base_record_id;
     $base_table = $this->base_table;
 
-    $record = array('table'=> $base_table, 'id' => $base_record_id);
+    $record = ['table' => $base_table, 'id' => $base_record_id];
+    $property = [
+      'type_id' => $cvterm_id,
+      'value' => $value,
+    ];
 
+    $options = [];
 
-    chado_insert_property($record);
-
+    return chado_insert_property($record, $property, $options);
 
   }
 
