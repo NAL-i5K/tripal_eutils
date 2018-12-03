@@ -3,15 +3,28 @@ Introduction & Background
 =========================
 
 
-The Tripal Eutils module....
+The Tripal Eutils module connects your Tripal site to NCBI.
 
 
 What is Eutils?
 ----------------------
 
+E-utilities is NCBI's API for all of its databases.  Read more at:
+https://www.ncbi.nlm.nih.gov/books/NBK25500/
 
-What does Tripal Eutils do?
+
+
+Module features
 -----------------------------
 
-Stuff, probably
-~~~~~~~~~~~~~~~~~
+
+- Support for Assembly (Chado Analysis), BioProject (Project), and BioSamples (Biomaterial)
+- Lookup NCBI records and create chado base records
+- Add properties, DBXREF links
+
+
+Planned
+~~~~~~~~~~~~~~
+
+- Provide fields to create entities with only an NCBI accession
+- Import linked records (create Chado Biosample records if found parsing an Assembly)

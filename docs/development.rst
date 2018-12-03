@@ -2,4 +2,4 @@
 Documentation
 ======================================
 
-Code goes here.
+Classes will be documented here.
