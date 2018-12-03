@@ -1,5 +1,5 @@
 Tripal EUtils class
 ===========================
 
-.. doxygengroup:: eutils
+.. doxygengroup:: eutils_interface
    :project: tripal_eutils
