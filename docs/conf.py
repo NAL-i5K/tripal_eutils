@@ -39,7 +39,7 @@ release = u'0.1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.intersphinx',
+    'sphinx.ext.intersphinx', 'breathe'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -189,3 +189,12 @@ epub_exclude_files = ['search.html']
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
+
+
+# -- Breathe (doxygen) integration options
+
+
+# -- Options for Breathe -----------------------------------
+breathe_projects = { "tripal_eutils": os.path.abspath('./doxyxml') }
+
+breathe_default_project = "tripal_eutils"
