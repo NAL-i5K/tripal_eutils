@@ -136,17 +136,16 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
   /**
    * Creates a set of accessions attaches them with the given project.
    *
-   * @param object $project The project created by createproject()
    * @param array $accessions
    *
    * @return array
    */
-  public function createAccessions($project, array $accessions) {
+  public function createAccessions(array $accessions) {
     $data = [];
 
     foreach ($accessions as $accession) {
       try {
-        $data[] = $this->createAccession($project, $accession);
+        $data[] = $this->createAccession($accession);
       } catch (Exception $exception) {
         // For the time being, ignore all exceptions
       }
@@ -158,13 +157,15 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
    * Creates a new accession record if does not exist and attaches it to
    * the given project.
    *
-   * @param object $project
    * @param object $accession
    *
    * @return mixed
    * @throws \Exception
    */
-  public function createAccession($project, $accession) {
+  public function createAccession($accession) {
+
+    $project_id = $this->base_record_id;
+
     if (!isset($accession['db'])) {
       throw new Exception('DB not provided for accession ' . $accession['value']);
     }
@@ -178,7 +179,7 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
     $dbxref = $this->getAccessionByName($accession['value'], $db->db_id);
 
     if (!empty($dbxref)) {
-      $this->linkProjectToAccession($project->project_id,
+      $this->linkProjectToAccession($project_id,
         $dbxref->dbxref_id);
 
       return $dbxref;
@@ -190,7 +191,7 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
         'accession' => $accession['value'],
       ])->execute();
 
-      $this->linkProjectToAccession($project->project_id, $id);
+      $this->insertDBXref($accession['value'], $db->db_id);
 
       return static::$cache['accessions'][$accession['value']] = $this->getAccessionByID($id);
     }
@@ -198,20 +199,5 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
     return NULL;
   }
 
-  /**
-   * Attach an accession to a project.
-   *
-   * @param int $project_id
-   * @param int $accession_id
-   *
-   * @return \DatabaseStatementInterface|int
-   * @throws \Exception
-   */
-  public function linkProjectToAccession($project_id, $accession_id) {
-    return db_insert('chado.project_dbxref')->fields([
-      'biomaterial_id' => $project_id,
-      'dbxref_id' => $accession_id,
-    ])->execute();
-  }
 
 }

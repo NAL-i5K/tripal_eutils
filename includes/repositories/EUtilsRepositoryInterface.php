@@ -2,7 +2,6 @@
 
 abstract class EUtilsRepositoryInterface {
 
-
   /**
    * Chado base table for this repository.  For example, project, biosample,
    * analysis
@@ -11,14 +10,12 @@ abstract class EUtilsRepositoryInterface {
    */
   protected $base_table = '';
 
-
   /**
    * Chado base table record_id.  for example the project.project_id.
    *
    * @var int
    */
   protected $base_record_id = NULL;
-
 
   /**
    * List of fields required for the base Chado record.
@@ -161,4 +158,23 @@ abstract class EUtilsRepositoryInterface {
 
   }
 
+
+  /**
+   * dbxrefs are formatted db:accession.
+   *
+   * @param $accession
+   *
+   * @param $db_name
+   */
+  public function insertDBXref($accession, $db_id) {
+
+
+    $dbxref = [
+      'accession' => $accession,
+      'db_id' => db_id,
+    ];
+
+    chado_associate_dbxref($this->base_table, $this->base_record_id, $dbxref);
+
+  }
 }
