@@ -10,8 +10,6 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
   protected $required_fields = [
     'name',
     'description',
-    'attributes',
-    'accessions',
   ];
 
   /**
@@ -48,7 +46,6 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
       'description' => $description,
     ]);
 
-    // Create the accessions
     $this->createAccessions($project, $data['accessions']);
 
    // $this->createProps($project, $data['attributes']);

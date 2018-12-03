@@ -10,8 +10,6 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
   protected $required_fields = [
     'name',
     'description',
-    'attributes',
-    'accessions',
   ];
 
   /**

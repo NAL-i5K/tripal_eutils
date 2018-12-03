@@ -3,11 +3,25 @@
 abstract class EUtilsRepositoryInterface{
 
   /**
-   * List of required fields.
+   * List of fields required for the base Chado record.
    *
    * @var array
    */
   protected $required_fields = [];
+
+  /**
+   * Array of Chado properties.
+   *
+   * @var array
+   */
+  protected $properties = [];
+
+  /**
+   * Array of DBXrefs.
+   *
+   * @var array
+   */
+  protected $dbxrefs = [];
 
   /**
    * Create a new resource.
@@ -100,6 +114,19 @@ abstract class EUtilsRepositoryInterface{
     }
 
     return NULL;
+  }
+
+  public function insertProperty($cvterm_id,$value ){
+
+    $base_record_id = $this->base_record_id;
+    $base_table = $this->base_table;
+
+    $record = array('table'=> $base_table, 'id' => $base_record_id);
+
+
+    chado_insert_property($record);
+
+
   }
 
 }
