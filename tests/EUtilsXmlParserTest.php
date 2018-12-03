@@ -10,21 +10,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
   // Uncomment to auto start and rollback db transactions per test method.
   // use DBTransaction;
 
-  /**
-   * Basic test example.
-   * Tests must begin with the word "test".
-   * See https://phpunit.readthedocs.io/en/latest/ for more information.
-   */
-  public function testInit() {
-    $connection = new \EUtils();
 
-    //$connection->setDB('bioproject');
-    //https://www.ncbi.nlm.nih.gov/bioproject/PRJNA506315
-    $result = $connection->lookupAccessions('bioproject', ['506315']);
-
-    $this->assertInstanceOf(\SimpleXMLElement::class, $result);
-  }
-  
   /**
    * @throws \Exception
    */
@@ -56,67 +42,50 @@ class EUtilsXmlParserTest extends TripalTestCase {
   }
 
   /**
-   * @group wip
+   * @test
+   * @group project
+   *
    */
-  public function testBioProjectAttributesParser() {
-    $parser = new \EUtilsXMLParser();
+  public function testBioProjectGeneralParsing() {
 
-    $string = ' <Project>
-        <ProjectID>
-            <ArchiveID accession="PRJNA506315" archive="NCBI" id="506315"/>
-            <LocalID>bp0</LocalID>
-            <LocalID>bp0</LocalID>
-        </ProjectID>
-        <ProjectDescr>
-            <Name>Bordetella pertussis strain:BPD2</Name>
-            <Title>Bordetella pertussis strain:BPD2 Genome sequencing</Title>
-            <Description>Complete genome sequence of Bordetella pertussis</Description>
-            <LocusTagPrefix biosample_id="SAMN10457990">EHO96</LocusTagPrefix>
-        </ProjectDescr>
-        <ProjectType>
-            <ProjectTypeSubmission>
-                <Target capture="eWhole" material="eGenome" sample_scope="eMonoisolate">
-                    <Organism species="520" taxID="520">
-                        <OrganismName>Bordetella pertussis</OrganismName>
-                        <Strain>BPD2</Strain>
-                        <Supergroup>eBacteria</Supergroup>
-                    </Organism>
-                </Target>
-                <Method method_type="eSequencing"/>
-                <Objectives>
-                    <Data data_type="eSequence"/>
-                </Objectives>
-                <IntendedDataTypeSet>
-                    <DataType>genome sequencing</DataType>
-                </IntendedDataTypeSet>
-                <ProjectDataTypeSet>
-                    <DataType>genome sequencing</DataType>
-                </ProjectDataTypeSet>
-            </ProjectTypeSubmission>
-        </ProjectType>
-    </Project>';
+    $path = DRUPAL_ROOT . '/' . drupal_get_path('module', 'tripal_eutils');
+    foreach (glob("$path/examples/bioprojects/*.xml") as $file) {
+      $parser = new \EUtilsBioProjectParser();
+      $project = $parser->parse(simplexml_load_file($file));
 
-    $xml = simplexml_load_string($string);
+      $this->assertArrayHasKey('name', $project);
+      $this->assertArrayHasKey('accessions', $project);
+      $this->assertArrayHasKey('attributes', $project);
+      $this->assertArrayHasKey('description', $project);
+      $this->assertArrayHasKey('linked_records', $project);
 
-    $submission_info = $parser->bioProject($xml);
+      $this->assertTrue(is_array($project['accessions']));
+      $this->assertTrue(is_array($project['attributes']));
 
-    $this->assertNotEmpty($submission_info);
+      $accessions = $project['accessions'];
+      $props = $project['tagProps'];
 
-    $string = '<Project>
-        <ProjectID>
-        </ProjectID>
-        <ProjectDescr>
-        </ProjectDescr>
-        <ProjectType>
-        </ProjectType>
-        <Waffle>I should cause an exception</Waffle>
-    </Project>';
 
-    $xml = simplexml_load_string($string);
+      $linked_records = $project['linked_records'];
 
-    $this->expectException('Exception');
-    $submission_info = $parser->bioProject($xml);
-    $this->assertFalse($submission_info);
+      $this->assertArrayHasKey('organism', $linked_records);
+
+      /**
+       * These will be used to lookup biosamples and assemblies.
+       */
+      if (isset($linked_records['locus_tag_prefix'])){
+        $locus_tag = $linked_records['locus_tag_prefix'];
+
+        $this->assertArrayHasKey('value', $locus_tag);
+        $this->assertArrayHasKey('attributes', $locus_tag);
+
+      }
+
+      //      $this->assertNotEmpty($accessions);
+      //      $this->assertNotEmpty($props);
+
+
+    }
   }
 
   /**
@@ -144,7 +113,8 @@ class EUtilsXmlParserTest extends TripalTestCase {
    * @dataProvider AssemblyProvider
    *
    * @param $path - the path to the xml file
-   * @param $base_keys = key => value pairs.  used to check that each key contains what is expected.
+   * @param $base_keys = key => value pairs.  used to check that each key
+   *   contains what is expected.
    *
    * @todo add some key value pairs for base_keys
    */

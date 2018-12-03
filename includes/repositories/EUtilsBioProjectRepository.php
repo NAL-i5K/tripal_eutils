@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
+class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
 
   /**
    * Required attributes when using the create method.
@@ -22,18 +22,18 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
   protected static $cache = [
     'db' => [],
     'accessions' => [],
-    'biosamples',
+    'projects',
   ];
 
   /**
-   * Takes data from the EUtilsBioSampleParser and creates the chado records
-   * needed including biosample, accessions and props.
+   * Takes data from the EUtilsBioProjectParser and creates the chado records
+   * needed including project, accessions and props.
    *
    * @param array $data
    *
    * @return object
    * @throws \Exception
-   * @see \EUtilsBioSampleParser::parse() to get the data array needed.
+   * @see \EUtilsBioProjectParser::parse() to get the data array needed.
    */
   public function create($data) {
     // Throw an exception if a required field is missing
@@ -43,114 +43,112 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     $description = is_array($data['description']) ? implode("\n",
       $data['description']) : $data['description'];
 
-    $bio_sample = $this->createBioSample([
+    $project = $this->createproject([
       'name' => $data['name'],
       'description' => $description,
     ]);
 
     // Create the accessions
-    $this->createAccessions($bio_sample, $data['accessions']);
+    $this->createAccessions($project, $data['accessions']);
 
-    // Create the props (from attributes)
-    $this->createProps($bio_sample, $data['attributes']);
+   // $this->createProps($project, $data['attributes']);
 
-    return $bio_sample;
+    return $project;
   }
 
   /**
-   * Create a bio sample record.
+   * Create a project record.
    *
-   * @param array $data See chado.biomaterial schema
+   * @param array $data See chado.project schema
    *
    * @return mixed
    * @throws \Exception
    */
-  public function createBioSample(array $data) {
-    // Name is unique so find the biomaterial first.
-    $biosample = $this->getBioSample($data['name']);
+  public function createProject(array $data) {
+    // Name is unique so find project.
+    $project = $this->getProject($data['name']);
 
-    if (!empty($biosample)) {
-      return $biosample;
+    if (!empty($project)) {
+      return $project;
     }
 
-    $id = db_insert('chado.biomaterial')->fields([
+    $id = db_insert('chado.project')->fields([
       'name' => $data['name'] ?? '',
       'description' => $data['description'] ?? '',
     ])->execute();
 
     if (!$id) {
-      throw new Exception('Unable to create chado.biomaterial record');
+      throw new Exception('Unable to create chado.project record');
     }
 
-    $biosample = db_select('chado.biomaterial', 'B')
-      ->fields('B')
-      ->condition('biomaterial_id', $id)
+    $project = db_select('chado.project', 't')
+      ->fields('t')
+      ->condition('project_id', $id)
       ->execute()
       ->fetchObject();
 
-    return static::$cache['biosamples'][$biosample->name] = $biosample;
+    return static::$cache['projects'][$project->name] = $project;
   }
 
   /**
-   * Get biosample from db or cache.
+   * Get project from db or cache.
    *
    * @param string $name
    *
    * @return null
    */
-  public function getBioSample($name) {
-    // If the biosample is available in our static cache, return it
-    if (isset(static::$cache['biosamples'][$name])) {
-      return static::$cache['biosamples'][$name];
+  public function getProject($name) {
+    // If the project is available in our static cache, return it
+    if (isset(static::$cache['projects'][$name])) {
+      return static::$cache['projects'][$name];
     }
 
-    // Find the biosample and add it to the cache
-    $biosample = db_select('chado.biomaterial', 'b')
-      ->fields('b')
+    // Find the project and add it to the cache
+    $project = db_select('chado.project', 'p')
+      ->fields('p')
       ->condition('name', $name)
       ->execute()
       ->fetchObject();
 
-    if ($biosample) {
-      return static::$cache['biosamples'][$name] = $biosample;
+    if ($project) {
+      return static::$cache['projects'][$name] = $project;
     }
 
     return NULL;
   }
 
   /**
-   * Creates a set of accessions attaches them with the given biosample.
+   * Creates a set of accessions attaches them with the given project.
    *
-   * @param object $bio_sample The BioSample created by createBioSample()
+   * @param object $project The project created by createproject()
    * @param array $accessions
    *
    * @return array
    */
-  public function createAccessions($bio_sample, array $accessions) {
+  public function createAccessions($project, array $accessions) {
     $data = [];
 
     foreach ($accessions as $accession) {
       try {
-        $data[] = $this->createAccession($bio_sample, $accession);
+        $data[] = $this->createAccession($project, $accession);
       } catch (Exception $exception) {
         // For the time being, ignore all exceptions
       }
     }
-
     return $data;
   }
 
   /**
    * Creates a new accession record if does not exist and attaches it to
-   * the given biosample.
+   * the given project.
    *
-   * @param object $bio_sample
+   * @param object $project
    * @param object $accession
    *
    * @return mixed
    * @throws \Exception
    */
-  public function createAccession($bio_sample, $accession) {
+  public function createAccession($project, $accession) {
     if (!isset($accession['db'])) {
       throw new Exception('DB not provided for accession ' . $accession['value']);
     }
@@ -164,7 +162,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
     $dbxref = $this->getAccessionByName($accession['value'], $db->db_id);
 
     if (!empty($dbxref)) {
-      $this->linkBioSampleToAccession($bio_sample->biomaterial_id,
+      $this->linkProjectToAccession($project->project_id,
         $dbxref->dbxref_id);
 
       return $dbxref;
@@ -176,7 +174,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
         'accession' => $accession['value'],
       ])->execute();
 
-      $this->linkBioSampleToAccession($bio_sample->biomaterial_id, $id);
+      $this->linkProjectToAccession($project->project_id, $id);
 
       return static::$cache['accessions'][$accession['value']] = $this->getAccessionByID($id);
     }
@@ -185,24 +183,19 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
   }
 
   /**
-   * Attach an accession to a biosample.
+   * Attach an accession to a project.
    *
-   * @param int $bio_sample_id
+   * @param int $project_id
    * @param int $accession_id
    *
    * @return \DatabaseStatementInterface|int
    * @throws \Exception
    */
-  public function linkBioSampleToAccession($bio_sample_id, $accession_id) {
-    return db_insert('chado.biomaterial_dbxref')->fields([
-      'biomaterial_id' => $bio_sample_id,
+  public function linkProjectToAccession($project_id, $accession_id) {
+    return db_insert('chado.project_dbxref')->fields([
+      'biomaterial_id' => $project_id,
       'dbxref_id' => $accession_id,
     ])->execute();
   }
 
-
-  // TODO: Implement props
-  public function createProps($bio_sample, $props) {
-
-  }
 }

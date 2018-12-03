@@ -1,0 +1,60 @@
+<?php
+
+namespace Tests;
+
+use StatonLab\TripalTestSuite\DBTransaction;
+use StatonLab\TripalTestSuite\TripalTestCase;
+
+class EUtilsBioProjectRepositoryTest extends TripalTestCase {
+
+  // Uncomment to auto start and rollback db transactions per test method.
+  // use DBTransaction;
+
+  /**
+   * @group bioproject
+   * @throws \Exception
+   */
+  public function testCreatingBioProject() {
+    $repo = new \EUtilsBioProjectRepository();
+
+    // Make sure creating a new one works
+    $name = uniqid();
+    $project = $repo->createProject([
+      'name' => $name,
+      'description' => uniqid(),
+    ]);
+
+    $this->assertNotEmpty($project);
+    $this->assertEquals($project->name, $name);
+
+    $result = db_select('chado.project', 't')
+      ->fields('t')
+      ->condition('t.name', $name)
+      ->execute()
+      ->fetchobject();
+
+    $this->assertNotFalse($result);
+  }
+
+
+  /**
+   * @group bioproject
+   */
+  public function testProjectFromXML() {
+
+
+    $file = __DIR__ . '/../examples/bioprojects/12384_bioproject.xml';
+
+    $parser = new \EUtilsBioProjectParser();
+    $project = $parser->parse(simplexml_load_file($file));
+
+    $repo = new \EUtilsBioProjectRepository();
+
+    // Make sure creating a new one works
+    $name = uniqid();
+    $result = $repo->create($project);
+
+    $this->assertObjectHasAttribute('project_id', $result);
+  }
+
+}

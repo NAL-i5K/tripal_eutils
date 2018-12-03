@@ -22,6 +22,9 @@ require_once 'includes/xml_parsers/EUtilsAssemblyParser.inc';
 // Repositories. Handling DB operations
 require_once 'includes/repositories/EUtilsRepositoryInterface.php';
 require_once 'includes/repositories/EUtilsBioSampleRepository.php';
+require_once 'includes/repositories/EUtilsBioProjectRepository.php';
+require_once 'includes/repositories/EUtilsAssemblyRepository.php';
+
 
 //Repository helpers.  Assist with looking up terms.
 require_once 'includes/TagMapper.inc';
