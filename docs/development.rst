@@ -16,3 +16,9 @@ Install breathe:
 ``pip install breathe``
 
 
+
+.. toctree::
+  :maxdepth: 2
+  :caption: API and Code guide:
+
+  code/code.rst

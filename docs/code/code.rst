@@ -1,4 +1,9 @@
 CODE GOES here
 ===============
 
-It will
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Documentation:
+
+  eutils
