@@ -1,16 +1,17 @@
 <?php
 
-class EUtilsAssemblyParser implements EUtilsParserInterface {
+class EUtilsAssemblyParser implements EUtilsParserInterface{
 
-
+  /**
+   * @param \SimpleXMLElement $xml
+   *
+   * @return array
+   */
   public function parse(SimpleXMLElement $xml) {
-
     $info = [];
 
-    //skip to DocumentSummary
-
+    // skip to DocumentSummary
     $xml = $xml->DocumentSummarySet;
-
     $xml = $xml->DocumentSummary;
 
     $children = $xml->children();
@@ -18,14 +19,9 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
     $info['full_ncbi_xml'] = $xml->asXML();
 
     foreach ($children as $key => $child) {
-
       switch ($key) {
-
-
         case 'Meta':
-
           $info['attributes'] = $this->parseMeta($child);
-
           break;
 
         case 'AssemblyName':
@@ -37,7 +33,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           break;
 
         case 'AssemblyAccession':
-          //an array because i want to add more accessions later.
+          // An array because I want to add more accessions later.
           $info['accessions'][] = ['Assembly' => (string) $child];
           break;
 
@@ -45,13 +41,10 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           $info['ignored'][] = $child->getName();
           break;
       }
-
     }
 
     return $info;
-
   }
-
 
   /**
    * Parse the <Meta> tag, which containts CDATA but all of the Assembly props.
@@ -61,24 +54,16 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
    * @return array
    */
   public function parseMeta($x) {
-
     $list = [];
-
     $trimmed = trim((string) $x);
 
-    //Wrap this in a root in case its malformed.
-
+    // Wrap this in a root in case its malformed.
     $wrapped = '<wrap>' . $trimmed . '</wrap>';
-
     $meta = simplexml_load_string($wrapped);
 
     $children = $meta->children();
-
     foreach ($children as $key => $child) {
-
-
       switch ($key) {
-
         case 'Stats':
           $list['stats'] = $this->processFinalChildren($child, [
             'category',
@@ -88,13 +73,15 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
 
         case 'FtpSites':
           $list['files'] = $this->processFinalChildren($child, ['type']);
-        case 'default':
+          break;
+
+        default:
+          break;
       }
     }
 
     return $list;
   }
-
 
   /**
    * Process terminal level children (IE a flat array of children).
@@ -109,25 +96,20 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
     $children = $x->children();
 
     foreach ($children as $child) {
-
       $attributes = $child->attributes();
 
       $label = "";
       foreach ($keys as $key) {
         $label .= $attributes->$key;
-        //if this isn't the last key in the array, add an underscore.
-        if(next( $keys ) ){
+        // If this isn't the last key in the array, add an underscore.
+        if (next($keys)) {
           $label .= '_';
         }
-
       }
 
       $results[$label] = (string) $child;
     }
 
     return $results;
-
   }
-
 }
-

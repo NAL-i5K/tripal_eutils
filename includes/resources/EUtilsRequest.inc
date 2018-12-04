@@ -3,20 +3,6 @@
 class EUtilsRequest{
 
   /**
-   * List of valid databases.
-   *
-   * @var array
-   */
-  protected $valid_dbs = [
-    'pmc',
-    'pubmed',
-    'bioproject',
-    'biosample',
-    'genome',
-    'assembly',
-  ];
-
-  /**
    * Request base url
    *
    * @var string
@@ -36,21 +22,6 @@ class EUtilsRequest{
    * @var array
    */
   protected $params = [];
-
-  /**
-   * EUtilsRequest constructor.
-   *
-   * @param $db
-   *
-   * @throws \Exception
-   */
-  public function __construct($db) {
-    if (!in_array($db, $this->valid_dbs)) {
-      throw new Exception("$db is an invalid EUtils database.");
-    }
-
-    $this->addParam('db', $db);
-  }
 
   /**
    * @param string $url
@@ -149,11 +120,13 @@ class EUtilsRequest{
       'headers' => $this->headers,
     ];
 
-    if ($method !== 'POST') {
-      $url .= '?' . http_build_query($this->params);
-    }
-    else {
-      $params['data'] = http_build_query($this->params);
+    if (!empty($this->params)) {
+      if ($method !== 'POST') {
+        $url .= '?' . http_build_query($this->params);
+      }
+      else {
+        $params['data'] = http_build_query($this->params);
+      }
     }
 
     $response = drupal_http_request($url, $params);

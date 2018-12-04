@@ -1,20 +1,25 @@
 <?php
 
+class BiosamplePropertyLookup{
 
-class BiosamplePropertyLookup {
+  /**
+   * @param string $url
+   *
+   * @return array
+   */
+  public function lookupAll($url = NULL) {
+    $request = new EUtilsRequest();
 
+    if (is_null($url)) {
+      $url = 'https://www.ncbi.nlm.nih.gov/biosample/docs/attributes';
+    }
 
-  public function lookupAll($file = 'https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml') {
+    $response = $request->setBaseURL($url)->addParam('format', 'xml')->get();
 
     $terms = [];
+    $xml = $response->xml();
 
-    $xml = file_get_contents($file);
-
-    $x = simplexml_load_string($xml);
-
-
-    $children = $x->children();
-
+    $children = $xml->children();
 
     foreach ($children as $child) {
 
@@ -28,12 +33,8 @@ class BiosamplePropertyLookup {
         'label' => (string) $term_label,
         'def' => (string) $definition,
       ];
-
     }
 
     return $terms;
-
   }
-
-
 }
