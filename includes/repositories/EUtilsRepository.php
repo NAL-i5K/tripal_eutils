@@ -234,4 +234,12 @@ abstract class EUtilsRepository {
     chado_associate_dbxref($this->base_table, $this->base_record_id, $dbxref);
 
   }
+
+  public function createXMLProp($xml) {
+
+    $xml_term = tripal_get_cvterm(['id' => 'local:full_ncbi_xml']);
+
+    $this->createProperty($xml_term->cvterm_id, $xml);
+
+  }
 }

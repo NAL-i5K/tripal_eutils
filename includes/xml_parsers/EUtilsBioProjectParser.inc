@@ -21,6 +21,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
       'attributes' => [],
       //Expected keys for linked records:  Contact, biomaterial, analysis, organism
       'linked_records' => [],
+      'full_ncbi_xml' => ''
     ];
 
 
@@ -34,7 +35,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
 
       throwException($e);
     }
-    $info['attributes']['full_ncbi_xml'] = $project->asXML();
+    $info['full_ncbi_xml'] = $project->asXML();
 
     $children = $project->children();
     foreach ($children as $key => $child) {

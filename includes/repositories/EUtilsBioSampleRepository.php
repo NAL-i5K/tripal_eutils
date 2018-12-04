@@ -55,6 +55,8 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
 
     // Create the props (from attributes)
     $this->createProps($data['attributes']);
+    $this->createXMLProp($data['full_ncbi_xml']);
+
 
     return $bio_sample;
   }

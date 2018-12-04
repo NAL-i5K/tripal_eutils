@@ -66,6 +66,20 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
     //at a minimum we have the raw XML prop.
     $this->assertNotEmpty($props);
 
+
+
+    $xml_term = tripal_get_cvterm(['id' => 'local:full_ncbi_xml']);
+
+
+    $props = db_select('chado.projectprop', 't')
+      ->fields('t')
+      ->condition('t.project_id', $result->project_id)
+      ->condition('t.type_id', $xml_term->cvterm_id)
+      ->execute()
+      ->fetchObject();
+
+    //at a minimum we have the raw XML prop.
+    $this->assertNotFalse($props);
   }
 
 }

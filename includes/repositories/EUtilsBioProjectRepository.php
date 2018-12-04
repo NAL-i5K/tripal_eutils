@@ -54,6 +54,11 @@ class EUtilsBioProjectRepository extends EUtilsRepository{
     $this->createAccessions($data['accessions']);
 
     $this->createProps($data['attributes']);
+
+    //add xml
+
+    $this->createXMLProp($data['full_ncbi_xml']);
+
     return $project;
   }
 
