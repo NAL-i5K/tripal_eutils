@@ -1,6 +1,6 @@
 <?php
 
-abstract class EUtilsRepositoryInterface {
+abstract class EUtilsRepository {
 
   /**
    * Chado base table for this repository.  For example, project, biosample,
@@ -37,6 +37,16 @@ abstract class EUtilsRepositoryInterface {
    * @var array
    */
   protected $dbxrefs = [];
+
+
+  /**
+   * Cache of inserted primary and secondary chado records.  Used to speed up
+   * multiple look-ups.
+   *
+   * @var array
+   */
+  protected static $cache = [];
+
 
   /**
    * Create a new resource.
@@ -141,7 +151,7 @@ abstract class EUtilsRepositoryInterface {
    *
    * @return bool
    */
-  public function insertProperty($cvterm_id, $value) {
+  public function createProperty($cvterm_id, $value) {
 
     $base_record_id = $this->base_record_id;
     $base_table = $this->base_table;

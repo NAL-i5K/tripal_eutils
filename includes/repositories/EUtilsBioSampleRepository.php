@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsBioSampleRepository extends EUtilsRepositoryInterface {
+class EUtilsBioSampleRepository extends EUtilsRepository {
 
   /**
    * Required attributes when using the create method.
@@ -220,7 +220,7 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface {
       //TODO: the term lookup class should handle this instead.
       $cvterm = tripal_get_cvterm(['id' => 'ncbi_properties:' . $term_name]);
       $cvterm_id = $cvterm->cvterm_id;
-      $this->insertProperty($cvterm_id, $value);
+      $this->createProperty($cvterm_id, $value);
     }
 
   }

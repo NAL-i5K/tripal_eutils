@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsAssemblyRepository extends EUtilsRepositoryInterface {
+class EUtilsAssemblyRepository extends EUtilsRepository {
 
   /**
    * Required attributes when using the create method.

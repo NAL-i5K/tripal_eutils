@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
+class EUtilsBioProjectRepository extends EUtilsRepository{
 
   /**
    * Required attributes when using the create method.
@@ -53,7 +53,7 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
 
     $this->createAccessions($data['accessions']);
 
-    $this->insertProps($data['attributes']);
+    $this->createProps($data['attributes']);
     return $project;
   }
 
@@ -128,7 +128,7 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
    *
    * @return bool
    */
-  public function insertProps($properties) {
+  public function createProps($properties) {
 
     foreach ($properties as $property_name => $value) {
 
@@ -136,7 +136,7 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
       //TODO:  this is not what we want to do.  we want to be smarter about mapping the terms...
       $cvterm = chado_get_cvterm(['id' => $accession]);
 
-      $this->insertProperty($cvterm->cvterm_id, $value);
+      $this->createProperty($cvterm->cvterm_id, $value);
 
     }
 
