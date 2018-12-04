@@ -8,7 +8,7 @@ use StatonLab\TripalTestSuite\TripalTestCase;
 class EUtilsBioProjectRepositoryTest extends TripalTestCase {
 
   // Uncomment to auto start and rollback db transactions per test method.
-  // use DBTransaction;
+  use DBTransaction;
 
   /**
    * @group bioproject
@@ -51,10 +51,21 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
     $repo = new \EUtilsBioProjectRepository();
 
     // Make sure creating a new one works
-    $name = uniqid();
+    $name = 'Canis lupus familiaris: Reference genome sequence';
     $result = $repo->create($project);
 
     $this->assertObjectHasAttribute('project_id', $result);
+
+
+    $props = db_select('chado.projectprop', 't')
+      ->fields('t')
+      ->condition('t.project_id', $result->project_id)
+      ->execute()
+      ->fetchAll();
+
+    //at a minimum we have the raw XML prop.
+    $this->assertNotEmpty($props);
+
   }
 
 }

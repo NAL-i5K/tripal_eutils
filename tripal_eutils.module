@@ -20,7 +20,7 @@ require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
 require_once 'includes/xml_parsers/EUtilsAssemblyParser.inc';
 
 // Repositories. Handling DB operations
-require_once 'includes/repositories/EUtilsRepositoryInterface.php';
+require_once 'includes/repositories/EUtilsRepository.php';
 require_once 'includes/repositories/EUtilsBioSampleRepository.php';
 require_once 'includes/repositories/EUtilsBioProjectRepository.php';
 require_once 'includes/repositories/EUtilsAssemblyRepository.php';

@@ -84,20 +84,20 @@ class TagMapper {
     //please keep this alphabetized for sanity.
     //If updated, please also delete/update terms in the install file.
     return [
-      'age' => tripal_get_cvterm(['id' => 'local:age']),
+      'age' => tripal_get_cvterm(['id' => 'ncbi_properties:age']),
       'bio_material' => NULL,
-      'breed' => tripal_get_cvterm(['id' => 'local:breed']),
-      'collection_date' => tripal_get_cvterm(['id' => 'local:collection_date']),
-      'cultivar' => tripal_get_cvterm(['id' => 'local:cultivar']),
-      'dev_stage' => tripal_get_cvterm(['id' => 'local:dev_stage']),
-      'geo_loc_name' => tripal_get_cvterm(['id' => 'local:geo_loc_name']),
-      'isolation_source' => tripal_get_cvterm(['id' => 'local:isolation_source']),
-      'orgmod_note' => tripal_get_cvterm(['id' => 'local:orgmod_note']),
-      'phenotype' => tripal_get_cvterm(['id' => 'local:phenotype']),
-      'sex' => tripal_get_cvterm(['id' => 'local:sex']),
-      'strain' => tripal_get_cvterm(['id' => 'local:strain']),
-      'sub_species' => tripal_get_cvterm(['id' => 'local:sub_species']),
-      'tissue' => tripal_get_cvterm(['id' => 'local:tissue']),
+      'breed' => tripal_get_cvterm(['id' => 'ncbi_properties:breed']),
+      'collection_date' => tripal_get_cvterm(['id' => 'ncbi_properties:collection_date']),
+      'cultivar' => tripal_get_cvterm(['id' => 'ncbi_properties:cultivar']),
+      'dev_stage' => tripal_get_cvterm(['id' => 'ncbi_properties:dev_stage']),
+      'geo_loc_name' => tripal_get_cvterm(['id' => 'ncbi_properties:geo_loc_name']),
+      'isolation_source' => tripal_get_cvterm(['id' => 'ncbi_properties:isolation_source']),
+      'orgmod_note' => tripal_get_cvterm(['id' => 'ncbi_properties:orgmod_note']),
+      'phenotype' => tripal_get_cvterm(['id' => 'ncbi_properties:phenotype']),
+      'sex' => tripal_get_cvterm(['id' => 'ncbi_properties:sex']),
+      'strain' => tripal_get_cvterm(['id' => 'ncbi_properties:strain']),
+      'sub_species' => tripal_get_cvterm(['id' => 'ncbi_properties:sub_species']),
+      'tissue' => tripal_get_cvterm(['id' => 'ncbi_properties:tissue']),
     ];
 
   }

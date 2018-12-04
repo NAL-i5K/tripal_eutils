@@ -34,6 +34,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
 
       throwException($e);
     }
+    $info['attributes']['full_ncbi_xml'] = $project->asXML();
 
     $children = $project->children();
     foreach ($children as $key => $child) {

@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
+class EUtilsBioProjectRepository extends EUtilsRepository{
 
   /**
    * Required attributes when using the create method.
@@ -10,9 +10,10 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
   protected $required_fields = [
     'name',
     'description',
-    'attributes',
-    'accessions',
   ];
+
+  protected $base_table = 'project';
+
 
   /**
    * Cache of data per run.
@@ -48,11 +49,11 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
       'description' => $description,
     ]);
 
-    // Create the accessions
-    $this->createAccessions($project, $data['accessions']);
+    $this->base_record_id = $project->project_id;
 
-   // $this->createProps($project, $data['attributes']);
+    $this->createAccessions($data['accessions']);
 
+    $this->createProps($data['attributes']);
     return $project;
   }
 
@@ -118,19 +119,43 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
   }
 
   /**
+   * Iterate through the properties and insert.
+   *
+   * //TODO:  How do we get the accessions from what we have here?
+   * //What we probably ahve for project is a set of XML attributes or tags...
+   *
+   * @param $properties
+   *
+   * @return bool
+   */
+  public function createProps($properties) {
+
+    foreach ($properties as $property_name => $value) {
+
+      $accession = 'local:' . $property_name;
+      //TODO:  this is not what we want to do.  we want to be smarter about mapping the terms...
+      $cvterm = chado_get_cvterm(['id' => $accession]);
+
+      $this->createProperty($cvterm->cvterm_id, $value);
+
+    }
+
+    return TRUE;
+  }
+
+  /**
    * Creates a set of accessions attaches them with the given project.
    *
-   * @param object $project The project created by createproject()
    * @param array $accessions
    *
    * @return array
    */
-  public function createAccessions($project, array $accessions) {
+  public function createAccessions(array $accessions) {
     $data = [];
 
     foreach ($accessions as $accession) {
       try {
-        $data[] = $this->createAccession($project, $accession);
+        $data[] = $this->createAccession($accession);
       } catch (Exception $exception) {
         // For the time being, ignore all exceptions
       }
@@ -138,64 +163,5 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
     return $data;
   }
 
-  /**
-   * Creates a new accession record if does not exist and attaches it to
-   * the given project.
-   *
-   * @param object $project
-   * @param object $accession
-   *
-   * @return mixed
-   * @throws \Exception
-   */
-  public function createAccession($project, $accession) {
-    if (!isset($accession['db'])) {
-      throw new Exception('DB not provided for accession ' . $accession['value']);
-    }
-
-    $db = $this->getDB('NCBI ' . $accession['db']);
-
-    if (empty($db)) {
-      throw new Exception('Unable to find DB NCBI ' . $accession['db'] . '. Please create DB first.');
-    }
-
-    $dbxref = $this->getAccessionByName($accession['value'], $db->db_id);
-
-    if (!empty($dbxref)) {
-      $this->linkProjectToAccession($project->project_id,
-        $dbxref->dbxref_id);
-
-      return $dbxref;
-    }
-
-    if (!empty($db)) {
-      $id = db_insert('chado.dbxref')->fields([
-        'db_id' => $db->db_id,
-        'accession' => $accession['value'],
-      ])->execute();
-
-      $this->linkProjectToAccession($project->project_id, $id);
-
-      return static::$cache['accessions'][$accession['value']] = $this->getAccessionByID($id);
-    }
-
-    return NULL;
-  }
-
-  /**
-   * Attach an accession to a project.
-   *
-   * @param int $project_id
-   * @param int $accession_id
-   *
-   * @return \DatabaseStatementInterface|int
-   * @throws \Exception
-   */
-  public function linkProjectToAccession($project_id, $accession_id) {
-    return db_insert('chado.project_dbxref')->fields([
-      'biomaterial_id' => $project_id,
-      'dbxref_id' => $accession_id,
-    ])->execute();
-  }
 
 }
