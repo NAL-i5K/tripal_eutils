@@ -138,7 +138,15 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
     $fields = ['# Assembly method:'];
 
     foreach ($fields as $field) {
-      $value = $ftp->getField($field);
+      $values = $ftp->getField($field);
+
+      if (count($values === 0)) {
+
+        $value = $values[0];
+      }
+      else {
+        $value = implode('', $values);
+      }
 
       $data[$field] = $value;
     }
