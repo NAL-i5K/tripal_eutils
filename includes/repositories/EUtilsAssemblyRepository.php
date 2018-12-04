@@ -32,9 +32,16 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    */
   public function create($data) {
 
+    //program and program version come from # Assembly method: $data['attributes']['ftp_attributes']['# Assembly method:']
+
+    $method_string = $data['attributes']['ftp_attributes']['# Assembly method:'];
+
+    var_dump($method_string);
 
     $this->createXMLProp($data['full_ncbi_xml']);
 
   }
+
+
 
 }

@@ -73,7 +73,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
       /**
        * These will be used to lookup biosamples and assemblies.
        */
-      if (isset($linked_records['locus_tag_prefix'])){
+      if (isset($linked_records['locus_tag_prefix'])) {
         $locus_tag = $linked_records['locus_tag_prefix'];
 
         $this->assertArrayHasKey('value', $locus_tag);
@@ -136,12 +136,16 @@ class EUtilsXmlParserTest extends TripalTestCase {
 
     $this->assertArrayHasKey('stats', $attributes);
     $this->assertArrayHasKey('files', $attributes);
+    $this->assertArrayHasKey('ftp_attributes', $attributes);
 
+    $this->assertArrayHasKey('# Assembly method:', $attributes['ftp_attributes']);
+    $this->assertNotNull($attributes['ftp_attributes']['# Assembly method:']);
 
     $this->assertNotNull($assembly['name']);
     $this->assertNotNull($assembly['accessions']);
     $this->assertNotNull($assembly['attributes']);
     $this->assertNotNull($assembly['description']);
+
 
   }
 

@@ -230,13 +230,13 @@ abstract class EUtilsRepository {
       'accession' => $accession,
       'db_id' => $db_id,
     ];
-
     chado_associate_dbxref($this->base_table, $this->base_record_id, $dbxref);
 
   }
 
   /**
    * Associates the XML with the record via the local:full_ncbi_xml term.
+   *
    * @param $xml
    * xml string as returned by simpleXML.
    */
