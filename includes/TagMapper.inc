@@ -6,20 +6,42 @@
  *
  * And attribute.
  *
- * @todo should we rename this to just mapper?  attribute mapper, and have the tag mapper seperate?
+ * @todo should we rename this to just mapper?  attribute mapper, and have the
+ *   tag mapper seperate?
  */
 
-class TagMapper {
+class TagMapper{
 
+  /**
+   * @var array
+   */
+  private static $cache = [
+    'terms' => [],
+  ];
+
+  /**
+   * @var null
+   */
   private $db = NULL;
 
+  /**
+   * @var null
+   */
   private $dict = NULL;
 
+  /**
+   * TagMapper constructor.
+   *
+   * @param $db
+   */
   public function __construct($db) {
     $this->db = $db;
     $this->setDict();
   }
 
+  /**
+   * Set the dictionary.
+   */
   private function setDict() {
     $db = $this->db;
 
@@ -49,11 +71,12 @@ class TagMapper {
     }
 
     return $dict[$term_string];
-
   }
 
+  /**
+   * @return array
+   */
   private function provideAssemblyAttributeDict() {
-
     return [
       "alt_loci_count_all",
       "chromosome_count_all",
@@ -71,7 +94,6 @@ class TagMapper {
       "total_length_all",
       "ungapped_length_all",
     ];
-
   }
 
   /**
@@ -84,27 +106,37 @@ class TagMapper {
     //please keep this alphabetized for sanity.
     //If updated, please also delete/update terms in the install file.
     return [
-      'age' => tripal_get_cvterm(['id' => 'ncbi_properties:age']),
+      'age' => $this->getTerm(['id' => 'ncbi_properties:age']),
       'bio_material' => NULL,
-      'breed' => tripal_get_cvterm(['id' => 'ncbi_properties:breed']),
-      'collection_date' => tripal_get_cvterm(['id' => 'ncbi_properties:collection_date']),
-      'cultivar' => tripal_get_cvterm(['id' => 'ncbi_properties:cultivar']),
-      'dev_stage' => tripal_get_cvterm(['id' => 'ncbi_properties:dev_stage']),
-      'geo_loc_name' => tripal_get_cvterm(['id' => 'ncbi_properties:geo_loc_name']),
-      'isolation_source' => tripal_get_cvterm(['id' => 'ncbi_properties:isolation_source']),
-      'orgmod_note' => tripal_get_cvterm(['id' => 'ncbi_properties:orgmod_note']),
-      'phenotype' => tripal_get_cvterm(['id' => 'ncbi_properties:phenotype']),
-      'sex' => tripal_get_cvterm(['id' => 'ncbi_properties:sex']),
-      'strain' => tripal_get_cvterm(['id' => 'ncbi_properties:strain']),
-      'sub_species' => tripal_get_cvterm(['id' => 'ncbi_properties:sub_species']),
-      'tissue' => tripal_get_cvterm(['id' => 'ncbi_properties:tissue']),
+      'breed' => $this->getTerm(['id' => 'ncbi_properties:breed']),
+      'collection_date' => $this->getTerm(['id' => 'ncbi_properties:collection_date']),
+      'cultivar' => $this->getTerm(['id' => 'ncbi_properties:cultivar']),
+      'dev_stage' => $this->getTerm(['id' => 'ncbi_properties:dev_stage']),
+      'geo_loc_name' => $this->getTerm(['id' => 'ncbi_properties:geo_loc_name']),
+      'isolation_source' => $this->getTerm(['id' => 'ncbi_properties:isolation_source']),
+      'orgmod_note' => $this->getTerm(['id' => 'ncbi_properties:orgmod_note']),
+      'phenotype' => $this->getTerm(['id' => 'ncbi_properties:phenotype']),
+      'sex' => $this->getTerm(['id' => 'ncbi_properties:sex']),
+      'strain' => $this->getTerm(['id' => 'ncbi_properties:strain']),
+      'sub_species' => $this->getTerm(['id' => 'ncbi_properties:sub_species']),
+      'tissue' => $this->getTerm(['id' => 'ncbi_properties:tissue']),
     ];
+  }
 
+  /**
+   * @param array $term
+   *
+   * @return array|mixed
+   */
+  private function getTerm(array $term) {
+    if (isset(static::$cache[$term['id']])) {
+      return static::$cache[$term['id']];
+    }
+
+    return tripal_get_cvterm($term);
   }
 
   private function provideAssemblyTagDict() {
 
   }
-
-
 }
