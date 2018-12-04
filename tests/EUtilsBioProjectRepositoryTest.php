@@ -5,7 +5,7 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EUtilsBioProjectRepositoryTest extends TripalTestCase {
+class EUtilsBioProjectRepositoryTest extends TripalTestCase{
 
   // Uncomment to auto start and rollback db transactions per test method.
   use DBTransaction;
@@ -36,7 +36,6 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
     $this->assertNotFalse($result);
   }
 
-
   /**
    * @group bioproject
    */
@@ -56,7 +55,6 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
 
     $this->assertObjectHasAttribute('project_id', $result);
 
-
     $props = db_select('chado.projectprop', 't')
       ->fields('t')
       ->condition('t.project_id', $result->project_id)
@@ -66,10 +64,7 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
     //at a minimum we have the raw XML prop.
     $this->assertNotEmpty($props);
 
-
-
     $xml_term = tripal_get_cvterm(['id' => 'local:full_ncbi_xml']);
-
 
     $props = db_select('chado.projectprop', 't')
       ->fields('t')
@@ -81,5 +76,4 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
     //at a minimum we have the raw XML prop.
     $this->assertNotFalse($props);
   }
-
 }
