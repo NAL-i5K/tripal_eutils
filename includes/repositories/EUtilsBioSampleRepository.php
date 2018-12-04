@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
+class EUtilsBioSampleRepository extends EUtilsRepositoryInterface {
 
   /**
    * Required attributes when using the create method.
@@ -46,11 +46,15 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
       'description' => $description,
     ]);
 
+    //Set class base record stuff
+    $this->base_table = 'biomaterial';
+    $this->base_record_id = $bio_sample->biomaterial_id;
+
     // Create the accessions
     $this->createAccessions($bio_sample, $data['accessions']);
 
     // Create the props (from attributes)
-    $this->createProps($bio_sample, $data['attributes']);
+    $this->createProps($data['attributes']);
 
     return $bio_sample;
   }
@@ -199,8 +203,25 @@ class EUtilsBioSampleRepository extends EUtilsRepositoryInterface{
   }
 
 
-  // TODO: Implement props
-  public function createProps($bio_sample, $props) {
+  /**
+   * Iterates through the attributes array and creates properties.
+   *
+   * @param $attributes
+   *
+   * CVterm info from the Attributes area
+   */
+  public function createProps($attributes) {
+
+    foreach ($attributes as $attribute) {
+
+      $term_name = $attribute['harmonized_name'];
+      $value = $attribute['value'];
+
+      //TODO: the term lookup class should handle this instead.
+      $cvterm = tripal_get_cvterm(['id' => 'ncbi_properties:' . $term_name]);
+      $cvterm_id = $cvterm->cvterm_id;
+      $this->insertProperty($cvterm_id, $value);
+    }
 
   }
 }

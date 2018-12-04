@@ -5,7 +5,7 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EUtilsBioSampleRepositoryTest extends TripalTestCase{
+class EUtilsBioSampleRepositoryTest extends TripalTestCase {
 
   // Uncomment to auto start and rollback db transactions per test method.
   use DBTransaction;
@@ -128,6 +128,25 @@ class EUtilsBioSampleRepositoryTest extends TripalTestCase{
       // Check that BioSample got created
       $biosample = $repo->getBioSample($data['name']);
       $this->assertNotEmpty($biosample, "Unable to find Bio Sample: {$data['name']}. File $file");
+
+      //Check that Biosample props got inserted
+
+      $props = db_select('chado.biomaterialprop', 't')
+        ->fields('t')
+        ->condition('t.biomaterial_id', $biosample->biomaterial_id)
+        ->execute()
+        ->fetchAll();
+
+      $this->assertNotEmpty($props);
+
+      //some of our XML dont have properties.
+      if ($biosample->name == 'Rubber genome') {
+
+        $this->assertGreaterThan(2, count($props));
+
+      }
+
+
     }
   }
 }
