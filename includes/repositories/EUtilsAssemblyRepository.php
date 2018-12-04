@@ -32,6 +32,9 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    */
   public function create($data) {
 
+
+    $this->createXMLProp($data['full_ncbi_xml']);
+
   }
 
 }

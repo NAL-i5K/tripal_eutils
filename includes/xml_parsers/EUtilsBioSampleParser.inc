@@ -18,6 +18,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface{
       'accessions' => $accessions,
       'description' => isset($xml->BioSample->Description->Comment) ? $this->extractParagraphs($xml->BioSample->Description->Comment) : [],
       'attributes' => $this->extractAttributes($xml->BioSample->Attributes),
+      'full_ncbi_xml' => $xml->BioSample->asXML()
     ];
 
     return $data;

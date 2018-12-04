@@ -14,6 +14,9 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
     $xml = $xml->DocumentSummary;
 
     $children = $xml->children();
+
+    $info['full_ncbi_xml'] = $xml->asXML();
+
     foreach ($children as $key => $child) {
 
       switch ($key) {
