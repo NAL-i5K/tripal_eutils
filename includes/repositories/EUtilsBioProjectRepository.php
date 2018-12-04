@@ -51,10 +51,9 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
 
     $this->base_record_id = $project->project_id;
 
-    $this->createAccessions($project, $data['accessions']);
+    $this->createAccessions($data['accessions']);
 
-    $this->insertProps($project, $data['attributes']);
-
+    $this->insertProps($data['attributes']);
     return $project;
   }
 
@@ -119,14 +118,25 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
     return NULL;
   }
 
-  public function insertProps($project, $properties) {
+  /**
+   * Iterate through the properties and insert.
+   *
+   * //TODO:  How do we get the accessions from what we have here?
+   * //What we probably ahve for project is a set of XML attributes or tags...
+   *
+   * @param $properties
+   *
+   * @return bool
+   */
+  public function insertProps($properties) {
 
-    foreach ($properties as $property) {
+    foreach ($properties as $property_name => $value) {
 
-      $cvterm_id = $property['cvterm_id'];
-      $value = $property['value'];
+      $accession = 'local:' . $property_name;
+      //TODO:  this is not what we want to do.  we want to be smarter about mapping the terms...
+      $cvterm = chado_get_cvterm(['id' => $accession]);
 
-      $this->insertProperty($cvterm_id, $value);
+      $this->insertProperty($cvterm->cvterm_id, $value);
 
     }
 
@@ -151,52 +161,6 @@ class EUtilsBioProjectRepository extends EUtilsRepositoryInterface {
       }
     }
     return $data;
-  }
-
-  /**
-   * Creates a new accession record if does not exist and attaches it to
-   * the given project.
-   *
-   * @param object $accession
-   *
-   * @return mixed
-   * @throws \Exception
-   */
-  public function createAccession($accession) {
-
-    $project_id = $this->base_record_id;
-
-    if (!isset($accession['db'])) {
-      throw new Exception('DB not provided for accession ' . $accession['value']);
-    }
-
-    $db = $this->getDB('NCBI ' . $accession['db']);
-
-    if (empty($db)) {
-      throw new Exception('Unable to find DB NCBI ' . $accession['db'] . '. Please create DB first.');
-    }
-
-    $dbxref = $this->getAccessionByName($accession['value'], $db->db_id);
-
-    if (!empty($dbxref)) {
-      $this->linkProjectToAccession($project_id,
-        $dbxref->dbxref_id);
-
-      return $dbxref;
-    }
-
-    if (!empty($db)) {
-      $id = db_insert('chado.dbxref')->fields([
-        'db_id' => $db->db_id,
-        'accession' => $accession['value'],
-      ])->execute();
-
-      $this->insertDBXref($accession['value'], $db->db_id);
-
-      return static::$cache['accessions'][$accession['value']] = $this->getAccessionByID($id);
-    }
-
-    return NULL;
   }
 
 

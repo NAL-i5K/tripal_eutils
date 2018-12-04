@@ -16,6 +16,12 @@ function tripal_eutils_install() {
     'url' => 'http://www.ncbi.nlm.nih.gov/',
   ]);
 
+  chado_insert_cvterm([
+    'id' => 'local:full_ncbi_xml',
+    'name' => 'full_ncbi_xml',
+    'cv_name' => 'local',
+  ]);
+
   tripal_eutils_add_biosample_db();
   tripal_eutils_insert_biosample_attribute_terms();
 }
@@ -29,10 +35,10 @@ function tripal_eutils_insert_biosample_attribute_terms() {
 
   $terms = $lookup->lookupAll();
 
-  foreach ($terms as $machine_name => $attributes){
+  foreach ($terms as $machine_name => $attributes) {
 
     tripal_insert_cvterm([
-      'id' => 'ncbi_properties:'. $machine_name,
+      'id' => 'ncbi_properties:' . $machine_name,
       'name' => $attributes['label'],
       'def' => $attributes['def'],
       'cv_name' => 'ncbi_properties',

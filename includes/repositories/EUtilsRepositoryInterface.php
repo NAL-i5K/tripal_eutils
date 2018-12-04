@@ -160,18 +160,65 @@ abstract class EUtilsRepositoryInterface {
 
 
   /**
+   * Creates a new accession record if does not exist and attaches it to
+   * the given record.
+   *
+   * @param object $accession
+   *
+   * @return mixed
+   * @throws \Exception
+   */
+  public function createAccession($accession) {
+
+    $record_id = $this->base_record_id;
+
+    if (!isset($accession['db'])) {
+      throw new Exception('DB not provided for accession ' . $accession['value']);
+    }
+
+    $db = $this->getDB('NCBI ' . $accession['db']);
+
+    if (empty($db)) {
+      throw new Exception('Unable to find DB NCBI ' . $accession['db'] . '. Please create DB first.');
+    }
+
+    $dbxref = $this->getAccessionByName($accession['value'], $db->db_id);
+
+    if (!empty($dbxref)) {
+      $this->linkBaseRecordToAccession($record_id,
+        $dbxref->dbxref_id);
+
+      return $dbxref;
+    }
+
+    if (!empty($db)) {
+      $id = db_insert('chado.dbxref')->fields([
+        'db_id' => $db->db_id,
+        'accession' => $accession['value'],
+      ])->execute();
+
+      $this->insertDBXref($accession['value'], $db->db_id);
+
+      return static::$cache['accessions'][$accession['value']] = $this->getAccessionByID($id);
+    }
+
+    return NULL;
+  }
+
+
+  /**
+   * Inserts tdbxref into the appropriate linker table, eg, project_dbxref.
    * dbxrefs are formatted db:accession.
    *
    * @param $accession
    *
-   * @param $db_name
+   * @param $db_id
    */
-  public function insertDBXref($accession, $db_id) {
-
+  private function insertDBXref($accession, $db_id) {
 
     $dbxref = [
       'accession' => $accession,
-      'db_id' => db_id,
+      'db_id' => $db_id,
     ];
 
     chado_associate_dbxref($this->base_table, $this->base_record_id, $dbxref);
