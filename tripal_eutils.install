@@ -5,10 +5,8 @@
  */
 function tripal_eutils_install() {
 
-  chado_insert_cv(
-    'ncbi_properties',
-    'The ncbi BioSample properties CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.'
-  );
+  chado_insert_cv('ncbi_properties',
+    'The ncbi BioSample properties CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
 
   chado_insert_db([
     'name' => 'ncbi_properties',
@@ -20,7 +18,6 @@ function tripal_eutils_install() {
   tripal_eutils_insert_biosample_attribute_terms();
 }
 
-
 function tripal_eutils_insert_biosample_attribute_terms() {
 
   $file = __DIR__ . '/mappings/biosample/xml_releases/11-30-18.xml';
@@ -29,15 +26,14 @@ function tripal_eutils_insert_biosample_attribute_terms() {
 
   $terms = $lookup->lookupAll();
 
-  foreach ($terms as $machine_name => $attributes){
+  foreach ($terms as $machine_name => $attributes) {
 
     tripal_insert_cvterm([
-      'id' => 'ncbi_properties:'. $machine_name,
+      'id' => 'ncbi_properties:' . $machine_name,
       'name' => $attributes['label'],
       'def' => $attributes['def'],
       'cv_name' => 'ncbi_properties',
     ]);
-
   }
   //Version 1.0 as of November 29 2018: 456 terms.
 
