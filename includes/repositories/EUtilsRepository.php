@@ -8,7 +8,7 @@ abstract class EUtilsRepository {
    *
    * @var string
    */
-  protected $base_table = '';
+  protected $base_table = NULL;
 
   /**
    * Chado base table record_id.  for example the project.project_id.
@@ -38,7 +38,6 @@ abstract class EUtilsRepository {
    */
   protected $dbxrefs = [];
 
-
   /**
    * Cache of inserted primary and secondary chado records.  Used to speed up
    * multiple look-ups.
@@ -46,7 +45,6 @@ abstract class EUtilsRepository {
    * @var array
    */
   protected static $cache = [];
-
 
   /**
    * Create a new resource.
@@ -72,7 +70,6 @@ abstract class EUtilsRepository {
       }
     }
   }
-
 
   /**
    * Get accession by dbxref id.
@@ -142,7 +139,6 @@ abstract class EUtilsRepository {
     return NULL;
   }
 
-
   /**
    * Inserts a property associated with the interface using the tripal API.
    *
@@ -152,6 +148,7 @@ abstract class EUtilsRepository {
    * @return bool
    */
   public function createProperty($cvterm_id, $value) {
+    $this->validateBaseData();
 
     $base_record_id = $this->base_record_id;
     $base_table = $this->base_table;
@@ -165,23 +162,18 @@ abstract class EUtilsRepository {
     $options = [];
 
     return chado_insert_property($record, $property, $options);
-
   }
-
 
   /**
    * Creates a new accession record if does not exist and attaches it to
    * the given record.
    *
-   * @param object $accession
+   * @param array $accession
    *
    * @return mixed
    * @throws \Exception
    */
   public function createAccession($accession) {
-
-    $record_id = $this->base_record_id;
-
     if (!isset($accession['db'])) {
       throw new Exception('DB not provided for accession ' . $accession['value']);
     }
@@ -195,8 +187,7 @@ abstract class EUtilsRepository {
     $dbxref = $this->getAccessionByName($accession['value'], $db->db_id);
 
     if (!empty($dbxref)) {
-      $this->linkBaseRecordToAccession($record_id,
-        $dbxref->dbxref_id);
+      $this->createDBXref($accession['values'], $db->db_id);
 
       return $dbxref;
     }
@@ -207,7 +198,7 @@ abstract class EUtilsRepository {
         'accession' => $accession['value'],
       ])->execute();
 
-      $this->insertDBXref($accession['value'], $db->db_id);
+      $this->createDBXref($accession['value'], $db->db_id);
 
       return static::$cache['accessions'][$accession['value']] = $this->getAccessionByID($id);
     }
@@ -215,36 +206,83 @@ abstract class EUtilsRepository {
     return NULL;
   }
 
-
   /**
    * Inserts tdbxref into the appropriate linker table, eg, project_dbxref.
    * dbxrefs are formatted db:accession.
    *
-   * @param $accession
+   * @param array $accession
+   * @param int $db_id
    *
-   * @param $db_id
+   * @return bool
+   * @throws \Exception
    */
-  private function insertDBXref($accession, $db_id) {
+  private function createDBXref($accession, $db_id) {
+    $this->validateBaseData();
 
     $dbxref = [
       'accession' => $accession,
       'db_id' => $db_id,
     ];
-    chado_associate_dbxref($this->base_table, $this->base_record_id, $dbxref);
 
+    return chado_associate_dbxref($this->base_table, $this->base_record_id,
+      $dbxref);
   }
 
   /**
    * Associates the XML with the record via the local:full_ncbi_xml term.
    *
+   * <<<<<<< HEAD
+   *
    * @param $xml
    * xml string as returned by simpleXML.
+   * =======
+   * @param string $xml string as returned by SimpleXMLElement.
+   * >>>>>>> master
    */
   public function createXMLProp($xml) {
-
     $xml_term = tripal_get_cvterm(['id' => 'local:full_ncbi_xml']);
 
-    $this->createProperty($xml_term->cvterm_id, $xml);
+    return $this->createProperty($xml_term->cvterm_id, $xml);
+  }
 
+  /**
+   * Set the Chado record id.
+   *
+   * @param int $id
+   *
+   * @return $this
+   */
+  public function setBaseRecordId($id) {
+    $this->base_record_id = $id;
+    return $this;
+  }
+
+  /**
+   * Set the Chado base table.
+   *
+   * @param string $table
+   * Valid examples include 'organism' , 'biomaterial', 'project'
+   *
+   * @return $this
+   */
+  public function setBaseTable($table) {
+    $this->base_table = $table;
+
+    return $this;
+  }
+
+  /**
+   * Verifies that both base_record_id and base_table are set.
+   *
+   * @throws \Exception
+   */
+  protected function validateBaseData() {
+    if (is_null($this->base_record_id)) {
+      throw new Exception('Base record id was not set.');
+    }
+
+    if (is_null($this->base_table)) {
+      throw new Exception('Base table was not set.');
+    }
   }
 }

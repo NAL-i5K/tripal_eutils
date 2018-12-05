@@ -18,7 +18,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
   /**
    * The fields expected from the XML parser.
-   * 
+   *
    * @var array
    */
   protected $required_fields = [
