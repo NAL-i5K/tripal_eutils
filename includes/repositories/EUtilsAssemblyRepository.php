@@ -25,7 +25,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     'name',
     'description',
     'attributes',
-    'full_ncbi_xml'
+    'full_ncbi_xml',
 
   ];
 
@@ -50,7 +50,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    * @return object|void
    */
   public function create($data) {
-$this->validateFields($data);
+    $this->validateFields($data);
     $name = $data['name'];
 
     $description = $data['description'];
@@ -91,7 +91,9 @@ $this->validateFields($data);
     $this->createProperty($term->cvterm_id, 'genome_assembly');
     $this->createXMLProp($data['full_ncbi_xml']);
 
-  //  $mapper = new TagMapper();
+    $this->createLinkedRecords($data['accessions']);
+
+    //  $mapper = new TagMapper();
 
     //add "stats" as properties
     foreach ($data['attributes']['stats'] as $key => $value) {
@@ -114,6 +116,92 @@ $this->validateFields($data);
 
   }
 
+
+  /**
+   * @param $accessions
+   */
+  public function createLinkedRecords($accessions) {
+
+    foreach ($accessions as $accession => $vals) {
+
+      switch ($accession) {
+
+        case 'Assembly':
+          //add as a dbxref for this record
+
+          break;
+
+        case 'taxon_accession':
+
+          $organism = $this->getOrganism($vals);
+          $this->linkOrganism($organism);
+
+          //Link organism via organism_analysis;
+
+
+          break;
+
+        case 'bioprojects':
+          // $projects = $this->createBioprojects($vals);
+
+          break;
+
+        case 'biosamples':
+          //  $biomaterials = $this->createBiomaterials($vals);
+
+          break;
+
+        default:
+          //generic dbxref of some sort.
+          break;
+
+
+      }
+
+    }
+
+
+  }
+
+
+  /**
+   * Insert into organism_analysis, or return existing link.
+   *
+   * @param $organism
+   * Full chado.organism record.
+   *
+   * @return mixed
+   * @throws \Exception
+   */
+  public function linkOrganism($organism) {
+
+    if (!chado_table_exists('organism_analysis')) {
+      throw new Exception('The organism_analysis linker table doesnt exist.  No way to link this organism.');
+    }
+
+    $result = db_select('chado.organism_analysis', 't')
+      ->fields('t', ['organism_analysis_id'])
+      ->condition('t.organism_id', $organism->organism_id)
+      ->condition('t.analysis_id', $this->base_record_id)
+      ->execute()
+      ->fetchField();
+
+    if (!$result) {
+
+      $result = db_insert('chado.organism_analysis')
+        ->fields([
+          'organism_id' => $organism->organism_id,
+          'analysis_id' => $this->base_record_id,
+        ])
+        ->execute();
+    }
+
+    if (!$result) {
+      throw new Exception('Could not link organism to analysis.');
+    }
+
+    return $result;
+  }
 
   public function createAnalysis() {
     // Name is unique so find project.

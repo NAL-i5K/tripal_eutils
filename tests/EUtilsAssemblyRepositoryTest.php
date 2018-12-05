@@ -12,6 +12,11 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
 
   /**
+   * Holds the repository that has been handed the parsed XML.
+   */
+  private $repository = NULL;
+
+  /**
    * @group analysis
    * @group assembly
    * @group repository
@@ -19,27 +24,7 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
    */
   public function testAssemblyFromXML() {
 
-
-    $file = __DIR__ . '/../examples/assembly/559011_assembly.xml';
-
-
-    $parser = $this->getMockBuilder('\EUtilsAssemblyParser')
-      ->setMethods(['getFTPData'])
-      ->getMock();
-
-    //We mock the FTP call.
-    $ftp_response = ['# Assembly method:' => 'a method, v1.0'];
-
-    $parser->expects($this->once())
-      ->method('getFTPData')
-      ->will($this->returnValue($ftp_response));
-
-    $assembly = $parser->parse(simplexml_load_file($file));
-    
-    $repo = new \EUtilsAssemblyRepository();
-    // Make sure creating a new one works
-    $name = 'wgs.5d';
-    $result = $repo->create($assembly);
+    $result = $this->parseAndCreateAsembly();
 
     $this->assertObjectHasAttribute('analysis_id', $result);
 
@@ -65,5 +50,58 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
     //at a minimum we have the raw XML prop.
     $this->assertNotFalse($props);
+  }
+
+  public function testAssemblyCreatesOrganism() {
+
+    $repo = new \EUtilsAssemblyRepository();
+    $analysis = factory('chado.analysis')->create();
+    $organism = factory('chado.organism')->create();
+    $repo->setBaseRecordId($analysis->analysis_id);
+
+    $repo->linkOrganism($organism);
+
+    $result = db_select('chado.organism_analysis', 't')
+      ->fields('t', ['organism_analysis_id'])
+      ->condition('t.organism_id', $organism->organism_id)
+      ->condition('t.analysis_id', $analysis->analysis_id)
+      ->execute()
+      ->fetchField();
+
+    $this->assertNotFalse($result);
+  }
+
+  private function parseAndCreateAsembly() {
+
+    //Oops, this doesnt work like i expect it to, this code never fires....
+    if ($this->repository != NULL) {
+      return $this->repository;
+    }
+
+    $file = __DIR__ . '/../examples/assembly/559011_assembly.xml';
+
+
+    $parser = $this->getMockBuilder('\EUtilsAssemblyParser')
+      ->setMethods(['getFTPData'])
+      ->getMock();
+
+    //We mock the FTP call.
+    $ftp_response = ['# Assembly method:' => 'a method, v1.0'];
+
+    $parser->expects($this->once())
+      ->method('getFTPData')
+      ->will($this->returnValue($ftp_response));
+
+    $assembly = $parser->parse(simplexml_load_file($file));
+
+    $repo = new \EUtilsAssemblyRepository();
+
+    $result = $repo->create($assembly);
+
+    $this->repository = $result;
+
+    return $result;
+
+
   }
 }
