@@ -252,7 +252,7 @@ abstract class EUtilsRepository{
   }
 
   /**
-   * Set the base table.
+   * Set the Chado base table.
    *
    * @param string $table
    *
