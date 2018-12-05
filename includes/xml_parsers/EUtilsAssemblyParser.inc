@@ -86,6 +86,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
     if ($url) {
       $list['ftp_attributes'] = $this->getFTPData($url);
     }
+
     return $list;
   }
 
@@ -130,8 +131,6 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
   public function getFTPData($url) {
 
     $ftp = new EFTP();
-
-    var_dump("im being called for " . $url);
 
     $ftp->setURL($url);
 
