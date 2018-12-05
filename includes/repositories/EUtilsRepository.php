@@ -317,6 +317,10 @@ abstract class EUtilsRepository {
     $organism = $query->execute()
       ->fetchObject();
 
+    if (!$organism) {
+      throw new Exception('Could not create organism record for ' . $accession);
+    }
+
     return $organism;
   }
 }
