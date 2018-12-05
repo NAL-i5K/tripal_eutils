@@ -255,6 +255,7 @@ abstract class EUtilsRepository{
    * Set the Chado base table.
    *
    * @param string $table
+   * Valid examples include 'organism' , 'biomaterial', 'project'
    *
    * @return $this
    */
