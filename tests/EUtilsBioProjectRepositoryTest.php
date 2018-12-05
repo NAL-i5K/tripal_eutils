@@ -5,7 +5,7 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EUtilsBioProjectRepositoryTest extends TripalTestCase {
+class EUtilsBioProjectRepositoryTest extends TripalTestCase{
 
   // Uncomment to auto start and rollback db transactions per test method.
   use DBTransaction;
@@ -36,7 +36,6 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
     $this->assertNotFalse($result);
   }
 
-
   /**
    * @group bioproject
    */
@@ -55,7 +54,6 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
     $result = $repo->create($project);
 
     $this->assertObjectHasAttribute('project_id', $result);
-
 
     $props = db_select('chado.projectprop', 't')
       ->fields('t')
