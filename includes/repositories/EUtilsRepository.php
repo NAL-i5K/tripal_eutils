@@ -291,11 +291,11 @@ abstract class EUtilsRepository {
    */
   public function getOrganism($accession) {
 
-    var_dump($accession);
 
+    //Note: import_existing = TRUE causes the loader to time out.
     $run_args = [
       'taxonomy_ids' => $accession,
-      'import_existing' => TRUE,
+      'import_existing' => FALSE,
     ];
 
     module_load_include('inc', 'tripal_chado', 'includes/TripalImporter/TaxonomyImporter');
