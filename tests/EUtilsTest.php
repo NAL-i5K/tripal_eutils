@@ -8,7 +8,7 @@ use StatonLab\TripalTestSuite\TripalTestCase;
 class EUtilsTest extends TripalTestCase {
 
   // Uncomment to auto start and rollback db transactions per test method.
-  //use DBTransaction;
+  use DBTransaction;
 
   /**
    * Basic test example.
