@@ -5,7 +5,7 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EUtilsBioSampleRepositoryTest extends TripalTestCase {
+class EUtilsBioSampleRepositoryTest extends TripalTestCase{
 
   // Uncomment to auto start and rollback db transactions per test method.
   use DBTransaction;
@@ -60,11 +60,19 @@ class EUtilsBioSampleRepositoryTest extends TripalTestCase {
     $repo = new \EUtilsBioSampleRepository();
     $accession_value = uniqid();
 
-    $accession = $repo->createAccession($bio_sample, [
+    // Base record not set so expect an exception.
+    $this->expectException(\Exception::class);
+    $repo->createAccession([
       'value' => $accession_value,
       'db' => 'BioSample',
     ]);
 
+    $accession = $repo->setBaseRecordId($bio_sample->biomaterial_id)
+      ->setBaseTable('biomaterial')
+      ->createAccession([
+        'value' => $accession_value,
+        'db' => 'BioSample',
+      ]);
     $this->assertNotEmpty($accession);
 
     $dbxref = db_select('chado.dbxref', 'd')
@@ -127,7 +135,8 @@ class EUtilsBioSampleRepositoryTest extends TripalTestCase {
 
       // Check that BioSample got created
       $biosample = $repo->getBioSample($data['name']);
-      $this->assertNotEmpty($biosample, "Unable to find Bio Sample: {$data['name']}. File $file");
+      $this->assertNotEmpty($biosample,
+        "Unable to find Bio Sample: {$data['name']}. File $file");
 
       //Check that Biosample props got inserted
 
@@ -143,10 +152,7 @@ class EUtilsBioSampleRepositoryTest extends TripalTestCase {
       if ($biosample->name == 'Rubber genome') {
 
         $this->assertGreaterThan(2, count($props));
-
       }
-
-
     }
   }
 }
