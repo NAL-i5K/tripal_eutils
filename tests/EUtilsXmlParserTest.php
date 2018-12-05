@@ -8,7 +8,12 @@ use StatonLab\TripalTestSuite\TripalTestCase;
 class EUtilsXmlParserTest extends TripalTestCase {
 
   // Uncomment to auto start and rollback db transactions per test method.
-  // use DBTransaction;
+  use DBTransaction;
+
+  /**
+   * AssemblyProvider creates array of XML and keys values to test.
+   */
+  protected $assembly_xmls = NULL;
 
 
   /**
@@ -81,10 +86,6 @@ class EUtilsXmlParserTest extends TripalTestCase {
 
       }
 
-      //      $this->assertNotEmpty($accessions);
-      //      $this->assertNotEmpty($props);
-
-
     }
   }
 
@@ -121,7 +122,6 @@ class EUtilsXmlParserTest extends TripalTestCase {
 
   public function testAssemblyParser($path, $base_keys) {
 
-
     $parser = $this->getMockBuilder('\EUtilsAssemblyParser')
       ->setMethods(['getFTPData'])
       ->getMock();
@@ -145,7 +145,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
     $this->assertArrayHasKey('stats', $attributes);
     $this->assertArrayHasKey('files', $attributes);
     $this->assertArrayHasKey('ftp_attributes', $attributes);
-    
+
     $this->assertArrayHasKey('# Assembly method:', $attributes['ftp_attributes']);
     $this->assertNotNull($attributes['ftp_attributes']['# Assembly method:']);
 
@@ -155,6 +155,15 @@ class EUtilsXmlParserTest extends TripalTestCase {
     $this->assertNotNull($assembly['description']);
 
 
+    $accessions = $assembly['accessions'];
+
+    $acc_master = $base_keys['accessions'];
+
+    if (!empty($acc_master)) {
+      //we only bother specifying keys for some of hte files.
+      $this->assertEquals($acc_master, $accessions);
+    }
+
   }
 
   /**
@@ -162,41 +171,43 @@ class EUtilsXmlParserTest extends TripalTestCase {
    */
   public function AssemblyProvider() {
 
+
+    if ($this->assembly_xmls) {
+      return $this->assembly_xmls;
+    }
+
+
     $path = DRUPAL_ROOT . '/' . drupal_get_path('module', 'tripal_eutils');
 
     $files = [
       [
         $path . "/examples/assembly/1949871_assembly.xml",
         [
-          'name' => '',
-          'accessions' => '',
-          'attributes' => '',
-          'description' => '',
+
         ],
       ],
       [
         $path . "/examples/assembly/2004951_assembly.xml",
         [
-          'name' => '',
-          'accessions' => '',
-          'attributes' => '',
-          'description' => '',
+
         ],
       ],
       [
         $path . "/examples/assembly/317138_assembly.xml",
         [
-          'name' => '',
-          'accessions' => '',
-          'attributes' => '',
-          'description' => '',
+
         ],
       ],
       [
         $path . "/examples/assembly/524058_assembly.xml",
         [
           'name' => '',
-          'accessions' => '',
+          'accessions' => [
+            'Assembly' => 'GCF_000298355.1',
+            'taxon_accession' => '72004',
+            'bioprojects' => ['74739', '221623'],
+            'biosamples' => ['744358'],
+          ],
           'attributes' => '',
           'description' => '',
         ],
@@ -204,41 +215,30 @@ class EUtilsXmlParserTest extends TripalTestCase {
       [
         $path . "/examples/assembly/557018_assembly.xml",
         [
-          'name' => '',
-          'accessions' => '',
-          'attributes' => '',
-          'description' => '',
+
         ],
       ],
       [
         $path . "/examples/assembly/559011_assembly.xml",
         [
-          'name' => '',
-          'accessions' => '',
-          'attributes' => '',
-          'description' => '',
+
         ],
       ],
       [
         $path . "/examples/assembly/751381_assembly.xml",
         [
-          'name' => '',
-          'accessions' => '',
-          'attributes' => '',
-          'description' => '',
+
         ],
       ],
       [
         $path . "/examples/assembly/91111_assembly.xml",
         [
-          'name' => '',
-          'accessions' => '',
-          'attributes' => '',
-          'description' => '',
+
         ],
       ],
     ];
 
+    $this->assembly_xmls = $files;
     return $files;
   }
 }
