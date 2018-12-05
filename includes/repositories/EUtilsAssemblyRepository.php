@@ -37,7 +37,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    * @return object|void
    */
   public function create($data) {
-
+$this->validateFields($data);
     $name = $data['name'];
 
     $description = $data['description'];
