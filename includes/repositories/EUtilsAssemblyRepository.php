@@ -134,11 +134,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
         case 'taxon_accession':
 
           $organism = $this->getOrganism($vals);
-          $this->linkOrganism($organism);
-
-          //Link organism via organism_analysis;
-
-
+          $linked = $this->linkOrganism($organism);
+          
           break;
 
         case 'bioprojects':

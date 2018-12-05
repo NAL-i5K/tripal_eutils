@@ -71,6 +71,83 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
     $this->assertNotFalse($result);
   }
 
+  /**
+   * @group organism
+   * @group assembly
+   */
+  public function testAssemblyCreatesOrganismFromNCBIAccession() {
+
+
+    $accessions = ['taxon_accession' => '499546'];
+
+    $repo = new \EUtilsAssemblyRepository();
+    $analysis = factory('chado.analysis')->create();
+
+    $repo->setBaseRecordId($analysis->analysis_id);
+    $repo->createLinkedRecords($accessions);
+
+    $organism = db_select('chado.organism', 't')
+      ->fields('t')
+      ->condition('t.genus', 'Tamias')
+      ->execute()
+      ->fetchObject();
+
+    $this->assertNotFalse($organism, 'NCBI accession 499546 not created via AssemblyRepo createLinkedRecords');
+
+
+    $result = db_select('chado.organism_analysis', 't')
+      ->fields('t', ['organism_analysis_id'])
+      ->condition('t.organism_id', $organism->organism_id)
+      ->condition('t.analysis_id', $analysis->analysis_id)
+      ->execute()
+      ->fetchField();
+
+    $this->assertNotFalse($result, 'organism was not linked to analysis via createLinkedRecords');
+
+
+  }
+
+  public function testAssemblyLinksExistingOrganism() {
+
+
+    $accessions = ['taxon_accession' => '499546'];
+
+    $repo = new \EUtilsAssemblyRepository();
+    $analysis = factory('chado.analysis')->create();
+    $organism_original = factory('chado.organism')->create([
+      'genus' => 'Tamias',
+      'species' => 'alpinus',
+      'abbreviation' => 'T. alpinus',
+      'common_name' => 'waffle_monster',
+    ]);
+
+    $repo->setBaseRecordId($analysis->analysis_id);
+    $repo->createLinkedRecords($accessions);
+
+    $organism = db_select('chado.organism', 't')
+      ->fields('t')
+      ->condition('t.genus', 'Tamias')
+      ->execute()
+      ->fetchObject();
+
+    $this->assertNotFalse($organism, 'NCBI accession 499546 not created via AssemblyRepo createLinkedRecords');
+    $this->assertEquals('waffle_monster', $organism->common_name, 'NCBI accession 499546 overwrote existing common name value');
+
+
+    $result = db_select('chado.organism_analysis', 't')
+      ->fields('t', ['organism_analysis_id'])
+      ->condition('t.organism_id', $organism->organism_id)
+      ->condition('t.analysis_id', $analysis->analysis_id)
+      ->execute()
+      ->fetchField();
+
+    $this->assertNotFalse($result, 'organism was not linked to analysis via createLinkedRecords');
+
+    $this->assertEquals($organism_original->organism_id, $organism->organism_id);
+
+  }
+
+
   private function parseAndCreateAsembly() {
 
     //Oops, this doesnt work like i expect it to, this code never fires....
