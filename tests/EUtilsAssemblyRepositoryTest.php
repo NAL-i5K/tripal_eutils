@@ -8,7 +8,7 @@ use StatonLab\TripalTestSuite\TripalTestCase;
 class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
   // Uncomment to auto start and rollback db transactions per test method.
-   use DBTransaction;
+  use DBTransaction;
 
 
   /**
@@ -22,11 +22,21 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
     $file = __DIR__ . '/../examples/assembly/559011_assembly.xml';
 
-    $parser = new \EUtilsAssemblyParser();
+
+    $parser = $this->getMockBuilder('\EUtilsAssemblyParser')
+      ->setMethods(['getFTPData'])
+      ->getMock();
+
+    //We mock the FTP call.
+    $ftp_response = ['# Assembly method:' => 'a method, v1.0'];
+
+    $parser->expects($this->once())
+      ->method('getFTPData')
+      ->will($this->returnValue($ftp_response));
+
     $assembly = $parser->parse(simplexml_load_file($file));
-
+    
     $repo = new \EUtilsAssemblyRepository();
-
     // Make sure creating a new one works
     $name = 'wgs.5d';
     $result = $repo->create($assembly);
