@@ -133,7 +133,9 @@ class TagMapper{
       return static::$cache[$term['id']];
     }
 
-    return tripal_get_cvterm($term);
+    $term =  tripal_get_cvterm($term);
+    static::$cache[$term['id']] = $term;
+    return $term;
   }
 
   private function provideAssemblyTagDict() {
