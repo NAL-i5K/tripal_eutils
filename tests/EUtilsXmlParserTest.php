@@ -121,8 +121,20 @@ class EUtilsXmlParserTest extends TripalTestCase {
 
   public function testAssemblyParser($path, $base_keys) {
 
+    //Note:  the FTP call slows down the test.
+$parser = new \EUtilsAssemblyParser();
 
-    $parser = new \EUtilsAssemblyParser();
+//
+//    $parser = $this->getMockBuilder('\EUtilsAssemblyParser')
+//    ->setMethods()
+//    ->getMock();
+//
+//    $ftp_response = [['# Assembly method:' => 'a method, v1.0']];
+//
+//    $parser->expects($this->once())
+//      ->method('getFTPData')
+//      ->will($this->returnValue($ftp_response));
+
     $assembly = $parser->parse(simplexml_load_file($path));
 
     $this->assertArrayHasKey('name', $assembly);

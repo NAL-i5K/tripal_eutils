@@ -127,9 +127,11 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
    * @return array
    *
    */
-  private function getFTPData($url) {
+  public function getFTPData($url) {
 
     $ftp = new EFTP();
+
+    var_dump("im being called for " . $url);
 
     $ftp->setURL($url);
 

@@ -55,7 +55,6 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     //algorithm, sourcename, sourceversion, sourceuri, timeexecuted.
 
 
-
     $this->base_fields = [
       'name' => $name,
       'description' => $description,
@@ -78,6 +77,27 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     $term = tripal_get_cvterm(['id' => 'rdfs:type']);
     $this->createProperty($term->cvterm_id, 'genome_assembly');
     $this->createXMLProp($data['full_ncbi_xml']);
+
+  //  $mapper = new TagMapper();
+
+
+    var_dump($data['attributes']);
+    //add "stats" as properties
+    foreach ($data['attributes']['stats'] as $key => $value) {
+
+      //TODO: use mapper to look up cvterms.
+      //for now just use local.
+      // $mapper->lookupAttribute($key)
+      $term = tripal_insert_cvterm([
+        'id' => 'ncbi_properties:' . $key,
+        'name' => $key,
+        'def' => '',
+        'cv_name' => 'ncbi_properties',
+      ]);
+      $this->createProperty($term->cvterm_id, $value);
+    }
+
+    //TODO: add FTP links.
 
     return $analysis;
 
