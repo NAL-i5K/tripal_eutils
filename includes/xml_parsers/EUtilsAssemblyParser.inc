@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsAssemblyParser implements EUtilsParserInterface{
+class EUtilsAssemblyParser implements EUtilsParserInterface {
 
   /**
    * @param \SimpleXMLElement $xml
@@ -22,6 +22,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface{
       switch ($key) {
         case 'Meta':
           $info['attributes'] = $this->parseMeta($child);
+
           break;
 
         case 'AssemblyName':
@@ -80,6 +81,12 @@ class EUtilsAssemblyParser implements EUtilsParserInterface{
       }
     }
 
+    $url = $list['files']['Assembly_rpt'] ?? NULL;
+
+    if ($url) {
+      $list['ftp_attributes'] = $this->getFTPData($url);
+    }
+
     return $list;
   }
 
@@ -112,4 +119,40 @@ class EUtilsAssemblyParser implements EUtilsParserInterface{
 
     return $results;
   }
+
+  /**
+   * Get the fields the assembly object will need from the FTP.
+   *
+   * @param $url - the ftp site url extracted form the metadata
+   *
+   * @return array
+   *
+   */
+  public function getFTPData($url) {
+
+    $ftp = new EFTP();
+
+    $ftp->setURL($url);
+
+    $data = [];
+
+    $fields = ['# Assembly method:'];
+
+    foreach ($fields as $field) {
+      $values = $ftp->getField($field);
+
+      if (count($values === 0)) {
+
+        $value = $values[0];
+      }
+      else {
+        $value = implode('', $values);
+      }
+
+      $data[$field] = $value;
+    }
+
+    return $data;
+  }
+
 }

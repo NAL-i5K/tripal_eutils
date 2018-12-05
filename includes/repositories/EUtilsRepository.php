@@ -231,7 +231,13 @@ abstract class EUtilsRepository {
   /**
    * Associates the XML with the record via the local:full_ncbi_xml term.
    *
+   * <<<<<<< HEAD
+   *
+   * @param $xml
+   * xml string as returned by simpleXML.
+   * =======
    * @param string $xml string as returned by SimpleXMLElement.
+   * >>>>>>> master
    */
   public function createXMLProp($xml) {
     $xml_term = tripal_get_cvterm(['id' => 'local:full_ncbi_xml']);

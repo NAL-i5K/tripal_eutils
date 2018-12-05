@@ -73,7 +73,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
       /**
        * These will be used to lookup biosamples and assemblies.
        */
-      if (isset($linked_records['locus_tag_prefix'])){
+      if (isset($linked_records['locus_tag_prefix'])) {
         $locus_tag = $linked_records['locus_tag_prefix'];
 
         $this->assertArrayHasKey('value', $locus_tag);
@@ -122,7 +122,15 @@ class EUtilsXmlParserTest extends TripalTestCase {
   public function testAssemblyParser($path, $base_keys) {
 
 
-    $parser = new \EUtilsAssemblyParser();
+    $parser = $this->getMockBuilder('\EUtilsAssemblyParser')
+      ->setMethods(['getFTPData'])
+      ->getMock();
+    //We mock the FTP call to speed up the test.
+    $ftp_response = ['# Assembly method:' => 'a method, v1.0'];
+    $parser->expects($this->once())
+      ->method('getFTPData')
+      ->will($this->returnValue($ftp_response));
+
     $assembly = $parser->parse(simplexml_load_file($path));
 
     $this->assertArrayHasKey('name', $assembly);
@@ -136,12 +144,16 @@ class EUtilsXmlParserTest extends TripalTestCase {
 
     $this->assertArrayHasKey('stats', $attributes);
     $this->assertArrayHasKey('files', $attributes);
-
+    $this->assertArrayHasKey('ftp_attributes', $attributes);
+    
+    $this->assertArrayHasKey('# Assembly method:', $attributes['ftp_attributes']);
+    $this->assertNotNull($attributes['ftp_attributes']['# Assembly method:']);
 
     $this->assertNotNull($assembly['name']);
     $this->assertNotNull($assembly['accessions']);
     $this->assertNotNull($assembly['attributes']);
     $this->assertNotNull($assembly['description']);
+
 
   }
 
