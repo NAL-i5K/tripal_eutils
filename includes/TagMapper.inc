@@ -134,7 +134,7 @@ class TagMapper{
     }
 
     $term =  tripal_get_cvterm($term);
-    static::$cache[$term['id']] = $term;
+    static::$cache[$term->cvterm_id] = $term;
     return $term;
   }
 
