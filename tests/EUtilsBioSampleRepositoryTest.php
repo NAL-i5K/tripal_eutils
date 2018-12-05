@@ -5,7 +5,7 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EUtilsBioSampleRepositoryTest extends TripalTestCase{
+class EUtilsBioSampleRepositoryTest extends TripalTestCase {
 
   // Uncomment to auto start and rollback db transactions per test method.
   use DBTransaction;
@@ -155,4 +155,23 @@ class EUtilsBioSampleRepositoryTest extends TripalTestCase{
       }
     }
   }
+
+
+  /**
+   * @group organism
+   * @throws \Exception
+   */
+  public function testGetOrganism() {
+
+    $repo = new \EUtilsBioSampleRepository();
+
+    $accession = '499546';
+
+    $organism = $repo->getOrganism($accession);
+
+    $this->assertNotFalse($organism);
+    $this->assertEquals('Tamias', $organism->genus);
+  }
+
+
 }
