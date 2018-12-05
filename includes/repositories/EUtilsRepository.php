@@ -240,7 +240,7 @@ abstract class EUtilsRepository{
   }
 
   /**
-   * Set the record id.
+   * Set the Chado record id.
    *
    * @param int $id
    *
