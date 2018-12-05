@@ -16,6 +16,11 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     'timeexecuted' => '',
   ];
 
+  /**
+   * The fields expected from the XML parser.
+   * 
+   * @var array
+   */
   protected $required_fields = [
     'name',
     'description',
@@ -87,7 +92,7 @@ $this->validateFields($data);
     $this->createXMLProp($data['full_ncbi_xml']);
 
   //  $mapper = new TagMapper();
-    
+
     //add "stats" as properties
     foreach ($data['attributes']['stats'] as $key => $value) {
 
