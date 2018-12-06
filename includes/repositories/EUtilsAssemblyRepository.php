@@ -135,16 +135,19 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
           $organism = $this->getOrganism($vals);
           $linked = $this->linkOrganism($organism);
-          
+
           break;
 
         case 'bioprojects':
-          // $projects = $this->createBioprojects($vals);
+          $projects = $this->getProjects($vals);
+          $linked = $this->linkProjects($projects);
+
 
           break;
 
         case 'biosamples':
-          //  $biomaterials = $this->createBiomaterials($vals);
+          $biomaterials = $this->getBiomaterials($vals);
+          $linked = $this->linkBiomaterials($biomaterials);
 
           break;
 
@@ -158,6 +161,22 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     }
 
 
+  }
+
+
+  public function getProjects($projects) {
+
+    $return = [];
+    foreach ($projects as $project) {
+
+      $db = 'bioproject';
+      $connection = (new EUtils())->getResourceProvider($db);
+      $connection->
+
+
+    }
+
+    return $return;
   }
 
 
