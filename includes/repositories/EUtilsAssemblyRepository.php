@@ -170,10 +170,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     foreach ($projects as $project) {
 
       $db = 'bioproject';
-      $connection = (new EUtils())->getResourceProvider($db);
-      $connection->
-
-
+      $project = (new EUtils())->get($db, $project);
+      $return[] = $project;
     }
 
     return $return;

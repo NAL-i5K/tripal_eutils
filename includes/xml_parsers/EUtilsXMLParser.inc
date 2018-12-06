@@ -30,4 +30,14 @@ class EUtilsXMLParser{
   public function bioSample(SimpleXMLElement $xml) {
     return (new EUtilsBioSampleParser())->parse($xml);
   }
+
+  /**
+   * Parse Assembly XML
+   * @param \SimpleXMLElement $xml
+   *
+   * @return array
+   */
+  public function assembly(SimpleXMLElement $xml){
+    return (new EUtilsAssemblyParser())->parse($xml);
+  }
 }

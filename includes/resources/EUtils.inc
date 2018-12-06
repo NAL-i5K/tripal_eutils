@@ -6,7 +6,23 @@
  * Factory class which returns the appropriate NCBI resource provider.
  *
  */
-class EUtils{
+class EUtils {
+
+  public function get($db, $accession) {
+
+    $provider = $this->getResourceProvider($db);
+
+    $xml = $provider->xml();
+
+    $parser = new EUtilsXMLParser($db);
+    $data = $parser->parse($xml);
+    $repository = new EutilsRepository($db);
+
+    $record = $repository->create($data);
+
+    return $record;
+
+  }
 
   /**
    * @param $db
