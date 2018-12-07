@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsAssemblyParser implements EUtilsParserInterface{
+class EUtilsAssemblyParser implements EUtilsParserInterface {
 
   /**
    * @param \SimpleXMLElement $xml
@@ -8,7 +8,14 @@ class EUtilsAssemblyParser implements EUtilsParserInterface{
    * @return array
    */
   public function parse(SimpleXMLElement $xml) {
-    $info = [];
+    $info = [
+      'attributes' => [],
+    ];
+
+    //Links we encounter:
+    //SpeciesTaxid => (organism)
+    //
+
 
     // skip to DocumentSummary
     $xml = $xml->DocumentSummarySet;
@@ -22,6 +29,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface{
       switch ($key) {
         case 'Meta':
           $info['attributes'] = $this->parseMeta($child);
+
           break;
 
         case 'AssemblyName':
@@ -33,9 +41,35 @@ class EUtilsAssemblyParser implements EUtilsParserInterface{
           break;
 
         case 'AssemblyAccession':
-          // An array because I want to add more accessions later.
-          $info['accessions'][] = ['Assembly' => (string) $child];
+          $info['accessions']['Assembly'] = (string) $child;
           break;
+
+        case 'SpeciesTaxid'://linked chado records.
+          //NOTE: Taxid also exists, but in all examples they are equal.
+          $info['accessions']['taxon_accession'] = (string) $child;
+          break;
+
+        case 'GB_BioProjects':
+        case 'RS_BioProjects':
+
+          $bioproject_children = $child->children();
+
+          foreach ($bioproject_children as $bp_child) {
+
+            $id = $bp_child->BioprojectId;
+            //TODO: do we also need to keep track of if this is genbank or refseq?
+            $info['accessions']['bioprojects'][] = (string) $id;
+
+          }
+
+          break;
+
+
+        case 'BioSampleId':
+          $info['accessions']['biosamples'][] = (string) $child;
+
+          break;
+
 
         default:
           $info['ignored'][] = $child->getName();
@@ -80,6 +114,12 @@ class EUtilsAssemblyParser implements EUtilsParserInterface{
       }
     }
 
+    $url = $list['files']['Assembly_rpt'] ?? NULL;
+
+    if ($url) {
+      $list['ftp_attributes'] = $this->getFTPData($url);
+    }
+
     return $list;
   }
 
@@ -112,4 +152,40 @@ class EUtilsAssemblyParser implements EUtilsParserInterface{
 
     return $results;
   }
+
+  /**
+   * Get the fields the assembly object will need from the FTP.
+   *
+   * @param $url - the ftp site url extracted form the metadata
+   *
+   * @return array
+   *
+   */
+  public function getFTPData($url) {
+
+    $ftp = new EFTP();
+
+    $ftp->setURL($url);
+
+    $data = [];
+
+    $fields = ['# Assembly method:'];
+
+    foreach ($fields as $field) {
+      $values = $ftp->getField($field);
+
+      if (count($values === 0)) {
+
+        $value = $values[0];
+      }
+      else {
+        $value = implode('', $values);
+      }
+
+      $data[$field] = $value;
+    }
+
+    return $data;
+  }
+
 }

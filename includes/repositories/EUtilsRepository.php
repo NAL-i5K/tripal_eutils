@@ -300,7 +300,7 @@ abstract class EUtilsRepository {
   }
 
   /**
-   * Set the record id.
+   * Set the Chado record id.
    *
    * @param int $id
    *
@@ -312,9 +312,10 @@ abstract class EUtilsRepository {
   }
 
   /**
-   * Set the base table.
+   * Set the Chado base table.
    *
    * @param string $table
+   * Valid examples include 'organism' , 'biomaterial', 'project'
    *
    * @return $this
    */
@@ -337,5 +338,73 @@ abstract class EUtilsRepository {
     if (is_null($this->base_table)) {
       throw new Exception('Base table was not set.');
     }
+  }
+
+  /**
+   * Given an ncbi taxon organism, return the organism (and create if
+   * necessary).
+   *
+   * @param $accession
+   * NCBITaxon accession for organism.
+   *
+   * @return mixed
+   * @throws \Exception
+   */
+  public function getOrganism($accession) {
+
+
+    $organism = $this->organismQuery($accession);
+
+
+    if ($organism) {
+      return $organism;
+    }
+    //Note: import_existing = TRUE causes the loader to time out.
+    $run_args = [
+      'taxonomy_ids' => $accession,
+      'import_existing' => FALSE,
+    ];
+
+    module_load_include('inc', 'tripal_chado', 'includes/TripalImporter/TaxonomyImporter');
+
+    $importer = new \TaxonomyImporter();
+    $importer->create($run_args, $file_details = []);
+
+    $importer->run();
+
+
+    $organism = $this->organismQuery($accession);
+
+    if (!$organism) {
+      throw new Exception('Could not create organism record for ' . $accession);
+    }
+
+    return $organism;
+  }
+
+  /**
+   * Query to check if an organism exists in the DB based on the NCBITaxon
+   * accession.
+   *
+   * @param $accession
+   *
+   * @return mixed
+   */
+  private function organismQuery($accession) {
+
+    $db = chado_get_db(['name' => 'NCBITaxon']);
+
+    $query = db_select('chado.organism_dbxref', 'od');
+    $query->join('chado.organism', 'o', 'o.organism_id = od.organism_id');
+    $query->fields('o');
+    // $query->condition('od.organism_id', $munk->organism_id);
+    $query->join('chado.dbxref', 'd', 'd.dbxref_id = od.dbxref_id');
+    $query->condition('d.accession', $accession);
+    $query->condition('d.db_id', $db->db_id);
+    $organism = $query->execute()
+      ->fetchObject();
+
+
+    return $organism;
   }
 }
