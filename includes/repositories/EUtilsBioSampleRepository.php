@@ -159,7 +159,6 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
         $data[] = $this->createAccession($accession);
       } catch (Exception $exception) {
         // Log the error and continue
-        tripal_log($exception->getMessage());
       }
     }
 

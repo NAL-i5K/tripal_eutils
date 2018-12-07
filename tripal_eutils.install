@@ -5,23 +5,30 @@
  */
 function tripal_eutils_install() {
 
-  chado_insert_cv('ncbi_properties',
-    'The ncbi BioSample properties CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
+  chado_insert_cv(
+    'ncbi_properties',
+    'The ncbi BioSample properties CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.'
+  );
 
-  chado_insert_db([
-    'name' => 'ncbi_properties',
-    'description' => 'Attribute and property terms for NCBI.',
-    'url' => 'http://www.ncbi.nlm.nih.gov/',
-  ]);
+  chado_insert_db(
+    [
+      'name'        => 'ncbi_properties',
+      'description' => 'Attribute and property terms for NCBI.',
+      'url'         => 'http://www.ncbi.nlm.nih.gov/',
+    ]
+  );
 
-  chado_insert_cvterm([
-    'id' => 'local:full_ncbi_xml',
-    'name' => 'full_ncbi_xml',
-    'cv_name' => 'local',
-  ]);
+  chado_insert_cvterm(
+    [
+      'id'      => 'local:full_ncbi_xml',
+      'name'    => 'full_ncbi_xml',
+      'cv_name' => 'local',
+    ]
+  );
 
   tripal_eutils_add_biosample_db();
   tripal_eutils_insert_biosample_attribute_terms();
+  tripal_eutils_add_genbank_db_and_submitter_cvterm();
 }
 
 function tripal_eutils_insert_biosample_attribute_terms() {
@@ -34,12 +41,14 @@ function tripal_eutils_insert_biosample_attribute_terms() {
 
   foreach ($terms as $machine_name => $attributes) {
 
-    tripal_insert_cvterm([
-      'id' => 'ncbi_properties:' . $machine_name,
-      'name' => $attributes['label'],
-      'def' => $attributes['def'],
-      'cv_name' => 'ncbi_properties',
-    ]);
+    tripal_insert_cvterm(
+      [
+        'id'      => 'ncbi_properties:' . $machine_name,
+        'name'    => $attributes['label'],
+        'def'     => $attributes['def'],
+        'cv_name' => 'ncbi_properties',
+      ]
+    );
   }
   //Version 1.0 as of November 29 2018: 456 terms.
 
@@ -51,35 +60,35 @@ function tripal_eutils_insert_biosample_attribute_terms() {
 function tripal_eutils_schema() {
   $schema['tripal_eutils_tag_dictionary'] = [
     'description' => 'Stores all attribute tags encountered and their mappings',
-    'fields' => [
-      'id' => [
-        'type' => 'serial',
+    'fields'      => [
+      'id'     => [
+        'type'     => 'serial',
         'unsigned' => TRUE,
         'not null' => TRUE,
       ],
-      'tag' => [
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
+      'tag'    => [
+        'type'        => 'varchar',
+        'length'      => 255,
+        'not null'    => TRUE,
         'description' => 'The XML tag name.',
       ],
-      'type' => [
+      'type'   => [
         'description' => 'NCBI database type.',
-        'type' => 'varchar',
-        'length' => 60,
-        'not null' => TRUE,
+        'type'        => 'varchar',
+        'length'      => 60,
+        'not null'    => TRUE,
       ],
       'status' => [
         'description' => 'assigned, unassigned, ignored',
-        'type' => 'varchar',
-        'length' => 60,
-        'not null' => TRUE,
+        'type'        => 'varchar',
+        'length'      => 60,
+        'not null'    => TRUE,
       ],
 
       'cvterm_id' => [
         'description' => 'The cvterm this tag is mapped to.',
-        'type' => 'int',
-        'not null' => FALSE,
+        'type'        => 'int',
+        'not null'    => FALSE,
       ],
     ],
     'primary key' => [
@@ -94,12 +103,36 @@ function tripal_eutils_schema() {
  * Add the NCBI BioSample DB
  */
 function tripal_eutils_add_biosample_db() {
-  tripal_insert_db([
-    'name' => 'NCBI BioSample',
-    'description' => 'The BioSample database contains descriptions of biological source materials used in experimental assays.',
-    'urlprefix' => 'http://www.ncbi.nlm.nih.gov/biosample/{accession}',
-    'url' => 'http://www.ncbi.nlm.nih.gov/',
-  ]);
+  tripal_insert_db(
+    [
+      'name'        => 'NCBI BioSample',
+      'description' => 'The BioSample database contains descriptions of biological source materials used in experimental assays.',
+      'urlprefix'   => 'http://www.ncbi.nlm.nih.gov/biosample/{accession}',
+      'url'         => 'http://www.ncbi.nlm.nih.gov/',
+    ]
+  );
+}
+
+/**
+ * Add the NCBI GenBank DB
+ */
+function tripal_eutils_add_genbank_db_and_submitter_cvterm() {
+  tripal_insert_db(
+    [
+      'name'        => 'NCBI GenBank',
+      'description' => '',
+      'urlprefix'   => 'https://www.ncbi.nlm.nih.gov/genbank/{accession}',
+      'url'         => 'http://www.ncbi.nlm.nih.gov/',
+    ]
+  );
+
+  chado_insert_cvterm(
+    [
+      'id'      => 'ncbi_properties:submitter_provided_accession',
+      'name'    => 'submitter_provided_accession',
+      'cv_name' => 'ncbi_properties',
+    ]
+  );
 }
 
 //

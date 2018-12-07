@@ -11,7 +11,7 @@ abstract class EUtilsRepository {
   protected $base_table = NULL;
 
   /**
-   * Chado base table record_id.  for example the project.project_id.
+   * Chado base table record_id.  For example the project.project_id.
    *
    * @var int
    */
@@ -177,43 +177,35 @@ abstract class EUtilsRepository {
    */
   public function createAccession($accession) {
     if (!isset($accession['db'])) {
-      throw new Exception(
-        'DB not provided for accession ' . $accession['value']
-      );
+      if (!isset($accession['db_label'])) {
+        throw new Exception(
+          'DB not provided for accession ' . $accession['value']
+        );
+      }
+      else {
+        return NULL;
+      }
     }
 
+    // Try getting the db record with the prefix NCBI
     $db = $this->getDB('NCBI ' . $accession['db']);
 
+    // Not found! Try getting the DB without any prefixes
     if (empty($db)) {
       $db = $this->getDB($accession['db']);
     }
 
+    // Still not found! Alert the user.
     if (empty($db)) {
       throw new Exception(
-        "Unable to find DB NCBI {$accession['db']}. Please create the DB first."
+        "Unable to find DB \"NCBI {$accession['db']}\" and \"{$accession['db']}\". Please create the DB first."
       );
     }
 
-    $dbxref = $this->getAccessionByName($accession['value'], $db->db_id);
+    $dbxref = $this->createDBXref($accession['value'], $db->db_id);
 
     if (!empty($dbxref)) {
-      $this->createDBXref($accession['values'], $db->db_id);
-
-      return $dbxref;
-    }
-
-    if (!empty($db)) {
-      $id = db_insert('chado.dbxref')->fields(
-        [
-          'db_id'     => $db->db_id,
-          'accession' => $accession['value'],
-        ]
-      )->execute();
-
-      $this->createDBXref($accession['value'], $db->db_id);
-
-      return static::$cache['accessions'][$accession['value']] =
-        $this->getAccessionByID($id);
+      return static::$cache['accessions'][$accession['value']] = $dbxref;
     }
 
     return NULL;
@@ -223,8 +215,8 @@ abstract class EUtilsRepository {
    * Inserts the dbxref into the appropriate linker table, eg, project_dbxref.
    * dbxrefs are formatted db:accession.
    *
-   * @param array $accession
-   * @param int   $db_id
+   * @param string $accession
+   * @param int    $db_id
    *
    * @return bool
    * @throws \Exception
@@ -237,9 +229,11 @@ abstract class EUtilsRepository {
       'db_id'     => $db_id,
     ];
 
-    return chado_associate_dbxref(
+    chado_associate_dbxref(
       $this->base_table, $this->base_record_id, $dbxref
     );
+
+    return $this->getAccessionByName($accession, $db_id);
   }
 
   /**
@@ -355,23 +349,23 @@ abstract class EUtilsRepository {
 
     $organism = $this->organismQuery($accession);
 
-
     if ($organism) {
       return $organism;
     }
     //Note: import_existing = TRUE causes the loader to time out.
     $run_args = [
-      'taxonomy_ids' => $accession,
+      'taxonomy_ids'    => $accession,
       'import_existing' => FALSE,
     ];
 
-    module_load_include('inc', 'tripal_chado', 'includes/TripalImporter/TaxonomyImporter');
+    module_load_include(
+      'inc', 'tripal_chado', 'includes/TripalImporter/TaxonomyImporter'
+    );
 
     $importer = new \TaxonomyImporter();
     $importer->create($run_args, $file_details = []);
 
     $importer->run();
-
 
     $organism = $this->organismQuery($accession);
 
@@ -401,9 +395,7 @@ abstract class EUtilsRepository {
     $query->join('chado.dbxref', 'd', 'd.dbxref_id = od.dbxref_id');
     $query->condition('d.accession', $accession);
     $query->condition('d.db_id', $db->db_id);
-    $organism = $query->execute()
-      ->fetchObject();
-
+    $organism = $query->execute()->fetchObject();
 
     return $organism;
   }
