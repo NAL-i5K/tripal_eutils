@@ -398,7 +398,7 @@ abstract class EUtilsRepository {
         ->fetchObject();
       if (!$exists) {
 
-        $exists = db_insert('chado.' . $table)
+       db_insert('chado.' . $table)
           ->fields([
             'project_id' => $project->project_id,
             $base_table . '_id' => $base_record,
