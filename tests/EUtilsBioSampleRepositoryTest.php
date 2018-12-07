@@ -164,6 +164,12 @@ class EUtilsBioSampleRepositoryTest extends TripalTestCase {
         'O.organism_id', $biosample->taxon_id
       )->execute()->fetchObject();
       $this->assertNotEmpty($organism);
+
+      // Verify that a contact exists
+      $contact = db_select('chado.contact', 'C')->fields('C')->condition(
+        'contact_id', $biosample->biosourceprovider_id
+      )->execute()->fetchObject();
+      $this->assertNotEmpty($contact);
     }
   }
 

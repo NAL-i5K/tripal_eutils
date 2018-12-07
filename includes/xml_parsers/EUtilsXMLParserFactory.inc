@@ -2,7 +2,7 @@
 
 /**
  * Class EUtilsXMLParserFactory
- * 
+ *
  * This is the base EUTILS XML parser class.
  * The plan is to extend this base class to be specific for each DB type.
  */
