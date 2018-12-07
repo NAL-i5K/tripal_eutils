@@ -139,9 +139,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
           break;
 
         case 'bioprojects':
-          $projects = $this->getProjects($vals);
+          $projects = $this->getNCBIRecord('bioproject', $vals);
          // $linked = $this->linkProjects($projects);
-
 
           break;
 
@@ -163,28 +162,10 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
   }
 
-  /**
-   * Fetch projects linked to this assembly.
-   * @param $projects
-   *
-   * @return array
-   * @throws \Exception
-   */
-  public function getProjects($projects) {
-
-    $return = [];
-    foreach ($projects as $project) {
-
-      $db = 'bioproject';
-      $project = (new EUtils())->get($db, $project);
-      $return[] = $project;
-    }
-
-    return $return;
-  }
 
 
-  /**
+
+    /**
    * Insert into organism_analysis, or return existing link.
    *
    * @param $organism

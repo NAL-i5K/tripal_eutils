@@ -353,4 +353,23 @@ abstract class EUtilsRepository {
 
     return $organism;
   }
+
+
+  /**
+   * Fetch NCBI records of the type DB.
+   * @param $db
+   * @param $accessions
+   *
+   * @return array | An array of chado base records, as returned by a Repository.
+   * @throws \Exception
+   */
+  public function getNCBIRecord($db, $accessions) {
+
+    $return = [];
+    foreach ($accessions as $accession) {
+      $record = (new EUtils())->get($db, $accession);
+      $return[] = $record;
+    }
+    return $return;
+  }
 }
