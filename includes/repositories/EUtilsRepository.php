@@ -188,7 +188,7 @@ abstract class EUtilsRepository {
     }
 
     // Try getting the db record with the prefix NCBI
-    $db = $this->getDB('NCBI ' . $accession['db']);
+    $db = $this->getDB('NCBI ' . strtolower($accession['db']));
 
     // Not found! Try getting the DB without any prefixes
     if (empty($db)) {
