@@ -125,8 +125,12 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
       switch ($accession) {
 
-        case 'Assembly':
+        case 'assembly':
           //add as a dbxref for this record
+
+          foreach ($accessions as $child){
+            $this->createAccession($child);
+          }
 
           break;
 

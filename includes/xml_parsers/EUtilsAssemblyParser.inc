@@ -12,11 +12,6 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
       'attributes' => [],
     ];
 
-    //Links we encounter:
-    //SpeciesTaxid => (organism)
-    //
-
-
     // skip to DocumentSummary
     $xml = $xml->DocumentSummarySet;
     $xml = $xml->DocumentSummary;
@@ -41,12 +36,25 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           break;
 
         case 'AssemblyAccession':
-          $info['accessions']['Assembly'][] = (string) $child;
+          $info['ignored'][] = $child->getName();
           break;
 
         case 'SpeciesTaxid'://linked chado records.
           //NOTE: Taxid also exists, but in all examples they are equal.
           $info['accessions']['taxon_accession'] = (string) $child;
+          break;
+
+        case 'RsUid':
+          $info['accessions']['assembly'][] = [
+            'db' => 'Refseq',
+            'value' => (string) $child,
+          ];
+        case 'GbUid':
+          $info['accessions']['assembly'][] = [
+            'db' => 'Genbank',
+            'value' => (string) $child,
+          ];
+
           break;
 
         case 'GB_BioProjects':

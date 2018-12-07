@@ -169,6 +169,7 @@ abstract class EUtilsRepository {
    * the given record.
    *
    * @param array $accession
+   * Expected keys: db and value, where the full accession is db:value
    *
    * @return mixed
    * @throws \Exception
