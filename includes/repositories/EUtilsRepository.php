@@ -353,4 +353,59 @@ abstract class EUtilsRepository {
 
     return $organism;
   }
+
+
+  /**
+   * Fetch NCBI records of the type DB.
+   *
+   * @param $db
+   * @param $accessions
+   *
+   * @return array | An array of chado base records, as returned by a
+   *   Repository.
+   * @throws \Exception
+   */
+  public function getNCBIRecord($db, $accessions) {
+
+    $return = [];
+    foreach ($accessions as $accession) {
+      $record = (new EUtils())->get($db, $accession);
+      $return[] = $record;
+    }
+    return $return;
+  }
+
+  /**
+   * Linkers project to the record, assuming a project_ linker table
+   *
+   * @param $projects array of base chado record project objects
+   */
+  public function linkProjects($projects) {
+
+    $base_record = $this->base_record_id;
+
+    $base_table = $this->base_table;
+    //TODO: if we genericize this, would it always be linked this way?
+
+    $table = 'project_' . $base_table;
+    foreach ($projects as $project) {
+
+      $exists = db_select('chado.' . $table, 'lt')
+        ->fields('lt')
+        ->condition('project_id', $project->project_id)
+        ->condition($base_table . '_id', $base_record)
+        ->execute()
+        ->fetchObject();
+      if (!$exists) {
+
+       db_insert('chado.' . $table)
+          ->fields([
+            'project_id' => $project->project_id,
+            $base_table . '_id' => $base_record,
+          ])
+        ->execute();
+
+      }
+    }
+  }
 }

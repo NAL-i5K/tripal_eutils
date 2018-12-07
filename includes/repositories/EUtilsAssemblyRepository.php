@@ -38,9 +38,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
   protected static $cache = [
     'db' => [],
     'accessions' => [],
-    'analysis',
+    'analysis' => NULL,
   ];
-
 
   /**
    * Create assembly (chado.analysis) record.
@@ -66,7 +65,6 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     //TODO: missing:
     //algorithm, sourcename, sourceversion, sourceuri, timeexecuted.
-
 
     $this->base_fields = [
       'name' => $name,
@@ -135,16 +133,18 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
           $organism = $this->getOrganism($vals);
           $linked = $this->linkOrganism($organism);
-          
+
           break;
 
         case 'bioprojects':
-          // $projects = $this->createBioprojects($vals);
+          $projects = $this->getNCBIRecord('bioproject', $vals);
+          $linked = $this->linkProjects($projects);
 
           break;
 
         case 'biosamples':
-          //  $biomaterials = $this->createBiomaterials($vals);
+        //  $biosamples = $this->getNCBIRecord('biosample', $vals);
+          // $linked = $this->linkBiomaterials($biomaterials);
 
           break;
 
@@ -152,14 +152,9 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
           //generic dbxref of some sort.
           break;
 
-
       }
-
     }
-
-
   }
-
 
   /**
    * Insert into organism_analysis, or return existing link.
@@ -245,7 +240,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
   public function getAnalysis() {
 
     $base = $this->base_fields;
-    // If the project is available in our static cache, return it
+    // If the analysis is available in our static cache, return it
     if (isset(static::$cache['analysis'])) {
       return static::$cache['analysis'];
     }
