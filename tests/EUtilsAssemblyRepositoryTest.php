@@ -147,6 +147,31 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
   }
 
+  /**
+   * @group fails
+   * @throws \Exception
+   */
+  public function testAssemblyCreatesProject() {
+
+    $repo = new \EUtilsAssemblyRepository();
+    $analysis = factory('chado.analysis')->create();
+    $project = factory('chado.project')->create();
+    $repo->setBaseRecordId($analysis->analysis_id);
+    $repo->setBaseTable('analysis');
+
+    $repo->linkProjects([$project]);
+
+    $result = db_select('chado.project_analysis', 't')
+      ->fields('t', ['project_analysis_id'])
+      ->condition('t.project_id', $project->project_id)
+      ->condition('t.analysis_id', $analysis->analysis_id)
+      ->execute()
+      ->fetchField();
+
+    $this->assertNotFalse($result);
+
+  }
+
 
   private function parseAndCreateAsembly() {
 
