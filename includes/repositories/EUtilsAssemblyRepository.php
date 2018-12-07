@@ -140,14 +140,14 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
         case 'bioprojects':
           $projects = $this->getProjects($vals);
-          $linked = $this->linkProjects($projects);
+         // $linked = $this->linkProjects($projects);
 
 
           break;
 
         case 'biosamples':
-          $biomaterials = $this->getBiomaterials($vals);
-          $linked = $this->linkBiomaterials($biomaterials);
+         // $biomaterials = $this->getBiomaterials($vals);
+         // $linked = $this->linkBiomaterials($biomaterials);
 
           break;
 
@@ -163,7 +163,13 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
   }
 
-
+  /**
+   * Fetch projects linked to this assembly.
+   * @param $projects
+   *
+   * @return array
+   * @throws \Exception
+   */
   public function getProjects($projects) {
 
     $return = [];

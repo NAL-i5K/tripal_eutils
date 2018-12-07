@@ -1,2 +1,38 @@
 <?xml version="1.0"?>
-<BioSampleSet><BioSample access="public" publication_date="2014-08-11T00:00:00.000" last_update="2018-06-12T15:48:23.766" submission_date="2014-08-11T11:26:16.906" id="2981385" accession="SAMN02981385">   <Ids> <Id db="BioSample" is_primary="1">SAMN02981385</Id>     <Id db="GenBank">gb|AGQN00000000.1</Id>   </Ids>   <Description>     <Title>Plant sample from Cannabis sativa</Title>     <Organism taxonomy_id="3483" taxonomy_name="Cannabis sativa">       <OrganismName>Cannabis sativa</OrganismName>     </Organism>   </Description>   <Owner>     <Name>University of Toronto, Banting and Best Department of Medical Research</Name>   </Owner>   <Models>     <Model>Plant</Model>   </Models>   <Package display_name="Plant; version 1.0">Plant.1.0</Package>   <Attributes>     <Attribute attribute_name="cultivar" harmonized_name="cultivar" display_name="cultivar">Purple Kush</Attribute>     <Attribute attribute_name="age" harmonized_name="age" display_name="age">missing</Attribute>     <Attribute attribute_name="dev_stage" harmonized_name="dev_stage" display_name="development stage">missing</Attribute>     <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">missing</Attribute>     <Attribute attribute_name="tissue" harmonized_name="tissue" display_name="tissue">missing</Attribute>   </Attributes>   <Links>     <Link type="entrez" target="bioproject" label="PRJNA73819">73819</Link>   </Links>   <Status when="2014-08-11T11:26:16.907" status="live"/> </BioSample> </BioSampleSet>
+<BioSampleSet>
+    <BioSample access="public" publication_date="2014-08-11T00:00:00.000" last_update="2018-06-12T15:48:23.766"
+               submission_date="2014-08-11T11:26:16.906" id="2981385" accession="SAMN02981385">
+        <Ids>
+            <Id db="BioSample" is_primary="1">SAMN02981385</Id>
+            <Id db="GenBank">gb|AGQN00000000.1</Id>
+        </Ids>
+        <Description>
+            <Title>Plant sample from Cannabis sativa</Title>
+            <Organism taxonomy_id="3483" taxonomy_name="Cannabis sativa">
+                <OrganismName>Cannabis sativa</OrganismName>
+            </Organism>
+        </Description>
+        <Owner>
+            <Name>University of Toronto, Banting and Best Department of Medical Research</Name>
+        </Owner>
+        <Models>
+            <Model>Plant</Model>
+        </Models>
+        <Package display_name="Plant; version 1.0">Plant.1.0</Package>
+        <Attributes>
+            <Attribute attribute_name="cultivar" harmonized_name="cultivar" display_name="cultivar">Purple Kush
+            </Attribute>
+            <Attribute attribute_name="age" harmonized_name="age" display_name="age">missing</Attribute>
+            <Attribute attribute_name="dev_stage" harmonized_name="dev_stage" display_name="development stage">missing
+            </Attribute>
+            <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">
+                missing
+            </Attribute>
+            <Attribute attribute_name="tissue" harmonized_name="tissue" display_name="tissue">missing</Attribute>
+        </Attributes>
+        <Links>
+            <Link type="entrez" target="bioproject" label="PRJNA73819">73819</Link>
+        </Links>
+        <Status when="2014-08-11T11:26:16.907" status="live"/>
+    </BioSample>
+</BioSampleSet>

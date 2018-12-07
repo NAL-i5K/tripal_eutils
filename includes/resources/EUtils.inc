@@ -6,20 +6,50 @@
  * Factory class which returns the appropriate NCBI resource provider.
  *
  */
+
 class EUtils {
+
+  /**
+   * @var array
+   *
+   * structure of this array will be
+   *
+   *  [ncbi_db_name => [ $accession (uid) => $record_id]] = chado base record
+   */
+  static public $visited = [];
+
+
+  /**
+   * @param $db
+   * @param $accession
+   *
+   * @return mixed
+   * @throws \Exception
+   */
 
   public function get($db, $accession) {
 
+    if (isset(static::$visited[$db][$accession])) {
+      return static::$visited[$db][$accession];
+    }
+
     $provider = $this->getResourceProvider($db);
+    $provider->addParam('id', $accession);
 
-    $xml = $provider->xml();
+    $response = $provider->get();
 
-    $parser = new EUtilsXMLParser($db);
-    $data = $parser->parse($xml);
+    if (!$response->isSuccessful()) {
+      throw new Exception('ERROR Could not make request status ' . $response->status());
+    }
+    $xml = $response->xml();
 
-    $repository = new EutilsRepositoryFactory($db);
+    $data = (new EUtilsXMLParserFactory())->get($db, $xml);
+    
+    $repository = (new EutilsRepositoryFactory())->get($db);
 
     $record = $repository->create($data);
+
+    static::$visited[$db][$accession] = $record;
 
     return $record;
 
