@@ -16,7 +16,8 @@ class EUtils {
 
     $parser = new EUtilsXMLParser($db);
     $data = $parser->parse($xml);
-    $repository = new EutilsRepository($db);
+
+    $repository = new EutilsRepositoryFactory($db);
 
     $record = $repository->create($data);
 
