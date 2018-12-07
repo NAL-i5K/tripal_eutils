@@ -108,7 +108,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       $this->createProperty($term->cvterm_id, $value);
     }
 
-    //TODO: add FTP links.
+    $this->addFTPLinks($data['attributes']['files']);
+
 
     return $analysis;
 
@@ -143,7 +144,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
           break;
 
         case 'biosamples':
-        //  $biosamples = $this->getNCBIRecord('biosample', $vals);
+          //  $biosamples = $this->getNCBIRecord('biosample', $vals);
           // $linked = $this->linkBiomaterials($biomaterials);
 
           break;
@@ -264,4 +265,22 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     return NULL;
   }
 
+
+  /**
+   * Associates FTPs as properties.
+   *
+   * @param $ftps
+   * Array of key value pars, where the key is the XML FTP type, the value is
+   *   the FTP address.
+   *
+   *
+   */
+  public function addFTPLinks($ftps) {
+
+    $cvterm_id = chado_get_cvterm(['id' => 'local:ncbi_FTP_links'])->cvterm_id;
+    foreach ($ftps as $type => $ftp) {
+
+      $this->createProperty($cvterm_id, $ftp);
+    }
+  }
 }

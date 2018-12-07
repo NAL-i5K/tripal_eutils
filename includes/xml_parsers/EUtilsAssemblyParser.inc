@@ -55,21 +55,16 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           $bioproject_children = $child->children();
 
           foreach ($bioproject_children as $bp_child) {
-
             $id = $bp_child->BioprojectId;
             //TODO: do we also need to keep track of if this is genbank or refseq?
             $info['accessions']['bioprojects'][] = (string) $id;
-
           }
 
           break;
 
-
         case 'BioSampleId':
           $info['accessions']['biosamples'][] = (string) $child;
-
           break;
-
 
         default:
           $info['ignored'][] = $child->getName();

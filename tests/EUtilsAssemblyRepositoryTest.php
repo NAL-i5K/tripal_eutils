@@ -35,8 +35,8 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
       ->execute()
       ->fetchAll();
 
-    //at a minimum we have the raw XML prop.
     $this->assertNotEmpty($props);
+
 
     $xml_term = tripal_get_cvterm(['id' => 'local:full_ncbi_xml']);
 
@@ -50,6 +50,20 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
     //at a minimum we have the raw XML prop.
     $this->assertNotFalse($props);
+
+
+    $ftp_term = chado_get_cvterm(['id' => 'local:ncbi_FTP_links']);
+
+
+    $props = db_select('chado.analysisprop', 't')
+      ->fields('t', ['type_id'])
+      ->condition('t.analysis_id', $result->analysis_id)
+      ->condition('t.type_id', $ftp_term->cvterm_id)
+      ->execute()
+      ->fetchAll();
+
+    $this->assertNotEmpty($props);
+
   }
 
   public function testAssemblyLinksOrganism() {
@@ -172,45 +186,45 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
     $this->assertNotFalse($result);
   }
 
-//
-//  /**
-//   * Note this test uses the network connection to pull the referenced
-//   * bioproject.  It succeeds if run alone but fails with all others.
-//   *
-//   * @group network
-//   * @throws \Exception
-//   */
-//  public function testAssemblyCreatesProjectFromNCBIAccession() {
-//
-//    //provide actual accession
-//    $accessions = ['bioprojects' => ['291087']];
-//
-//    $repo = new \EUtilsAssemblyRepository();
-//    $analysis = factory('chado.analysis')->create();
-//
-//    //TODO:  provide a fake EUtils populated iwth the project.
-//
-//    $repo->setBaseRecordId($analysis->analysis_id);
-//    $repo->setBaseTable('analysis');
-//
-//    $repo->createLinkedRecords($accessions);
-//
-//    $result = db_select('chado.project_analysis', 't')
-//      ->fields('t', ['project_id'])
-//      ->condition('t.analysis_id', $analysis->analysis_id)
-//      ->execute()
-//      ->fetchField();
-//
-//    $this->assertNotFalse($result, 'No projects were linked to the analysis!');
-//
-//    $project = db_select('chado.project', 't')
-//      ->fields('t')
-//      ->condition('project_id', $result)
-//      ->execute()
-//      ->fetchObject();
-//
-//    $this->assertNotFalse($project);
-//  }
+  //
+  //  /**
+  //   * Note this test uses the network connection to pull the referenced
+  //   * bioproject.  It succeeds if run alone but fails with all others.
+  //   *
+  //   * @group network
+  //   * @throws \Exception
+  //   */
+  //  public function testAssemblyCreatesProjectFromNCBIAccession() {
+  //
+  //    //provide actual accession
+  //    $accessions = ['bioprojects' => ['291087']];
+  //
+  //    $repo = new \EUtilsAssemblyRepository();
+  //    $analysis = factory('chado.analysis')->create();
+  //
+  //    //TODO:  provide a fake EUtils populated iwth the project.
+  //
+  //    $repo->setBaseRecordId($analysis->analysis_id);
+  //    $repo->setBaseTable('analysis');
+  //
+  //    $repo->createLinkedRecords($accessions);
+  //
+  //    $result = db_select('chado.project_analysis', 't')
+  //      ->fields('t', ['project_id'])
+  //      ->condition('t.analysis_id', $analysis->analysis_id)
+  //      ->execute()
+  //      ->fetchField();
+  //
+  //    $this->assertNotFalse($result, 'No projects were linked to the analysis!');
+  //
+  //    $project = db_select('chado.project', 't')
+  //      ->fields('t')
+  //      ->condition('project_id', $result)
+  //      ->execute()
+  //      ->fetchObject();
+  //
+  //    $this->assertNotFalse($project);
+  //  }
 
   private function parseAndCreateAsembly() {
 
