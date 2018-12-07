@@ -267,26 +267,30 @@ abstract class EUtilsRepository {
    * @throws \Exception
    */
   public function createContact($contact_name) {
-    $this->validateBaseData();
-
     if (static::$cache['contacts'][$contact_name]) {
       $contact = static::$cache['contacts'][$contact_name];
     }
     else {
       $contact = db_select('chado.contact', 'C')->fields('C')->condition(
         'name', $contact_name
-      )->fetchObject();
+      )->execute()->fetchObject();
 
       if (empty($contact)) {
         $contact_id = db_insert('chado.contact')->fields(
           [
             'name' => $contact_name,
           ]
-        );
+        )->execute();
+
+        if (!$contact_id) {
+          throw new Exception(
+            'Unable to create a contact for ' . $contact_name
+          );
+        }
 
         $contact = db_select('chado.contact', 'C')->fields('C')->condition(
           'contact_id', $contact_id
-        )->fetchObject();
+        )->execute()->fetchObject();
       }
 
       static::$cache['contacts'][$contact_name] = $contact;

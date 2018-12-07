@@ -73,7 +73,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
 
     $organism = $xml->Description->Organism;
 
-    return $organism->attributes() + ['value' => (string) $organism];
+    return (array) $organism->attributes() + ['value' => (string) $organism];
   }
 
   /**

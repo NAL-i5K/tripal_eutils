@@ -99,9 +99,9 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
 
     $id = db_insert('chado.biomaterial')->fields(
       [
-        'biosourceprovider_id' => $data['biosourceprovider_id'] ?? '',
+        'biosourceprovider_id' => $data['biosourceprovider_id'] ?? NULL,
         'name'                 => $data['name'],
-        'description'          => $data['description'] ?? '',
+        'description'          => $data['description'] ?? NULL,
       ]
     )->execute();
 
