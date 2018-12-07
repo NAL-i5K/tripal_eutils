@@ -1,6 +1,6 @@
 <?php
 
-class EFetch extends EUtilsRequest{
+class EFetch extends EUtilsRequest {
 
   /**
    * EFetch constructor.
@@ -9,7 +9,7 @@ class EFetch extends EUtilsRequest{
    *
    * @throws \Exception
    */
-  public function __construct($db){
+  public function __construct($db) {
     $this->setBaseURL('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi');
     $this->addParam('db', $db);
   }

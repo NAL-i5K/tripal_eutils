@@ -6,7 +6,7 @@
  * The plan is to extend this base class to be specific for each DB type.
  */
 
-class EUtilsXMLParser{
+class EUtilsXMLParser {
 
   /**
    * Parse BioProject XML.

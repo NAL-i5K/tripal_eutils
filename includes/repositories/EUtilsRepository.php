@@ -1,6 +1,6 @@
 <?php
 
-abstract class EUtilsRepository{
+abstract class EUtilsRepository {
 
   /**
    * Chado base table for this repository.  For example, project, biosample,
@@ -66,7 +66,9 @@ abstract class EUtilsRepository{
     foreach ($this->required_fields as $field) {
       if (!isset($data[$field])) {
         $class_name = get_class($this);
-        throw new Exception('Required field ' . $field . ' is missing in ' . $class_name);
+        throw new Exception(
+          'Required field ' . $field . ' is missing in ' . $class_name
+        );
       }
     }
   }
@@ -79,19 +81,17 @@ abstract class EUtilsRepository{
    * @return mixed
    */
   public function getAccessionByID($id) {
-    return db_select('chado.dbxref', 'd')
-      ->fields('d')
-      ->condition('dbxref_id', $id)
-      ->execute()
-      ->fetchObject();
+    return db_select('chado.dbxref', 'd')->fields('d')->condition(
+      'dbxref_id', $id
+    )->execute()->fetchObject();
   }
 
   /**
    * Look up an accession in chado.dbxref. Retrieves record from cache
    * if predetermined.
    *
-   * @param string $name The accession identifier (dbxref.accession).
-   * @param int $db_id Name of the DB ID.
+   * @param string $name  The accession identifier (dbxref.accession).
+   * @param int    $db_id Name of the DB ID.
    *
    * @return mixed
    */
@@ -146,17 +146,19 @@ abstract class EUtilsRepository{
    * @param $value
    *
    * @return bool
+   * @throws \Exception
    */
   public function createProperty($cvterm_id, $value) {
     $this->validateBaseData();
 
-    $base_record_id = $this->base_record_id;
-    $base_table = $this->base_table;
+    $record = [
+      'table' => $this->base_table,
+      'id'    => $this->base_record_id,
+    ];
 
-    $record = ['table' => $base_table, 'id' => $base_record_id];
     $property = [
       'type_id' => $cvterm_id,
-      'value' => $value,
+      'value'   => $value,
     ];
 
     $options = [];
@@ -175,13 +177,21 @@ abstract class EUtilsRepository{
    */
   public function createAccession($accession) {
     if (!isset($accession['db'])) {
-      throw new Exception('DB not provided for accession ' . $accession['value']);
+      throw new Exception(
+        'DB not provided for accession ' . $accession['value']
+      );
     }
 
     $db = $this->getDB('NCBI ' . $accession['db']);
 
     if (empty($db)) {
-      throw new Exception('Unable to find DB NCBI ' . $accession['db'] . '. Please create DB first.');
+      $db = $this->getDB($accession['db']);
+    }
+
+    if (empty($db)) {
+      throw new Exception(
+        "Unable to find DB NCBI {$accession['db']}. Please create the DB first."
+      );
     }
 
     $dbxref = $this->getAccessionByName($accession['value'], $db->db_id);
@@ -193,25 +203,28 @@ abstract class EUtilsRepository{
     }
 
     if (!empty($db)) {
-      $id = db_insert('chado.dbxref')->fields([
-        'db_id' => $db->db_id,
-        'accession' => $accession['value'],
-      ])->execute();
+      $id = db_insert('chado.dbxref')->fields(
+        [
+          'db_id'     => $db->db_id,
+          'accession' => $accession['value'],
+        ]
+      )->execute();
 
       $this->createDBXref($accession['value'], $db->db_id);
 
-      return static::$cache['accessions'][$accession['value']] = $this->getAccessionByID($id);
+      return static::$cache['accessions'][$accession['value']] =
+        $this->getAccessionByID($id);
     }
 
     return NULL;
   }
 
   /**
-   * Inserts tdbxref into the appropriate linker table, eg, project_dbxref.
+   * Inserts the dbxref into the appropriate linker table, eg, project_dbxref.
    * dbxrefs are formatted db:accession.
    *
    * @param array $accession
-   * @param int $db_id
+   * @param int   $db_id
    *
    * @return bool
    * @throws \Exception
@@ -221,11 +234,12 @@ abstract class EUtilsRepository{
 
     $dbxref = [
       'accession' => $accession,
-      'db_id' => $db_id,
+      'db_id'     => $db_id,
     ];
 
-    return chado_associate_dbxref($this->base_table, $this->base_record_id,
-      $dbxref);
+    return chado_associate_dbxref(
+      $this->base_table, $this->base_record_id, $dbxref
+    );
   }
 
   /**
@@ -234,9 +248,51 @@ abstract class EUtilsRepository{
    * @param string $xml string as returned by SimpleXMLElement.
    */
   public function createXMLProp($xml) {
-    $xml_term = tripal_get_cvterm(['id' => 'local:full_ncbi_xml']);
+    if (!isset(static::$cache['accessions']['local:full_ncbi_xml'])) {
+      static::$cache['accessions']['local:full_ncbi_xml'] =
+        tripal_get_cvterm(['id' => 'local:full_ncbi_xml']);
+    }
+
+    $xml_term = static::$cache['accessions']['local:full_ncbi_xml'];
 
     return $this->createProperty($xml_term->cvterm_id, $xml);
+  }
+
+  /**
+   * Get contact name.
+   *
+   * @param static $contact_name
+   *
+   * @return mixed
+   * @throws \Exception
+   */
+  public function createContact($contact_name) {
+    $this->validateBaseData();
+
+    if (static::$cache['contacts'][$contact_name]) {
+      $contact = static::$cache['contacts'][$contact_name];
+    }
+    else {
+      $contact = db_select('chado.contact', 'C')->fields('C')->condition(
+        'name', $contact_name
+      )->fetchObject();
+
+      if (empty($contact)) {
+        $contact_id = db_insert('chado.contact')->fields(
+          [
+            'name' => $contact_name,
+          ]
+        );
+
+        $contact = db_select('chado.contact', 'C')->fields('C')->condition(
+          'contact_id', $contact_id
+        )->fetchObject();
+      }
+
+      static::$cache['contacts'][$contact_name] = $contact;
+    }
+
+    return $contact;
   }
 
   /**
