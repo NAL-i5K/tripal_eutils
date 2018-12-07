@@ -148,19 +148,22 @@ class EUtilsBioSampleRepositoryTest extends TripalTestCase {
         $biosample, "Unable to find Bio Sample: {$data['name']}. File $file"
       );
 
-      //Check that Biosample props got inserted
-
+      // Check that Biosample props got inserted
       $props = db_select('chado.biomaterialprop', 't')->fields('t')->condition(
         't.biomaterial_id', $biosample->biomaterial_id
       )->execute()->fetchAll();
-
       $this->assertNotEmpty($props);
 
-      //some of our XML dont have properties.
+      // Some of our XML dont have properties.
       if ($biosample->name == 'Rubber genome') {
-
         $this->assertGreaterThan(2, count($props));
       }
+
+      // Make sure the organism got created
+      $organism = db_select('chado.organism', 'O')->fields('O')->condition(
+        'O.organism_id', $biosample->taxon_id
+      )->execute()->fetchObject();
+      $this->assertNotEmpty($organism);
     }
   }
 

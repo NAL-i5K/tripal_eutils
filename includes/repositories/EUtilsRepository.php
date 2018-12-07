@@ -345,8 +345,6 @@ abstract class EUtilsRepository {
    * @throws \Exception
    */
   public function getOrganism($accession) {
-
-
     $organism = $this->organismQuery($accession);
 
     if ($organism) {

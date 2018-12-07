@@ -37,10 +37,19 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
     // Throw an exception if a required field is missing
     $this->validateFields($data);
 
+    if (!$data['organism']) {
+      throw new Exception(
+        'Unable to create BioSample due to lack of organism information'
+      );
+    }
+
+    // getOrganism throws an exception so without try/catch, we will
+    // automatically fail and exit
+    $organism = $this->getOrganism($data['organism']['taxonomy_id']);
+    $organism = $organism->organism_id;
+
     // Create the contact or get it from db if already exists
     $contact = $this->createContact($data['contact']);
-
-    // TODO: get organism here
 
     // Create the base record
     $description = $this->makeDescription($data['description']);
@@ -49,6 +58,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
         'biosourceprovider_id' => $contact->contact_id,
         'name'                 => $data['name'],
         'description'          => $description,
+        'taxon_id'             => $organism,
       ]
     );
 
@@ -69,7 +79,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
   /**
    * Make the description string.
    *
-   * @param array $description
+   * @param array|string $description
    *
    * @return string
    */
@@ -97,13 +107,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
       return $biosample;
     }
 
-    $id = db_insert('chado.biomaterial')->fields(
-      [
-        'biosourceprovider_id' => $data['biosourceprovider_id'] ?? NULL,
-        'name'                 => $data['name'],
-        'description'          => $data['description'] ?? NULL,
-      ]
-    )->execute();
+    $id = db_insert('chado.biomaterial')->fields($data)->execute();
 
     if (!$id) {
       throw new Exception('Unable to create chado.biomaterial record');
