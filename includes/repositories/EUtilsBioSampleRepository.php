@@ -183,8 +183,8 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
       $term_name = $attribute['harmonized_name'];
       $value     = $attribute['value'];
 
-      // TODO: the term lookup class should handle this instead.
-      $cvterm    = tripal_get_cvterm(['id' => 'ncbi_properties:' . $term_name]);
+      //TODO: the term lookup class should handle this instead.
+      $cvterm = chado_get_cvterm(['id' => 'ncbi_properties:' . $term_name]);
       $cvterm_id = $cvterm->cvterm_id;
       $this->createProperty($cvterm_id, $value);
     }

@@ -8,18 +8,19 @@ require_once 'includes/resources/ESummary.inc';
 require_once 'includes/resources/EUtils.inc';
 require_once 'includes/resources/EFTP.inc';
 
-
+//Connects to NCBI to fetch the current biosample property list hosted.
 require_once 'includes/resources/BiosamplePropertyLookup.inc';
 
 
 // Parsers.  Convert XML into keyed arrays.
-require_once 'includes/xml_parsers/EUtilsXMLParser.inc';
+require_once 'includes/xml_parsers/EUtilsXMLParserFactory.inc';
 require_once 'includes/xml_parsers/EUtilsParserInterface.inc';
 require_once 'includes/xml_parsers/EUtilsBioSampleParser.inc';
 require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
 require_once 'includes/xml_parsers/EUtilsAssemblyParser.inc';
 
 // Repositories. Handling DB operations
+require_once 'includes/repositories/EutilsRepositoryFactory.php';
 require_once 'includes/repositories/EUtilsRepository.php';
 require_once 'includes/repositories/EUtilsBioSampleRepository.php';
 require_once 'includes/repositories/EUtilsBioProjectRepository.php';

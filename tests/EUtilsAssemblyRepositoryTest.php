@@ -52,7 +52,7 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
     $this->assertNotFalse($props);
   }
 
-  public function testAssemblyCreatesOrganism() {
+  public function testAssemblyLinksOrganism() {
 
     $repo = new \EUtilsAssemblyRepository();
     $analysis = factory('chado.analysis')->create();
@@ -147,6 +147,70 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
   }
 
+
+  /**
+   * @group project_linker
+   * @throws \Exception
+   */
+  public function testAssemblyLinksProject() {
+
+    $repo = new \EUtilsAssemblyRepository();
+    $analysis = factory('chado.analysis')->create();
+    $project = factory('chado.project')->create();
+    $repo->setBaseRecordId($analysis->analysis_id);
+    $repo->setBaseTable('analysis');
+
+    $repo->linkProjects([$project]);
+
+    $result = db_select('chado.project_analysis', 't')
+      ->fields('t', ['project_analysis_id'])
+      ->condition('t.project_id', $project->project_id)
+      ->condition('t.analysis_id', $analysis->analysis_id)
+      ->execute()
+      ->fetchField();
+
+    $this->assertNotFalse($result);
+  }
+
+//
+//  /**
+//   * Note this test uses the network connection to pull the referenced
+//   * bioproject.  It succeeds if run alone but fails with all others.
+//   *
+//   * @group network
+//   * @throws \Exception
+//   */
+//  public function testAssemblyCreatesProjectFromNCBIAccession() {
+//
+//    //provide actual accession
+//    $accessions = ['bioprojects' => ['291087']];
+//
+//    $repo = new \EUtilsAssemblyRepository();
+//    $analysis = factory('chado.analysis')->create();
+//
+//    //TODO:  provide a fake EUtils populated iwth the project.
+//
+//    $repo->setBaseRecordId($analysis->analysis_id);
+//    $repo->setBaseTable('analysis');
+//
+//    $repo->createLinkedRecords($accessions);
+//
+//    $result = db_select('chado.project_analysis', 't')
+//      ->fields('t', ['project_id'])
+//      ->condition('t.analysis_id', $analysis->analysis_id)
+//      ->execute()
+//      ->fetchField();
+//
+//    $this->assertNotFalse($result, 'No projects were linked to the analysis!');
+//
+//    $project = db_select('chado.project', 't')
+//      ->fields('t')
+//      ->condition('project_id', $result)
+//      ->execute()
+//      ->fetchObject();
+//
+//    $this->assertNotFalse($project);
+//  }
 
   private function parseAndCreateAsembly() {
 

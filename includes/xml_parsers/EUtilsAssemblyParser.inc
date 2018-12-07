@@ -41,7 +41,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           break;
 
         case 'AssemblyAccession':
-          $info['accessions']['Assembly'] = (string) $child;
+          $info['accessions']['Assembly'][] = (string) $child;
           break;
 
         case 'SpeciesTaxid'://linked chado records.

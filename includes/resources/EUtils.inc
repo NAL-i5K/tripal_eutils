@@ -1,58 +1,58 @@
 <?php
 
-class EUtils{
+/**
+ * Class EUtils
+ *
+ * Factory class which returns the appropriate NCBI resource provider.
+ *
+ */
+
+class EUtils {
 
   /**
-   * Search the set DB for the provided accessions
+   * @var array
    *
-   * @param string $db the DB
-   * @param array $accessions An array of accessions
+   * structure of this array will be
    *
-   * @return \SimpleXMLElement
-   * @throws \Exception
+   *  [ncbi_db_name => [ $accession (uid) => $record_id]] = chado base record
    */
-  public function lookupAccessions($db, array $accessions) {
-    $accessions = implode(',', $accessions);
+  static public $visited = [];
 
-    $response = $this->getResourceProvider($db)
-      ->addParam('id', $accessions)
-      ->get();
-
-    if (!$response->isSuccessful()) {
-      throw new Exception('Unable to retrieve accessions');
-    }
-
-    return $response->xml();
-  }
-
-  public function getAttributes($accession = NULL) {
-
-    $dom = $this->dom;
-
-    $x = simplexml_import_dom($dom);
-    //TODO:  Handle parsing differently for different database types.
-
-  }
 
   /**
    * @param $db
+   * @param $accession
    *
-   * @return string
+   * @return mixed
    * @throws \Exception
    */
-  public function checkStatus($db) {
-    $provider = $this->getResourceProvider($db);
-    $provider->addParams([
-      'retmode' => 'xml',
-      'term' => 'all[SB]',
-      'retstart' => 0,
-      'retmax' => 0,
-      'usehistory' => 'y',
-    ]);
-    $response = $provider->get();
-    $dom = $response->dom();
 
-    return $dom->getElementsByTagName('Count')->item(0)->textContent;
+  public function get($db, $accession) {
+
+    if (isset(static::$visited[$db][$accession])) {
+      return static::$visited[$db][$accession];
+    }
+
+    $provider = $this->getResourceProvider($db);
+    $provider->addParam('id', $accession);
+
+    $response = $provider->get();
+
+    if (!$response->isSuccessful()) {
+      throw new Exception('ERROR Could not make request status ' . $response->status());
+    }
+    $xml = $response->xml();
+
+    $data = (new EUtilsXMLParserFactory())->get($db, $xml);
+    
+    $repository = (new EutilsRepositoryFactory())->get($db);
+
+    $record = $repository->create($data);
+
+    static::$visited[$db][$accession] = $record;
+
+    return $record;
+
   }
 
   /**
