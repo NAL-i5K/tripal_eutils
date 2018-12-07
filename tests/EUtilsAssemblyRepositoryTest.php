@@ -52,7 +52,7 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
     $this->assertNotFalse($props);
   }
 
-  public function testAssemblyCreatesOrganism() {
+  public function testAssemblyLinksOrganism() {
 
     $repo = new \EUtilsAssemblyRepository();
     $analysis = factory('chado.analysis')->create();
@@ -147,11 +147,12 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
   }
 
+
   /**
-   * @group fails
+   * @group project_linker
    * @throws \Exception
    */
-  public function testAssemblyCreatesProject() {
+  public function testAssemblyLinksProject() {
 
     $repo = new \EUtilsAssemblyRepository();
     $analysis = factory('chado.analysis')->create();
@@ -169,9 +170,45 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
       ->fetchField();
 
     $this->assertNotFalse($result);
-
   }
 
+
+  /**
+   * Note this test uses the network connection to pull the referenced
+   * bioproject
+   *
+   * @group network
+   * @throws \Exception
+   */
+  public function testAssemblyCreatesProjectFromNCBIAccession() {
+
+    //provide actual accession
+    $accessions = ['bioprojects' => ['291087']];
+
+    $repo = new \EUtilsAssemblyRepository();
+    $analysis = factory('chado.analysis')->create();
+
+    $repo->setBaseRecordId($analysis->analysis_id);
+    $repo->setBaseTable('analysis');
+
+    $repo->createLinkedRecords($accessions);
+
+    $result = db_select('chado.project_analysis', 't')
+      ->fields('t', ['project_id'])
+      ->condition('t.analysis_id', $analysis->analysis_id)
+      ->execute()
+      ->fetchField();
+
+    $this->assertNotFalse($result, 'No projects were linked to the analysis!');
+
+    $project = db_select('chado.project', 't')
+      ->fields('t')
+      ->condition('project_id', $result)
+      ->execute()
+      ->fetchObject();
+
+    $this->assertNotFalse($project);
+  }
 
   private function parseAndCreateAsembly() {
 
