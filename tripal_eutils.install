@@ -20,6 +20,12 @@ function tripal_eutils_install() {
     'cv_name' => 'local',
   ]);
 
+  chado_insert_cvterm([
+    'id' => 'local:ncbi_FTP_links',
+    'name' => 'NCBI Data Download FTP Link',
+    'cv_name' => 'local',
+  ]);
+
   tripal_eutils_add_biosample_db();
   tripal_eutils_insert_biosample_attribute_terms();
 }
