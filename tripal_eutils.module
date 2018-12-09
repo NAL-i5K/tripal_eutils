@@ -1,5 +1,10 @@
 <?php
-// Eutils suite.  Connecting to NCBI.
+
+/**
+ * @file
+ * Tripal Eutils module file.
+ */
+
 require_once 'includes/resources/EUtilsResource.inc';
 require_once 'includes/resources/EUtilsRequest.inc';
 require_once 'includes/resources/EFetch.inc';
@@ -8,7 +13,7 @@ require_once 'includes/resources/ESummary.inc';
 require_once 'includes/resources/EUtils.inc';
 require_once 'includes/resources/EFTP.inc';
 
-//Connects to NCBI to fetch the current biosample property list hosted.
+// Connects to NCBI to fetch the current biosample property list hosted.
 require_once 'includes/resources/BiosamplePropertyLookup.inc';
 
 
@@ -19,7 +24,7 @@ require_once 'includes/xml_parsers/EUtilsBioSampleParser.inc';
 require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
 require_once 'includes/xml_parsers/EUtilsAssemblyParser.inc';
 
-// Repositories. Handling DB operations
+// Repositories. Handling DB operations.
 require_once 'includes/repositories/EutilsRepositoryFactory.php';
 require_once 'includes/repositories/EUtilsRepository.php';
 require_once 'includes/repositories/EUtilsBioSampleRepository.php';
@@ -27,21 +32,16 @@ require_once 'includes/repositories/EUtilsBioProjectRepository.php';
 require_once 'includes/repositories/EUtilsAssemblyRepository.php';
 
 
-//Repository helpers.  Assist with looking up terms.
+// Repository helpers.  Assist with looking up terms.
 require_once 'includes/TagMapper.inc';
 
-
 /**
- * Implements hook_menu()
+ * Implements hook_menu().
  */
 function tripal_eutils_menu() {
-  /**
-   * Admin can configure which emails get sent out, more stuff?
-   */
 
-  /**
-   * Set site-wide admin settings.
-   */
+  // Admin can configure which emails get sent out, more stuff?
+  // Set site-wide admin settings.
   $items['admin/tripal/tripal_eutils'] = [
     'title' => 'Tripal Euitils settings',
     'page callback' => 'drupal_get_form',
@@ -60,7 +60,7 @@ function tripal_eutils_menu() {
     'page arguments' => ['tripal_eutils_import_form'],
   ];
 
-  //TODO: this should be set somewhere else...
+  // TODO: this should be set somewhere else...
   $tripal_euitils_types = ['assembly', 'biosample'];
 
   foreach ($tripal_euitils_types as $type) {
