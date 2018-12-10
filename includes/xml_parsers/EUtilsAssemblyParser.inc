@@ -45,15 +45,11 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           break;
 
         case 'RsUid':
-          $info['accessions']['assembly'][] = [
-            'db' => 'Refseq',
-            'value' => (string) $child,
-          ];
+          $info['accessions']['assembly']['Refseq'] = (string) $child;
+          break;
+
         case 'GbUid':
-          $info['accessions']['assembly'][] = [
-            'db' => 'Genbank',
-            'value' => (string) $child,
-          ];
+          $info['accessions']['assembly']['Genbank'] = (string) $child;
 
           break;
 
