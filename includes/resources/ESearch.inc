@@ -1,6 +1,10 @@
 <?php
 
-class ESearch extends EUtilsRequest{
+/**
+ *
+ */
+class ESearch extends EUtilsRequest {
+
   /**
    * ESearch constructor.
    *
@@ -12,4 +16,5 @@ class ESearch extends EUtilsRequest{
     $this->setBaseURL('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi');
     $this->addParam('db', $db);
   }
+
 }

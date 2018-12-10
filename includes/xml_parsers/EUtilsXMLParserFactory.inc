@@ -5,7 +5,6 @@
  * This is the base EUTILS XML parser class.
  * The plan is to extend this base class to be specific for each DB type.
  */
-
 class EUtilsXMLParserFactory {
 
   /**
@@ -23,9 +22,11 @@ class EUtilsXMLParserFactory {
       case 'bioproject':
         $parser = $this->bioproject($xml);
         break;
+
       case 'biosample':
         $parser = $this->biosample($xml);
         break;
+
       case 'assembly':
         $parser = $this->assembly($xml);
         break;
@@ -40,6 +41,7 @@ class EUtilsXMLParserFactory {
    * @param \SimpleXMLElement $xml
    *
    * @return array
+   *
    * @throws \Exception
    */
   public function bioProject(SimpleXMLElement $xml) {
@@ -58,7 +60,7 @@ class EUtilsXMLParserFactory {
   }
 
   /**
-   * Parse Assembly XML
+   * Parse Assembly XML.
    *
    * @param \SimpleXMLElement $xml
    *
@@ -67,4 +69,5 @@ class EUtilsXMLParserFactory {
   public function assembly(SimpleXMLElement $xml) {
     return (new EUtilsAssemblyParser())->parse($xml);
   }
+
 }
