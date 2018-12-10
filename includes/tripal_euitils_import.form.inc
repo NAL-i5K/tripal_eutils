@@ -42,86 +42,13 @@ function tripal_eutils_import_form($form, &$form_state) {
   $form['callback'] = ['#type' => 'button', '#value' => "Preview Record"];
 
   if (isset($form_state['values']['parsed'])) {
-
     $parsed = $form_state['values']['parsed'];
-
     $form['data'] = [
       '#type' => 'fieldset',
       '#title' => 'Data',
     ];
 
-    foreach ($parsed as $key => $item) {
-
-      if ($key == 'full_ncbi_xml') {
-        continue;
-      }
-
-      if (is_string($item)) {
-
-        $form['data'][] = [
-          '#type' => 'item',
-          '#title' => ucfirst($key),
-          '#markup' => $item,
-        ];
-        continue;
-      }
-
-      if ($key === 'attributes') {
-        $header = ['Key', 'Value'];
-
-        $rows = [];
-
-        foreach ($item as $record) {
-
-          $rows[] = [$record['harmonized_name'], $record['value']];
-        }
-
-        $table = theme('table', ['rows' => $rows, 'header' => $header]);
-        $form['data'][] = [
-          '#type' => 'item',
-          '#markup' => $table,
-          '#title' => ucfirst($key),
-        ];
-
-        continue;
-      }
-
-      if ($key === 'accessions') {
-
-        $header = ['DB', 'Value'];
-        $rows = [];
-
-        foreach ($item as $record) {
-
-          $rows[] = [$record['db'], $record['value']];
-        }
-
-        $table = theme('table', ['rows' => $rows, 'header' => $header]);
-        $form['data'][] = [
-          '#markup' => $table,
-          '#prefix' => ucfirst($key),
-          '#type' => 'item',
-        ];
-        continue;
-
-      }
-
-      foreach ($item as $record) {
-
-        if (is_string($record)) {
-
-          $form['data'][] = [
-            '#type' => 'item',
-            '#title' => ucfirst($key),
-            '#markup' => $record,
-          ];
-          continue;
-        }
-
-      }
-
-    }
-    // End submission state.
+    $form['data'][] = tripal_eutils_parse_biomaterial_for_table($parsed);
   }
 
   $form['options'] = ['#type' => 'fieldset', '#title' => "Options"];
@@ -199,4 +126,94 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
 
     tripal_set_message($e, TRIPAL_ERROR);
   }
+}
+
+/**
+ * Create summary table for a biomaterial accession.
+ *
+ * @param array $record
+ *   Output of XML Parser.
+ *
+ * @return array
+ *   Drupal form array.
+ *
+ * @throws \Exception
+ */
+function tripal_eutils_parse_biomaterial_for_table(array $record) {
+
+  $return = [];
+
+  foreach ($record as $key => $item) {
+
+    if ($key == 'full_ncbi_xml') {
+      continue;
+    }
+
+    if (is_string($item)) {
+
+      $return[] = [
+        '#type' => 'item',
+        '#title' => ucfirst($key),
+        '#markup' => $item,
+      ];
+      continue;
+    }
+
+    if ($key === 'attributes') {
+      $header = ['Key', 'Value'];
+
+      $rows = [];
+
+      foreach ($item as $record) {
+
+        $rows[] = [$record['harmonized_name'], $record['value']];
+      }
+
+      $table = theme('table', ['rows' => $rows, 'header' => $header]);
+      $return[] = [
+        '#type' => 'item',
+        '#markup' => $table,
+        '#title' => ucfirst($key),
+      ];
+
+      continue;
+    }
+
+    if ($key === 'accessions') {
+
+      $header = ['DB', 'Value'];
+      $rows = [];
+
+      foreach ($item as $record) {
+
+        $rows[] = [$record['db'], $record['value']];
+      }
+
+      $table = theme('table', ['rows' => $rows, 'header' => $header]);
+      $return[] = [
+        '#markup' => $table,
+        '#prefix' => ucfirst($key),
+        '#type' => 'item',
+      ];
+      continue;
+
+    }
+
+    foreach ($item as $record) {
+
+      if (is_string($record)) {
+
+        $return[] = [
+          '#type' => 'item',
+          '#title' => ucfirst($key),
+          '#markup' => $record,
+        ];
+        continue;
+      }
+
+    }
+
+  }
+
+  return $return;
 }
