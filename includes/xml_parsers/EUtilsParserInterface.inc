@@ -1,6 +1,9 @@
 <?php
 
-interface EUtilsParserInterface{
+/**
+ *
+ */
+interface EUtilsParserInterface {
 
   /**
    * @param \SimpleXMLElement $xml
@@ -8,4 +11,5 @@ interface EUtilsParserInterface{
    * @return mixed
    */
   public function parse(SimpleXMLElement $xml);
+
 }

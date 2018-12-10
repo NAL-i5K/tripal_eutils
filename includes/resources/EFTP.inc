@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class EFTP
+ * Class EFTP.
  *
  * Right now responsible for getting a single value from the Assembly.
  */
@@ -21,10 +21,8 @@ class EFTP {
    */
   protected $file;
 
-
   /**
    * @param string $url
-   *
    */
   public function setURL($url) {
 
@@ -32,7 +30,6 @@ class EFTP {
     $file = file_get_contents($url);
     $this->file = $file;
   }
-
 
   /**
    * Find all records of line starting with a specific item.
@@ -58,12 +55,13 @@ class EFTP {
 
         $results[] = $string;
       }
-      //      if (!substr($line, 0, 1) === "#") {
+      // If (!substr($line, 0, 1) === "#") {
       //        //we're done with the header, stop parsing.
       //        continue;
-      //      }
+      //      }.
     }
 
     return $results;
   }
+
 }

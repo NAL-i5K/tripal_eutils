@@ -1,9 +1,12 @@
 <?php
 
-class EUtilsRequest{
+/**
+ *
+ */
+class EUtilsRequest {
 
   /**
-   * Request base url
+   * Request base url.
    *
    * @var string
    */
@@ -165,4 +168,5 @@ class EUtilsRequest{
   protected function beginsWith($str, $with) {
     return substr($str, 0, strlen($with)) === $with;
   }
+
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements hook_install()
+ * Implements hook_install().
  */
 function tripal_eutils_install() {
 
@@ -17,7 +17,7 @@ function tripal_eutils_install() {
   chado_insert_db(['name' => 'NCBI Refseq', 'description' => 'A comprehensive, integrated, non-redundant, well-annotated set of reference sequences including genomic, transcript, and protein.', 'url' => 'https://www.ncbi.nlm.nih.gov/refseq/']);
 
   chado_insert_db(['name' => 'NCBI Genbank', 'description' => 'GenBank ® is the NIH genetic sequence database, an annotated collection of all publicly available DNA sequences (Nucleic Acids Research, 2013 Jan;41(D1):D36-42).', 'url' => 'https://www.ncbi.nlm.nih.gov/genbank/']);
-  
+
   chado_insert_cvterm([
     'id' => 'local:full_ncbi_xml',
     'name' => 'full_ncbi_xml',

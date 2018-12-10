@@ -1,6 +1,9 @@
 <?php
 
-class ESummary extends EUtilsRequest{
+/**
+ *
+ */
+class ESummary extends EUtilsRequest {
 
   /**
    * ESummary constructor.
@@ -13,4 +16,5 @@ class ESummary extends EUtilsRequest{
     $this->setBaseURL('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi');
     $this->addParam('db', $db);
   }
+
 }

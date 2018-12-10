@@ -1,6 +1,9 @@
 <?php
 
-class EUtilsBioSampleParser implements EUtilsParserInterface{
+/**
+ *
+ */
+class EUtilsBioSampleParser implements EUtilsParserInterface {
 
   /**
    * Parse the XML into an array.
@@ -18,7 +21,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface{
       'accessions' => $accessions,
       'description' => isset($xml->BioSample->Description->Comment) ? $this->extractParagraphs($xml->BioSample->Description->Comment) : [],
       'attributes' => $this->extractAttributes($xml->BioSample->Attributes),
-      'full_ncbi_xml' => $xml->BioSample->asXML()
+      'full_ncbi_xml' => $xml->BioSample->asXML(),
     ];
 
     return $data;
@@ -85,4 +88,5 @@ class EUtilsBioSampleParser implements EUtilsParserInterface{
 
     return $data;
   }
+
 }

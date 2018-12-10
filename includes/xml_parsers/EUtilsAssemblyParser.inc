@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Parser for NCBI Assembly https://www.ncbi.nlm.nih.gov/assembly/ XML.
+ */
 class EUtilsAssemblyParser implements EUtilsParserInterface {
 
   /**
@@ -12,7 +15,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
       'attributes' => [],
     ];
 
-    // skip to DocumentSummary
+    // Skip to DocumentSummary.
     $xml = $xml->DocumentSummarySet;
     $xml = $xml->DocumentSummary;
 
@@ -39,8 +42,9 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           $info['ignored'][] = $child->getName();
           break;
 
-        case 'SpeciesTaxid'://linked chado records.
-          //NOTE: Taxid also exists, but in all examples they are equal.
+        // Linked chado records.
+        case 'SpeciesTaxid':
+          // NOTE: Taxid also exists, but in all examples they are equal.
           $info['accessions']['taxon_accession'] = (string) $child;
           break;
 
@@ -60,7 +64,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
 
           foreach ($bioproject_children as $bp_child) {
             $id = $bp_child->BioprojectId;
-            //TODO: do we also need to keep track of if this is genbank or refseq?
+            // TODO: do we also need to keep track of if this is genbank or refseq?
             $info['accessions']['bioprojects'][] = (string) $id;
           }
 
@@ -125,8 +129,10 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
   /**
    * Process terminal level children (IE a flat array of children).
    *
-   * @param $x - xml of children
-   * @param $keys - attribute keys to derive the label from
+   * @param $x
+   *   - xml of children
+   * @param $keys
+   *   - attribute keys to derive the label from
    *
    * @return array
    */
@@ -155,10 +161,10 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
   /**
    * Get the fields the assembly object will need from the FTP.
    *
-   * @param $url - the ftp site url extracted form the metadata
+   * @param $url
+   *   - the ftp site url extracted form the metadata
    *
    * @return array
-   *
    */
   public function getFTPData($url) {
 

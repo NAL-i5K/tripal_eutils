@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Class TagMapper
- * Responsible for providing instructions for a given tag.
+ * Class TagMapper.
  *
  * And attribute.
  *
  * @todo should we rename this to just mapper?  attribute mapper, and have the
- *   tag mapper seperate?
+ *   tag mapper separate?
  */
-
-class TagMapper{
+class TagMapper {
 
   /**
+   * Cache array of terms to facilitate lookup.
+   *
    * @var array
    */
   private static $cache = [
@@ -20,11 +20,15 @@ class TagMapper{
   ];
 
   /**
+   * NCBI database for lookup.
+   *
    * @var null
    */
   private $db = NULL;
 
   /**
+   * Dictionary.  The lookup for the configured database.
+   *
    * @var null
    */
   private $dict = NULL;
@@ -32,7 +36,8 @@ class TagMapper{
   /**
    * TagMapper constructor.
    *
-   * @param $db
+   * @param string $db
+   *   NCBI database for lookup.
    */
   public function __construct($db) {
     $this->db = $db;
@@ -52,6 +57,7 @@ class TagMapper{
 
       case 'biosample':
         $this->dict = $this->provideBiosampleAttributeDict();
+        break;
 
       default:
         break;
@@ -59,9 +65,13 @@ class TagMapper{
   }
 
   /**
-   * @param $term_string
+   * Lookup function, searches for a term based on a string.
+   *
+   * @param string $term_string
+   *   The string to lookup.
    *
    * @return bool
+   *   Not sure what it should return, the cvterm_id?
    */
   public function lookup($term_string) {
     $dict = $this->dict;
@@ -97,14 +107,15 @@ class TagMapper{
   }
 
   /**
-   * Biosample attributes.  derived from the "harmonized name" of <Attribute>s
+   * Biosample attributes.  derived from the "harmonized name" of <Attribute>s.
    *
    * @return array
+   *   An array of XML tag -> cvterm object mappings.
    */
   private function provideBiosampleAttributeDict() {
 
-    //please keep this alphabetized for sanity.
-    //If updated, please also delete/update terms in the install file.
+    // Please keep this alphabetized for sanity.
+    // If updated, please also delete/update terms in the install file.
     return [
       'age' => $this->getTerm(['id' => 'ncbi_properties:age']),
       'bio_material' => NULL,
@@ -133,12 +144,16 @@ class TagMapper{
       return static::$cache[$term['id']];
     }
 
-    $term =  tripal_get_cvterm($term);
+    $term = tripal_get_cvterm($term);
     static::$cache[$term->cvterm_id] = $term;
     return $term;
   }
 
+  /**
+   *
+   */
   private function provideAssemblyTagDict() {
 
   }
+
 }
