@@ -57,6 +57,7 @@ class TagMapper {
 
       case 'biosample':
         $this->dict = $this->provideBiosampleAttributeDict();
+        break;
 
       default:
         break;
@@ -106,9 +107,10 @@ class TagMapper {
   }
 
   /**
-   * Biosample attributes.  derived from the "harmonized name" of <Attribute>s
+   * Biosample attributes.  derived from the "harmonized name" of <Attribute>s.
    *
    * @return array
+   *   An array of XML tag -> cvterm object mappings.
    */
   private function provideBiosampleAttributeDict() {
 
