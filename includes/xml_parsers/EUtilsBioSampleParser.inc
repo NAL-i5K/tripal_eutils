@@ -13,39 +13,81 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
    * @return array
    */
   public function parse(SimpleXMLElement $xml) {
-    $accessions = $this->extractAttributes($xml->BioSample->Ids);
+    // Primary data
     $primary_accession = (string) $xml->BioSample['accession'];
+    $description = $xml->BioSample->Description->Comment ??
+      $this->extractParagraphs($xml->BioSample->Description->Comment);
 
-    $data = [
-      'name' => $this->getNameFromAccessions($accessions, $primary_accession),
+    // Get accessions
+    $accessions = $this->extractAttributes($xml->BioSample->Ids);
+
+    // Get properties
+    $attributes = $this->extractAttributes($xml->BioSample->Attributes);
+    // Check and extract owner given db_label
+    $this->attachDBLabel($attributes, $accessions);
+
+    return [
+      'name' => $primary_accession,
       'accessions' => $accessions,
-      'description' => isset($xml->BioSample->Description->Comment) ? $this->extractParagraphs($xml->BioSample->Description->Comment) : [],
-      'attributes' => $this->extractAttributes($xml->BioSample->Attributes),
+      'description' => $description,
+      'attributes' => $attributes,
+      'contact' => $this->extractContact($xml->BioSample),
+      'organism' => $this->extractOrganism($xml->BioSample),
       'full_ncbi_xml' => $xml->BioSample->asXML(),
     ];
-
-    return $data;
   }
 
   /**
-   * Get sample name from the list of accessions..
+   * Extract the db_label from accessions and add it to attributes if db_label
+   * is Sample name.
    *
+   * @param array $attributes
    * @param array $accessions
-   * @param string $default
-   *
-   * @return string
    */
-  public function getNameFromAccessions(
-    array $accessions,
-    $default = 'Unknown'
-  ) {
+  protected function attachDBLabel(&$attributes, $accessions) {
+    $accessions = array_filter(
+      $accessions, function ($accession) {
+      return isset($accession['db_label'])
+        && strtolower($accession['db_label']) === 'sample name';
+    }
+    );
+
     foreach ($accessions as $accession) {
-      if (isset($accession['db_label']) && trim(strtolower($accession['db_label'])) === 'sample name') {
-        return $accession['value'];
-      }
+      $attributes[] = [
+        'value' => $accession['value'],
+        'harmonized_name' => 'submitter_provided_accession',
+        'attribute_name' => 'submitter_provided_accession',
+        'display_name' => $accession['db_label'],
+      ];
+    }
+  }
+
+  /**
+   * Get the organism.
+   *
+   * @param \SimpleXMLElement $xml
+   *
+   * @return array The organism data [ taxonomy_name, taxonomy_id, value ]
+   */
+  protected function extractOrganism($xml) {
+    if (!isset($xml->Description->Organism)) {
+      return NULL;
     }
 
-    return $default;
+    $organism = $xml->Description->Organism;
+
+    return current($organism->attributes());
+  }
+
+  /**
+   * Get the owner name.
+   *
+   * @param \SimpleXMLElement $xml
+   *
+   * @return string|NUll
+   */
+  protected function extractContact($xml) {
+    return $xml->Owner->Name ?? NULL;
   }
 
   /**

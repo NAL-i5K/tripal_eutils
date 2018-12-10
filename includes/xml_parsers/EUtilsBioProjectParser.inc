@@ -46,6 +46,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
           break;
 
         case 'ProjectDescr':
+
           // Information about the project itself.  Includes title, description.
           $name_string = (string) $child->Name . ': ' . (string) $child->Title;
           $info['name'] = $name_string;
@@ -65,8 +66,8 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
             }
 
             $info['linked_records']['locus_tag_prefix']['attributes'] = $x;
-            $info['linked_records']['locus_tag_prefix']['value'] = (string) $child;
-
+            $info['linked_records']['locus_tag_prefix']['value']
+              = (string) $child;
           }
 
           break;
@@ -104,7 +105,6 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
             //            }
 
             $info['linked_records']['organism'] = $organism_accession;
-
           }
 
           break;

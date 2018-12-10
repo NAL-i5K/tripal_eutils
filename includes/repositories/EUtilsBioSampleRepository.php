@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsBioSampleRepository extends EUtilsRepository{
+class EUtilsBioSampleRepository extends EUtilsRepository {
 
   /**
    * Required attributes when using the create method.
@@ -37,14 +37,29 @@ class EUtilsBioSampleRepository extends EUtilsRepository{
     // Throw an exception if a required field is missing
     $this->validateFields($data);
 
-    // Create the base record
-    $description = is_array($data['description']) ? implode("\n",
-      $data['description']) : $data['description'];
+    if (!$data['organism']) {
+      throw new Exception(
+        'Unable to create BioSample due to lack of organism information'
+      );
+    }
 
-    $bio_sample = $this->createBioSample([
-      'name' => $data['name'],
-      'description' => $description,
-    ]);
+    // getOrganism throws an exception so without try/catch, we will
+    // automatically fail and exit
+    $organism = $this->getOrganism($data['organism']['taxonomy_id']);
+
+    // Create the contact or get it from db if already exists
+    $contact = $this->createContact($data['contact']);
+
+    // Create the base record
+    $description = $this->makeDescription($data['description']);
+    $bio_sample = $this->createBioSample(
+      [
+        'biosourceprovider_id' => $contact->contact_id,
+        'name' => $data['name'],
+        'description' => $description,
+        'taxon_id' => $organism->organism_id,
+      ]
+    );
 
     // Set class base record stuff
     $this->setBaseTable('biomaterial');
@@ -58,6 +73,21 @@ class EUtilsBioSampleRepository extends EUtilsRepository{
     $this->createXMLProp($data['full_ncbi_xml']);
 
     return $bio_sample;
+  }
+
+  /**
+   * Make the description string.
+   *
+   * @param array|string $description
+   *
+   * @return string
+   */
+  protected function makeDescription($description) {
+    if (is_array($description)) {
+      return implode("\n", $description);
+    }
+
+    return $description;
   }
 
   /**
@@ -76,20 +106,15 @@ class EUtilsBioSampleRepository extends EUtilsRepository{
       return $biosample;
     }
 
-    $id = db_insert('chado.biomaterial')->fields([
-      'name' => $data['name'] ?? '',
-      'description' => $data['description'] ?? '',
-    ])->execute();
+    $id = db_insert('chado.biomaterial')->fields($data)->execute();
 
     if (!$id) {
       throw new Exception('Unable to create chado.biomaterial record');
     }
 
-    $biosample = db_select('chado.biomaterial', 'B')
-      ->fields('B')
-      ->condition('biomaterial_id', $id)
-      ->execute()
-      ->fetchObject();
+    $biosample = db_select('chado.biomaterial', 'B')->fields('B')->condition(
+      'biomaterial_id', $id
+    )->execute()->fetchObject();
 
     return static::$cache['biosamples'][$biosample->name] = $biosample;
   }
@@ -136,7 +161,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository{
       try {
         $data[] = $this->createAccession($accession);
       } catch (Exception $exception) {
-        // For the time being, ignore all exceptions
+        // Log the error and continue
       }
     }
 
@@ -149,6 +174,8 @@ class EUtilsBioSampleRepository extends EUtilsRepository{
    * @param $attributes
    *
    * CVterm info from the Attributes area
+   *
+   * @throws \Exception
    */
   public function createProps($attributes) {
     foreach ($attributes as $attribute) {
@@ -157,7 +184,6 @@ class EUtilsBioSampleRepository extends EUtilsRepository{
 
       //TODO: the term lookup class should handle this instead.
       $cvterm = chado_get_cvterm(['id' => 'ncbi_properties:' . $term_name]);
-
       $cvterm_id = $cvterm->cvterm_id;
       $this->createProperty($cvterm_id, $value);
     }

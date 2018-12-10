@@ -60,6 +60,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
     $this->createAccessions($data['accessions']);
 
     $this->createProps($data['attributes']);
+
     // TODO: no project_organism table...
     // $organism = $this->getOrganism($data['linked_records']['organism']);
     // $this->linkOrganism($organism);
@@ -142,15 +143,13 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
    * @return bool
    */
   public function createProps($properties) {
-
     foreach ($properties as $property_name => $value) {
-
       $accession = 'local:' . $property_name;
+
       // TODO:  this is not what we want to do.  we want to be smarter about mapping the terms...
       $cvterm = chado_get_cvterm(['id' => $accession]);
 
       $this->createProperty($cvterm->cvterm_id, $value);
-
     }
 
     return TRUE;
