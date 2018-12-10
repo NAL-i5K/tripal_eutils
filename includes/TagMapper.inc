@@ -114,8 +114,8 @@ class TagMapper {
    */
   private function provideBiosampleAttributeDict() {
 
-    //please keep this alphabetized for sanity.
-    //If updated, please also delete/update terms in the install file.
+    // Please keep this alphabetized for sanity.
+    // If updated, please also delete/update terms in the install file.
     return [
       'age' => $this->getTerm(['id' => 'ncbi_properties:age']),
       'bio_material' => NULL,
@@ -149,7 +149,11 @@ class TagMapper {
     return $term;
   }
 
+  /**
+   *
+   */
   private function provideAssemblyTagDict() {
 
   }
+
 }
