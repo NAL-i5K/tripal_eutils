@@ -1,6 +1,10 @@
 <?php
 
-class EUtilsBioProjectRepository extends EUtilsRepository{
+/**
+ * EutilsBioProjectRepository handles taking parsed bioproject XMLs and
+ * creating chado.projects.
+ */
+class EUtilsBioProjectRepository extends EUtilsRepository {
 
   /**
    * Required attributes when using the create method.
@@ -33,14 +37,16 @@ class EUtilsBioProjectRepository extends EUtilsRepository{
    * @param array $data
    *
    * @return object
+   *
    * @throws \Exception
+   *
    * @see \EUtilsBioProjectParser::parse() to get the data array needed.
    */
   public function create($data) {
-    // Throw an exception if a required field is missing
+    // Throw an exception if a required field is missing.
     $this->validateFields($data);
 
-    // Create the base record
+    // Create the base record.
     $description = is_array($data['description']) ? implode("\n",
       $data['description']) : $data['description'];
 
@@ -54,9 +60,9 @@ class EUtilsBioProjectRepository extends EUtilsRepository{
     $this->createAccessions($data['accessions']);
 
     $this->createProps($data['attributes']);
-
-    //add xml
-
+    // TODO: no project_organism table...
+    // $organism = $this->getOrganism($data['linked_records']['organism']);
+    // $this->linkOrganism($organism);
     $this->createXMLProp($data['full_ncbi_xml']);
 
     return $project;
@@ -65,9 +71,11 @@ class EUtilsBioProjectRepository extends EUtilsRepository{
   /**
    * Create a project record.
    *
-   * @param array $data See chado.project schema
+   * @param array $data
+   *   See chado.project schema.
    *
    * @return mixed
+   *
    * @throws \Exception
    */
   public function createProject(array $data) {
@@ -104,12 +112,12 @@ class EUtilsBioProjectRepository extends EUtilsRepository{
    * @return null
    */
   public function getProject($name) {
-    // If the project is available in our static cache, return it
+    // If the project is available in our static cache, return it.
     if (isset(static::$cache['projects'][$name])) {
       return static::$cache['projects'][$name];
     }
 
-    // Find the project and add it to the cache
+    // Find the project and add it to the cache.
     $project = db_select('chado.project', 'p')
       ->fields('p')
       ->condition('name', $name)
@@ -138,7 +146,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository{
     foreach ($properties as $property_name => $value) {
 
       $accession = 'local:' . $property_name;
-      //TODO:  this is not what we want to do.  we want to be smarter about mapping the terms...
+      // TODO:  this is not what we want to do.  we want to be smarter about mapping the terms...
       $cvterm = chado_get_cvterm(['id' => $accession]);
 
       $this->createProperty($cvterm->cvterm_id, $value);
@@ -161,12 +169,12 @@ class EUtilsBioProjectRepository extends EUtilsRepository{
     foreach ($accessions as $accession) {
       try {
         $data[] = $this->createAccession($accession);
-      } catch (Exception $exception) {
-        // For the time being, ignore all exceptions
+      }
+      catch (Exception $exception) {
+        // For the time being, ignore all exceptions.
       }
     }
     return $data;
   }
-
 
 }

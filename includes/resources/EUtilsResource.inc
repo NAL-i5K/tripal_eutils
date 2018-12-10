@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class EUtilsResource.
+ * @Class EUtilsResource.
  *
  * Provides a set of methods to interact with a response
  * from the EUtils API.
