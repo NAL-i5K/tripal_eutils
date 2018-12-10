@@ -90,8 +90,8 @@ abstract class EUtilsRepository {
    * Look up an accession in chado.dbxref. Retrieves record from cache
    * if predetermined.
    *
-   * @param string $name The accession identifier (dbxref.accession).
-   * @param int $db_id Name of the DB ID.
+   * @param string $name  The accession identifier (dbxref.accession).
+   * @param int    $db_id Name of the DB ID.
    *
    * @return mixed
    */
@@ -126,11 +126,10 @@ abstract class EUtilsRepository {
       return static::$cache['db'][$name];
     }
 
-    $db = db_select('chado.db', 'db')
-      ->fields('db')
-      ->condition('name', $name)
-      ->execute()
-      ->fetchObject();
+    $db = db_query(
+      'SELECT * FROM chado.db WHERE UPPER(name) = :name',
+      [':name' => strtoupper($name)]
+    )->fetchObject();
 
     if ($db) {
       return static::$cache['db'][$name] = $db;
@@ -153,12 +152,12 @@ abstract class EUtilsRepository {
 
     $record = [
       'table' => $this->base_table,
-      'id' => $this->base_record_id,
+      'id'    => $this->base_record_id,
     ];
 
     $property = [
       'type_id' => $cvterm_id,
-      'value' => $value,
+      'value'   => $value,
     ];
 
     $options = [];
@@ -189,7 +188,7 @@ abstract class EUtilsRepository {
     }
 
     // Try getting the db record with the prefix NCBI
-    $db = $this->getDB('NCBI ' . strtolower($accession['db']));
+    $db = $this->getDB("NCBI {$accession['db']}");
 
     // Not found! Try getting the DB without any prefixes
     if (empty($db)) {
@@ -217,7 +216,7 @@ abstract class EUtilsRepository {
    * dbxrefs are formatted db:accession.
    *
    * @param string $accession
-   * @param int $db_id
+   * @param int    $db_id
    *
    * @return bool
    * @throws \Exception
@@ -227,7 +226,7 @@ abstract class EUtilsRepository {
 
     $dbxref = [
       'accession' => $accession,
-      'db_id' => $db_id,
+      'db_id'     => $db_id,
     ];
 
     chado_associate_dbxref(
@@ -353,7 +352,7 @@ abstract class EUtilsRepository {
     }
     //Note: import_existing = TRUE causes the loader to time out.
     $run_args = [
-      'taxonomy_ids' => $accession,
+      'taxonomy_ids'    => $accession,
       'import_existing' => FALSE,
     ];
 
@@ -399,7 +398,6 @@ abstract class EUtilsRepository {
     return $organism;
   }
 
-
   /**
    * Fetch NCBI records of the type DB.
    *
@@ -414,7 +412,7 @@ abstract class EUtilsRepository {
 
     $return = [];
     foreach ($accessions as $accession) {
-      $record = (new EUtils())->get($db, $accession);
+      $record   = (new EUtils())->get($db, $accession);
       $return[] = $record;
     }
     return $return;
@@ -435,21 +433,18 @@ abstract class EUtilsRepository {
     $table = 'project_' . $base_table;
     foreach ($projects as $project) {
 
-      $exists = db_select('chado.' . $table, 'lt')
-        ->fields('lt')
-        ->condition('project_id', $project->project_id)
-        ->condition($base_table . '_id', $base_record)
-        ->execute()
-        ->fetchObject();
+      $exists = db_select('chado.' . $table, 'lt')->fields('lt')->condition(
+          'project_id', $project->project_id
+        )->condition($base_table . '_id', $base_record)->execute()->fetchObject(
+        );
       if (!$exists) {
 
-        db_insert('chado.' . $table)
-          ->fields([
-            'project_id' => $project->project_id,
-            $base_table . '_id' => $base_record,
-          ])
-          ->execute();
-
+        db_insert('chado.' . $table)->fields(
+            [
+              'project_id'        => $project->project_id,
+              $base_table . '_id' => $base_record,
+            ]
+          )->execute();
       }
     }
   }
