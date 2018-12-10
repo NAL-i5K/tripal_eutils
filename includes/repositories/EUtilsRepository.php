@@ -166,12 +166,12 @@ abstract class EUtilsRepository {
 
     $record = [
       'table' => $this->base_table,
-      'id'    => $this->base_record_id,
+      'id' => $this->base_record_id,
     ];
 
     $property = [
       'type_id' => $cvterm_id,
-      'value'   => $value,
+      'value' => $value,
     ];
 
     $options = [];
@@ -250,7 +250,7 @@ abstract class EUtilsRepository {
 
     $dbxref = [
       'accession' => $accession,
-      'db_id'     => $db_id,
+      'db_id' => $db_id,
     ];
 
     chado_associate_dbxref(
@@ -385,7 +385,7 @@ abstract class EUtilsRepository {
     }
     // Note: import_existing = TRUE causes the loader to time out.
     $run_args = [
-      'taxonomy_ids'    => $accession,
+      'taxonomy_ids' => $accession,
       'import_existing' => FALSE,
     ];
 
@@ -437,19 +437,19 @@ abstract class EUtilsRepository {
   /**
    * Fetch NCBI records of the type DB.
    *
-   * @param $db
-   * @param $accessions
+   * @param string $db
+   * @param array $accessions
    *
-   * @return array | An array of chado base records, as returned by a
-   *   Repository.
+   * @return array
+   *   An array of chado base records, as returned by a repository.
    *
    * @throws \Exception
    */
-  public function getNCBIRecord($db, $accessions) {
+  public function getNCBIRecord($db, array $accessions) {
 
     $return = [];
     foreach ($accessions as $accession) {
-      $record   = (new EUtils())->get($db, $accession);
+      $record = (new EUtils())->get($db, $accession);
       $return[] = $record;
     }
     return $return;
@@ -477,7 +477,7 @@ abstract class EUtilsRepository {
 
         db_insert('chado.' . $table)->fields(
           [
-            'project_id'        => $project->project_id,
+            'project_id' => $project->project_id,
             $base_table . '_id' => $base_record,
           ]
         )->execute();
