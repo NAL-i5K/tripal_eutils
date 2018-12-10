@@ -7,13 +7,13 @@ function tripal_eutils_install() {
 
   chado_insert_cv('ncbi_properties',
     'The ncbi BioSample properties CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
-
   chado_insert_db([
     'name' => 'ncbi_properties',
     'description' => 'Attribute and property terms for NCBI.',
     'url' => 'http://www.ncbi.nlm.nih.gov/',
   ]);
 
+   // Note that db names should follow the format of 'NCBI dbname' where dbname is all lowercase.
   chado_insert_db(['name' => 'NCBI refseq', 'description' => 'A comprehensive, integrated, non-redundant, well-annotated set of reference sequences including genomic, transcript, and protein.', 'url' => 'https://www.ncbi.nlm.nih.gov/refseq/']);
 
   chado_insert_db(['name' => 'NCBI genbank', 'description' => 'GenBank ® is the NIH genetic sequence database, an annotated collection of all publicly available DNA sequences (Nucleic Acids Research, 2013 Jan;41(D1):D36-42).', 'url' => 'https://www.ncbi.nlm.nih.gov/genbank/']);
