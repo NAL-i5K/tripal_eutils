@@ -236,9 +236,9 @@ abstract class EUtilsRepository {
    * dbxrefs are formatted db:accession.
    *
    * @param string $accession
-   *   name.
+   *   Name.
    * @param int $db_id
-   *   db id.
+   *   DB id.
    *
    * @return object
    *   the new dbxref object
@@ -459,7 +459,7 @@ abstract class EUtilsRepository {
    * Linkers project to the record, assuming a project_ linker table.
    *
    * @param array $projects
-   *   array of base chado record project objects.
+   *   Array of base chado record project objects.
    */
   public function linkProjects($projects) {
 
