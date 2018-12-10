@@ -19,7 +19,7 @@ function tripal_eutils_import_form($form, &$form_state) {
   ];
 
   $db_choices = [
-    'project' => 'BioProject',
+    'bioproject' => 'BioProject',
     'biosample' => 'Biosample',
     'assembly' => 'Assembly',
   ];
@@ -48,7 +48,18 @@ function tripal_eutils_import_form($form, &$form_state) {
       '#title' => 'Data',
     ];
 
-    $form['data'][] = tripal_eutils_parse_biomaterial_for_table($parsed);
+    $db_state = (isset($form_state['values']['db'])) ? $form_state['values']['db'] : NULL;
+
+    if ($db_state == 'biosample') {
+      $form['data'][] = tripal_eutils_parse_biomaterial_for_table($parsed);
+    }
+    elseif ($db_state == 'bioproject') {
+      $form['data'][] = tripal_eutils_parse_bioproject_for_table($parsed);
+    }
+    elseif ($db_state == 'assembly') {
+      $form['data'][] = tripal_eutils_parse_assembly_for_table($parsed);
+
+    }
   }
 
   $form['options'] = ['#type' => 'fieldset', '#title' => "Options"];
@@ -216,4 +227,87 @@ function tripal_eutils_parse_biomaterial_for_table(array $record) {
   }
 
   return $return;
+}
+
+/**
+ *
+ */
+function tripal_eutils_parse_bioproject_for_table($parsed) {
+
+  $return = [];
+
+  foreach ($parsed as $key => $item) {
+
+    if ($key == 'full_ncbi_xml') {
+      continue;
+    }
+
+    if (is_string($item)) {
+
+      $return[] = [
+        '#type' => 'item',
+        '#title' => ucfirst($key),
+        '#markup' => $item,
+      ];
+      continue;
+    }
+
+    if ($key === 'attributes') {
+      continue;
+    }
+
+    if ($key === 'accessions') {
+
+      $header = ['DB', 'Value'];
+      $rows = [];
+
+      foreach ($item as $record) {
+
+        $rows[] = [$record['db'], $record['value']];
+      }
+
+      $table = theme('table', ['rows' => $rows, 'header' => $header]);
+      $return[] = [
+        '#markup' => $table,
+        '#prefix' => ucfirst($key),
+        '#type' => 'item',
+      ];
+      continue;
+
+    }
+
+    if ($key == 'linked_records') {
+      continue;
+
+    }
+
+    foreach ($item as $record) {
+
+      if (is_string($record)) {
+
+        $return[] = [
+          '#type' => 'item',
+          '#title' => ucfirst($key),
+          '#markup' => $record,
+        ];
+        continue;
+      }
+
+    }
+
+  }
+  return $return;
+
+}
+
+/**
+ *
+ */
+function tripal_eutils_parse_assembly_for_table($parsed) {
+
+  $return = [];
+  dpm($parsed);
+
+  return $return;
+
 }

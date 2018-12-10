@@ -26,14 +26,16 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
 
     // Jump to Project node.
     $projects = $xml->xpath('DocumentSummary/Project');
-    $project = $projects[0];
-
-    if (!$project) {
+    if (!isset($projects[0])) {
 
       $e = 'Unexpected XML structure';
 
-      throwException($e);
+      throw new Exception($e);
     }
+
+    $project = $projects[0];
+
+
     $info['full_ncbi_xml'] = $project->asXML();
 
     $children = $project->children();
