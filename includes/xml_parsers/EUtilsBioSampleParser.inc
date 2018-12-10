@@ -15,7 +15,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
   public function parse(SimpleXMLElement $xml) {
     // Primary data
     $primary_accession = (string) $xml->BioSample['accession'];
-    $description = $xml->BioSample->Description->Comment ??
+    $description = (string) $xml->BioSample->Description->Comment ??
       $this->extractParagraphs($xml->BioSample->Description->Comment);
 
     // Get accessions
@@ -87,7 +87,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
    * @return string|NUll
    */
   protected function extractContact($xml) {
-    return $xml->Owner->Name ?? NULL;
+    return (string) $xml->Owner->Name ?? NULL;
   }
 
   /**

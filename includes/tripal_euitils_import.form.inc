@@ -45,14 +45,16 @@ function tripal_eutils_import_form($form, &$form_state) {
 
     $parsed = $form_state['values']['parsed'];
 
-    dpm($parsed);
-
     $form['data'] = [
       '#type' => 'fieldset',
       '#title' => 'Data',
     ];
 
     foreach ($parsed as $key => $item) {
+
+      if ($key == 'full_ncbi_xml') {
+        continue;
+      }
 
       if (is_string($item)) {
 
@@ -70,7 +72,6 @@ function tripal_eutils_import_form($form, &$form_state) {
         $rows = [];
 
         foreach ($item as $record) {
-
 
           $rows[] = [$record['harmonized_name'], $record['value']];
         }
