@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Https://www.ncbi.nlm.nih.gov/books/NBK25499/ NCBI Efetch docs.
+ */
 class EFetch extends EUtilsRequest {
 
   /**
@@ -13,4 +16,5 @@ class EFetch extends EUtilsRequest {
     $this->setBaseURL('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi');
     $this->addParam('db', $db);
   }
+
 }

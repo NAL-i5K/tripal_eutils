@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Class EUtilsResource
+ * @Class EUtilsResource.
  *
  * Provides a set of methods to interact with a response
  * from the EUtils API.
  */
-class EUtilsResource{
+class EUtilsResource {
 
   /**
    * HTTP Response.
@@ -18,7 +18,8 @@ class EUtilsResource{
   /**
    * EUtilsResource constructor.
    *
-   * @param object $response The object returned by drupal_http_request()
+   * @param object $response
+   *   The object returned by drupal_http_request()
    *
    * @see drupal_http_request()
    */
@@ -91,4 +92,5 @@ class EUtilsResource{
   public function originalResponseObject() {
     return $this->response;
   }
+
 }

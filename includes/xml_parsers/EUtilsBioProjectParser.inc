@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class EUtilsBioProjectParser
+ * Class EUtilsBioProjectParser.
  *
  * Note that projects dont have reliable attribute listings.
  */
@@ -19,12 +19,12 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
       'description' => '',
       'accessions' => [],
       'attributes' => [],
-      //Expected keys for linked records:  Contact, biomaterial, analysis, organism
+      // Expected keys for linked records:  Contact, biomaterial, analysis, organism.
       'linked_records' => [],
       'full_ncbi_xml' => '',
     ];
 
-    //Jump to Project node
+    // Jump to Project node.
     $projects = $xml->xpath('DocumentSummary/Project');
     $project = $projects[0];
 
@@ -41,21 +41,19 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
       switch ($key) {
 
         case 'ProjectID':
-          //Accession for the project.
+          // Accession for the project.
           $primary_xref = $child->ArchiveID;
           break;
 
         case 'ProjectDescr':
-          //Information about the project itself.  Includes title, description
 
-          $name_string = (string) $child->Name . ': '
-            . (string) $child->Title;
+          // Information about the project itself.  Includes title, description.
+          $name_string = (string) $child->Name . ': ' . (string) $child->Title;
           $info['name'] = $name_string;
           $info['description'] = (string) $child->Description;
 
-          //do we have a LocusTagPrefix?  If so that links to biosample and/or assembly.
+          // Do we have a LocusTagPrefix?  If so that links to biosample and/or assembly.
           //
-
           if ($child->LocusTagPrefix) {
 
             $attributes = $child->attributes();
@@ -63,7 +61,6 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
             $x = [];
 
             foreach ($attributes as $key => $value) {
-
 
               $x[(string) $key] = (string) $value;
             }
@@ -76,8 +73,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
           break;
 
         case 'ProjectType':
-          //Includes organism, metadata for project.
-
+          // Includes organism, metadata for project.
           $target = $child->ProjectTypeSubmission->Target;
 
           if (!$target) {
@@ -85,40 +81,36 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
           }
 
           $organism = $target->Organism;
-          $organism_record = [];
+          $organism_accession = NULL;
 
           if ($organism) {
-            //Extract organism info
-
+            // Extract organism info.
             $attributes = $organism->attributes();
 
             foreach ($attributes as $attribute_key => $value) {
 
-              $organism_record['attributes'][$attribute_key] = $value;
-              //taxID, species are both ncbi ID- dont want to accidentally think that number is the organism.species value!
+              if ($attribute_key == 'taxID') {
+                $organism_accession = $value;
 
+              }
+              // taxID, species are both ncbi ID.  taxID is more precise.
             }
 
-            $organism_children = $organism->children();
+            // Don't need this info
+            //            $organism_children = $organism->children();
+            //
+            //            foreach ($organism_children as $child => $value) {
+            //
+            //              $organism_record[(string) $child] = (string) $value;
+            //            }
 
-            foreach ($organism_children as $child => $value) {
-
-              $organism_record[(string) $child] = (string) $value;
-            }
-
-            //put complete organism record in $info
-            $info['linked_records']['organism'] = $organism_record;
+            $info['linked_records']['organism'] = $organism_accession;
           }
-
-          //What about other children and their attributes?
-
-          //          $info['type']['organism']['taxID'] = $attributes['taxID'];
 
           break;
 
         case 'ProjectID':
-          //Accession info for the project.  Should match what was submitted, thats about it.
-
+          // Accession info for the project.  Should match what was submitted, thats about it.
           break;
 
         default:
@@ -137,25 +129,22 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
   public function bioProjectSubmission(SimpleXMLElement $xml) {
     $info = [];
 
-    //First get attributes of parent.
-
+    // First get attributes of parent.
     $attributes = $xml->attributes();
 
-    //for example:
+    // For example:
     // ["last_update"]=>
     //    string(10) "2018-11-21"
     //    ["submission_id"]=>
     //    string(10) "SUB4827559"
     //    ["submitted"]=>
-    //    string(10) "2018-11-21"
-
-    //Now deal with children
-
+    //    string(10) "2018-11-21".
+    // Now deal with children.
     $children = $xml->children();
 
     foreach ($children as $key => $child) {
 
-      //Keys so far are description and action.  No one cares about action?
+      // Keys so far are description and action.  No one cares about action?
       if ($key == 'Description') {
         $org = $child->Organization->Name;
         $info['organization'] = (string) $org;
@@ -163,4 +152,5 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
     }
     return $info;
   }
+
 }

@@ -1,12 +1,10 @@
 <?php
 
 /**
- * Class EUtils
+ * Class EUtils.
  *
  * Factory class which returns the appropriate NCBI resource provider.
- *
  */
-
 class EUtils {
 
   /**
@@ -18,7 +16,6 @@ class EUtils {
    */
   static public $visited = [];
 
-
   /**
    * @param $db
    * @param $accession
@@ -26,7 +23,6 @@ class EUtils {
    * @return mixed
    * @throws \Exception
    */
-
   public function get($db, $accession) {
 
     if (isset(static::$visited[$db][$accession])) {
@@ -44,7 +40,7 @@ class EUtils {
     $xml = $response->xml();
 
     $data = (new EUtilsXMLParserFactory())->get($db, $xml);
-    
+
     $repository = (new EutilsRepositoryFactory())->get($db);
 
     $record = $repository->create($data);
@@ -72,4 +68,5 @@ class EUtils {
 
     return new EFetch($db);
   }
+
 }

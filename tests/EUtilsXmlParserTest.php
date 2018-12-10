@@ -203,7 +203,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
         [
           'name' => '',
           'accessions' => [
-            'Assembly' => ['GCF_000298355.1'],
+            'assembly' => ['Refseq' => '817508', 'Genbank' => '524058'],
             'taxon_accession' => '72004',
             'bioprojects' => ['74739', '221623'],
             'biosamples' => ['744358'],

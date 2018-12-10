@@ -1,5 +1,8 @@
-<?php
+  <?php
 
+/**
+ *
+ */
 class EUtilsBioSampleParser implements EUtilsParserInterface {
 
   /**
@@ -127,4 +130,5 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
 
     return $data;
   }
+
 }
