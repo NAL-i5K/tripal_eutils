@@ -80,7 +80,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
           }
 
           $organism = $target->Organism;
-          $organism_record = [];
+          $organism_accession = NULL;
 
           if ($organism) {
             // Extract organism info.
@@ -88,24 +88,25 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
 
             foreach ($attributes as $attribute_key => $value) {
 
-              $organism_record['attributes'][$attribute_key] = $value;
-              // taxID, species are both ncbi ID- dont want to accidentally think that number is the organism.species value!
+              if ($attribute_key == 'taxID') {
+                $organism_accession = $value;
+
+              }
+              // taxID, species are both ncbi ID.  taxID is more precise.
             }
 
-            $organism_children = $organism->children();
+            // Don't need this info
+            //            $organism_children = $organism->children();
+            //
+            //            foreach ($organism_children as $child => $value) {
+            //
+            //              $organism_record[(string) $child] = (string) $value;
+            //            }
 
-            foreach ($organism_children as $child => $value) {
-
-              $organism_record[(string) $child] = (string) $value;
-            }
-
-            // Put complete organism record in $info.
-            $info['linked_records']['organism'] = $organism_record;
+            $info['linked_records']['organism'] = $organism_accession;
 
           }
 
-          // What about other children and their attributes?
-          // $info['type']['organism']['taxID'] = $attributes['taxID'];.
           break;
 
         case 'ProjectID':
