@@ -1,6 +1,6 @@
 <?php
 
-class EUtilsBioProjectRepository extends EUtilsRepository{
+class EUtilsBioProjectRepository extends EUtilsRepository {
 
   /**
    * Required attributes when using the create method.

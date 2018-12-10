@@ -15,18 +15,18 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
    */
   public function parse(SimpleXMLElement $xml) {
     $info = [
-      'name'           => '',
-      'description'    => '',
-      'accessions'     => [],
-      'attributes'     => [],
+      'name' => '',
+      'description' => '',
+      'accessions' => [],
+      'attributes' => [],
       //Expected keys for linked records:  Contact, biomaterial, analysis, organism
       'linked_records' => [],
-      'full_ncbi_xml'  => '',
+      'full_ncbi_xml' => '',
     ];
 
     //Jump to Project node
     $projects = $xml->xpath('DocumentSummary/Project');
-    $project  = $projects[0];
+    $project = $projects[0];
 
     if (!$project) {
 
@@ -48,9 +48,9 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
         case 'ProjectDescr':
           //Information about the project itself.  Includes title, description
 
-          $name_string         = (string) $child->Name . ': '
-                                 . (string) $child->Title;
-          $info['name']        = $name_string;
+          $name_string = (string) $child->Name . ': '
+            . (string) $child->Title;
+          $info['name'] = $name_string;
           $info['description'] = (string) $child->Description;
 
           //do we have a LocusTagPrefix?  If so that links to biosample and/or assembly.
@@ -70,7 +70,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
 
             $info['linked_records']['locus_tag_prefix']['attributes'] = $x;
             $info['linked_records']['locus_tag_prefix']['value']
-                                                                      = (string) $child;
+              = (string) $child;
           }
 
           break;
@@ -84,7 +84,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
             break;
           }
 
-          $organism        = $target->Organism;
+          $organism = $target->Organism;
           $organism_record = [];
 
           if ($organism) {
@@ -157,7 +157,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
 
       //Keys so far are description and action.  No one cares about action?
       if ($key == 'Description') {
-        $org                  = $child->Organization->Name;
+        $org = $child->Organization->Name;
         $info['organization'] = (string) $org;
       }
     }

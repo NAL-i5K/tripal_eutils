@@ -12,7 +12,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
   public function parse(SimpleXMLElement $xml) {
     // Primary data
     $primary_accession = (string) $xml->BioSample['accession'];
-    $description       = $xml->BioSample->Description->Comment ??
+    $description = $xml->BioSample->Description->Comment ??
       $this->extractParagraphs($xml->BioSample->Description->Comment);
 
     // Get accessions
@@ -24,12 +24,12 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
     $this->attachDBLabel($attributes, $accessions);
 
     return [
-      'name'          => $primary_accession,
-      'accessions'    => $accessions,
-      'description'   => $description,
-      'attributes'    => $attributes,
-      'contact'       => $this->extractContact($xml->BioSample),
-      'organism'      => $this->extractOrganism($xml->BioSample),
+      'name' => $primary_accession,
+      'accessions' => $accessions,
+      'description' => $description,
+      'attributes' => $attributes,
+      'contact' => $this->extractContact($xml->BioSample),
+      'organism' => $this->extractOrganism($xml->BioSample),
       'full_ncbi_xml' => $xml->BioSample->asXML(),
     ];
   }
@@ -51,10 +51,10 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
 
     foreach ($accessions as $accession) {
       $attributes[] = [
-        'value'           => $accession['value'],
+        'value' => $accession['value'],
         'harmonized_name' => 'submitter_provided_accession',
-        'attribute_name'  => 'submitter_provided_accession',
-        'display_name'    => $accession['db_label'],
+        'attribute_name' => 'submitter_provided_accession',
+        'display_name' => $accession['db_label'],
       ];
     }
   }

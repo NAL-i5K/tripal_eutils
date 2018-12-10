@@ -90,8 +90,8 @@ abstract class EUtilsRepository {
    * Look up an accession in chado.dbxref. Retrieves record from cache
    * if predetermined.
    *
-   * @param string $name  The accession identifier (dbxref.accession).
-   * @param int    $db_id Name of the DB ID.
+   * @param string $name The accession identifier (dbxref.accession).
+   * @param int $db_id Name of the DB ID.
    *
    * @return mixed
    */
@@ -153,12 +153,12 @@ abstract class EUtilsRepository {
 
     $record = [
       'table' => $this->base_table,
-      'id'    => $this->base_record_id,
+      'id' => $this->base_record_id,
     ];
 
     $property = [
       'type_id' => $cvterm_id,
-      'value'   => $value,
+      'value' => $value,
     ];
 
     $options = [];
@@ -216,7 +216,7 @@ abstract class EUtilsRepository {
    * dbxrefs are formatted db:accession.
    *
    * @param string $accession
-   * @param int    $db_id
+   * @param int $db_id
    *
    * @return bool
    * @throws \Exception
@@ -226,7 +226,7 @@ abstract class EUtilsRepository {
 
     $dbxref = [
       'accession' => $accession,
-      'db_id'     => $db_id,
+      'db_id' => $db_id,
     ];
 
     chado_associate_dbxref(
@@ -352,7 +352,7 @@ abstract class EUtilsRepository {
     }
     //Note: import_existing = TRUE causes the loader to time out.
     $run_args = [
-      'taxonomy_ids'    => $accession,
+      'taxonomy_ids' => $accession,
       'import_existing' => FALSE,
     ];
 
@@ -442,12 +442,12 @@ abstract class EUtilsRepository {
         ->fetchObject();
       if (!$exists) {
 
-       db_insert('chado.' . $table)
+        db_insert('chado.' . $table)
           ->fields([
             'project_id' => $project->project_id,
             $base_table . '_id' => $base_record,
           ])
-        ->execute();
+          ->execute();
 
       }
     }

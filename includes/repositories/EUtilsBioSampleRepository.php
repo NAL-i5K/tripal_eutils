@@ -18,7 +18,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
    * @var array
    */
   protected static $cache = [
-    'db'         => [],
+    'db' => [],
     'accessions' => [],
     'biosamples',
   ];
@@ -53,12 +53,12 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
 
     // Create the base record
     $description = $this->makeDescription($data['description']);
-    $bio_sample  = $this->createBioSample(
+    $bio_sample = $this->createBioSample(
       [
         'biosourceprovider_id' => $contact->contact_id,
-        'name'                 => $data['name'],
-        'description'          => $description,
-        'taxon_id'             => $organism,
+        'name' => $data['name'],
+        'description' => $description,
+        'taxon_id' => $organism,
       ]
     );
 
@@ -151,7 +151,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
    * Creates a set of accessions attaches them with the given biosample.
    *
    * @param object $bio_sample The BioSample created by createBioSample()
-   * @param array  $accessions
+   * @param array $accessions
    *
    * @return array
    */
@@ -181,7 +181,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
   public function createProps($attributes) {
     foreach ($attributes as $attribute) {
       $term_name = $attribute['harmonized_name'];
-      $value     = $attribute['value'];
+      $value = $attribute['value'];
 
       //TODO: the term lookup class should handle this instead.
       $cvterm = chado_get_cvterm(['id' => 'ncbi_properties:' . $term_name]);
