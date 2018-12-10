@@ -5,7 +5,6 @@
  * Provides a simple admin form for checking and submitting creation requests.
  */
 
-
 /**
  * Implements hook form.
  */
@@ -18,7 +17,6 @@ function tripal_eutils_import_form($form, &$form_state) {
 <p>Press the <b>Preview Record</b> button to view the retrieved data and metadata.  Pressing <b>Create Chado Record</b> will create the record.</p>
 ',
   ];
-
 
   $db_choices = [
     'project' => 'BioProject',
@@ -33,7 +31,6 @@ function tripal_eutils_import_form($form, &$form_state) {
     '#options' => $db_choices,
   ];
 
-
   $form['accession'] = [
     '#type' => 'textfield',
     '#title' => "NCBI Accession Number",
@@ -44,16 +41,16 @@ function tripal_eutils_import_form($form, &$form_state) {
 
   $form['callback'] = ['#type' => 'button', '#value' => "Preview Record"];
 
-
   if (isset($form_state['values']['parsed'])) {
 
     $parsed = $form_state['values']['parsed'];
+
+    dpm($parsed);
 
     $form['data'] = [
       '#type' => 'fieldset',
       '#title' => 'Data',
     ];
-
 
     foreach ($parsed as $key => $item) {
 
@@ -73,6 +70,7 @@ function tripal_eutils_import_form($form, &$form_state) {
         $rows = [];
 
         foreach ($item as $record) {
+
 
           $rows[] = [$record['harmonized_name'], $record['value']];
         }
@@ -119,13 +117,11 @@ function tripal_eutils_import_form($form, &$form_state) {
           continue;
         }
 
-
       }
 
     }
-    //End submission state
+    // End submission state.
   }
-
 
   $form['options'] = ['#type' => 'fieldset', '#title' => "Options"];
 
@@ -135,12 +131,14 @@ function tripal_eutils_import_form($form, &$form_state) {
     '#description' => "Each accession links to other genbank databases: you can create those chado records as well. ",
   ];
 
-
   $form['submit'] = ['#type' => 'submit', '#value' => "Create Chado Record"];
 
   return $form;
 }
 
+/**
+ * Implements hook_form_validate().
+ */
 function tripal_eutils_import_form_validate($form, &$form_state) {
 
   $vals = $form_state['values'];
@@ -148,11 +146,9 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
   $db = $vals['db'];
   $accession = $vals['accession'];
 
-
   if (!$db) {
     form_set_error('db', 'please select a valid db');
   }
-
 
   if (!$accession) {
     form_set_error('accession', 'please enter an accession');
@@ -160,55 +156,46 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
   $connection = new \EUtils();
 
   try {
-    $result = $connection->lookupAccessions($db, [$accession]);
-    $parser = new \EUtilsBioSampleParser();
 
-    $parsed = $parser->parse($result);
+    $connection->setPreview();
+
+    $parsed = $connection->get($db, $accession);
 
     $form_state['values']['parsed'] = $parsed;
 
-
-  } catch (\Exception $e) {
+  }
+  catch (\Exception $e) {
 
     tripal_set_message($e, TRIPAL_ERROR);
   }
-
 }
 
+/**
+ * Implements hook_form_submit().
+ */
 function tripal_eutils_import_form_submit($form, &$form_state) {
-
 
   $vals = $form_state['values'];
 
   $db = $vals['db'];
   $accession = $vals['accession'];
 
-
   if (!$db) {
     form_set_error('db', 'please select a valid db');
   }
-
 
   if (!$accession) {
     form_set_error('accession', 'please enter an accession');
   }
   $connection = new \EUtils();
 
-  //TODO: how do we know which parser and repo to use?  EUTils would handle that?
-
+  // TODO: how do we know which parser and repo to use?  EUTils would handle that?
   try {
-    $result = $connection->lookupAccessions($db, [$accession]);
-    $parser = new \EUtilsBioSampleParser();
+    $connection->get($db, $accession);
 
-    $parsed = $parser->parse($result);
-
-    $repo = new \EUtilsBioSampleRepository();
-
-
-  } catch (\Exception $e) {
+  }
+  catch (\Exception $e) {
 
     tripal_set_message($e, TRIPAL_ERROR);
   }
-
-
 }

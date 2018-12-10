@@ -60,7 +60,7 @@ class AssembleExamples extends TripalTestCase{
 
     foreach ($lookup as $db => $accessions) {
       foreach ($accessions as $accession) {
-        $result = $connection->lookupAccessions($db, [$accession]);
+        $result = $connection->get($db, [$accession]);
         $result->asXML($accession . '_' . $db . '.xml');
         //sleep(.3);
       }

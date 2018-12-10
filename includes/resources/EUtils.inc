@@ -8,6 +8,8 @@
 class EUtils {
 
   /**
+   * Tracks what objects have been imported so far.
+   *
    * @var array
    *
    * structure of this array will be
@@ -17,10 +19,23 @@ class EUtils {
   static public $visited = [];
 
   /**
-   * @param $db
-   * @param $accession
+   * Don't insert into database.
+   *
+   * @var bool
+   */
+  private $preview = FALSE;
+
+  /**
+   * Queries and parses an NCBI record.
+   *
+   * @param string $db
+   *   NCBI database.
+   * @param string $accession
+   *   Numeric only accession.
    *
    * @return mixed
+   *   Chado object record.
+   *
    * @throws \Exception
    */
   public function get($db, $accession) {
@@ -41,6 +56,11 @@ class EUtils {
 
     $data = (new EUtilsXMLParserFactory())->get($db, $xml);
 
+    // When previewing, we want to return the parser values instead.
+    if ($this->preview) {
+      return $data;
+    }
+
     $repository = (new EutilsRepositoryFactory())->get($db);
 
     $record = $repository->create($data);
@@ -52,9 +72,22 @@ class EUtils {
   }
 
   /**
-   * @param $db
+   * Sets the object to not insert, but only preview the XML.
+   */
+  public function setPreview() {
+
+    $this->preview = TRUE;
+  }
+
+  /**
+   * Returns the appropriate NCBI query method given the database.
+   *
+   * @param string $db
+   *   NCBI database.
    *
    * @return \EFetch|\ESearch|\ESummary
+   *   NCBI DB query object.
+   *
    * @throws \Exception
    */
   protected function getResourceProvider($db) {
