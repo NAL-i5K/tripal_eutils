@@ -24,5 +24,5 @@ script:
   - docker exec -it tripal drush pm-enable -y tripal_eutils
   - docker exec -it tripal bash -c "cd /modules/tripal_eutils && composer install && DRUPAL_ROOT=/var/www/html IS_TRAVIS=TRUE ./vendor/bin/phpunit --coverage-clover ./coverage.xml"
 
-  after_script:
+after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
