@@ -58,7 +58,7 @@ class EUtils {
 
     // When previewing, we want to return the parser values instead.
     // TODO: we miss out on querying linked records.
-    //  Secondarily linked records wont be reported.
+    // Secondarily linked records wont be reported.
     if ($this->preview) {
       return $data;
     }
