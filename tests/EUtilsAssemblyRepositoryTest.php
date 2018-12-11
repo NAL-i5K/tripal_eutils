@@ -20,7 +20,6 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
    * @group analysis
    * @group assembly
    * @group repository
-   * @group wip
    */
   public function testAssemblyFromXML() {
 
@@ -28,6 +27,9 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
     $this->assertObjectHasAttribute('analysis_id', $result);
 
+    $this->assertEquals('wgs.5d', $result->name);
+
+    $this->assertEquals('2015-10-22 00:00:00', $result->timeexecuted);
 
     $props = db_select('chado.analysisprop', 't')
       ->fields('t')
