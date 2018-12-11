@@ -76,7 +76,7 @@ class EUtils {
    * Sets the object to not insert, but only preview the XML.
    */
   public function setPreview() {
-    $this->preview = TRUE;
+    $this->preview = $preview;
   }
 
   /**
