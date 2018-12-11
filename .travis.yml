@@ -31,4 +31,4 @@ script:
 
 after_script:
   - ./cc-test-reporter format-coverage --prefix /modules/tripal_eutils
-  - ./cc-test-reporter after-build --debug --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build coverage.xml --debug -t closer --exit-code $TRAVIS_TEST_RESULT
