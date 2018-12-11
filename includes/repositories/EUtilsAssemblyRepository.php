@@ -1,5 +1,8 @@
 <?php
 
+/**
+ *
+ */
 class EUtilsAssemblyRepository extends EUtilsRepository {
 
 
@@ -54,10 +57,13 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     $description = $data['description'];
 
-    // Program and program version come from # Assembly method: $data['attributes']['ftp_attributes']['# Assembly method:'].
+    // Program and program version come from # Assembly method:
+    // $data['attributes']['ftp_attributes']['# Assembly method:'].
     $method_string = $data['attributes']['ftp_attributes']['# Assembly method:'];
 
-    // TODO: what do we want to do here?  Parse out the verion from the assembly program?  But what if we have multiple programs and versions returned, what then?
+    // TODO: what do we want to do here?  Parse out the version from the
+    // assembly program?  But what if we have multiple programs and
+    // versions returned, what then?
     $program = $method_string;
     $programvesion = $method_string;
 
@@ -196,7 +202,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
   }
 
   /**
-   *
+   * Gets/creates this analysis record.
    */
   public function createAnalysis() {
     // Name is unique so find project.
