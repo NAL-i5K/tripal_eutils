@@ -1,9 +1,8 @@
 <?php
 
+
 /**
- * Shared methods for inserting into Chado.
- *
- * @class EutilsRepository
+ * Base EUtils repository class. All repository classes must extend this class.
  */
 abstract class EUtilsRepository {
 
@@ -93,15 +92,18 @@ abstract class EUtilsRepository {
   }
 
   /**
-   * Look up an accession in chado.dbxref. Retrieves record from cache
-   * if predetermined.
+   * Search for accession by name.
+   *
+   * Look up an accession in chado.dbxref. Retrieves record from cache if
+   * predetermined.
    *
    * @param string $name
    *   The accession identifier (dbxref.accession).
    * @param int $db_id
    *   Name of the DB ID.
    *
-   * @return mixed
+   * @return object
+   *   Accession record.
    */
   public function getAccessionByName($name, $db_id) {
     if (isset(static::$cache['accessions'][$name])) {
@@ -126,8 +128,9 @@ abstract class EUtilsRepository {
    * Get chado.db record by name. Retrieves data from cache if predetermined.
    *
    * @param string $name
+   *   The name of database.
    *
-   * @return mixed
+   * @return mixed The database object
    */
   public function getDB($name) {
     if (isset(static::$cache['db'][$name])) {
@@ -175,6 +178,8 @@ abstract class EUtilsRepository {
   }
 
   /**
+   * Create a dbxref record.
+   *
    * Creates a new accession record if does not exist and attaches it to
    * the given record.
    *
@@ -182,10 +187,11 @@ abstract class EUtilsRepository {
    *   Expected keys: db and value, where the full accession is db:value.
    *
    * @return mixed
+   *   An accession object
    *
    * @throws \Exception
    */
-  public function createAccession($accession) {
+  public function createAccession(array $accession) {
     if (!isset($accession['db'])) {
       if (!isset($accession['db_label'])) {
         throw new Exception(
@@ -222,13 +228,18 @@ abstract class EUtilsRepository {
   }
 
   /**
+   * Create an assocation record.
+   *
    * Inserts the dbxref into the appropriate linker table, eg, project_dbxref.
    * dbxrefs are formatted db:accession.
    *
    * @param string $accession
+   *   Name.
    * @param int $db_id
+   *   DB id.
    *
-   * @return bool
+   * @return object
+   *   the new dbxref object
    *
    * @throws \Exception
    */
@@ -252,6 +263,11 @@ abstract class EUtilsRepository {
    *
    * @param string $xml
    *   string as returned by SimpleXMLElement.
+   *
+   * @return bool
+   *   True on creation
+   *
+   * @throws \Exception
    */
   public function createXMLProp($xml) {
     if (!isset(static::$cache['accessions']['local:full_ncbi_xml'])) {
@@ -271,6 +287,7 @@ abstract class EUtilsRepository {
    *   The contact name.
    *
    * @return mixed
+   *   contact record
    *
    * @throws \Exception
    */
@@ -390,15 +407,18 @@ abstract class EUtilsRepository {
   }
 
   /**
+   * Generate query to getch an organism.
+   *
    * Query to check if an organism exists in the DB based on the NCBITaxon
    * accession.
    *
-   * @param $accession
+   * @param string $accession
+   *   Accession name.
    *
-   * @return mixed
+   * @return object
+   *   An organism
    */
   private function organismQuery($accession) {
-
     $db = chado_get_db(['name' => 'NCBITaxon']);
 
     $query = db_select('chado.organism_dbxref', 'od');
@@ -416,15 +436,15 @@ abstract class EUtilsRepository {
   /**
    * Fetch NCBI records of the type DB.
    *
-   * @param $db
-   * @param $accessions
+   * @param string $db
+   * @param array $accessions
    *
-   * @return array | An array of chado base records, as returned by a
-   *   Repository.
+   * @return array
+   *   An array of chado base records, as returned by a repository.
    *
    * @throws \Exception
    */
-  public function getNCBIRecord($db, $accessions) {
+  public function getNCBIRecord($db, array $accessions) {
 
     $return = [];
     foreach ($accessions as $accession) {
@@ -437,8 +457,8 @@ abstract class EUtilsRepository {
   /**
    * Linkers project to the record, assuming a project_ linker table.
    *
-   * @param $projects
-   *   array of base chado record project objects
+   * @param array $projects
+   *   Array of base chado record project objects.
    */
   public function linkProjects($projects) {
 
