@@ -15,6 +15,8 @@ before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build --debug
+  - GIT_BRANCH=$TRAVIS_PULL_REQUEST_BRANCH
+  - GIT_COMMIT_SHA=$TRAVIS_PULL_REQUEST_SHA
 
 script:
   - docker run -it -d --rm --name tripal -v "$(pwd)":/modules/tripal_eutils statonlab/tripal3
@@ -23,8 +25,10 @@ script:
   - docker exec -it tripal drush pm-enable -y tripal_eutils
   - docker exec -it tripal yum install -y php-pecl-xdebug.x86_64
   - docker exec -it tripal bash -c "cd /modules/tripal_eutils && composer install && DRUPAL_ROOT=/var/www/html IS_TRAVIS=TRUE ./vendor/bin/phpunit --coverage-clover ./coverage.xml"
+  - echo $DRUPAL_ROOT
   - echo $GIT_COMMIT_SHA
   - echo $GIT_BRANCH
 
 after_script:
+  - ./cc-test-reporter format-coverage --prefix /modules/tripal_eutils
   - ./cc-test-reporter after-build --debug --exit-code $TRAVIS_TEST_RESULT
