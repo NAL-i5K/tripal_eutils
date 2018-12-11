@@ -54,8 +54,10 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
 
         case 'GbUid':
           $info['accessions']['assembly']['Genbank'] = (string) $child;
-
           break;
+
+        case 'WGS':
+          $info['accessions']['assembly']['WGS'] = (string) $child;
 
         case 'GB_BioProjects':
         case 'RS_BioProjects':
