@@ -57,7 +57,8 @@ class EUtils {
     $data = (new EUtilsXMLParserFactory())->get($db, $xml);
 
     // When previewing, we want to return the parser values instead.
-    // TODO: we miss out on querying linked records.  Secondarily linked records wont be reported.
+    // TODO: we miss out on querying linked records.
+    //  Secondarily linked records wont be reported.
     if ($this->preview) {
       return $data;
     }

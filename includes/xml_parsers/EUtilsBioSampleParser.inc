@@ -1,9 +1,9 @@
-  <?php
+<?php
 
-/**
- *
- */
-class EUtilsBioSampleParser implements EUtilsParserInterface {
+  /**
+   *
+   */
+  class EUtilsBioSampleParser implements EUtilsParserInterface {
 
   /**
    * Parse the XML into an array.
@@ -13,17 +13,17 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
    * @return array
    */
   public function parse(SimpleXMLElement $xml) {
-    // Primary data
+    // Primary data.
     $primary_accession = (string) $xml->BioSample['accession'];
     $description = (string) $xml->BioSample->Description->Comment ??
       $this->extractParagraphs($xml->BioSample->Description->Comment);
 
-    // Get accessions
+    // Get accessions.
     $accessions = $this->extractAttributes($xml->BioSample->Ids);
 
-    // Get properties
+    // Get properties.
     $attributes = $this->extractAttributes($xml->BioSample->Attributes);
-    // Check and extract owner given db_label
+    // Check and extract owner given db_label.
     $this->attachDBLabel($attributes, $accessions);
 
     return [
@@ -46,9 +46,9 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
    */
   protected function attachDBLabel(&$attributes, $accessions) {
     $accessions = array_filter(
-      $accessions, function ($accession) {
+    $accessions, function ($accession) {
       return isset($accession['db_label'])
-        && strtolower($accession['db_label']) === 'sample name';
+      && strtolower($accession['db_label']) === 'sample name';
     }
     );
 
@@ -131,4 +131,4 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
     return $data;
   }
 
-}
+  }

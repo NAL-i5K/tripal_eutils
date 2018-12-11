@@ -35,7 +35,6 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
 
     $project = $projects[0];
 
-
     $info['full_ncbi_xml'] = $project->asXML();
 
     $children = $project->children();
@@ -54,10 +53,9 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
           $info['name'] = $name_string;
           $info['description'] = (string) $child->Description;
 
-          // Do we have a LocusTagPrefix?  If so that links to biosample and/or assembly.
-          //
+          // Do we have a LocusTagPrefix?
+          // If so that links to biosample and/or assembly.
           if ($child->LocusTagPrefix) {
-
             $attributes = $child->attributes();
 
             $x = [];
