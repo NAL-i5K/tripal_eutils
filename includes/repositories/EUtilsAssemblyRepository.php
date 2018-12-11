@@ -68,6 +68,11 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     $programvesion = $method_string;
 
     $time_executed = $data['submission_date'];
+    // Check if we need seconds.
+
+    if ($time_executed && substr_count($time_executed, ':') === 1) {
+      $time_executed = $time_executed . ':00';
+    }
 
     // TODO: missing:
     // algorithm, sourcename, sourceversion, sourceuri, timeexecuted.
