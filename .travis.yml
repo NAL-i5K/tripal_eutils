@@ -21,7 +21,7 @@ script:
   - sleep 30 # We pause here so postgres and apache complete booting up
   - docker exec -it tripal bash -c "cd /modules/ && git clone https://github.com/statonlab/tripal_manage_analyses.git && drush pm-enable -y tripal_manage_analyses"
   - docker exec -it tripal drush pm-enable -y tripal_eutils
-  - docker exec -it docker-php-ext-enable xdebug
+  - docker exec -it yum install -y php-pecl-xdebug.x86_64
   - docker exec -it tripal bash -c "cd /modules/tripal_eutils && composer install && DRUPAL_ROOT=/var/www/html IS_TRAVIS=TRUE ./vendor/bin/phpunit --coverage-clover ./coverage.xml"
 
 after_script:
