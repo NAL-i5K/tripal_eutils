@@ -1,10 +1,18 @@
 <?php
 
+/**
+ * @file
+ * EUtilsRepository class.
+ */
+
+/**
+ * Base EUtils repository class. All repository classes must extend this class.
+ */
 abstract class EUtilsRepository {
 
   /**
    * Chado base table for this repository.  For example, project, biosample,
-   * analysis
+   * analysis.
    *
    * @var string
    */
@@ -87,13 +95,17 @@ abstract class EUtilsRepository {
   }
 
   /**
-   * Look up an accession in chado.dbxref. Retrieves record from cache
-   * if predetermined.
+   * Search for accession by name.
    *
-   * @param string $name  The accession identifier (dbxref.accession).
-   * @param int    $db_id Name of the DB ID.
+   * Look up an accession in chado.dbxref. Retrieves record from cache if
+   * predetermined.
    *
-   * @return mixed
+   * @param string $name
+   *   The accession identifier (dbxref.accession).
+   * @param int $db_id
+   *   Name of the DB ID.
+   *
+   * @return object Accession record
    */
   public function getAccessionByName($name, $db_id) {
     if (isset(static::$cache['accessions'][$name])) {
@@ -118,8 +130,9 @@ abstract class EUtilsRepository {
    * Get chado.db record by name. Retrieves data from cache if predetermined.
    *
    * @param string $name
+   *   The name of database.
    *
-   * @return mixed
+   * @return mixed The database object
    */
   public function getDB($name) {
     if (isset(static::$cache['db'][$name])) {
@@ -145,6 +158,7 @@ abstract class EUtilsRepository {
    * @param $value
    *
    * @return bool
+   *
    * @throws \Exception
    */
   public function createProperty($cvterm_id, $value) {
@@ -152,12 +166,12 @@ abstract class EUtilsRepository {
 
     $record = [
       'table' => $this->base_table,
-      'id'    => $this->base_record_id,
+      'id' => $this->base_record_id,
     ];
 
     $property = [
       'type_id' => $cvterm_id,
-      'value'   => $value,
+      'value' => $value,
     ];
 
     $options = [];
@@ -166,16 +180,20 @@ abstract class EUtilsRepository {
   }
 
   /**
+   * Create a dbxref record.
+   *
    * Creates a new accession record if does not exist and attaches it to
    * the given record.
    *
    * @param array $accession
-   * Expected keys: db and value, where the full accession is db:value
+   *   Expected keys: db and value, where the full accession is db:value.
    *
-   * @return mixed
+   * @return object
+   *   An accession object
+   *
    * @throws \Exception
    */
-  public function createAccession($accession) {
+  public function createAccession(array $accession) {
     if (!isset($accession['db'])) {
       if (!isset($accession['db_label'])) {
         throw new Exception(
@@ -187,10 +205,10 @@ abstract class EUtilsRepository {
       }
     }
 
-    // Try getting the db record with the prefix NCBI
+    // Try getting the db record with the prefix NCBI.
     $db = $this->getDB("NCBI {$accession['db']}");
 
-    // Not found! Try getting the DB without any prefixes
+    // Not found! Try getting the DB without any prefixes.
     if (empty($db)) {
       $db = $this->getDB($accession['db']);
     }
@@ -212,13 +230,19 @@ abstract class EUtilsRepository {
   }
 
   /**
+   * Create an assocation record.
+   *
    * Inserts the dbxref into the appropriate linker table, eg, project_dbxref.
    * dbxrefs are formatted db:accession.
    *
    * @param string $accession
-   * @param int    $db_id
+   *   Name.
+   * @param int $db_id
+   *   DB id.
    *
-   * @return bool
+   * @return object
+   *   the new dbxref object
+   *
    * @throws \Exception
    */
   private function createDBXref($accession, $db_id) {
@@ -226,7 +250,7 @@ abstract class EUtilsRepository {
 
     $dbxref = [
       'accession' => $accession,
-      'db_id'     => $db_id,
+      'db_id' => $db_id,
     ];
 
     chado_associate_dbxref(
@@ -239,7 +263,13 @@ abstract class EUtilsRepository {
   /**
    * Associates the XML with the record via the local:full_ncbi_xml term.
    *
-   * @param string $xml string as returned by SimpleXMLElement.
+   * @param string $xml
+   *   string as returned by SimpleXMLElement.
+   *
+   * @return bool
+   *   True on creation
+   *
+   * @throws \Exception
    */
   public function createXMLProp($xml) {
     if (!isset(static::$cache['accessions']['local:full_ncbi_xml'])) {
@@ -258,6 +288,8 @@ abstract class EUtilsRepository {
    * @param static $contact_name
    *
    * @return mixed
+   *   contact record
+   *
    * @throws \Exception
    */
   public function createContact($contact_name) {
@@ -309,7 +341,7 @@ abstract class EUtilsRepository {
    * Set the Chado base table.
    *
    * @param string $table
-   * Valid examples include 'organism' , 'biomaterial', 'project'
+   *   Valid examples include 'organism' , 'biomaterial', 'project'.
    *
    * @return $this
    */
@@ -339,9 +371,10 @@ abstract class EUtilsRepository {
    * necessary).
    *
    * @param $accession
-   * NCBITaxon accession for organism.
+   *   NCBITaxon accession for organism.
    *
    * @return mixed
+   *
    * @throws \Exception
    */
   public function getOrganism($accession) {
@@ -350,9 +383,9 @@ abstract class EUtilsRepository {
     if ($organism) {
       return $organism;
     }
-    //Note: import_existing = TRUE causes the loader to time out.
+    // Note: import_existing = TRUE causes the loader to time out.
     $run_args = [
-      'taxonomy_ids'    => $accession,
+      'taxonomy_ids' => $accession,
       'import_existing' => FALSE,
     ];
 
@@ -375,21 +408,24 @@ abstract class EUtilsRepository {
   }
 
   /**
+   * Generate query to getch an organism.
+   *
    * Query to check if an organism exists in the DB based on the NCBITaxon
    * accession.
    *
-   * @param $accession
+   * @param string $accession
+   *   Accession name.
    *
-   * @return mixed
+   * @return object
+   *   An organism
    */
   private function organismQuery($accession) {
-
     $db = chado_get_db(['name' => 'NCBITaxon']);
 
     $query = db_select('chado.organism_dbxref', 'od');
     $query->join('chado.organism', 'o', 'o.organism_id = od.organism_id');
     $query->fields('o');
-    // $query->condition('od.organism_id', $munk->organism_id);
+    // $query->condition('od.organism_id', $munk->organism_id);.
     $query->join('chado.dbxref', 'd', 'd.dbxref_id = od.dbxref_id');
     $query->condition('d.accession', $accession);
     $query->condition('d.db_id', $db->db_id);
@@ -401,51 +437,52 @@ abstract class EUtilsRepository {
   /**
    * Fetch NCBI records of the type DB.
    *
-   * @param $db
-   * @param $accessions
+   * @param string $db
+   * @param array $accessions
    *
-   * @return array | An array of chado base records, as returned by a
-   *   Repository.
+   * @return array
+   *   An array of chado base records, as returned by a repository.
+   *
    * @throws \Exception
    */
-  public function getNCBIRecord($db, $accessions) {
+  public function getNCBIRecord($db, array $accessions) {
 
     $return = [];
     foreach ($accessions as $accession) {
-      $record   = (new EUtils())->get($db, $accession);
+      $record = (new EUtils())->get($db, $accession);
       $return[] = $record;
     }
     return $return;
   }
 
   /**
-   * Linkers project to the record, assuming a project_ linker table
+   * Linkers project to the record, assuming a project_ linker table.
    *
-   * @param $projects array of base chado record project objects
+   * @param array $projects
+   *   Array of base chado record project objects.
    */
   public function linkProjects($projects) {
 
     $base_record = $this->base_record_id;
 
     $base_table = $this->base_table;
-    //TODO: if we genericize this, would it always be linked this way?
-
+    // TODO: if we genericize this, would it always be linked this way?
     $table = 'project_' . $base_table;
     foreach ($projects as $project) {
 
       $exists = db_select('chado.' . $table, 'lt')->fields('lt')->condition(
-          'project_id', $project->project_id
-        )->condition($base_table . '_id', $base_record)->execute()->fetchObject(
-        );
+        'project_id', $project->project_id
+      )->condition($base_table . '_id', $base_record)->execute()->fetchObject();
       if (!$exists) {
 
         db_insert('chado.' . $table)->fields(
-            [
-              'project_id'        => $project->project_id,
-              $base_table . '_id' => $base_record,
-            ]
-          )->execute();
+          [
+            'project_id' => $project->project_id,
+            $base_table . '_id' => $base_record,
+          ]
+        )->execute();
       }
     }
   }
+
 }
