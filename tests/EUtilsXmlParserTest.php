@@ -212,7 +212,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
             'bioprojects' => ['74739', '221623'],
             'biosamples' => ['744358'],
           ],
-          'attributes' => '',
+          'submission_date' => '2013/01/09 00:00',
           'description' => '',
         ],
       ],
