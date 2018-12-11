@@ -1,8 +1,9 @@
 <?php
 
 /**
- * EutilsBioProjectRepository handles taking parsed bioproject XMLs and
- * creating chado.projects.
+ * Takes parsed bioproject XMLs and creates chado.projects.
+ *
+ * @class EutilsBioProjectRepository
  */
 class EUtilsBioProjectRepository extends EUtilsRepository {
 
@@ -135,14 +136,18 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
   /**
    * Iterate through the properties and insert.
    *
-   * //TODO:  How do we get the accessions from what we have here?
-   * //What we probably ahve for project is a set of XML attributes or tags...
+   * TODO:  How do we get the accessions from what we have here?
+   * What we probably have for project is a set of XML attributes or tags...
    *
-   * @param $properties
+   * @param array $properties
+   *   Properties in form machine name => value.
    *
    * @return bool
+   *   True if successful.
+   *
+   * @throws \Exception
    */
-  public function createProps($properties) {
+  public function createProps(array $properties) {
     foreach ($properties as $property_name => $value) {
       $accession = 'local:' . $property_name;
 

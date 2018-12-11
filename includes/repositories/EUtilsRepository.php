@@ -1,13 +1,16 @@
 <?php
 
 /**
+ * Shared methods for inserting into Chado.
  *
+ * @class EutilsRepository
  */
 abstract class EUtilsRepository {
 
   /**
-   * Chado base table for this repository.  For example, project, biosample,
-   * analysis.
+   * Chado base table for this repository.
+   *
+   * For example, project, biosample, analysis.
    *
    * @var string
    */
@@ -265,7 +268,7 @@ abstract class EUtilsRepository {
    * Get contact name.
    *
    * @param static $contact_name
-   *   the contacnt name.
+   *   The contact name.
    *
    * @return mixed
    *

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class EUtils.
- *
  * Factory class which returns the appropriate NCBI resource provider.
+ *
+ * @Class EUtils
  */
 class EUtils {
 
@@ -57,6 +57,7 @@ class EUtils {
     $data = (new EUtilsXMLParserFactory())->get($db, $xml);
 
     // When previewing, we want to return the parser values instead.
+    // TODO: we miss out on querying linked records.  Secondarily linked records wont be reported.
     if ($this->preview) {
       return $data;
     }
@@ -75,7 +76,6 @@ class EUtils {
    * Sets the object to not insert, but only preview the XML.
    */
   public function setPreview() {
-
     $this->preview = TRUE;
   }
 
