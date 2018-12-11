@@ -1,18 +1,14 @@
 <?php
 
 /**
- * @file
- * EUtilsRepository class.
- */
-
-/**
  * Base EUtils repository class. All repository classes must extend this class.
  */
 abstract class EUtilsRepository {
 
   /**
-   * Chado base table for this repository.  For example, project, biosample,
-   * analysis.
+   * Chado base table for this repository.
+   *
+   * For example, project, biosample, analysis.
    *
    * @var string
    */
@@ -105,7 +101,8 @@ abstract class EUtilsRepository {
    * @param int $db_id
    *   Name of the DB ID.
    *
-   * @return object Accession record
+   * @return object
+   *   Accession record.
    */
   public function getAccessionByName($name, $db_id) {
     if (isset(static::$cache['accessions'][$name])) {
@@ -188,7 +185,7 @@ abstract class EUtilsRepository {
    * @param array $accession
    *   Expected keys: db and value, where the full accession is db:value.
    *
-   * @return object
+   * @return mixed
    *   An accession object
    *
    * @throws \Exception
@@ -286,6 +283,7 @@ abstract class EUtilsRepository {
    * Get contact name.
    *
    * @param static $contact_name
+   *   The contact name.
    *
    * @return mixed
    *   contact record
