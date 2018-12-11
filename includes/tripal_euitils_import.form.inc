@@ -102,8 +102,7 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
 
     $form_state['values']['parsed'] = $parsed;
 
-  }
-  catch (\Exception $e) {
+  } catch (\Exception $e) {
 
     tripal_set_message($e, TRIPAL_ERROR);
   }
@@ -132,8 +131,7 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
   try {
     $connection->get($db, $accession);
 
-  }
-  catch (\Exception $e) {
+  } catch (\Exception $e) {
 
     tripal_set_message($e, TRIPAL_ERROR);
   }
@@ -230,9 +228,17 @@ function tripal_eutils_parse_biomaterial_for_table(array $record) {
 }
 
 /**
+ * Create summary table for project.
  *
+ * @param array $parsed
+ *   Output from xml parser.
+ *
+ * @return array
+ *   Array of tables to put in fieldset.
+ *
+ * @throws \Exception
  */
-function tripal_eutils_parse_bioproject_for_table($parsed) {
+function tripal_eutils_parse_bioproject_for_table(array $parsed) {
 
   $return = [];
 
@@ -257,10 +263,8 @@ function tripal_eutils_parse_bioproject_for_table($parsed) {
     }
 
     if ($key === 'accessions') {
-
       $header = ['DB', 'Value'];
       $rows = [];
-
       foreach ($item as $record) {
 
         $rows[] = [$record['db'], $record['value']];
@@ -301,12 +305,85 @@ function tripal_eutils_parse_bioproject_for_table($parsed) {
 }
 
 /**
+ * Builds assembly summary from parsed XML.
  *
+ * @param array $parsed
+ *   Parsed XML array.
+ *
+ * @return array
+ *   Form elements describing the Assembly.
+ *
+ * @throws \Exception
  */
-function tripal_eutils_parse_assembly_for_table($parsed) {
+function tripal_eutils_parse_assembly_for_table(array $parsed) {
 
   $return = [];
-  dpm($parsed);
+  $attributes = $parsed['attributes'];
+  // First, build base record.
+  $name = $parsed['name'];
+  $description = $parsed['description'];
+  $program = $attributes['ftp_attributes']['# Assembly method:'];
+  $xrefs = $parsed['accessions']['assembly'];
+  unset($parsed['accessions']['assembly']);
+  $xref_string = implode(', ', $xrefs);
+
+  $header = ['Name', 'Description', 'Program', 'Accessions'];
+  $rows = [[$name, $description, $program, $xref_string]];
+
+  $table = theme('table', ['rows' => $rows, 'header' => $header]);
+  $return[] = [
+    '#markup' => $table,
+    '#prefix' => t('Analysis Record'),
+    '#type' => 'item',
+  ];
+
+  // Next build table of chado props from various areas.
+  $header = ['Property Name', 'Value'];
+
+  $rows = [];
+  foreach ($attributes['stats'] as $key => $value) {
+    $rows[] = [$key, $value];
+  }
+  foreach ($attributes['files'] as $key => $value) {
+    $rows[] = [$key, $value];
+  }
+
+  $table = theme('table', ['rows' => $rows, 'header' => $header]);
+
+  $return[] = [
+    '#markup' => $table,
+    '#prefix' => t('Analysis Properties'),
+    '#type' => 'item',
+  ];
+
+  $rows = [];
+  $header = ['Accession Type', 'Value'];
+
+  foreach ($parsed['accessions'] as $accession_key => $value) {
+
+    if ($accession_key == 'Taxon_accession') {
+      $rows[] = ['Organism', $value];
+      continue;
+    }
+
+    if (is_string($value)) {
+
+      $rows[] = [ucfirst($accession_key), $value];
+      continue;
+    }
+
+    foreach ($value as $item) {
+      $rows[] = [ucfirst($accession_key), $item];
+    }
+  }
+
+  $table = theme('table', ['rows' => $rows, 'header' => $header]);
+
+  $return[] = [
+    '#markup' => $table,
+    '#prefix' => t('Additional Records Linked'),
+    '#type' => 'item',
+  ];
 
   return $return;
 
