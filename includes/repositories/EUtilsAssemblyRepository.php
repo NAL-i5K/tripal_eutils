@@ -1,7 +1,7 @@
 <?php
 
 /**
- *
+ * Maps NCBI Assemblies into a Chado analysis.
  */
 class EUtilsAssemblyRepository extends EUtilsRepository {
 
