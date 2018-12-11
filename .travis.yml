@@ -9,9 +9,14 @@ services:
 
 env:
   - DRUPAL_ROOT=/var/www/html IS_TRAVIS=TRUE
+  global:
+    - CC_TEST_REPORTER_ID=d4d6bcc22c56ae459a80bc9428eb44040b2e7225b45c79ac445343a73d582abf
 
 before_script:
   - docker pull statonlab/tripal3
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 script:
   - docker run -it -d --rm --name tripal -v "$(pwd)":/modules/tripal_eutils statonlab/tripal3
@@ -19,3 +24,6 @@ script:
   - docker exec -it tripal bash -c "cd /modules/ && git clone https://github.com/statonlab/tripal_manage_analyses.git && drush pm-enable -y tripal_manage_analyses"
   - docker exec -it tripal drush pm-enable -y tripal_eutils
   - docker exec -it tripal bash -c "cd /modules/tripal_eutils && composer install && DRUPAL_ROOT=/var/www/html IS_TRAVIS=TRUE ./vendor/bin/phpunit --coverage-clover ./coverage.xml"
+
+  after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
