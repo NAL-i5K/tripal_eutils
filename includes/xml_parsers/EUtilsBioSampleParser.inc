@@ -11,7 +11,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
    * @param \SimpleXMLElement $xml
    *
    * @return array
-   *    An array of parsed data
+   *   An array of parsed data
    *
    * @throws \Exception
    */
@@ -54,9 +54,9 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
   protected function attachDBLabel(&$attributes, $accessions) {
     $accessions = array_filter(
       $accessions, function ($accession) {
-      return isset($accession['db_label'])
+        return isset($accession['db_label'])
         && strtolower($accession['db_label']) === 'sample name';
-    }
+      }
     );
 
     foreach ($accessions as $accession) {
