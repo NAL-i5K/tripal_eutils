@@ -5,7 +5,7 @@
  */
 class EutilsAssemblyFormatter extends EUtilsFormatter {
 
-  private $elements;
+  private  $elements = [];
 
   /**
    * Add the formatted data into a table.
@@ -15,8 +15,7 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
    * @param array $elements
    *   The array to add Drupal elements to.
    */
-  public function format(array $data, array &$elements) {
-    $this->elements = $elements;
+  public function format(array $data) {
     try {
       $this->formatBaseRecord($data);
       $this->formatAttributes($data['attributes']);
@@ -25,6 +24,8 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
     catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
     }
+
+    return $this->elements;
   }
 
   /**

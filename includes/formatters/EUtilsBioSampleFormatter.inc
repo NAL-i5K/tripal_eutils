@@ -16,7 +16,8 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
    * @return void
    *   Does not return anything.
    */
-  public function format(array $data, array &$elements) {
+  public function format(array $data) {
+    $elements = [];
     // TODO: move function over to class.
     try {
       $elements = tripal_eutils_parse_biomaterial_for_table($data);
@@ -24,6 +25,7 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
     catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
     }
+    return $elements;
   }
 
 }
