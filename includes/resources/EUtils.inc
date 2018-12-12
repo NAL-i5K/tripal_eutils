@@ -63,7 +63,7 @@ class EUtils {
       return $data;
     }
 
-    $repository = (new EutilsRepositoryFactory())->get($db);
+    $repository = (new EUtilsRepositoryFactory())->get($db);
 
     $record = $repository->create($data);
 

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class EutilsRepositoryFactory.
+ * Class EUtilsRepositoryFactory.
  */
-class EutilsRepositoryFactory implements EUtilsFactoryInterface {
+class EUtilsRepositoryFactory implements EUtilsFactoryInterface {
 
   /**
    * DB to repository mapping.
