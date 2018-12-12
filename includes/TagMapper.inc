@@ -155,4 +155,36 @@ class TagMapper {
 
   }
 
+  /**
+   * Looks up a BioSampleAttribute.
+   *
+   * @param array $record
+   *   An associative array from the BiosampleXML Parser.  We hope for a value
+   *   and a harmonized_name key but we aren't always so lucky.
+   *
+   * @return array|bool
+   *   False if we couldn't get a label, otherwise, return an associative array
+   *   appropriate for the Formatter or the Repository.
+   */
+  public function checkBioSampleAttribute(array $record) {
+
+    $value = $record['value'];
+
+    if (empty($record)) {
+      return FALSE;
+    }
+    $label = $record['harmonized_name'] ?? NULL;
+
+    if (!$label) {
+      $label = $record['attribute_name'] ?? NULL;
+    }
+    if (!$label) {
+      // I give up.  Use whatever you got.
+      reset($record);
+      $label = key($record);
+    }
+
+    return ['label' => $label, 'value' => $value];
+  }
+
 }
