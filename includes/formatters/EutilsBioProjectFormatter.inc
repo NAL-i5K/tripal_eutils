@@ -18,8 +18,6 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
    */
   public function format(array $data) {
 
-    dpm($data);
-
     try {
       $this->formatBaseRecord($data);
       $this->formatAttributes($data['attributes']);
