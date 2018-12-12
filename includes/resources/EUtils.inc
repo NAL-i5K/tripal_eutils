@@ -54,7 +54,7 @@ class EUtils {
     }
     $xml = $response->xml();
 
-    $data = (new EUtilsXMLParserFactory())->get($db, $xml);
+    $data = (new EUtilsXMLParserFactory())->get($db)->parse($xml);
 
     // When previewing, we want to return the parser values instead.
     // TODO: we miss out on querying linked records.

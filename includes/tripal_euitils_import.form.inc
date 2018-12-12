@@ -102,7 +102,8 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
 
     $form_state['values']['parsed'] = $parsed;
 
-  } catch (\Exception $e) {
+  }
+  catch (\Exception $e) {
 
     tripal_set_message($e, TRIPAL_ERROR);
   }
@@ -127,11 +128,13 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
   }
   $connection = new \EUtils();
 
-  // TODO: how do we know which parser and repo to use?  EUTils would handle that?
+  // TODO: how do we know which parser and repo to use? EUTils would handle
+  // that?
   try {
     $connection->get($db, $accession);
 
-  } catch (\Exception $e) {
+  }
+  catch (\Exception $e) {
 
     tripal_set_message($e, TRIPAL_ERROR);
   }
