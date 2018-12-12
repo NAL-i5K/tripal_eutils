@@ -82,7 +82,8 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
           }
         }
       }
-    } catch (Exception $exception) {
+    }
+    catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
     }
 
