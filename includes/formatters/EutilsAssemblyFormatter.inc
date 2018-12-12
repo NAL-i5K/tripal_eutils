@@ -12,8 +12,9 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
    *
    * @param array $data
    *   The parsed XML data.
-   * @param array $elements
-   *   The array to add Drupal elements to.
+   *
+   * @return array
+   *   Drupal form elements array of each section in a fieldset.
    */
   public function format(array $data) {
     try {
