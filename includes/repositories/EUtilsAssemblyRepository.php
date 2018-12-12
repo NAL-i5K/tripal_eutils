@@ -67,6 +67,12 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     $program = $method_string;
     $programvesion = $method_string;
 
+    $time_executed = $data['submission_date'];
+    // Check if we need seconds.
+    if ($time_executed && substr_count($time_executed, ':') === 1) {
+      $time_executed = $time_executed . ':00';
+    }
+
     // TODO: missing:
     // algorithm, sourcename, sourceversion, sourceuri, timeexecuted.
     $this->base_fields = [
@@ -74,7 +80,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       'description' => $description,
       'program' => $program,
       'programversion' => $programvesion,
-      'timeexecuted' => date_now(),
+      'timeexecuted' => $time_executed ?? date_now(),
     ];
 
     $analysis = $this->createAnalysis();

@@ -76,6 +76,9 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           $info['accessions']['biosamples'][] = (string) $child;
           break;
 
+        case 'SubmissionDate':
+          $info['submission_date'] = (string) $child;
+
         default:
           $info['ignored'][] = $child->getName();
           break;

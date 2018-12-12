@@ -36,7 +36,6 @@ class TagMapper {
   /**
    * TagMapper constructor.
    *
-   * @param string $db
    *   NCBI database for lookup.
    */
   public function __construct($db) {
