@@ -42,14 +42,14 @@ function tripal_eutils_import_form($form, &$form_state) {
   $form['callback'] = ['#type' => 'button', '#value' => "Preview Record"];
 
   if (isset($form_state['values']['parsed'])) {
-    $parsed = $form_state['values']['parsed'];
     $form['data'] = [
       '#type' => 'fieldset',
       '#title' => 'Data',
     ];
 
     $form['data'][] = $form_state['values']['parsed'];
-  }
+
+      }
 
   $form['options'] = ['#type' => 'fieldset', '#title' => "Options"];
 
@@ -101,7 +101,6 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
  * Implements hook_form_submit().
  */
 function tripal_eutils_import_form_submit($form, &$form_state) {
-
   $vals = $form_state['values'];
 
   $db = $vals['db'];
@@ -114,15 +113,14 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
   if (!$accession) {
     form_set_error('accession', 'please enter an accession');
   }
+
   $connection = new \EUtils();
 
-  // TODO: how do we know which parser and repo to use? EUTils would handle
-  // that?
   try {
     $connection->get($db, $accession);
 
-  } catch (\Exception $e) {
-
+  }
+  catch (\Exception $e) {
     tripal_set_message($e, TRIPAL_ERROR);
   }
 }
