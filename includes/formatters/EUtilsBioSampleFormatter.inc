@@ -15,88 +15,72 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
    *   Drupal form elements array of each section in a fieldset.
    */
   public function format(array $data) {
-    try {
-      $return = [];
 
-      foreach ($data as $key => $item) {
-        if ($key == 'full_ncbi_xml') {
-          continue;
-        }
+    $return = [];
 
-        if (is_string($item)) {
-          $return[] = [
-            '#type' => 'item',
-            '#title' => ucfirst($key),
-            '#markup' => $item,
-          ];
-          continue;
-        }
+    unset($data['full_ncbi_xml']);
 
-        if ($key === 'attributes') {
-          $header = ['Key', 'Value'];
-          $rows = [];
-          $mapper = new TagMapper('biosample');
+    $header = ['Key', 'Value'];
+    $rows = [];
 
-          foreach ($item as $record) {
+    $attributes = $data['attributes'];
 
-            $label = $mapper->getDisplayLabel($record);
-            if (!$label) {
-              tripal_set_message(t('Warning: the property value !value had no label set, and will be ignored.', [
-                '!value',
-                $record['value'],
-              ]), TRIPAL_WARNING);
-              continue;
-            }
-            $row = [$label, $record['value']];
+    $header = ['Key', 'Value'];
+    $rows = [];
+    $mapper = new TagMapper('biosample');
 
-            $rows[] = $row;
-          }
+    foreach ($attributes as $record) {
 
-          $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
-          $return[] = [
-            '#type' => 'item',
-            '#markup' => $table,
-            '#title' => ucfirst($key),
-          ];
-
-          continue;
-        }
-
-        if ($key === 'accessions') {
-          $header = ['DB', 'Value'];
-          $rows = [];
-
-          foreach ($item as $record) {
-            $rows[] = [$record['db'] ?? ($record['db_label'] ?? ''), $record['value']];
-          }
-
-          $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
-          $return[] = [
-            '#markup' => $table,
-            '#prefix' => ucfirst($key),
-            '#type' => 'item',
-          ];
-          continue;
-        }
-
-        foreach ($item as $record) {
-          if (is_string($record)) {
-            $return[] = [
-              '#type' => 'item',
-              '#title' => ucfirst($key),
-              '#markup' => $record,
-            ];
-            continue;
-          }
-        }
+      $label = $mapper->getDisplayLabel($record);
+      if (!$label) {
+        tripal_set_message(t('Warning: the property value !value had no label set, and will be ignored.', [
+          '!value',
+          $record['value'],
+        ]), TRIPAL_WARNING);
+        continue;
       }
+      $row = [$label, $record['value']];
+
+      $rows[] = $row;
     }
-    catch (Exception $exception) {
-      drupal_set_message($exception->getMessage());
+
+    $table = theme('table', ['rows' => $rows, 'header' => $header]);
+
+    $return['attributes'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Biosample Attributes',
+      '#collapsible' => TRUE,
+    ];
+    $return['attributes']['table'] = [
+      '#markup' => $table,
+      '#type' => 'item',
+    ];
+
+    $accessions = $data['accessions'];
+
+    $header = ['DB', 'Value'];
+    $rows = [];
+
+    foreach ($accessions as $record) {
+      $rows[] = [
+        $record['db'] ?? ($record['db_label'] ?? ''),
+        $record['value'],
+      ];
     }
+
+    $table = theme('table', ['rows' => $rows, 'header' => $header]);
+
+    $return['links'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Additional Records',
+      '#collapsible' => TRUE,
+    ];
+    $return['links']['table'] = [
+      '#markup' => $table,
+      '#type' => 'item',
+    ];
     return $return;
+
   }
 
 }
