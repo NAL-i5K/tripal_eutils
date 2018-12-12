@@ -163,7 +163,8 @@ class TagMapper {
    *   and a harmonized_name key but we aren't always so lucky.
    *
    * @return string|bool
-   *   False if we couldn't get a label, otherwise, return the label machine name.
+   *   False if we couldn't get a label, otherwise, return the label machine
+   *   name.
    */
   public function getLabel(array $record) {
 
@@ -187,9 +188,12 @@ class TagMapper {
 
   /**
    * Get the term for displaying to an end user via the Formatter.
+   *
    * @param array $record
+   *   Attribute array from XML parser.
    *
    * @return string|bool
+   *   The String to display to user, or FALSE.
    */
   public function getDisplayLabel(array $record) {
 
