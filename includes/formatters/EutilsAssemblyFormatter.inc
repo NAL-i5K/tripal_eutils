@@ -19,9 +19,8 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
     $this->elements = $elements;
     try {
       $this->formatBaseRecord($data);
-      // unset($data['accessions']['assembly']);.
       $this->formatAttributes($data['attributes']);
-      $this->formatLinkedRecords($data);
+      $this->formatLinkedRecords($data['accessions']);
     }
     catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
@@ -56,29 +55,13 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
   }
 
   /**
+   * Describe the Chado properties that will be associated with this analysis.
    *
+   * @param array $attributes
+   *   Array of attributes.  Should have stats and file keys.
    */
-  private function formatAttributes() {
-
-  }
-
-  /**
-   *
-   */
-  private function linkedRecords() {
-
-  }
-
-  /**
-   *
-   */
-  private function run($parsed) {
-
-    $attributes = $parsed['attributes'];
-
-    // Next build table of chado props from various areas.
+  private function formatAttributes(array $attributes) {
     $header = ['Property Name', 'Value'];
-
     $rows = [];
     foreach ($attributes['stats'] as $key => $value) {
       $rows[] = [$key, $value];
@@ -89,17 +72,34 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
-    $return[] = [
+    $this->elements['properties'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Properties',
+      '#collapsible' => TRUE,
+    ];
+    $this->elements['base_record']['table'] = [
       '#markup' => $table,
-      '#prefix' => t('Analysis Properties'),
       '#type' => 'item',
     ];
+  }
+
+  /**
+   * Describes additional records that will be created.
+   *
+   * @param array $accessions
+   *   the Accessions array from the EutilsAssemblyParser.
+   */
+  private function formatLinkedRecords(array $accessions) {
 
     $rows = [];
     $header = ['Accession Type', 'Value'];
 
-    foreach ($parsed['accessions'] as $accession_key => $value) {
+    foreach ($accessions as $accession_key => $value) {
 
+      if ($accession_key == 'assembly') {
+        // This is the record itself, doesnt go here.
+        continue;
+      }
       if ($accession_key == 'Taxon_accession') {
         $rows[] = ['Organism', $value];
         continue;
@@ -124,7 +124,6 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
       '#type' => 'item',
     ];
 
-    return $return;
   }
 
 }
