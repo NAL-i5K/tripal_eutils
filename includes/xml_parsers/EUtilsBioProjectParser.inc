@@ -3,14 +3,19 @@
 /**
  * Class EUtilsBioProjectParser.
  *
- * Note that projects dont have reliable attribute listings.
+ * Note that projects don't have reliable attribute listings.
  */
 class EUtilsBioProjectParser implements EUtilsParserInterface {
 
   /**
+   * Parse an NCBI BioProject XML.
+   *
    * @param \SimpleXMLElement $xml
+   *   Simple XML Element.
    *
    * @return array|mixed
+   *   Array.
+   *
    * @throws \Exception
    */
   public function parse(SimpleXMLElement $xml) {
@@ -27,14 +32,10 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
     // Jump to Project node.
     $projects = $xml->xpath('DocumentSummary/Project');
     if (!isset($projects[0])) {
-
-      $e = 'Unexpected XML structure';
-
-      throw new Exception($e);
+      throw new Exception('Unexpected XML structure');
     }
 
     $project = $projects[0];
-
     $info['full_ncbi_xml'] = $project->asXML();
 
     $children = $project->children();
@@ -44,6 +45,8 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
         case 'ProjectID':
           // Accession for the project.
           $primary_xref = $child->ArchiveID;
+          $id = $primary_xref->attributes()->id;
+          $info['accessions']['BioProject'] = (string) $id;
           break;
 
         case 'ProjectDescr':

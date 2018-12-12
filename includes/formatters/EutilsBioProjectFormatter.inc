@@ -41,9 +41,14 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
   private function formatBaseRecord(array $data) {
 
     $header = ['Field', 'Value'];
+    $accession = $data['accessions']['BioProject'] ?? NULL;
 
     $rows[] = ['Name', $data['name']];
     $rows[] = ['Description', $data['description']];
+
+    if ($accession) {
+      $rows[] = ['Accession', $accession];
+    }
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
@@ -104,7 +109,10 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
     $rows = [];
     $header = ['Type', 'Value'];
 
-    foreach ($accessions as $type => $value){
+    foreach ($accessions as $type => $value) {
+      if ($type == 'BioSample') {
+        continue;
+      }
       $rows[] = [$type, $value];
     }
 
