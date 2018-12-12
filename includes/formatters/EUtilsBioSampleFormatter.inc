@@ -58,9 +58,6 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
           $rows = [];
 
           foreach ($item as $record) {
-            if(!isset($record['db']) && !isset($record['db_label'])) {
-              dpm($record);
-            }
             $rows[] = [$record['db'] ?? ($record['db_label'] ?? ''), $record['value']];
           }
 
