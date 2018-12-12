@@ -1,10 +1,13 @@
 <?php
 
+/**
+ * Maps NCBI Assemblies into a Chado analysis.
+ */
 class EUtilsAssemblyRepository extends EUtilsRepository {
 
 
   /**
-   * chado base table Analysis record.
+   * Chado base table Analysis record.
    *
    * @var array
    */
@@ -54,50 +57,53 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     $description = $data['description'];
 
-    //program and program version come from # Assembly method: $data['attributes']['ftp_attributes']['# Assembly method:']
-
+    // Program and program version come from # Assembly method:
+    // $data['attributes']['ftp_attributes']['# Assembly method:'].
     $method_string = $data['attributes']['ftp_attributes']['# Assembly method:'];
 
-    //TODO: what do we want to do here?  Parse out the verion from the assembly program?  But what if we have multiple programs and versions returned, what then?
+    // TODO: what do we want to do here?  Parse out the version from the
+    // assembly program?  But what if we have multiple programs and
+    // versions returned, what then?
     $program = $method_string;
     $programvesion = $method_string;
 
+    $time_executed = $data['submission_date'];
+    // Check if we need seconds.
+    if ($time_executed && substr_count($time_executed, ':') === 1) {
+      $time_executed = $time_executed . ':00';
+    }
 
-    //TODO: missing:
-    //algorithm, sourcename, sourceversion, sourceuri, timeexecuted.
-
+    // TODO: missing:
+    // algorithm, sourcename, sourceversion, sourceuri, timeexecuted.
     $this->base_fields = [
       'name' => $name,
       'description' => $description,
       'program' => $program,
       'programversion' => $programvesion,
-      'timeexecuted' => date_now(),
+      'timeexecuted' => $time_executed ?? date_now(),
     ];
-
 
     $analysis = $this->createAnalysis();
 
-    //Set class base record stuff
+    // Set class base record stuff.
     $this->base_table = 'analysis';
     $this->base_record_id = $analysis->analysis_id;
 
-
-    //Set the type of the analysis so it maps to a bundle.
-    //consider: genome assembly, transcriptome, etc.
-    //TODO: do we let users map which analysis to create?
+    // Set the type of the analysis so it maps to a bundle.
+    // consider: genome assembly, transcriptome, etc.
+    // TODO: do we let users map which analysis to create?
     $term = tripal_get_cvterm(['id' => 'rdfs:type']);
     $this->createProperty($term->cvterm_id, 'genome_assembly');
     $this->createXMLProp($data['full_ncbi_xml']);
 
     $this->createLinkedRecords($data['accessions']);
 
-    //  $mapper = new TagMapper();
-
-    //add "stats" as properties
+    // $mapper = new TagMapper();
+    // add "stats" as properties.
     foreach ($data['attributes']['stats'] as $key => $value) {
 
-      //TODO: use mapper to look up cvterms.
-      //for now just use local.
+      // TODO: use mapper to look up cvterms.
+      // for now just use local.
       // $mapper->lookupAttribute($key)
       $term = tripal_insert_cvterm([
         'id' => 'ncbi_properties:' . $key,
@@ -110,26 +116,25 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     $this->addFTPLinks($data['attributes']['files']);
 
-
     return $analysis;
 
   }
 
-
   /**
-   * @param $accessions
+   * Creates dbxrefs and linked chado records.
+   *
+   * @param array $accessions
+   *   Array of other records indexed type => value.
    */
-  public function createLinkedRecords($accessions) {
+  public function createLinkedRecords(array $accessions) {
 
     foreach ($accessions as $accession => $vals) {
 
       switch ($accession) {
 
         case 'assembly':
-          //add as a dbxref for this record
-
-
-          foreach ($vals as $db => $child){
+          // Add as a dbxref for this record.
+          foreach ($vals as $db => $child) {
 
             $this->createAccession(['db' => $db, 'value' => $child]);
           }
@@ -150,13 +155,12 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
           break;
 
         case 'biosamples':
-          //  $biosamples = $this->getNCBIRecord('biosample', $vals);
+          // $biosamples = $this->getNCBIRecord('biosample', $vals);
           // $linked = $this->linkBiomaterials($biomaterials);
-
           break;
 
         default:
-          //generic dbxref of some sort.
+          // Generic dbxref of some sort.
           break;
 
       }
@@ -167,9 +171,10 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    * Insert into organism_analysis, or return existing link.
    *
    * @param $organism
-   * Full chado.organism record.
+   *   Full chado.organism record.
    *
    * @return mixed
+   *
    * @throws \Exception
    */
   public function linkOrganism($organism) {
@@ -202,6 +207,9 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     return $result;
   }
 
+  /**
+   * Gets/creates this analysis record.
+   */
   public function createAnalysis() {
     // Name is unique so find project.
     $record = $this->getAnalysis();
@@ -247,11 +255,10 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
   public function getAnalysis() {
 
     $base = $this->base_fields;
-    // If the analysis is available in our static cache, return it
+    // If the analysis is available in our static cache, return it.
     if (isset(static::$cache['analysis'])) {
       return static::$cache['analysis'];
     }
-
 
     $exists = db_select('chado.analysis', 't')
       ->fields('t')
@@ -263,23 +270,19 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     if ($exists) {
 
-      //TODO: we need to carefully validate the returned analysis.  We want to be sure we arent overwriting another existing analysis....
-
+      // TODO: we need to carefully validate the returned analysis.  We want to be sure we arent overwriting another existing analysis....
       return static::$cache['analysis'] = $exists;
     }
 
     return NULL;
   }
 
-
   /**
    * Associates FTPs as properties.
    *
    * @param $ftps
-   * Array of key value pars, where the key is the XML FTP type, the value is
+   *   Array of key value pars, where the key is the XML FTP type, the value is
    *   the FTP address.
-   *
-   *
    */
   public function addFTPLinks($ftps) {
 
@@ -289,4 +292,5 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       $this->createProperty($cvterm_id, $ftp);
     }
   }
+
 }

@@ -203,26 +203,26 @@ class EUtilsXmlParserTest extends TripalTestCase {
         [
           'name' => '',
           'accessions' => [
-            'assembly' => ['Refseq' => '817508', 'Genbank' => '524058'],
+            'assembly' => [
+              'Refseq' => '817508',
+              'Genbank' => '524058',
+              'WGS' => 'AGSK01',
+            ],
             'taxon_accession' => '72004',
             'bioprojects' => ['74739', '221623'],
             'biosamples' => ['744358'],
           ],
-          'attributes' => '',
+          'submission_date' => '2013/01/09 00:00',
           'description' => '',
         ],
       ],
       [
         $path . "/examples/assembly/557018_assembly.xml",
-        [
-
-        ],
+        [],
       ],
       [
         $path . "/examples/assembly/559011_assembly.xml",
-        [
-
-        ],
+        [],
       ],
       [
         $path . "/examples/assembly/751381_assembly.xml",

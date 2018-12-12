@@ -54,8 +54,10 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
 
         case 'GbUid':
           $info['accessions']['assembly']['Genbank'] = (string) $child;
-
           break;
+
+        case 'WGS':
+          $info['accessions']['assembly']['WGS'] = (string) $child;
 
         case 'GB_BioProjects':
         case 'RS_BioProjects':
@@ -73,6 +75,9 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
         case 'BioSampleId':
           $info['accessions']['biosamples'][] = (string) $child;
           break;
+
+        case 'SubmissionDate':
+          $info['submission_date'] = (string) $child;
 
         default:
           $info['ignored'][] = $child->getName();
