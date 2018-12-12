@@ -60,7 +60,9 @@ class EUtils {
     // TODO: we miss out on querying linked records.
     // Secondarily linked records wont be reported.
     if ($this->preview) {
-      return $data;
+
+      $formatter = (new EUtilsFormatterFactory())->get($db);
+      return $formatter->format($data);
     }
 
     $repository = (new EUtilsRepositoryFactory())->get($db);
@@ -75,6 +77,9 @@ class EUtils {
 
   /**
    * Sets the object to not insert, but only preview the XML.
+   *
+   * @param bool $preview
+   *   TRUE will set to preview mode, FALSE unsets.
    */
   public function setPreview($preview = TRUE) {
     $this->preview = $preview;
