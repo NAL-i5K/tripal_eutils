@@ -178,8 +178,11 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
    * @throws \Exception
    */
   public function createProps($attributes) {
+
+    $mapper = new TagMapper('biosample');
     foreach ($attributes as $attribute) {
-      $term_name = $attribute['harmonized_name'];
+
+      $term_name = $mapper->getLabel($attribute);
       $value = $attribute['value'];
 
       //TODO: the term lookup class should handle this instead.

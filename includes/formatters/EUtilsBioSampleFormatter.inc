@@ -35,9 +35,21 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
         if ($key === 'attributes') {
           $header = ['Key', 'Value'];
           $rows = [];
+          $mapper = new TagMapper('biosample');
 
           foreach ($item as $record) {
-            $rows[] = [$record['harmonized_name'], $record['value']];
+
+            $label = $mapper->getDisplayLabel($record);
+            if (!$label) {
+              tripal_set_message(t('Warning: the property value !value had no label set, and will be ignored.', [
+                '!value',
+                $record['value'],
+              ]), TRIPAL_WARNING);
+              continue;
+            }
+            $row = [$label, $record['value']];
+
+            $rows[] = $row;
           }
 
           $table = theme('table', ['rows' => $rows, 'header' => $header]);

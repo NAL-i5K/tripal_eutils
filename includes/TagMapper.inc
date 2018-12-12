@@ -155,4 +155,64 @@ class TagMapper {
 
   }
 
+  /**
+   * Looks up a BioSampleAttribute.
+   *
+   * @param array $record
+   *   An associative array from the BiosampleXML Parser.  We hope for a value
+   *   and a harmonized_name key but we aren't always so lucky.
+   *
+   * @return string|bool
+   *   False if we couldn't get a label, otherwise, return the label machine
+   *   name.
+   */
+  public function getLabel(array $record) {
+
+    unset($record['value']);
+
+    if (empty($record)) {
+      return FALSE;
+    }
+    $label = $record['harmonized_name'] ?? NULL;
+
+    if (!$label) {
+      $label = $record['attribute_name'] ?? NULL;
+    }
+    if (!$label) {
+      // I give up.  Use whatever you got.
+      reset($record);
+      $label = key($record);
+    }
+    return $label;
+  }
+
+  /**
+   * Get the term for displaying to an end user via the Formatter.
+   *
+   * @param array $record
+   *   Attribute array from XML parser.
+   *
+   * @return string|bool
+   *   The String to display to user, or FALSE.
+   */
+  public function getDisplayLabel(array $record) {
+
+    unset($record['value']);
+
+    if (empty($record)) {
+      return FALSE;
+    }
+    $label = $record['display_name'] ?? NULL;
+
+    if (!$label) {
+      $label = $record['attribute_name'] ?? NULL;
+    }
+    if (!$label) {
+      // I give up.  Use whatever you got.
+      reset($record);
+      $label = key($record);
+    }
+    return $label;
+  }
+
 }
