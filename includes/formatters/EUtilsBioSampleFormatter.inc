@@ -14,7 +14,7 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
    * @return array
    *   Drupal form elements array of each section in a fieldset.
    */
-  public function format(array $data) { 
+  public function format(array $data) {
     try {
       $return = [];
 
