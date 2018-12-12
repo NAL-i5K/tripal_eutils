@@ -57,9 +57,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
     ]);
 
     $this->base_record_id = $project->project_id;
-
     $this->createAccessions($data['accessions']);
-
     $this->createProps($data['attributes']);
 
     // TODO: no project_organism table...
@@ -170,9 +168,9 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
   public function createAccessions(array $accessions) {
     $data = [];
 
-    foreach ($accessions as $accession) {
+    foreach ($accessions as $db => $accession) {
       try {
-        $data[] = $this->createAccession($accession);
+        $data[] = $this->createAccession(['db' => $db, 'value' => $accession]);
       }
       catch (Exception $exception) {
         // For the time being, ignore all exceptions.

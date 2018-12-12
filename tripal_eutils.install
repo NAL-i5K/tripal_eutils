@@ -143,6 +143,12 @@ function tripal_eutils_add_dbs() {
     'url' => 'https://www.ncbi.nlm.nih.gov/genbank/',
     'urlprefix' => 'https://www.ncbi.nlm.nih.gov/genbank/{accession}',
   ]);
+  chado_insert_db([
+    'name' => 'NCBI BioProject',
+    'description' => "A BioProject is a collection of biological data related to a single initiative, originating from a single organization or from a consortium.",
+    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/bioproject/{accession}',
+    'url' => 'https://www.ncbi.nlm.nih.gov/bioproject'
+  ]);
 
 }
 
