@@ -5,7 +5,7 @@
  */
 class EutilsBioProjectFormatter extends EUtilsFormatter {
 
-  private  $elements = [];
+  private $elements = [];
 
   /**
    * Add the formatted data into a table.
@@ -17,10 +17,13 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
    *   Drupal form elements array of each section in a fieldset.
    */
   public function format(array $data) {
+
+    dpm($data);
+
     try {
       $this->formatBaseRecord($data);
       $this->formatAttributes($data['attributes']);
-      $this->formatLinkedRecords($data['accessions']);
+      $this->formatLinkedRecords($data['linked_records']);
     }
     catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
@@ -37,6 +40,22 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
    */
   private function formatBaseRecord(array $data) {
 
+    $header = ['Field', 'Value'];
+
+    $rows[] = ['Name', $data['name']];
+    $rows[] = ['Description', $data['description']];
+
+    $table = theme('table', ['rows' => $rows, 'header' => $header]);
+
+    $this->elements['base'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Project',
+      '#collapsible' => TRUE,
+    ];
+    $this->elements['base']['table'] = [
+      '#markup' => $table,
+      '#type' => 'item',
+    ];
   }
 
   /**
@@ -47,24 +66,57 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
    */
   private function formatAttributes(array $attributes) {
 
+    if (empty($attributes)) {
+      return;
+    }
+    $rows = [];
+    $header = ['Name', 'Value'];
+
+    foreach ($attributes as $key => $value) {
+      $rows[] = [$key, $value];
+    }
+
+    $table = theme('table', ['rows' => $rows, 'header' => $header]);
+    $this->elements['properties'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Project Properties',
+      '#collapsible' => TRUE,
+    ];
+    $this->elements['properties']['table'] = [
+      '#markup' => $table,
+      '#type' => 'item',
+    ];
+
   }
 
   /**
    * Describes additional records that will be created.
    *
    * @param array $accessions
-   *   the Accessions array from the EutilsAssemblyParser.
+   *   the Accessions array from the EutilsBioProjectParser.
    */
   private function formatLinkedRecords(array $accessions) {
 
+    if (empty($accessions)) {
+      return;
+    }
+
     $rows = [];
-    $header = [];
+    $header = ['Type', 'Value'];
+
+    foreach ($accessions as $type => $value){
+      $rows[] = [$type, $value];
+    }
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
-    $return[] = [
+    $this->elements['links'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Linked Records',
+      '#collapsible' => TRUE,
+    ];
+    $this->elements['links']['table'] = [
       '#markup' => $table,
-      '#prefix' => t('Additional Records Linked'),
       '#type' => 'item',
     ];
   }

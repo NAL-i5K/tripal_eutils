@@ -96,15 +96,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
               // taxID, species are both ncbi ID.  taxID is more precise.
             }
 
-            // Don't need this info
-            //            $organism_children = $organism->children();
-            //
-            //            foreach ($organism_children as $child => $value) {
-            //
-            //              $organism_record[(string) $child] = (string) $value;
-            //            }
-
-            $info['linked_records']['organism'] = $organism_accession;
+            $info['linked_records']['organism'] = (string) $organism_accession;
           }
 
           break;
