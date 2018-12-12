@@ -49,7 +49,7 @@ function tripal_eutils_import_form($form, &$form_state) {
 
     $form['data'][] = $form_state['values']['parsed'];
 
-      }
+  }
 
   $form['options'] = ['#type' => 'fieldset', '#title' => "Options"];
 
@@ -91,7 +91,8 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
 
     $form_state['values']['parsed'] = $parsed;
 
-  } catch (\Exception $e) {
+  }
+  catch (\Exception $e) {
 
     tripal_set_message($e, TRIPAL_ERROR);
   }

@@ -68,4 +68,5 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
       '#type' => 'item',
     ];
   }
+
 }
