@@ -14,6 +14,9 @@ class EUtilsFormatterFactory implements EUtilsFactoryInterface {
    */
   protected $formatter = [
     'biosample' => EUtilsBioSampleFormatter::class,
+    'assembly' => EutilsAssemblyFormatter::class,
+    'bioproject' => EutilsBioProjectFormatter::class,
+
   ];
 
   /**

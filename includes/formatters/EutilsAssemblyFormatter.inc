@@ -5,18 +5,18 @@
  */
 class EutilsAssemblyFormatter extends EUtilsFormatter {
 
-  private $elements;
+  private  $elements = [];
 
   /**
    * Add the formatted data into a table.
    *
    * @param array $data
    *   The parsed XML data.
-   * @param array $elements
-   *   The array to add Drupal elements to.
+   *
+   * @return array
+   *   Drupal form elements array of each section in a fieldset.
    */
-  public function format(array $data, array &$elements) {
-    $this->elements = $elements;
+  public function format(array $data) {
     try {
       $this->formatBaseRecord($data);
       $this->formatAttributes($data['attributes']);
@@ -25,6 +25,8 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
     catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
     }
+
+    return $this->elements;
   }
 
   /**
@@ -36,7 +38,7 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
   private function formatBaseRecord(array $data) {
     $name = $data['name'];
     $description = $data['description'];
-    $program = $data['ftp_attributes']['# Assembly method:'];
+    $program = $data['attributes']['ftp_attributes']['# Assembly method:'];
     $xrefs = $data['accessions']['assembly'];
     $xref_string = implode(', ', $xrefs);
     $header = ['Name', 'Description', 'Program', 'Accessions'];
@@ -77,7 +79,7 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
       '#title' => 'Properties',
       '#collapsible' => TRUE,
     ];
-    $this->elements['base_record']['table'] = [
+    $this->elements['properties']['table'] = [
       '#markup' => $table,
       '#type' => 'item',
     ];
@@ -118,12 +120,15 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
-    $return[] = [
+    $this->elements['links'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Additional Records',
+      '#collapsible' => TRUE,
+    ];
+    $this->elements['links']['table'] = [
       '#markup' => $table,
-      '#prefix' => t('Additional Records Linked'),
       '#type' => 'item',
     ];
-
   }
 
 }

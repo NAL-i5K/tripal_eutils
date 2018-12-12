@@ -10,13 +10,11 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
    *
    * @param array $data
    *   The parsed XML data.
-   * @param array $elements
-   *   The array to add Drupal elements to.
    *
-   * @return void
-   *   Does not return anything.
+   * @return array
+   *   Drupal form elements array of each section in a fieldset.
    */
-  public function format(array $data, array &$elements) {
+  public function format(array $data) {
     try {
       $return = [];
 
@@ -86,8 +84,7 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
     catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
     }
-
-    $elements = $return;
+    return $return;
   }
 
 }
