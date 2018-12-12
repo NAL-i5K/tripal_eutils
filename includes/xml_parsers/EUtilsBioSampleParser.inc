@@ -1,9 +1,9 @@
 <?php
 
-  /**
-   *
-   */
-  class EUtilsBioSampleParser implements EUtilsParserInterface {
+/**
+ *
+ */
+class EUtilsBioSampleParser implements EUtilsParserInterface {
 
   /**
    * Parse the XML into an array.
@@ -11,8 +11,15 @@
    * @param \SimpleXMLElement $xml
    *
    * @return array
+   *   An array of parsed data
+   *
+   * @throws \Exception
    */
   public function parse(SimpleXMLElement $xml) {
+    if (!isset($xml->BioSample)) {
+      throw  new Exception('Invalid BioSample XML provided.');
+    }
+
     // Primary data.
     $primary_accession = (string) $xml->BioSample['accession'];
     $description = (string) $xml->BioSample->Description->Comment ??
@@ -46,10 +53,10 @@
    */
   protected function attachDBLabel(&$attributes, $accessions) {
     $accessions = array_filter(
-    $accessions, function ($accession) {
-      return isset($accession['db_label'])
-      && strtolower($accession['db_label']) === 'sample name';
-    }
+      $accessions, function ($accession) {
+        return isset($accession['db_label'])
+        && strtolower($accession['db_label']) === 'sample name';
+      }
     );
 
     foreach ($accessions as $accession) {
@@ -131,4 +138,4 @@
     return $data;
   }
 
-  }
+}
