@@ -27,5 +27,5 @@ script:
   - docker exec -it tripal bash -c "cd /modules/tripal_eutils && composer install && DRUPAL_ROOT=/var/www/html IS_TRAVIS=TRUE ./vendor/bin/phpunit --coverage-clover ./clover.xml"
 
 after_script:
-  - ./cc-test-reporter format-coverage --prefix /modules/tripal_eutils
+  #- ./cc-test-reporter format-coverage --prefix /modules/tripal_eutils
   - ./cc-test-reporter after-build clover.xml --debug -t clover -p /var/www/html/sites/all/modules/custom/tripal_eutils --exit-code $TRAVIS_TEST_RESULT
