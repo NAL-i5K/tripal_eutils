@@ -1,74 +1,42 @@
 <?php
 
 /**
- * Class EUtilsXMLParserFactory
+ * Class EUtilsXMLParserFactory.
  *
  * This is the base EUTILS XML parser class.
  * The plan is to extend this base class to be specific for each DB type.
  */
-class EUtilsXMLParserFactory {
+class EUtilsXMLParserFactory implements EUtilsFactoryInterface {
 
   /**
+   * A map of DB to xml parsers.
    *
-   * @param $db
-   * @param $xml
+   * @var array
+   */
+  protected $parsers = [
+    'bioproject' => EUtilsBioProjectParser::class,
+    'biosample' => EUtilsBioSampleParser::class,
+    'assembly' => EUtilsAssemblyParser::class,
+  ];
+
+  /**
+   * Get the appropriate XML parser.
    *
-   * @return array|null
+   * @param string $db
+   *   The name of the DB.
+   *
+   * @return \EUtilsParserInterface
+   *
    * @throws \Exception
    */
-  public function get($db, $xml) {
+  public function get(string $db) {
+    $ldb = strtolower($db);
 
-    $db = strtolower($db);
-    switch ($db) {
-      case 'bioproject':
-        $parser = $this->bioproject($xml);
-        break;
-
-      case 'biosample':
-        $parser = $this->biosample($xml);
-        break;
-
-      case 'assembly':
-        $parser = $this->assembly($xml);
-        break;
+    if (!isset($this->parsers[$ldb])) {
+      throw new Exception('Unable to find formatter for the given db: ' . $db);
     }
-    return $parser;
 
-  }
-
-  /**
-   * Parse BioProject XML.
-   *
-   * @param \SimpleXMLElement $xml
-   *
-   * @return array
-   *
-   * @throws \Exception
-   */
-  public function bioProject(SimpleXMLElement $xml) {
-    return (new EUtilsBioProjectParser())->parse($xml);
-  }
-
-  /**
-   * Parse BioSample XML.
-   *
-   * @param \SimpleXMLElement $xml
-   *
-   * @return array
-   */
-  public function bioSample(SimpleXMLElement $xml) {
-    return (new EUtilsBioSampleParser())->parse($xml);
-  }
-
-  /**
-   * Parse Assembly XML.
-   *
-   * @param \SimpleXMLElement $xml
-   *
-   * @return array
-   */
-  public function assembly(SimpleXMLElement $xml) {
-    return (new EUtilsAssemblyParser())->parse($xml);
+    return new $this->parsers[$ldb]();
   }
 
 }

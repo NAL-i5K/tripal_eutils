@@ -5,6 +5,7 @@
  * Tripal Eutils module file.
  */
 
+require_once 'includes/EUtilsFactoryInterface.inc';
 require_once 'includes/resources/EUtilsResource.inc';
 require_once 'includes/resources/EUtilsRequest.inc';
 require_once 'includes/resources/EFetch.inc';
@@ -16,7 +17,6 @@ require_once 'includes/resources/EFTP.inc';
 // Connects to NCBI to fetch the current biosample property list hosted.
 require_once 'includes/resources/BiosamplePropertyLookup.inc';
 
-
 // Parsers.  Convert XML into keyed arrays.
 require_once 'includes/xml_parsers/EUtilsXMLParserFactory.inc';
 require_once 'includes/xml_parsers/EUtilsParserInterface.inc';
@@ -25,15 +25,19 @@ require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
 require_once 'includes/xml_parsers/EUtilsAssemblyParser.inc';
 
 // Repositories. Handling DB operations.
-require_once 'includes/repositories/EutilsRepositoryFactory.php';
-require_once 'includes/repositories/EUtilsRepository.php';
-require_once 'includes/repositories/EUtilsBioSampleRepository.php';
-require_once 'includes/repositories/EUtilsBioProjectRepository.php';
-require_once 'includes/repositories/EUtilsAssemblyRepository.php';
-
+require_once 'includes/repositories/EutilsRepositoryFactory.inc';
+require_once 'includes/repositories/EUtilsRepository.inc';
+require_once 'includes/repositories/EUtilsBioSampleRepository.inc';
+require_once 'includes/repositories/EUtilsBioProjectRepository.inc';
+require_once 'includes/repositories/EUtilsAssemblyRepository.inc';
 
 // Repository helpers.  Assist with looking up terms.
 require_once 'includes/TagMapper.inc';
+
+// Formatters.
+require_once 'includes/formatters/EUtilsFormatter.inc';
+require_once 'includes/formatters/EUtilsFormatterFactory.inc';
+require_once 'includes/formatters/EUtilsBioSampleFormatter.inc';
 
 /**
  * Implements hook_menu().
