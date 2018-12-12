@@ -50,15 +50,16 @@ function tripal_eutils_import_form($form, &$form_state) {
 
     $db_state = (isset($form_state['values']['db'])) ? $form_state['values']['db'] : NULL;
 
-    if ($db_state == 'biosample') {
-      $form['data'][] = tripal_eutils_parse_biomaterial_for_table($parsed);
-    }
-    elseif ($db_state == 'bioproject') {
-      $form['data'][] = tripal_eutils_parse_bioproject_for_table($parsed);
-    }
-    elseif ($db_state == 'assembly') {
-      $form['data'][] = tripal_eutils_parse_assembly_for_table($parsed);
-
+    if (!is_null($db_state)) {
+      $form['data']['elements'] = [];
+      try {
+        (new EUtilsFormatterFactory())
+          ->get($db_state)
+          ->format($parsed, $form['data']['elements']);
+      }
+      catch (Exception $exception) {
+        drupal_set_message('Please provide a valid database choice. ' . $db_choices[$db_state], 'error');
+      }
     }
   }
 
@@ -113,7 +114,6 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
  * Implements hook_form_submit().
  */
 function tripal_eutils_import_form_submit($form, &$form_state) {
-
   $vals = $form_state['values'];
 
   $db = $vals['db'];
@@ -126,16 +126,13 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
   if (!$accession) {
     form_set_error('accession', 'please enter an accession');
   }
+
   $connection = new \EUtils();
 
-  // TODO: how do we know which parser and repo to use? EUTils would handle
-  // that?
   try {
     $connection->get($db, $accession);
-
   }
   catch (\Exception $e) {
-
     tripal_set_message($e, TRIPAL_ERROR);
   }
 }
