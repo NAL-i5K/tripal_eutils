@@ -39,15 +39,15 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
 
           foreach ($item as $record) {
 
-            $row = $mapper->checkBioSampleAttribute($record);
-
-            if (!$row) {
+            $label = $mapper->getDisplayLabel($record);
+            if (!$label) {
               tripal_set_message(t('Warning: the property value !value had no label set, and will be ignored.', [
                 '!value',
                 $record['value'],
               ]), TRIPAL_WARNING);
               continue;
             }
+            $row = [$label, $record['value']];
 
             $rows[] = $row;
           }
