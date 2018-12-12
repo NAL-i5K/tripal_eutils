@@ -25,7 +25,7 @@ require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
 require_once 'includes/xml_parsers/EUtilsAssemblyParser.inc';
 
 // Repositories. Handling DB operations.
-require_once 'includes/repositories/EutilsRepositoryFactory.inc';
+require_once 'includes/repositories/EUtilsRepositoryFactory.inc';
 require_once 'includes/repositories/EUtilsRepository.inc';
 require_once 'includes/repositories/EUtilsBioSampleRepository.inc';
 require_once 'includes/repositories/EUtilsBioProjectRepository.inc';
