@@ -27,16 +27,14 @@ function tripal_eutils_import_form($form, &$form_state) {
   $form['db'] = [
     '#type' => 'radios',
     '#title' => t('NCBI Database'),
-    '#description' => t('The database to query.  ONLY BIOSAMPLE FOR NOW'),
+    '#description' => t('The database to query.'),
     '#options' => $db_choices,
   ];
 
   $form['accession'] = [
     '#type' => 'textfield',
     '#title' => t('NCBI Accession Number'),
-    '#description' => t('Valid examples include: 744358 120060 2261463 2953603 4451765
-     
-     examples.  Note: if hte db is in the accession we... ignore the above selected DB?'),
+    '#description' => t('Valid examples: (BioSample 744358 120060 2261463), (Assembly 557018, 91111, 751381), (BioProject 12384, 394253, 66853)')
   ];
 
   $form['callback'] = [
@@ -127,4 +125,6 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
       $accession,
       $create_linked_records,
     ], $user->uid);
+  
+  drupal_set_message('Job to create records have been submitted successfully.')
 }
