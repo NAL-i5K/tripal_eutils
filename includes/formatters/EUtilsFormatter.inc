@@ -17,4 +17,35 @@ abstract class EUtilsFormatter {
    */
   abstract public function format(array $data);
 
+  /**
+   * Fetch the DB object for an NCBI DB.
+   *
+   * @param string $db_name
+   *   The DB name as passed by the parser.
+   *
+   * @return bool
+   *   Returns a database object or FALSE.
+   */
+  public function getNCBIDB(string $db_name) {
+
+    $name = "NCBI {$db_name}";
+
+    $db = db_query(
+      'SELECT * FROM chado.db WHERE UPPER(name) = :name',
+      [':name' => strtoupper($name)]
+    )->fetchObject();
+    if ($db) {
+      return $db;
+    }
+
+    $db = db_query(
+      'SELECT * FROM chado.db WHERE UPPER(name) = :name',
+      [':name' => strtoupper($db_name)]
+    )->fetchObject();
+    if ($db) {
+      return $db;
+    }
+    return FALSE;
+  }
+
 }
