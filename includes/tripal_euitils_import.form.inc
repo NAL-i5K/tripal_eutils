@@ -34,7 +34,7 @@ function tripal_eutils_import_form($form, &$form_state) {
   $form['accession'] = [
     '#type' => 'textfield',
     '#title' => t('NCBI Accession Number'),
-    '#description' => t('Valid examples: (BioSample 744358 120060 2261463), (Assembly 557018, 91111, 751381), (BioProject 12384, 394253, 66853)')
+    '#description' => t('Valid examples: (BioSample 744358 120060 2261463), (Assembly 557018, 91111, 751381), (BioProject 12384, 394253, 66853)'),
   ];
 
   $form['callback'] = [
