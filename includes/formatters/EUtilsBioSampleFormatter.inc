@@ -79,6 +79,10 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
     foreach ($accessions as $record) {
       $accession = $record['value'];
 
+      if (!isset($record['db'])) {
+        continue;
+      }
+
       $db = $this->getNCBIDB($record['db']);
 
       if (!$db) {
