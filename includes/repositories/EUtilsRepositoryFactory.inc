@@ -17,6 +17,23 @@ class EUtilsRepositoryFactory implements EUtilsFactoryInterface {
   ];
 
   /**
+   * Whether to create linked records.
+   *
+   * @var bool
+   */
+  protected $create_linked_records;
+
+  /**
+   * EUtilsRepositoryFactory constructor.
+   *
+   * @param bool $create_linked_records
+   *   Whether to create all linked records.
+   */
+  public function __construct($create_linked_records = TRUE) {
+    $this->create_linked_records = $create_linked_records;
+  }
+
+  /**
    * Get a repository for a given DB.
    *
    * @param string $db
@@ -34,7 +51,7 @@ class EUtilsRepositoryFactory implements EUtilsFactoryInterface {
       throw new Exception('Enable to find a repository for the provided DB: ' . $db);
     }
 
-    return new $this->repositories[$ldb];
+    return new $this->repositories[$ldb]($this->create_linked_records);
   }
 
 }

@@ -6,16 +6,16 @@
  */
 
 /**
- * Implements hook form.
+ * Implements hook_form().
  */
 function tripal_eutils_import_form($form, &$form_state) {
 
   $form['instructions'] = [
-    '#markup' => '<p>Please enter an accession and specify a database.</p>
-<p>Supported databases:  Biosample </p>
-
-<p>Press the <b>Preview Record</b> button to view the retrieved data and metadata.  Pressing <b>Create Chado Record</b> will create the record.</p>
-',
+    '#markup' => t('<p>Please enter an accession and specify a database.</p>
+                  <p>Supported databases:  Biosample </p>
+                  <p>Press the <b>Preview Record</b> button to view the 
+                  retrieved data and metadata.  Pressing <b>Create Chado 
+                  Record</b> will create the record.</p>'),
   ];
 
   $db_choices = [
@@ -26,20 +26,23 @@ function tripal_eutils_import_form($form, &$form_state) {
 
   $form['db'] = [
     '#type' => 'radios',
-    '#title' => "NCBI Database",
-    '#description' => "The database to query.  ONLY BIOSAMPLE FOR NOW",
+    '#title' => t('NCBI Database'),
+    '#description' => t('The database to query.  ONLY BIOSAMPLE FOR NOW'),
     '#options' => $db_choices,
   ];
 
   $form['accession'] = [
     '#type' => 'textfield',
-    '#title' => "NCBI Accession Number",
-    '#description' => "Valid examples include: 744358 120060 2261463 2953603 4451765
+    '#title' => t('NCBI Accession Number'),
+    '#description' => t('Valid examples include: 744358 120060 2261463 2953603 4451765
      
-     examples.  Note: if hte db is in the accession we... ignore the above selected DB?",
+     examples.  Note: if hte db is in the accession we... ignore the above selected DB?'),
   ];
 
-  $form['callback'] = ['#type' => 'button', '#value' => "Preview Record"];
+  $form['callback'] = [
+    '#type' => 'button',
+    '#value' => "Preview Record",
+  ];
 
   if (isset($form_state['values']['parsed'])) {
     $form['data'] = [
@@ -51,15 +54,22 @@ function tripal_eutils_import_form($form, &$form_state) {
 
   }
 
-  $form['options'] = ['#type' => 'fieldset', '#title' => "Options"];
+  $form['options'] = [
+    '#type' => 'fieldset',
+    '#title' => "Options",
+  ];
 
   $form['options']['linked_records'] = [
     '#type' => 'checkbox',
-    '#title' => "Create Linked Records",
-    '#description' => "Each accession links to other genbank databases: you can create those chado records as well. ",
+    '#title' => t('Create Linked Records'),
+    '#description' => t('Each accession links to other genbank databases: 
+                          you can create those chado records as well.'),
   ];
 
-  $form['submit'] = ['#type' => 'submit', '#value' => "Create Chado Record"];
+  $form['submit'] = [
+    '#type' => 'submit',
+    '#value' => "Create Chado Record",
+  ];
 
   return $form;
 }
@@ -81,19 +91,13 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
   if (!$accession) {
     form_set_error('accession', 'please enter an accession');
   }
+
   $connection = new \EUtils();
-
   try {
-
     $connection->setPreview();
-
     $parsed = $connection->get($db, $accession);
-
     $form_state['values']['parsed'] = $parsed;
-
-  }
-  catch (\Exception $e) {
-
+  } catch (\Exception $e) {
     tripal_set_message($e, TRIPAL_ERROR);
   }
 }
@@ -102,10 +106,12 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
  * Implements hook_form_submit().
  */
 function tripal_eutils_import_form_submit($form, &$form_state) {
-  $vals = $form_state['values'];
+  global $user;
 
+  $vals = $form_state['values'];
   $db = $vals['db'];
   $accession = $vals['accession'];
+  $create_linked_records = (bool) $vals['linked_records'];
 
   if (!$db) {
     form_set_error('db', 'please select a valid db');
@@ -115,13 +121,10 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
     form_set_error('accession', 'please enter an accession');
   }
 
-  $connection = new \EUtils();
-
-  try {
-    $connection->get($db, $accession);
-
-  }
-  catch (\Exception $e) {
-    tripal_set_message($e, TRIPAL_ERROR);
-  }
+  tripal_add_job("EUtils: Create Records for {$db}:{$accession}",
+    'tripal_eutils', 'tripal_eutils_create_records', [
+      $db,
+      $accession,
+      $create_linked_records,
+    ], $user->uid);
 }

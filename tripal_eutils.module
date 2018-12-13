@@ -81,3 +81,23 @@ function tripal_eutils_menu() {
 
   return $items;
 }
+
+/**
+ * Runs the EUtils class to create the records for an NCBI entry.
+ *
+ * @param string $db
+ *   The database name (eg, biosample, assembly or bioproject).
+ * @param string $accession
+ *   The numeric accession.
+ * @param bool $create_linked_records
+ *   Whether to create linked records or not.
+ */
+function tripal_eutils_create_records(string $db, string $accession, bool $create_linked_records) {
+  try {
+    $eutils = new EUtils($create_linked_records);
+    $eutils->get($db, $accession);
+  }
+  catch (Exception $exception) {
+    tripal_report_error('tripal_eutils', TRIPAL_ERROR, $exception->getMessage());
+  }
+}

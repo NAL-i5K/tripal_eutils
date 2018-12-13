@@ -51,6 +51,23 @@ abstract class EUtilsRepository {
   protected static $cache = [];
 
   /**
+   * Whether to create linked records.
+   *
+   * @var bool
+   */
+  protected $create_linked_records;
+
+  /**
+   * EUtilsRepository constructor.
+   *
+   * @param bool $create_linked_records
+   *   Whether to create linked records.
+   */
+  public function __construct($create_linked_records = TRUE) {
+    $this->create_linked_records = $create_linked_records;
+  }
+
+  /**
    * Create a new resource.
    *
    * @param array $data
