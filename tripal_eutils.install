@@ -115,9 +115,14 @@ function tripal_eutils_add_dbs() {
       'name' => 'NCBI BioSample',
       'description' => 'The BioSample database contains descriptions of biological source materials used in experimental assays.',
       'urlprefix' => 'http://www.ncbi.nlm.nih.gov/biosample/{accession}',
-      'url' => 'http://www.ncbi.nlm.nih.gov/',
+      'url' => 'http://www.ncbi.nlm.nih.gov/biosample/',
     ]
   );
+  chado_insert_db([
+    'name' => 'NCBI SRA',
+    'url' => 'https://www.ncbi.nlm.nih.gov/sra/',
+    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/sra/{accession}'
+  ]);
 
   chado_insert_db([
     'name' => 'ncbi_properties',
@@ -135,6 +140,8 @@ function tripal_eutils_add_dbs() {
     'name' => 'NCBI Refseq',
     'description' => 'A comprehensive, integrated, non-redundant, well-annotated set of reference sequences including genomic, transcript, and protein.',
     'url' => 'https://www.ncbi.nlm.nih.gov/refseq/',
+    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/refseq/{accession}',
+
   ]);
 
   chado_insert_db([
@@ -147,7 +154,7 @@ function tripal_eutils_add_dbs() {
     'name' => 'NCBI BioProject',
     'description' => "A BioProject is a collection of biological data related to a single initiative, originating from a single organization or from a consortium.",
     'urlprefix' => 'https://www.ncbi.nlm.nih.gov/bioproject/{accession}',
-    'url' => 'https://www.ncbi.nlm.nih.gov/bioproject'
+    'url' => 'https://www.ncbi.nlm.nih.gov/bioproject/'
   ]);
 
 }

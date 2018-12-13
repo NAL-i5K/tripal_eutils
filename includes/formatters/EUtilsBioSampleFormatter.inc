@@ -23,6 +23,23 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
     $header = ['Key', 'Value'];
     $rows = [];
 
+    $rows[] = ['Name', $data['name']];
+    $rows[] = ['Description', $data['description']];
+
+    $table = theme('table', ['rows' => $rows, 'header' => $header]);
+
+    dpm($data);
+
+    $return['base'] = [
+      '#type' => 'fieldset',
+      '#title' => 'BioSample',
+      '#collapsible' => TRUE,
+    ];
+    $return['base']['table'] = [
+      '#markup' => $table,
+      '#type' => 'item',
+    ];
+
     $attributes = $data['attributes'];
 
     $header = ['Key', 'Value'];
@@ -58,15 +75,42 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
 
     $accessions = $data['accessions'];
 
-    $header = ['DB', 'Value'];
+    $header = ['DB', 'Record'];
     $rows = [];
 
     foreach ($accessions as $record) {
+      $accession = $record['value'];
+
+      $db = $this->getNCBIDB($record['db']);
+
+      if (!$db) {
+        continue;
+      }
+      $link = l($accession, $db->url .$accession);
+
       $rows[] = [
         $record['db'] ?? ($record['db_label'] ?? ''),
-        $record['value'],
+        $link,
       ];
     }
+
+    $table = theme('table', ['rows' => $rows, 'header' => $header]);
+
+    $return['xref'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Cross References',
+      '#collapsible' => TRUE,
+    ];
+    $return['xref']['table'] = [
+      '#markup' => $table,
+      '#type' => 'item',
+    ];
+
+    $header = ['Type', 'Accession'];
+    $rows = [];
+
+    $rows[] = ['Organism', $data['organism']['taxonomy_id']];
+    $rows[] = ['Contact', $data['contact']];
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
