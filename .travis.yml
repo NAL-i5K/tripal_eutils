@@ -19,11 +19,13 @@ before_script:
   - GIT_COMMIT_SHA=$TRAVIS_PULL_REQUEST_SHA
 
 script:
-  - docker run -it -d --rm --name tripal -v "$(pwd)":/modules/tripal_eutils statonlab/tripal3
+  - docker run -it -d --rm --name tripal -p 8080:80 -v "$(pwd)":/modules/tripal_eutils statonlab/tripal3
   - sleep 30 # We pause here while postgres and apache boot
   - docker exec -it tripal bash -c "cd /modules/ && git clone https://github.com/statonlab/tripal_manage_analyses.git && drush pm-enable -y tripal_manage_analyses"
   - docker exec -it tripal drush pm-enable -y tripal_eutils
   - docker exec -it tripal yum install -y php-pecl-xdebug.x86_64
+  # Repopulate the cache before running tests
+  - curl localhost:8080
   - docker exec -it tripal bash -c "cd /modules/tripal_eutils && composer install && DRUPAL_ROOT=/var/www/html IS_TRAVIS=TRUE ./vendor/bin/phpunit --coverage-clover ./clover.xml"
 
 after_script:
