@@ -28,7 +28,6 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
-    dpm($data);
 
     $return['base'] = [
       '#type' => 'fieldset',
@@ -86,7 +85,7 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
       if (!$db) {
         continue;
       }
-      $link = l($accession, $db->url .$accession);
+      $link = l($accession, $db->url . $accession);
 
       $rows[] = [
         $record['db'] ?? ($record['db_label'] ?? ''),

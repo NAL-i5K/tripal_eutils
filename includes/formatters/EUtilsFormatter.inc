@@ -48,4 +48,5 @@ abstract class EUtilsFormatter {
     }
     return FALSE;
   }
+  
 }
