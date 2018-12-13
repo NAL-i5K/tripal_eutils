@@ -48,8 +48,10 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    * Create assembly (chado.analysis) record.
    *
    * @param array $data
+   *   The data returned by EUtilsBioProjectParser.
    *
-   * @return object|void
+   * @return object
+   *   The created bioProject.
    */
   public function create($data) {
     $this->validateFields($data);
@@ -117,7 +119,6 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     $this->addFTPLinks($data['attributes']['files']);
 
     return $analysis;
-
   }
 
   /**
@@ -131,27 +132,24 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     foreach ($accessions as $accession => $vals) {
 
       switch ($accession) {
-
         case 'assembly':
           // Add as a dbxref for this record.
           foreach ($vals as $db => $child) {
 
             $this->createAccession(['db' => $db, 'value' => $child]);
           }
-
           break;
 
         case 'taxon_accession':
-
           $organism = $this->getOrganism($vals);
           $linked = $this->linkOrganism($organism);
-
           break;
 
         case 'bioprojects':
-          $projects = $this->getNCBIRecord('bioproject', $vals);
-          $linked = $this->linkProjects($projects);
-
+          if ($this->create_linked_records) {
+            $projects = $this->getNCBIRecord('bioproject', $vals);
+            $linked = $this->linkProjects($projects);
+          }
           break;
 
         case 'biosamples':
@@ -162,7 +160,6 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
         default:
           // Generic dbxref of some sort.
           break;
-
       }
     }
   }
@@ -178,7 +175,6 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    * @throws \Exception
    */
   public function linkOrganism($organism) {
-
     if (!chado_table_exists('organism_analysis')) {
       throw new Exception('The organism_analysis linker table doesnt exist.  No way to link this organism.');
     }
@@ -191,7 +187,6 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       ->fetchField();
 
     if (!$result) {
-
       $result = db_insert('chado.organism_analysis')
         ->fields([
           'organism_id' => $organism->organism_id,
