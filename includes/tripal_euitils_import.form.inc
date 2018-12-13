@@ -125,6 +125,6 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
       $accession,
       $create_linked_records,
     ], $user->uid);
-  
-  drupal_set_message('Job to create records have been submitted successfully.')
+
+  drupal_set_message('Job to create records have been submitted successfully.');
 }
