@@ -23,7 +23,23 @@ class EUtils {
    *
    * @var bool
    */
-  private $preview = FALSE;
+  protected $preview = FALSE;
+
+  /**
+   * Whether to create linked records.
+   *
+   * This is passed down to the repository to handle.
+   *
+   * @var bool
+   */
+  protected $create_linked_records;
+
+  /**
+   *
+   */
+  public function __construct($create_linked_records = TRUE) {
+    $this->create_linked_records = $create_linked_records;
+  }
 
   /**
    * Queries and parses an NCBI record.
@@ -60,13 +76,11 @@ class EUtils {
     // TODO: we miss out on querying linked records.
     // Secondarily linked records wont be reported.
     if ($this->preview) {
-
       $formatter = (new EUtilsFormatterFactory())->get($db);
       return $formatter->format($data);
     }
 
     $repository = (new EUtilsRepositoryFactory())->get($db);
-
     $record = $repository->create($data);
 
     static::$visited[$db][$accession] = $record;

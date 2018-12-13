@@ -11,7 +11,7 @@ abstract class EUtilsFormatter {
    * @param array $data
    *   The data array returned by a parser.
    *
-   * @return void
+   * @return array
    *   This function does not return anything. It directly manipulates the
    *    elements array.
    */

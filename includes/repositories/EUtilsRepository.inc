@@ -6,6 +6,13 @@
 abstract class EUtilsRepository {
 
   /**
+   * Whether a DB:accession was visited during this run time.
+   *
+   * @var array
+   */
+  public static $visited = [];
+
+  /**
    * Chado base table for this repository.
    *
    * For example, project, biosample, analysis.
@@ -49,6 +56,23 @@ abstract class EUtilsRepository {
    * @var array
    */
   protected static $cache = [];
+
+  /**
+   * Whether to create linked records.
+   *
+   * @var bool
+   */
+  protected $create_linked_records;
+
+  /**
+   * EUtilsRepository constructor.
+   *
+   * @param bool $create_linked_records
+   *   Whether to create linked records.
+   */
+  public function __construct($create_linked_records = TRUE) {
+    $this->create_linked_records = $create_linked_records;
+  }
 
   /**
    * Create a new resource.
@@ -433,10 +457,12 @@ abstract class EUtilsRepository {
   }
 
   /**
-   * Fetch NCBI records of the type DB.
+   * Fetch and create NCBI records of the type DB.
    *
    * @param string $db
+   *   The db name.
    * @param array $accessions
+   *   The accessions for this db.
    *
    * @return array
    *   An array of chado base records, as returned by a repository.
@@ -444,12 +470,20 @@ abstract class EUtilsRepository {
    * @throws \Exception
    */
   public function getNCBIRecord($db, array $accessions) {
-
     $return = [];
+
     foreach ($accessions as $accession) {
-      $record = (new EUtils())->get($db, $accession);
-      $return[] = $record;
+      if (isset(static::$visited[$db . ':' . $accession])) {
+        $return[] = static::$visited[$db . ':' . $accession];
+        continue;
+      }
+
+      // Do not loop through linked records recursively. We only want the
+      // the first level of linked records.
+      $record = (new EUtils(FALSE))->get($db, $accession);
+      $return[] = static::$visited[$db . ':' . $accession] = $record;
     }
+
     return $return;
   }
 
