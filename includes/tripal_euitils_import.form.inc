@@ -12,8 +12,6 @@ function tripal_eutils_import_form($form, &$form_state) {
 
   $form['instructions'] = [
     '#markup' => '<p>Please enter an accession and specify a database.</p>
-<p>Supported databases:  Biosample </p>
-
 <p>Press the <b>Preview Record</b> button to view the retrieved data and metadata.  Pressing <b>Create Chado Record</b> will create the record.</p>
 ',
   ];
@@ -27,16 +25,14 @@ function tripal_eutils_import_form($form, &$form_state) {
   $form['db'] = [
     '#type' => 'radios',
     '#title' => "NCBI Database",
-    '#description' => "The database to query.  ONLY BIOSAMPLE FOR NOW",
+    '#description' => "The database to query.",
     '#options' => $db_choices,
   ];
 
   $form['accession'] = [
     '#type' => 'textfield',
     '#title' => "NCBI Accession Number",
-    '#description' => "Valid examples include: 744358 120060 2261463 2953603 4451765
-     
-     examples.  Note: if hte db is in the accession we... ignore the above selected DB?",
+    '#description' => "Valid examples: (BioSample 744358 120060 2261463), (Assembly 557018, 91111, 751381), (BioProject 12384, 394253, 66853)",
   ];
 
   $form['callback'] = ['#type' => 'button', '#value' => "Preview Record"];
@@ -56,7 +52,7 @@ function tripal_eutils_import_form($form, &$form_state) {
   $form['options']['linked_records'] = [
     '#type' => 'checkbox',
     '#title' => "Create Linked Records",
-    '#description' => "Each accession links to other genbank databases: you can create those chado records as well. ",
+    '#description' => "Each accession links to other genbank databases: you can create those Chado records as well.",
   ];
 
   $form['submit'] = ['#type' => 'submit', '#value' => "Create Chado Record"];
@@ -119,9 +115,11 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
 
   try {
     $connection->get($db, $accession);
+    tripal_set_message('Record Imported!', TRIPAL_NOTICE);
 
   }
   catch (\Exception $e) {
     tripal_set_message($e, TRIPAL_ERROR);
   }
+
 }
