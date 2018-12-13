@@ -5,7 +5,7 @@
  */
 class EutilsAssemblyFormatter extends EUtilsFormatter {
 
-  private  $elements = [];
+  private $elements = [];
 
   /**
    * Add the formatted data into a table.
@@ -96,24 +96,36 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
     $rows = [];
     $header = ['Accession Type', 'Value'];
 
+    $db = NULL;
+    dpm($accessions);
     foreach ($accessions as $accession_key => $value) {
 
       if ($accession_key == 'assembly') {
         // This is the record itself, doesnt go here.
         continue;
       }
-      if ($accession_key == 'Taxon_accession') {
+      if ($accession_key == 'taxon_accession') {
+        $db = $this->getNCBIDB('NCBITaxon');
+        if ($db) {
+          $value = l($value, $db->url . $value);
+        }
         $rows[] = ['Organism', $value];
+
         continue;
       }
-      $db = $this->getNCBIDB($accession_key);
+      dpm($accession_key);
+      if ($accession_key == 'bioprojects') {
+        $db = $this->getNCBIDB('BioProject');
+      }
+      if ($accession_key == 'biosamples') {
+        $db = $this->getNCBIDB('BioSample');
+      }
 
       if (is_string($value)) {
 
         if ($db) {
           $value = l($value, $db->url . $value);
         }
-
 
         $rows[] = [ucfirst($accession_key), $value];
         continue;
@@ -122,7 +134,7 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
       foreach ($value as $item) {
 
         if ($db) {
-          $value = l($value, $db->url . $value);
+          $item = l($item, $db->url . $item);
         }
         $rows[] = [ucfirst($accession_key), $item];
       }
