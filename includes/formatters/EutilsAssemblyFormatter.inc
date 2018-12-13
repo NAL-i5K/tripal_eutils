@@ -106,14 +106,24 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
         $rows[] = ['Organism', $value];
         continue;
       }
+      $db = $this->getNCBIDB($accession_key);
 
       if (is_string($value)) {
+
+        if ($db) {
+          $value = l($value, $db->url . $value);
+        }
+
 
         $rows[] = [ucfirst($accession_key), $value];
         continue;
       }
 
       foreach ($value as $item) {
+
+        if ($db) {
+          $value = l($value, $db->url . $value);
+        }
         $rows[] = [ucfirst($accession_key), $item];
       }
     }
