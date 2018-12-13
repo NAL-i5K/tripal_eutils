@@ -291,7 +291,7 @@ abstract class EUtilsRepository {
    * @throws \Exception
    */
   public function createContact($contact_name) {
-    if (static::$cache['contacts'][$contact_name]) {
+    if (isset(static::$cache['contacts']) && static::$cache['contacts'][$contact_name]) {
       $contact = static::$cache['contacts'][$contact_name];
     }
     else {
