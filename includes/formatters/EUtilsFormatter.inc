@@ -17,7 +17,6 @@ abstract class EUtilsFormatter {
    */
   abstract public function format(array $data);
 
-
   /**
    * Fetch the DB object for an NCBI DB.
    *
@@ -48,5 +47,5 @@ abstract class EUtilsFormatter {
     }
     return FALSE;
   }
-  
+
 }

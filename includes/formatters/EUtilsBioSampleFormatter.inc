@@ -28,7 +28,6 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
-
     $return['base'] = [
       '#type' => 'fieldset',
       '#title' => 'BioSample',
