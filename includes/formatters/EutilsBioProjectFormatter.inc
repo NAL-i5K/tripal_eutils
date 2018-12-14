@@ -114,7 +114,7 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
 
       $db = $this->getNCBIDB($type);
 
-      if ($db){
+      if ($db) {
         $value = l($value, $db->url . $value);
       }
 

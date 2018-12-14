@@ -97,7 +97,6 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
     $header = ['Accession Type', 'Value'];
 
     $db = NULL;
-    dpm($accessions);
     foreach ($accessions as $accession_key => $value) {
 
       if ($accession_key == 'assembly') {
@@ -113,7 +112,6 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
 
         continue;
       }
-      dpm($accession_key);
       if ($accession_key == 'bioprojects') {
         $db = $this->getNCBIDB('BioProject');
       }
