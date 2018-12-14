@@ -1,2 +1,17 @@
 XML, Chado Base Table, Chado Column
-tag,  analysis, program
+AssemblyName, analysis, name
+AssemblyDescription, analysis, description
+tag, analysis, program
+tag,  analysis, programversion
+tag, analysis, algorithm
+tag, analysis, sourcename
+tag, analysis, sourceversion
+tag, analysis, sourceuri
+SubmissionDate, analysis, timeexecuted
+Stats, analysisprop, type/value
+FtpSites, analysisprop, type/value
+SpeciesTaxid, organism, chado.analysis_organism
+RsUid, dbxref, chado.analysis_dbxref
+GbUid, dbxref, chado.analysis_dbxref
+WGS RS_BioProjects/GB_BioProjects, project, (Chado table doesnt exist yet)
+BioSampleID, biomaterial, (Chado table doesnt exist yet)
