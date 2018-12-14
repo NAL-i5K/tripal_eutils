@@ -11,6 +11,8 @@ Assembly
    :header-rows: 1
 
 
+Note that the program and program version are not found directly in the XML.  Instead they are extracted from the FTP attribute.
+
 Is an assembly a Chado analysis or project?
 -------------------------------------------
 
