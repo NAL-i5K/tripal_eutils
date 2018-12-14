@@ -111,14 +111,8 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
       if ($type == 'BioSample') {
         continue;
       }
-
-      $db = $this->getNCBIDB($type);
-
-      if ($db) {
-        $value = l($value, $db->url . $value);
-      }
-
-      $rows[] = [$type, $value];
+      $link = $this->getDbLink($value, $type);
+      $rows[] = [$type, $link];
     }
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);

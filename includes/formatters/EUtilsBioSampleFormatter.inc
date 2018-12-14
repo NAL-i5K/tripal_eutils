@@ -77,18 +77,11 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
     $rows = [];
 
     foreach ($accessions as $record) {
+      if (!isset($record['db']) || !isset($record['value'])) {
+        continue;
+      }
       $accession = $record['value'];
-
-      if (!isset($record['db'])) {
-        continue;
-      }
-
-      $db = $this->getNCBIDB($record['db']);
-
-      if (!$db) {
-        continue;
-      }
-      $link = l($accession, $db->url . $accession);
+      $link = $this->getDbLink($accession, $record['db']);
 
       $rows[] = [
         $record['db'] ?? ($record['db_label'] ?? ''),

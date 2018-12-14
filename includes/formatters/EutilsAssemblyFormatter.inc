@@ -98,43 +98,34 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
 
     $db = NULL;
     foreach ($accessions as $accession_key => $value) {
+      $db_name = '';
 
       if ($accession_key == 'assembly') {
         // This is the record itself, doesnt go here.
         continue;
       }
       if ($accession_key == 'taxon_accession') {
-        $db = $this->getNCBIDB('NCBITaxon');
-        if ($db) {
-          $value = l($value, $db->url . $value);
-        }
-        $rows[] = ['Organism', $value];
 
+        $link = $this->getDbLink($value, 'NCBITaxon');
+        $rows[] = ['Organism', $link];
         continue;
       }
       if ($accession_key == 'bioprojects') {
-        $db = $this->getNCBIDB('BioProject');
+        $db_name = 'BioProject';
       }
       if ($accession_key == 'biosamples') {
-        $db = $this->getNCBIDB('BioSample');
+        $db_name = 'BioSample';
       }
 
       if (is_string($value)) {
-
-        if ($db) {
-          $value = l($value, $db->url . $value);
-        }
-
+        $value = $this->getDbLink($value, $db_name);
         $rows[] = [ucfirst($accession_key), $value];
         continue;
       }
 
       foreach ($value as $item) {
-
-        if ($db) {
-          $item = l($item, $db->url . $item);
-        }
-        $rows[] = [ucfirst($accession_key), $item];
+        $link = $this->getDbLink($item, $db_name);
+        $rows[] = [ucfirst($accession_key), $link];
       }
     }
 
