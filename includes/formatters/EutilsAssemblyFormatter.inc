@@ -5,7 +5,7 @@
  */
 class EutilsAssemblyFormatter extends EUtilsFormatter {
 
-  private  $elements = [];
+  private $elements = [];
 
   /**
    * Add the formatted data into a table.
@@ -96,25 +96,36 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
     $rows = [];
     $header = ['Accession Type', 'Value'];
 
+    $db = NULL;
     foreach ($accessions as $accession_key => $value) {
+      $db_name = '';
 
       if ($accession_key == 'assembly') {
         // This is the record itself, doesnt go here.
         continue;
       }
-      if ($accession_key == 'Taxon_accession') {
-        $rows[] = ['Organism', $value];
+      if ($accession_key == 'taxon_accession') {
+
+        $link = $this->getDbLink($value, 'NCBITaxon');
+        $rows[] = ['Organism', $link];
         continue;
+      }
+      if ($accession_key == 'bioprojects') {
+        $db_name = 'BioProject';
+      }
+      if ($accession_key == 'biosamples') {
+        $db_name = 'BioSample';
       }
 
       if (is_string($value)) {
-
+        $value = $this->getDbLink($value, $db_name);
         $rows[] = [ucfirst($accession_key), $value];
         continue;
       }
 
       foreach ($value as $item) {
-        $rows[] = [ucfirst($accession_key), $item];
+        $link = $this->getDbLink($item, $db_name);
+        $rows[] = [ucfirst($accession_key), $link];
       }
     }
 

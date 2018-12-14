@@ -48,4 +48,30 @@ abstract class EUtilsFormatter {
     return FALSE;
   }
 
+  /**
+   * Generates a URL link given a db string and accession.
+   *
+   * @param string $accession
+   *   Accession string.
+   * @param string $db
+   *   Database lookup string.
+   *
+   * @return mixed
+   *   returns either the accession string, or the accession with a link to the
+   *   xref.
+   */
+  public function getDbLink(string $accession, string $db) {
+
+    $db = $this->getNCBIDB($db);
+
+    if (!$db) {
+      return $accession;
+    }
+    $fake_dbxref = new stdClass();
+    $fake_dbxref->accession = $accession;
+    $fake_dbxref->db_id = $db;
+    $link = l($accession, chado_get_dbxref_url($fake_dbxref));
+    return $link;
+  }
+
 }

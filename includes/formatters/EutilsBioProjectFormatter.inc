@@ -111,7 +111,8 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
       if ($type == 'BioSample') {
         continue;
       }
-      $rows[] = [$type, $value];
+      $link = $this->getDbLink($value, $type);
+      $rows[] = [$type, $link];
     }
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
