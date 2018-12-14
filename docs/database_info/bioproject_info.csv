@@ -1,2 +1,4 @@
 XML , Chado Base Table, Chado Column
-tag, project, name
+ProjectDescr->Name and ProjectDescr->Title, project, name
+ProjectDescr->Description, project, description
+ProjectID, dbxref, project_dbxref

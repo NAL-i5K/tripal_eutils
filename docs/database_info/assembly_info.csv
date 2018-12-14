@@ -1,12 +1,12 @@
 XML, Chado Base Table, Chado Column
 AssemblyName, analysis, name
 AssemblyDescription, analysis, description
-tag, analysis, program
-tag,  analysis, programversion
-tag, analysis, algorithm
-tag, analysis, sourcename
-tag, analysis, sourceversion
-tag, analysis, sourceuri
+``# Assembly method:`` (from FTP), analysis, program
+``# Assembly method:`` (from FTP),  analysis, programversion
+N/A, analysis, algorithm
+N/A, analysis, sourcename
+N/A, analysis, sourceversion
+N/A, analysis, sourceuri
 SubmissionDate, analysis, timeexecuted
 Stats, analysisprop, type/value
 FtpSites, analysisprop, type/value
