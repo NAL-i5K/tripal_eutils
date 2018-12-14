@@ -48,7 +48,6 @@ abstract class EUtilsFormatter {
     return FALSE;
   }
 
-
   /**
    * Generates a URL link given a db string and accession.
    *
@@ -68,11 +67,9 @@ abstract class EUtilsFormatter {
     if (!$db) {
       return $accession;
     }
-
     $fake_dbxref = new stdClass();
     $fake_dbxref->accession = $accession;
     $fake_dbxref->db_id = $db;
-
     $link = l($accession, chado_get_dbxref_url($fake_dbxref));
     return $link;
   }
