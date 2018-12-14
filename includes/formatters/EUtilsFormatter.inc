@@ -69,7 +69,7 @@ abstract class EUtilsFormatter {
       return $accession;
     }
 
-    $fake_dbxref = new Object();
+    $fake_dbxref = new stdClass();
     $fake_dbxref->accession = $accession;
     $fake_dbxref->db_id = $db;
 
