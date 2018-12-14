@@ -4,7 +4,7 @@ AssemblyDescription, analysis, description
 ``# Assembly method:`` (from FTP), analysis, program
 ``# Assembly method:`` (from FTP),  analysis, programversion
 N/A, analysis, algorithm
-N/A, analysis, sourcename
+BioSampleAccn, analysis, sourcename
 N/A, analysis, sourceversion
 N/A, analysis, sourceuri
 SubmissionDate, analysis, timeexecuted

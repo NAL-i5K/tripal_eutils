@@ -42,6 +42,10 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           $info['ignored'][] = $child->getName();
           break;
 
+        case 'BioSampleAccn':
+          $info['sourcename'] = (string) $child;
+          break;
+
         // Linked chado records.
         case 'SpeciesTaxid':
           // NOTE: Taxid also exists, but in all examples they are equal.

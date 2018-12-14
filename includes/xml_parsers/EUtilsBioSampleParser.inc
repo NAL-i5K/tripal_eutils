@@ -31,7 +31,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
     // Get properties.
     $attributes = $this->extractAttributes($xml->BioSample->Attributes);
     // Check and extract owner given db_label.
-    $this->attachDBLabel($attributes, $accessions);
+    $this->attachDbLabel($attributes, $accessions);
 
     return [
       'name' => $primary_accession,
@@ -45,13 +45,12 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
   }
 
   /**
-   * Extract the db_label from accessions and add it to attributes if db_label
-   * is Sample name.
+   * Extract the db_label from accessions.
    *
    * @param array $attributes
    * @param array $accessions
    */
-  protected function attachDBLabel(&$attributes, $accessions) {
+  protected function attachDbLabel(array &$attributes, array $accessions) {
     $accessions = array_filter(
       $accessions, function ($accession) {
         return isset($accession['db_label'])
@@ -74,9 +73,10 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
    *
    * @param \SimpleXMLElement $xml
    *
-   * @return array The organism data [ taxonomy_name, taxonomy_id, value ]
+   * @return array
+   *   The organism data [ taxonomy_name, taxonomy_id, value ]
    */
-  protected function extractOrganism($xml) {
+  protected function extractOrganism(\SimpleXMLElement $xml) {
     if (!isset($xml->Description->Organism)) {
       return NULL;
     }
@@ -93,7 +93,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
    *
    * @return string|NUll
    */
-  protected function extractContact($xml) {
+  protected function extractContact(\SimpleXMLElement $xml) {
     return (string) $xml->Owner->Name ?? NULL;
   }
 
@@ -103,8 +103,9 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
    * @param \SimpleXMLElement $comment
    *
    * @return array
+   *   Array of strings.
    */
-  protected function extractParagraphs(SimpleXMLElement $comment) {
+  protected function extractParagraphs(\SimpleXMLElement $comment) {
     $paragraphs = [];
 
     foreach ($comment->children() as $paragraph) {
@@ -120,6 +121,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
    * @param \SimpleXMLElement $elements
    *
    * @return array
+   *   Attributes returned as key => value.
    */
   protected function extractAttributes(SimpleXMLElement $elements) {
     $data = [];

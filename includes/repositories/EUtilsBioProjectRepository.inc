@@ -28,22 +28,21 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
   protected static $cache = [
     'db' => [],
     'accessions' => [],
-    'projects',
+    'projects' => [],
   ];
 
   /**
-   * Takes data from the EUtilsBioProjectParser and creates the chado records
-   * needed including project, accessions and props.
+   * Creates a project and linked records.
    *
    * @param array $data
+   *   Data from bioproject parser.
    *
    * @return object
+   *   chado project record.
    *
    * @throws \Exception
-   *
-   * @see \EUtilsBioProjectParser::parse() to get the data array needed.
    */
-  public function create($data) {
+  public function create(array $data) {
     // Throw an exception if a required field is missing.
     $this->validateFields($data);
 

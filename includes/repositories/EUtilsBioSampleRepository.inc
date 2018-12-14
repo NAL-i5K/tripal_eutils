@@ -33,7 +33,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
    * @throws \Exception
    * @see \EUtilsBioSampleParser::parse() to get the data array needed.
    */
-  public function create($data) {
+  public function create(array $data) {
     // Throw an exception if a required field is missing
     $this->validateFields($data);
 
