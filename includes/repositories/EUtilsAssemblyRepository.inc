@@ -79,8 +79,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     }
     $sourcename = $data['sourcename'] ?? NULL;
     // TODO: missing:
-    // algorithm, sourceversion, timeexecuted.
-    // imperfect: sourcename and sourceuri point to the assembly report, not the source.
+    // algorithm, sourceuri, sourceversion, timeexecuted.
     $this->base_fields = [
       'name' => $name,
       'description' => $description,
