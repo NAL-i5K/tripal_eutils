@@ -1,0 +1,5 @@
+NCBI Database, Chado Base Table
+BioSample, biomaterial
+BioProject, project
+Assembly, analysis (but see Chado repo for discussion on this)
+NCBI Taxon, organism

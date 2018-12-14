@@ -1,0 +1,4 @@
+XML Tag, XML Attribute, Chado Base Table, Chado Column
+tag, attribute, biomaterial, name
+tag, attribute, biomaterial, description
+tag, attribute, biomaterial, taxon_id

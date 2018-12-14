@@ -6,6 +6,26 @@ Unfortunately it isnt always clear how NCBI data should map into Chado.
 This section describes what to expect when running the EUtils importer.
 
 
+NCBI to Chado
+-------------
+
+.. csv-table:: NCBI to Chado mappings
+   :file: ./mapping_table.csv
+   :widths: 30, 70
+   :header-rows: 1
+
+Database specific mappings
+---------------------------
+
+
+.. toctree::
+  :glob:
+  :maxdepth: 2
+  :caption: NCBI database descriptions:
+
+  database_info/*
+
+
 
 Linked content
 --------------
