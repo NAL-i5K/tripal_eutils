@@ -38,11 +38,12 @@ class EutilsAssemblyFormatter extends EUtilsFormatter {
   private function formatBaseRecord(array $data) {
     $name = $data['name'];
     $description = $data['description'];
-    $program = $data['attributes']['ftp_attributes']['# Assembly method:'];
+    $program = $data['attributes']['ftp_attributes']['# Assembly method:'] ?? "Not set";
+    $sourcename = $data['sourcename'];
     $xrefs = $data['accessions']['assembly'];
     $xref_string = implode(', ', $xrefs);
-    $header = ['Name', 'Description', 'Program', 'Accessions'];
-    $rows = [[$name, $description, $program, $xref_string]];
+    $header = ['Name', 'Description', 'Source Name', 'Program', 'Accessions'];
+    $rows = [[$name, $description, $sourcename, $program, $xref_string]];
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
     $this->elements['base_record'] = [

@@ -202,6 +202,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
         $path . "/examples/assembly/524058_assembly.xml",
         [
           'name' => '',
+          'sourcename' => 'SAMN00744358',
           'accessions' => [
             'assembly' => [
               'Refseq' => '817508',

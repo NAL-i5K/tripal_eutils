@@ -78,19 +78,22 @@ abstract class EUtilsRepository {
    * Create a new resource.
    *
    * @param array $data
+   *   Formatted data returned from the parser.
    *
    * @return object
+   *   The chado base record object.
    */
-  abstract public function create($data);
+  abstract public function create(array $data);
 
   /**
    * Determine whether required fields are provided.
    *
    * @param array $data
+   *   Formatted data from parser.
    *
    * @throws \Exception
    */
-  public function validateFields($data) {
+  public function validateFields(array $data) {
     foreach ($this->required_fields as $field) {
       if (!isset($data[$field])) {
         $class_name = get_class($this);

@@ -17,6 +17,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     'program' => '',
     'programversion' => '',
     'timeexecuted' => '',
+    'sourceuri' => NULL,
   ];
 
   /**
@@ -52,8 +53,10 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    *
    * @return object
    *   The created bioProject.
+   *
+   * @throws \Exception
    */
-  public function create($data) {
+  public function create(array $data) {
     $this->validateFields($data);
     $name = $data['name'];
 
@@ -74,14 +77,16 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     if ($time_executed && substr_count($time_executed, ':') === 1) {
       $time_executed = $time_executed . ':00';
     }
-
+    $sourcename = $data['sourcename'] ?? NULL;
     // TODO: missing:
-    // algorithm, sourcename, sourceversion, sourceuri, timeexecuted.
+    // algorithm, sourceversion, timeexecuted.
+    // imperfect: sourcename and sourceuri point to the assembly report, not the source.
     $this->base_fields = [
       'name' => $name,
       'description' => $description,
       'program' => $program,
       'programversion' => $programvesion,
+      'sourcename' => $sourcename,
       'timeexecuted' => $time_executed ?? date_now(),
     ];
 
@@ -126,6 +131,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    *
    * @param array $accessions
    *   Array of other records indexed type => value.
+   *
+   * @throws \Exception
    */
   public function createLinkedRecords(array $accessions) {
 
