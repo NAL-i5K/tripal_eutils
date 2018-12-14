@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eSummaryResult PUBLIC "-//NLM//DTD esummary assembly 20180216//EN" "https://eutils.ncbi.nlm.nih.gov/eutils/dtd/20180216/esummary_assembly.dtd">
+<eSummaryResult>
+<DocumentSummarySet status="OK">
+<DbBuild>Build181125-1910.1</DbBuild>
+
+<DocumentSummary uid="524058">
+	<RsUid>817508</RsUid>
+	<GbUid>524058</GbUid>
+	<AssemblyAccession>GCF_000298355.1</AssemblyAccession>
+	<LastMajorReleaseAccession>GCF_000298355.1</LastMajorReleaseAccession>
+	<LatestAccession/>
+	<ChainId>298355</ChainId>
+	<AssemblyName>BosGru_v2.0</AssemblyName>
+	<UCSCName/>
+	<EnsemblName/>
+	<Taxid>72004</Taxid>
+	<Organism>Bos mutus (wild yak)</Organism>
+	<SpeciesTaxid>72004</SpeciesTaxid>
+	<SpeciesName>Bos mutus</SpeciesName>
+	<AssemblyType>haploid</AssemblyType>
+	<AssemblyClass>haploid</AssemblyClass>
+	<AssemblyStatus>Scaffold</AssemblyStatus>
+	<WGS>AGSK01</WGS>
+	<GB_BioProjects>
+		<Bioproj>
+			<BioprojectAccn>PRJNA74739</BioprojectAccn>
+			<BioprojectId>74739</BioprojectId>
+		</Bioproj>
+	</GB_BioProjects>
+	<GB_Projects>
+	</GB_Projects>
+	<RS_BioProjects>
+		<Bioproj>
+			<BioprojectAccn>PRJNA221623</BioprojectAccn>
+			<BioprojectId>221623</BioprojectId>
+		</Bioproj>
+	</RS_BioProjects>
+	<RS_Projects>
+	</RS_Projects>
+	<BioSampleAccn>SAMN00744358</BioSampleAccn>
+	<BioSampleId>744358</BioSampleId>
+	<Biosource>
+		<InfraspeciesList>
+		</InfraspeciesList>
+		<Sex>female</Sex>
+		<Isolate>yakQH1</Isolate>
+	</Biosource>
+	<Coverage>130</Coverage>
+	<PartialGenomeRepresentation>false</PartialGenomeRepresentation>
+	<Primary>817038</Primary>
+	<AssemblyDescription/>
+	<ReleaseLevel>Major</ReleaseLevel>
+	<ReleaseType>Major</ReleaseType>
+	<AsmReleaseDate_GenBank>2013/01/09 00:00</AsmReleaseDate_GenBank>
+	<AsmReleaseDate_RefSeq>2013/10/21 00:00</AsmReleaseDate_RefSeq>
+	<SeqReleaseDate>2013/01/09 00:00</SeqReleaseDate>
+	<AsmUpdateDate>2013/11/01 00:00</AsmUpdateDate>
+	<SubmissionDate>2013/01/09 00:00</SubmissionDate>
+	<LastUpdateDate>2013/11/01 00:00</LastUpdateDate>
+	<SubmitterOrganization>BGI-shenzhen</SubmitterOrganization>
+	<RefSeq_category>representative genome</RefSeq_category>
+	<AnomalousList>
+	</AnomalousList>
+	<ExclFromRefSeq>
+	</ExclFromRefSeq>
+	<PropertyList>
+		<string>full-genome-representation</string>
+		<string>genbank_has_annotation</string>
+		<string>has-mitochondrion</string>
+		<string>has_annotation</string>
+		<string>latest</string>
+		<string>latest_genbank</string>
+		<string>latest_refseq</string>
+		<string>refseq_has_annotation</string>
+		<string>representative</string>
+		<string>wgs</string>
+	</PropertyList>
+	<FromType/>
+	<Synonym>
+		<Genbank>GCA_000298355.1</Genbank>
+		<RefSeq>GCF_000298355.1</RefSeq>
+		<Similarity>different</Similarity>
+	</Synonym>
+	<ContigN50>22822</ContigN50>
+	<ScaffoldN50>1407960</ScaffoldN50>
+	<FtpPath_GenBank>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/298/355/GCA_000298355.1_BosGru_v2.0</FtpPath_GenBank>
+	<FtpPath_RefSeq>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/298/355/GCF_000298355.1_BosGru_v2.0</FtpPath_RefSeq>
+	<FtpPath_Assembly_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/298/355/GCF_000298355.1_BosGru_v2.0/GCF_000298355.1_BosGru_v2.0_assembly_report.txt</FtpPath_Assembly_rpt>
+	<FtpPath_Stats_rpt>ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/298/355/GCF_000298355.1_BosGru_v2.0/GCF_000298355.1_BosGru_v2.0_assembly_stats.txt</FtpPath_Stats_rpt>
+	<FtpPath_Regions_rpt/>
+	<SortOrder>2C50002983559898</SortOrder>
+	<Meta><![CDATA[ <Stats> <Stat category="alt_loci_count" sequence_tag="all">0</Stat> <Stat category="chromosome_count" sequence_tag="all">0</Stat> <Stat category="contig_count" sequence_tag="all">233198</Stat> <Stat category="contig_l50" sequence_tag="all">33281</Stat> <Stat category="contig_n50" sequence_tag="all">22822</Stat> <Stat category="non_chromosome_replicon_count" sequence_tag="all">1</Stat> <Stat category="replicon_count" sequence_tag="all">1</Stat> <Stat category="scaffold_count" sequence_tag="all">41192</Stat> <Stat category="scaffold_count" sequence_tag="placed">1</Stat> <Stat category="scaffold_count" sequence_tag="unlocalized">0</Stat> <Stat category="scaffold_count" sequence_tag="unplaced">41191</Stat> <Stat category="scaffold_l50" sequence_tag="all">568</Stat> <Stat category="scaffold_n50" sequence_tag="all">1407960</Stat> <Stat category="total_length" sequence_tag="all">2645161911</Stat> <Stat category="ungapped_length" sequence_tag="all">2525007273</Stat> </Stats> <FtpSites>   <FtpPath type="Assembly_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/298/355/GCF_000298355.1_BosGru_v2.0/GCF_000298355.1_BosGru_v2.0_assembly_report.txt</FtpPath>   <FtpPath type="GenBank">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/298/355/GCA_000298355.1_BosGru_v2.0</FtpPath>   <FtpPath type="RefSeq">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/298/355/GCF_000298355.1_BosGru_v2.0</FtpPath>   <FtpPath type="Stats_rpt">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/298/355/GCF_000298355.1_BosGru_v2.0/GCF_000298355.1_BosGru_v2.0_assembly_stats.txt</FtpPath> </FtpSites> <assembly-level>2</assembly-level> <assembly-status>Scaffold</assembly-status> <representative-status>representative genome</representative-status> <submitter-organization>BGI-shenzhen</submitter-organization>    ]]></Meta>
+</DocumentSummary>
+
+</DocumentSummarySet>
+</eSummaryResult>
