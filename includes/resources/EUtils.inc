@@ -3,6 +3,7 @@
 /**
  * Factory class which returns the appropriate NCBI resource provider.
  *
+ * @group resources
  * @Class EUtils
  */
 class EUtils {

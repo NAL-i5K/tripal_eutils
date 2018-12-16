@@ -1,7 +1,9 @@
 <?php
 
 /**
+ * Queries the NCBI ESummary API.
  *
+ * @group resources
  */
 class ESummary extends EUtilsRequest {
 

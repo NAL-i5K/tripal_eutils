@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class EFTP.
- *
  * Right now responsible for getting a single value from the Assembly.
+ *
+ * @group resources
  */
 class EFTP {
 
@@ -38,7 +38,7 @@ class EFTP {
    *
    * @return array
    */
-  public function getField($field) {
+  public function getField(string $field) {
     $results = [];
 
     $file = $this->file;

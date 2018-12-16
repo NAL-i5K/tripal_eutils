@@ -1,10 +1,9 @@
 <?php
 
 /**
- * @Class EUtilsResource.
+ * Interacts with a response from the EUtils API.
  *
- * Provides a set of methods to interact with a response
- * from the EUtils API.
+ * @group resources
  */
 class EUtilsResource {
 
@@ -40,6 +39,7 @@ class EUtilsResource {
    * Get the response status code.
    *
    * @return int
+   *   Status code.
    */
   public function status() {
     return (int) $this->response->code;
@@ -49,6 +49,7 @@ class EUtilsResource {
    * Check if the request is successful.
    *
    * @return bool
+   *   TRUE for success.
    */
   public function isSuccessful() {
     $status = $this->status();
@@ -59,6 +60,7 @@ class EUtilsResource {
    * Get raw body response.
    *
    * @return string
+   *   The raw body response string.
    */
   public function originalBody() {
     return $this->response->data;
@@ -68,6 +70,7 @@ class EUtilsResource {
    * Parse response into XML.
    *
    * @return \SimpleXMLElement
+   *   The response in XML.
    */
   public function xml() {
     return simplexml_load_string($this->originalBody());
@@ -77,6 +80,7 @@ class EUtilsResource {
    * Parse response into DOMDocument.
    *
    * @return \DOMDocument
+   *   The response as  DOMDocument.
    */
   public function dom() {
     $dom = new DOMDocument();
@@ -88,6 +92,7 @@ class EUtilsResource {
    * Get the response object.
    *
    * @return object
+   *   The original response object.
    */
   public function originalResponseObject() {
     return $this->response;
