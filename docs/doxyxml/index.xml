@@ -72,8 +72,6 @@
     <member refid="da/d47/classEUtilsBioProjectRepository_1ad8fb0453e78b8ca3a488cb4b01374c41" kind="function"><name>createProps</name></member>
     <member refid="da/d47/classEUtilsBioProjectRepository_1a08c845a678eb22f7fd50402c9d542ba9" kind="function"><name>getProject</name></member>
   </compound>
-  <compound refid="d0/dad/classEutilsBioProjectRepository" kind="class"><name>EutilsBioProjectRepository</name>
-  </compound>
   <compound refid="db/d3a/classEUtilsBioSampleFormatter" kind="class"><name>EUtilsBioSampleFormatter</name>
     <member refid="db/d3a/classEUtilsBioSampleFormatter_1a9355b3daa235b96e492fcf159d68627b" kind="function"><name>format</name></member>
   </compound>
@@ -259,6 +257,12 @@
     <member refid="da/d40/group__resources_1gaf2a0036cf3f6dc93a5d711a11e976f89" kind="function"><name>get</name></member>
     <member refid="da/d40/group__resources_1gadfeb8995f371d5140dc610542c319d45" kind="function"><name>getResourceProvider</name></member>
     <member refid="da/d40/group__resources_1gaf4c333e128a32d5dec6c6c3f02f82029" kind="function"><name>setPreview</name></member>
+  </compound>
+  <compound refid="d0/d97/group__formatters" kind="group"><name>formatters</name>
+  </compound>
+  <compound refid="db/dfd/group__parsers" kind="group"><name>parsers</name>
+  </compound>
+  <compound refid="d3/d45/group__repositories" kind="group"><name>repositories</name>
   </compound>
   <compound refid="dd/da0/todo" kind="page"><name>todo</name>
   </compound>

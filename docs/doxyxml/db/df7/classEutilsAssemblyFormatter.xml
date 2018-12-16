@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="8" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="10" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="10" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -45,7 +45,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="19" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="19" bodyend="30"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="21" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="21" bodyend="32"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -73,7 +73,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="66" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="66" bodyend="87"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="68" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="68" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="db/df7/classEutilsAssemblyFormatter_1aa1ee18611e99b8fe5212a8527032caf1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -99,7 +99,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="38" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="38" bodyend="58"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="40" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="40" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="db/df7/classEutilsAssemblyFormatter_1aafca9d004dc206f0d2013c7c26a45d85" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -125,7 +125,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="95" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="95" bodyend="144"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="97" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="97" bodyend="146"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -156,7 +156,7 @@
         <link refid="da/dcc/classEUtilsFormatter"/>
       </node>
     </collaborationgraph>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="6" bodyend="146"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="8" bodyend="148"/>
     <listofallmembers>
       <member refid="db/df7/classEutilsAssemblyFormatter_1ad2c0b4ee593bbe2d2349b300ed4d6c21" prot="private" virt="non-virtual"><scope>EutilsAssemblyFormatter</scope><name>$elements</name></member>
       <member refid="db/df7/classEutilsAssemblyFormatter_1afd400e9a0d4b2dcb0dff6fff827d1afc" prot="public" virt="non-virtual"><scope>EutilsAssemblyFormatter</scope><name>format</name></member>

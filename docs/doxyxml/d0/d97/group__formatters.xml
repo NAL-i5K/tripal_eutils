@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d0/d97/group__formatters" kind="group">
+    <compoundname>formatters</compoundname>
+    <title>Formatters</title>
+    <innerclass refid="db/df7/classEutilsAssemblyFormatter" prot="public">EutilsAssemblyFormatter</innerclass>
+    <innerclass refid="d0/ded/classEutilsBioProjectFormatter" prot="public">EutilsBioProjectFormatter</innerclass>
+    <innerclass refid="db/d3a/classEUtilsBioSampleFormatter" prot="public">EUtilsBioSampleFormatter</innerclass>
+    <innerclass refid="d2/d5f/classEUtilsFormatterFactory" prot="public">EUtilsFormatterFactory</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="da/dcc/classEUtilsFormatter" kindref="compound">EUtilsFormatter</ref> Class. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

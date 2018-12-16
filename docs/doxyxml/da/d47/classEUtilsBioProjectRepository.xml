@@ -213,7 +213,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>Takes parsed bioproject XMLs and creates chado.projects.</para>    </detaileddescription>
     <inheritancegraph>
       <node id="39">
         <label>EUtilsRepository</label>

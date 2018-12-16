@@ -2,6 +2,8 @@
 
 /**
  * Class EUtilsRepositoryFactory.
+ *
+ * @ingroup repositories
  */
 class EUtilsRepositoryFactory implements EUtilsFactoryInterface {
 

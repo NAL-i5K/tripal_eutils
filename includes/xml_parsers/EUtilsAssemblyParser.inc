@@ -2,6 +2,8 @@
 
 /**
  * Parser for NCBI Assembly https://www.ncbi.nlm.nih.gov/assembly/ XML.
+ *
+ * @ingroup parsers
  */
 class EUtilsAssemblyParser implements EUtilsParserInterface {
 

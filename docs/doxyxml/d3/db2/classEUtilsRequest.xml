@@ -357,26 +357,26 @@
     <detaileddescription>
 <para>Builds and executes the API request to NCBI. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="85">
+      <node id="83">
         <label>EFetch</label>
         <link refid="d2/d2d/classEFetch"/>
-        <childnode refid="84" relation="public-inheritance">
+        <childnode refid="82" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="87">
+      <node id="85">
         <label>ESummary</label>
         <link refid="db/d8b/classESummary"/>
-        <childnode refid="84" relation="public-inheritance">
+        <childnode refid="82" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="84">
+      <node id="82">
         <label>EUtilsRequest</label>
         <link refid="d3/db2/classEUtilsRequest"/>
       </node>
-      <node id="86">
+      <node id="84">
         <label>ESearch</label>
         <link refid="df/db2/classESearch"/>
-        <childnode refid="84" relation="public-inheritance">
+        <childnode refid="82" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

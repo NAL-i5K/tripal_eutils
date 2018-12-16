@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="8" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="10" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="10" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -45,7 +45,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="19" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="19" bodyend="31"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="21" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="21" bodyend="33"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -73,7 +73,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="70" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="70" bodyend="93"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="72" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="72" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="d0/ded/classEutilsBioProjectFormatter_1a98a44a1c1e0dadb834d9c53774b1302f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -99,7 +99,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="39" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="39" bodyend="62"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="41" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="41" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="d0/ded/classEutilsBioProjectFormatter_1a83893f427194eb7c195d465d944eef40" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -125,7 +125,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="101" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="101" bodyend="129"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="103" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="103" bodyend="131"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -156,7 +156,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="6" bodyend="131"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="8" bodyend="133"/>
     <listofallmembers>
       <member refid="d0/ded/classEutilsBioProjectFormatter_1a79346999e3397c3899799252a7d7680f" prot="private" virt="non-virtual"><scope>EutilsBioProjectFormatter</scope><name>$elements</name></member>
       <member refid="d0/ded/classEutilsBioProjectFormatter_1afe0deff4318c82a1f11746b119cbce3b" prot="public" virt="non-virtual"><scope>EutilsBioProjectFormatter</scope><name>format</name></member>

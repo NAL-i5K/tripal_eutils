@@ -31,7 +31,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" line="18" column="1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" line="20" column="1"/>
       </memberdef>
       <memberdef kind="function" id="da/dcc/classEUtilsFormatter_1a3f3cbd9eb03ba5d719685a4996c25041" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -70,7 +70,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" line="63" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" bodystart="63" bodyend="75"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" line="65" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" bodystart="65" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="da/dcc/classEUtilsFormatter_1a613961cd9c088f74dd482157d3a4a488" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -97,38 +97,38 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" line="29" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" bodystart="29" bodyend="49"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" line="31" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" bodystart="31" bodyend="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para><ref refid="da/dcc/classEUtilsFormatter" kindref="compound">EUtilsFormatter</ref> Class. </para>    </detaileddescription>
+    </detaileddescription>
     <inheritancegraph>
-      <node id="62">
+      <node id="60">
         <label>EutilsAssemblyFormatter</label>
         <link refid="db/df7/classEutilsAssemblyFormatter"/>
-        <childnode refid="61" relation="public-inheritance">
+        <childnode refid="59" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="61">
+      <node id="59">
         <label>EUtilsFormatter</label>
         <link refid="da/dcc/classEUtilsFormatter"/>
       </node>
-      <node id="64">
+      <node id="62">
         <label>EUtilsBioSampleFormatter</label>
         <link refid="db/d3a/classEUtilsBioSampleFormatter"/>
-        <childnode refid="61" relation="public-inheritance">
+        <childnode refid="59" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="63">
+      <node id="61">
         <label>EutilsBioProjectFormatter</label>
         <link refid="d0/ded/classEutilsBioProjectFormatter"/>
-        <childnode refid="61" relation="public-inheritance">
+        <childnode refid="59" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" bodystart="6" bodyend="77"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc" bodystart="8" bodyend="79"/>
     <listofallmembers>
       <member refid="da/dcc/classEUtilsFormatter_1afce159b3942aaf754f136ab7e183b31e" prot="public" virt="non-virtual"><scope>EUtilsFormatter</scope><name>format</name></member>
       <member refid="da/dcc/classEUtilsFormatter_1a3f3cbd9eb03ba5d719685a4996c25041" prot="public" virt="non-virtual"><scope>EUtilsFormatter</scope><name>getDbLink</name></member>

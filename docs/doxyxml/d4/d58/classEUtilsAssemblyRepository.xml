@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="14" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="14" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="16" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d4/d58/classEUtilsAssemblyRepository_1a66c8c065c0f14c488306d87de0a1c501" prot="protected" static="no" mutable="no">
         <type></type>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="28" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="28" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="30" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-static-attrib">
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="42" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="42" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="44" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -80,7 +80,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="288" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="288" bodyend="295"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="290" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="290" bodyend="297"/>
       </memberdef>
       <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1a07b7cbe543242970818fe67d6a990e02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -114,7 +114,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="59" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="59" bodyend="126"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="61" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="61" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1a9ef389088c4d3d1bf3b4bd11704c776a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -127,7 +127,7 @@
 <para>Gets/creates this analysis record. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="214" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="214" bodyend="247"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="216" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="216" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1a5f3b62a22e7a6e60d080d6a902039fa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -160,7 +160,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="136" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="136" bodyend="171"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="138" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="138" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1a8d7c6f5233f66ede40e3d0ad7a6a241f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -183,7 +183,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="256" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="256" bodyend="279"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="258" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="258" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1a1044a2d78ba81d41646e41e7f3552406" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -215,13 +215,13 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="183" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="183" bodyend="209"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="185" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="185" bodyend="211"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Maps NCBI Assemblies into a Chado analysis. </para>    </detaileddescription>
+<para>Maps NCBI Assemblies into a Chado analysis.</para>    </detaileddescription>
     <inheritancegraph>
       <node id="26">
         <label>EUtilsAssemblyRepository</label>
@@ -246,7 +246,7 @@
         <link refid="d3/dad/classEUtilsRepository"/>
       </node>
     </collaborationgraph>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="6" bodyend="297"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="8" bodyend="299"/>
     <listofallmembers>
       <member refid="d4/d58/classEUtilsAssemblyRepository_1a59839590da0db74db7cb9c85beedbb16" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$base_fields</name></member>
       <member refid="d3/dad/classEUtilsRepository_1ac872895dd9d64f6a928ab79145a8baf6" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$base_record_id</name></member>

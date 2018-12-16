@@ -29,7 +29,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="178" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="178" bodyend="203"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="180" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="180" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="d8/dd8/classEUtilsAssemblyParser_1a73a0f5f9300218c96511c3e7dfb75859" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -57,7 +57,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="13" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="13" bodyend="93"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="15" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="15" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="d8/dd8/classEUtilsAssemblyParser_1a3ea43b495399c3ad5fd694eab361eb97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -82,7 +82,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="102" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="102" bodyend="136"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="104" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="104" bodyend="138"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -123,7 +123,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="148" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="148" bodyend="168"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="150" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="150" bodyend="170"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -154,7 +154,7 @@
         <link refid="d8/ddd/interfaceEUtilsParserInterface"/>
       </node>
     </collaborationgraph>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="6" bodyend="205"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="8" bodyend="207"/>
     <listofallmembers>
       <member refid="d8/dd8/classEUtilsAssemblyParser_1a4ce18ecf4d3ad5b8b731201da62c20ed" prot="public" virt="non-virtual"><scope>EUtilsAssemblyParser</scope><name>getFTPData</name></member>
       <member refid="d8/dd8/classEUtilsAssemblyParser_1a73a0f5f9300218c96511c3e7dfb75859" prot="public" virt="non-virtual"><scope>EUtilsAssemblyParser</scope><name>parse</name></member>

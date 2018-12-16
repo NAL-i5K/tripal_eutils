@@ -10,7 +10,6 @@
  * Factory class which returns the appropriate NCBI resource provider.
  *
  * @ingroup resources
- * @Class EUtils
  */
 class EUtils {
 

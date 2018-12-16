@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="10" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="10" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="15" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="15" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-static-attrib">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="20" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="20" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="25" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="25" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -72,7 +72,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="36" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="36" bodyend="82"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="41" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="41" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="d2/dd9/classEUtilsBioSampleRepository_1a56add86d8c4efa5de8fe875a7a7648e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -107,7 +107,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="163" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="163" bodyend="175"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="168" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="168" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="d2/dd9/classEUtilsBioSampleRepository_1a19c1e7c7284be762871126dfdcd8db98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -141,7 +141,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="107" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="107" bodyend="126"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="112" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="112" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="d2/dd9/classEUtilsBioSampleRepository_1a4884a58e47dbe3125645305bb29b481e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -172,7 +172,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="186" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="186" bodyend="199"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="191" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="191" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="d2/dd9/classEUtilsBioSampleRepository_1a5f2f494b7d1f7942f1d314e6309d580c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -198,7 +198,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="135" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="135" bodyend="153"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="140" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="140" bodyend="158"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -227,14 +227,26 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="91" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="91" bodyend="97"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="96" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="96" bodyend="102"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>Class <ref refid="d2/dd9/classEUtilsBioSampleRepository" kindref="compound">EUtilsBioSampleRepository</ref>. </para>    </detaileddescription>
     <inheritancegraph>
+      <node id="51">
+        <label>EUtilsRepository</label>
+        <link refid="d3/dad/classEUtilsRepository"/>
+      </node>
+      <node id="50">
+        <label>EUtilsBioSampleRepository</label>
+        <link refid="d2/dd9/classEUtilsBioSampleRepository"/>
+        <childnode refid="51" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
       <node id="53">
         <label>EUtilsRepository</label>
         <link refid="d3/dad/classEUtilsRepository"/>
@@ -245,20 +257,8 @@
         <childnode refid="53" relation="public-inheritance">
         </childnode>
       </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="55">
-        <label>EUtilsRepository</label>
-        <link refid="d3/dad/classEUtilsRepository"/>
-      </node>
-      <node id="54">
-        <label>EUtilsBioSampleRepository</label>
-        <link refid="d2/dd9/classEUtilsBioSampleRepository"/>
-        <childnode refid="55" relation="public-inheritance">
-        </childnode>
-      </node>
     </collaborationgraph>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="3" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="3" bodyend="200"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="8" bodyend="205"/>
     <listofallmembers>
       <member refid="d3/dad/classEUtilsRepository_1ac872895dd9d64f6a928ab79145a8baf6" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>$base_record_id</name></member>
       <member refid="d3/dad/classEUtilsRepository_1ad37442d664f5cf40a6fcb3739a5bcbaa" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>$base_table</name></member>

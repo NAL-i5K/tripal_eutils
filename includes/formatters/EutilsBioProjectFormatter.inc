@@ -2,6 +2,8 @@
 
 /**
  * Class EutilsBioProject Formatter.
+ *
+ * @ingroup formatters
  */
 class EutilsBioProjectFormatter extends EUtilsFormatter {
 

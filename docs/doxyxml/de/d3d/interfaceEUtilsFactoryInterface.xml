@@ -11,8 +11,8 @@
         <definition>EUtilsFactoryInterface::get</definition>
         <argsstring>(string $db)</argsstring>
         <name>get</name>
-        <reimplementedby refid="d2/d5f/classEUtilsFormatterFactory_1a9c33bb4e6c1c4c61f80650e5b8841772">get</reimplementedby>
         <reimplementedby refid="d6/d04/classEUtilsXMLParserFactory_1ad2401b4aad814d1ba2afc942c7314e6a">get</reimplementedby>
+        <reimplementedby refid="d2/d5f/classEUtilsFormatterFactory_1a9c33bb4e6c1c4c61f80650e5b8841772">get</reimplementedby>
         <reimplementedby refid="db/d8a/classEUtilsRepositoryFactory_1a65f0265dca906508296effa53708e998">get</reimplementedby>
         <param>
           <type>string</type>
@@ -42,26 +42,26 @@
     <detaileddescription>
 <para>Interface <ref refid="de/d3d/interfaceEUtilsFactoryInterface" kindref="compound">EUtilsFactoryInterface</ref>. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="59">
+      <node id="57">
         <label>EUtilsXMLParserFactory</label>
         <link refid="d6/d04/classEUtilsXMLParserFactory"/>
-        <childnode refid="56" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="58">
-        <label>EUtilsRepositoryFactory</label>
-        <link refid="db/d8a/classEUtilsRepositoryFactory"/>
-        <childnode refid="56" relation="public-inheritance">
+        <childnode refid="54" relation="public-inheritance">
         </childnode>
       </node>
       <node id="56">
+        <label>EUtilsRepositoryFactory</label>
+        <link refid="db/d8a/classEUtilsRepositoryFactory"/>
+        <childnode refid="54" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="54">
         <label>EUtilsFactoryInterface</label>
         <link refid="de/d3d/interfaceEUtilsFactoryInterface"/>
       </node>
-      <node id="57">
+      <node id="55">
         <label>EUtilsFormatterFactory</label>
         <link refid="d2/d5f/classEUtilsFormatterFactory"/>
-        <childnode refid="56" relation="public-inheritance">
+        <childnode refid="54" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

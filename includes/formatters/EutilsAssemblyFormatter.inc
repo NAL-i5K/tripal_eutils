@@ -2,6 +2,8 @@
 
 /**
  * Class EUtilsAssembly Formatter.
+ *
+ * @ingroup formatters
  */
 class EutilsAssemblyFormatter extends EUtilsFormatter {
 

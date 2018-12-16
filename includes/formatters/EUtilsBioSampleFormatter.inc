@@ -2,6 +2,8 @@
 
 /**
  * Class EUtilsBioSampleFormatter.
+ *
+ * @ingroup formatters
  */
 class EUtilsBioSampleFormatter extends EUtilsFormatter {
 

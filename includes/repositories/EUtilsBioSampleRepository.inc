@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Class EUtilsBioSampleRepository.
+ *
+ * @ingroup repositories
+ */
 class EUtilsBioSampleRepository extends EUtilsRepository {
 
   /**

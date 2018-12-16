@@ -10,47 +10,47 @@
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6" refid="da/dcc/classEUtilsFormatter" refkind="compound"><highlight class="keyword">abstract</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="da/dcc/classEUtilsFormatter" kindref="compound">EUtilsFormatter</ref><sp/>{</highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">abstract</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="da/dcc/classEUtilsFormatter_1afce159b3942aaf754f136ab7e183b31e" kindref="member">format</ref>(array<sp/>$data);</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="da/dcc/classEUtilsFormatter_1a613961cd9c088f74dd482157d3a4a488" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="da/dcc/classEUtilsFormatter_1a613961cd9c088f74dd482157d3a4a488" kindref="member">getNCBIDB</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$db_name)<sp/>{</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>$name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NCBI<sp/>{$db_name}&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="8" refid="da/dcc/classEUtilsFormatter" refkind="compound"><highlight class="keyword">abstract</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="da/dcc/classEUtilsFormatter" kindref="compound">EUtilsFormatter</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">abstract</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="da/dcc/classEUtilsFormatter_1afce159b3942aaf754f136ab7e183b31e" kindref="member">format</ref>(array<sp/>$data);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="da/dcc/classEUtilsFormatter_1a613961cd9c088f74dd482157d3a4a488" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="da/dcc/classEUtilsFormatter_1a613961cd9c088f74dd482157d3a4a488" kindref="member">getNCBIDB</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$db_name)<sp/>{</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>$db<sp/>=<sp/>db_query(</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;SELECT<sp/>*<sp/>FROM<sp/>chado.db<sp/>WHERE<sp/>UPPER(name)<sp/>=<sp/>:name&apos;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="stringliteral">&apos;:name&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>strtoupper($name)]</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>)-&gt;fetchObject();</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($db)<sp/>{</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$db;</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>$db<sp/>=<sp/>db_query(</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;SELECT<sp/>*<sp/>FROM<sp/>chado.db<sp/>WHERE<sp/>UPPER(name)<sp/>=<sp/>:name&apos;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="stringliteral">&apos;:name&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>strtoupper($db_name)]</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>)-&gt;fetchObject();</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($db)<sp/>{</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$db;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FALSE;</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63" refid="da/dcc/classEUtilsFormatter_1a3f3cbd9eb03ba5d719685a4996c25041" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="da/dcc/classEUtilsFormatter_1a3f3cbd9eb03ba5d719685a4996c25041" kindref="member">getDbLink</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$accession,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$db)<sp/>{</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>$db<sp/>=<sp/>$this-&gt;<ref refid="da/dcc/classEUtilsFormatter_1a613961cd9c088f74dd482157d3a4a488" kindref="member">getNCBIDB</ref>($db);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>$name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NCBI<sp/>{$db_name}&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>$db<sp/>=<sp/>db_query(</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;SELECT<sp/>*<sp/>FROM<sp/>chado.db<sp/>WHERE<sp/>UPPER(name)<sp/>=<sp/>:name&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="stringliteral">&apos;:name&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>strtoupper($name)]</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>)-&gt;fetchObject();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($db)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$db;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>$db<sp/>=<sp/>db_query(</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;SELECT<sp/>*<sp/>FROM<sp/>chado.db<sp/>WHERE<sp/>UPPER(name)<sp/>=<sp/>:name&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="stringliteral">&apos;:name&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>strtoupper($db_name)]</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>)-&gt;fetchObject();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($db)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$db;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FALSE;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="da/dcc/classEUtilsFormatter_1a3f3cbd9eb03ba5d719685a4996c25041" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="da/dcc/classEUtilsFormatter_1a3f3cbd9eb03ba5d719685a4996c25041" kindref="member">getDbLink</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$accession,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$db)<sp/>{</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!$db)<sp/>{</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$accession;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>$fake_dbxref<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>stdClass();</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>$fake_dbxref-&gt;accession<sp/>=<sp/>$accession;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>$fake_dbxref-&gt;db_id<sp/>=<sp/>$db;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>$link<sp/>=<sp/>l($accession,<sp/>chado_get_dbxref_url($fake_dbxref));</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$link;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>$db<sp/>=<sp/>$this-&gt;<ref refid="da/dcc/classEUtilsFormatter_1a613961cd9c088f74dd482157d3a4a488" kindref="member">getNCBIDB</ref>($db);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!$db)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$accession;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>$fake_dbxref<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>stdClass();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>$fake_dbxref-&gt;accession<sp/>=<sp/>$accession;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>$fake_dbxref-&gt;db_id<sp/>=<sp/>$db;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>$link<sp/>=<sp/>l($accession,<sp/>chado_get_dbxref_url($fake_dbxref));</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$link;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatter.inc"/>
   </compounddef>

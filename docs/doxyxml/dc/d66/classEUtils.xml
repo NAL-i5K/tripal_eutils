@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="26" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="26" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="25" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="25" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="42" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="42" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="41" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d40/group__resources_1gabcdb1cae16ae38d511129ca2d763bfab" prot="protected" static="no" mutable="no">
         <type></type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="33" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="33" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="32" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="32" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="47" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="47" bodyend="49"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="46" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="46" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="da/d40/group__resources_1gaf2a0036cf3f6dc93a5d711a11e976f89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -107,7 +107,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="64" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="64" bodyend="97"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="63" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="63" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="da/d40/group__resources_1gaf4c333e128a32d5dec6c6c3f02f82029" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -133,7 +133,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="105" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="105" bodyend="107"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="104" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="104" bodyend="106"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -168,14 +168,14 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="120" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="120" bodyend="130"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="119" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="119" bodyend="129"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Factory class which returns the appropriate NCBI resource provider.</para><para><ref refid="dc/d66/classEUtils" kindref="compound">EUtils</ref> </para>    </detaileddescription>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="15" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="15" bodyend="132"/>
+<para>Factory class which returns the appropriate NCBI resource provider. </para>    </detaileddescription>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="14" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="14" bodyend="131"/>
     <listofallmembers>
       <member refid="da/d40/group__resources_1gabdc5152b42c5b6ea9578e83743aae397" prot="protected" virt="non-virtual"><scope>EUtils</scope><name>$create_linked_records</name></member>
       <member refid="da/d40/group__resources_1gabcdb1cae16ae38d511129ca2d763bfab" prot="protected" virt="non-virtual"><scope>EUtils</scope><name>$preview</name></member>

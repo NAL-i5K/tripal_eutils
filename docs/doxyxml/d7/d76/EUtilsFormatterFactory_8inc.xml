@@ -10,24 +10,24 @@
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8" refid="d2/d5f/classEUtilsFormatterFactory" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d2/d5f/classEUtilsFormatterFactory" kindref="compound">EUtilsFormatterFactory</ref><sp/></highlight><highlight class="keyword">implements</highlight><highlight class="normal"><sp/><ref refid="de/d3d/interfaceEUtilsFactoryInterface" kindref="compound">EUtilsFactoryInterface</ref><sp/>{</highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15" refid="d2/d5f/classEUtilsFormatterFactory_1a366bdb719dc5cbffa3fbbac66018941b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/><ref refid="d2/d5f/classEUtilsFormatterFactory_1a366bdb719dc5cbffa3fbbac66018941b" kindref="member">$formatter</ref><sp/>=<sp/>[</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;biosample&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>EUtilsBioSampleFormatter::class,</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;assembly&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>EutilsAssemblyFormatter::class,</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;bioproject&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>EutilsBioProjectFormatter::class,</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/>];</highlight></codeline>
+<codeline lineno="10" refid="d2/d5f/classEUtilsFormatterFactory" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d2/d5f/classEUtilsFormatterFactory" kindref="compound">EUtilsFormatterFactory</ref><sp/></highlight><highlight class="keyword">implements</highlight><highlight class="normal"><sp/><ref refid="de/d3d/interfaceEUtilsFactoryInterface" kindref="compound">EUtilsFactoryInterface</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="d2/d5f/classEUtilsFormatterFactory_1a366bdb719dc5cbffa3fbbac66018941b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/><ref refid="d2/d5f/classEUtilsFormatterFactory_1a366bdb719dc5cbffa3fbbac66018941b" kindref="member">$formatter</ref><sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;biosample&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>EUtilsBioSampleFormatter::class,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;assembly&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>EutilsAssemblyFormatter::class,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;bioproject&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>EutilsBioProjectFormatter::class,</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="d2/d5f/classEUtilsFormatterFactory_1a9c33bb4e6c1c4c61f80650e5b8841772" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$db)<sp/>{</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!isset($this-&gt;formatter[$db]))<sp/>{</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&apos;Unable<sp/>to<sp/>find<sp/>formatter<sp/>for<sp/>the<sp/>given<sp/>db:<sp/>&apos;</highlight><highlight class="normal"><sp/>.<sp/>$db);</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>$this-&gt;formatter[$db]();</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>];</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="d2/d5f/classEUtilsFormatterFactory_1a9c33bb4e6c1c4c61f80650e5b8841772" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$db)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!isset($this-&gt;formatter[$db]))<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&apos;Unable<sp/>to<sp/>find<sp/>formatter<sp/>for<sp/>the<sp/>given<sp/>db:<sp/>&apos;</highlight><highlight class="normal"><sp/>.<sp/>$db);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>$this-&gt;formatter[$db]();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsFormatterFactory.inc"/>
   </compounddef>

@@ -62,6 +62,18 @@
     <detaileddescription>
 <para>Class <ref refid="d6/d04/classEUtilsXMLParserFactory" kindref="compound">EUtilsXMLParserFactory</ref>.</para><para>This is the base EUTILS XML parser class. The plan is to extend this base class to be specific for each DB type. </para>    </detaileddescription>
     <inheritancegraph>
+      <node id="89">
+        <label>EUtilsXMLParserFactory</label>
+        <link refid="d6/d04/classEUtilsXMLParserFactory"/>
+        <childnode refid="90" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>EUtilsFactoryInterface</label>
+        <link refid="de/d3d/interfaceEUtilsFactoryInterface"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
       <node id="91">
         <label>EUtilsXMLParserFactory</label>
         <link refid="d6/d04/classEUtilsXMLParserFactory"/>
@@ -69,18 +81,6 @@
         </childnode>
       </node>
       <node id="92">
-        <label>EUtilsFactoryInterface</label>
-        <link refid="de/d3d/interfaceEUtilsFactoryInterface"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="93">
-        <label>EUtilsXMLParserFactory</label>
-        <link refid="d6/d04/classEUtilsXMLParserFactory"/>
-        <childnode refid="94" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="94">
         <label>EUtilsFactoryInterface</label>
         <link refid="de/d3d/interfaceEUtilsFactoryInterface"/>
       </node>
