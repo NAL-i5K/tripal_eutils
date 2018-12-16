@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="13" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="13" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="15" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" prot="protected" static="no" mutable="no">
         <type></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="20" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="20" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="22" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" prot="protected" static="no" mutable="no">
         <type></type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="27" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="27" bodyend="-1"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="29" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -82,7 +82,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="45" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="45" bodyend="48"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="47" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="47" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="d3/db2/classEUtilsRequest_1a7f78c146bf3f172c3f3caec90ae1bf5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -107,7 +107,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="56" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="56" bodyend="59"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="58" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="58" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="d3/db2/classEUtilsRequest_1a7b2023c3a8b5f2838350a34e762cf373" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -144,7 +144,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="69" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="69" bodyend="73"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="71" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="71" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="d3/db2/classEUtilsRequest_1ad5253251538dce0ba455204000d4f078" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -169,7 +169,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="82" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="82" bodyend="86"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="84" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="84" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="d3/db2/classEUtilsRequest_1a71525595250079db9a6ebf480f595054" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -196,7 +196,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="95" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="95" bodyend="97"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="97" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="97" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="d3/db2/classEUtilsRequest_1a47adc09e797be2c6275b42101b606dc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -223,7 +223,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="106" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="106" bodyend="108"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="108" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="108" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="d3/db2/classEUtilsRequest_1a53f5444cd0970dfe0df97f36e597470c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -249,7 +249,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="34" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="34" bodyend="37"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="36" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="36" bodyend="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -288,7 +288,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="168" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="168" bodyend="170"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="170" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="170" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="d3/db2/classEUtilsRequest_1a2640f50810453b0bbfa18b8d4ed7a90e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -314,7 +314,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="147" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="147" bodyend="158"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="149" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="149" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="d3/db2/classEUtilsRequest_1ac306d3d9b0bb3e2df1214b9bba7dad49" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -349,13 +349,13 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="118" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="118" bodyend="138"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="120" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="120" bodyend="140"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>Builds and executes the API request to NCBI. </para>    </detaileddescription>
     <inheritancegraph>
       <node id="85">
         <label>EFetch</label>
@@ -380,7 +380,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="6" bodyend="172"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtilsRequest.inc" bodystart="8" bodyend="174"/>
     <listofallmembers>
       <member refid="d3/db2/classEUtilsRequest_1a420a82972b29e19dbda93a66abdc5369" prot="protected" virt="non-virtual"><scope>EUtilsRequest</scope><name>$base_url</name></member>
       <member refid="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" prot="protected" virt="non-virtual"><scope>EUtilsRequest</scope><name>$headers</name></member>

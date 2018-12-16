@@ -3,7 +3,7 @@
 /**
  * Right now responsible for getting a single value from the Assembly.
  *
- * @group resources
+ * @ingroup resources
  */
 class EFTP {
 

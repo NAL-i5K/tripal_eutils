@@ -10,14 +10,14 @@
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6" refid="d2/d2d/classEFetch" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d2/d2d/classEFetch" kindref="compound">EFetch</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest" kindref="compound">EUtilsRequest</ref><sp/>{</highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15" refid="d2/d2d/classEFetch_1a51662abd559e5c23f8495e5f4107f194" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/d2d/classEFetch_1a51662abd559e5c23f8495e5f4107f194" kindref="member">__construct</ref>($db)<sp/>{</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d3/db2/classEUtilsRequest_1a53f5444cd0970dfe0df97f36e597470c" kindref="member">setBaseURL</ref>(</highlight><highlight class="stringliteral">&apos;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi&apos;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d3/db2/classEUtilsRequest_1a7b2023c3a8b5f2838350a34e762cf373" kindref="member">addParam</ref>(</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">,<sp/>$db);</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="8" refid="d2/d2d/classEFetch" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d2/d2d/classEFetch" kindref="compound">EFetch</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest" kindref="compound">EUtilsRequest</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="d2/d2d/classEFetch_1a4137507ebb8ce2c6bcae0e0b3b5b1981" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d2/d2d/classEFetch_1a4137507ebb8ce2c6bcae0e0b3b5b1981" kindref="member">__construct</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$db)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d3/db2/classEUtilsRequest_1a53f5444cd0970dfe0df97f36e597470c" kindref="member">setBaseURL</ref>(</highlight><highlight class="stringliteral">&apos;https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d3/db2/classEUtilsRequest_1a7b2023c3a8b5f2838350a34e762cf373" kindref="member">addParam</ref>(</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">,<sp/>$db);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc"/>
   </compounddef>

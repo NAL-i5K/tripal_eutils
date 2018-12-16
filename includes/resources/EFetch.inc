@@ -3,7 +3,7 @@
 /**
  * Https://www.ncbi.nlm.nih.gov/books/NBK25499/ NCBI Efetch docs.
  *
- * @group resources
+ * @ingroup resources
  */
 class EFetch extends EUtilsRequest {
 

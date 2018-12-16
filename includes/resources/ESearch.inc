@@ -3,7 +3,7 @@
 /**
  * Queries the EUtils esearch API.
  *
- * @group resources
+ * @ingroup resources
  */
 class ESearch extends EUtilsRequest {
 

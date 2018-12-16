@@ -3,7 +3,7 @@
 /**
  * Interacts with a response from the EUtils API.
  *
- * @group resources
+ * @ingroup resources
  */
 class EUtilsResource {
 

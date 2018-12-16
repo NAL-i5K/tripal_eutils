@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.14">
   <compound refid="d9/dde/classBiosamplePropertyLookup" kind="class"><name>BiosamplePropertyLookup</name>
-    <member refid="d9/dde/classBiosamplePropertyLookup_1ae587028144c2edd824a02c80162fa9fe" kind="function"><name>lookupAll</name></member>
+    <member refid="d9/dde/classBiosamplePropertyLookup_1a73fd8d3a8385b60392911ff17d9a91fc" kind="function"><name>lookupAll</name></member>
   </compound>
   <compound refid="d2/d2d/classEFetch" kind="class"><name>EFetch</name>
-    <member refid="d2/d2d/classEFetch_1a51662abd559e5c23f8495e5f4107f194" kind="function"><name>__construct</name></member>
+    <member refid="d2/d2d/classEFetch_1a4137507ebb8ce2c6bcae0e0b3b5b1981" kind="function"><name>__construct</name></member>
   </compound>
   <compound refid="d7/db0/classEFTP" kind="class"><name>EFTP</name>
     <member refid="d7/db0/classEFTP_1aa1650b1438ef541adfe685acda471eb3" kind="variable"><name>$file</name></member>
     <member refid="d7/db0/classEFTP_1aeffde38216e724e10f826b73758378ad" kind="variable"><name>$url</name></member>
-    <member refid="d7/db0/classEFTP_1ad3b6abcf0e1c419eaf437aa7ae692a7d" kind="function"><name>getField</name></member>
+    <member refid="d7/db0/classEFTP_1abc833b7bfebaaf13298e0a8b1a22173b" kind="function"><name>getField</name></member>
     <member refid="d7/db0/classEFTP_1ac346f7c5404ff9e5c4b97d9c9ca1de50" kind="function"><name>setURL</name></member>
   </compound>
   <compound refid="df/db2/classESearch" kind="class"><name>ESearch</name>
-    <member refid="df/db2/classESearch_1a3a328b66e32466000cf4134fbdbe8b1c" kind="function"><name>__construct</name></member>
+    <member refid="df/db2/classESearch_1aa5a0de379b4737b1126dff3819632e5a" kind="function"><name>__construct</name></member>
   </compound>
   <compound refid="db/d8b/classESummary" kind="class"><name>ESummary</name>
     <member refid="db/d8b/classESummary_1a65013e39d50ac4ee6571667843af760b" kind="function"><name>__construct</name></member>
   </compound>
   <compound refid="dc/d66/classEUtils" kind="class"><name>EUtils</name>
-    <member refid="dc/d66/classEUtils_1a827d34df38d6a6d78dfd141802a82a06" kind="variable"><name>$visited</name></member>
-    <member refid="dc/d66/classEUtils_1abdc5152b42c5b6ea9578e83743aae397" kind="variable"><name>$create_linked_records</name></member>
-    <member refid="dc/d66/classEUtils_1abcdb1cae16ae38d511129ca2d763bfab" kind="variable"><name>$preview</name></member>
-    <member refid="dc/d66/classEUtils_1aaba3e031a2011f3ba1b8dd522017b368" kind="function"><name>__construct</name></member>
-    <member refid="dc/d66/classEUtils_1af2a0036cf3f6dc93a5d711a11e976f89" kind="function"><name>get</name></member>
-    <member refid="dc/d66/classEUtils_1af4c333e128a32d5dec6c6c3f02f82029" kind="function"><name>setPreview</name></member>
-    <member refid="dc/d66/classEUtils_1adfeb8995f371d5140dc610542c319d45" kind="function"><name>getResourceProvider</name></member>
+    <member refid="da/d40/group__resources_1ga827d34df38d6a6d78dfd141802a82a06" kind="variable"><name>$visited</name></member>
+    <member refid="da/d40/group__resources_1gabdc5152b42c5b6ea9578e83743aae397" kind="variable"><name>$create_linked_records</name></member>
+    <member refid="da/d40/group__resources_1gabcdb1cae16ae38d511129ca2d763bfab" kind="variable"><name>$preview</name></member>
+    <member refid="da/d40/group__resources_1gaaba3e031a2011f3ba1b8dd522017b368" kind="function"><name>__construct</name></member>
+    <member refid="da/d40/group__resources_1gaf2a0036cf3f6dc93a5d711a11e976f89" kind="function"><name>get</name></member>
+    <member refid="da/d40/group__resources_1gaf4c333e128a32d5dec6c6c3f02f82029" kind="function"><name>setPreview</name></member>
+    <member refid="da/d40/group__resources_1gadfeb8995f371d5140dc610542c319d45" kind="function"><name>getResourceProvider</name></member>
   </compound>
   <compound refid="db/df7/classEutilsAssemblyFormatter" kind="class"><name>EutilsAssemblyFormatter</name>
     <member refid="db/df7/classEutilsAssemblyFormatter_1ad2c0b4ee593bbe2d2349b300ed4d6c21" kind="variable"><name>$elements</name></member>
@@ -250,6 +250,15 @@
   <compound refid="db/d9b/EUtilsParserInterface_8inc" kind="file"><name>EUtilsParserInterface.inc</name>
   </compound>
   <compound refid="d0/da8/EUtilsXMLParserFactory_8inc" kind="file"><name>EUtilsXMLParserFactory.inc</name>
+  </compound>
+  <compound refid="da/d40/group__resources" kind="group"><name>resources</name>
+    <member refid="da/d40/group__resources_1gabdc5152b42c5b6ea9578e83743aae397" kind="variable"><name>$create_linked_records</name></member>
+    <member refid="da/d40/group__resources_1gabcdb1cae16ae38d511129ca2d763bfab" kind="variable"><name>$preview</name></member>
+    <member refid="da/d40/group__resources_1ga827d34df38d6a6d78dfd141802a82a06" kind="variable"><name>$visited</name></member>
+    <member refid="da/d40/group__resources_1gaaba3e031a2011f3ba1b8dd522017b368" kind="function"><name>__construct</name></member>
+    <member refid="da/d40/group__resources_1gaf2a0036cf3f6dc93a5d711a11e976f89" kind="function"><name>get</name></member>
+    <member refid="da/d40/group__resources_1gadfeb8995f371d5140dc610542c319d45" kind="function"><name>getResourceProvider</name></member>
+    <member refid="da/d40/group__resources_1gaf4c333e128a32d5dec6c6c3f02f82029" kind="function"><name>setPreview</name></member>
   </compound>
   <compound refid="dd/da0/todo" kind="page"><name>todo</name>
   </compound>

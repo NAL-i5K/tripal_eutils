@@ -3,7 +3,7 @@
 /**
  * Fetch the published biosample attributes to feed our property list.
  *
- * @group resources
+ * @ingroup resources
  */
 class BiosamplePropertyLookup {
 

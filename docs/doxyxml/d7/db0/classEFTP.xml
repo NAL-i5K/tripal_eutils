@@ -31,12 +31,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="d7/db0/classEFTP_1ad3b6abcf0e1c419eaf437aa7ae692a7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="d7/db0/classEFTP_1abc833b7bfebaaf13298e0a8b1a22173b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>EFTP::getField</definition>
-        <argsstring>($field)</argsstring>
+        <argsstring>(string $field)</argsstring>
         <name>getField</name>
         <param>
+          <type>string</type>
           <declname>$field</declname>
         </param>
         <briefdescription>
@@ -85,12 +86,12 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Class <ref refid="d7/db0/classEFTP" kindref="compound">EFTP</ref>.</para><para>Right now responsible for getting a single value from the Assembly. </para>    </detaileddescription>
+<para>Right now responsible for getting a single value from the Assembly. </para>    </detaileddescription>
     <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFTP.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFTP.inc" bodystart="8" bodyend="67"/>
     <listofallmembers>
       <member refid="d7/db0/classEFTP_1aa1650b1438ef541adfe685acda471eb3" prot="protected" virt="non-virtual"><scope>EFTP</scope><name>$file</name></member>
       <member refid="d7/db0/classEFTP_1aeffde38216e724e10f826b73758378ad" prot="protected" virt="non-virtual"><scope>EFTP</scope><name>$url</name></member>
-      <member refid="d7/db0/classEFTP_1ad3b6abcf0e1c419eaf437aa7ae692a7d" prot="public" virt="non-virtual"><scope>EFTP</scope><name>getField</name></member>
+      <member refid="d7/db0/classEFTP_1abc833b7bfebaaf13298e0a8b1a22173b" prot="public" virt="non-virtual"><scope>EFTP</scope><name>getField</name></member>
       <member refid="d7/db0/classEFTP_1ac346f7c5404ff9e5c4b97d9c9ca1de50" prot="public" virt="non-virtual"><scope>EFTP</scope><name>setURL</name></member>
     </listofallmembers>
   </compounddef>

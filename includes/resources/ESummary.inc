@@ -3,9 +3,9 @@
 /**
  * Queries the NCBI ESummary API.
  *
- * @group resources
+ * @ingroup resources
  */
-class ESummary extends EUtilsRequest {
+  class ESummary extends EUtilsRequest {
 
   /**
    * ESummary constructor.

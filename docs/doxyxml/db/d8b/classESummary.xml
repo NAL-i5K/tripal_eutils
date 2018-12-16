@@ -34,13 +34,13 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/ESummary.inc" line="15" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/ESummary.inc" bodystart="15" bodyend="18"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/ESummary.inc" line="17" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/ESummary.inc" bodystart="17" bodyend="20"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>Queries the NCBI <ref refid="db/d8b/classESummary" kindref="compound">ESummary</ref> API. </para>    </detaileddescription>
     <inheritancegraph>
       <node id="12">
         <label>ESummary</label>
@@ -65,7 +65,7 @@
         <link refid="d3/db2/classEUtilsRequest"/>
       </node>
     </collaborationgraph>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/ESummary.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/ESummary.inc" bodystart="6" bodyend="20"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/ESummary.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/ESummary.inc" bodystart="8" bodyend="22"/>
     <listofallmembers>
       <member refid="d3/db2/classEUtilsRequest_1a420a82972b29e19dbda93a66abdc5369" prot="protected" virt="non-virtual"><scope>ESummary</scope><name>$base_url</name></member>
       <member refid="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" prot="protected" virt="non-virtual"><scope>ESummary</scope><name>$headers</name></member>

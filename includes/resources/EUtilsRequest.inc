@@ -3,7 +3,7 @@
 /**
  * Builds and executes the API request to NCBI.
  *
- * @group resources
+ * @ingroup resources
  */
 class EUtilsRequest {
 

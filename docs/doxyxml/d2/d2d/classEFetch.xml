@@ -4,12 +4,13 @@
     <compoundname>EFetch</compoundname>
     <basecompoundref refid="d3/db2/classEUtilsRequest" prot="public" virt="non-virtual">EUtilsRequest</basecompoundref>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="d2/d2d/classEFetch_1a51662abd559e5c23f8495e5f4107f194" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="d2/d2d/classEFetch_1a4137507ebb8ce2c6bcae0e0b3b5b1981" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>EFetch::__construct</definition>
-        <argsstring>($db)</argsstring>
+        <argsstring>(string $db)</argsstring>
         <name>__construct</name>
         <param>
+          <type>string</type>
           <declname>$db</declname>
         </param>
         <briefdescription>
@@ -21,7 +22,7 @@
 <parametername>$db</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para></parameterdescription>
+<para>NCBI database string.</para></parameterdescription>
 </parameteritem>
 </parameterlist>
 <parameterlist kind="exception"><parameteritem>
@@ -34,7 +35,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" line="15" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" bodystart="15" bodyend="18"/>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" line="18" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" bodystart="18" bodyend="21"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -65,12 +66,12 @@
         <link refid="d3/db2/classEUtilsRequest"/>
       </node>
     </collaborationgraph>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" bodystart="6" bodyend="20"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" bodystart="8" bodyend="23"/>
     <listofallmembers>
       <member refid="d3/db2/classEUtilsRequest_1a420a82972b29e19dbda93a66abdc5369" prot="protected" virt="non-virtual"><scope>EFetch</scope><name>$base_url</name></member>
       <member refid="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" prot="protected" virt="non-virtual"><scope>EFetch</scope><name>$headers</name></member>
       <member refid="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" prot="protected" virt="non-virtual"><scope>EFetch</scope><name>$params</name></member>
-      <member refid="d2/d2d/classEFetch_1a51662abd559e5c23f8495e5f4107f194" prot="public" virt="non-virtual"><scope>EFetch</scope><name>__construct</name></member>
+      <member refid="d2/d2d/classEFetch_1a4137507ebb8ce2c6bcae0e0b3b5b1981" prot="public" virt="non-virtual"><scope>EFetch</scope><name>__construct</name></member>
       <member refid="d3/db2/classEUtilsRequest_1a337306742fa7bcf8ef211bc0798246a2" prot="public" virt="non-virtual"><scope>EFetch</scope><name>addHeader</name></member>
       <member refid="d3/db2/classEUtilsRequest_1a7f78c146bf3f172c3f3caec90ae1bf5c" prot="public" virt="non-virtual"><scope>EFetch</scope><name>addHeaders</name></member>
       <member refid="d3/db2/classEUtilsRequest_1a7b2023c3a8b5f2838350a34e762cf373" prot="public" virt="non-virtual"><scope>EFetch</scope><name>addParam</name></member>
