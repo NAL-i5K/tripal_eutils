@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d0/ded/classEutilsBioProjectFormatter" kind="class" language="PHP" prot="public">
+    <compoundname>EutilsBioProjectFormatter</compoundname>
+    <basecompoundref refid="da/dcc/classEUtilsFormatter" prot="public" virt="non-virtual">EUtilsFormatter</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d0/ded/classEutilsBioProjectFormatter_1a79346999e3397c3899799252a7d7680f" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>EutilsBioProjectFormatter::$elements</definition>
+        <argsstring></argsstring>
+        <name>$elements</name>
+        <initializer>= []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/ded/classEutilsBioProjectFormatter_1afe0deff4318c82a1f11746b119cbce3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EutilsBioProjectFormatter::format</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>format</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add the formatted data into a table.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The parsed XML data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array Drupal form elements array of each section in a fieldset. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="19" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="19" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="d0/ded/classEutilsBioProjectFormatter_1a9b590ee25dec686af67f8875b1609934" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EutilsBioProjectFormatter::formatAttributes</definition>
+        <argsstring>(array $attributes)</argsstring>
+        <name>formatAttributes</name>
+        <param>
+          <type>array</type>
+          <declname>$attributes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describe the Chado properties that will be associated with this analysis.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$attributes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes. Should have stats and file keys. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="70" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="70" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/ded/classEutilsBioProjectFormatter_1a98a44a1c1e0dadb834d9c53774b1302f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EutilsBioProjectFormatter::formatBaseRecord</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>formatBaseRecord</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Handle the base Chado.analysis record.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>From . </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="39" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="39" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/ded/classEutilsBioProjectFormatter_1a83893f427194eb7c195d465d944eef40" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EutilsBioProjectFormatter::formatLinkedRecords</definition>
+        <argsstring>(array $accessions)</argsstring>
+        <name>formatLinkedRecords</name>
+        <param>
+          <type>array</type>
+          <declname>$accessions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describes additional records that will be created.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$accessions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the Accessions array from the EutilsBioProjectParser. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="101" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="101" bodyend="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class EutilsBioProject Formatter. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="31">
+        <label>EUtilsFormatter</label>
+        <link refid="da/dcc/classEUtilsFormatter"/>
+      </node>
+      <node id="30">
+        <label>EutilsBioProjectFormatter</label>
+        <link refid="d0/ded/classEutilsBioProjectFormatter"/>
+        <childnode refid="31" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="33">
+        <label>EUtilsFormatter</label>
+        <link refid="da/dcc/classEUtilsFormatter"/>
+      </node>
+      <node id="32">
+        <label>EutilsBioProjectFormatter</label>
+        <link refid="d0/ded/classEutilsBioProjectFormatter"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsBioProjectFormatter.inc" bodystart="6" bodyend="131"/>
+    <listofallmembers>
+      <member refid="d0/ded/classEutilsBioProjectFormatter_1a79346999e3397c3899799252a7d7680f" prot="private" virt="non-virtual"><scope>EutilsBioProjectFormatter</scope><name>$elements</name></member>
+      <member refid="d0/ded/classEutilsBioProjectFormatter_1afe0deff4318c82a1f11746b119cbce3b" prot="public" virt="non-virtual"><scope>EutilsBioProjectFormatter</scope><name>format</name></member>
+      <member refid="d0/ded/classEutilsBioProjectFormatter_1a9b590ee25dec686af67f8875b1609934" prot="private" virt="non-virtual"><scope>EutilsBioProjectFormatter</scope><name>formatAttributes</name></member>
+      <member refid="d0/ded/classEutilsBioProjectFormatter_1a98a44a1c1e0dadb834d9c53774b1302f" prot="private" virt="non-virtual"><scope>EutilsBioProjectFormatter</scope><name>formatBaseRecord</name></member>
+      <member refid="d0/ded/classEutilsBioProjectFormatter_1a83893f427194eb7c195d465d944eef40" prot="private" virt="non-virtual"><scope>EutilsBioProjectFormatter</scope><name>formatLinkedRecords</name></member>
+      <member refid="da/dcc/classEUtilsFormatter_1a3f3cbd9eb03ba5d719685a4996c25041" prot="public" virt="non-virtual"><scope>EutilsBioProjectFormatter</scope><name>getDbLink</name></member>
+      <member refid="da/dcc/classEUtilsFormatter_1a613961cd9c088f74dd482157d3a4a488" prot="public" virt="non-virtual"><scope>EutilsBioProjectFormatter</scope><name>getNCBIDB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

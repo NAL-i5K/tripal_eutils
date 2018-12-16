@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_76155055ce0753bdc2d2bc0f0a270929" kind="dir">
+    <compoundname>/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters</compoundname>
+    <innerfile refid="da/d18/EutilsAssemblyFormatter_8inc">EutilsAssemblyFormatter.inc</innerfile>
+    <innerfile refid="d9/da0/EutilsBioProjectFormatter_8inc">EutilsBioProjectFormatter.inc</innerfile>
+    <innerfile refid="df/d4b/EUtilsBioSampleFormatter_8inc">EUtilsBioSampleFormatter.inc</innerfile>
+    <innerfile refid="d6/d8e/EUtilsFormatter_8inc">EUtilsFormatter.inc</innerfile>
+    <innerfile refid="d7/d76/EUtilsFormatterFactory_8inc">EUtilsFormatterFactory.inc</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/"/>
+  </compounddef>
+</doxygen>

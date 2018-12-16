@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d6/df8/tripal__euitils__admin__settings_8form_8inc" kind="file" language="PHP">
+    <compoundname>tripal_euitils_admin_settings.form.inc</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="d6/df8/tripal__euitils__admin__settings_8form_8inc_1a5482ae09617d1bd0cd7a42d949847c4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tripal_eutils_admin_settings_form</definition>
+        <argsstring>($form, &amp;$form_state)</argsstring>
+        <name>tripal_eutils_admin_settings_form</name>
+        <param>
+          <declname>$form</declname>
+        </param>
+        <param>
+          <type>&amp;</type>
+          <declname>$form_state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Implements hook_menu().</para><para>Admin form for the whole module.<itemizedlist>
+<listitem><para>Configure whether to ignore missing attributes on import. </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/tripal_euitils_admin_settings.form.inc" line="13" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/tripal_euitils_admin_settings.form.inc" bodystart="13" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/df8/tripal__euitils__admin__settings_8form_8inc_1a4072cd5521f7c098388101bcc48c60ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tripal_eutils_admin_settings_form_submit</definition>
+        <argsstring>($form, &amp;$form_state)</argsstring>
+        <name>tripal_eutils_admin_settings_form_submit</name>
+        <param>
+          <declname>$form</declname>
+        </param>
+        <param>
+          <type>&amp;</type>
+          <declname>$form_state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Implements hook_submit(). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/tripal_euitils_admin_settings.form.inc" line="20" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/tripal_euitils_admin_settings.form.inc" bodystart="20" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="d6/df8/tripal__euitils__admin__settings_8form_8inc_1a5482ae09617d1bd0cd7a42d949847c4b" refkind="member"><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d6/df8/tripal__euitils__admin__settings_8form_8inc_1a5482ae09617d1bd0cd7a42d949847c4b" kindref="member">tripal_eutils_admin_settings_form</ref>($form,<sp/>&amp;$form_state)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$form;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="d6/df8/tripal__euitils__admin__settings_8form_8inc_1a4072cd5521f7c098388101bcc48c60ab" refkind="member"><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d6/df8/tripal__euitils__admin__settings_8form_8inc_1a4072cd5521f7c098388101bcc48c60ab" kindref="member">tripal_eutils_admin_settings_form_submit</ref>($form,<sp/>&amp;$form_state)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>$form;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>$form_state;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/tripal_euitils_admin_settings.form.inc"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dc/d01/classEUtilsBioSampleParser" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsBioSampleParser</compoundname>
+    <basecompoundref refid="d8/ddd/interfaceEUtilsParserInterface" prot="public" virt="non-virtual">EUtilsParserInterface</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d01/classEUtilsBioSampleParser_1a7991a233826ad0b9fa9ad59fd7bb4b32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleParser::parse</definition>
+        <argsstring>(SimpleXMLElement $xml)</argsstring>
+        <name>parse</name>
+        <reimplements refid="d8/ddd/interfaceEUtilsParserInterface_1aaf9e309139325479f180f7f131d371b8">parse</reimplements>
+        <param>
+          <type>SimpleXMLElement</type>
+          <declname>$xml</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse the XML into an array.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>\SimpleXMLElement</parametertype>
+<parametername>$xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array An array of parsed data</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" line="18" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" bodystart="18" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="dc/d01/classEUtilsBioSampleParser_1a83546797e7342a3daa2987d41e5b2a04" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleParser::attachDbLabel</definition>
+        <argsstring>(array &amp;$attributes, array $accessions)</argsstring>
+        <name>attachDbLabel</name>
+        <param>
+          <type>array &amp;</type>
+          <declname>$attributes</declname>
+        </param>
+        <param>
+          <type>array</type>
+          <declname>$accessions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Extract the db_label from accessions.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$attributes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$accessions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" line="53" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" bodystart="53" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d01/classEUtilsBioSampleParser_1a3152a4ca95cb52d0aa5579007f594ec4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleParser::extractAttributes</definition>
+        <argsstring>(SimpleXMLElement $elements)</argsstring>
+        <name>extractAttributes</name>
+        <param>
+          <type>SimpleXMLElement</type>
+          <declname>$elements</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Extract attributes.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>\SimpleXMLElement</parametertype>
+<parametername>$elements</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array Attributes returned as key =&gt; value. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" line="126" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" bodystart="126" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d01/classEUtilsBioSampleParser_1a9f3d8523df0f33f2ee593f51d28d3dd7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleParser::extractContact</definition>
+        <argsstring>(\SimpleXMLElement $xml)</argsstring>
+        <name>extractContact</name>
+        <param>
+          <type>\SimpleXMLElement</type>
+          <declname>$xml</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the owner name.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>\SimpleXMLElement</parametertype>
+<parametername>$xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string|NUll </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" line="96" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" bodystart="96" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d01/classEUtilsBioSampleParser_1aedc66bd8a9e91bbb2dd0aa9818a5b327" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleParser::extractOrganism</definition>
+        <argsstring>(\SimpleXMLElement $xml)</argsstring>
+        <name>extractOrganism</name>
+        <param>
+          <type>\SimpleXMLElement</type>
+          <declname>$xml</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the organism.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>\SimpleXMLElement</parametertype>
+<parametername>$xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array The organism data [ taxonomy_name, taxonomy_id, value ] </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" line="79" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" bodystart="79" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d01/classEUtilsBioSampleParser_1ace8a2bb252a9b243ac17c6f6bcf919da" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleParser::extractParagraphs</definition>
+        <argsstring>(\SimpleXMLElement $comment)</argsstring>
+        <name>extractParagraphs</name>
+        <param>
+          <type>\SimpleXMLElement</type>
+          <declname>$comment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Extract paragraphs.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>\SimpleXMLElement</parametertype>
+<parametername>$comment</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array Array of strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" line="108" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" bodystart="108" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="49">
+        <label>EUtilsParserInterface</label>
+        <link refid="d8/ddd/interfaceEUtilsParserInterface"/>
+      </node>
+      <node id="48">
+        <label>EUtilsBioSampleParser</label>
+        <link refid="dc/d01/classEUtilsBioSampleParser"/>
+        <childnode refid="49" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="51">
+        <label>EUtilsParserInterface</label>
+        <link refid="d8/ddd/interfaceEUtilsParserInterface"/>
+      </node>
+      <node id="50">
+        <label>EUtilsBioSampleParser</label>
+        <link refid="dc/d01/classEUtilsBioSampleParser"/>
+        <childnode refid="51" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc" bodystart="6" bodyend="143"/>
+    <listofallmembers>
+      <member refid="dc/d01/classEUtilsBioSampleParser_1a83546797e7342a3daa2987d41e5b2a04" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleParser</scope><name>attachDbLabel</name></member>
+      <member refid="dc/d01/classEUtilsBioSampleParser_1a3152a4ca95cb52d0aa5579007f594ec4" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleParser</scope><name>extractAttributes</name></member>
+      <member refid="dc/d01/classEUtilsBioSampleParser_1a9f3d8523df0f33f2ee593f51d28d3dd7" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleParser</scope><name>extractContact</name></member>
+      <member refid="dc/d01/classEUtilsBioSampleParser_1aedc66bd8a9e91bbb2dd0aa9818a5b327" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleParser</scope><name>extractOrganism</name></member>
+      <member refid="dc/d01/classEUtilsBioSampleParser_1ace8a2bb252a9b243ac17c6f6bcf919da" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleParser</scope><name>extractParagraphs</name></member>
+      <member refid="dc/d01/classEUtilsBioSampleParser_1a7991a233826ad0b9fa9ad59fd7bb4b32" prot="public" virt="non-virtual"><scope>EUtilsBioSampleParser</scope><name>parse</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

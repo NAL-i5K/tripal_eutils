@@ -40,7 +40,8 @@ release = u'0.1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.intersphinx'
+    'sphinx.ext.intersphinx',
+    'breathe'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -196,6 +197,6 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 
 # -- Options for Breathe -----------------------------------
-#breathe_projects = { "tripal_eutils": os.path.abspath('./doxyxml') }
+breathe_projects = { "tripal_eutils": os.path.abspath('./doxyxml') }
 
-#breathe_default_project = "tripal_eutils"
+breathe_default_project = "tripal_eutils"

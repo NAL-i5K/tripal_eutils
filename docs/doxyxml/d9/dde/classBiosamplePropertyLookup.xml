@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d9/dde/classBiosamplePropertyLookup" kind="class" language="PHP" prot="public">
+    <compoundname>BiosamplePropertyLookup</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/dde/classBiosamplePropertyLookup_1ae587028144c2edd824a02c80162fa9fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BiosamplePropertyLookup::lookupAll</definition>
+        <argsstring>($url=NULL)</argsstring>
+        <name>lookupAll</name>
+        <param>
+          <declname>$url</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$url</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/BiosamplePropertyLookup.inc" line="10" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/BiosamplePropertyLookup.inc" bodystart="10" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/BiosamplePropertyLookup.inc" line="3" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/BiosamplePropertyLookup.inc" bodystart="3" bodyend="40"/>
+    <listofallmembers>
+      <member refid="d9/dde/classBiosamplePropertyLookup_1ae587028144c2edd824a02c80162fa9fe" prot="public" virt="non-virtual"><scope>BiosamplePropertyLookup</scope><name>lookupAll</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d2/dd9/classEUtilsBioSampleRepository" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsBioSampleRepository</compoundname>
+    <basecompoundref refid="d3/dad/classEUtilsRepository" prot="public" virt="non-virtual">EUtilsRepository</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d2/dd9/classEUtilsBioSampleRepository_1a2ee9e7af69703fbb0565cb9cfa894151" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsBioSampleRepository::$required_fields</definition>
+        <argsstring></argsstring>
+        <name>$required_fields</name>
+        <initializer>= [
+    &apos;name&apos;,
+    &apos;description&apos;,
+  ]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="10" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="d2/dd9/classEUtilsBioSampleRepository_1afc1db4b8c2f5a22d37ba0e301dbca016" prot="protected" static="yes" mutable="no">
+        <type>static</type>
+        <definition>EUtilsBioSampleRepository::$cache</definition>
+        <argsstring></argsstring>
+        <name>$cache</name>
+        <initializer>= [
+    &apos;db&apos; =&gt; []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="20" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/dd9/classEUtilsBioSampleRepository_1aaaab2cd9f51ace5e028a00c5de83f67b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static EUtilsBioSampleRepository::create</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>create</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Takes data from the <ref refid="dc/d01/classEUtilsBioSampleParser" kindref="compound">EUtilsBioSampleParser</ref> and creates the chado records needed including biosample, accessions and props.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>object </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="36" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="36" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/dd9/classEUtilsBioSampleRepository_1a56add86d8c4efa5de8fe875a7a7648e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleRepository::createAccessions</definition>
+        <argsstring>(array $accessions)</argsstring>
+        <name>createAccessions</name>
+        <param>
+          <type>array</type>
+          <declname>$accessions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a set of accessions attaches them with the given biosample.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>object</parametertype>
+<parametername>$bio_sample</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The BioSample created by <ref refid="d2/dd9/classEUtilsBioSampleRepository_1a19c1e7c7284be762871126dfdcd8db98" kindref="member">createBioSample()</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$accessions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="163" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="163" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/dd9/classEUtilsBioSampleRepository_1a19c1e7c7284be762871126dfdcd8db98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleRepository::createBioSample</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>createBioSample</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a bio sample record.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See chado.biomaterial schema</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="107" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="107" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/dd9/classEUtilsBioSampleRepository_1a4884a58e47dbe3125645305bb29b481e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleRepository::createProps</definition>
+        <argsstring>($attributes)</argsstring>
+        <name>createProps</name>
+        <param>
+          <declname>$attributes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Iterates through the attributes array and creates properties.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$attributes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CVterm info from the Attributes area</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="186" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="186" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/dd9/classEUtilsBioSampleRepository_1a5f2f494b7d1f7942f1d314e6309d580c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleRepository::getBioSample</definition>
+        <argsstring>($name)</argsstring>
+        <name>getBioSample</name>
+        <param>
+          <declname>$name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get biosample from db or cache.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>null </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="135" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="135" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d2/dd9/classEUtilsBioSampleRepository_1a536bc5830993058fa767afa102e6a088" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleRepository::makeDescription</definition>
+        <argsstring>($description)</argsstring>
+        <name>makeDescription</name>
+        <param>
+          <declname>$description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Make the description string.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametertype>string</parametertype>
+<parametername>$description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="91" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="91" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="53">
+        <label>EUtilsRepository</label>
+        <link refid="d3/dad/classEUtilsRepository"/>
+      </node>
+      <node id="52">
+        <label>EUtilsBioSampleRepository</label>
+        <link refid="d2/dd9/classEUtilsBioSampleRepository"/>
+        <childnode refid="53" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="55">
+        <label>EUtilsRepository</label>
+        <link refid="d3/dad/classEUtilsRepository"/>
+      </node>
+      <node id="54">
+        <label>EUtilsBioSampleRepository</label>
+        <link refid="d2/dd9/classEUtilsBioSampleRepository"/>
+        <childnode refid="55" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" line="3" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioSampleRepository.inc" bodystart="3" bodyend="200"/>
+    <listofallmembers>
+      <member refid="d3/dad/classEUtilsRepository_1ac872895dd9d64f6a928ab79145a8baf6" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>$base_record_id</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1ad37442d664f5cf40a6fcb3739a5bcbaa" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>$base_table</name></member>
+      <member refid="d2/dd9/classEUtilsBioSampleRepository_1afc1db4b8c2f5a22d37ba0e301dbca016" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>$cache</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a5e5246fc912c06f01a76a3909772bf3c" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>$create_linked_records</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aba8ee02569fa873e5ed207604f8fcaf5" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>$dbxrefs</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a02f64d801e22a94bcff4ff527d2708e1" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>$properties</name></member>
+      <member refid="d2/dd9/classEUtilsBioSampleRepository_1a2ee9e7af69703fbb0565cb9cfa894151" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>$required_fields</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a0ea3172bdc51ac322bb731bffc85ce60" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>$visited</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a2de0f72bd63f5eb787e189ed06b16eec" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>__construct</name></member>
+      <member refid="d2/dd9/classEUtilsBioSampleRepository_1aaaab2cd9f51ace5e028a00c5de83f67b" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>create</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a4157728b77337a85bade80d3215ca5be" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>createAccession</name></member>
+      <member refid="d2/dd9/classEUtilsBioSampleRepository_1a56add86d8c4efa5de8fe875a7a7648e8" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>createAccessions</name></member>
+      <member refid="d2/dd9/classEUtilsBioSampleRepository_1a19c1e7c7284be762871126dfdcd8db98" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>createBioSample</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aaa08d74e539d7d21c80999f93d2bbc51" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>createContact</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a9040c2d2e4369e3d6ac0be6790b6791a" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>createProperty</name></member>
+      <member refid="d2/dd9/classEUtilsBioSampleRepository_1a4884a58e47dbe3125645305bb29b481e" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>createProps</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a5ef0802d88ef3e68c887d8bc087c16f8" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>createXMLProp</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a8063b025f9bf6e954c5f86bd4503e8cc" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>getAccessionByID</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a114bc5ff18e9b6c61bb7504d782b628b" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>getAccessionByName</name></member>
+      <member refid="d2/dd9/classEUtilsBioSampleRepository_1a5f2f494b7d1f7942f1d314e6309d580c" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>getBioSample</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1afcf1b2ef42886980237f079e68829dc6" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>getDB</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1ab39fc402698fd73c605dd7fa9ef1d938" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>getNCBIRecord</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aafaaf814be83fe00cde8a12a7a6dc84a" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>getOrganism</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a1be25ceee77c6a6338b96b2581e416f1" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>linkProjects</name></member>
+      <member refid="d2/dd9/classEUtilsBioSampleRepository_1a536bc5830993058fa767afa102e6a088" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>makeDescription</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a25f0b15a541cdd2ed1790845c7a0ed22" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>setBaseRecordId</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aef065f53e848401165869eab1d426575" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>setBaseTable</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a721ff9d2e1349d356e9ddccaf1e08a4c" prot="protected" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>validateBaseData</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a7240c7c5380ba4616675ef7363fd67d7" prot="public" virt="non-virtual"><scope>EUtilsBioSampleRepository</scope><name>validateFields</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

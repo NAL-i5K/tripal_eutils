@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dc/d66/classEUtils" kind="class" language="PHP" prot="public">
+    <compoundname>EUtils</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="dc/d66/classEUtils_1a827d34df38d6a6d78dfd141802a82a06" prot="public" static="yes" mutable="no">
+        <type>static</type>
+        <definition>EUtils::$visited</definition>
+        <argsstring></argsstring>
+        <name>$visited</name>
+        <initializer>= []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="19" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="dc/d66/classEUtils_1abdc5152b42c5b6ea9578e83743aae397" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtils::$create_linked_records</definition>
+        <argsstring></argsstring>
+        <name>$create_linked_records</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="35" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d66/classEUtils_1abcdb1cae16ae38d511129ca2d763bfab" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtils::$preview</definition>
+        <argsstring></argsstring>
+        <name>$preview</name>
+        <initializer>= FALSE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="26" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d66/classEUtils_1aaba3e031a2011f3ba1b8dd522017b368" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtils::__construct</definition>
+        <argsstring>($create_linked_records=TRUE)</argsstring>
+        <name>__construct</name>
+        <param>
+          <declname>$create_linked_records</declname>
+          <defval>TRUE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="40" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d66/classEUtils_1af2a0036cf3f6dc93a5d711a11e976f89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtils::get</definition>
+        <argsstring>($db, $accession)</argsstring>
+        <name>get</name>
+        <param>
+          <declname>$db</declname>
+        </param>
+        <param>
+          <declname>$accession</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Queries and parses an NCBI record.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>NCBI database. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$accession</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Numeric only accession.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed Chado object record.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="57" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="57" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d66/classEUtils_1af4c333e128a32d5dec6c6c3f02f82029" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtils::setPreview</definition>
+        <argsstring>($preview=TRUE)</argsstring>
+        <name>setPreview</name>
+        <param>
+          <declname>$preview</declname>
+          <defval>TRUE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the object to not insert, but only preview the XML.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>bool</parametertype>
+<parametername>$preview</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE will set to preview mode, FALSE unsets. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="98" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="98" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="dc/d66/classEUtils_1adfeb8995f371d5140dc610542c319d45" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtils::getResourceProvider</definition>
+        <argsstring>($db)</argsstring>
+        <name>getResourceProvider</name>
+        <param>
+          <declname>$db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the appropriate NCBI query method given the database.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>NCBI database.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>|| NCBI DB query object.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="113" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="113" bodyend="123"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Factory class which returns the appropriate NCBI resource provider.</para><para><ref refid="dc/d66/classEUtils" kindref="compound">EUtils</ref> </para>    </detaileddescription>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc" bodystart="8" bodyend="125"/>
+    <listofallmembers>
+      <member refid="dc/d66/classEUtils_1abdc5152b42c5b6ea9578e83743aae397" prot="protected" virt="non-virtual"><scope>EUtils</scope><name>$create_linked_records</name></member>
+      <member refid="dc/d66/classEUtils_1abcdb1cae16ae38d511129ca2d763bfab" prot="protected" virt="non-virtual"><scope>EUtils</scope><name>$preview</name></member>
+      <member refid="dc/d66/classEUtils_1a827d34df38d6a6d78dfd141802a82a06" prot="public" virt="non-virtual"><scope>EUtils</scope><name>$visited</name></member>
+      <member refid="dc/d66/classEUtils_1aaba3e031a2011f3ba1b8dd522017b368" prot="public" virt="non-virtual"><scope>EUtils</scope><name>__construct</name></member>
+      <member refid="dc/d66/classEUtils_1af2a0036cf3f6dc93a5d711a11e976f89" prot="public" virt="non-virtual"><scope>EUtils</scope><name>get</name></member>
+      <member refid="dc/d66/classEUtils_1adfeb8995f371d5140dc610542c319d45" prot="protected" virt="non-virtual"><scope>EUtils</scope><name>getResourceProvider</name></member>
+      <member refid="dc/d66/classEUtils_1af4c333e128a32d5dec6c6c3f02f82029" prot="public" virt="non-virtual"><scope>EUtils</scope><name>setPreview</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

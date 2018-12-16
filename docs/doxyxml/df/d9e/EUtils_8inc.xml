@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="df/d9e/EUtils_8inc" kind="file" language="PHP">
+    <compoundname>EUtils.inc</compoundname>
+    <innerclass refid="dc/d66/classEUtils" prot="public">EUtils</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="dc/d66/classEUtils" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dc/d66/classEUtils" kindref="compound">EUtils</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="dc/d66/classEUtils_1a827d34df38d6a6d78dfd141802a82a06" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="dc/d66/classEUtils_1a827d34df38d6a6d78dfd141802a82a06" kindref="member">$visited</ref><sp/>=<sp/>[];</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="dc/d66/classEUtils_1abcdb1cae16ae38d511129ca2d763bfab" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/><ref refid="dc/d66/classEUtils_1abcdb1cae16ae38d511129ca2d763bfab" kindref="member">$preview</ref><sp/>=<sp/>FALSE;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="dc/d66/classEUtils_1abdc5152b42c5b6ea9578e83743aae397" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/><ref refid="dc/d66/classEUtils_1abdc5152b42c5b6ea9578e83743aae397" kindref="member">$create_linked_records</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="dc/d66/classEUtils_1aaba3e031a2011f3ba1b8dd522017b368" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="dc/d66/classEUtils_1aaba3e031a2011f3ba1b8dd522017b368" kindref="member">__construct</ref>(<ref refid="dc/d66/classEUtils_1abdc5152b42c5b6ea9578e83743aae397" kindref="member">$create_linked_records</ref><sp/>=<sp/>TRUE)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;create_linked_records<sp/>=<sp/><ref refid="dc/d66/classEUtils_1abdc5152b42c5b6ea9578e83743aae397" kindref="member">$create_linked_records</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="dc/d66/classEUtils_1af2a0036cf3f6dc93a5d711a11e976f89" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">($db,<sp/>$accession)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(isset(static::$visited[$db][$accession]))<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static::$visited[$db][$accession];</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>$provider<sp/>=<sp/>$this-&gt;<ref refid="dc/d66/classEUtils_1adfeb8995f371d5140dc610542c319d45" kindref="member">getResourceProvider</ref>($db);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>$provider-&gt;addParam(</highlight><highlight class="stringliteral">&apos;id&apos;</highlight><highlight class="normal">,<sp/>$accession);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>$response<sp/>=<sp/>$provider-&gt;get();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!$response-&gt;isSuccessful())<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&apos;ERROR<sp/>Could<sp/>not<sp/>make<sp/>request<sp/>status<sp/>&apos;</highlight><highlight class="normal"><sp/>.<sp/>$response-&gt;status());</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>$xml<sp/>=<sp/>$response-&gt;xml();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>$data<sp/>=<sp/>(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="d6/d04/classEUtilsXMLParserFactory" kindref="compound">EUtilsXMLParserFactory</ref>())-&gt;</highlight><highlight class="keyword">get</highlight><highlight class="normal">($db)-&gt;parse($xml);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>When<sp/>previewing,<sp/>we<sp/>want<sp/>to<sp/>return<sp/>the<sp/>parser<sp/>values<sp/>instead.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>we<sp/>miss<sp/>out<sp/>on<sp/>querying<sp/>linked<sp/>records.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Secondarily<sp/>linked<sp/>records<sp/>wont<sp/>be<sp/>reported.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($this-&gt;preview)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$formatter<sp/>=<sp/>(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="d2/d5f/classEUtilsFormatterFactory" kindref="compound">EUtilsFormatterFactory</ref>())-&gt;</highlight><highlight class="keyword">get</highlight><highlight class="normal">($db);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$formatter-&gt;format($data);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>$repository<sp/>=<sp/>(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="db/d8a/classEUtilsRepositoryFactory" kindref="compound">EUtilsRepositoryFactory</ref>())-&gt;</highlight><highlight class="keyword">get</highlight><highlight class="normal">($db);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>$record<sp/>=<sp/>$repository-&gt;create($data);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>static::$visited[$db][$accession]<sp/>=<sp/>$record;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$record;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="dc/d66/classEUtils_1af4c333e128a32d5dec6c6c3f02f82029" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="dc/d66/classEUtils_1af4c333e128a32d5dec6c6c3f02f82029" kindref="member">setPreview</ref>(<ref refid="dc/d66/classEUtils_1abcdb1cae16ae38d511129ca2d763bfab" kindref="member">$preview</ref><sp/>=<sp/>TRUE)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;preview<sp/>=<sp/><ref refid="dc/d66/classEUtils_1abcdb1cae16ae38d511129ca2d763bfab" kindref="member">$preview</ref>;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="dc/d66/classEUtils_1adfeb8995f371d5140dc610542c319d45" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="dc/d66/classEUtils_1adfeb8995f371d5140dc610542c319d45" kindref="member">getResourceProvider</ref>($db)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($db<sp/>===<sp/></highlight><highlight class="stringliteral">&apos;assembly&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="db/d8b/classESummary" kindref="compound">ESummary</ref>($db);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($db<sp/>===<sp/></highlight><highlight class="stringliteral">&apos;pmc&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="df/db2/classESearch" kindref="compound">ESearch</ref>($db);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="d2/d2d/classEFetch" kindref="compound">EFetch</ref>($db);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EUtils.inc"/>
+  </compounddef>
+</doxygen>
