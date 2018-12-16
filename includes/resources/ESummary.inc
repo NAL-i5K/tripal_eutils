@@ -19,4 +19,4 @@
     $this->addParam('db', $db);
   }
 
-}
+  }
