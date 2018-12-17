@@ -1,9 +1,7 @@
 <?php
 
 /**
- * Class EUtilsAssembly Formatter.
- *
- * @ingroup formatters
+ * Parse EUtilsAssemblyParser output for display on a form.
  */
 class EUtilsAssemblyFormatter extends EUtilsFormatter {
 

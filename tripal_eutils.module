@@ -58,28 +58,40 @@ function tripal_eutils_menu() {
 
   ];
 
-  $items['admin/tripal/tripal_eutils/import'] = [
-    'title' => 'Import NCBI Accession',
+  $items['admin/tripal/loaders/eutils_ncbi_import'] = [
+    'title' => 'Chado NCBI EUtils Accession Importer',
     'page callback' => 'drupal_get_form',
     'file' => 'includes/tripal_euitils_import.form.inc',
     'access arguments' => ['access tripal_eutils admin'],
     'page arguments' => ['tripal_eutils_import_form'],
   ];
 
-  // TODO: this should be set somewhere else...
-  $tripal_euitils_types = ['assembly', 'biosample'];
-
-  foreach ($tripal_euitils_types as $type) {
-    $items['admin/tripal/tripal_eutils/cvterm_mappings/' . $type] = [
-      'title' => $type . ' Mappings',
-      'page callback' => 'drupal_get_form',
-      'file' => 'includes/tripal_euitils_db_term_map.form.inc',
-      'access arguments' => ['access tripal_eutils admin'],
-      'page arguments' => ['tripal_euitils_db_term_map_form', $type],
-    ];
-  }
-
+  // // TODO: this should be set somewhere else...
+  // $tripal_euitils_types = ['assembly', 'biosample'];
+  //
+  //  foreach ($tripal_euitils_types as $type) {
+  //    $items['admin/tripal/tripal_eutils/cvterm_mappings/' . $type] = [
+  //      'title' => $type . ' Mappings',
+  //      'page callback' => 'drupal_get_form',
+  //      'file' => 'includes/tripal_euitils_db_term_map.form.inc',
+  //      'access arguments' => ['access tripal_eutils admin'],
+  //      'page arguments' => ['tripal_euitils_db_term_map_form', $type],
+  //    ];
+  //  }.
   return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tripal_eutils_permission() {
+
+  return [
+    'access tripal_eutils admin' => [
+      'title' => t('Submit NCBI Accessions directly via admin form'),
+    ],
+  ];
+
 }
 
 /**

@@ -12,5 +12,6 @@ Tripal EUtils
 
   introduction
   installation
+  user_guide
   ncbi_mapping
   development
