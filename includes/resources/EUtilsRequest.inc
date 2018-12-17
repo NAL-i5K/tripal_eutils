@@ -1,7 +1,9 @@
 <?php
 
 /**
+ * Builds and executes the API request to NCBI.
  *
+ * @ingroup resources
  */
 class EUtilsRequest {
 

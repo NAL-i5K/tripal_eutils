@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="da/d47/classEUtilsBioProjectRepository" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsBioProjectRepository</compoundname>
+    <basecompoundref refid="d3/dad/classEUtilsRepository" prot="public" virt="non-virtual">EUtilsRepository</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="da/d47/classEUtilsBioProjectRepository_1a13d6307a397553568bcb31ae19c81f93" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsBioProjectRepository::$base_table</definition>
+        <argsstring></argsstring>
+        <name>$base_table</name>
+        <initializer>= &apos;project&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" line="20" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d47/classEUtilsBioProjectRepository_1a154aaed9d41db79d876ba2847a3fdcb9" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsBioProjectRepository::$required_fields</definition>
+        <argsstring></argsstring>
+        <name>$required_fields</name>
+        <initializer>= [
+    &apos;name&apos;,
+    &apos;description&apos;,
+  ]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" line="15" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="da/d47/classEUtilsBioProjectRepository_1aba4258b7ca96f50416ebdd02a3a58030" prot="protected" static="yes" mutable="no">
+        <type>static</type>
+        <definition>EUtilsBioProjectRepository::$cache</definition>
+        <argsstring></argsstring>
+        <name>$cache</name>
+        <initializer>= [
+    &apos;db&apos; =&gt; []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" line="28" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/d47/classEUtilsBioProjectRepository_1a8c30324446c866b01da214896b0696a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static EUtilsBioProjectRepository::create</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>create</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a project and linked records.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data from bioproject parser.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>object chado project record.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" line="45" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" bodystart="45" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d47/classEUtilsBioProjectRepository_1adaeb6c5d67c43d48a20410cbfbf1ccc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioProjectRepository::createAccessions</definition>
+        <argsstring>(array $accessions)</argsstring>
+        <name>createAccessions</name>
+        <param>
+          <type>array</type>
+          <declname>$accessions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a set of accessions attaches them with the given project.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$accessions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" line="167" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" bodystart="167" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d47/classEUtilsBioProjectRepository_1aee36bddfacbb31f45d3ce59628e636ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioProjectRepository::createProject</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>createProject</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a project record.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See chado.project schema.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" line="80" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" bodystart="80" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d47/classEUtilsBioProjectRepository_1ad8fb0453e78b8ca3a488cb4b01374c41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioProjectRepository::createProps</definition>
+        <argsstring>(array $properties)</argsstring>
+        <name>createProps</name>
+        <param>
+          <type>array</type>
+          <declname>$properties</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Iterate through the properties and insert.</para><para>TODO: How do we get the accessions from what we have here? What we probably have for project is a set of XML attributes or tags...</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$properties</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Properties in form machine name =&gt; value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool True if successful.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" line="147" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" bodystart="147" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d47/classEUtilsBioProjectRepository_1a08c845a678eb22f7fd50402c9d542ba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioProjectRepository::getProject</definition>
+        <argsstring>($name)</argsstring>
+        <name>getProject</name>
+        <param>
+          <declname>$name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get project from db or cache.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>null </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" line="113" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" bodystart="113" bodyend="131"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Takes parsed bioproject XMLs and creates chado.projects.</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="39">
+        <label>EUtilsRepository</label>
+        <link refid="d3/dad/classEUtilsRepository"/>
+      </node>
+      <node id="38">
+        <label>EUtilsBioProjectRepository</label>
+        <link refid="da/d47/classEUtilsBioProjectRepository"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="41">
+        <label>EUtilsRepository</label>
+        <link refid="d3/dad/classEUtilsRepository"/>
+      </node>
+      <node id="40">
+        <label>EUtilsBioProjectRepository</label>
+        <link refid="da/d47/classEUtilsBioProjectRepository"/>
+        <childnode refid="41" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsBioProjectRepository.inc" bodystart="8" bodyend="181"/>
+    <listofallmembers>
+      <member refid="d3/dad/classEUtilsRepository_1ac872895dd9d64f6a928ab79145a8baf6" prot="protected" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>$base_record_id</name></member>
+      <member refid="da/d47/classEUtilsBioProjectRepository_1a13d6307a397553568bcb31ae19c81f93" prot="protected" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>$base_table</name></member>
+      <member refid="da/d47/classEUtilsBioProjectRepository_1aba4258b7ca96f50416ebdd02a3a58030" prot="protected" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>$cache</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a5e5246fc912c06f01a76a3909772bf3c" prot="protected" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>$create_linked_records</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aba8ee02569fa873e5ed207604f8fcaf5" prot="protected" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>$dbxrefs</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a02f64d801e22a94bcff4ff527d2708e1" prot="protected" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>$properties</name></member>
+      <member refid="da/d47/classEUtilsBioProjectRepository_1a154aaed9d41db79d876ba2847a3fdcb9" prot="protected" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>$required_fields</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a0ea3172bdc51ac322bb731bffc85ce60" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>$visited</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a2de0f72bd63f5eb787e189ed06b16eec" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>__construct</name></member>
+      <member refid="da/d47/classEUtilsBioProjectRepository_1a8c30324446c866b01da214896b0696a8" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>create</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a4157728b77337a85bade80d3215ca5be" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>createAccession</name></member>
+      <member refid="da/d47/classEUtilsBioProjectRepository_1adaeb6c5d67c43d48a20410cbfbf1ccc7" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>createAccessions</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aaa08d74e539d7d21c80999f93d2bbc51" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>createContact</name></member>
+      <member refid="da/d47/classEUtilsBioProjectRepository_1aee36bddfacbb31f45d3ce59628e636ba" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>createProject</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a9040c2d2e4369e3d6ac0be6790b6791a" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>createProperty</name></member>
+      <member refid="da/d47/classEUtilsBioProjectRepository_1ad8fb0453e78b8ca3a488cb4b01374c41" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>createProps</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a5ef0802d88ef3e68c887d8bc087c16f8" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>createXMLProp</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a8063b025f9bf6e954c5f86bd4503e8cc" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>getAccessionByID</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a114bc5ff18e9b6c61bb7504d782b628b" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>getAccessionByName</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1afcf1b2ef42886980237f079e68829dc6" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>getDB</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1ab39fc402698fd73c605dd7fa9ef1d938" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>getNCBIRecord</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aafaaf814be83fe00cde8a12a7a6dc84a" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>getOrganism</name></member>
+      <member refid="da/d47/classEUtilsBioProjectRepository_1a08c845a678eb22f7fd50402c9d542ba9" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>getProject</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a1be25ceee77c6a6338b96b2581e416f1" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>linkProjects</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a25f0b15a541cdd2ed1790845c7a0ed22" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>setBaseRecordId</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aef065f53e848401165869eab1d426575" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>setBaseTable</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a721ff9d2e1349d356e9ddccaf1e08a4c" prot="protected" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>validateBaseData</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a7240c7c5380ba4616675ef7363fd67d7" prot="public" virt="non-virtual"><scope>EUtilsBioProjectRepository</scope><name>validateFields</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

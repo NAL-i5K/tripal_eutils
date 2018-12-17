@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d2/d41/BiosamplePropertyLookup_8inc" kind="file" language="PHP">
+    <compoundname>BiosamplePropertyLookup.inc</compoundname>
+    <innerclass refid="d9/dde/classBiosamplePropertyLookup" prot="public">BiosamplePropertyLookup</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="d9/dde/classBiosamplePropertyLookup" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d9/dde/classBiosamplePropertyLookup" kindref="compound">BiosamplePropertyLookup</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="d9/dde/classBiosamplePropertyLookup_1a73fd8d3a8385b60392911ff17d9a91fc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d9/dde/classBiosamplePropertyLookup_1a73fd8d3a8385b60392911ff17d9a91fc" kindref="member">lookupAll</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$url<sp/>=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>$request<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="d3/db2/classEUtilsRequest" kindref="compound">EUtilsRequest</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(is_null($url))<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$url<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;https://www.ncbi.nlm.nih.gov/biosample/docs/attributes&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>$response<sp/>=<sp/>$request-&gt;setBaseURL($url)-&gt;addParam(</highlight><highlight class="stringliteral">&apos;format&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;xml&apos;</highlight><highlight class="normal">)-&gt;get();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>$terms<sp/>=<sp/>[];</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>$xml<sp/>=<sp/>$response-&gt;xml();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>$children<sp/>=<sp/>$xml-&gt;children();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal"><sp/>($children<sp/>as<sp/>$child)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$term_label<sp/>=<sp/>$child-&gt;Name;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$harmonized_name<sp/>=<sp/>$child-&gt;HarmonizedName;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$definition<sp/>=<sp/>$child-&gt;Description;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>could<sp/>look<sp/>at<sp/>Package<sp/>if<sp/>we<sp/>care<sp/>where<sp/>the<sp/>term<sp/>comes<sp/>from.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$terms[(string)<sp/>$harmonized_name]<sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;label&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)<sp/>$term_label,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;def&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>(string)<sp/>$definition,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>];</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$terms;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/BiosamplePropertyLookup.inc"/>
+  </compounddef>
+</doxygen>

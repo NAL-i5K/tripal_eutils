@@ -2,6 +2,8 @@
 
 /**
  * Maps NCBI Assemblies into a Chado analysis.
+ *
+ * @ingroup repositories.
  */
 class EUtilsAssemblyRepository extends EUtilsRepository {
 

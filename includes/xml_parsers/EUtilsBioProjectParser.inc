@@ -4,6 +4,8 @@
  * Class EUtilsBioProjectParser.
  *
  * Note that projects don't have reliable attribute listings.
+ *
+ * @ingroup parsers
  */
 class EUtilsBioProjectParser implements EUtilsParserInterface {
 

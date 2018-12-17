@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="db/d8a/classEUtilsRepositoryFactory" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsRepositoryFactory</compoundname>
+    <basecompoundref refid="de/d3d/interfaceEUtilsFactoryInterface" prot="public" virt="non-virtual">EUtilsFactoryInterface</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="db/d8a/classEUtilsRepositoryFactory_1a3f0505b5bd5ae85167cb4bfffe9d67c3" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsRepositoryFactory::$create_linked_records</definition>
+        <argsstring></argsstring>
+        <name>$create_linked_records</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryFactory.inc" line="26" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryFactory.inc" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d8a/classEUtilsRepositoryFactory_1a279bc93c3dc9cb8aaafb83b4a4b14365" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsRepositoryFactory::$repositories</definition>
+        <argsstring></argsstring>
+        <name>$repositories</name>
+        <initializer>= [
+    &apos;bioproject&apos; =&gt; EUtilsBioProjectRepository::class</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryFactory.inc" line="15" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryFactory.inc" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/d8a/classEUtilsRepositoryFactory_1a0a7e4c62ac6d1db3dd027e3cbc5e360b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepositoryFactory::__construct</definition>
+        <argsstring>($create_linked_records=TRUE)</argsstring>
+        <name>__construct</name>
+        <param>
+          <declname>$create_linked_records</declname>
+          <defval>TRUE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="db/d8a/classEUtilsRepositoryFactory" kindref="compound">EUtilsRepositoryFactory</ref> constructor.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>bool</parametertype>
+<parametername>$create_linked_records</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to create all linked records. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryFactory.inc" line="34" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryFactory.inc" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d8a/classEUtilsRepositoryFactory_1a65f0265dca906508296effa53708e998" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepositoryFactory::get</definition>
+        <argsstring>(string $db)</argsstring>
+        <name>get</name>
+        <reimplements refid="de/d3d/interfaceEUtilsFactoryInterface_1a56a6c264c9019073472aa039380b1666">get</reimplements>
+        <param>
+          <type>string</type>
+          <declname>$db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a repository for a given DB.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The database name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An initialized instance of the appropriate repository.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryFactory.inc" line="49" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryFactory.inc" bodystart="49" bodyend="57"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class <ref refid="db/d8a/classEUtilsRepositoryFactory" kindref="compound">EUtilsRepositoryFactory</ref>. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="78">
+        <label>EUtilsRepositoryFactory</label>
+        <link refid="db/d8a/classEUtilsRepositoryFactory"/>
+        <childnode refid="79" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>EUtilsFactoryInterface</label>
+        <link refid="de/d3d/interfaceEUtilsFactoryInterface"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="80">
+        <label>EUtilsRepositoryFactory</label>
+        <link refid="db/d8a/classEUtilsRepositoryFactory"/>
+        <childnode refid="81" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>EUtilsFactoryInterface</label>
+        <link refid="de/d3d/interfaceEUtilsFactoryInterface"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryFactory.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepositoryFactory.inc" bodystart="8" bodyend="59"/>
+    <listofallmembers>
+      <member refid="db/d8a/classEUtilsRepositoryFactory_1a3f0505b5bd5ae85167cb4bfffe9d67c3" prot="protected" virt="non-virtual"><scope>EUtilsRepositoryFactory</scope><name>$create_linked_records</name></member>
+      <member refid="db/d8a/classEUtilsRepositoryFactory_1a279bc93c3dc9cb8aaafb83b4a4b14365" prot="protected" virt="non-virtual"><scope>EUtilsRepositoryFactory</scope><name>$repositories</name></member>
+      <member refid="db/d8a/classEUtilsRepositoryFactory_1a0a7e4c62ac6d1db3dd027e3cbc5e360b" prot="public" virt="non-virtual"><scope>EUtilsRepositoryFactory</scope><name>__construct</name></member>
+      <member refid="db/d8a/classEUtilsRepositoryFactory_1a65f0265dca906508296effa53708e998" prot="public" virt="non-virtual"><scope>EUtilsRepositoryFactory</scope><name>get</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

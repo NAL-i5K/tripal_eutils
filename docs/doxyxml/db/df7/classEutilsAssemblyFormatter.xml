@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="db/df7/classEutilsAssemblyFormatter" kind="class" language="PHP" prot="public">
+    <compoundname>EutilsAssemblyFormatter</compoundname>
+    <basecompoundref refid="da/dcc/classEUtilsFormatter" prot="public" virt="non-virtual">EUtilsFormatter</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="db/df7/classEutilsAssemblyFormatter_1ad2c0b4ee593bbe2d2349b300ed4d6c21" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>EutilsAssemblyFormatter::$elements</definition>
+        <argsstring></argsstring>
+        <name>$elements</name>
+        <initializer>= []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="10" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/df7/classEutilsAssemblyFormatter_1afd400e9a0d4b2dcb0dff6fff827d1afc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EutilsAssemblyFormatter::format</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>format</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add the formatted data into a table.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The parsed XML data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array Drupal form elements array of each section in a fieldset. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="21" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="21" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="db/df7/classEutilsAssemblyFormatter_1a6f8642bb08cb1c64d0c26abe39e806d8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EutilsAssemblyFormatter::formatAttributes</definition>
+        <argsstring>(array $attributes)</argsstring>
+        <name>formatAttributes</name>
+        <param>
+          <type>array</type>
+          <declname>$attributes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describe the Chado properties that will be associated with this analysis.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$attributes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes. Should have stats and file keys. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="68" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="68" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="db/df7/classEutilsAssemblyFormatter_1aa1ee18611e99b8fe5212a8527032caf1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EutilsAssemblyFormatter::formatBaseRecord</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>formatBaseRecord</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Handle the base Chado.analysis record.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>From . </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="40" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="40" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="db/df7/classEutilsAssemblyFormatter_1aafca9d004dc206f0d2013c7c26a45d85" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EutilsAssemblyFormatter::formatLinkedRecords</definition>
+        <argsstring>(array $accessions)</argsstring>
+        <name>formatLinkedRecords</name>
+        <param>
+          <type>array</type>
+          <declname>$accessions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Describes additional records that will be created.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$accessions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the Accessions array from the EutilsAssemblyParser. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="97" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="97" bodyend="146"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class EUtilsAssembly Formatter. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="18">
+        <label>EutilsAssemblyFormatter</label>
+        <link refid="db/df7/classEutilsAssemblyFormatter"/>
+        <childnode refid="19" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>EUtilsFormatter</label>
+        <link refid="da/dcc/classEUtilsFormatter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="20">
+        <label>EutilsAssemblyFormatter</label>
+        <link refid="db/df7/classEutilsAssemblyFormatter"/>
+        <childnode refid="21" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>EUtilsFormatter</label>
+        <link refid="da/dcc/classEUtilsFormatter"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc" bodystart="8" bodyend="148"/>
+    <listofallmembers>
+      <member refid="db/df7/classEutilsAssemblyFormatter_1ad2c0b4ee593bbe2d2349b300ed4d6c21" prot="private" virt="non-virtual"><scope>EutilsAssemblyFormatter</scope><name>$elements</name></member>
+      <member refid="db/df7/classEutilsAssemblyFormatter_1afd400e9a0d4b2dcb0dff6fff827d1afc" prot="public" virt="non-virtual"><scope>EutilsAssemblyFormatter</scope><name>format</name></member>
+      <member refid="db/df7/classEutilsAssemblyFormatter_1a6f8642bb08cb1c64d0c26abe39e806d8" prot="private" virt="non-virtual"><scope>EutilsAssemblyFormatter</scope><name>formatAttributes</name></member>
+      <member refid="db/df7/classEutilsAssemblyFormatter_1aa1ee18611e99b8fe5212a8527032caf1" prot="private" virt="non-virtual"><scope>EutilsAssemblyFormatter</scope><name>formatBaseRecord</name></member>
+      <member refid="db/df7/classEutilsAssemblyFormatter_1aafca9d004dc206f0d2013c7c26a45d85" prot="private" virt="non-virtual"><scope>EutilsAssemblyFormatter</scope><name>formatLinkedRecords</name></member>
+      <member refid="da/dcc/classEUtilsFormatter_1a3f3cbd9eb03ba5d719685a4996c25041" prot="public" virt="non-virtual"><scope>EutilsAssemblyFormatter</scope><name>getDbLink</name></member>
+      <member refid="da/dcc/classEUtilsFormatter_1a613961cd9c088f74dd482157d3a4a488" prot="public" virt="non-virtual"><scope>EutilsAssemblyFormatter</scope><name>getNCBIDB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

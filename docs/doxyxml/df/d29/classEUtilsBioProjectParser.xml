@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="df/d29/classEUtilsBioProjectParser" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsBioProjectParser</compoundname>
+    <basecompoundref refid="d8/ddd/interfaceEUtilsParserInterface" prot="public" virt="non-virtual">EUtilsParserInterface</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/d29/classEUtilsBioProjectParser_1aef246de2d2e5416514b9ed0cd4d00821" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioProjectParser::bioProjectSubmission</definition>
+        <argsstring>(SimpleXMLElement $xml)</argsstring>
+        <name>bioProjectSubmission</name>
+        <param>
+          <type>SimpleXMLElement</type>
+          <declname>$xml</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>\SimpleXMLElement</parametertype>
+<parametername>$xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioProjectParser.inc" line="126" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioProjectParser.inc" bodystart="126" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d29/classEUtilsBioProjectParser_1a025ac898f9b3ae372a763e2af156034f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioProjectParser::parse</definition>
+        <argsstring>(SimpleXMLElement $xml)</argsstring>
+        <name>parse</name>
+        <reimplements refid="d8/ddd/interfaceEUtilsParserInterface_1aaf9e309139325479f180f7f131d371b8">parse</reimplements>
+        <param>
+          <type>SimpleXMLElement</type>
+          <declname>$xml</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse an NCBI BioProject XML.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>\SimpleXMLElement</parametertype>
+<parametername>$xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Simple XML Element.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array|mixed Array.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioProjectParser.inc" line="23" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioProjectParser.inc" bodystart="23" bodyend="119"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class <ref refid="df/d29/classEUtilsBioProjectParser" kindref="compound">EUtilsBioProjectParser</ref>.</para><para>Note that projects don&apos;t have reliable attribute listings. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="35">
+        <label>EUtilsParserInterface</label>
+        <link refid="d8/ddd/interfaceEUtilsParserInterface"/>
+      </node>
+      <node id="34">
+        <label>EUtilsBioProjectParser</label>
+        <link refid="df/d29/classEUtilsBioProjectParser"/>
+        <childnode refid="35" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="37">
+        <label>EUtilsParserInterface</label>
+        <link refid="d8/ddd/interfaceEUtilsParserInterface"/>
+      </node>
+      <node id="36">
+        <label>EUtilsBioProjectParser</label>
+        <link refid="df/d29/classEUtilsBioProjectParser"/>
+        <childnode refid="37" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioProjectParser.inc" line="10" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioProjectParser.inc" bodystart="10" bodyend="153"/>
+    <listofallmembers>
+      <member refid="df/d29/classEUtilsBioProjectParser_1aef246de2d2e5416514b9ed0cd4d00821" prot="public" virt="non-virtual"><scope>EUtilsBioProjectParser</scope><name>bioProjectSubmission</name></member>
+      <member refid="df/d29/classEUtilsBioProjectParser_1a025ac898f9b3ae372a763e2af156034f" prot="public" virt="non-virtual"><scope>EUtilsBioProjectParser</scope><name>parse</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

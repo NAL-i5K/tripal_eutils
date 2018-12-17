@@ -13,3 +13,11 @@ Adding support for a new NCBI database
 - Add the formatter and repository to their respective factory classes.
 - Add the database to the ``tripal_eutils_import.form.inc`` database list.
 - Modify ``tripal_eutils.install``, inserting any new databases necessary for the cross references.  Also be sure to insert any new cvterms your repository will need.
+
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Code Documentation:
+  :glob:
+
+  code_doc/*

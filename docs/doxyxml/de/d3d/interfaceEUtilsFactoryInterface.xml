@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="de/d3d/interfaceEUtilsFactoryInterface" kind="interface" language="PHP" prot="public">
+    <compoundname>EUtilsFactoryInterface</compoundname>
+    <derivedcompoundref refid="d2/d5f/classEUtilsFormatterFactory" prot="public" virt="non-virtual">EUtilsFormatterFactory</derivedcompoundref>
+    <derivedcompoundref refid="db/d8a/classEUtilsRepositoryFactory" prot="public" virt="non-virtual">EUtilsRepositoryFactory</derivedcompoundref>
+    <derivedcompoundref refid="d6/d04/classEUtilsXMLParserFactory" prot="public" virt="non-virtual">EUtilsXMLParserFactory</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d3d/interfaceEUtilsFactoryInterface_1a56a6c264c9019073472aa039380b1666" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsFactoryInterface::get</definition>
+        <argsstring>(string $db)</argsstring>
+        <name>get</name>
+        <reimplementedby refid="d6/d04/classEUtilsXMLParserFactory_1ad2401b4aad814d1ba2afc942c7314e6a">get</reimplementedby>
+        <reimplementedby refid="d2/d5f/classEUtilsFormatterFactory_1a9c33bb4e6c1c4c61f80650e5b8841772">get</reimplementedby>
+        <reimplementedby refid="db/d8a/classEUtilsRepositoryFactory_1a65f0265dca906508296effa53708e998">get</reimplementedby>
+        <param>
+          <type>string</type>
+          <declname>$db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the appropriate class.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the DB.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/EUtilsFactoryInterface.inc" line="16" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Interface <ref refid="de/d3d/interfaceEUtilsFactoryInterface" kindref="compound">EUtilsFactoryInterface</ref>. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="57">
+        <label>EUtilsXMLParserFactory</label>
+        <link refid="d6/d04/classEUtilsXMLParserFactory"/>
+        <childnode refid="54" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>EUtilsRepositoryFactory</label>
+        <link refid="db/d8a/classEUtilsRepositoryFactory"/>
+        <childnode refid="54" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>EUtilsFactoryInterface</label>
+        <link refid="de/d3d/interfaceEUtilsFactoryInterface"/>
+      </node>
+      <node id="55">
+        <label>EUtilsFormatterFactory</label>
+        <link refid="d2/d5f/classEUtilsFormatterFactory"/>
+        <childnode refid="54" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/EUtilsFactoryInterface.inc" line="6" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/EUtilsFactoryInterface.inc" bodystart="6" bodyend="18"/>
+    <listofallmembers>
+      <member refid="de/d3d/interfaceEUtilsFactoryInterface_1a56a6c264c9019073472aa039380b1666" prot="public" virt="non-virtual"><scope>EUtilsFactoryInterface</scope><name>get</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

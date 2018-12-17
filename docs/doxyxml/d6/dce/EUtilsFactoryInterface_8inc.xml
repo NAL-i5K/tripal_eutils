@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d6/dce/EUtilsFactoryInterface_8inc" kind="file" language="PHP">
+    <compoundname>EUtilsFactoryInterface.inc</compoundname>
+    <innerclass refid="de/d3d/interfaceEUtilsFactoryInterface" prot="public">EUtilsFactoryInterface</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="de/d3d/interfaceEUtilsFactoryInterface" refkind="compound"><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="de/d3d/interfaceEUtilsFactoryInterface" kindref="compound">EUtilsFactoryInterface</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>$db);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/EUtilsFactoryInterface.inc"/>
+  </compounddef>
+</doxygen>

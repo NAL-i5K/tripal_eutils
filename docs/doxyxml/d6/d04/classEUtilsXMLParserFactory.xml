@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d6/d04/classEUtilsXMLParserFactory" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsXMLParserFactory</compoundname>
+    <basecompoundref refid="de/d3d/interfaceEUtilsFactoryInterface" prot="public" virt="non-virtual">EUtilsFactoryInterface</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d6/d04/classEUtilsXMLParserFactory_1ac0a65482a2c069a8f96f368cfb4c6479" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsXMLParserFactory::$parsers</definition>
+        <argsstring></argsstring>
+        <name>$parsers</name>
+        <initializer>= [
+    &apos;bioproject&apos; =&gt; EUtilsBioProjectParser::class</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsXMLParserFactory.inc" line="16" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsXMLParserFactory.inc" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/d04/classEUtilsXMLParserFactory_1ad2401b4aad814d1ba2afc942c7314e6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsXMLParserFactory::get</definition>
+        <argsstring>(string $db)</argsstring>
+        <name>get</name>
+        <reimplements refid="de/d3d/interfaceEUtilsFactoryInterface_1a56a6c264c9019073472aa039380b1666">get</reimplements>
+        <param>
+          <type>string</type>
+          <declname>$db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the appropriate XML parser.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the DB.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsXMLParserFactory.inc" line="32" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsXMLParserFactory.inc" bodystart="32" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class <ref refid="d6/d04/classEUtilsXMLParserFactory" kindref="compound">EUtilsXMLParserFactory</ref>.</para><para>This is the base EUTILS XML parser class. The plan is to extend this base class to be specific for each DB type. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="89">
+        <label>EUtilsXMLParserFactory</label>
+        <link refid="d6/d04/classEUtilsXMLParserFactory"/>
+        <childnode refid="90" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>EUtilsFactoryInterface</label>
+        <link refid="de/d3d/interfaceEUtilsFactoryInterface"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="91">
+        <label>EUtilsXMLParserFactory</label>
+        <link refid="d6/d04/classEUtilsXMLParserFactory"/>
+        <childnode refid="92" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="92">
+        <label>EUtilsFactoryInterface</label>
+        <link refid="de/d3d/interfaceEUtilsFactoryInterface"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsXMLParserFactory.inc" line="9" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsXMLParserFactory.inc" bodystart="9" bodyend="42"/>
+    <listofallmembers>
+      <member refid="d6/d04/classEUtilsXMLParserFactory_1ac0a65482a2c069a8f96f368cfb4c6479" prot="protected" virt="non-virtual"><scope>EUtilsXMLParserFactory</scope><name>$parsers</name></member>
+      <member refid="d6/d04/classEUtilsXMLParserFactory_1ad2401b4aad814d1ba2afc942c7314e6a" prot="public" virt="non-virtual"><scope>EUtilsXMLParserFactory</scope><name>get</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="df/d55/EUtilsBioSampleParser_8inc" kind="file" language="PHP">
+    <compoundname>EUtilsBioSampleParser.inc</compoundname>
+    <innerclass refid="dc/d01/classEUtilsBioSampleParser" prot="public">EUtilsBioSampleParser</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="dc/d01/classEUtilsBioSampleParser" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dc/d01/classEUtilsBioSampleParser" kindref="compound">EUtilsBioSampleParser</ref><sp/></highlight><highlight class="keyword">implements</highlight><highlight class="normal"><sp/><ref refid="d8/ddd/interfaceEUtilsParserInterface" kindref="compound">EUtilsParserInterface</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="dc/d01/classEUtilsBioSampleParser_1a7991a233826ad0b9fa9ad59fd7bb4b32" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="dc/d01/classEUtilsBioSampleParser_1a7991a233826ad0b9fa9ad59fd7bb4b32" kindref="member">parse</ref>(SimpleXMLElement<sp/>$xml)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!isset($xml-&gt;BioSample))<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&apos;Invalid<sp/>BioSample<sp/>XML<sp/>provided.&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Primary<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>$primary_accession<sp/>=<sp/>(string)<sp/>$xml-&gt;BioSample[</highlight><highlight class="stringliteral">&apos;accession&apos;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>$description<sp/>=<sp/>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)<sp/>$xml-&gt;BioSample-&gt;Description-&gt;Comment<sp/>??</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="dc/d01/classEUtilsBioSampleParser_1ace8a2bb252a9b243ac17c6f6bcf919da" kindref="member">extractParagraphs</ref>($xml-&gt;BioSample-&gt;Description-&gt;Comment);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>accessions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>$accessions<sp/>=<sp/>$this-&gt;<ref refid="dc/d01/classEUtilsBioSampleParser_1a3152a4ca95cb52d0aa5579007f594ec4" kindref="member">extractAttributes</ref>($xml-&gt;BioSample-&gt;Ids);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>properties.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>$attributes<sp/>=<sp/>$this-&gt;<ref refid="dc/d01/classEUtilsBioSampleParser_1a3152a4ca95cb52d0aa5579007f594ec4" kindref="member">extractAttributes</ref>($xml-&gt;BioSample-&gt;Attributes);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>and<sp/>extract<sp/>owner<sp/>given<sp/>db_label.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="dc/d01/classEUtilsBioSampleParser_1a83546797e7342a3daa2987d41e5b2a04" kindref="member">attachDbLabel</ref>($attributes,<sp/>$accessions);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>[</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;name&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$primary_accession,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;accessions&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$accessions,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;description&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$description,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;attributes&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$attributes,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;contact&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$this-&gt;<ref refid="dc/d01/classEUtilsBioSampleParser_1a9f3d8523df0f33f2ee593f51d28d3dd7" kindref="member">extractContact</ref>($xml-&gt;BioSample),</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;organism&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$this-&gt;<ref refid="dc/d01/classEUtilsBioSampleParser_1aedc66bd8a9e91bbb2dd0aa9818a5b327" kindref="member">extractOrganism</ref>($xml-&gt;BioSample),</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;full_ncbi_xml&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$xml-&gt;BioSample-&gt;asXML(),</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>];</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="dc/d01/classEUtilsBioSampleParser_1a83546797e7342a3daa2987d41e5b2a04" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="dc/d01/classEUtilsBioSampleParser_1a83546797e7342a3daa2987d41e5b2a04" kindref="member">attachDbLabel</ref>(array<sp/>&amp;$attributes,<sp/>array<sp/>$accessions)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>$accessions<sp/>=<sp/>array_filter(</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$accessions,<sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/>($accession)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>isset($accession[</highlight><highlight class="stringliteral">&apos;db_label&apos;</highlight><highlight class="normal">])</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>strtolower($accession[</highlight><highlight class="stringliteral">&apos;db_label&apos;</highlight><highlight class="normal">])<sp/>===<sp/></highlight><highlight class="stringliteral">&apos;sample<sp/>name&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal"><sp/>($accessions<sp/>as<sp/>$accession)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$attributes[]<sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;value&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$accession[</highlight><highlight class="stringliteral">&apos;value&apos;</highlight><highlight class="normal">],</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;harmonized_name&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/></highlight><highlight class="stringliteral">&apos;submitter_provided_accession&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;attribute_name&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/></highlight><highlight class="stringliteral">&apos;submitter_provided_accession&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;display_name&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>$accession[</highlight><highlight class="stringliteral">&apos;db_label&apos;</highlight><highlight class="normal">],</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>];</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="dc/d01/classEUtilsBioSampleParser_1aedc66bd8a9e91bbb2dd0aa9818a5b327" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="dc/d01/classEUtilsBioSampleParser_1aedc66bd8a9e91bbb2dd0aa9818a5b327" kindref="member">extractOrganism</ref>(\SimpleXMLElement<sp/>$xml)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!isset($xml-&gt;Description-&gt;Organism))<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>$organism<sp/>=<sp/>$xml-&gt;Description-&gt;Organism;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>current($organism-&gt;attributes());</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="dc/d01/classEUtilsBioSampleParser_1a9f3d8523df0f33f2ee593f51d28d3dd7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="dc/d01/classEUtilsBioSampleParser_1a9f3d8523df0f33f2ee593f51d28d3dd7" kindref="member">extractContact</ref>(\SimpleXMLElement<sp/>$xml)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">)<sp/>$xml-&gt;Owner-&gt;Name<sp/>??<sp/>NULL;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="dc/d01/classEUtilsBioSampleParser_1ace8a2bb252a9b243ac17c6f6bcf919da" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="dc/d01/classEUtilsBioSampleParser_1ace8a2bb252a9b243ac17c6f6bcf919da" kindref="member">extractParagraphs</ref>(\SimpleXMLElement<sp/>$comment)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>$paragraphs<sp/>=<sp/>[];</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal"><sp/>($comment-&gt;children()<sp/>as<sp/>$paragraph)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$paragraphs[]<sp/>=<sp/>(string)<sp/>$paragraph;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$paragraphs;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="dc/d01/classEUtilsBioSampleParser_1a3152a4ca95cb52d0aa5579007f594ec4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="dc/d01/classEUtilsBioSampleParser_1a3152a4ca95cb52d0aa5579007f594ec4" kindref="member">extractAttributes</ref>(SimpleXMLElement<sp/>$elements)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>$data<sp/>=<sp/>[];</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal"><sp/>($elements-&gt;children()<sp/>as<sp/>$element)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$datum<sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;value&apos;</highlight><highlight class="normal"><sp/>=&gt;<sp/>(string)<sp/>$element,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>];</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal"><sp/>($element-&gt;attributes()<sp/>as<sp/>$key<sp/>=&gt;<sp/>$value)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$datum[$key]<sp/>=<sp/>(string)<sp/>$value;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$data[]<sp/>=<sp/>$datum;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$data;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsBioSampleParser.inc"/>
+  </compounddef>
+</doxygen>

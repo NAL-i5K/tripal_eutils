@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d4/d58/classEUtilsAssemblyRepository" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsAssemblyRepository</compoundname>
+    <basecompoundref refid="d3/dad/classEUtilsRepository" prot="public" virt="non-virtual">EUtilsRepository</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d4/d58/classEUtilsAssemblyRepository_1a59839590da0db74db7cb9c85beedbb16" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsAssemblyRepository::$base_fields</definition>
+        <argsstring></argsstring>
+        <name>$base_fields</name>
+        <initializer>= [
+    &apos;name&apos; =&gt; &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="16" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d58/classEUtilsAssemblyRepository_1a66c8c065c0f14c488306d87de0a1c501" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsAssemblyRepository::$required_fields</definition>
+        <argsstring></argsstring>
+        <name>$required_fields</name>
+        <initializer>= [
+    &apos;name&apos;,
+    &apos;description&apos;,
+    &apos;attributes&apos;,
+    &apos;full_ncbi_xml&apos;,
+
+  ]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="30" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="d4/d58/classEUtilsAssemblyRepository_1a0b6744cbd91a2f08bbcff699f805fb17" prot="protected" static="yes" mutable="no">
+        <type>static</type>
+        <definition>EUtilsAssemblyRepository::$cache</definition>
+        <argsstring></argsstring>
+        <name>$cache</name>
+        <initializer>= [
+    &apos;db&apos; =&gt; []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="44" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1ac7c655158859b17a6ab35acdb65b12f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsAssemblyRepository::addFTPLinks</definition>
+        <argsstring>($ftps)</argsstring>
+        <name>addFTPLinks</name>
+        <param>
+          <declname>$ftps</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Associates FTPs as properties.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$ftps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of key value pars, where the key is the XML FTP type, the value is the FTP address. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="290" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="290" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1a07b7cbe543242970818fe67d6a990e02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static EUtilsAssemblyRepository::create</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>create</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create assembly (chado.analysis) record.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data returned by <ref refid="df/d29/classEUtilsBioProjectParser" kindref="compound">EUtilsBioProjectParser</ref>.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>object The created bioProject.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="61" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="61" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1a9ef389088c4d3d1bf3b4bd11704c776a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsAssemblyRepository::createAnalysis</definition>
+        <argsstring>()</argsstring>
+        <name>createAnalysis</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets/creates this analysis record. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="216" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="216" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1a5f3b62a22e7a6e60d080d6a902039fa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsAssemblyRepository::createLinkedRecords</definition>
+        <argsstring>(array $accessions)</argsstring>
+        <name>createLinkedRecords</name>
+        <param>
+          <type>array</type>
+          <declname>$accessions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates dbxrefs and linked chado records.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$accessions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of other records indexed type =&gt; value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="138" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="138" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1a8d7c6f5233f66ede40e3d0ad7a6a241f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsAssemblyRepository::getAnalysis</definition>
+        <argsstring>()</argsstring>
+        <name>getAnalysis</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get analysis from db or cache.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>null </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="258" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="258" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d58/classEUtilsAssemblyRepository_1a1044a2d78ba81d41646e41e7f3552406" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsAssemblyRepository::linkOrganism</definition>
+        <argsstring>($organism)</argsstring>
+        <name>linkOrganism</name>
+        <param>
+          <declname>$organism</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert into organism_analysis, or return existing link.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$organism</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Full chado.organism record.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="185" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="185" bodyend="211"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Maps NCBI Assemblies into a Chado analysis.</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="26">
+        <label>EUtilsAssemblyRepository</label>
+        <link refid="d4/d58/classEUtilsAssemblyRepository"/>
+        <childnode refid="27" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>EUtilsRepository</label>
+        <link refid="d3/dad/classEUtilsRepository"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="28">
+        <label>EUtilsAssemblyRepository</label>
+        <link refid="d4/d58/classEUtilsAssemblyRepository"/>
+        <childnode refid="29" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>EUtilsRepository</label>
+        <link refid="d3/dad/classEUtilsRepository"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsAssemblyRepository.inc" bodystart="8" bodyend="299"/>
+    <listofallmembers>
+      <member refid="d4/d58/classEUtilsAssemblyRepository_1a59839590da0db74db7cb9c85beedbb16" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$base_fields</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1ac872895dd9d64f6a928ab79145a8baf6" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$base_record_id</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1ad37442d664f5cf40a6fcb3739a5bcbaa" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$base_table</name></member>
+      <member refid="d4/d58/classEUtilsAssemblyRepository_1a0b6744cbd91a2f08bbcff699f805fb17" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$cache</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a5e5246fc912c06f01a76a3909772bf3c" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$create_linked_records</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aba8ee02569fa873e5ed207604f8fcaf5" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$dbxrefs</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a02f64d801e22a94bcff4ff527d2708e1" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$properties</name></member>
+      <member refid="d4/d58/classEUtilsAssemblyRepository_1a66c8c065c0f14c488306d87de0a1c501" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$required_fields</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a0ea3172bdc51ac322bb731bffc85ce60" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>$visited</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a2de0f72bd63f5eb787e189ed06b16eec" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>__construct</name></member>
+      <member refid="d4/d58/classEUtilsAssemblyRepository_1ac7c655158859b17a6ab35acdb65b12f0" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>addFTPLinks</name></member>
+      <member refid="d4/d58/classEUtilsAssemblyRepository_1a07b7cbe543242970818fe67d6a990e02" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>create</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a4157728b77337a85bade80d3215ca5be" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>createAccession</name></member>
+      <member refid="d4/d58/classEUtilsAssemblyRepository_1a9ef389088c4d3d1bf3b4bd11704c776a" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>createAnalysis</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aaa08d74e539d7d21c80999f93d2bbc51" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>createContact</name></member>
+      <member refid="d4/d58/classEUtilsAssemblyRepository_1a5f3b62a22e7a6e60d080d6a902039fa0" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>createLinkedRecords</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a9040c2d2e4369e3d6ac0be6790b6791a" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>createProperty</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a5ef0802d88ef3e68c887d8bc087c16f8" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>createXMLProp</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a8063b025f9bf6e954c5f86bd4503e8cc" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>getAccessionByID</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a114bc5ff18e9b6c61bb7504d782b628b" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>getAccessionByName</name></member>
+      <member refid="d4/d58/classEUtilsAssemblyRepository_1a8d7c6f5233f66ede40e3d0ad7a6a241f" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>getAnalysis</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1afcf1b2ef42886980237f079e68829dc6" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>getDB</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1ab39fc402698fd73c605dd7fa9ef1d938" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>getNCBIRecord</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aafaaf814be83fe00cde8a12a7a6dc84a" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>getOrganism</name></member>
+      <member refid="d4/d58/classEUtilsAssemblyRepository_1a1044a2d78ba81d41646e41e7f3552406" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>linkOrganism</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a1be25ceee77c6a6338b96b2581e416f1" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>linkProjects</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a25f0b15a541cdd2ed1790845c7a0ed22" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>setBaseRecordId</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aef065f53e848401165869eab1d426575" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>setBaseTable</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a721ff9d2e1349d356e9ddccaf1e08a4c" prot="protected" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>validateBaseData</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a7240c7c5380ba4616675ef7363fd67d7" prot="public" virt="non-virtual"><scope>EUtilsAssemblyRepository</scope><name>validateFields</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

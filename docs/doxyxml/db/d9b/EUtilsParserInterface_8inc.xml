@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="db/d9b/EUtilsParserInterface_8inc" kind="file" language="PHP">
+    <compoundname>EUtilsParserInterface.inc</compoundname>
+    <innerclass refid="d8/ddd/interfaceEUtilsParserInterface" prot="public">EUtilsParserInterface</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="d8/ddd/interfaceEUtilsParserInterface" refkind="compound"><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="d8/ddd/interfaceEUtilsParserInterface" kindref="compound">EUtilsParserInterface</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="d8/ddd/interfaceEUtilsParserInterface_1aaf9e309139325479f180f7f131d371b8" kindref="member">parse</ref>(SimpleXMLElement<sp/>$xml);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsParserInterface.inc"/>
+  </compounddef>
+</doxygen>

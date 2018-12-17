@@ -1,9 +1,11 @@
 <?php
 
 /**
- * Class EutilsBioProject Formatter.
+ * Class EUtilsAssembly Formatter.
+ *
+ * @ingroup formatters
  */
-class EutilsBioProjectFormatter extends EUtilsFormatter {
+class EUtilsAssemblyFormatter extends EUtilsFormatter {
 
   private $elements = [];
 
@@ -17,11 +19,10 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
    *   Drupal form elements array of each section in a fieldset.
    */
   public function format(array $data) {
-
     try {
       $this->formatBaseRecord($data);
       $this->formatAttributes($data['attributes']);
-      $this->formatLinkedRecords($data['linked_records']);
+      $this->formatLinkedRecords($data['accessions']);
     }
     catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
@@ -37,25 +38,22 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
    *   From \EutilsAssemblyParser.
    */
   private function formatBaseRecord(array $data) {
-
-    $header = ['Field', 'Value'];
-    $accession = $data['accessions']['BioProject'] ?? NULL;
-
-    $rows[] = ['Name', $data['name']];
-    $rows[] = ['Description', $data['description']];
-
-    if ($accession) {
-      $rows[] = ['Accession', $accession];
-    }
-
+    $name = $data['name'];
+    $description = $data['description'];
+    $program = $data['attributes']['ftp_attributes']['# Assembly method:'] ?? "Not set";
+    $sourcename = $data['sourcename'];
+    $xrefs = $data['accessions']['assembly'];
+    $xref_string = implode(', ', $xrefs);
+    $header = ['Name', 'Description', 'Source Name', 'Program', 'Accessions'];
+    $rows = [[$name, $description, $sourcename, $program, $xref_string]];
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
-    $this->elements['base'] = [
+    $this->elements['base_record'] = [
       '#type' => 'fieldset',
-      '#title' => 'Project',
+      '#title' => 'Analysis Record',
       '#collapsible' => TRUE,
     ];
-    $this->elements['base']['table'] = [
+    $this->elements['base_record']['table'] = [
       '#markup' => $table,
       '#type' => 'item',
     ];
@@ -68,58 +66,77 @@ class EutilsBioProjectFormatter extends EUtilsFormatter {
    *   Array of attributes.  Should have stats and file keys.
    */
   private function formatAttributes(array $attributes) {
-
-    if (empty($attributes)) {
-      return;
-    }
+    $header = ['Property Name', 'Value'];
     $rows = [];
-    $header = ['Name', 'Value'];
-
-    foreach ($attributes as $key => $value) {
+    foreach ($attributes['stats'] as $key => $value) {
+      $rows[] = [$key, $value];
+    }
+    foreach ($attributes['files'] as $key => $value) {
       $rows[] = [$key, $value];
     }
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
+
     $this->elements['properties'] = [
       '#type' => 'fieldset',
-      '#title' => 'Project Properties',
+      '#title' => 'Properties',
       '#collapsible' => TRUE,
     ];
     $this->elements['properties']['table'] = [
       '#markup' => $table,
       '#type' => 'item',
     ];
-
   }
 
   /**
    * Describes additional records that will be created.
    *
    * @param array $accessions
-   *   the Accessions array from the EutilsBioProjectParser.
+   *   the Accessions array from the EutilsAssemblyParser.
    */
   private function formatLinkedRecords(array $accessions) {
 
-    if (empty($accessions)) {
-      return;
-    }
-
     $rows = [];
-    $header = ['Type', 'Value'];
+    $header = ['Accession Type', 'Value'];
 
-    foreach ($accessions as $type => $value) {
-      if ($type == 'BioSample') {
+    $db = NULL;
+    foreach ($accessions as $accession_key => $value) {
+      $db_name = '';
+
+      if ($accession_key == 'assembly') {
+        // This is the record itself, doesnt go here.
         continue;
       }
-      $link = $this->getDbLink($value, $type);
-      $rows[] = [$type, $link];
+      if ($accession_key == 'taxon_accession') {
+
+        $link = $this->getDbLink($value, 'NCBITaxon');
+        $rows[] = ['Organism', $link];
+        continue;
+      }
+      if ($accession_key == 'bioprojects') {
+        $db_name = 'BioProject';
+      }
+      if ($accession_key == 'biosamples') {
+        $db_name = 'BioSample';
+      }
+
+      if (is_string($value)) {
+        $value = $this->getDbLink($value, $db_name);
+        $rows[] = [ucfirst($accession_key), $value];
+        continue;
+      }
+
+      foreach ($value as $item) {
+        $link = $this->getDbLink($item, $db_name);
+        $rows[] = [ucfirst($accession_key), $link];
+      }
     }
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
     $this->elements['links'] = [
       '#type' => 'fieldset',
-      '#title' => 'Linked Records',
+      '#title' => 'Additional Records',
       '#collapsible' => TRUE,
     ];
     $this->elements['links']['table'] = [

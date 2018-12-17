@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d2/d2d/classEFetch" kind="class" language="PHP" prot="public">
+    <compoundname>EFetch</compoundname>
+    <basecompoundref refid="d3/db2/classEUtilsRequest" prot="public" virt="non-virtual">EUtilsRequest</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/d2d/classEFetch_1a4137507ebb8ce2c6bcae0e0b3b5b1981" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EFetch::__construct</definition>
+        <argsstring>(string $db)</argsstring>
+        <name>__construct</name>
+        <param>
+          <type>string</type>
+          <declname>$db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="d2/d2d/classEFetch" kindref="compound">EFetch</ref> constructor.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>NCBI database string.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" line="18" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" bodystart="18" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Https://www.ncbi.nlm.nih.gov/books/NBK25499/ NCBI Efetch docs. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>EFetch</label>
+        <link refid="d2/d2d/classEFetch"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>EUtilsRequest</label>
+        <link refid="d3/db2/classEUtilsRequest"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>EFetch</label>
+        <link refid="d2/d2d/classEFetch"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>EUtilsRequest</label>
+        <link refid="d3/db2/classEUtilsRequest"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/EFetch.inc" bodystart="8" bodyend="23"/>
+    <listofallmembers>
+      <member refid="d3/db2/classEUtilsRequest_1a420a82972b29e19dbda93a66abdc5369" prot="protected" virt="non-virtual"><scope>EFetch</scope><name>$base_url</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1ab017bd71d6a1eec9e29576b90bd38ae7" prot="protected" virt="non-virtual"><scope>EFetch</scope><name>$headers</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1a592964ad467b6deb9c5302631c6e880f" prot="protected" virt="non-virtual"><scope>EFetch</scope><name>$params</name></member>
+      <member refid="d2/d2d/classEFetch_1a4137507ebb8ce2c6bcae0e0b3b5b1981" prot="public" virt="non-virtual"><scope>EFetch</scope><name>__construct</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1a337306742fa7bcf8ef211bc0798246a2" prot="public" virt="non-virtual"><scope>EFetch</scope><name>addHeader</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1a7f78c146bf3f172c3f3caec90ae1bf5c" prot="public" virt="non-virtual"><scope>EFetch</scope><name>addHeaders</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1a7b2023c3a8b5f2838350a34e762cf373" prot="public" virt="non-virtual"><scope>EFetch</scope><name>addParam</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1ad5253251538dce0ba455204000d4f078" prot="public" virt="non-virtual"><scope>EFetch</scope><name>addParams</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1a3caf8d836b945a66581b59c373ecd204" prot="protected" virt="non-virtual"><scope>EFetch</scope><name>beginsWith</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1a71525595250079db9a6ebf480f595054" prot="public" virt="non-virtual"><scope>EFetch</scope><name>get</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1a47adc09e797be2c6275b42101b606dc1" prot="public" virt="non-virtual"><scope>EFetch</scope><name>post</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1a2640f50810453b0bbfa18b8d4ed7a90e" prot="protected" virt="non-virtual"><scope>EFetch</scope><name>prepURL</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1ac306d3d9b0bb3e2df1214b9bba7dad49" prot="protected" virt="non-virtual"><scope>EFetch</scope><name>sendRequest</name></member>
+      <member refid="d3/db2/classEUtilsRequest_1a53f5444cd0970dfe0df97f36e597470c" prot="public" virt="non-virtual"><scope>EFetch</scope><name>setBaseURL</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

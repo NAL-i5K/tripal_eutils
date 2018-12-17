@@ -2,6 +2,8 @@
 
 /**
  * EUtilsFormatter Class.
+ *
+ * @defgroup formatters
  */
 abstract class EUtilsFormatter {
 

@@ -1,9 +1,11 @@
 <?php
 
 /**
+ * Queries the NCBI ESummary API.
  *
+ * @ingroup resources
  */
-class ESummary extends EUtilsRequest {
+  class ESummary extends EUtilsRequest {
 
   /**
    * ESummary constructor.
@@ -17,4 +19,4 @@ class ESummary extends EUtilsRequest {
     $this->addParam('db', $db);
   }
 
-}
+  }

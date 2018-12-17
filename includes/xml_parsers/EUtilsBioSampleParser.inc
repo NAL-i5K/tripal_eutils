@@ -1,7 +1,9 @@
 <?php
 
 /**
+ * Parses BioSample XML.
  *
+ * @ingroup parsers
  */
 class EUtilsBioSampleParser implements EUtilsParserInterface {
 

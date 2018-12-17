@@ -1,0 +1,750 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d3/dad/classEUtilsRepository" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsRepository</compoundname>
+    <derivedcompoundref refid="d4/d58/classEUtilsAssemblyRepository" prot="public" virt="non-virtual">EUtilsAssemblyRepository</derivedcompoundref>
+    <derivedcompoundref refid="da/d47/classEUtilsBioProjectRepository" prot="public" virt="non-virtual">EUtilsBioProjectRepository</derivedcompoundref>
+    <derivedcompoundref refid="d2/dd9/classEUtilsBioSampleRepository" prot="public" virt="non-virtual">EUtilsBioSampleRepository</derivedcompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="d3/dad/classEUtilsRepository_1a0ea3172bdc51ac322bb731bffc85ce60" prot="public" static="yes" mutable="no">
+        <type>static</type>
+        <definition>EUtilsRepository::$visited</definition>
+        <argsstring></argsstring>
+        <name>$visited</name>
+        <initializer>= []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="15" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d3/dad/classEUtilsRepository_1ac872895dd9d64f6a928ab79145a8baf6" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsRepository::$base_record_id</definition>
+        <argsstring></argsstring>
+        <name>$base_record_id</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="31" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dad/classEUtilsRepository_1ad37442d664f5cf40a6fcb3739a5bcbaa" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsRepository::$base_table</definition>
+        <argsstring></argsstring>
+        <name>$base_table</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="24" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dad/classEUtilsRepository_1a5e5246fc912c06f01a76a3909772bf3c" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsRepository::$create_linked_records</definition>
+        <argsstring></argsstring>
+        <name>$create_linked_records</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="67" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dad/classEUtilsRepository_1aba8ee02569fa873e5ed207604f8fcaf5" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsRepository::$dbxrefs</definition>
+        <argsstring></argsstring>
+        <name>$dbxrefs</name>
+        <initializer>= []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="52" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dad/classEUtilsRepository_1a02f64d801e22a94bcff4ff527d2708e1" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsRepository::$properties</definition>
+        <argsstring></argsstring>
+        <name>$properties</name>
+        <initializer>= []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="45" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dad/classEUtilsRepository_1af83a079fc1b5532134018aed4cd19bdd" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>EUtilsRepository::$required_fields</definition>
+        <argsstring></argsstring>
+        <name>$required_fields</name>
+        <initializer>= []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="38" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="d3/dad/classEUtilsRepository_1a9f8285cfdf58fe60b65516dc69e21fdc" prot="protected" static="yes" mutable="no">
+        <type>static</type>
+        <definition>EUtilsRepository::$cache</definition>
+        <argsstring></argsstring>
+        <name>$cache</name>
+        <initializer>= []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="60" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a2de0f72bd63f5eb787e189ed06b16eec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::__construct</definition>
+        <argsstring>($create_linked_records=TRUE)</argsstring>
+        <name>__construct</name>
+        <param>
+          <declname>$create_linked_records</declname>
+          <defval>TRUE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="d3/dad/classEUtilsRepository" kindref="compound">EUtilsRepository</ref> constructor.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>bool</parametertype>
+<parametername>$create_linked_records</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to create linked records. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="75" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="75" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a78cd4e18412041f0e901d8423df08b60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::create</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>create</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a new resource.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Formatted data returned from the parser.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>object The chado base record object. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a4157728b77337a85bade80d3215ca5be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::createAccession</definition>
+        <argsstring>(array $accession)</argsstring>
+        <name>createAccession</name>
+        <param>
+          <type>array</type>
+          <declname>$accession</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a dbxref record.</para><para>Creates a new accession record if does not exist and attaches it to the given record.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$accession</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Expected keys: db and value, where the full accession is db:value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed An accession object</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="222" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="222" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1aaa08d74e539d7d21c80999f93d2bbc51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::createContact</definition>
+        <argsstring>($contact_name)</argsstring>
+        <name>createContact</name>
+        <param>
+          <declname>$contact_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get contact name.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>static</parametertype>
+<parametername>$contact_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The contact name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed contact record</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="322" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="322" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a9040c2d2e4369e3d6ac0be6790b6791a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::createProperty</definition>
+        <argsstring>($cvterm_id, $value)</argsstring>
+        <name>createProperty</name>
+        <param>
+          <declname>$cvterm_id</declname>
+        </param>
+        <param>
+          <declname>$value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Inserts a property associated with the interface using the tripal API.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$cvterm_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="190" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="190" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a5ef0802d88ef3e68c887d8bc087c16f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::createXMLProp</definition>
+        <argsstring>($xml)</argsstring>
+        <name>createXMLProp</name>
+        <param>
+          <declname>$xml</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Associates the XML with the record via the local:full_ncbi_xml term.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string as returned by SimpleXMLElement.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool True on creation</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="300" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="300" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a8063b025f9bf6e954c5f86bd4503e8cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::getAccessionByID</definition>
+        <argsstring>($id)</argsstring>
+        <name>getAccessionByID</name>
+        <param>
+          <declname>$id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get accession by dbxref id.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>int</parametertype>
+<parametername>$id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="116" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="116" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a114bc5ff18e9b6c61bb7504d782b628b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::getAccessionByName</definition>
+        <argsstring>($name, $db_id)</argsstring>
+        <name>getAccessionByName</name>
+        <param>
+          <declname>$name</declname>
+        </param>
+        <param>
+          <declname>$db_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Search for accession by name.</para><para>Look up an accession in chado.dbxref. Retrieves record from cache if predetermined.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The accession identifier (dbxref.accession). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametertype>int</parametertype>
+<parametername>$db_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the DB ID.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>object Accession record. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="136" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="136" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1afcf1b2ef42886980237f079e68829dc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::getDB</definition>
+        <argsstring>($name)</argsstring>
+        <name>getDB</name>
+        <param>
+          <declname>$name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get chado.db record by name. Retrieves data from cache if predetermined.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of database.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed The database object </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="163" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="163" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1ab39fc402698fd73c605dd7fa9ef1d938" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::getNCBIRecord</definition>
+        <argsstring>($db, array $accessions)</argsstring>
+        <name>getNCBIRecord</name>
+        <param>
+          <declname>$db</declname>
+        </param>
+        <param>
+          <type>array</type>
+          <declname>$accessions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fetch and create NCBI records of the type DB.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The db name. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$accessions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The accessions for this db.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array An array of chado base records, as returned by a repository.</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="477" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="477" bodyend="493"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1aafaaf814be83fe00cde8a12a7a6dc84a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::getOrganism</definition>
+        <argsstring>($accession)</argsstring>
+        <name>getOrganism</name>
+        <param>
+          <declname>$accession</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Given an ncbi taxon organism, return the organism (and create if necessary).</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$accession</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>NCBITaxon accession for organism.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="407" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="407" bodyend="435"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a1be25ceee77c6a6338b96b2581e416f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::linkProjects</definition>
+        <argsstring>($projects)</argsstring>
+        <name>linkProjects</name>
+        <param>
+          <declname>$projects</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Linkers project to the record, assuming a project_ linker table.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$projects</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of base chado record project objects. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="501" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="501" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a25f0b15a541cdd2ed1790845c7a0ed22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::setBaseRecordId</definition>
+        <argsstring>($id)</argsstring>
+        <name>setBaseRecordId</name>
+        <param>
+          <declname>$id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the Chado record id.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>int</parametertype>
+<parametername>$id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>$this </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="362" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="362" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1aef065f53e848401165869eab1d426575" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::setBaseTable</definition>
+        <argsstring>($table)</argsstring>
+        <name>setBaseTable</name>
+        <param>
+          <declname>$table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the Chado base table.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$table</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Valid examples include &apos;organism&apos; , &apos;biomaterial&apos;, &apos;project&apos;.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>$this </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="375" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="375" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a7240c7c5380ba4616675ef7363fd67d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::validateFields</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>validateFields</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine whether required fields are provided.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Formatted data from parser.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="98" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="98" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a0c90cbd9fb4633a4e489fda192e71ee4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::createDBXref</definition>
+        <argsstring>($accession, $db_id)</argsstring>
+        <name>createDBXref</name>
+        <param>
+          <declname>$accession</declname>
+        </param>
+        <param>
+          <declname>$db_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create an assocation record.</para><para>Inserts the dbxref into the appropriate linker table, eg, project_dbxref. dbxrefs are formatted db:accession.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$accession</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametertype>int</parametertype>
+<parametername>$db_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DB id.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>object the new dbxref object</para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="274" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="274" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1aafe8167521a41c5589fb3365cec666f8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::organismQuery</definition>
+        <argsstring>($accession)</argsstring>
+        <name>organismQuery</name>
+        <param>
+          <declname>$accession</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate query to getch an organism.</para><para>Query to check if an organism exists in the DB based on the NCBITaxon accession.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>string</parametertype>
+<parametername>$accession</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Accession name.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>object An organism </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="449" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="449" bodyend="462"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d3/dad/classEUtilsRepository_1a721ff9d2e1349d356e9ddccaf1e08a4c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsRepository::validateBaseData</definition>
+        <argsstring>()</argsstring>
+        <name>validateBaseData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Verifies that both base_record_id and base_table are set.</para><para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="386" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="386" bodyend="394"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="74">
+        <label>EUtilsAssemblyRepository</label>
+        <link refid="d4/d58/classEUtilsAssemblyRepository"/>
+        <childnode refid="73" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>EUtilsRepository</label>
+        <link refid="d3/dad/classEUtilsRepository"/>
+      </node>
+      <node id="75">
+        <label>EUtilsBioProjectRepository</label>
+        <link refid="da/d47/classEUtilsBioProjectRepository"/>
+        <childnode refid="73" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>EUtilsBioSampleRepository</label>
+        <link refid="d2/dd9/classEUtilsBioSampleRepository"/>
+        <childnode refid="73" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/repositories/EUtilsRepository.inc" bodystart="8" bodyend="525"/>
+    <listofallmembers>
+      <member refid="d3/dad/classEUtilsRepository_1ac872895dd9d64f6a928ab79145a8baf6" prot="protected" virt="non-virtual"><scope>EUtilsRepository</scope><name>$base_record_id</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1ad37442d664f5cf40a6fcb3739a5bcbaa" prot="protected" virt="non-virtual"><scope>EUtilsRepository</scope><name>$base_table</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a9f8285cfdf58fe60b65516dc69e21fdc" prot="protected" virt="non-virtual"><scope>EUtilsRepository</scope><name>$cache</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a5e5246fc912c06f01a76a3909772bf3c" prot="protected" virt="non-virtual"><scope>EUtilsRepository</scope><name>$create_linked_records</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aba8ee02569fa873e5ed207604f8fcaf5" prot="protected" virt="non-virtual"><scope>EUtilsRepository</scope><name>$dbxrefs</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a02f64d801e22a94bcff4ff527d2708e1" prot="protected" virt="non-virtual"><scope>EUtilsRepository</scope><name>$properties</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1af83a079fc1b5532134018aed4cd19bdd" prot="protected" virt="non-virtual"><scope>EUtilsRepository</scope><name>$required_fields</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a0ea3172bdc51ac322bb731bffc85ce60" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>$visited</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a2de0f72bd63f5eb787e189ed06b16eec" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>__construct</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a78cd4e18412041f0e901d8423df08b60" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>create</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a4157728b77337a85bade80d3215ca5be" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>createAccession</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aaa08d74e539d7d21c80999f93d2bbc51" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>createContact</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a0c90cbd9fb4633a4e489fda192e71ee4" prot="private" virt="non-virtual"><scope>EUtilsRepository</scope><name>createDBXref</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a9040c2d2e4369e3d6ac0be6790b6791a" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>createProperty</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a5ef0802d88ef3e68c887d8bc087c16f8" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>createXMLProp</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a8063b025f9bf6e954c5f86bd4503e8cc" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>getAccessionByID</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a114bc5ff18e9b6c61bb7504d782b628b" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>getAccessionByName</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1afcf1b2ef42886980237f079e68829dc6" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>getDB</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1ab39fc402698fd73c605dd7fa9ef1d938" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>getNCBIRecord</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aafaaf814be83fe00cde8a12a7a6dc84a" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>getOrganism</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a1be25ceee77c6a6338b96b2581e416f1" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>linkProjects</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aafe8167521a41c5589fb3365cec666f8" prot="private" virt="non-virtual"><scope>EUtilsRepository</scope><name>organismQuery</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a25f0b15a541cdd2ed1790845c7a0ed22" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>setBaseRecordId</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1aef065f53e848401165869eab1d426575" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>setBaseTable</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a721ff9d2e1349d356e9ddccaf1e08a4c" prot="protected" virt="non-virtual"><scope>EUtilsRepository</scope><name>validateBaseData</name></member>
+      <member refid="d3/dad/classEUtilsRepository_1a7240c7c5380ba4616675ef7363fd67d7" prot="public" virt="non-virtual"><scope>EUtilsRepository</scope><name>validateFields</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

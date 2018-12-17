@@ -1,7 +1,9 @@
 <?php
 
 /**
+ * Queries the EUtils esearch API.
  *
+ * @ingroup resources
  */
 class ESearch extends EUtilsRequest {
 
@@ -12,7 +14,7 @@ class ESearch extends EUtilsRequest {
    *
    * @throws \Exception
    */
-  public function __construct($db) {
+  public function __construct(string $db) {
     $this->setBaseURL('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi');
     $this->addParam('db', $db);
   }

@@ -1,13 +1,23 @@
 <?php
 
-class BiosamplePropertyLookup{
+/**
+ * Fetch the published biosample attributes to feed our property list.
+ *
+ * @ingroup resources
+ */
+class BiosamplePropertyLookup {
 
   /**
+   * Looks up all attributes.
+   *
    * @param string $url
+   *   Optional URL string to lookup.
    *
    * @return array
+   *   Array of terms keyed by harmonized (machine name)
+   *   with human readable label and definition.
    */
-  public function lookupAll($url = NULL) {
+  public function lookupAll(string $url = NULL) {
     $request = new EUtilsRequest();
 
     if (is_null($url)) {
@@ -27,8 +37,7 @@ class BiosamplePropertyLookup{
       $harmonized_name = $child->HarmonizedName;
       $definition = $child->Description;
 
-      //we could look at Package if we care where the term comes from.
-
+      // We could look at Package if we care where the term comes from.
       $terms[(string) $harmonized_name] = [
         'label' => (string) $term_label,
         'def' => (string) $definition,
@@ -37,4 +46,5 @@ class BiosamplePropertyLookup{
 
     return $terms;
   }
+
 }

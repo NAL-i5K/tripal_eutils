@@ -2,6 +2,8 @@
 
 /**
  * Base EUtils repository class. All repository classes must extend this class.
+ *
+ * @defgroup repositories
  */
 abstract class EUtilsRepository {
 

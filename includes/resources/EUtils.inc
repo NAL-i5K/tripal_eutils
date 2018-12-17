@@ -1,9 +1,15 @@
 <?php
 
 /**
+ * @defgroup resources Classes for querying NCBI.
+ * @{
+ * Some explanation.
+ */
+
+/**
  * Factory class which returns the appropriate NCBI resource provider.
  *
- * @Class EUtils
+ * @ingroup resources
  */
 class EUtils {
 

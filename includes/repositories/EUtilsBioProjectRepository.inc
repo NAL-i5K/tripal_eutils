@@ -3,7 +3,7 @@
 /**
  * Takes parsed bioproject XMLs and creates chado.projects.
  *
- * @class EutilsBioProjectRepository
+ * @ingroup repositories.
  */
 class EUtilsBioProjectRepository extends EUtilsRepository {
 

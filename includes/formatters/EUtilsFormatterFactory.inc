@@ -4,6 +4,8 @@
  * EUtilsFormatterFactory.
  *
  * Creates a formatter given the db.
+ *
+ * @ingroup formatters
  */
 class EUtilsFormatterFactory implements EUtilsFactoryInterface {
 

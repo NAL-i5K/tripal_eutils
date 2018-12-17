@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="db/d3a/classEUtilsBioSampleFormatter" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsBioSampleFormatter</compoundname>
+    <basecompoundref refid="da/dcc/classEUtilsFormatter" prot="public" virt="non-virtual">EUtilsFormatter</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/d3a/classEUtilsBioSampleFormatter_1a9355b3daa235b96e492fcf159d68627b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsBioSampleFormatter::format</definition>
+        <argsstring>(array $data)</argsstring>
+        <name>format</name>
+        <param>
+          <type>array</type>
+          <declname>$data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add the formatted data into a table.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>array</parametertype>
+<parametername>$data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The parsed XML data.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array Drupal form elements array of each section in a fieldset. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsBioSampleFormatter.inc" line="19" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsBioSampleFormatter.inc" bodystart="19" bodyend="125"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class <ref refid="db/d3a/classEUtilsBioSampleFormatter" kindref="compound">EUtilsBioSampleFormatter</ref>. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="43">
+        <label>EUtilsFormatter</label>
+        <link refid="da/dcc/classEUtilsFormatter"/>
+      </node>
+      <node id="42">
+        <label>EUtilsBioSampleFormatter</label>
+        <link refid="db/d3a/classEUtilsBioSampleFormatter"/>
+        <childnode refid="43" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="45">
+        <label>EUtilsFormatter</label>
+        <link refid="da/dcc/classEUtilsFormatter"/>
+      </node>
+      <node id="44">
+        <label>EUtilsBioSampleFormatter</label>
+        <link refid="db/d3a/classEUtilsBioSampleFormatter"/>
+        <childnode refid="45" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsBioSampleFormatter.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsBioSampleFormatter.inc" bodystart="8" bodyend="127"/>
+    <listofallmembers>
+      <member refid="db/d3a/classEUtilsBioSampleFormatter_1a9355b3daa235b96e492fcf159d68627b" prot="public" virt="non-virtual"><scope>EUtilsBioSampleFormatter</scope><name>format</name></member>
+      <member refid="da/dcc/classEUtilsFormatter_1a3f3cbd9eb03ba5d719685a4996c25041" prot="public" virt="non-virtual"><scope>EUtilsBioSampleFormatter</scope><name>getDbLink</name></member>
+      <member refid="da/dcc/classEUtilsFormatter_1a613961cd9c088f74dd482157d3a4a488" prot="public" virt="non-virtual"><scope>EUtilsBioSampleFormatter</scope><name>getNCBIDB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

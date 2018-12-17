@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="d8/dd8/classEUtilsAssemblyParser" kind="class" language="PHP" prot="public">
+    <compoundname>EUtilsAssemblyParser</compoundname>
+    <basecompoundref refid="d8/ddd/interfaceEUtilsParserInterface" prot="public" virt="non-virtual">EUtilsParserInterface</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/dd8/classEUtilsAssemblyParser_1a4ce18ecf4d3ad5b8b731201da62c20ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsAssemblyParser::getFTPData</definition>
+        <argsstring>($url)</argsstring>
+        <name>getFTPData</name>
+        <param>
+          <declname>$url</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the fields the assembly object will need from the FTP.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$url</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><itemizedlist>
+<listitem><para>the ftp site url extracted form the metadata</para></listitem></itemizedlist>
+</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="180" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="180" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd8/classEUtilsAssemblyParser_1a73a0f5f9300218c96511c3e7dfb75859" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsAssemblyParser::parse</definition>
+        <argsstring>(SimpleXMLElement $xml)</argsstring>
+        <name>parse</name>
+        <reimplements refid="d8/ddd/interfaceEUtilsParserInterface_1aaf9e309139325479f180f7f131d371b8">parse</reimplements>
+        <param>
+          <type>SimpleXMLElement</type>
+          <declname>$xml</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametertype>\SimpleXMLElement</parametertype>
+<parametername>$xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="15" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="15" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/dd8/classEUtilsAssemblyParser_1a3ea43b495399c3ad5fd694eab361eb97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsAssemblyParser::parseMeta</definition>
+        <argsstring>($x)</argsstring>
+        <name>parseMeta</name>
+        <param>
+          <declname>$x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse the &lt;Meta&gt; tag, which containts CDATA but all of the Assembly props.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="104" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="104" bodyend="138"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="d8/dd8/classEUtilsAssemblyParser_1ade71cfb231ffdde2a3bd4b26b8a25849" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EUtilsAssemblyParser::processFinalChildren</definition>
+        <argsstring>($x, $keys)</argsstring>
+        <name>processFinalChildren</name>
+        <param>
+          <declname>$x</declname>
+        </param>
+        <param>
+          <declname>$keys</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Process terminal level children (IE a flat array of children).</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><itemizedlist>
+<listitem><para>xml of children </para></listitem></itemizedlist>
+</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$keys</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><itemizedlist>
+<listitem><para>attribute keys to derive the label from</para></listitem></itemizedlist>
+</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="150" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="150" bodyend="170"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Parser for NCBI Assembly <ulink url="https://www.ncbi.nlm.nih.gov/assembly/">https://www.ncbi.nlm.nih.gov/assembly/</ulink> XML. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="22">
+        <label>EUtilsAssemblyParser</label>
+        <link refid="d8/dd8/classEUtilsAssemblyParser"/>
+        <childnode refid="23" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>EUtilsParserInterface</label>
+        <link refid="d8/ddd/interfaceEUtilsParserInterface"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="24">
+        <label>EUtilsAssemblyParser</label>
+        <link refid="d8/dd8/classEUtilsAssemblyParser"/>
+        <childnode refid="25" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>EUtilsParserInterface</label>
+        <link refid="d8/ddd/interfaceEUtilsParserInterface"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" line="8" column="1" bodyfile="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/xml_parsers/EUtilsAssemblyParser.inc" bodystart="8" bodyend="207"/>
+    <listofallmembers>
+      <member refid="d8/dd8/classEUtilsAssemblyParser_1a4ce18ecf4d3ad5b8b731201da62c20ed" prot="public" virt="non-virtual"><scope>EUtilsAssemblyParser</scope><name>getFTPData</name></member>
+      <member refid="d8/dd8/classEUtilsAssemblyParser_1a73a0f5f9300218c96511c3e7dfb75859" prot="public" virt="non-virtual"><scope>EUtilsAssemblyParser</scope><name>parse</name></member>
+      <member refid="d8/dd8/classEUtilsAssemblyParser_1a3ea43b495399c3ad5fd694eab361eb97" prot="public" virt="non-virtual"><scope>EUtilsAssemblyParser</scope><name>parseMeta</name></member>
+      <member refid="d8/dd8/classEUtilsAssemblyParser_1ade71cfb231ffdde2a3bd4b26b8a25849" prot="private" virt="non-virtual"><scope>EUtilsAssemblyParser</scope><name>processFinalChildren</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
