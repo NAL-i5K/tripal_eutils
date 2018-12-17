@@ -84,12 +84,13 @@ function tripal_eutils_menu() {
 /**
  * Implements hook_permission().
  */
-function tripal_eutils_permission(){
+function tripal_eutils_permission() {
 
   return [
     'access tripal_eutils admin' => [
       'title' => t('Submit NCBI Accessions directly via admin form'),
-    ]];
+    ],
+  ];
 
 }
 
