@@ -38,8 +38,8 @@ require_once 'includes/TagMapper.inc';
 require_once 'includes/formatters/EUtilsFormatter.inc';
 require_once 'includes/formatters/EUtilsFormatterFactory.inc';
 require_once 'includes/formatters/EUtilsBioSampleFormatter.inc';
-require_once 'includes/formatters/EutilsBioProjectFormatter.inc';
-require_once 'includes/formatters/EutilsAssemblyFormatter.inc';
+require_once 'includes/formatters/EUtilsBioProjectFormatter.inc';
+require_once 'includes/formatters/EUtilsAssemblyFormatter.inc';
 
 /**
  * Implements hook_menu().

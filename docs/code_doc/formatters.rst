@@ -9,5 +9,31 @@ Typically a formatter will return a table each for:
 - DBXrefs
 - New Chado records created and linked, including organisms, contacts, projects, analyses, etc
 
-.. doxygengroup:: formatters
+EUtilsFormatter
+----------------
+
+.. doxygenclass:: EUtilsFormatter
+  :members:
+
+EUtilsFormatterFactory
+----------------------
+
+.. doxygenclass:: EUtilsFormatterFactory
+  :members:
+
+EUtilsAssemblyFormatter
+-----------------------
+
+.. doxygenclass:: EUtilsAssemblyFormatter
+  :members:
+
+EUtilsBioProjectFormatter
+-------------------------
+.. doxygenclass:: EUtilsBioProjectFormatter
+  :members:
+
+EUtilsBioSampleFormatter
+------------------------
+
+.. doxygenclass:: EUtilsBioSampleFormatter
   :members:

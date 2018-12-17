@@ -5,7 +5,7 @@
  *
  * @ingroup formatters
  */
-class EutilsAssemblyFormatter extends EUtilsFormatter {
+class EUtilsAssemblyFormatter extends EUtilsFormatter {
 
   private $elements = [];
 

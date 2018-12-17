@@ -27,12 +27,12 @@
     <member refid="da/d40/group__resources_1gaf4c333e128a32d5dec6c6c3f02f82029" kind="function"><name>setPreview</name></member>
     <member refid="da/d40/group__resources_1gadfeb8995f371d5140dc610542c319d45" kind="function"><name>getResourceProvider</name></member>
   </compound>
-  <compound refid="db/df7/classEutilsAssemblyFormatter" kind="class"><name>EutilsAssemblyFormatter</name>
-    <member refid="db/df7/classEutilsAssemblyFormatter_1ad2c0b4ee593bbe2d2349b300ed4d6c21" kind="variable"><name>$elements</name></member>
-    <member refid="db/df7/classEutilsAssemblyFormatter_1afd400e9a0d4b2dcb0dff6fff827d1afc" kind="function"><name>format</name></member>
-    <member refid="db/df7/classEutilsAssemblyFormatter_1a6f8642bb08cb1c64d0c26abe39e806d8" kind="function"><name>formatAttributes</name></member>
-    <member refid="db/df7/classEutilsAssemblyFormatter_1aa1ee18611e99b8fe5212a8527032caf1" kind="function"><name>formatBaseRecord</name></member>
-    <member refid="db/df7/classEutilsAssemblyFormatter_1aafca9d004dc206f0d2013c7c26a45d85" kind="function"><name>formatLinkedRecords</name></member>
+  <compound refid="d6/df6/classEUtilsAssemblyFormatter" kind="class"><name>EUtilsAssemblyFormatter</name>
+    <member refid="d6/df6/classEUtilsAssemblyFormatter_1a5c38c32b2e5d085fa19014f91315dac0" kind="variable"><name>$elements</name></member>
+    <member refid="d6/df6/classEUtilsAssemblyFormatter_1ae89c1183dc2739a8cf566232c6c5b68b" kind="function"><name>format</name></member>
+    <member refid="d6/df6/classEUtilsAssemblyFormatter_1a30b8ce0ab066d21c08a967d8561c9c05" kind="function"><name>formatAttributes</name></member>
+    <member refid="d6/df6/classEUtilsAssemblyFormatter_1a532596618fa8e1ffa35a36f21c6dfc5c" kind="function"><name>formatBaseRecord</name></member>
+    <member refid="d6/df6/classEUtilsAssemblyFormatter_1a926ba8cf827fd5c1375fc085d2e409d0" kind="function"><name>formatLinkedRecords</name></member>
   </compound>
   <compound refid="d8/dd8/classEUtilsAssemblyParser" kind="class"><name>EUtilsAssemblyParser</name>
     <member refid="d8/dd8/classEUtilsAssemblyParser_1a4ce18ecf4d3ad5b8b731201da62c20ed" kind="function"><name>getFTPData</name></member>
@@ -51,12 +51,12 @@
     <member refid="d4/d58/classEUtilsAssemblyRepository_1a8d7c6f5233f66ede40e3d0ad7a6a241f" kind="function"><name>getAnalysis</name></member>
     <member refid="d4/d58/classEUtilsAssemblyRepository_1a1044a2d78ba81d41646e41e7f3552406" kind="function"><name>linkOrganism</name></member>
   </compound>
-  <compound refid="d0/ded/classEutilsBioProjectFormatter" kind="class"><name>EutilsBioProjectFormatter</name>
-    <member refid="d0/ded/classEutilsBioProjectFormatter_1a79346999e3397c3899799252a7d7680f" kind="variable"><name>$elements</name></member>
-    <member refid="d0/ded/classEutilsBioProjectFormatter_1afe0deff4318c82a1f11746b119cbce3b" kind="function"><name>format</name></member>
-    <member refid="d0/ded/classEutilsBioProjectFormatter_1a9b590ee25dec686af67f8875b1609934" kind="function"><name>formatAttributes</name></member>
-    <member refid="d0/ded/classEutilsBioProjectFormatter_1a98a44a1c1e0dadb834d9c53774b1302f" kind="function"><name>formatBaseRecord</name></member>
-    <member refid="d0/ded/classEutilsBioProjectFormatter_1a83893f427194eb7c195d465d944eef40" kind="function"><name>formatLinkedRecords</name></member>
+  <compound refid="db/d3b/classEUtilsBioProjectFormatter" kind="class"><name>EUtilsBioProjectFormatter</name>
+    <member refid="db/d3b/classEUtilsBioProjectFormatter_1a94d2369f31ccb4e0d2aa1120302b5102" kind="variable"><name>$elements</name></member>
+    <member refid="db/d3b/classEUtilsBioProjectFormatter_1ac3f988eb4bbc3a237aeedb2def4483e4" kind="function"><name>format</name></member>
+    <member refid="db/d3b/classEUtilsBioProjectFormatter_1a71b5eece6e8ae33def71fb0408aa1293" kind="function"><name>formatAttributes</name></member>
+    <member refid="db/d3b/classEUtilsBioProjectFormatter_1a954e51dd98192c2f7704f3dc5f328de9" kind="function"><name>formatBaseRecord</name></member>
+    <member refid="db/d3b/classEUtilsBioProjectFormatter_1a0f1d7146300b429d915aee5ac435eff1" kind="function"><name>formatLinkedRecords</name></member>
   </compound>
   <compound refid="df/d29/classEUtilsBioProjectParser" kind="class"><name>EUtilsBioProjectParser</name>
     <member refid="df/d29/classEUtilsBioProjectParser_1aef246de2d2e5416514b9ed0cd4d00821" kind="function"><name>bioProjectSubmission</name></member>
@@ -188,9 +188,9 @@
   </compound>
   <compound refid="d6/dce/EUtilsFactoryInterface_8inc" kind="file"><name>EUtilsFactoryInterface.inc</name>
   </compound>
-  <compound refid="da/d18/EutilsAssemblyFormatter_8inc" kind="file"><name>EutilsAssemblyFormatter.inc</name>
+  <compound refid="d5/dc7/EUtilsAssemblyFormatter_8inc" kind="file"><name>EUtilsAssemblyFormatter.inc</name>
   </compound>
-  <compound refid="d9/da0/EutilsBioProjectFormatter_8inc" kind="file"><name>EutilsBioProjectFormatter.inc</name>
+  <compound refid="dd/d95/EUtilsBioProjectFormatter_8inc" kind="file"><name>EUtilsBioProjectFormatter.inc</name>
   </compound>
   <compound refid="df/d4b/EUtilsBioSampleFormatter_8inc" kind="file"><name>EUtilsBioSampleFormatter.inc</name>
   </compound>

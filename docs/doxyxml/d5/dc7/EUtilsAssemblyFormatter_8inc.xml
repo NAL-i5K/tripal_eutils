@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
-  <compounddef id="da/d18/EutilsAssemblyFormatter_8inc" kind="file" language="PHP">
-    <compoundname>EutilsAssemblyFormatter.inc</compoundname>
+  <compounddef id="d5/dc7/EUtilsAssemblyFormatter_8inc" kind="file" language="PHP">
+    <compoundname>EUtilsAssemblyFormatter.inc</compoundname>
     <innerclass refid="d6/df6/classEUtilsAssemblyFormatter" prot="public">EUtilsAssemblyFormatter</innerclass>
     <briefdescription>
     </briefdescription>
@@ -125,6 +125,6 @@
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EutilsAssemblyFormatter.inc"/>
+    <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/formatters/EUtilsAssemblyFormatter.inc"/>
   </compounddef>
 </doxygen>

@@ -17,7 +17,7 @@
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="d3/db2/classEUtilsRequest_1a7b2023c3a8b5f2838350a34e762cf373" kindref="member">addParam</ref>(</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">,<sp/>$db);</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
     </programlisting>
     <location file="/Users/bc/tripal/sites/all/modules/custom/tripal_eutils/includes/resources/ESummary.inc"/>
   </compounddef>

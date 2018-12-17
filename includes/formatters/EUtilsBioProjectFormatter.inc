@@ -5,7 +5,7 @@
  *
  * @ingroup formatters
  */
-class EutilsBioProjectFormatter extends EUtilsFormatter {
+class EUtilsBioProjectFormatter extends EUtilsFormatter {
 
   private $elements = [];
 
