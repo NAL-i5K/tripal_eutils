@@ -1,6 +1,6 @@
 XML, Chado Base Table, Chado Column
-<BioSample accession="SAMN02261463">, biomaterial, name
-<Owner>, contact, biomaterial.biosourceprovider_id
-<Comment><Paragraph>,  biomaterial, description
-<Attribute>, biomaterialprop, "type_id, value"
-<Organism taxonomy_id="7004" taxonomy_name="Locusta migratoria">, organism, biomaterial.taxon_id
+BioSample->accession, biomaterial, name
+Owner->Name, contact, biomaterial.biosourceprovider_id
+Comment->Paragraph,  biomaterial, description
+Attribute, biomaterialprop, "type_id, value"
+Organism->taxonomy_id, organism, biomaterial.taxon_id
