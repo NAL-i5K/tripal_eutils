@@ -121,7 +121,7 @@ function tripal_eutils_add_dbs() {
   chado_insert_db([
     'name' => 'NCBI SRA',
     'url' => 'https://www.ncbi.nlm.nih.gov/sra/',
-    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/sra/{accession}'
+    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/sra/{accession}',
   ]);
 
   chado_insert_db([
@@ -154,9 +154,49 @@ function tripal_eutils_add_dbs() {
     'name' => 'NCBI BioProject',
     'description' => "A BioProject is a collection of biological data related to a single initiative, originating from a single organization or from a consortium.",
     'urlprefix' => 'https://www.ncbi.nlm.nih.gov/bioproject/{accession}',
-    'url' => 'https://www.ncbi.nlm.nih.gov/bioproject/'
+    'url' => 'https://www.ncbi.nlm.nih.gov/bioproject/',
   ]);
 
+}
+
+/**
+ * Adds Chado linker tables this module needs.
+ *
+ * These tables will be in the Chado 1.4 release so let's add them here for now.
+ */
+function tripal_eutils_install_chado_1_4_tables() {
+
+  $schema = [
+    'fields' => [
+      'biomaterial_project_id' => ['type' => 'serial', 'not null' => TRUE],
+      'biomaterial_id' => ['type' => 'int', 'not null' => TRUE],
+      'project_id' => ['type' => 'int', 'not null' => TRUE],
+    ],
+    'primary key' => ['biomaterial_project_id'],
+    'foreign keys' => [
+      'biomaterial' => [
+        'table' => 'biomaterial',
+        'columns' => [
+          'organism_id' => 'biomaterial_id',
+        ],
+      ],
+      'project' => [
+        'table' => 'project',
+        'columns' => [
+          'analysis_id' => 'project_id',
+        ],
+      ],  
+    ],
+    'indexes' => [
+      'biomaterial_project_idx1' => ['biomaterial_id'],
+      'biomaterial_project_idx2' => ['project_id'],
+    ],
+    'unique keys' => [
+      'biomaterial_project_unique_uq1' => ['biomaterial_id', 'project_id'],
+    ],
+  ];
+
+  chado_create_custom_table('biomaterial_project', $schema, TRUE, NULL, FALSE);
 }
 
 //
