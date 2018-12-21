@@ -109,6 +109,12 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
     $rows[] = ['Organism', $data['organism']['taxonomy_id']];
     $rows[] = ['Contact', $data['contact']];
 
+    if (!empty($data['projects'])) {
+      foreach ($data['projects'] as $project) {
+        $rows[] = ['Project', $project];
+      }
+    }
+
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
     $return['links'] = [

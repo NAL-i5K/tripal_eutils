@@ -185,7 +185,7 @@ function tripal_eutils_install_chado_1_4_tables() {
         'columns' => [
           'analysis_id' => 'project_id',
         ],
-      ],  
+      ],
     ],
     'indexes' => [
       'biomaterial_project_idx1' => ['biomaterial_id'],
