@@ -1,0 +1,14 @@
+XML, Property term
+Taxon->Lineage, local:lineage
+Taxon->GeneticCode->GCId, local:genetic_code
+Taxon->GeneticCode->GCName, local:genetic_code_name
+Taxon->MitoGeneticCode->MGCId, local:mitochondrial_genetic_code
+Taxon->MitoGeneticCode->MGCName, local:mitochondrial_genetic_code_name
+Taxon->Division, local:division
+Taxon->OtherNames->GenbankCommonName
+Taxon->OtherNames->Synonym
+Taxon->OtherNames->GenbankSynonym
+Taxon->OtherNames->CommonName, UPDATES BASE RECORD I THINK?
+Taxon->OtherNames->Includes, local:other_name
+Taxon->OtherNames->EquivalentName, local:equivalent_name
+Taxon->OtherNames->Anamorph, local:anamorph
