@@ -17,7 +17,12 @@
 # sys.path.insert(0, os.path.abspath('.'))
 import os
 import sys
+import subprocess
 
+#want to build doxygen on RTD.
+read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+if read_the_docs_build:
+    subprocess.call('cd ../doxygen; doxygen', shell=True)
 # -- Project information -----------------------------------------------------
 
 project = u'Tripal Eutils'
