@@ -1,5 +1,4 @@
 version: "2"
-
 checks:
   argument-count:
     config:
@@ -31,14 +30,12 @@ checks:
   identical-code:
     config:
       threshold: # language-specific defaults. an override will affect all languages.
-
 plugins:
   phpcodesniffer:
     enabled: true
     config:
       file_extensions: "php,inc,module"
       standard: "Drupal"
-
 exclude_patterns:
    - "docs/"
    - "examples/"
