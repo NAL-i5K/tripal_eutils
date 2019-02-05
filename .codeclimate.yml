@@ -26,3 +26,9 @@ checks:
     enabled: true
   identical-code:
     enabled: true
+exclude_patterns:
+   - "docs/"
+   - "examples/"
+   - "mappings/"
+   - "tests/"
+   
