@@ -22,7 +22,7 @@ import subprocess
 #want to build doxygen on RTD.
 read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 if read_the_docs_build:
-    subprocess.call('cd ../doxygen; doxygen', shell=True)
+    subprocess.call('doxygen tripal_eutils_galaxy_doxygen.config', shell=True)
 # -- Project information -----------------------------------------------------
 
 project = u'Tripal Eutils'
