@@ -23,6 +23,7 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
     try {
       $this->formatBaseRecord($data);
       $this->formatAttributes($data['attributes']);
+      dpm($data);
       $this->formatLinkedRecords($data['linked_records']);
     }
     catch (Exception $exception) {
@@ -113,8 +114,20 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
       if ($type == 'BioSample') {
         continue;
       }
-      $link = $this->getDbLink($value, $type);
-      $rows[] = [$type, $link];
+
+      //Some weird stuff can get passed here: if so don't break.
+      if (is_string($value)) {
+        $link = $this->getDbLink($value, $type);
+        $rows[] = [$type, $link];
+      }
+
+      if (is_array($value)){
+        foreach ($value as $single_value){
+          $link = $this->getDbLink($single_value, $type);
+          $rows[] = [$type, $link];
+        }
+      }
+
     }
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
