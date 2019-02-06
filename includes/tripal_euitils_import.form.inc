@@ -89,12 +89,17 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
     form_set_error('accession', 'please enter an accession');
   }
 
+
+  if (!$db or !$accession) {
+    return;
+  }
+
   $connection = new \EUtils();
   try {
     $connection->setPreview();
     $parsed = $connection->get($db, $accession);
     $form_state['values']['parsed'] = $parsed;
-  } 
+  }
   catch (\Exception $e) {
     tripal_set_message($e, TRIPAL_ERROR);
   }
