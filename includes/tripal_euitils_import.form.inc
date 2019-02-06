@@ -12,7 +12,6 @@ function tripal_eutils_import_form($form, &$form_state) {
 
   $form['instructions'] = [
     '#markup' => t('<p>Please enter an accession and specify a database.</p>
-                  <p>Supported databases:  Biosample </p>
                   <p>Press the <b>Preview Record</b> button to view the 
                   retrieved data and metadata.  Pressing <b>Create Chado 
                   Record</b> will create the record.</p>'),
