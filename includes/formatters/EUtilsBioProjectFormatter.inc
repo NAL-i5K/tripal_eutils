@@ -111,19 +111,19 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
     $header = ['Type', 'Value'];
 
     foreach ($accessions as $type => $value) {
-      //Why?
+      // Why?
       if ($type == 'BioSample') {
         continue;
       }
 
-      //Some weird stuff can get passed here: if so don't break.
+      //value is a string or an array of values.
       if (is_string($value)) {
         $link = $this->getDbLink($value, $type);
         $rows[] = [$type, $link];
       }
 
-      if (is_array($value)){
-        foreach ($value as $single_value){
+      if (is_array($value)) {
+        foreach ($value as $single_value) {
           $link = $this->getDbLink($single_value, $type);
           $rows[] = [$type, $link];
         }

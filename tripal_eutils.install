@@ -157,6 +157,12 @@ function tripal_eutils_add_dbs() {
     'url' => 'https://www.ncbi.nlm.nih.gov/bioproject/'
   ]);
 
+  chado_insert_db([
+    'name' => 'NCBI Assembly',
+    'description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
+    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
+    'url' => 'https://www.ncbi.nlm.nih.gov/assembly/'
+  ]);
 }
 
 //
