@@ -116,14 +116,6 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
   $accession = $vals['accession'];
   $create_linked_records = (bool) $vals['linked_records'];
 
-  if (!$db) {
-    form_set_error('db', 'please select a valid db');
-  }
-
-  if (!$accession) {
-    form_set_error('accession', 'please enter an accession');
-  }
-
   tripal_add_job("EUtils: Create Records for {$db}:{$accession}",
     'tripal_eutils', 'tripal_eutils_create_records', [
       $db,
