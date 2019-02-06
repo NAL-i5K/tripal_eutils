@@ -73,6 +73,10 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
             $attributes = $gchild->attributes();
 
             foreach ($attributes as $key => $value) {
+
+              //key is biosample_id, assembly_id.  remove the _id suffix.
+
+              $key = str_replace('_id', '', $key);
               $info['linked_records'][$key][] = (string) $value;
             }
           }

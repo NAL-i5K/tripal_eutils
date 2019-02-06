@@ -111,6 +111,7 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
     $header = ['Type', 'Value'];
 
     foreach ($accessions as $type => $value) {
+      //Why?
       if ($type == 'BioSample') {
         continue;
       }
