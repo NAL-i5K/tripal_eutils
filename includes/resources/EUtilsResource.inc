@@ -73,7 +73,7 @@ class EUtilsResource {
         return FALSE;
       }
 
-      if (!$this->xml()) {
+      if ($this->xml() === FALSE) {
         return FALSE;
       }
     }
