@@ -500,6 +500,11 @@ abstract class EUtilsRepository {
   }
 
   /**
+   * Looks up a base record based on the accession.
+   *
+   *   The dbxref is the only reliable way to look up a record since each
+   *   repository uses different parts of the XML for the base record name, etc.
+   *
    * @param string $db
    *   NCBI (not Chado) db name.
    * @param int $accession
@@ -519,15 +524,17 @@ abstract class EUtilsRepository {
     $base_table = $base_lookup[$db];
 
     $dbx_table = $base_table . '_dbxref';
-    $column = $db . '_id';
+
+    $column = $base_table . '_id';
 
     $query = db_select('chado.' . $dbx_table, 'dbxl');
 
-    $query->join('chado.' . $base_table, 'b');
+    $query->join('chado.' . $base_table, 'b', 'b.' . $column . ' = dbxl.' . $column);
     $query->fields('b');
     $query->join('chado.dbxref', 'dbx', 'dbx.dbxref_id = dbxl.dbxref_id');
     $query->condition('dbx.accession', $accession);
     $result = $query->execute()->fetchObject();
+
     return $result;
   }
 

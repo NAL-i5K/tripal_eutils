@@ -83,13 +83,12 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
 
     // Add linked records
     // Project.
-    foreach ($data['projects'] as $project) {
 
-      // TODO does the project already exist?  We would know because it has project_dbxref to the $project accession right?
-      $project_record = $this->getNCBIRecord('bioproject', [$project]);
+    $projects = $this->getNCBIRecord('bioproject', $data['projects']);
 
-      //TODO theres a link project already, lets adapt that one to work iwth this table.
-      $this->linkProject($project_record->project_id);
+    foreach ($projects as $project) {
+
+      $this->linkProject($project->project_id);
     }
 
     // Create the props (from attributes)
