@@ -12,7 +12,6 @@ function tripal_eutils_import_form($form, &$form_state) {
 
   $form['instructions'] = [
     '#markup' => t('<p>Please enter an accession and specify a database.</p>
-                  <p>Supported databases:  Biosample </p>
                   <p>Press the <b>Preview Record</b> button to view the 
                   retrieved data and metadata.  Pressing <b>Create Chado 
                   Record</b> will create the record.</p>'),
@@ -90,14 +89,20 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
     form_set_error('accession', 'please enter an accession');
   }
 
+
+  if (!$db or !$accession) {
+    return;
+  }
+
   $connection = new \EUtils();
   try {
     $connection->setPreview();
     $parsed = $connection->get($db, $accession);
     $form_state['values']['parsed'] = $parsed;
-  } 
+  }
   catch (\Exception $e) {
     tripal_set_message($e, TRIPAL_ERROR);
+    return;
   }
 }
 
@@ -111,14 +116,6 @@ function tripal_eutils_import_form_submit($form, &$form_state) {
   $db = $vals['db'];
   $accession = $vals['accession'];
   $create_linked_records = (bool) $vals['linked_records'];
-
-  if (!$db) {
-    form_set_error('db', 'please select a valid db');
-  }
-
-  if (!$accession) {
-    form_set_error('accession', 'please enter an accession');
-  }
 
   tripal_add_job("EUtils: Create Records for {$db}:{$accession}",
     'tripal_eutils', 'tripal_eutils_create_records', [

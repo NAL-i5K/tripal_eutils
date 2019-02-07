@@ -110,11 +110,25 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
     $header = ['Type', 'Value'];
 
     foreach ($accessions as $type => $value) {
+      // Ignored until project_biosample table is added.
+      // However, we actually have it as biosample, so we need to fix that...
       if ($type == 'BioSample') {
         continue;
       }
-      $link = $this->getDbLink($value, $type);
-      $rows[] = [$type, $link];
+
+      // Value is a string or an array of values.
+      if (is_string($value)) {
+        $link = $this->getDbLink($value, $type);
+        $rows[] = [$type, $link];
+      }
+
+      if (is_array($value)) {
+        foreach ($value as $singleValue) {
+          $link = $this->getDbLink($singleValue, $type);
+          $rows[] = [$type, $link];
+        }
+      }
+
     }
 
     $table = theme('table', ['rows' => $rows, 'header' => $header]);

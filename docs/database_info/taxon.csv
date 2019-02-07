@@ -1,0 +1,8 @@
+XML, Chado Base Table, Chado Column
+Taxon->ScientificName, organism, genus
+Taxon->ScientificName, organism, species
+IdList->Id, organism_dbxref, NCBITaxon:[taxon_id]
+Taxon->Rank, organism, type_id
+Taxon->OtherNames->CommonName, organism, commonname
+Taxon->ScientificName (if included), organism, infraspecific_name
+NA, organism, comment

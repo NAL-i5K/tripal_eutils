@@ -58,21 +58,22 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
           $info['name'] = $name_string;
           $info['description'] = (string) $child->Description;
 
-          // Do we have a LocusTagPrefix?
-          // If so that links to biosample and/or assembly.
+          // LocusTagPrefix (can be multiple) has biosample and assembly.
           if ($child->LocusTagPrefix) {
-            $attributes = $child->attributes();
+            $gchildren = $child->children();
 
-            $x = [];
+            foreach ($gchildren as $key => $gchild) {
+              if ($key != 'LocusTagPrefix') {
+                continue;
+              }
+              $attributes = $gchild->attributes();
 
-            foreach ($attributes as $key => $value) {
-
-              $x[(string) $key] = (string) $value;
+              foreach ($attributes as $key => $value) {
+                // Key is biosample_id, assembly_id.  remove the _id suffix.
+                $key = str_replace('_id', '', $key);
+                $info['linked_records'][$key][] = (string) $value;
+              }
             }
-
-            $info['linked_records']['locus_tag_prefix']['attributes'] = $x;
-            $info['linked_records']['locus_tag_prefix']['value']
-              = (string) $child;
           }
 
           break;

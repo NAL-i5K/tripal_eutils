@@ -74,6 +74,7 @@ class EUtils {
     if (!$response->isSuccessful()) {
       throw new Exception('ERROR Could not make request status ' . $response->status());
     }
+
     $xml = $response->xml();
 
     $data = (new EUtilsXMLParserFactory())->get($db)->parse($xml);

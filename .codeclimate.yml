@@ -5,3 +5,10 @@ plugins:
     config:
       file_extensions: "php,inc,module"
       standard: "Drupal"
+
+exclude_patterns:
+   - "docs/"
+   - "examples/"
+   - "mappings/"
+   - "tests/"
+   - "!includes/"
