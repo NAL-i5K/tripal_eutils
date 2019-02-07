@@ -102,6 +102,7 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
   }
   catch (\Exception $e) {
     tripal_set_message($e, TRIPAL_ERROR);
+    return;
   }
 }
 
