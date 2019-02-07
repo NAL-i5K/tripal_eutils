@@ -137,7 +137,7 @@ class EUtilsResource {
       return $this->xml;
     }
 
-    // Cache xml
+    // Cache xml.
     return $this->xml = simplexml_load_string($this->originalBody());
   }
 
