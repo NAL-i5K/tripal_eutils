@@ -24,6 +24,7 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     }
     catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
+      return NULL;
     }
 
     return $this->elements;
@@ -36,6 +37,9 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
    *   From \EutilsAssemblyParser.
    */
   private function formatBaseRecord(array $data) {
+    if (!isset($data['name'])) {
+      throw new Exception("Invalid record format.");
+    }
     $name = $data['name'];
     $description = $data['description'];
     $program = $data['attributes']['ftp_attributes']['# Assembly method:'] ?? "Not set";

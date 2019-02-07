@@ -74,6 +74,7 @@ class EUtils {
       $error_message = $response->hasError() ? $response->errorMessage() : 'Status: ' . $response->status();
       throw new Exception('ERROR Could not make request: ' . $error_message);
     }
+
     $xml = $response->xml();
 
     $data = (new EUtilsXMLParserFactory())->get($db)->parse($xml);
