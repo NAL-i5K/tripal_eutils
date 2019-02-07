@@ -37,7 +37,6 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
     // Get projects from Links if present.
     $projects = $xml->BioSample->Links ? $this->extractProjects($xml->BioSample->Links) : [];
 
-    var_dump($projects);
     return [
       'name' => $primary_accession,
       'accessions' => $accessions,

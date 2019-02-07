@@ -172,37 +172,39 @@ function tripal_eutils_add_dbs() {
  */
 function tripal_eutils_install_chado_1_4_tables() {
 
-  $schema = [
-    'fields' => [
-      'biomaterial_project_id' => ['type' => 'serial', 'not null' => TRUE],
-      'biomaterial_id' => ['type' => 'int', 'not null' => TRUE],
-      'project_id' => ['type' => 'int', 'not null' => TRUE],
-    ],
-    'primary key' => ['biomaterial_project_id'],
-    'foreign keys' => [
-      'biomaterial' => [
-        'table' => 'biomaterial',
-        'columns' => [
-          'organism_id' => 'biomaterial_id',
-        ],
-      ],
-      'project' => [
-        'table' => 'project',
-        'columns' => [
-          'analysis_id' => 'project_id',
-        ],
-      ],
-    ],
-    'indexes' => [
-      'biomaterial_project_idx1' => ['biomaterial_id'],
-      'biomaterial_project_idx2' => ['project_id'],
-    ],
-    'unique keys' => [
-      'biomaterial_project_unique_uq1' => ['biomaterial_id', 'project_id'],
-    ],
-  ];
 
-  chado_create_custom_table('biomaterial_project', $schema, TRUE, NULL, FALSE);
+    $schema = [
+      'fields' => [
+        'biomaterial_project_id' => ['type' => 'serial', 'not null' => TRUE],
+        'biomaterial_id' => ['type' => 'int', 'not null' => TRUE],
+        'project_id' => ['type' => 'int', 'not null' => TRUE],
+      ],
+      'primary key' => ['biomaterial_project_id'],
+      'foreign keys' => [
+        'biomaterial' => [
+          'table' => 'biomaterial',
+          'columns' => [
+            'organism_id' => 'biomaterial_id',
+          ],
+        ],
+        'project' => [
+          'table' => 'project',
+          'columns' => [
+            'analysis_id' => 'project_id',
+          ],
+        ],
+      ],
+      'indexes' => [
+        'biomaterial_project_idx1' => ['biomaterial_id'],
+        'biomaterial_project_idx2' => ['project_id'],
+      ],
+      'unique keys' => [
+        'biomaterial_project_unique_uq1' => ['biomaterial_id', 'project_id'],
+      ],
+    ];
+
+    chado_create_custom_table('biomaterial_project', $schema, TRUE, NULL, FALSE);
+
 }
 
 //
