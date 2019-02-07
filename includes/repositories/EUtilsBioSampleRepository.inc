@@ -84,12 +84,15 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
     // Add linked records
     // Project.
 
-    $projects = $this->getNCBIRecord('bioproject', $data['projects']);
+    if ($this->create_linked_records) {
+      $projects = $this->getNCBIRecord('bioproject', $data['projects']);
 
-    foreach ($projects as $project) {
+      foreach ($projects as $project) {
 
-      $this->linkProject($project->project_id);
+        $this->linkProject($project->project_id);
+      }
     }
+
 
     // Create the props (from attributes)
     $this->createProps($data['attributes']);

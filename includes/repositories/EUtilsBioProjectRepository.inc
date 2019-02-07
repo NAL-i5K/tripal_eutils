@@ -66,7 +66,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
       $links = $data['linked_records'];
 
       $biosamples = $links['biosample'];
-      if (!empty($biosamples)) {
+      if (!empty($biosamples) && $this->create_linked_records) {
         $this->createLinkedRecords($biosamples, 'biosample');
       }
 
