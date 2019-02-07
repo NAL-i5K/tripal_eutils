@@ -23,7 +23,6 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
     try {
       $this->formatBaseRecord($data);
       $this->formatAttributes($data['attributes']);
-      dpm($data);
       $this->formatLinkedRecords($data['linked_records']);
     }
     catch (Exception $exception) {
@@ -116,7 +115,7 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
         continue;
       }
 
-      //value is a string or an array of values.
+      // Value is a string or an array of values.
       if (is_string($value)) {
         $link = $this->getDbLink($value, $type);
         $rows[] = [$type, $link];
