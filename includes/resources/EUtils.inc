@@ -70,9 +70,9 @@ class EUtils {
     $provider->addParam('id', $accession);
 
     $response = $provider->get();
-
     if (!$response->isSuccessful()) {
-      throw new Exception('ERROR Could not make request status ' . $response->status());
+      $error_message = $response->hasError() ? $response->errorMessage() : 'Status: ' . $response->status();
+      throw new Exception('ERROR Could not make request: ' . $error_message);
     }
     $xml = $response->xml();
 
