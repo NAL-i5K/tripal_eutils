@@ -15,6 +15,13 @@ class EUtilsResource {
   protected $response;
 
   /**
+   * Holds the error message if any exists or null.
+   *
+   * @var string|null
+   */
+  protected $error = NULL;
+
+  /**
    * EUtilsResource constructor.
    *
    * @param object $response
@@ -53,7 +60,39 @@ class EUtilsResource {
    */
   public function isSuccessful() {
     $status = $this->status();
+
+    if ($status == 200) {
+      if ($this->hasError()) {
+        return FALSE;
+      }
+    }
+
     return $status >= 200 && $status <= 299;
+  }
+
+  /**
+   * Find and set errors.
+   *
+   * @return bool
+   */
+  public function hasError() {
+    $xml = $this->xml();
+
+    if ($xml && isset($xml->DocumentSummarySet->DocumentSummary->error)) {
+      $this->error = $xml->DocumentSummarySet->DocumentSummary->error;
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  /**
+   * Get the error message.
+   *
+   * @return string|null The message or null if none exist.
+   */
+  public function errorMessage() {
+    return $this->error;
   }
 
   /**
