@@ -73,7 +73,7 @@ class EUtilsResource {
         return FALSE;
       }
 
-      if ($this->xml()) {
+      if (!$this->xml()) {
         return FALSE;
       }
     }
@@ -96,7 +96,7 @@ class EUtilsResource {
     }
 
     if ($xml && isset($xml[0])) {
-      if (strpos((string) $xml->RecordSet, 'malformed') == 0) {
+      if (strpos((string) $xml->RecordSet, 'malformed') === 0) {
         $this->error = 'Unable to find record.';
         return TRUE;
       }
