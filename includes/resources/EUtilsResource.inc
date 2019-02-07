@@ -89,7 +89,8 @@ class EUtilsResource {
   /**
    * Get the error message.
    *
-   * @return string|null The message or null if none exist.
+   * @return string|null 
+   *   The message or null if none exist.
    */
   public function errorMessage() {
     return $this->error;
