@@ -507,13 +507,13 @@ abstract class EUtilsRepository {
    *
    * @param string $db
    *   NCBI (not Chado) db name.
-   * @param int $accession
-   *   NCBI uid accession.
+   * @param string $accession
+   *   NCBI accession.  This might be uid, or long form.
    *
    * @return mixed
    *   returns the chado object or FALSE.
    */
-  public function lookupNcbiInChado(string $db, int $accession) {
+  public function lookupNcbiInChado(string $db, string $accession) {
 
     $base_lookup = [
       'bioproject' => 'project',

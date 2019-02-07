@@ -59,10 +59,19 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
     $this->createAccessions($data['accessions']);
     $this->createProps($data['attributes']);
 
-    // TODO: no project_organism table...
-    // $organism = $this->getOrganism($data['linked_records']['organism']);
-    // $this->linkOrganism($organism);
     $this->createXMLProp($data['full_ncbi_xml']);
+
+    if ($this->create_linked_records) {
+
+      $links = $data['linked_records'];
+
+      $biosamples = $links['biosample'];
+      if (!empty($biosamples)) {
+        $this->createLinkedRecords($biosamples, 'biosample');
+      }
+
+      //TODO: what about organism and assembly?
+    }
 
     return $project;
   }
@@ -176,6 +185,44 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
       }
     }
     return $data;
+  }
+
+  /**
+   * Links this base record to various other records.
+   *
+   * @param array $records
+   *   Array of record ids.
+   * @param string $type
+   *   The NCBI record type.
+   *
+   * @throws \Exception
+   */
+  public function createLinkedRecords(array $records, string $type) {
+
+    $objects = $this->getNCBIRecord($type, $records);
+    foreach ($objects as $object) {
+
+      switch ($type) {
+        case 'biosample':
+          $this->linkBiomaterial($object);
+      }
+    }
+  }
+
+  /**
+   * Links this record to a biosample/biomaterial.
+   *
+   * @param $record
+   *   A record object returned from getNCBIRecord.
+   */
+  public function linkBiomaterial($record) {
+    $biomaterial_id = $record->biomaterial_id;
+
+    db_insert('chado.biomaterial_project')->fields([
+      'biomaterial_id' => $biomaterial_id,
+      'project_id' => $this->base_record_id,
+    ]);
+
   }
 
 }
