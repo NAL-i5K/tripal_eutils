@@ -101,7 +101,7 @@ function tripal_eutils_import_form_validate($form, &$form_state) {
     $form_state['values']['parsed'] = $parsed;
   }
   catch (\Exception $e) {
-    tripal_set_message($e, TRIPAL_ERROR);
+    tripal_set_message($e->getMessage(), TRIPAL_ERROR);
     return;
   }
 }

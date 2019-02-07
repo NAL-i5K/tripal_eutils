@@ -19,7 +19,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
    */
   public function parse(SimpleXMLElement $xml) {
     if (!isset($xml->BioSample)) {
-      throw  new Exception('Invalid BioSample XML provided.');
+      throw  new Exception('Invalid BioSample XML provided. Possibly because the given accession cannot be found.');
     }
 
     // Primary data.

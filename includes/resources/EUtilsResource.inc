@@ -15,6 +15,20 @@ class EUtilsResource {
   protected $response;
 
   /**
+   * Holds the error message if any exists or null.
+   *
+   * @var string|null
+   */
+  protected $error = NULL;
+
+  /**
+   * The xml cache.
+   *
+   * @var \SimpleXMLElement|null
+   */
+  protected $xml = NULL;
+
+  /**
    * EUtilsResource constructor.
    *
    * @param object $response
@@ -53,7 +67,52 @@ class EUtilsResource {
    */
   public function isSuccessful() {
     $status = $this->status();
+
+    if ($status == 200) {
+      if ($this->hasError()) {
+        return FALSE;
+      }
+
+      if ($this->xml() === FALSE) {
+        return FALSE;
+      }
+    }
+
     return $status >= 200 && $status <= 299;
+  }
+
+  /**
+   * Find and set errors.
+   *
+   * @return bool
+   *   Whether the response has an error element.
+   */
+  public function hasError() {
+    $xml = $this->xml();
+
+    if ($xml && isset($xml->DocumentSummarySet->DocumentSummary->error)) {
+      $this->error = (string) $xml->DocumentSummarySet->DocumentSummary->error;
+      return TRUE;
+    }
+
+    if ($xml && isset($xml[0])) {
+      if (strpos((string) $xml->RecordSet, 'malformed') === 0) {
+        $this->error = 'Unable to find record.';
+        return TRUE;
+      }
+    }
+
+    return FALSE;
+  }
+
+  /**
+   * Get the error message.
+   *
+   * @return string|null
+   *   The message or null if none exist.
+   */
+  public function errorMessage() {
+    return $this->error;
   }
 
   /**
@@ -73,7 +132,13 @@ class EUtilsResource {
    *   The response in XML.
    */
   public function xml() {
-    return simplexml_load_string($this->originalBody());
+    // Check cache.
+    if (!is_null($this->xml)) {
+      return $this->xml;
+    }
+
+    // Cache xml.
+    return $this->xml = simplexml_load_string($this->originalBody());
   }
 
   /**
