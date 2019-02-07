@@ -24,7 +24,7 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     }
     catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
-      return null;
+      return NULL;
     }
 
     return $this->elements;

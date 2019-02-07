@@ -110,7 +110,8 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
     $header = ['Type', 'Value'];
 
     foreach ($accessions as $type => $value) {
-      // Why?
+      // Ignored until project_biosample table is added.
+      // However, we actually have it as biosample, so we need to fix that...
       if ($type == 'BioSample') {
         continue;
       }
@@ -122,8 +123,8 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
       }
 
       if (is_array($value)) {
-        foreach ($value as $single_value) {
-          $link = $this->getDbLink($single_value, $type);
+        foreach ($value as $singleValue) {
+          $link = $this->getDbLink($singleValue, $type);
           $rows[] = [$type, $link];
         }
       }
