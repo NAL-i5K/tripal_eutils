@@ -132,7 +132,7 @@ class EUtilsResource {
    *   The response in XML.
    */
   public function xml() {
-    // Check cache
+    // Check cache.
     if (!is_null($this->xml)) {
       return $this->xml;
     }
