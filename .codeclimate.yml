@@ -5,12 +5,6 @@ plugins:
     config:
       file_extensions: "php,inc,module"
       standard: "Drupal"
-  phpmd:
-    enabled: true
-    config:
-      file_extensions: 
-        - php
-        - inc
 
 exclude_patterns:
    - "docs/"
