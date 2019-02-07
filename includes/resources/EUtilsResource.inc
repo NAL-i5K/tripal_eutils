@@ -74,6 +74,7 @@ class EUtilsResource {
    * Find and set errors.
    *
    * @return bool
+   *   Whether the response has an error element.
    */
   public function hasError() {
     $xml = $this->xml();
@@ -89,7 +90,7 @@ class EUtilsResource {
   /**
    * Get the error message.
    *
-   * @return string|null 
+   * @return string|null
    *   The message or null if none exist.
    */
   public function errorMessage() {
