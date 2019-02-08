@@ -64,10 +64,15 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
     if ($this->create_linked_records) {
 
       $links = $data['linked_records'];
-
+      $pubs = $links['pubs'];
       $biosamples = $links['biosample'];
       if (!empty($biosamples) && $this->create_linked_records) {
         $this->createLinkedRecords($biosamples, 'biosample');
+      }
+
+      // Pubs are linked records but we always want to import them since they wont cause a link-loop.
+      if (!empty($pubs)) {
+        $this->createPubs($pubs, 'pub');
       }
 
       // TODO: what about organism and assembly?
@@ -179,8 +184,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
     foreach ($accessions as $db => $accession) {
       try {
         $data[] = $this->createAccession(['db' => $db, 'value' => $accession]);
-      }
-      catch (Exception $exception) {
+      } catch (Exception $exception) {
         // For the time being, ignore all exceptions.
       }
     }
@@ -225,4 +229,15 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
 
   }
 
+  private function createPubs($pubs) {
+
+    foreach ($pubs as $accession) {
+
+      $search = new EUtils(FALSE);
+      $pub = $search->get('pubmed', $accession);
+
+    }
+    //TODO: now, link the pubs
+
+  }
 }

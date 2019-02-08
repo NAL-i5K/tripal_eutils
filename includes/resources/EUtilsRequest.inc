@@ -135,7 +135,6 @@ class EUtilsRequest {
     }
 
     $response = drupal_http_request($url, $params);
-
     return new EUtilsResource($response);
   }
 

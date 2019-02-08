@@ -68,6 +68,10 @@ class EUtils {
 
     $provider = $this->getResourceProvider($db);
     $provider->addParam('id', $accession);
+    if ($db == 'pubmed') {
+      // For some reason we need to specify XML for pubmed.
+      $provider->addParam('retmode', 'xml');
+    }
 
     $response = $provider->get();
     if (!$response->isSuccessful()) {
