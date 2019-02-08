@@ -24,6 +24,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
     $children = $xml->children();
 
     $info['full_ncbi_xml'] = $xml->asXML();
+    $info['category'] = NULL;
 
     foreach ($children as $key => $child) {
       switch ($key) {
@@ -84,6 +85,9 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
 
         case 'SubmissionDate':
           $info['submission_date'] = (string) $child;
+
+        case 'RefSeq_category':
+          $info['category'] = (string) $child;
 
         default:
           $info['ignored'][] = $child->getName();

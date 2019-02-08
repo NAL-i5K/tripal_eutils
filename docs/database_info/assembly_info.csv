@@ -15,3 +15,4 @@ RsUid, dbxref, chado.analysis_dbxref
 GbUid, dbxref, chado.analysis_dbxref
 WGS RS_BioProjects/GB_BioProjects, project, (Chado table doesnt exist yet)
 BioSampleID, biomaterial, (Chado table doesnt exist yet)
+RefSeq_category, analysisprop, rdfs:type (sets the analysis type)

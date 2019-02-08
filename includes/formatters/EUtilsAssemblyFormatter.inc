@@ -44,10 +44,11 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     $description = $data['description'];
     $program = $data['attributes']['ftp_attributes']['# Assembly method:'] ?? "Not set";
     $sourcename = $data['sourcename'];
+    $type = $this->formatCategory($data['category']);
     $xrefs = $data['accessions']['assembly'];
     $xref_string = implode(', ', $xrefs);
-    $header = ['Name', 'Description', 'Source Name', 'Program', 'Accessions'];
-    $rows = [[$name, $description, $sourcename, $program, $xref_string]];
+    $header = ['Name', 'Description', 'Source Name', 'Type', 'Program', 'Accessions'];
+    $rows = [[$name, $description, $sourcename, $type, $program, $xref_string]];
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
     $this->elements['base_record'] = [
@@ -145,6 +146,28 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       '#markup' => $table,
       '#type' => 'item',
     ];
+  }
+
+  /**
+   * Converts the category from the parser to an analysis type (IE the bundle).
+   *
+   * @param $string
+   *   string value from category.
+   *
+   * @return string
+   *   Converted string for end user to see.
+   */
+  public function formatCategory($string) {
+    if (!$string) {
+      return "None";
+    }
+    switch ($string) {
+      case 'representative genome':
+        return "Genome Assembly";
+
+      default:
+        return "None (unrecognized category)";
+    }
   }
 
 }
