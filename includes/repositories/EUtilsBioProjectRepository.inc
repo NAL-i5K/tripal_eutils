@@ -70,7 +70,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
         $this->createLinkedRecords($biosamples, 'biosample');
       }
 
-      //TODO: what about organism and assembly?
+      // TODO: what about organism and assembly?
     }
 
     return $project;

@@ -83,7 +83,6 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
 
     // Add linked records
     // Project.
-
     if ($this->create_linked_records) {
       $projects = $this->getNCBIRecord('bioproject', $data['projects']);
 
@@ -92,7 +91,6 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
         $this->linkProject($project->project_id);
       }
     }
-
 
     // Create the props (from attributes)
     $this->createProps($data['attributes']);
@@ -189,7 +187,8 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
     foreach ($accessions as $accession) {
       try {
         $data[] = $this->createAccession($accession);
-      } catch (Exception $exception) {
+      }
+      catch (Exception $exception) {
         // Log the error and continue.
       }
     }
@@ -220,7 +219,6 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
       $this->createProperty($cvterm_id, $value);
     }
   }
-
 
   /**
    * Link a project to this biomaterial.
