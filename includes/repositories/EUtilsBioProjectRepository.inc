@@ -72,7 +72,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
 
       // Pubs are linked records but we always want to import them since they wont cause a link-loop.
       if (!empty($pubs)) {
-        $this->createPubs($pubs, 'pub');
+        $this->createPubs($pubs);
       }
 
       // TODO: what about organism and assembly?
