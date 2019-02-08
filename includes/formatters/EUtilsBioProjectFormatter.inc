@@ -175,8 +175,6 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
       $rows[] = $row;
     }
 
-
-    dpm($rows);
     if (empty($rows)) {
       $this->element['pubs']['notice'] = ['#markup' => 'No publications are associated with this Project.'];
 

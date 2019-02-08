@@ -85,7 +85,6 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
    */
   public function testProjectAddsPubs() {
 
-
     $project = factory('chado.project')->create();
 
     $repo_master = new \EUtilsBioProjectRepository(FALSE);
@@ -93,9 +92,9 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
     $repo = reflect($repo_master);
     $repo->base_record_id = $project->project_id;
 
-
     $pubs = ['9023104', '22751099'];
     $title= 'tRNAscan-SE: a program for improved detection of transfer RNA genes in genomic sequence.';
+    $title = 'The yak genome and adaptation to life at high altitude.';
 
     $pubs = $repo->createPubs($pubs);
 
@@ -103,8 +102,8 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
 
     $this->assertNotFalse($pub);
 
-    $link = db_select('chado.project_pub', 'p')->fields('p')->condition('p.project_id', $project->project_id)->execute()->fetchObject();
+    $link = db_select('chado.project_pub', 'p')->fields('p')->condition('p.pub_id', $pub->pub_id)->execute()->fetchObject();
     $this->assertNotFalse($link);
-    $this->assertEquals($pub->pub_id, $link->pub_id);
+    $this->assertEquals($project->project_id, $link->project_id);
   }
 }

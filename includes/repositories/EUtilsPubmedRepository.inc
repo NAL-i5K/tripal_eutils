@@ -19,13 +19,14 @@ class EUtilsPubmedRepository extends EUtilsRepository {
 
   protected $base_table = 'pub';
 
-
   /**
    * Creates a publication using the core API.
    *
    * @param array $data
    *   Data from bioproject parser.
    *
+   * @return pub
+   *   A Chado publication record object.
    **/
   public function create(array $data) {
     module_load_include('inc', 'tripal_chado', '/includes/loaders/tripal_chado.pub_importers');
