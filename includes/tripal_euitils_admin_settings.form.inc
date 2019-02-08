@@ -2,25 +2,28 @@
 
 /**
  * @file
+ * Admin form for the whole module.
  */
 
 /**
- * Implements hook_menu().
- *
- * Admin form for the whole module.
- * - Configure whether to ignore missing attributes on import.
+ * Implements hook_form().
  */
 function tripal_eutils_admin_settings_form($form, &$form_state) {
 
   $api_key = variable_get('tripal_eutils_ncbi_api_key');
 
-  $form['api_key']= [
+  $form['preamble'] = ['#markup' => '<h3>Tripal EUtils</h3><p>This administrative page is for module-wide settings.  Please see the <a href="https://tripal-eutils.readthedocs.io/en/latest/">Online module documentation</a> for more information.</p>'];
+  $form['api_key'] = [
     '#title' => t('NCBI API key'),
+    '#type' => 'textfield',
     '#default_value' => $api_key ?? '',
     '#size' => 60,
     '#maxlength' => 128,
-    '#required' => TRUE,
+    '#required' => FALSE,
+    '#description' => 'NCBI API key.  An API key can improve the reliability of this module by allowing more requests/second to the NCBI servers.',
   ];
+
+  $form['submit'] = ['#type' => 'submit', '#value' => 'submit'];
   return $form;
 }
 
@@ -28,18 +31,22 @@ function tripal_eutils_admin_settings_form($form, &$form_state) {
  * Implements hook_validate().
  */
 function tripal_eutils_admin_settings_form_validate($form, &$form_state) {
-  $api_key = $form_state['values']['api_key'];
 
-  // Check API key in some way.
-
+  // TODO We would validate the key here.  Perhaps make a test query?
 }
 
 /**
  * Implements hook_submit().
  */
 function tripal_eutils_admin_settings_form_submit($form, &$form_state) {
-  $api_key = $form_state['values']['api_key'];
+  if (isset($form_state['values']['api_key'])) {
+    $api_key = $form_state['values']['api_key'];
+    variable_set('tripal_eutils_ncbi_api_key', $api_key);
+  }
+  else {
+    variable_set('tripal_eutils_ncbi_api_key', NULL);
+  }
 
-  variable_set('tripal_eutils_ncbi_api_key', $api_key);
+  drupal_set_message("Form submitted.");
 
 }
