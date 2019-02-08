@@ -73,7 +73,7 @@ class EUtils {
     $response = $provider->get();
     if (!$response->isSuccessful()) {
       $error_message = $response->hasError() ? $response->errorMessage() : 'Status: ' . $response->status();
-      $variables = ['!db' => $db, 'accession' => $accession];
+      $variables = ['!db' => $db, '!accession' => $accession];
       $options = ['print' => TRUE];
       tripal_report_error('tripal_eutils', TRIPAL_ERROR, 'Cannot fetch NCBI record: !db : !accession', $variables, $options);
 
@@ -85,16 +85,14 @@ class EUtils {
     $data = (new EUtilsXMLParserFactory())->get($db)->parse($xml);
 
     // When previewing, we want to return the parser values instead.
-    // TODO: we miss out on querying linked records.
-    // Secondarily linked records wont be reported.
     if ($this->preview) {
       $formatter = (new EUtilsFormatterFactory())->get($db);
       return $formatter->format($data);
     }
 
     $repository = (new EUtilsRepositoryFactory())->get($db);
-    $variables = ['!db' => $db, 'accession' => $accession];
-    tripal_report_error('tripal_eutils', TRIPAL_NOTICE, 'Inserting record into Chado: !db : !accession', $variables, ['print' => TRUE]);
+    $variables = ['!db' => $db, '!accession' => $accession];
+    tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession', $variables, ['print' => TRUE]);
     $record = $repository->create($data);
 
     static::$visited[$db][$accession] = $record;
