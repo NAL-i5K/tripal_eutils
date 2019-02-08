@@ -98,10 +98,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     $this->base_record_id = $analysis->analysis_id;
 
     // Set the type of the analysis so it maps to a bundle.
-    // consider: genome assembly, transcriptome, etc.
-    // TODO: do we let users map which analysis to create?
-    $term = tripal_get_cvterm(['id' => 'rdfs:type']);
-    $this->createProperty($term->cvterm_id, 'genome_assembly');
+    $this->setAnalysisType($data['category']);
+
     $this->createXMLProp($data['full_ncbi_xml']);
 
     $this->createLinkedRecords($data['accessions']);
@@ -293,6 +291,31 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     foreach ($ftps as $type => $ftp) {
 
       $this->createProperty($cvterm_id, $ftp);
+    }
+  }
+
+  /**
+   * Sets the type for the analysis to match bundle.
+   *
+   * @param string $type
+   *   The type/category passed from the parser.
+   *
+   * @return bool
+   */
+  private function setAnalysisType(string $type) {
+
+    if (!$type) {
+      return FALSE;
+    }
+
+    $term = tripal_get_cvterm(['id' => 'rdfs:type']);
+
+    switch ($type) {
+      case 'representative genome':
+        return $this->createProperty($term->cvterm_id, 'genome_assembly');
+
+      default:
+        return FALSE;
     }
   }
 

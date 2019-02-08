@@ -56,7 +56,6 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
     $ftp_term = chado_get_cvterm(['id' => 'local:ncbi_FTP_links']);
 
-
     $props = db_select('chado.analysisprop', 't')
       ->fields('t', ['type_id'])
       ->condition('t.analysis_id', $result->analysis_id)
@@ -65,6 +64,15 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
       ->fetchAll();
 
     $this->assertNotEmpty($props);
+
+    $type_term = chado_get_cvterm(['id' => 'rdfs:type']);
+    $type = db_select('chado.analysisprop', 't')
+      ->fields('t', ['value'])
+      ->condition('t.analysis_id', $result->analysis_id)
+      ->condition('t.type_id', $type_term->cvterm_id)
+      ->execute()
+      ->fetchObject();
+    $this->assertEquals('genome_assembly', $type->value, 'Analysis type for assembly was not genome_assembly');
 
   }
 

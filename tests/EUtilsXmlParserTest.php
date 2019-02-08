@@ -147,6 +147,7 @@ class EUtilsXmlParserTest extends TripalTestCase {
 
     $attributes = $assembly['attributes'];
 
+    $this->assertArrayHasKey('category', $attributes);
     $this->assertArrayHasKey('stats', $attributes);
     $this->assertArrayHasKey('files', $attributes);
     $this->assertArrayHasKey('ftp_attributes', $attributes);
