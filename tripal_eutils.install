@@ -34,11 +34,11 @@ function tripal_eutils_install() {
 
   tripal_eutils_add_dbs();
   tripal_eutils_insert_biosample_attribute_terms();
-  // tripal_eutils_install_chado_1_4_tables();
+  tripal_eutils_install_chado_1_4_tables();
 }
 
 /**
- *
+ *Adds attribute terms for properties.
  */
 function tripal_eutils_insert_biosample_attribute_terms() {
 
@@ -184,13 +184,13 @@ function tripal_eutils_install_chado_1_4_tables() {
       'biomaterial' => [
         'table' => 'biomaterial',
         'columns' => [
-          'organism_id' => 'biomaterial_id',
+          'biomaterial_id' => 'biomaterial_id',
         ],
       ],
       'project' => [
         'table' => 'project',
         'columns' => [
-          'analysis_id' => 'project_id',
+          'project_id' => 'project_id',
         ],
       ],
     ],
