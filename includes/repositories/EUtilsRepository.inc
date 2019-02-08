@@ -483,6 +483,13 @@ abstract class EUtilsRepository {
         continue;
       }
 
+      $record = $this->lookupNcbiInChado($db, $accession);
+      if ($record) {
+        $return[] = static::$visited[$db . ':' . $accession] = $record;
+        continue;
+      }
+
+      // TODO: Lookup in $db_dbxref table!
       // Do not loop through linked records recursively. We only want the
       // the first level of linked records.
       $record = (new EUtils(FALSE))->get($db, $accession);
@@ -493,7 +500,46 @@ abstract class EUtilsRepository {
   }
 
   /**
-   * Linkers project to the record, assuming a project_ linker table.
+   * Looks up a base record based on the accession.
+   *
+   *   The dbxref is the only reliable way to look up a record since each
+   *   repository uses different parts of the XML for the base record name, etc.
+   *
+   * @param string $db
+   *   NCBI (not Chado) db name.
+   * @param string $accession
+   *   NCBI accession.  This might be uid, or long form.
+   *
+   * @return mixed
+   *   returns the chado object or FALSE.
+   */
+  public function lookupNcbiInChado(string $db, string $accession) {
+
+    $base_lookup = [
+      'bioproject' => 'project',
+      'biosample' => 'biomaterial',
+      'assembly' => 'analysis',
+    ];
+
+    $base_table = $base_lookup[$db];
+
+    $dbx_table = $base_table . '_dbxref';
+
+    $column = $base_table . '_id';
+
+    $query = db_select('chado.' . $dbx_table, 'dbxl');
+
+    $query->join('chado.' . $base_table, 'b', 'b.' . $column . ' = dbxl.' . $column);
+    $query->fields('b');
+    $query->join('chado.dbxref', 'dbx', 'dbx.dbxref_id = dbxl.dbxref_id');
+    $query->condition('dbx.accession', $accession);
+    $result = $query->execute()->fetchObject();
+
+    return $result;
+  }
+
+  /**
+   * Links project to the record, assuming a project_ linker table.
    *
    * @param array $projects
    *   Array of base chado record project objects.

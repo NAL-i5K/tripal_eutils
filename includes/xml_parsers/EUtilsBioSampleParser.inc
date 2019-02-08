@@ -34,6 +34,8 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
     $attributes = $this->extractAttributes($xml->BioSample->Attributes);
     // Check and extract owner given db_label.
     $this->attachDbLabel($attributes, $accessions);
+    // Get projects from Links if present.
+    $projects = $xml->BioSample->Links ? $this->extractProjects($xml->BioSample->Links) : [];
 
     return [
       'name' => $primary_accession,
@@ -43,6 +45,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
       'contact' => $this->extractContact($xml->BioSample),
       'organism' => $this->extractOrganism($xml->BioSample),
       'full_ncbi_xml' => $xml->BioSample->asXML(),
+      'projects' => $projects
     ];
   }
 
@@ -140,6 +143,30 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
     }
 
     return $data;
+  }
+
+  /**
+   * Fetches bioprojects in the Links tag.
+   *
+   * @param \SimpleXMLElement $links
+   *   Links of form <Links><Link>uid</Link></Links>.
+   *
+   * @return array
+   *   array of bioproject uids.
+   */
+  protected function extractProjects(SimpleXMLElement $links) {
+    $projects = [];
+
+    foreach ($links->children() as $link) {
+
+      $type = $link->attributes()->target;
+      if ($type == 'bioproject') {
+        $projects[] = (string) $link;
+      }
+    }
+
+    return $projects;
+
   }
 
 }

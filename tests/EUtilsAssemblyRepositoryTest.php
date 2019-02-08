@@ -230,7 +230,7 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
   private function parseAndCreateAsembly() {
 
-    //Oops, this doesnt work like i expect it to, this code never fires....
+    // Oops, this doesnt work like i expect it to, this code never fires....
     if ($this->repository != NULL) {
       return $this->repository;
     }
@@ -242,7 +242,7 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
       ->setMethods(['getFTPData'])
       ->getMock();
 
-    //We mock the FTP call.
+    // We mock the FTP call.
     $ftp_response = ['# Assembly method:' => 'a method, v1.0'];
 
     $parser->expects($this->once())

@@ -106,6 +106,11 @@ class EUtilsXmlParserTest extends TripalTestCase {
       $this->assertTrue(is_array($biosample['accessions']));
       $this->assertTrue(is_array($biosample['attributes']));
 
+      if ($biosample['name'] == 'SAMN02953603'){
+        // This sample has a linked project.  Was it parsed?
+        $this->assertArrayHasKey('projects', $biosample);
+        $this->assertNotEmpty($biosample['projects']);
+      }
     }
   }
 

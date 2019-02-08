@@ -1,2 +1,51 @@
 <?xml version="1.0"?>
-<BioSampleSet><BioSample access="public" publication_date="2018-05-25T00:00:00.000" last_update="2018-05-31T11:28:14.590" submission_date="2018-05-25T10:18:11.790" id="9259743" accession="SAMN09259743">   <Ids>     <Id db="BioSample" is_primary="1">SAMN09259743</Id>     <Id db_label="Sample name">Honeybee drone from DH4 line</Id>   </Ids>   <Description>     <Title>Sample from Apis mellifera, DH4 line</Title>     <Organism taxonomy_id="7460" taxonomy_name="Apis mellifera">       <OrganismName>Apis mellifera</OrganismName>     </Organism>   </Description>   <Owner>     <Name>Uppsala University</Name>     <Contacts>       <Contact email="matthew.webster@imbim.uu.se">         <Name>           <First>Matthew</First>           <Last>Webster</Last>           <Middle>T</Middle>         </Name>       </Contact>     </Contacts>   </Owner>   <Models>     <Model>Invertebrate</Model>   </Models>   <Package display_name="Invertebrate; version 1.0">Invertebrate.1.0</Package>   <Attributes>     <Attribute attribute_name="strain" harmonized_name="strain" display_name="strain">DH4</Attribute>     <Attribute attribute_name="breed" harmonized_name="breed" display_name="breed">missing</Attribute>     <Attribute attribute_name="isolation_source" harmonized_name="isolation_source" display_name="isolation source">bee hive</Attribute>     <Attribute attribute_name="collection_date" harmonized_name="collection_date" display_name="collection date">2003</Attribute>     <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">USA</Attribute>     <Attribute attribute_name="tissue" harmonized_name="tissue" display_name="tissue">whole body</Attribute>     <Attribute attribute_name="sex" harmonized_name="sex" display_name="sex">male</Attribute>   </Attributes>   <Links>     <Link type="entrez" target="bioproject" label="PRJNA471592">471592</Link>   </Links>   <Status status="live" when="2018-05-25T10:18:11.792"/> </BioSample> </BioSampleSet>
+<BioSampleSet>
+    <BioSample access="public" publication_date="2018-05-25T00:00:00.000" last_update="2018-05-31T11:28:14.590"
+               submission_date="2018-05-25T10:18:11.790" id="9259743" accession="SAMN09259743">
+        <Ids>
+            <Id db="BioSample" is_primary="1">SAMN09259743</Id>
+            <Id db_label="Sample name">Honeybee drone from DH4 line</Id>
+        </Ids>
+        <Description>
+            <Title>Sample from Apis mellifera, DH4 line</Title>
+            <Organism taxonomy_id="7460" taxonomy_name="Apis mellifera">
+                <OrganismName>Apis mellifera</OrganismName>
+            </Organism>
+        </Description>
+        <Owner>
+            <Name>Uppsala University</Name>
+            <Contacts>
+                <Contact email="matthew.webster@imbim.uu.se">
+                    <Name>
+                        <First>Matthew</First>
+                        <Last>Webster</Last>
+                        <Middle>T</Middle>
+                    </Name>
+                </Contact>
+            </Contacts>
+        </Owner>
+        <Models>
+            <Model>Invertebrate</Model>
+        </Models>
+        <Package display_name="Invertebrate; version 1.0">Invertebrate.1.0</Package>
+        <Attributes>
+            <Attribute attribute_name="strain" harmonized_name="strain" display_name="strain">DH4</Attribute>
+            <Attribute attribute_name="breed" harmonized_name="breed" display_name="breed">missing</Attribute>
+            <Attribute attribute_name="isolation_source" harmonized_name="isolation_source"
+                       display_name="isolation source">bee hive
+            </Attribute>
+            <Attribute attribute_name="collection_date" harmonized_name="collection_date"
+                       display_name="collection date">2003
+            </Attribute>
+            <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">
+                USA
+            </Attribute>
+            <Attribute attribute_name="tissue" harmonized_name="tissue" display_name="tissue">whole body</Attribute>
+            <Attribute attribute_name="sex" harmonized_name="sex" display_name="sex">male</Attribute>
+        </Attributes>
+        <Links>
+            <Link type="entrez" target="bioproject" label="PRJNA471592">471592</Link>
+        </Links>
+        <Status status="live" when="2018-05-25T10:18:11.792"/>
+    </BioSample>
+</BioSampleSet>
