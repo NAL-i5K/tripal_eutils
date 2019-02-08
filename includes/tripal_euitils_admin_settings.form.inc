@@ -20,7 +20,7 @@ function tripal_eutils_admin_settings_form($form, &$form_state) {
     '#size' => 60,
     '#maxlength' => 128,
     '#required' => FALSE,
-    '#description' => 'NCBI API key.  An API key can improve the reliability of this module by allowing more requests/second to the NCBI servers.'
+    '#description' => 'NCBI API key.  An API key can improve the reliability of this module by allowing more requests/second to the NCBI servers.',
   ];
 
   $form['submit'] = ['#type' => 'submit', '#value' => 'submit'];

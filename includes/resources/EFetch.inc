@@ -24,5 +24,4 @@ class EFetch extends EUtilsRequest {
       $this->addParam('api_key', $api_key);
     }
   }
-
 }
