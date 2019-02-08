@@ -184,7 +184,8 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
     foreach ($accessions as $db => $accession) {
       try {
         $data[] = $this->createAccession(['db' => $db, 'value' => $accession]);
-      } catch (Exception $exception) {
+      }
+      catch (Exception $exception) {
         // For the time being, ignore all exceptions.
       }
     }
@@ -229,13 +230,26 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
 
   }
 
-  private function createPubs($pubs) {
+  /**
+   * Inserts and links publications to the project.
+   *
+   * @param array $pubs
+   *   An array of pubmed IDs.
+   *
+   * @throws \Exception
+   */
+  private function createPubs(array $pubs) {
 
     foreach ($pubs as $accession) {
 
       $search = new EUtils(FALSE);
       $pub = $search->get('pubmed', $accession);
 
+      if (property_exists($pub, 'pub_id')) {
+
+        db_insert('chado.project_pub')->fields(['project_id' => $this->base_record_id, 'pub_id' => $pub->pub_id])->execute();
+      }
     }
   }
+
 }

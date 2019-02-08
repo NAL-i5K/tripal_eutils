@@ -31,6 +31,10 @@ class EUtilsPubmedRepository extends EUtilsRepository {
     module_load_include('inc', 'tripal_chado', '/includes/loaders/tripal_chado.pub_importers');
 
     tripal_pub_add_publications([$data], FALSE);
+    $uname = $data['Citation'];
+    $pub = db_select('chado.pub', 'p')->fields('p')->condition('p.uniquename', $uname)->execute()->fetchObject();
+
+    return $pub;
   }
 
 }
