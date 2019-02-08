@@ -22,19 +22,28 @@ class EFTP {
   protected $file;
 
   /**
+   * Get the contents of a file at a given URL.
+   *
    * @param string $url
+   *   The FTP URL.
+   *
+   * @throws \Exception
    */
   public function setURL($url) {
 
     $this->url = $url;
     $file = file_get_contents($url);
+    if (!$file) {
+      throw new Exception('Unable to connect to FTP resource: ' . $url);
+    }
     $this->file = $file;
   }
 
   /**
    * Find all records of line starting with a specific item.
    *
-   * @param $field
+   * @param string $field
+   *   The field is the substring to look for at the start of a line.
    *
    * @return array
    */
