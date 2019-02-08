@@ -3,7 +3,6 @@
 /**
  * Class EUtilsPubmedParser.
  *
- * Note that projects don't have reliable attribute listings.
  *
  * @ingroup parsers
  */
