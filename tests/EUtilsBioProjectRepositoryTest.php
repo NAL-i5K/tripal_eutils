@@ -85,23 +85,21 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
    */
   public function testProjectAddsPubs() {
 
-    $count_old = count(db_select('chado.pub', 'p')->fields('p')->execute()->fetchAll());
 
     $repo_master = new \EUtilsBioProjectRepository(FALSE);
 
     $repo = reflect($repo_master);
 
     $pubs = ['9023104', '22751099'];
-    $title = 'The yak genome and adaptation to life at high altitude.';
+    $title= 'tRNAscan-SE: a program for improved detection of transfer RNA genes in genomic sequence.';
 
     $pubs = $repo->createPubs($pubs);
 
-    $pubs = db_select('chado.pub', 'p')->fields('p')->execute()->fetchAll();
-   // var_dump($pubs);
+    $pub = db_select('chado.pub', 'p')->fields('p')->condition('p.title', $title)->execute()->fetchObject();
 
-    $count_new = count(db_select('chado.pub', 'p')->fields('p')->execute()->fetchAll());
+    $this->assertNotFalse($pub);
+    
 
-    $this->assertNotEquals($count_old, $count_new);
 
   }
 

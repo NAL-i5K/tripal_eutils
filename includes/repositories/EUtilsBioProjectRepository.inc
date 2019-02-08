@@ -237,7 +237,5 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
       $pub = $search->get('pubmed', $accession);
 
     }
-    //TODO: now, link the pubs
-
   }
 }
