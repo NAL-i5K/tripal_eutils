@@ -37,3 +37,10 @@ EUtilsBioSampleFormatter
 
 .. doxygenclass:: EUtilsBioSampleFormatter
   :members:
+
+
+EUtilsPubmedFormatter
+----------------------
+
+Pubmed records are not directly imported via this module, as this functionality is already provided via Tripal core.
+
