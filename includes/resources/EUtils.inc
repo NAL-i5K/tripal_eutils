@@ -69,7 +69,6 @@ class EUtils {
     $provider = $this->getResourceProvider($db);
     $provider->addParam('id', $accession);
 
-
     $response = $provider->get();
     if (!$response->isSuccessful()) {
       $error_message = $response->hasError() ? $response->errorMessage() : 'Status: ' . $response->status();
