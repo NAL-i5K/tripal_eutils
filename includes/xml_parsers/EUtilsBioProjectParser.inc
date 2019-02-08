@@ -76,9 +76,9 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
             }
           }
 
-          //Publications
-
-        $this->extractPubs($child);
+          // Publications.
+          $pubs = $this->extractPubs($child);
+          $info['linked_records']['pubs'] = $pubs;
 
           break;
 
@@ -155,9 +155,32 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
     return $info;
   }
 
+  /**
+   * Get publication IDs.  Note we assume these are always pubmed IDs.
+   *
+   * @param \SimpleXMLElement $xml
+   *   ProjectDscr XML tag.
+   *
+   * @return array
+   *   An array of pub IDs.
+   */
+  private function extractPubs(\SimpleXMLElement $xml) {
+    $pub_out = [];
 
-private function extractPubs($xml) {
+    $pubs = $xml->xpath("//Publication");
 
-    var_dump($xml);
-}
+    foreach ($pubs as $pub) {
+
+      $attributes = $pub->attributes();
+
+      foreach ($attributes as $key => $val) {
+        if ($key == 'id') {
+          $pub_out[] = (string) $val;
+        }
+      }
+
+    }
+    return $pub_out;
+  }
+
 }

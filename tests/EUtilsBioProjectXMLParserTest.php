@@ -84,6 +84,7 @@ class EUtilsBioProjectXMLParserTest extends TripalTestCase {
 
   /**
    * @group bioproject
+   * @group pubs
    * @throws \Exception
    */
   public function testPubsParser(){
@@ -94,9 +95,11 @@ class EUtilsBioProjectXMLParserTest extends TripalTestCase {
 
     $xml = simplexml_load_string($this->getProjectDscrXML());
 
-    $parser->extractPubs($xml);
+    $pubs = $parser->extractPubs($xml);
 
+    $this->assertNotEmpty($pubs);
 
+    $this->assertEquals(['9023104', '22751099'], $pubs);
   }
 
 
