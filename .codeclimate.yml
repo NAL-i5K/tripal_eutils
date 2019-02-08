@@ -11,4 +11,5 @@ exclude_patterns:
    - "examples/"
    - "mappings/"
    - "tests/"
-   - "!includes/"
+   - "!includes/*"
+   - "!includes/**/*"
