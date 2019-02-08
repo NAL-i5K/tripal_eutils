@@ -31,6 +31,14 @@ Setup
 -----
 This module currently functions "as is" without setup.  The Manage Analyses module provides several new fields (analysis and organism linker fields) so you should **Check For New Fields** on the content types your site utilizes that have _organism or _analysis Chado linker tables.
 
+NCBI API Key
+~~~~~~~~~~~~
+
+To get the most out of this module, we suggest setting up an NCBI API key for your site.
+
+NCBI limits requests to a maximum of three/second.  If you use this module to import linked records, you may exceed that, and might benefit from adding an API key.
+`This NCBI blog post <https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/>`_ details the reasoning behind their policy, and provides instructions for getting a key.
+
 
 Permissions
 ~~~~~~~~~~~~
