@@ -4,14 +4,17 @@ Assembly
 - https://www.ncbi.nlm.nih.gov/assembly/
 - https://laceysanderson.github.io/chado-docs/tables/analysis.html
 
-
-
 .. csv-table:: Assembly to Chado.analysis mappings
    :file: ./assembly_info.csv
    :header-rows: 1
 
-
 Note that the program and program version are not found directly in the XML.  Instead they are extracted from the FTP attribute.
+
+Analysis Type
+-------------
+The analysis table has no `type_id` column.  The type is therefore set with the `rdfs:type` property.
+
+The `RefSeq_category` tag is used to determine the analysis type.  Currently, only the value `representative genome` is supported and mapped to the bundle Genome Assembly (operation:0525), via the type value 'genome_assembly'.  We have thus far come across no other values for this key in the database.
 
 Is an assembly a Chado analysis or project?
 -------------------------------------------
