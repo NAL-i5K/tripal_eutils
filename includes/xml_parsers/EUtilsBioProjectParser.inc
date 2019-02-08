@@ -76,6 +76,10 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
             }
           }
 
+          //Publications
+
+        $this->extractPubs($child);
+
           break;
 
         case 'ProjectType':
@@ -151,4 +155,9 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
     return $info;
   }
 
+
+private function extractPubs($xml) {
+
+    var_dump($xml);
+}
 }
