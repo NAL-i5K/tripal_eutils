@@ -166,7 +166,6 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
 
     foreach ($pubs as $accession) {
 
-
       // PMID is what tripal core sets up.
       $link = $this->getDbLink($accession, 'PMID');
 

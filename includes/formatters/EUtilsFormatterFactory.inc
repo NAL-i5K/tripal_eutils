@@ -18,7 +18,7 @@ class EUtilsFormatterFactory implements EUtilsFactoryInterface {
     'biosample' => EUtilsBioSampleFormatter::class,
     'assembly' => EutilsAssemblyFormatter::class,
     'bioproject' => EutilsBioProjectFormatter::class,
-    'pubmed' => EUtilsPubmedFormatter::class
+    'pubmed' => EUtilsPubmedFormatter::class,
 
   ];
 
