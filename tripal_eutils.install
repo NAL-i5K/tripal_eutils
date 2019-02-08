@@ -34,7 +34,7 @@ function tripal_eutils_install() {
 
   tripal_eutils_add_dbs();
   tripal_eutils_insert_biosample_attribute_terms();
-  tripal_eutils_install_chado_1_4_tables();
+  // tripal_eutils_install_chado_1_4_tables();
 }
 
 /**
@@ -162,7 +162,7 @@ function tripal_eutils_add_dbs() {
     'name' => 'NCBI Assembly',
     'description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
     'urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
-    'url' => 'https://www.ncbi.nlm.nih.gov/assembly/'
+    'url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
   ]);
 }
 
@@ -173,38 +173,37 @@ function tripal_eutils_add_dbs() {
  */
 function tripal_eutils_install_chado_1_4_tables() {
 
-
-    $schema = [
-      'fields' => [
-        'biomaterial_project_id' => ['type' => 'serial', 'not null' => TRUE],
-        'biomaterial_id' => ['type' => 'int', 'not null' => TRUE],
-        'project_id' => ['type' => 'int', 'not null' => TRUE],
-      ],
-      'primary key' => ['biomaterial_project_id'],
-      'foreign keys' => [
-        'biomaterial' => [
-          'table' => 'biomaterial',
-          'columns' => [
-            'organism_id' => 'biomaterial_id',
-          ],
-        ],
-        'project' => [
-          'table' => 'project',
-          'columns' => [
-            'analysis_id' => 'project_id',
-          ],
+  $schema = [
+    'fields' => [
+      'biomaterial_project_id' => ['type' => 'serial', 'not null' => TRUE],
+      'biomaterial_id' => ['type' => 'int', 'not null' => TRUE],
+      'project_id' => ['type' => 'int', 'not null' => TRUE],
+    ],
+    'primary key' => ['biomaterial_project_id'],
+    'foreign keys' => [
+      'biomaterial' => [
+        'table' => 'biomaterial',
+        'columns' => [
+          'organism_id' => 'biomaterial_id',
         ],
       ],
-      'indexes' => [
-        'biomaterial_project_idx1' => ['biomaterial_id'],
-        'biomaterial_project_idx2' => ['project_id'],
+      'project' => [
+        'table' => 'project',
+        'columns' => [
+          'analysis_id' => 'project_id',
+        ],
       ],
-      'unique keys' => [
-        'biomaterial_project_unique_uq1' => ['biomaterial_id', 'project_id'],
-      ],
-    ];
+    ],
+    'indexes' => [
+      'biomaterial_project_idx1' => ['biomaterial_id'],
+      'biomaterial_project_idx2' => ['project_id'],
+    ],
+    'unique keys' => [
+      'biomaterial_project_unique_uq1' => ['biomaterial_id', 'project_id'],
+    ],
+  ];
 
-    chado_create_custom_table('biomaterial_project', $schema, TRUE, NULL, FALSE);
+  chado_create_custom_table('biomaterial_project', $schema, TRUE, NULL, FALSE);
 
 }
 
