@@ -16,6 +16,7 @@ class EUtilsRepositoryFactory implements EUtilsFactoryInterface {
     'bioproject' => EUtilsBioProjectRepository::class,
     'biosample' => EUtilsBioSampleRepository::class,
     'assembly' => EUtilsAssemblyRepository::class,
+    'pubmed' => EUtilsPubmedRepository::class
   ];
 
   /**

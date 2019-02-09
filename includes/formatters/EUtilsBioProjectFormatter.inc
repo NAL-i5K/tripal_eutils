@@ -23,7 +23,10 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
     try {
       $this->formatBaseRecord($data);
       $this->formatAttributes($data['attributes']);
+      $pubs = $data['linked_records']['pubs'];
+      unset($data['linked_records']['pubs']);
       $this->formatLinkedRecords($data['linked_records']);
+      $this->formatPublications($pubs);
     }
     catch (Exception $exception) {
       drupal_set_message($exception->getMessage());
@@ -139,6 +142,45 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
       '#collapsible' => TRUE,
     ];
     $this->elements['links']['table'] = [
+      '#markup' => $table,
+      '#type' => 'item',
+    ];
+  }
+
+  /**
+   * Formats publications.
+   *
+   * @param array $pubs
+   *   Array of publication IDs.
+   */
+  private function formatPublications(array $pubs) {
+
+    $this->elements['pubs'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Publications',
+      '#collapsible' => TRUE,
+    ];
+
+    $rows = [];
+    $header = ['Pubmed ID'];
+
+    foreach ($pubs as $accession) {
+
+      // PMID is what tripal core sets up.
+      $link = $this->getDbLink($accession, 'PMID');
+
+      $row = [$link];
+
+      $rows[] = $row;
+    }
+
+    if (empty($rows)) {
+      $this->element['pubs']['notice'] = ['#markup' => 'No publications are associated with this Project.'];
+
+    }
+    $table = theme('table', ['rows' => $rows, 'header' => $header]);
+
+    $this->elements['pubs']['table'] = [
       '#markup' => $table,
       '#type' => 'item',
     ];

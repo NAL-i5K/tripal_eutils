@@ -26,3 +26,14 @@ EUtilsBioSampleParser
 
 .. doxygenclass:: EUtilsBioSampleParser
   :members:
+
+
+
+EUtilsPubmedParser
+----------------------
+
+Pubmed records are parsed via the Tripal Core API.
+
+
+.. doxygenclass:: EUtilsPubmedParser
+  :members:

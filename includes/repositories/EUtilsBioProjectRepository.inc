@@ -64,10 +64,16 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
     if ($this->create_linked_records) {
 
       $links = $data['linked_records'];
-
+      $pubs = $links['pubs'];
       $biosamples = $links['biosample'];
       if (!empty($biosamples) && $this->create_linked_records) {
         $this->createLinkedRecords($biosamples, 'biosample');
+      }
+
+      // Pubs are linked records but we always want to import them
+      // since they wont cause a link-loop.
+      if (!empty($pubs)) {
+        $this->createPubs($pubs);
       }
 
       // TODO: what about organism and assembly?
@@ -223,6 +229,32 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
       'project_id' => $this->base_record_id,
     ]);
 
+  }
+
+  /**
+   * Inserts and links publications to the project.
+   *
+   * @param array $pubs
+   *   An array of pubmed IDs.
+   *
+   * @throws \Exception
+   */
+  private function createPubs(array $pubs) {
+
+    foreach ($pubs as $accession) {
+
+      $search = new EUtils(FALSE);
+      $pub = $search->get('pubmed', $accession);
+
+      if (property_exists($pub, 'pub_id')) {
+        db_insert('chado.project_pub')
+          ->fields([
+            'project_id' => $this->base_record_id,
+            'pub_id' => $pub->pub_id,
+          ])
+          ->execute();
+      }
+    }
   }
 
 }

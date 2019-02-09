@@ -5,7 +5,10 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EUtilsBioProjectRepositoryTest extends TripalTestCase{
+/**
+ *
+ */
+class EUtilsBioProjectRepositoryTest extends TripalTestCase {
 
   // Uncomment to auto start and rollback db transactions per test method.
   use DBTransaction;
@@ -17,7 +20,7 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase{
   public function testCreatingBioProject() {
     $repo = new \EUtilsBioProjectRepository();
 
-    // Make sure creating a new one works
+    // Make sure creating a new one works.
     $name = uniqid();
     $project = $repo->createProject([
       'name' => $name,
@@ -41,7 +44,6 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase{
    */
   public function testProjectFromXML() {
 
-
     $file = __DIR__ . '/../examples/bioprojects/12384_bioproject.xml';
 
     $parser = new \EUtilsBioProjectParser();
@@ -49,7 +51,7 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase{
 
     $repo = new \EUtilsBioProjectRepository();
 
-    // Make sure creating a new one works
+    // Make sure creating a new one works.
     $name = 'Canis lupus familiaris: Reference genome sequence';
     $result = $repo->create($project);
 
@@ -61,7 +63,7 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase{
       ->execute()
       ->fetchAll();
 
-    //at a minimum we have the raw XML prop.
+    // At a minimum we have the raw XML prop.
     $this->assertNotEmpty($props);
 
     $xml_term = tripal_get_cvterm(['id' => 'local:full_ncbi_xml']);
@@ -73,7 +75,35 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase{
       ->execute()
       ->fetchObject();
 
-    //at a minimum we have the raw XML prop.
+    // At a minimum we have the raw XML prop.
     $this->assertNotFalse($props);
+  }
+
+  /**
+   * @group pubs
+   * @throws \Exception
+   */
+  public function testProjectAddsPubs() {
+
+    $project = factory('chado.project')->create();
+
+    $repo_master = new \EUtilsBioProjectRepository(FALSE);
+
+    $repo = reflect($repo_master);
+    $repo->base_record_id = $project->project_id;
+
+    $pubs = ['9023104', '22751099'];
+    $title= 'tRNAscan-SE: a program for improved detection of transfer RNA genes in genomic sequence.';
+    $title = 'The yak genome and adaptation to life at high altitude.';
+
+    $pubs = $repo->createPubs($pubs);
+
+    $pub = db_select('chado.pub', 'p')->fields('p')->condition('p.title', $title)->execute()->fetchObject();
+
+    $this->assertNotFalse($pub);
+
+    $link = db_select('chado.project_pub', 'p')->fields('p')->condition('p.pub_id', $pub->pub_id)->execute()->fetchObject();
+    $this->assertNotFalse($link);
+    $this->assertEquals($project->project_id, $link->project_id);
   }
 }

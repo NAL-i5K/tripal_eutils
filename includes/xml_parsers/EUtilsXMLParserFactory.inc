@@ -17,6 +17,7 @@ class EUtilsXMLParserFactory implements EUtilsFactoryInterface {
     'bioproject' => EUtilsBioProjectParser::class,
     'biosample' => EUtilsBioSampleParser::class,
     'assembly' => EUtilsAssemblyParser::class,
+    'pubmed' => EUtilsPubmedParser::class,
   ];
 
   /**

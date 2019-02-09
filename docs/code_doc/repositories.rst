@@ -34,3 +34,13 @@ EUtilsBioSampleRepository
 
 .. doxygenclass:: EUtilsBioSampleRepository
   :members:
+
+
+EUtilsPubmedRepository
+----------------------
+
+Pubmed records are imported via the Tripal Core API.
+
+
+.. doxygenclass:: EUtilsPubmedRepository
+  :members:

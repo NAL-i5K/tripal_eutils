@@ -23,6 +23,7 @@ require_once 'includes/xml_parsers/EUtilsParserInterface.inc';
 require_once 'includes/xml_parsers/EUtilsBioSampleParser.inc';
 require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
 require_once 'includes/xml_parsers/EUtilsAssemblyParser.inc';
+require_once 'includes/xml_parsers/EUtilsPubmedParser.inc';
 
 // Repositories. Handling DB operations.
 require_once 'includes/repositories/EUtilsRepositoryFactory.inc';
@@ -30,6 +31,7 @@ require_once 'includes/repositories/EUtilsRepository.inc';
 require_once 'includes/repositories/EUtilsBioSampleRepository.inc';
 require_once 'includes/repositories/EUtilsBioProjectRepository.inc';
 require_once 'includes/repositories/EUtilsAssemblyRepository.inc';
+require_once 'includes/repositories/EUtilsPubmedRepository.inc';
 
 // Repository helpers.  Assist with looking up terms.
 require_once 'includes/TagMapper.inc';
