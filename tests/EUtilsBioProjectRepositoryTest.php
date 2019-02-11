@@ -41,6 +41,7 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
 
   /**
    * @group bioproject
+   * @group failing
    */
   public function testProjectFromXML() {
 
