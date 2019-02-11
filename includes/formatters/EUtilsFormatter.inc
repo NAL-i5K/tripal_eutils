@@ -29,8 +29,11 @@ abstract class EUtilsFormatter {
    *   Returns a database object or FALSE.
    */
   public function getNCBIDB(string $db_name) {
-
     $name = "NCBI {$db_name}";
+
+    if (strtolower($db_name) == 'organism') {
+      $name = 'NCBITAXON';
+    }
 
     $db = db_query(
       'SELECT * FROM chado.db WHERE UPPER(name) = :name',
@@ -63,7 +66,6 @@ abstract class EUtilsFormatter {
    *   xref.
    */
   public function getDbLink(string $accession, string $db) {
-
     $db = $this->getNCBIDB($db);
 
     if (!$db) {
