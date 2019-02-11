@@ -3,7 +3,7 @@ Journal, pub, title
 Jounal->ISSN, pubprop, NA
 Journal->JournalIssue, pub, issue
 Journal->Title,skipped?, skipped?
-Journal->ISOAbbreviation,,
+Journal->ISOAbbreviation,citation,
 ????->Volume, pub, volume
 ArticleTitle, ????, ?????
 Abstract, ??, ??
