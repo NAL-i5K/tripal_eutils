@@ -2,13 +2,13 @@ XML, Chado Base Table, Chado Column
 Journal, pub, title
 NA, pub, volumetitle
 Volume, pub, volume
-NA pub, series_name
+NA, pub, series_name
 Issue, pub, issue
 PubDate, pub, pyear
 MedlinePgn, pub, pages
 NA, pub, miniref
-(Citation, built from multiple keys), pub, uniquename
+(Citation built from multiple keys), pub, uniquename
 PublicationType, pub, type_id
-NA pub, publisher
+NA, pub, publisher
 NA, pub, pubplace
 AuthorList, pubauthor, surname/givennames/suffix
