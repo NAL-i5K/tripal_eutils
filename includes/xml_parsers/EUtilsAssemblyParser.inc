@@ -56,7 +56,14 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           break;
 
         case 'RsUid':
-          $info['accessions']['assembly']['Refseq'] = (string) $child;
+          // Can be nullable.
+          $value = (string) $child;
+
+          if (!$value) {
+            break;
+          }
+
+          $info['accessions']['assembly']['Refseq'] = $value;
           break;
 
         case 'GbUid':
