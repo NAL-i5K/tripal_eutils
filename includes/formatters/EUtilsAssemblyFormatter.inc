@@ -46,7 +46,7 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     $sourcename = $data['sourcename'];
     $type = $this->formatCategory($data['category']);
     $xrefs = $data['accessions']['assembly'];
-    $xref_string = implode(', ', $xrefs);
+    $xref_string = $this->generateXrefString($xrefs);
     $header = ['Name', 'Description', 'Source Name', 'Type', 'Program', 'Accessions'];
     $rows = [[$name, $description, $sourcename, $type, $program, $xref_string]];
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
@@ -170,4 +170,19 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     }
   }
 
+  private function generateXrefString($xrefs) {
+    if (empty($xrefs)) {
+      return '';
+    }
+
+    $links = [];
+    foreach ($xrefs as $db => $xref) {
+
+      $link = $this->getDbLink($xref, 'assembly');
+      $link = $db .':'. $link;
+      $links[] = $link;
+    }
+
+    return implode(', ', $links );
+  }
 }

@@ -105,13 +105,16 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
 
     $header = ['Type', 'Accession'];
     $rows = [];
+    $accession = $data['organism']['taxonomy_id'];
+    $organism_link = $this->getDbLink( $accession, 'organism');
 
-    $rows[] = ['Organism', $data['organism']['taxonomy_id']];
+    $rows[] = ['Organism', $organism_link];
     $rows[] = ['Contact', $data['contact']];
 
     if (!empty($data['projects'])) {
       foreach ($data['projects'] as $project) {
-        $rows[] = ['Project', $project];
+        $link = $this->getDbLink($project, 'bioproject');
+        $rows[] = ['Project', $link];
       }
     }
 
