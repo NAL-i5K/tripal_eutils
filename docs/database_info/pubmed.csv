@@ -1,0 +1,19 @@
+XML, Chado Base Table, Chado Column
+Journal, pub, title
+Jounal->ISSN, pubprop, NA
+Journal->JournalIssue, pub, issue
+Journal->Title,skipped?, skipped?
+Journal->ISOAbbreviation,,
+????->Volume, pub, volume
+ArticleTitle, ????, ?????
+Abstract, ??, ??
+Pagination, ?, ?
+ElocationID, ??, ?
+Affiliation, ?, ?
+AuthorList, pubauthor, surname/givennames/suffix
+Language, pubprop, NA
+PublicationType, pub, type_id
+PublicationTypeList,  ????, ???
+????, pub, year
+????, pub, pages
+????, pub, uniquename
