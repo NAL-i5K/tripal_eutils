@@ -247,12 +247,15 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
       $pub = $search->get('pubmed', $accession);
 
       if (property_exists($pub, 'pub_id')) {
-        db_insert('chado.project_pub')
-          ->fields([
-            'project_id' => $this->base_record_id,
-            'pub_id' => $pub->pub_id,
-          ])
-          ->execute();
+        $values = [
+          'project_id' => $this->base_record_id,
+          'pub_id' => $pub->pub_id,
+        ];
+        $exists = db_select('chado.project_pub', 't')->fields('t')->condition('project_id', $this->base_record_id)->condition('pub_id', $pub->pub_id)->execute()->fetchObject();
+
+        if (!$exists) {
+          chado_insert_record('project_pub', $values);
+        }
       }
     }
   }
