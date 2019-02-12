@@ -18,12 +18,12 @@ Module features
 
 
 - Support for Assembly (Chado Analysis), BioProject (Project), and BioSamples (Biomaterial)
-- Lookup NCBI records and create chado base records
+- Lookup NCBI records and create Chado base records
 - Add properties, DBXREF links
+- Lookup and insert records linked in the primary record.
 
 
 Planned
 ~~~~~~~~~~~~~~
 
 - Provide fields to create entities with only an NCBI accession
-- Import linked records (create Chado Biosample records if found parsing an Assembly)
