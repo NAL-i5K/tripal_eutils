@@ -10,9 +10,12 @@
   <testsuites>
     <testsuite name="default">
       <directory suffix="Test.php">tests</directory>
-      <directory suffix="Test.php">tests/Parsers</directory>
+    </testsuite>
+      <testsuite name="parsers">
+        <directory suffix="Test.php">tests/Parsers</directory>
+      </testsuite>
+    <testsuite name='repositories'>
       <directory suffix="Test.php">tests/Repositories</directory>
-
     </testsuite>
   </testsuites>
   <filter>
