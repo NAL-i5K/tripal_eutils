@@ -72,7 +72,6 @@ class EUtils {
       return static::$visited[$db][$accession];
     }
 
-
     $provider = $this->getResourceProvider($db);
     $provider->addParam('id', $accession);
     if ($db == 'pubmed') {
@@ -81,15 +80,7 @@ class EUtils {
     }
 
     $response = $provider->get();
-    if (!$response->isSuccessful()) {
-      $error_message = $response->hasError() ? $response->errorMessage() : 'Status: ' . $response->status();
-      $variables = ['!db' => $db, '!accession' => $accession];
-      $options = ['print' => TRUE];
-      tripal_report_error('tripal_eutils', TRIPAL_ERROR, 'Cannot fetch NCBI record: !db : !accession', $variables, $options);
-
-      throw new Exception('ERROR Could not make request: ' . $error_message);
-    }
-
+    $this->checkResponseSuccess($response, $db, $accession);
     $xml = $response->xml();
 
     $data = (new EUtilsXMLParserFactory())->get($db)->parse($xml);
@@ -144,29 +135,25 @@ class EUtils {
     return new EFetch($db);
   }
 
-
   /**
    * Checks the accession and converts to uid accession if neccesary.
    *
    * @param string $accession
-   * The accession for the NCBI record.
+   *   The accession for the NCBI record.
    *
    * @return string
    */
   private function convertAccessionsToUID(string $db, string $accession) {
 
-
     if (preg_match("/[a-z]/i", $accession)) {
 
-      //We have letters and need to convert to uid.
-
+      // We have letters and need to convert to uid.
       $provider = new ESearch($db);
       $provider->addParam('retmode', 'xml');
       $provider->addParam('term', $accession);
       $response = $provider->get();
 
-      //TODO handle no response here.
-
+      $this->checkResponseSuccess($response, $db, $accession);
       $xml = $response->xml();
 
       $count = (int) $xml->Count;
@@ -178,4 +165,28 @@ class EUtils {
 
     return $accession;
   }
+
+  /**
+   * Checks that the resource was found.
+   *
+   * @param $response
+   *   Response object.
+   * @param string $db
+   *   NCBI db string.
+   * @param string $accession
+   *   Accession.
+   *
+   * @throws \Exception
+   */
+  private function checkResponseSuccess($response, string $db, string $accession) {
+    if (!$response->isSuccessful()) {
+      $error_message = $response->hasError() ? $response->errorMessage() : 'Status: ' . $response->status();
+      $variables = ['!db' => $db, '!accession' => $accession];
+      $options = ['print' => TRUE];
+      tripal_report_error('tripal_eutils', TRIPAL_ERROR, 'Cannot fetch NCBI record: !db : !accession', $variables, $options);
+
+      throw new Exception('ERROR Could not make request: ' . $error_message);
+    }
+  }
+
 }
