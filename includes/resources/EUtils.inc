@@ -61,7 +61,12 @@ class EUtils {
    * @throws \Exception
    */
   public function get($db, $accession) {
+    $backup_accession = $accession;
     $accession = $this->convertAccessionsToUID($db, $accession);
+
+    if (!$accession) {
+      throw new Exception('Unable to find UID for ' . $db . ':' . $backup_accession);
+    }
 
     if (isset(static::$visited[$db][$accession])) {
       return static::$visited[$db][$accession];
@@ -165,8 +170,7 @@ class EUtils {
       $xml = $response->xml();
 
       $count = (int) $xml->Count;
-      if ($count > 1) {
-        print("warning more than one result");
+      if ($count !== 1) {
         return FALSE;
       }
       $accession = (string) $xml->IdList->Id;

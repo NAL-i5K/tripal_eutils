@@ -38,6 +38,10 @@ class EUtilsTest extends TripalTestCase {
     return [
       ['assembly', 'GCF_000184155.1', '557018'],
       ['assembly', '557018', '557018'],
+      ['assembly', 'dog', FALSE],
+      ['assembly', 'DFDSJKFLADSFKDASFFOIHWINBIANBSDFKJASLFKJ', FALSE],
+
+
     ];
   }
 }
