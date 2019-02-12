@@ -9,7 +9,7 @@ Tripal EUtilities requires:
 - Tripal 3
 - PHP >= 7.0
 - Drupal 7
-- [Tripal Manage Analyses](https://github.com/statonlab/tripal_manage_analyses.git)
+- `Tripal Manage Analyses <https://github.com/statonlab/tripal_manage_analyses.git>`_
 
 Installation
 ------------
