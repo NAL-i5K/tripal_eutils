@@ -25,7 +25,8 @@ script:
   - docker exec -it tripal drush pm-enable -y tripal_eutils
   - docker exec -it tripal yum install -y php-pecl-xdebug.x86_64
   # Repopulate the cache before running tests
-  - curl -s localhost:8080 > /dev/null
+  #skip because it breaks the build.
+  #- curl -s localhost:8080 > /dev/null
   - docker exec -it tripal bash -c "cd /modules/tripal_eutils && composer install && DRUPAL_ROOT=/var/www/html IS_TRAVIS=TRUE ./vendor/bin/phpunit --coverage-clover ./clover.xml"
 
 after_script:

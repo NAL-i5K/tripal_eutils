@@ -243,7 +243,7 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
       return $this->repository;
     }
 
-    $file = __DIR__ . '/../examples/assembly/559011_assembly.xml';
+    $file = __DIR__ . '/../../examples/assembly/559011_assembly.xml';
 
 
     $parser = $this->getMockBuilder('\EUtilsAssemblyParser')

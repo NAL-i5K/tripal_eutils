@@ -44,7 +44,7 @@ class EUtilsBioProjectRepositoryTest extends TripalTestCase {
    */
   public function testProjectFromXML() {
 
-    $file = __DIR__ . '/../examples/bioprojects/12384_bioproject.xml';
+    $file = __DIR__ . '/../../examples/bioprojects/12384_bioproject.xml';
 
     $parser = new \EUtilsBioProjectParser();
     $project = $parser->parse(simplexml_load_file($file));
