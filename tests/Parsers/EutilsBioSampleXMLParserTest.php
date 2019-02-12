@@ -5,13 +5,14 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EutilsBioSampleXMLParserText extends TripalTestCase {
+class EutilsBioSampleXMLParserTest extends TripalTestCase {
 
   use DBTransaction;
 
   /**
    * @test
    * @group biosample
+   * @group rock
    */
   public function testBioSampleParser() {
     $path = DRUPAL_ROOT . '/' . drupal_get_path('module', 'tripal_eutils');
