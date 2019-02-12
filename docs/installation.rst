@@ -1,10 +1,6 @@
 Installation and Setup
 =======================
 
-.. warning::
-
-	This module is still under active development.
-
 Requirements
 ------------
 
@@ -30,6 +26,11 @@ Installation
 Setup
 -----
 This module currently functions "as is" without setup.  The Manage Analyses module provides several new fields (analysis and organism linker fields) so you should **Check For New Fields** on the content types your site utilizes that have _organism or _analysis Chado linker tables.
+
+Additional module-wide settings can be configured at: ``/admin/tripal/tripal_eutils``.
+
+.. image:: /_static/settings_example.png
+
 
 NCBI API Key
 ~~~~~~~~~~~~

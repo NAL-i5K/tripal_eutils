@@ -15,14 +15,14 @@ The EUtils loader provides a fast and convenient way to import records from NCBI
   The EUtils import form (``admin/tripal/loaders/eutils_ncbi_import``).
 
 
-In order to import records, you must choose a **NCBI Database** and provide an **NCBI Accession Number**.  Note that the accession number should be provided without the text database accession.  While these numbers are generally equivalent (IE ``PRJNA13179`` vs ``13179`` for BioProjects), in some cases they are not (Assemblies).
+In order to import records, you must choose a **NCBI Database** and provide an **NCBI Accession Number**.  Note that the accession number can be provided with, or without, the text database accession.  While these numbers are generally equivalent (IE ``PRJNA13179`` vs ``13179`` for BioProjects), in some cases they are not (Assemblies).
 
 
 .. note::
 
   Please see :doc:`ncbi_mapping` for a list of currently supported databases, and for more information on how the information from NCBI will be loaded into Chado.
 
-The **Create Linked Records** box, when checked, will not only create the primary accession input above, but any secondary accessions directly referenced in that record.  For example, a BioSample typically lists
+The **Create Linked Records** box, when checked, will not only create the primary accession input above, but any secondary accessions directly referenced in that record.
 
 
 Previewing Records
@@ -30,7 +30,7 @@ Previewing Records
 
 After you've selected a database and an accession, you can use the **Preview Record** button to view the metadata and linked records that will be inserted.
 
-The preview will first show the base Chado record created.  THe  values here are typically the primary fields of the Chado table (in this case, ``chado.analysis``), as well as any DBXrefs associated with it.
+The preview will first show the base Chado record created.  The  values here are typically the primary fields of the Chado table (in this case, ``chado.analysis``), as well as any DBXrefs associated with it.
 
 .. figure:: user_guide/preview_pt_1.png
   :alt: Previewing submission base record.

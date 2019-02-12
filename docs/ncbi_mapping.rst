@@ -1,7 +1,7 @@
 Mapping NCBI content into Chado
 ===============================
 
-Unfortunately it isnt always clear how NCBI data should map into Chado.
+Unfortunately it isn't always clear how NCBI data should map into Chado.
 
 This section describes what to expect when running the EUtils importer.
 
