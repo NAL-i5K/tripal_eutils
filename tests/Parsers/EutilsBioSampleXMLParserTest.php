@@ -12,7 +12,6 @@ class EutilsBioSampleXMLParserTest extends TripalTestCase {
   /**
    * @test
    * @group biosample
-   * @group rock
    */
   public function testBioSampleParser() {
     $path = DRUPAL_ROOT . '/' . drupal_get_path('module', 'tripal_eutils');
@@ -28,6 +27,12 @@ class EutilsBioSampleXMLParserTest extends TripalTestCase {
       $this->assertTrue(is_array($biosample['attributes']));
 
       $this->assertNotNull($biosample['name']);
+
+
+      $this->assertNotEmpty($biosample['accessions']);
+      $this->assertNotEmpty($biosample['attributes']);
+
+      //Accessions should consist of an aray of arrays.  however hte keys of those arrays seems irregular.
 
       if ($biosample['name'] == 'SAMN02953603'){
         // This sample has a linked project.  Was it parsed?
