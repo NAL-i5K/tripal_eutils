@@ -10,10 +10,14 @@ class EUtilsTest extends TripalTestCase {
   // Uncomment to auto start and rollback db transactions per test method.
   use DBTransaction;
 
+  /**
+   * @group eutils
+   * @throws \Exception
+   */
   public function testSettingDB() {
     $connection = new \EUtils();
     $this->expectException('Exception');
-    $connection->get('waffles', ['000000']);
+    $connection->get('waffles', '000000');
   }
 
 
@@ -21,7 +25,6 @@ class EUtilsTest extends TripalTestCase {
    * Accessions with letters arent UIDs and should be converted.
    *
    * @group eutils
-   * @group convert
    * @dataProvider accessionDataProvider
    * @throws \Exception
    */
