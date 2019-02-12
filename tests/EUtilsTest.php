@@ -43,6 +43,8 @@ class EUtilsTest extends TripalTestCase {
       ['assembly', '557018', '557018'],
       ['assembly', 'dog', FALSE],
       ['assembly', 'DFDSJKFLADSFKDASFFOIHWINBIANBSDFKJASLFKJ', FALSE],
+      ['bioproject', 'PRJNA66853', '66853'],
+      ['biosample', 'SAMN02981385', '2981385']
 
 
     ];
