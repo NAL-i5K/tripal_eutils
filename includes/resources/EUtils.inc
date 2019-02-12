@@ -61,10 +61,12 @@ class EUtils {
    * @throws \Exception
    */
   public function get($db, $accession) {
+    $accession = $this->convertAccessionsToUID($db, $accession);
 
     if (isset(static::$visited[$db][$accession])) {
       return static::$visited[$db][$accession];
     }
+
 
     $provider = $this->getResourceProvider($db);
     $provider->addParam('id', $accession);
@@ -137,4 +139,39 @@ class EUtils {
     return new EFetch($db);
   }
 
+
+  /**
+   * Checks the accession and converts to uid accession if neccesary.
+   *
+   * @param string $accession
+   * The accession for the NCBI record.
+   *
+   * @return string
+   */
+  private function convertAccessionsToUID(string $db, string $accession) {
+
+
+    if (preg_match("/[a-z]/i", $accession)) {
+
+      //We have letters and need to convert to uid.
+
+      $provider = new ESearch($db);
+      $provider->addParam('retmode', 'xml');
+      $provider->addParam('term', $accession);
+      $response = $provider->get();
+
+      //TODO handle no response here.
+
+      $xml = $response->xml();
+
+      $count = (int) $xml->Count;
+      if ($count > 1) {
+        print("warning more than one result");
+        return FALSE;
+      }
+      $accession = (string) $xml->IdList->Id;
+    }
+
+    return $accession;
+  }
 }
