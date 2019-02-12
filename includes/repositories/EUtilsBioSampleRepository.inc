@@ -175,8 +175,6 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
   /**
    * Creates a set of accessions attaches them with the given biosample.
    *
-   * @param object $bio_sample
-   *   The BioSample created by createBioSample()
    * @param array $accessions
    *
    * @return array
