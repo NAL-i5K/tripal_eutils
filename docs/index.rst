@@ -15,3 +15,5 @@ Tripal EUtils
   user_guide
   ncbi_mapping
   development
+
+.. image:: _static/EUtils_card.png
