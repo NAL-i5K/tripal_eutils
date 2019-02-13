@@ -91,7 +91,8 @@ class EUtils {
       return $formatter->format($data);
     }
 
-    $repository = (new EUtilsRepositoryFactory())->get($db);
+    $repository = (new EUtilsRepositoryFactory($this->create_linked_records))->get($db);
+
     $variables = ['!db' => $db, '!accession' => $accession];
     tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession', $variables, ['print' => TRUE]);
     $record = $repository->create($data);

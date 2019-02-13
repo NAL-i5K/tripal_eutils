@@ -94,6 +94,7 @@ function tripal_eutils_permission() {
  */
 function tripal_eutils_create_records(string $db, string $accession, bool $create_linked_records) {
   try {
+
     $eutils = new EUtils($create_linked_records);
     $eutils->get($db, $accession);
   }
