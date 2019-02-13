@@ -215,8 +215,11 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
       switch ($type) {
         case 'biosample':
           $this->linkBiomaterial($object);
+          break;
+
         case 'assembly':
           $this->linkAssembly($object);
+          break;
       }
     }
   }
@@ -246,9 +249,17 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
   private function linkAssembly($record) {
     $analysis_id = $record->analysis_id;
 
-    $exists = db_select('chado.project_analysis', 't')->fields('t')->condition('project_id', $this->base_record_id)->condition('analysis_id', $analysis_id)->execute()->fetchObject();
+    $exists = db_select('chado.project_analysis', 't')
+      ->fields('t')
+      ->condition('project_id', $this->base_record_id)
+      ->condition('analysis_id', $analysis_id)
+      ->execute()
+      ->fetchObject();
     if (!$exists) {
-      $values = ['analysis_id' => $analysis_id, 'project_id' => $this->base_record_id];
+      $values = [
+        'analysis_id' => $analysis_id,
+        'project_id' => $this->base_record_id,
+      ];
       chado_insert_record('project_analysis', $values);
     }
   }
@@ -273,7 +284,12 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
           'project_id' => $this->base_record_id,
           'pub_id' => $pub->pub_id,
         ];
-        $exists = db_select('chado.project_pub', 't')->fields('t')->condition('project_id', $this->base_record_id)->condition('pub_id', $pub->pub_id)->execute()->fetchObject();
+        $exists = db_select('chado.project_pub', 't')
+          ->fields('t')
+          ->condition('project_id', $this->base_record_id)
+          ->condition('pub_id', $pub->pub_id)
+          ->execute()
+          ->fetchObject();
 
         if (!$exists) {
           chado_insert_record('project_pub', $values);
