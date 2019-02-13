@@ -229,7 +229,11 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
       'project_id' => $project_id,
       'biomaterial_id' => $this->base_record_id,
     ];
-    chado_insert_record('biomaterial_project', $values);
+
+    $exists = chado_generate_var('biomaterial_project', $values);
+    if (!$exists) {
+      chado_insert_record('biomaterial_project', $values);
+    }
 
   }
 
