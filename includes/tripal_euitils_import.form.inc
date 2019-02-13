@@ -61,8 +61,7 @@ function tripal_eutils_import_form($form, &$form_state) {
     '#title' => t('Create Linked Records'),
     '#description' => t('Each accession links to other NCBI databases: 
                           you can create those chado records as well.'),
-    '#default_value' => 1
-
+    '#default_value' => 1,
   ];
 
   $form['submit'] = [
