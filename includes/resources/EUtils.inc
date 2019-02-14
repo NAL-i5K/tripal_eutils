@@ -143,7 +143,7 @@ class EUtils {
    *   The accession for the NCBI record.
    *
    * @return string
-   */
+   **/
   private function convertAccessionsToUID(string $db, string $accession) {
 
     if (preg_match("/[a-z]/i", $accession)) {
@@ -151,8 +151,12 @@ class EUtils {
       // We have letters and need to convert to uid.
       $provider = new ESearch($db);
       $provider->addParam('retmode', 'xml');
+
+      $field = $this->getAccessionField($db);
+
       $provider->addParam('term', $accession);
-      $provider->addParam('field', 'accession');
+      $provider->addParam('field', $field);
+
       $response = $provider->get();
       $this->checkResponseSuccess($response, $db, $accession);
 
@@ -160,14 +164,12 @@ class EUtils {
 
       $count = (int) $xml->Count;
       if ($count !== 1) {
-
         $provider = new ESearch($db);
         $provider->addParam('retmode', 'xml');
         $provider->addParam('term', $accession . ' AND (latest[filter])');
         $response = $provider->get();
         $this->checkResponseSuccess($response, $db, $accession);
         $xml = $response->xml();
-
         $count = (int) $xml->Count;
 
         if ($count !== 1) {
@@ -179,6 +181,27 @@ class EUtils {
     }
 
     return $accession;
+  }
+
+  /**
+   *
+   */
+  private function getAccessionField($db) {
+
+    switch (strtolower($db)) {
+      case 'bioproject':
+        return 'Project Accession';
+
+      case 'assembly':
+        return 'Assembly Accession';
+
+      case 'biosample':
+        return 'Accession';
+
+      default:
+        return 'Accession';
+    }
+
   }
 
   /**

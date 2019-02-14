@@ -133,6 +133,8 @@ class EUtilsRequest {
         $params['data'] = http_build_query($this->params);
       }
     }
+    dpm($url);
+    dpm($params);
 
     $response = drupal_http_request($url, $params);
     return new EUtilsResource($response);
