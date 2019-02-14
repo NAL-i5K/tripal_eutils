@@ -139,11 +139,14 @@ class EUtils {
   /**
    * Checks the accession and converts to uid accession if neccesary.
    *
+   * @param string $db
    * @param string $accession
    *   The accession for the NCBI record.
    *
-   * @return string
-   **/
+   * @return bool|string
+   *
+   * @throws \Exception
+   */
   private function convertAccessionsToUID(string $db, string $accession) {
 
     if (preg_match("/[a-z]/i", $accession)) {
