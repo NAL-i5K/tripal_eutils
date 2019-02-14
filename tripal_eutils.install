@@ -32,9 +32,42 @@ function tripal_eutils_install() {
     ]
   );
 
+
   tripal_eutils_add_dbs();
   tripal_eutils_insert_biosample_attribute_terms();
   tripal_eutils_install_chado_1_4_tables();
+}
+
+/**
+ * Extra biosample property terms discovered in @ticket 170.
+ */
+function tripal_eutils_insert_extra_biosample_terms() {
+
+  tripal_insert_cvterm(
+    [
+      'id' => 'ncbi_properties:samples provided by',
+      'name' => 'Samples provided by',
+      'def' => '',
+      'cv_name' => 'ncbi_properties',
+    ]
+  );
+
+  tripal_insert_cvterm(
+    [
+      'id' => 'ncbi_properties:Publication',
+      'name' => 'Publication',
+      'def' => '',
+      'cv_name' => 'ncbi_properties',
+    ]
+  );
+  tripal_insert_cvterm(
+    [
+      'id' => 'ncbi_properties:note',
+      'name' => 'Note',
+      'def' => 'Misc. free text.',
+      'cv_name' => 'ncbi_properties',
+    ]
+  );
 }
 
 /**
@@ -204,6 +237,14 @@ function tripal_eutils_install_chado_1_4_tables() {
   ];
 
   chado_create_custom_table('biomaterial_project', $schema, TRUE, NULL, FALSE);
+
+}
+
+/**
+ * Add extra property terms.
+ */
+function tripal_eutils_update_7301() {
+  tripal_eutils_insert_extra_biosample_terms();
 
 }
 
