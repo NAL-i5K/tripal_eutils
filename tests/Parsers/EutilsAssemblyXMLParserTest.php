@@ -149,4 +149,37 @@ class EutilsAssemblyXMLParserTest extends TripalTestCase {
     $this->assembly_xmls = $files;
     return $files;
   }
+
+  /**
+   * @param $links
+   * @param $expect
+   * @dataProvider FTPURLProvider
+   * @group ftp
+   * @throws \Exception
+   */
+  public function testFTPGuesser($links, $expect){
+    $parent  = new \EUtilsAssemblyParser();
+    $p = reflect($parent);
+
+  $link =     $p->guessFTPUrl($links);
+  $this->assertEquals($expect, $link);
+
+  }
+
+  public function FTPURLProvider() {
+
+    return [
+      [[], NULL],
+      [['dont_use_this' => 'dog'], NULL],
+      [['Assembly_rpt' => 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt'], 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt'],
+      [['Assembly_rpt' => 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt',
+        'RefSeq' => "ftp://dontuseme.gov/folder/"],
+        'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt'],
+      [['RefSeq' => 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/guess/'], 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/guess/guess_assembly_report.txt'],
+
+
+    ];
+
+  }
+
 }
