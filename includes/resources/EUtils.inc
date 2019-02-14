@@ -152,14 +152,28 @@ class EUtils {
       $provider = new ESearch($db);
       $provider->addParam('retmode', 'xml');
       $provider->addParam('term', $accession);
+      $provider->addParam('field', 'accession');
       $response = $provider->get();
-
       $this->checkResponseSuccess($response, $db, $accession);
+
       $xml = $response->xml();
 
       $count = (int) $xml->Count;
       if ($count !== 1) {
-        return FALSE;
+
+        $provider = new ESearch($db);
+        $provider->addParam('retmode', 'xml');
+        $provider->addParam('term', $accession . ' AND (latest[filter])');
+        $response = $provider->get();
+        $this->checkResponseSuccess($response, $db, $accession);
+        $xml = $response->xml();
+
+        $count = (int) $xml->Count;
+
+        if ($count !== 1) {
+
+          return FALSE;
+        }
       }
       $accession = (string) $xml->IdList->Id;
     }
