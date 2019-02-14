@@ -15,8 +15,8 @@ class MegaTest extends TripalTestCase {
    * @group mega
    */
   public function testAllProjects() {
-   // $this->assertTrue(TRUE);
-   // return;
+    $this->assertTrue(TRUE);
+    return;
 
     //Commentout the above line to run test.  Warning: this test will be slow!
 
