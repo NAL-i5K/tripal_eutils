@@ -141,7 +141,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
       }
     }
 
-      $url = $this->guessFTPUrl($list['files']);
+    $url = $this->guessFTPUrl($list['files']);
 
     if ($url) {
       $list['ftp_attributes'] = $this->getFTPData($url);
@@ -218,29 +218,33 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
   }
 
   /**
-   * @param $links
+   * Get the assembly report info if possible.
+   *
+   * @param array $links
+   *   The links array.
    *
    * @return bool|null
+   *   The full FPT URL of the report file.
    */
-  private function guessFTPUrl($links){
+  private function guessFTPUrl(array $links) {
     $url = NULL;
     $url = $links['Assembly_rpt'] ?? NULL;
 
     if (!$url) {
-      //We dont have the report.  Guess the location.
+      // We dont have the report.  Guess the location.
       $url = ($links['RefSeq']) ?? NULL;
 
       if (!$url) {
         $url = ($links['GenBank']) ?? NULL;
       }
-      //We can guess.  Append the last folder and the expected file name.
+      // We can guess.  Append the last folder and the expected file name.
       if ($url) {
-        if(substr($url, -1) != '/') {
+        if (substr($url, -1) != '/') {
           $url = $url . '/';
         }
         $split = explode('/', $url);
 
-        //file name is second to last element in array.
+        // File name is second to last element in array.
         end($split);
         $file_name = prev($split);
         $url = $url . $file_name . '_assembly_report.txt';
