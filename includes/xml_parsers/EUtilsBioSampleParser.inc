@@ -24,8 +24,11 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
 
     // Primary data.
     $primary_accession = (string) $xml->BioSample['accession'];
-    $description = (string) $xml->BioSample->Description->Comment ??
-      $this->extractParagraphs($xml->BioSample->Description->Comment);
+    $description = (string) $xml->BioSample->Description->Comment;
+
+    if (!empty($xml->BioSample->Description->Comment->Paragraph)) {
+      $description = $this->extractParagraphs($xml->BioSample->Description->Comment);
+    }
 
     // Get accessions.
     $accessions = $this->extractAttributes($xml->BioSample->Ids);
@@ -45,7 +48,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
       'contact' => $this->extractContact($xml->BioSample),
       'organism' => $this->extractOrganism($xml->BioSample),
       'full_ncbi_xml' => $xml->BioSample->asXML(),
-      'projects' => $projects
+      'projects' => $projects,
     ];
   }
 
@@ -117,7 +120,7 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
       $paragraphs[] = (string) $paragraph;
     }
 
-    return $paragraphs;
+    return implode('  ', $paragraphs);
   }
 
   /**
