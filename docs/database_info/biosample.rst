@@ -15,3 +15,9 @@ NCBI BioSamples are mapped into the Chado.biomaterial table.
 .. note::
 
 	In the above table, XML tags are described as Parent_tag->Child_tag.  If the value comes from the attribute of a tag, it is written lowercase, as Parent_tag->attribute.
+
+
+Undecided mappings
+------------------
+
+We don't currently know how we will mapping analyses to biomaterials in Chado.  Assemblies that are listed in BioSample records are therefore ignored currently.
