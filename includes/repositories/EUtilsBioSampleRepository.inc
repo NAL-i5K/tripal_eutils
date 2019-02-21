@@ -197,13 +197,13 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
   /**
    * Iterates through the attributes array and creates properties.
    *
-   * @param $attributes
+   * @param array $attributes
    *
    *   CVterm info from the Attributes area
    *
    * @throws \Exception
    */
-  public function createProps($attributes) {
+  public function createProps(array $attributes) {
 
     $mapper = new TagMapper('biosample');
     foreach ($attributes as $attribute) {

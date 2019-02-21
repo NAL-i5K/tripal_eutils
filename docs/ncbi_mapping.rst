@@ -40,3 +40,19 @@ If, however, you only wanted a subset of BioSamples in the database, you could i
 .. note::
 
 	 Pay attention to the importer preview!
+
+
+Problematic Links
+~~~~~~~~~~~~~~~~~
+
+Linking some content is problematic for the current release of Chado.  In cases where a link cannot be made, the this module should **not** insert the content.  Instead, the formatter should notify the user that those accessions should be added directly.
+
+This is the case for the following links:
+
+* Assembly and Biomaterial
+
+In other cases, records may be linked **indirectly** via Chado.  For example, project and organism cannot be directly linked, but, they are indirectly linked via biomaterials.  In those cases, the linked records **will** be inserted.  The user does not need to be notified at the preview step.  The exception should be documented on that database's page in the documentation.
+
+This is the case for the following links:
+
+* BioProject and NCBI Taxon
