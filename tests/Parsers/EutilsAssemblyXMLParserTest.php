@@ -171,11 +171,11 @@ class EutilsAssemblyXMLParserTest extends TripalTestCase {
     return [
       [[], NULL],
       [['dont_use_this' => 'dog'], NULL],
-      [['Assembly_rpt' => 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt'], 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt'],
-      [['Assembly_rpt' => 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt',
+      [['Assembly_stats' => 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt'], 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt'],
+      [['Assembly_stats' => 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt',
         'RefSeq' => "ftp://dontuseme.gov/folder/"],
         'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/accession/somefile.txt'],
-      [['RefSeq' => 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/guess/'], 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/guess/guess_assembly_report.txt'],
+      [['RefSeq' => 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/guess/'], 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/A/B/guess/guess_assembly_stats.txt'],
 
 
     ];

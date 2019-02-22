@@ -228,7 +228,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
    */
   private function guessFTPUrl(array $links) {
     $url = NULL;
-    $url = $links['Assembly_rpt'] ?? NULL;
+    $url = $links['Assembly_stats'] ?? NULL;
 
     if (!$url) {
       // We dont have the report.  Guess the location.
@@ -247,7 +247,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
         // File name is second to last element in array.
         end($split);
         $file_name = prev($split);
-        $url = $url . $file_name . '_assembly_report.txt';
+        $url = $url . $file_name . '_assembly_stats.txt';
       }
     }
 
