@@ -36,8 +36,9 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
   ];
 
   /**
-   * Projects linked to this analysis.  This is how biomats will be linked ot
-   * the analysis.
+   * Projects linked to this analysis.
+   *
+   *  This is how biomats will be linked to the analysis.
    *
    * @var array
    */

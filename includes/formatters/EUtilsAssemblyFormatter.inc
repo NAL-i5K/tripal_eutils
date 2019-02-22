@@ -158,7 +158,7 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       '#type' => 'item',
     ];
 
-    // We are going to link biosample indirectly via project.  Complain if we sample without a project.
+    // We are going to link biosample indirectly via project.
     if ($biosample_found && !$bioproject_found) {
       tripal_set_message('A bioMaterial record is linked, but no BioSample.  Please import the BioSample directly.', TRIPAL_NOTICE);
     }
@@ -187,9 +187,15 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
   }
 
   /**
+   * Generates a cross reference string.  Allows us to put multiple xrefs in one row.
    *
+   * @param array $xrefs
+   *   Cross reference array.
+   *
+   * @return string
+   *   A bunch of xrefs with links in a single string.
    */
-  private function generateXrefString($xrefs) {
+  private function generateXrefString(array $xrefs) {
     if (empty($xrefs)) {
       return '';
     }
