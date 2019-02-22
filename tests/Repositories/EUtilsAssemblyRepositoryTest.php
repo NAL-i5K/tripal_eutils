@@ -266,7 +266,49 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
     $this->repository = $result;
 
     return $result;
+  }
+
+  /**
+   * @group assembly
+   * @group failing
+   * @throws \Exception
+   */
+  public function testLinkingBiomatsViaProject() {
+
+    $projectA = factory('chado.project')->create();
+    $projectB = factory('chado.project')->create();
+    $analysis = factory('chado.analysis')->create();
+    $biomatA = factory('chado.biomaterial')->create();
+    $biomatB = factory('chado.biomaterial')->create();
+
+
+
+    $repo_parent = new \EUtilsAssemblyRepository();
+    $repo = reflect($repo_parent);
+    $repo->setBaseRecordId($analysis->analysis_id);
+    $repo->projects = [$projectA, $projectB];
+    $repo->linkBiomaterials([$biomatA, $biomatB]);
+
+    $a = db_select('chado.biomaterial_project', 't')
+      ->fields('t')
+      ->condition('t.project_id', $projectA->project_id)
+      ->execute()
+      ->fetchAll();
+
+    $this->assertNotFalse($a);
+    $this->assertEquals(2, count($a), 'Project A not linked to both biomaterials');
+
+
+    $b = db_select('chado.biomaterial_project', 't')
+      ->fields('t')
+      ->condition('t.project_id', $projectB->project_id)
+      ->execute()
+      ->fetchAll();
+
+    $this->assertNotFalse($b);
+    $this->assertEquals(2, count($b), 'Project B not linked to both biomaterials');
 
 
   }
+
 }
