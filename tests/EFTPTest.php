@@ -41,7 +41,7 @@ $url = 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/285/GCF_000002285.3_C
   public function testParseFTP(){
 
     $ftp = new \EFTP();
-    $url = __DIR__ . '/../examples/assembly/ftp/317138_assembly_report.txt';
+    $url = __DIR__ . '/../examples/assembly/ftp/317138_assembly_stats_report.txt';
         $ftp->setURL($url);
 
         $result = $ftp->getField('# Assembly method:');
