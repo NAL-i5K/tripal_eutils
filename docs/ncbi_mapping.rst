@@ -39,7 +39,7 @@ If, however, you only wanted a subset of BioSamples in the database, you could i
 
 .. note::
 
-	 Pay attention to the importer preview!
+	 Pay attention to the importer preview!  The preview lets you double check the correct record will be inserted into the database.  It also demonstrates which additional records will be inserted if the "Insert Linked Records" box is checked.
 
 
 Problematic Links

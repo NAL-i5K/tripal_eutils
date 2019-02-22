@@ -121,6 +121,8 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       }
       if ($accession_key == 'biosamples') {
         $db_name = 'BioSample';
+        //TODO: we cant link biosamples to analyses sanely right now, so we skip them.
+        continue;
       }
 
       if (is_string($value)) {

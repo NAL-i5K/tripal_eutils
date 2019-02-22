@@ -53,9 +53,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
     // getOrganism throws an exception so without try/catch, we will
     // automatically fail and exit.
     $organism = NULL;
-    if ($this->create_linked_records) {
-      $organism = $this->getOrganism($data['organism']['taxonomy_id']);
-    }
+    $organism = $this->getOrganism($data['organism']['taxonomy_id']);
 
     // Create the contact or get it from db if already exists.
     $contact = NULL;

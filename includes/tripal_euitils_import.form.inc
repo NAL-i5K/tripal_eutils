@@ -30,6 +30,9 @@ function tripal_eutils_import_form($form, &$form_state) {
     '#options' => $db_choices,
   ];
 
+  $form['ignored_links'] = ['
+  #type' => '#markup'];
+
   $form['accession'] = [
     '#type' => 'textfield',
     '#title' => t('NCBI Accession Number'),
