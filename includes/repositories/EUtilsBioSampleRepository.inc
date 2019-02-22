@@ -53,9 +53,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
     // getOrganism throws an exception so without try/catch, we will
     // automatically fail and exit.
     $organism = NULL;
-    if ($this->create_linked_records) {
-      $organism = $this->getOrganism($data['organism']['taxonomy_id']);
-    }
+    $organism = $this->getOrganism($data['organism']['taxonomy_id']);
 
     // Create the contact or get it from db if already exists.
     $contact = NULL;
@@ -197,13 +195,13 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
   /**
    * Iterates through the attributes array and creates properties.
    *
-   * @param $attributes
+   * @param array $attributes
    *
    *   CVterm info from the Attributes area
    *
    * @throws \Exception
    */
-  public function createProps($attributes) {
+  public function createProps(array $attributes) {
 
     $mapper = new TagMapper('biosample');
     foreach ($attributes as $attribute) {
