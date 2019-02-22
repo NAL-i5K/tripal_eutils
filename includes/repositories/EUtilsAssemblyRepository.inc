@@ -35,6 +35,15 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
   ];
 
+  /**
+   * Projects linked to this analysis.
+   *
+   *  This is how biomats will be linked to the analysis.
+   *
+   * @var array
+   */
+  protected $projects = [];
+
 
   /**
    * Cache of data per run.
@@ -104,6 +113,13 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     $this->createLinkedRecords($data['accessions']);
 
+    $vals = $data['accessions']['biosample'] ?? NULL;
+
+    if ($this->create_linked_records && $vals && !empty($this->projects)) {
+      $biomaterials = $this->getNCBIRecord('biosample', $vals);
+      $linked = $this->linkBiomaterials($biomaterials);
+    }
+
     // $mapper = new TagMapper();
     // add "stats" as properties.
     foreach ($data['attributes']['stats'] as $key => $value) {
@@ -159,8 +175,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
           break;
 
         case 'biosamples':
-          // $biosamples = $this->getNCBIRecord('biosample', $vals);
-          // $linked = $this->linkBiomaterials($biomaterials);
+          // Link via project.  We have to do it at the end.
           break;
 
         default:
@@ -316,6 +331,39 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
       default:
         return FALSE;
+    }
+  }
+
+  /**
+   * Links biomaterials to the assembly via the associated projects.
+   *
+   * @param array $biomaterials
+   *   Array of biomaterial records.
+   *
+   * @throws \Exception
+   */
+  private function linkBiomaterials(array $biomaterials) {
+
+    $projects = $this->projects;
+
+    if (empty($projects)) {
+      throw new Exception('No projects associated with this Assembly- cannot associate Biomaterial!');
+    }
+
+    foreach ($biomaterials as $biomaterial) {
+
+      foreach ($projects as $project) {
+
+        $values = [
+          'biomaterial_id' => $biomaterial->biomaterial_id,
+          'project_id' => $project->project_id,
+        ];
+        // Are this biomaterial and project already linked?  If so continue.
+        $exists = chado_generate_var('biomaterial_project', $values);
+        if (!$exists) {
+          chado_insert_record('biomaterial_project', $values);
+        }
+      }
     }
   }
 

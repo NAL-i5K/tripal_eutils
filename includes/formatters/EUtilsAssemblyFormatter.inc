@@ -47,7 +47,14 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     $type = $this->formatCategory($data['category']);
     $xrefs = $data['accessions']['assembly'];
     $xref_string = $this->generateXrefString($xrefs);
-    $header = ['Name', 'Description', 'Source Name', 'Type', 'Program', 'Accessions'];
+    $header = [
+      'Name',
+      'Description',
+      'Source Name',
+      'Type',
+      'Program',
+      'Accessions',
+    ];
     $rows = [[$name, $description, $sourcename, $type, $program, $xref_string]];
     $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
@@ -98,6 +105,8 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
    *   the Accessions array from the EutilsAssemblyParser.
    */
   private function formatLinkedRecords(array $accessions) {
+    $bioproject_found = FALSE;
+    $biosample_found = FALSE;
 
     $rows = [];
     $header = ['Accession Type', 'Value'];
@@ -118,11 +127,11 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       }
       if ($accession_key == 'bioprojects') {
         $db_name = 'BioProject';
+        $bioproject_found = TRUE;
       }
       if ($accession_key == 'biosamples') {
         $db_name = 'BioSample';
-        //TODO: we cant link biosamples to analyses sanely right now, so we skip them.
-        continue;
+        $biosample_found = TRUE;
       }
 
       if (is_string($value)) {
@@ -148,6 +157,11 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       '#markup' => $table,
       '#type' => 'item',
     ];
+
+    // We are going to link biosample indirectly via project.
+    if ($biosample_found && !$bioproject_found) {
+      tripal_set_message('A bioMaterial record is linked, but no BioSample.  Please import the BioSample directly.', TRIPAL_NOTICE);
+    }
   }
 
   /**
@@ -172,7 +186,16 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     }
   }
 
-  private function generateXrefString($xrefs) {
+  /**
+   * Generates a cross reference string.  Allows us to put multiple xrefs in one row.
+   *
+   * @param array $xrefs
+   *   Cross reference array.
+   *
+   * @return string
+   *   A bunch of xrefs with links in a single string.
+   */
+  private function generateXrefString(array $xrefs) {
     if (empty($xrefs)) {
       return '';
     }
@@ -181,10 +204,11 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     foreach ($xrefs as $db => $xref) {
 
       $link = $this->getDbLink($xref, 'assembly');
-      $link = $db .':'. $link;
+      $link = $db . ':' . $link;
       $links[] = $link;
     }
 
-    return implode(', ', $links );
+    return implode(', ', $links);
   }
+
 }
