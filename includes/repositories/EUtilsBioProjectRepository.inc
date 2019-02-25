@@ -78,7 +78,6 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
       if (!empty($pubs)) {
         $this->createPubs($pubs);
       }
-      // TODO: what about organism and assembly?
     }
 
     return $project;

@@ -142,7 +142,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
   }
 
   /**
-   * Creates dbxrefs and linked chado records.
+   * Creates dbxrefs and linked Chado records.
    *
    * @param array $accessions
    *   Array of other records indexed type => value.
@@ -150,14 +150,15 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    * @throws \Exception
    */
   public function createLinkedRecords(array $accessions) {
-
     foreach ($accessions as $accession => $vals) {
-
       switch ($accession) {
         case 'assembly':
           // Add as a dbxref for this record.
           foreach ($vals as $db => $child) {
-
+            // Multiple assembly accessions.
+            if (strpos(strtolower($db), 'assembly')) {
+              $db = 'Assembly';
+            }
             $this->createAccession(['db' => $db, 'value' => $child]);
           }
           break;
