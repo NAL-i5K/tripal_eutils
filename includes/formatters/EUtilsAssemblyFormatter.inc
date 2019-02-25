@@ -107,7 +107,6 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
   private function formatLinkedRecords(array $accessions) {
     $bioproject_found = FALSE;
     $biosample_found = FALSE;
-
     $rows = [];
     $header = ['Accession Type', 'Value'];
 
@@ -116,8 +115,8 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       $db_name = '';
 
       if ($accession_key == 'assembly') {
-        // This is the record itself, doesnt go here.
-        continue;
+        // This is the record itself.
+        $db_name = 'NCBI Assembly';
       }
       if ($accession_key == 'taxon_accession') {
 
@@ -140,7 +139,7 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
         continue;
       }
 
-      foreach ($value as $item) {
+      foreach ($value as $key => $item) {
         $link = $this->getDbLink($item, $db_name);
         $rows[] = [ucfirst($accession_key), $link];
       }

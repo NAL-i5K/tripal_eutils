@@ -42,7 +42,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           break;
 
         case 'AssemblyAccession':
-          $info['ignored'][] = $child->getName();
+          $info['accessions']['assembly']['NCBI Assembly'] = (string) $child;
           break;
 
         case 'BioSampleAccn':
@@ -58,14 +58,14 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
         case 'RsUid':
           $value = (string) $child;
           if ($value) {
-            $info['accessions']['assembly']['Refseq'] = $value;
+            $info['accessions']['assembly']['Refseq Assembly'] = $value;
           }
           break;
 
         case 'GbUid':
           $value = (string) $child;
           if ($value) {
-            $info['accessions']['assembly']['Genbank'] = $value;
+            $info['accessions']['assembly']['Genbank Assembly'] = $value;
           }
           break;
 
