@@ -112,9 +112,10 @@ class EutilsAssemblyXMLParserTest extends TripalTestCase {
           'sourcename' => 'SAMN00744358',
           'accessions' => [
             'assembly' => [
-              'Refseq' => '817508',
-              'Genbank' => '524058',
+              'Refseq Assembly' => '817508',
+              'Genbank Assembly' => '524058',
               'WGS' => 'AGSK01',
+              'NCBI Assembly' => 'GCF_000298355.1'
             ],
             'taxon_accession' => '72004',
             'bioprojects' => ['74739', '221623'],
