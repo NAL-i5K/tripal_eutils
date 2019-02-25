@@ -57,9 +57,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
 
     // Create the contact or get it from db if already exists.
     $contact = NULL;
-    if ($this->create_linked_records) {
-      $contact = $this->createContact($data['contact']);
-    }
+    $contact = $this->createContact($data['contact']);
 
     // Create the base record.
     $description = $this->makeDescription($data['description']);
@@ -79,15 +77,12 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
     // Create the accessions.
     $this->createAccessions($data['accessions']);
 
-    // Add linked records
-    // Project.
-    if ($this->create_linked_records) {
-      $projects = $this->getNCBIRecord('bioproject', $data['projects']);
+    // Add linked records.
+    $projects = $this->getNCBIRecord('bioproject', $data['projects']);
 
-      foreach ($projects as $project) {
+    foreach ($projects as $project) {
 
-        $this->linkProject($project->project_id);
-      }
+      $this->linkProject($project->project_id);
     }
 
     // Create the props (from attributes)
@@ -100,11 +95,14 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
   /**
    * Make the description string.
    *
-   * @param array|string $description
+   * @param array $description
+   *   The parser returns an array of paragraphs.  We store them in a single field.
    *
    * @return string
+   *
+   *   A string suitable for the chado biomaterial table description column.
    */
-  protected function makeDescription($description) {
+  protected function makeDescription(array $description) {
     if (is_array($description)) {
       return implode("\n", $description);
     }
@@ -197,7 +195,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
    *
    * @param array $attributes
    *
-   *   CVterm info from the Attributes area
+   *   CVterm info from the Attributes area.
    *
    * @throws \Exception
    */

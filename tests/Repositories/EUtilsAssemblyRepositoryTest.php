@@ -268,6 +268,7 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
     return $result;
   }
 
+
   /**
    * @group assembly
    * @group failing

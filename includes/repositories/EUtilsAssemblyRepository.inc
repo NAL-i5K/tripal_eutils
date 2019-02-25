@@ -115,9 +115,11 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     $vals = $data['accessions']['biosample'] ?? NULL;
 
-    if ($this->create_linked_records && $vals && !empty($this->projects)) {
+    if ($vals && !empty($this->projects)) {
+
       $biomaterials = $this->getNCBIRecord('biosample', $vals);
       $linked = $this->linkBiomaterials($biomaterials);
+
     }
 
     // $mapper = new TagMapper();
@@ -169,10 +171,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
           break;
 
         case 'bioprojects':
-          if ($this->create_linked_records) {
             $projects = $this->getNCBIRecord('bioproject', $vals);
             $linked = $this->linkProjects($projects);
-          }
           break;
 
         case 'biosamples':
