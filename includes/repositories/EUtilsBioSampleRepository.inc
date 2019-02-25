@@ -95,14 +95,14 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
   /**
    * Make the description string.
    *
-   * @param array $description
-   *   The parser returns an array of paragraphs.  We store them in a single field.
+   * @param string|array $description
+   *   The parser returns an array of paragraphs (or string).  We store them in a single field.
    *
    * @return string
    *
    *   A string suitable for the chado biomaterial table description column.
    */
-  protected function makeDescription(array $description) {
+  protected function makeDescription($description) {
     if (is_array($description)) {
       return implode("\n", $description);
     }
