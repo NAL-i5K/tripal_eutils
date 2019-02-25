@@ -489,11 +489,12 @@ abstract class EUtilsRepository {
         continue;
       }
 
-      // TODO: Lookup in $db_dbxref table!
-      // Do not loop through linked records recursively. We only want the
-      // the first level of linked records.
-      $record = (new EUtils(FALSE))->get($db, $accession);
-      $return[] = static::$visited[$db . ':' . $accession] = $record;
+      if ($this->create_linked_records) {
+        // Do not loop through linked records recursively. We only want the
+        // the first level of linked records.
+        $record = (new EUtils(FALSE))->get($db, $accession);
+        $return[] = static::$visited[$db . ':' . $accession] = $record;
+      }
     }
 
     return $return;

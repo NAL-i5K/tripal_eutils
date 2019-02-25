@@ -61,24 +61,22 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
 
     $this->createXMLProp($data['full_ncbi_xml']);
 
-    if ($this->create_linked_records) {
-
-      $links = $data['linked_records'];
-      $pubs = $links['pubs'];
-      $biosamples = $links['biosample'];
-      $assemblies = $links['assembly'];
-      if (!empty($biosamples)) {
-        $this->createLinkedRecords($biosamples, 'biosample');
-      }
-      if (!empty($assemblies)) {
-        $this->createLinkedRecords($assemblies, 'assembly');
-      }
-      // Pubs are linked records but we always want to import them
-      // since they wont cause a link-loop.
-      if (!empty($pubs)) {
-        $this->createPubs($pubs);
-      }
+    $links = $data['linked_records'];
+    $pubs = $links['pubs'];
+    $biosamples = $links['biosample'];
+    $assemblies = $links['assembly'];
+    if (!empty($biosamples)) {
+      $this->createLinkedRecords($biosamples, 'biosample');
     }
+    if (!empty($assemblies)) {
+      $this->createLinkedRecords($assemblies, 'assembly');
+    }
+    // Pubs are linked records but we always want to import them
+    // since they wont cause a link-loop.
+    if (!empty($pubs)) {
+      $this->createPubs($pubs);
+    }
+
 
     return $project;
   }
@@ -186,8 +184,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
     foreach ($accessions as $db => $accession) {
       try {
         $data[] = $this->createAccession(['db' => $db, 'value' => $accession]);
-      }
-      catch (Exception $exception) {
+      } catch (Exception $exception) {
         // For the time being, ignore all exceptions.
       }
     }
