@@ -13,6 +13,7 @@ Tripal EUtils
   introduction
   installation
   user_guide
+  examples
   ncbi_mapping
   development
 
