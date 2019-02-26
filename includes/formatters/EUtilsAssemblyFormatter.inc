@@ -20,6 +20,8 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     try {
       $this->formatBaseRecord($data);
       $this->formatAttributes($data['attributes']);
+      $this->formatXrefs($data['accessions']['assembly']);
+      unset($data['accessions']['assembly']);
       $this->formatLinkedRecords($data['accessions']);
     }
     catch (Exception $exception) {
@@ -174,6 +176,36 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     if ($biosample_found && !$bioproject_found) {
       tripal_set_message('A bioMaterial record is linked, but no BioSample.  Please import the BioSample directly.', TRIPAL_NOTICE);
     }
+  }
+
+
+  private function formatXrefs(array $accessions) {
+
+    $rows =[];
+    $header = ['Database', 'Accession'];
+    foreach ($accessions as $key => $item) {
+
+      $link = $this->getDbLink($item, $key);
+      $rows[] = [$key, $link];
+    }
+
+    if (empty($rows)) {
+      return;
+    }
+
+    $table = theme('table', ['rows' => $rows, 'header' => $header]);
+
+    $this->elements['xrefs'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Cross References',
+      '#collapsible' => TRUE,
+    ];
+    $this->elements['xrefs']['table'] = [
+      '#markup' => $table,
+      '#type' => 'item',
+    ];
+
+
   }
 
 
