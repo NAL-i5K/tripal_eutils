@@ -44,7 +44,8 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     $description = $data['description'];
     $program = $data['attributes']['ftp_attributes']['# Assembly method:'] ?? "Not set";
     $sourcename = $data['sourcename'];
-    $type = $this->formatCategory($data['category']);
+
+    $type = 'Genome Assembly';
     $xrefs = $data['accessions']['assembly'];
     $xref_string = $this->generateXrefString($xrefs);
     $header = [
@@ -175,27 +176,6 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
     }
   }
 
-  /**
-   * Converts the category from the parser to an analysis type (IE the bundle).
-   *
-   * @param $string
-   *   string value from category.
-   *
-   * @return string
-   *   Converted string for end user to see.
-   */
-  public function formatCategory($string) {
-    if (!$string) {
-      return "None";
-    }
-    switch ($string) {
-      case 'representative genome':
-        return "Genome Assembly";
-
-      default:
-        return "None (unrecognized category)";
-    }
-  }
 
   /**
    * Generates a cross reference string.  Allows us to put multiple xrefs in one row.
