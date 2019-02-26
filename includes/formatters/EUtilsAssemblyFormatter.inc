@@ -139,6 +139,18 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
         continue;
       }
 
+      if ($db_name == 'NCBI Assembly') {
+
+        // Convert any accessions to integer to remove duplicates.
+        $unique = [];
+
+        $eutils = new EUtils(FALSE);
+        foreach ($value as $accession) {
+          $accession = $eutils->convertAccessionsToUID('Assembly', $accession);
+          $unique[] = $accession;
+        }
+        $value = $unique;
+      }
       foreach ($value as $key => $item) {
         $link = $this->getDbLink($item, $db_name);
         $rows[] = [ucfirst($accession_key), $link];

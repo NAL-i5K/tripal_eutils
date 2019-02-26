@@ -147,7 +147,7 @@ class EUtils {
    *
    * @throws \Exception
    */
-  private function convertAccessionsToUID(string $db, string $accession) {
+  public function convertAccessionsToUID(string $db, string $accession) {
 
     if (preg_match("/[a-z]/i", $accession)) {
 
