@@ -108,18 +108,14 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     // Set the type of the analysis so it maps to a bundle.
     $this->setAnalysisType($data['category']);
-
     $this->createXMLProp($data['full_ncbi_xml']);
-
     $this->createLinkedRecords($data['accessions']);
 
-    $vals = $data['accessions']['biosample'] ?? NULL;
+    $biosamples = $data['accessions']['biosamples'] ?? NULL;
 
-    if ($vals && !empty($this->projects)) {
-
-      $biomaterials = $this->getNCBIRecord('biosample', $vals);
+    if ($biosamples && !empty($this->projects)) {
+      $biomaterials = $this->getNCBIRecord('biosample', $biosamples);
       $linked = $this->linkBiomaterials($biomaterials);
-
     }
 
     // $mapper = new TagMapper();
@@ -171,8 +167,9 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
           break;
 
         case 'bioprojects':
-            $projects = $this->getNCBIRecord('bioproject', $vals);
-            $linked = $this->linkProjects($projects);
+          $projects = $this->getNCBIRecord('bioproject', $vals);
+          $this->projects = $projects;
+          $linked = $this->linkProjects($projects);
           break;
 
         case 'biosamples':
