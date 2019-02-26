@@ -422,6 +422,8 @@ abstract class EUtilsRepository {
 
     $importer = new \TaxonomyImporter();
     $importer->create($run_args, $file_details = []);
+    $variables = ['!db' => 'NCBI Taxon (organism)', '!accession' => $accession];
+    tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession', $variables, ['print' => TRUE]);
 
     $importer->run();
 
