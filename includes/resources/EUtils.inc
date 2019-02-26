@@ -79,6 +79,9 @@ class EUtils {
       $provider->addParam('retmode', 'xml');
     }
 
+    //  TODO:  global static timer.
+    //  That pauses if we're passing our alloted queries/second.
+
     $response = $provider->get();
     $this->checkResponseSuccess($response, $db, $accession);
     $xml = $response->xml();

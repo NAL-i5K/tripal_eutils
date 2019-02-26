@@ -106,8 +106,9 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     $this->base_table = 'analysis';
     $this->base_record_id = $analysis->analysis_id;
 
-    // Set the type of the analysis so it maps to a bundle.
-    $this->setAnalysisType($data['category']);
+    //All assemblies are Genome Assembly.  See ticket 197.
+    
+    $this->setAnalysisType('Genome Assembly');
     $this->createXMLProp($data['full_ncbi_xml']);
     $this->createLinkedRecords($data['accessions']);
 
