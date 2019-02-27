@@ -36,6 +36,7 @@ function tripal_eutils_install() {
   tripal_eutils_add_dbs();
   tripal_eutils_insert_biosample_attribute_terms();
   tripal_eutils_install_chado_1_4_tables();
+
 }
 
 /**
@@ -197,6 +198,8 @@ function tripal_eutils_add_dbs() {
     'urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
     'url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
   ]);
+
+  tripal_eutils_create_dbs_for_assembly_xrefs();
 }
 
 /**
@@ -240,6 +243,28 @@ function tripal_eutils_install_chado_1_4_tables() {
 
 }
 
+
+/**
+ * Creates db entries for keys introduced in hte assembly loader.
+ *
+ */
+function tripal_eutils_create_dbs_for_assembly_xrefs() {
+
+  chado_insert_db([
+    'name' => 'Refseq Assembly',
+    'description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
+    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
+    'url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
+  ]);
+
+  chado_insert_db([
+    'name' => 'Genbank Assembly',
+    'description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
+    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
+    'url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
+  ]);
+
+}
 /**
  * Add extra property terms.
  */
@@ -248,12 +273,11 @@ function tripal_eutils_update_7301() {
 
 }
 
-//
-// **
-// * Uninstall the module.
-// */
-// function tripal_hq_uninstall() {
-//  if (db_table_exists('tripal_hq_submission')) {
-//    db_drop_table('tripal_hq_submission');
-//  }
-// }.
+/**
+ * Add extra databases
+ */
+function tripal_eutils_update_7302(){
+  tripal_eutils_create_dbs_for_assembly_xrefs();
+
+}
+

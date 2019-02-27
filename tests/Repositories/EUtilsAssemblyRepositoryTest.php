@@ -20,6 +20,7 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
    * @group analysis
    * @group assembly
    * @group repository
+   * @group fail
    */
   public function testAssemblyFromXML() {
 

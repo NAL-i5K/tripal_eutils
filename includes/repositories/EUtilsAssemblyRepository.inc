@@ -106,10 +106,13 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     $this->base_table = 'analysis';
     $this->base_record_id = $analysis->analysis_id;
 
-    //All assemblies are Genome Assembly.  See ticket 197.
-    
+    // All assemblies are Genome Assembly.  See ticket 197.
     $this->setAnalysisType('Genome Assembly');
     $this->createXMLProp($data['full_ncbi_xml']);
+
+    $this->createAccessions($data['accessions']['assembly']);
+    unset($data['accessions']['assembly']);
+
     $this->createLinkedRecords($data['accessions']);
 
     $biosamples = $data['accessions']['biosamples'] ?? NULL;
@@ -318,10 +321,6 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    */
   private function setAnalysisType(string $type) {
 
-    if (!$type) {
-      return FALSE;
-    }
-
     $term = tripal_get_cvterm(['id' => 'rdfs:type']);
 
     switch ($type) {
@@ -329,7 +328,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
         return $this->createProperty($term->cvterm_id, 'genome_assembly');
 
       default:
-        return FALSE;
+        return $this->createProperty($term->cvterm_id, 'genome_assembly');
     }
   }
 
@@ -364,6 +363,25 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
         }
       }
     }
+  }
+
+  /**
+   * Creates a set of accessions (dbxrefs) attached to the analysis.
+   *
+   * @see \EUtilsRepository::createAccession()
+   *
+   * @param array $accessions
+   *
+   * @return array
+   */
+  private function createAccessions(array $accessions) {
+    $data = [];
+
+    foreach ($accessions as $db => $accession) {
+
+      $data[] = $this->createAccession(['db' => $db, 'value' => $accession]);
+    }
+    return $data;
   }
 
 }
