@@ -188,3 +188,12 @@ Factory::define('chado.project', function (Faker\Generator $faker) {
     'description' => $faker->text,
   ];
 });
+
+Factory::define('chado.pub', function (Faker\Generator $faker) {
+  return [
+
+    'title' => $faker->word,
+    'uniquename' => $faker->unique()->word,
+    'type_id' => factory('chado.cvterm')->create()->cvterm_id
+  ];
+});

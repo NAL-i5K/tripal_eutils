@@ -202,20 +202,21 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       throw new Exception('The organism_analysis linker table doesnt exist.  No way to link this organism.');
     }
 
-    $result = db_select('chado.organism_analysis', 't')
-      ->fields('t', ['organism_analysis_id'])
+    $query = chado_db_select('organism_analysis', 't');
+    $result = $query->fields('t', ['organism_analysis_id'])
       ->condition('t.organism_id', $organism->organism_id)
       ->condition('t.analysis_id', $this->base_record_id)
       ->execute()
       ->fetchField();
 
     if (!$result) {
-      $result = db_insert('chado.organism_analysis')
-        ->fields([
-          'organism_id' => $organism->organism_id,
-          'analysis_id' => $this->base_record_id,
-        ])
-        ->execute();
+      $values = [
+        'organism_id' => $organism->organism_id,
+        'analysis_id' => $this->base_record_id,
+      ];
+
+      $result = chado_insert_record('organism_analysis', $values);
+
     }
 
     if (!$result) {
@@ -238,7 +239,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     $base = $this->base_fields;
 
-    $id = db_insert('chado.analysis')->fields([
+    $values = [
       'name' => $base['name'],
       'description' => $base['description'] ?? '',
       'program' => $base['program'],
@@ -248,14 +249,17 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       'sourceversion' => $base['sourceversion'] ?? '',
       'sourceuri' => $base['sourceuri'] ?? '',
       'timeexecuted' => $base['timeexecuted'] ?? date_now(),
-    ])->execute();
+    ];
+    $record = chado_insert_record('analysis', $values);
+
+    $id = $record['analysis_id'];
 
     if (!$id) {
       throw new Exception('Unable to create chado.analysis record');
     }
 
-    $analysis = db_select('chado.analysis', 't')
-      ->fields('t')
+    $query = chado_db_select('analysis', 't');
+    $analysis = $query->fields('t')
       ->condition('analysis_id', $id)
       ->execute()
       ->fetchObject();
@@ -278,8 +282,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       return static::$cache['analysis'];
     }
 
-    $exists = db_select('chado.analysis', 't')
-      ->fields('t')
+    $query = chado_db_select('analysis', 't');
+    $exists = $query->fields('t')
       ->condition('name', $base['name'])
       ->condition('program', $base['program'])
       ->condition('programversion', $base['programversion'])
@@ -298,11 +302,13 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
   /**
    * Associates FTPs as properties.
    *
-   * @param $ftps
+   * @param array $ftps
    *   Array of key value pars, where the key is the XML FTP type, the value is
    *   the FTP address.
+   *
+   * @throws \Exception
    */
-  public function addFTPLinks($ftps) {
+  public function addFTPLinks(array $ftps) {
 
     $cvterm_id = chado_get_cvterm(['id' => 'local:ncbi_FTP_links'])->cvterm_id;
     foreach ($ftps as $type => $ftp) {
@@ -318,6 +324,11 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    *   The type/category passed from the parser.
    *
    * @return bool
+   *   Output of chado_insert_property.
+   *
+   * @see createProperty
+   *
+   * @throws \Exception
    */
   private function setAnalysisType(string $type) {
 

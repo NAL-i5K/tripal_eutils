@@ -134,7 +134,9 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
       throw new Exception('Unable to create chado.biomaterial record');
     }
 
-    $biosample = db_select('chado.biomaterial', 'B')->fields('B')->condition(
+    $query = chado_db_select('biomaterial', 'B');
+
+    $biosample = $query->fields('B')->condition(
       'biomaterial_id', $id
     )->execute()->fetchObject();
 
@@ -145,8 +147,10 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
    * Get biosample from db or cache.
    *
    * @param string $name
+   *   Name for the name field of biomaterial table.
    *
-   * @return null
+   * @return mixed
+   *   The Chado biosample record.
    */
   public function getBioSample($name) {
     // If the biosample is available in our static cache, return it.
@@ -155,8 +159,10 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
     }
 
     // Find the biosample and add it to the cache.
-    $biosample = db_select('chado.biomaterial', 'b')
-      ->fields('b')
+    $query = chado_db_select('biomaterial', 'b');
+
+    // Name is in fact a unique key.
+    $biosample = $query->fields('b')
       ->condition('name', $name)
       ->execute()
       ->fetchObject();
@@ -164,8 +170,6 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
     if ($biosample) {
       return static::$cache['biosamples'][$name] = $biosample;
     }
-
-    return NULL;
   }
 
   /**
