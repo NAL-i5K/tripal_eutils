@@ -16,7 +16,7 @@ class ImportFormTest extends TripalTestCase {
   public function testAccessibilityToImportForm() {
     $this->actingAs(1);
 
-    $response = $this->get('admin/tripal/loaders/eutils_ncbi_import');
+    $response = $this->get('admin/tripal/loaders/eutils_loader');
     $response->assertSuccessful()
     ->assertSee('NCBI Accession Number');
   }
