@@ -5,33 +5,22 @@
  */
 class EutilsImporter extends TripalImporter {
 
-  /**
-   * Remote accession only.
-   */
-  public static $methods = array(
+
+  public static $name = 'NCBI EUtils Accession loader';
+  public static $description = 'Import a BLAST XML file into Chado';
+  public static $machine_name = 'eutils_loader';
+  public static $use_analysis = FALSE;
+  public static $button_text = 'Import NCBI Record';
+  public static $methods = [
     'file_upload' => FALSE,
     'file_local' => FALSE,
     'file_remote' => FALSE,
-  );
+  ];
   public static $file_required = FALSE;
 
   /**
-   * EutilsImporter constructor.
+   * Implements hook_form().
    *
-   * @param \TripalJob|NULL $job
-   */
-  public function __construct(TripalJob $job = NULL) {
-    parent::__construct($job);
-
-    $this->name = 'NCBI EUtils Accession loader';
-    $this->machine_name = 'eutils_loader';
-    $this->description = 'Import a BLAST XML file into Chado';
-    $this->use_analysis = FALSE;
-    $this->button_text = 'Import NCBI Record';
-
-  }
-
-  /**
    * @see TripalImporter::form()
    */
   public function form($form, &$form_state) {
@@ -90,16 +79,14 @@ class EutilsImporter extends TripalImporter {
       '#default_value' => 1,
     ];
 
-    $form['submit'] = [
-      '#type' => 'submit',
-      '#value' => "Create Chado Record",
-    ];
-
     return $form;
   }
 
   /**
+   * Validate form keys and check the accession on NCBI.
+   *
    * @see TripalImporter::formValidate()
+   * TODO only run the EUTils check if submitted.
    */
   public function formValidate($form, &$form_state) {
 
@@ -133,47 +120,18 @@ class EutilsImporter extends TripalImporter {
   }
 
   /**
-   * @see TripalImporter::formSubmit()
-   */
-  public function formSubmit($form, &$form_state) {
-
-    global $user;
-
-    $vals = $form_state['values'];
-    $db = $vals['db'];
-    $accession = $vals['accession'];
-    $create_linked_records = (bool) $vals['linked_records'];
-
-    tripal_add_job("EUtils: Create Records for {$db}:{$accession}",
-      'tripal_eutils', 'tripal_eutils_create_records', [
-        $db,
-        $accession,
-        $create_linked_records,
-      ], $user->uid);
-
-    drupal_set_message('Job to create records have been submitted successfully.');
-
-  }
-
-  /**
+   * Runs the importer.
+   *
    * @see TripalImporter::run()
    */
   public function run() {
     $arguments = $this->arguments['run_args'];
-    $analysis_id = $arguments['analysis_id'];
-    $blastdb = $arguments['blastdb'];
-    $blastfile = trim($this->arguments['files'][0]['file_path']);
-    $blastfile_ext = trim($arguments['blastfile_ext']);
-    $is_concat = $arguments['is_concat'];
-    $no_parsed = $arguments['no_parsed'];
-    $query_re = trim($arguments['query_re']);
-    $query_type = trim($arguments['query_type']);
-    $query_uniquename = $arguments['query_uniquename'];
-    $blastjob = 1;
-    $search_keywords = 1;
-    $this->parseXMLFile($analysis_id, $blastdb, $blastfile,
-      $no_parsed, $blastfile_ext, $query_re, $query_type, $query_uniquename,
-      $is_concat, $search_keywords);
+    $db = $arguments['db'];
+    $accession = $arguments['accession'];
+    $create_linked_records = $arguments['linked_records'];
+
+    tripal_eutils_create_records($db, $accession, $create_linked_records);
+
   }
 
 }
