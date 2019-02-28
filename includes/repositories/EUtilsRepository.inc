@@ -376,10 +376,10 @@ abstract class EUtilsRepository {
   /**
    * Sets the TripalJob for error logging.
    *
-   * @param TripalJob $job
+   * @param TripalJob|NULL $job
    *   Tripal Job object.
    */
-  public function setJob(TripalJob $job) {
+  public function setJob(TripalJob $job = NULL) {
     $this->job = $job;
   }
 
