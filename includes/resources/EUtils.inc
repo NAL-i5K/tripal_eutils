@@ -51,7 +51,7 @@ class EUtils {
    * EUtils constructor.
    *
    * @param bool $create_linked_records
-   *
+   *   Records referenced in the XML will spawn new EUtils to import if true.
    * @param TripalJob|null $job
    *   Tripal Job object.
    */
@@ -94,7 +94,7 @@ class EUtils {
     }
 
     // TODO:  global static timer.
-    //  That pauses if we're passing our alloted queries/second.
+    // That pauses if we're passing our alloted queries/second.
     $response = $provider->get();
     $this->checkResponseSuccess($response, $db, $accession);
     $xml = $response->xml();
