@@ -41,10 +41,24 @@ class EUtils {
   protected $create_linked_records;
 
   /**
+   * Tripal Job object.
    *
+   * @var TripalJob|null
    */
-  public function __construct($create_linked_records = TRUE) {
+  protected $job;
+
+  /**
+   * EUtils constructor.
+   *
+   * @param bool $create_linked_records
+   *   Records referenced in the XML will spawn new EUtils to import if true.
+   * @param TripalJob|null $job
+   *   Tripal Job object.
+   */
+  public function __construct($create_linked_records = TRUE, $job = NULL) {
     $this->create_linked_records = $create_linked_records;
+
+    $this->job = $job;
   }
 
   /**
@@ -79,9 +93,8 @@ class EUtils {
       $provider->addParam('retmode', 'xml');
     }
 
-    //  TODO:  global static timer.
-    //  That pauses if we're passing our alloted queries/second.
-
+    // TODO:  global static timer.
+    // That pauses if we're passing our alloted queries/second.
     $response = $provider->get();
     $this->checkResponseSuccess($response, $db, $accession);
     $xml = $response->xml();
@@ -97,7 +110,9 @@ class EUtils {
     $repository = (new EUtilsRepositoryFactory($this->create_linked_records))->get($db);
 
     $variables = ['!db' => $db, '!accession' => $accession];
-    tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession', $variables, ['print' => TRUE]);
+    $job = $this->job;
+    tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession', $variables, ['print' => TRUE, 'job' => $job]);
+
     $record = $repository->create($data);
 
     static::$visited[$db][$accession] = $record;
@@ -226,7 +241,8 @@ class EUtils {
     if (!$response->isSuccessful()) {
       $error_message = $response->hasError() ? $response->errorMessage() : 'Status: ' . $response->status();
       $variables = ['!db' => $db, '!accession' => $accession];
-      $options = ['print' => TRUE];
+      $job = $this->job;
+      $options = ['print' => TRUE, 'job' => $job];
       tripal_report_error('tripal_eutils', TRIPAL_ERROR, 'Cannot fetch NCBI record: !db : !accession', $variables, $options);
 
       throw new Exception('ERROR Could not make request: ' . $error_message);

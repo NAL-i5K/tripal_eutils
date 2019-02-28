@@ -130,7 +130,9 @@ class EutilsImporter extends TripalImporter {
     $accession = $arguments['accession'];
     $create_linked_records = $arguments['linked_records'];
 
-    tripal_eutils_create_records($db, $accession, $create_linked_records);
+    $job = $this->job;
+
+    tripal_eutils_create_records($db, $accession, $create_linked_records, $job);
 
   }
 

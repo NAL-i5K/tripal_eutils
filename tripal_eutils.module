@@ -92,10 +92,10 @@ function tripal_eutils_permission() {
  * @param bool $create_linked_records
  *   Whether to create linked records or not.
  */
-function tripal_eutils_create_records(string $db, string $accession, bool $create_linked_records) {
+function tripal_eutils_create_records(string $db, string $accession, bool $create_linked_records, $job = NULL) {
   try {
 
-    $eutils = new EUtils($create_linked_records);
+    $eutils = new EUtils($create_linked_records, $job);
     $eutils->get($db, $accession);
   }
   catch (Exception $exception) {
