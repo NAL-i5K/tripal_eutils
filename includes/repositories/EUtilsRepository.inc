@@ -7,6 +7,15 @@
  */
 abstract class EUtilsRepository {
 
+
+  /**
+   * TripalJob object for error logging.
+   *
+   * @var TripalJob
+   */
+  protected $job = NULL;
+
+
   /**
    * Whether a DB:accession was visited during this run time.
    *
@@ -365,6 +374,16 @@ abstract class EUtilsRepository {
   }
 
   /**
+   * Sets the TripalJob for error logging.
+   *
+   * @param TripalJob $job
+   *   Tripal Job object.
+   */
+  public function setJob(TripalJob $job) {
+    $this->job = $job;
+  }
+
+  /**
    * Set the Chado base table.
    *
    * @param string $table
@@ -405,9 +424,14 @@ abstract class EUtilsRepository {
    * @throws \Exception
    */
   public function getOrganism($accession) {
+
     $organism = $this->organismQuery($accession);
 
     if ($organism) {
+      tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Linking pre-existing organism !organism', ['!organism' => $accession], [
+        'print' => TRUE,
+        'job' => $this->job,
+      ]);
       return $organism;
     }
     // Note: import_existing = TRUE causes the loader to time out.
@@ -423,7 +447,10 @@ abstract class EUtilsRepository {
     $importer = new \TaxonomyImporter();
     $importer->create($run_args, $file_details = []);
     $variables = ['!db' => 'NCBI Taxon (organism)', '!accession' => $accession];
-    tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession', $variables, ['print' => TRUE]);
+    tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession', $variables, [
+      'print' => TRUE,
+      'job' => $this->job,
+    ]);
 
     $importer->run();
 
@@ -487,6 +514,11 @@ abstract class EUtilsRepository {
 
       $record = $this->lookupNcbiInChado($db, $accession);
       if ($record) {
+        tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Using existing record for  !db : !accession', [
+          '!db' => $db,
+          '!accession' => $accession,
+        ], ['print' => TRUE, 'job' => $this->job]);
+
         $return[] = static::$visited[$db . ':' . $accession] = $record;
         continue;
       }
@@ -494,6 +526,7 @@ abstract class EUtilsRepository {
       if ($this->create_linked_records) {
         // Do not loop through linked records recursively. We only want the
         // the first level of linked records.
+        // Logging already happens higher up in EUtils.
         $record = (new EUtils(FALSE))->get($db, $accession);
         $return[] = static::$visited[$db . ':' . $accession] = $record;
       }

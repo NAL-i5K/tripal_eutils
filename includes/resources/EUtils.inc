@@ -75,6 +75,9 @@ class EUtils {
    * @throws \Exception
    */
   public function get($db, $accession) {
+
+    $job = $this->job;
+
     $backup_accession = $accession;
     $accession = $this->convertAccessionsToUID($db, $accession);
 
@@ -108,9 +111,8 @@ class EUtils {
     }
 
     $repository = (new EUtilsRepositoryFactory($this->create_linked_records))->get($db);
-
+    $repository->setJob($job);
     $variables = ['!db' => $db, '!accession' => $accession];
-    $job = $this->job;
     tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession', $variables, ['print' => TRUE, 'job' => $job]);
 
     $record = $repository->create($data);

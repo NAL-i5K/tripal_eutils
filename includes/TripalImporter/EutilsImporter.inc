@@ -132,16 +132,7 @@ class EutilsImporter extends TripalImporter {
 
     $job = $this->job;
 
-    try {
-      tripal_eutils_create_records($db, $accession, $create_linked_records, $job);
-
-    }
-    catch (Exception $e) {
-      $variables = ['!db' => $db, '!accession' => $accession];
-      tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Error inserting !db: !accession', $variables, ['print' => TRUE, 'job' => $job]);
-    }
-
-
+    tripal_eutils_create_records($db, $accession, $create_linked_records, $job);
   }
 
 }
