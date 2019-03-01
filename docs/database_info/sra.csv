@@ -1,0 +1,18 @@
+XML, Chado Base Table, Chado Column
+AssemblyName, analysis, name
+AssemblyDescription, analysis, description
+``# Assembly method:`` (from FTP), analysis, program
+``# Assembly method:`` (from FTP),  analysis, programversion
+N/A, analysis, algorithm
+BioSampleAccn, analysis, sourcename
+N/A, analysis, sourceversion
+N/A, analysis, sourceuri
+SubmissionDate, analysis, timeexecuted
+Stats, analysisprop, type/value
+FtpSites, analysisprop, type/value
+SpeciesTaxid, organism, chado.analysis_organism
+RsUid, dbxref, chado.analysis_dbxref
+GbUid, dbxref, chado.analysis_dbxref
+WGS RS_BioProjects/GB_BioProjects, project, (Chado table doesnt exist yet)
+BioSampleID, biomaterial, (Chado table doesnt exist yet)
+RefSeq_category, analysisprop, rdfs:type (sets the analysis type)
