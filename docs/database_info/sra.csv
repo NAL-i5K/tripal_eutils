@@ -1,5 +1,5 @@
 XML, Chado Base Table, Chado Column
-AssemblyName, analysis, name
+TITLE, analysis, name
 AssemblyDescription, analysis, description
 ``# Assembly method:`` (from FTP), analysis, program
 ``# Assembly method:`` (from FTP),  analysis, programversion
@@ -16,3 +16,8 @@ GbUid, dbxref, chado.analysis_dbxref
 WGS RS_BioProjects/GB_BioProjects, project, (Chado table doesnt exist yet)
 BioSampleID, biomaterial, (Chado table doesnt exist yet)
 RefSeq_category, analysisprop, rdfs:type (sets the analysis type)
+LIBRARY_DESCRIPTOR->Library Strategy, ?, ?
+LIBRARY_DESCRIPTOR->Library Source , ?, ?
+LIBRARY_DESCRIPTOR->Library Selection , ?, ?
+PLATFORM->[platform name], ? , ?
+PLATFORM->[platform name]->INSTRUMENT_MODEL, ?, ?
