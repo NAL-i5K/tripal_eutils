@@ -100,6 +100,8 @@ function tripal_eutils_insert_biosample_attribute_terms() {
  * Implements hook_schema()
  */
 function tripal_eutils_schema() {
+
+  // This table is not currently used.  It would allow admins to use custom cvterms when loading in properties.  However, for now we want to limit this.
   $schema['tripal_eutils_tag_dictionary'] = [
     'description' => 'Stores all attribute tags encountered and their mappings',
     'fields' => [
@@ -280,4 +282,3 @@ function tripal_eutils_update_7302(){
   tripal_eutils_create_dbs_for_assembly_xrefs();
 
 }
-
