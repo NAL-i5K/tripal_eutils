@@ -2,6 +2,9 @@
 
 [![Documentation Status](http://readthedocs.org/projects/tripal-eutils/badge/?version=latest)](https://tripal-eutils.readthedocs.io/en/latest/?badge=latest)
 
+[![DOI](https://zenodo.org/badge/158557230.svg)](https://zenodo.org/badge/latestdoi/158557230)
+
+
 # Tripal Eutils
 
 ![Card](docs/_static/EUtils_card.png)

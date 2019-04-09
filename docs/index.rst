@@ -18,3 +18,6 @@ Tripal EUtils
   development
 
 .. image:: _static/EUtils_card.png
+
+.. image:: https://zenodo.org/badge/158557230.svg
+   :target: https://zenodo.org/badge/latestdoi/158557230
