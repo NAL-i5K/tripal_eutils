@@ -23,6 +23,12 @@ Installation
   git clone https://github.com/NAL-i5K/tripal_eutils.git
   drush pm-enable tripal_manage_analyses tripal_eutils -y
 
+
+Chado
+-----
+
+This module requires Chado 1.3 or greater.  Visit ``/admin/tripal/storage/chado/install`` on your site to verify and/or upgrade your Chado version.
+
 Setup
 -----
 This module currently functions "as is" without setup.  The Manage Analyses module provides several new fields (analysis and organism linker fields) so you should **Check For New Fields** on the content types your site utilizes that have _organism or _analysis Chado linker tables.
