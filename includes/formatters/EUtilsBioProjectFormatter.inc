@@ -113,7 +113,6 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
     $header = ['Type', 'Value'];
 
     foreach ($accessions as $type => $value) {
-      dpm($type);
       // Ignored until project_biosample table is added.
       // However, we actually have it as biosample, so we need to fix that...
       if (strtolower($type) == 'biosample') {
