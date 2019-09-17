@@ -58,14 +58,6 @@ function tripal_eutils_menu() {
     'page arguments' => ['tripal_eutils_admin_settings_form'],
   ];
 
-  $items['admin/tripal/loaders/eutils_ncbi_import'] = [
-    'title' => 'Chado NCBI EUtils Accession Importer',
-    'page callback' => 'drupal_get_form',
-    'file' => 'includes/tripal_euitils_import.form.inc',
-    'access arguments' => ['access tripal_eutils admin'],
-    'page arguments' => ['tripal_eutils_import_form'],
-  ];
-
   return $items;
 }
 
