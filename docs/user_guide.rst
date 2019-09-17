@@ -6,7 +6,7 @@ The EUtils accession importer form
 -----------------------------------
 
 
-The EUtils loader provides a fast and convenient way to import records from NCBI into Chado. It is available at ``admin/tripal/loaders/eutils_ncbi_import``.
+The EUtils loader provides a fast and convenient way to import records from NCBI into Chado. It is available at ``admin/tripal/loaders/eutils_loader``.
 
 
 .. figure:: user_guide/blank_form.png
