@@ -203,7 +203,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
     foreach ($fields as $field) {
       $values = $ftp->getField($field);
 
-      if (count($values === 0)) {
+      if (count($values) === 0) {
 
         $value = $values[0];
       }
