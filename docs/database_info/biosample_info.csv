@@ -3,4 +3,4 @@ BioSample->accession, biomaterial, name
 Owner->Name, contact, biomaterial.biosourceprovider_id
 Comment->Paragraph,  biomaterial, description
 Attribute, biomaterialprop, "type_id, value"
-Organism->taxonomy_id, organism, biomaterial.taxon_id
+Organism->taxonomy_id, organism_dbxref, dbxref.accession
