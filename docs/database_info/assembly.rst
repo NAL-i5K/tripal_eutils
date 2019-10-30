@@ -24,4 +24,4 @@ This is still an **open question**.  This module maps NCBI Assemblies into ``cha
 Undecided mappings
 -------------------
 
-We don't currently know how we will mapping analyses to biomaterials in Chado.  BioSamples that are listed in Assembly records are therefore ignored currently.
+We don't currently know how we will map analyses to biomaterials in Chado.  BioSamples that are listed in Assembly records are therefore ignored currently.
