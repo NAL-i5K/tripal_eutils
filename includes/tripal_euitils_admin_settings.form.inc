@@ -62,10 +62,6 @@ function tripal_eutils_admin_settings_form_validate($form, &$form_state) {
   }
   // No apparent errors. Check that NCBI responded with the correct number of
   //   requests per second that API key users should have (currently 10)
-  else
-  {
-    drupal_set_message("API Key validated");
-  }
 }
 
 /**
@@ -80,6 +76,6 @@ function tripal_eutils_admin_settings_form_submit($form, &$form_state) {
     variable_set('tripal_eutils_ncbi_api_key', NULL);
   }
 
-  drupal_set_message("API Key saved.");
+  drupal_set_message("API Key validated and saved.");
 
 }
