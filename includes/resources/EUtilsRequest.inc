@@ -170,4 +170,30 @@ class EUtilsRequest {
     return substr($str, 0, strlen($with)) === $with;
   }
 
+  /**
+   * Check whether the API key is still valid
+   * 
+   * @param string $api_key
+   * @param string $db_url
+   * 
+   * @return bool
+   */
+  protected function api_key_validate($api_key, $db_url) {
+    $test_url = $db_url . '?api_key=' . $api_key;
+
+    // Make a request to NCBI, collect and parse the response
+    $response = drupal_http_request($url);
+
+    if (array_key_exists('error',$response)) {
+      // Some error. Print this
+      //echo "API Key Invalid, limiting rate to 3 requests/second";
+      // and return false
+      return false;
+    }
+    else {
+      //echo "API Key Valid, using rate limit of 10 requests/second";
+      return true;
+    }
+  }
+
 }
