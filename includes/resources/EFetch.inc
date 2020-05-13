@@ -20,7 +20,7 @@ class EFetch extends EUtilsRequest {
     $this->addParam('db', $db);
 
     $api_key = variable_get('tripal_eutils_ncbi_api_key');
-    if ($api_key) {
+    if ($api_key && $this->api_key_validate($api_key,$base_url)) {
       $this->addParam('api_key', $api_key);
     }
   }
