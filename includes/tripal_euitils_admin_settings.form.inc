@@ -32,8 +32,6 @@ function tripal_eutils_admin_settings_form($form, &$form_state) {
  */
 function tripal_eutils_admin_settings_form_validate($form, &$form_state) {
 
-  // TODO We would validate the key here.  Perhaps make a test query?
-
   // Prepare the URL and parameters (with API key)
   $url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/einfo.fcgi';
   $url .= '?api_key='.$form_state['values']['api_key'];
