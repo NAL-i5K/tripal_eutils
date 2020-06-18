@@ -96,9 +96,13 @@ class EUtils {
       $provider->addParam('retmode', 'xml');
     }
 
-    // TODO:  global static timer.
-    // That pauses if we're passing our alloted queries/second.
+    // Wait until timer has accumulated enough time to continue
+    while (api_timer_wait()){}
+
     $response = $provider->get();
+    // Request was made, register this timestamp for API rate limit
+    tripal_eutils_register_access();
+
     $this->checkResponseSuccess($response, $db, $accession);
     $xml = $response->xml();
 
