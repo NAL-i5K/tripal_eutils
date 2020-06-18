@@ -182,10 +182,10 @@ class EUtilsRequest {
     $test_url = $db_url . '?api_key=' . $api_key;
 
     // Make a request to NCBI, collect and parse the response
-    $response = drupal_http_request($url);
+    $response = drupal_http_request($db_url);
 
     if (array_key_exists('error',$response)) {
-      // Some error. Print this
+      // Some error exists with the API key. Print this
       //echo "API Key Invalid, limiting rate to 3 requests/second";
       // and return false
       return false;
