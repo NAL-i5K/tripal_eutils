@@ -42,7 +42,7 @@ function api_timer_wait() {
     // Determine the rate limit
     if (variable_get('tripal_eutils_ncbi_api_key'))
     {
-        // API Key exists, was checked at previous check. Full speed
+        // API Key exists, was checked at previous check. Full speed ahead
         $limit = 10;
     }
     else {
@@ -64,12 +64,10 @@ function api_timer_wait() {
         $variance = number_format($now - $last_access, 5);
         if ($variance > $wait_time) {
             // Don't wait
-            echo "Accessing...\n";
             return false;
         }
         else {
             // Gotta wait
-            echo "Waiting...\n";
             return true;
         }
     }
