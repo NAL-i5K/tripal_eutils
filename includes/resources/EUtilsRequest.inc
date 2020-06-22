@@ -187,28 +187,23 @@ class EUtilsRequest {
       // At some point, the API key was positively validated
       if ($recent_validation[1])
       {
-        echo "Found positive API validation status\n";
         // Test if expired
         if ($now - $recent_validation[1] > 1800)
         {
-          echo "Recent API validation has expired.\n";
           return false;
         }
         else
         {
-          echo "Recent API validation is still valid.\n";
           return true;
         }
       }
       // The API key was most recently found to be invalid
       else {
-        echo "Recent API validation is FALSE\n";
         return true;
       } 
     }
     else  // No known API validations or API validation has expired
     {
-      echo "No known API validation. Checking now...\n";
       $now = intval(date("u"));
       $test_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/einfo.fcgi";
       $test_url = $test_url . '?api_key=' . $api_key;
@@ -218,14 +213,12 @@ class EUtilsRequest {
 
       if (array_key_exists('error',$response)) {
         // Some error exists with the API key. Print this
-        echo "API Key Invalid, limiting rate to 3 requests/second";
         // Set the recent
         variable_set('tripal_eutils_recent_validation',[$now,FALSE]);
         // and return false
         return false;
       }
       else {
-        echo "API Key Valid, using rate limit of 10 requests/second";
         // Set the recent
         variable_set('tripal_eutils_recent_validation',[$now,TRUE]);
         return true;
