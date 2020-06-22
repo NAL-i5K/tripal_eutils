@@ -69,13 +69,18 @@ function tripal_eutils_admin_settings_form_validate($form, &$form_state) {
  * Implements hook_submit().
  */
 function tripal_eutils_admin_settings_form_submit($form, &$form_state) {
+  // Valid API key
   if (!empty($form_state['values']['api_key'])) {
     $api_key = $form_state['values']['api_key'];
     variable_set('tripal_eutils_ncbi_api_key', $api_key);
+    $now = $now = intval(date("u"));
+    variable_set('tripal_eutils_recent_validation', [$now, TRUE]);
     drupal_set_message("API Key validated and saved.");
   }
+  // No API key
   else {
     variable_set('tripal_eutils_ncbi_api_key', NULL);
+    variable_set('tripal_eutils_recent_validation', NULL);
     drupal_set_message("API Key removed.");
   }
 }
