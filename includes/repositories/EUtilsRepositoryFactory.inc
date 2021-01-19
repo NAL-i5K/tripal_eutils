@@ -51,7 +51,7 @@ class EUtilsRepositoryFactory implements EUtilsFactoryInterface {
     $ldb = strtolower($db);
 
     if (!isset($this->repositories[$ldb])) {
-      throw new Exception('Enable to find a repository for the provided DB: ' . $db);
+      throw new Exception('Unable to find a repository for the provided DB: ' . $db);
     }
     return new $this->repositories[$ldb]($this->create_linked_records);
   }
