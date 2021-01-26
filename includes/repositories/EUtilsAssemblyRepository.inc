@@ -260,7 +260,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       ->fetchObject();
 
     $cacheKey = implode(':', [$base['name'], $base['program'], $base['programversion']]);
-    return static::$cache['analysis'][$cacheKey] = $analysis;
+    return static::$cache['analysis'][$cachekey] = $analysis;
   }
 
   /**
@@ -276,8 +276,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     // If the analysis is available in our static cache, return it.
     $cacheKey = implode(':', [$base['name'], $base['program'], $base['programversion']]);
-    if (isset(static::$cache['analysis'][$cacheKey])) {
-      return static::$cache['analysis'][$cacheKey];
+    if (isset(static::$cache['analysis'][$cachekey])) {
+      return static::$cache['analysis'][$cachekey];
     }
 
     $exists = db_select('chado.analysis', 't')
