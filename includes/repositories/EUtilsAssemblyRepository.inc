@@ -32,6 +32,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     'description',
     'attributes',
     'full_ncbi_xml',
+
   ];
 
   /**
@@ -52,7 +53,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
   protected static $cache = [
     'db' => [],
     'accessions' => [],
-    'analysis' => [],
+    'analysis' => NULL,
   ];
 
   /**
@@ -198,7 +199,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    */
   public function linkOrganism($organism) {
     if (!chado_table_exists('organism_analysis')) {
-      throw new Exception("The organism_analysis linker table doesn't exist.  No way to link this organism.");
+      throw new Exception('The organism_analysis linker table doesnt exist.  No way to link this organism.');
     }
 
     $result = db_select('chado.organism_analysis', 't')
@@ -259,8 +260,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       ->execute()
       ->fetchObject();
 
-    $cacheKey = implode(':', [$base['name'], $base['program'], $base['programversion']]);
-    return static::$cache['analysis'][$cachekey] = $analysis;
+    return static::$cache['analysis'] = $analysis;
   }
 
   /**
@@ -273,11 +273,9 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
   public function getAnalysis() {
 
     $base = $this->base_fields;
-
     // If the analysis is available in our static cache, return it.
-    $cacheKey = implode(':', [$base['name'], $base['program'], $base['programversion']]);
-    if (isset(static::$cache['analysis'][$cachekey])) {
-      return static::$cache['analysis'][$cachekey];
+    if (isset(static::$cache['analysis'])) {
+      return static::$cache['analysis'];
     }
 
     $exists = db_select('chado.analysis', 't')
@@ -289,7 +287,9 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       ->fetchObject();
 
     if ($exists) {
-      return static::$cache['analysis'][$cacheKey] = $exists;
+
+      // TODO: we need to carefully validate the returned analysis.  We want to be sure we arent overwriting another existing analysis....
+      return static::$cache['analysis'] = $exists;
     }
 
     return NULL;
