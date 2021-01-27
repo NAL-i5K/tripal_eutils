@@ -75,7 +75,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     // Program and program version come from # Assembly method:
     // $data['attributes']['ftp_attributes']['# Assembly method:'].
-    $method_string = $data['attributes']['ftp_attributes']['# Assembly method:'];
+    $method_string = $data['attributes']['ftp_attributes']['# Assembly method:'] ?? 'Assembly method was not reported';
 
     // TODO: what do we want to do here?  Parse out the version from the
     // assembly program?  But what if we have multiple programs and
