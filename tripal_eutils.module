@@ -92,6 +92,6 @@ function tripal_eutils_create_records(string $db, string $accession, bool $creat
   }
   catch (Exception $exception) {
 
-    tripal_report_error('tripal_eutils', TRIPAL_ERROR, $exception->getMessage(), ['print' => TRUE, 'job' => $job]);
+    tripal_report_error('tripal_eutils', TRIPAL_ERROR, $exception->getMessage(), [], ['print' => TRUE, 'job' => $job]);
   }
 }
