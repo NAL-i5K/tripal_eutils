@@ -17,6 +17,11 @@ class EUtilsPubmedRepository extends EUtilsRepository {
     'description',
   ];
 
+  /**
+   * Required base table attribute.
+   *
+   * @var string
+   */
   protected $base_table = 'pub';
 
   /**
@@ -27,14 +32,14 @@ class EUtilsPubmedRepository extends EUtilsRepository {
    *
    * @return pub
    *   A Chado publication record object.
-   **/
+   */
   public function create(array $data) {
     module_load_include('inc', 'tripal_chado', '/includes/loaders/tripal_chado.pub_importers');
 
     tripal_pub_add_publications([$data], FALSE);
     $uname = $data['Citation'];
-    $pub = db_select('chado.pub', 'p')->fields('p')->condition('p.uniquename', $uname)->execute()->fetchObject();
-
+    $connection = chado_db_select('pub', 'p');
+    $pub = $connection->fields('p')->condition('p.uniquename', $uname)->execute()->fetchObject();
     return $pub;
   }
 
