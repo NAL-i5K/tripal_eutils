@@ -5,3 +5,4 @@ vendor/
 docs/_build/
 docs/html/
 docs/doxyxml
+.vscode
