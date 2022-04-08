@@ -208,7 +208,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
       $value = $attribute['value'];
 
       // TODO: the term lookup class should handle this instead.
-      $cvterm = chado_get_cvterm(['id' => 'ncbi_properties:' . $term_name]);
+      $cvterm = chado_get_cvterm(['id' => 'NCBI_BioSample_Attributes:' . $term_name]);
       $cvterm_id = $cvterm->cvterm_id;
       $this->createProperty($cvterm_id, $value);
     }

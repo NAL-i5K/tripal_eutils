@@ -9,8 +9,8 @@
  */
 function tripal_eutils_install() {
 
-  chado_insert_cv('ncbi_properties',
-    'The ncbi BioSample properties CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
+  chado_insert_cv('NCBI BioSample Attributes',
+    'The ncbi BioSample Attributes CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
 
   chado_insert_cvterm([
     'id' => 'local:full_ncbi_xml',
@@ -26,9 +26,9 @@ function tripal_eutils_install() {
 
   chado_insert_cvterm(
     [
-      'id' => 'ncbi_properties:submitter_provided_accession',
+      'id' => 'NCBI_BioSample_Attributes:submitter_provided_accession',
       'name' => 'submitter_provided_accession',
-      'cv_name' => 'ncbi_properties',
+      'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
 
@@ -46,27 +46,27 @@ function tripal_eutils_insert_extra_biosample_terms() {
 
   tripal_insert_cvterm(
     [
-      'id' => 'ncbi_properties:samples provided by',
+      'id' => 'NCBI_BioSample_Attributes:samples provided by',
       'name' => 'Samples provided by',
       'def' => '',
-      'cv_name' => 'ncbi_properties',
+      'cv_name' => 'NCBI BioSample Attribute',
     ]
   );
 
   tripal_insert_cvterm(
     [
-      'id' => 'ncbi_properties:Publication',
+      'id' => 'NCBI_BioSample_Attributes:Publication',
       'name' => 'Publication',
       'def' => '',
-      'cv_name' => 'ncbi_properties',
+      'cv_name' => 'NCBI BioSample Attribute',
     ]
   );
   tripal_insert_cvterm(
     [
-      'id' => 'ncbi_properties:note',
+      'id' => 'NCBI_BioSample_Attributes:note',
       'name' => 'Note',
       'def' => 'Misc. free text.',
-      'cv_name' => 'ncbi_properties',
+      'cv_name' => 'NCBI BioSample Attribute',
     ]
   );
 }
@@ -75,7 +75,8 @@ function tripal_eutils_insert_extra_biosample_terms() {
  *Adds attribute terms for properties.
  */
 function tripal_eutils_insert_biosample_attribute_terms() {
-
+  // @todo Download the most up-to-date file and use that instead,
+  // the same way the Analysis Expression module does it.
   $file = __DIR__ . '/mappings/biosample/xml_releases/11-30-18.xml';
 
   $lookup = new \BiosamplePropertyLookup($file);
@@ -86,10 +87,10 @@ function tripal_eutils_insert_biosample_attribute_terms() {
 
     tripal_insert_cvterm(
       [
-        'id' => 'ncbi_properties:' . $machine_name,
+        'id' => 'NCBI_BioSample_Attributes:' . $machine_name,
         'name' => $attributes['label'],
         'def' => $attributes['def'],
-        'cv_name' => 'ncbi_properties',
+        'cv_name' => 'NCBI BioSample Attribute',
       ]
     );
   }
@@ -162,7 +163,7 @@ function tripal_eutils_add_dbs() {
   ]);
 
   chado_insert_db([
-    'name' => 'ncbi_properties',
+    'name' => 'NCBI_BioSample_Attributes',
     'description' => 'Attribute and property terms for NCBI.',
     'url' => 'http://www.ncbi.nlm.nih.gov/',
   ]);
