@@ -49,7 +49,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
       'id' => 'NCBI_BioSample_Attributes:samples provided by',
       'name' => 'Samples provided by',
       'def' => '',
-      'cv_name' => 'NCBI BioSample Attribute',
+      'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
 
@@ -58,7 +58,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
       'id' => 'NCBI_BioSample_Attributes:Publication',
       'name' => 'Publication',
       'def' => '',
-      'cv_name' => 'NCBI BioSample Attribute',
+      'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
   tripal_insert_cvterm(
@@ -66,7 +66,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
       'id' => 'NCBI_BioSample_Attributes:note',
       'name' => 'Note',
       'def' => 'Misc. free text.',
-      'cv_name' => 'NCBI BioSample Attribute',
+      'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
 }
@@ -90,7 +90,7 @@ function tripal_eutils_insert_biosample_attribute_terms() {
         'id' => 'NCBI_BioSample_Attributes:' . $machine_name,
         'name' => $attributes['label'],
         'def' => $attributes['def'],
-        'cv_name' => 'NCBI BioSample Attribute',
+        'cv_name' => 'NCBI BioSample Attributes',
       ]
     );
   }
@@ -268,6 +268,38 @@ function tripal_eutils_create_dbs_for_assembly_xrefs() {
   ]);
 
 }
+
+/**
+ * Convert terms from ncbi_properties to NCBI_BioSample_Attributes
+ */
+function tripal_eutils_convert_terms() {
+  // Check if the ncbi_utilities name exists within the cv table, if so, get the cv_id
+  $query = "SELECT cv_id FROM chado.cv WHERE name LIKE 'ncbi_properties'";
+  $results = db_query($query);
+  
+  $cv_id = $results->fetchAssoc();
+  $cv_id = $cv_id['cv_id'];
+  print_r("Current: " . $cv_id . "\n");
+
+  // Get the $cv_id of the new NCBI_BioSample_Attributes
+  $query = "SELECT cv_id FROM chado.cv WHERE name LIKE 'NCBI_BioSample_Attributes'";
+  $results = db_query($query);
+
+  $new_cv_id = $results->fetchAssoc();
+  $new_cv_id = $new_cv_id['cv_id'];
+  print_r($new_cv_id);
+
+  // Find all  occurences of cvterms with this cv_id
+  /*
+  $num_updated = db_update('chado.cv')
+  ->fields(array(
+    'cv_id' => $new_cv_id,
+  ))
+  ->condition('cv_id', $cv_id, '=')
+  ->execute();
+  */
+}
+
 /**
  * Add extra property terms.
  */
@@ -282,4 +314,11 @@ function tripal_eutils_update_7301() {
 function tripal_eutils_update_7302(){
   tripal_eutils_create_dbs_for_assembly_xrefs();
 
+}
+
+/**
+ * Convert terms from ncbi_properties to NCBI_BioSample_Attributes
+ */
+function tripal_eutils_update_7303() {
+  tripal_eutils_convert_terms();
 }
