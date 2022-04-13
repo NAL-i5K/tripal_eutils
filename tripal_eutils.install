@@ -273,13 +273,26 @@ function tripal_eutils_create_dbs_for_assembly_xrefs() {
  * Convert terms from ncbi_properties to NCBI_BioSample_Attributes
  */
 function tripal_eutils_convert_terms() {
+
+  // Insert the new cv and db entries, but not the terms from the XML (this means we can't just call
+  // tripal_eutils_install() again).
+  chado_insert_cv('NCBI BioSample Attributes',
+    'The ncbi BioSample Attributes CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
+
+  chado_insert_db([
+    'name' => 'NCBI_BioSample_Attributes',
+    'description' => 'Attribute and property terms for NCBI.',
+    'url' => 'http://www.ncbi.nlm.nih.gov/',
+  ]);
+
+
   // Check if the ncbi_utilities name exists within the cv table, if so, get the cv_id
   $query = "SELECT cv_id FROM chado.cv WHERE name LIKE 'ncbi_properties'";
   $results = db_query($query);
   
   $cv_id = $results->fetchAssoc();
   $cv_id = $cv_id['cv_id'];
-  print_r("Current: " . $cv_id . "\n");
+  print_r("Current ncbi_properties cv_id: " . $cv_id . "\n");
 
   // Get the $cv_id of the new NCBI_BioSample_Attributes
   $query = "SELECT cv_id FROM chado.cv WHERE name LIKE 'NCBI_BioSample_Attributes'";
@@ -287,17 +300,19 @@ function tripal_eutils_convert_terms() {
 
   $new_cv_id = $results->fetchAssoc();
   $new_cv_id = $new_cv_id['cv_id'];
-  print_r($new_cv_id);
+  print_r("New: NCBI_BioSample_Attributes cv_id: " . $new_cv_id . "\n");
 
-  // Find all  occurences of cvterms with this cv_id
-  /*
-  $num_updated = db_update('chado.cv')
+
+  // Find all  occurences of cvterms with the old cv_id and update them to the new one
+  $num_updated = db_update('chado.cvterm')
   ->fields(array(
     'cv_id' => $new_cv_id,
   ))
   ->condition('cv_id', $cv_id, '=')
   ->execute();
-  */
+
+  print_r("Updated " . $num_updated . " terms from ncbi_properties to NCBI_BioSample_Attributes.\n");
+  
 }
 
 /**
