@@ -164,8 +164,8 @@ function tripal_eutils_add_dbs() {
 
   chado_insert_db([
     'name' => 'NCBI_BioSample_Attributes',
-    'description' => 'Attribute and property terms for NCBI.',
-    'url' => 'http://www.ncbi.nlm.nih.gov/',
+    'description' => 'This database provides, in XML format, the listing of attribute names for biosamples housed in NCBI.',
+    'url' => 'https://www.ncbi.nlm.nih.gov/biosample/docs/attributes',
   ]);
 
   chado_insert_db([
@@ -302,7 +302,7 @@ function tripal_eutils_convert_terms() {
   $new_cv_id = $new_cv_id['cv_id'];
   print_r("New: NCBI_BioSample_Attributes cv_id: " . $new_cv_id . "\n");
 
-
+  /*
   // Find all  occurences of cvterms with the old cv_id and update them to the new one
   $num_updated = db_update('chado.cvterm')
   ->fields(array(
@@ -312,7 +312,11 @@ function tripal_eutils_convert_terms() {
   ->execute();
 
   print_r("Updated " . $num_updated . " terms from ncbi_properties to NCBI_BioSample_Attributes.\n");
-  
+  */
+
+  // Insert the terms from NCBI's Sample XML file within the new CV (via the $new_cv_id)
+  tripal_eutils_insert_biosample_attribute_terms();
+
 }
 
 /**
