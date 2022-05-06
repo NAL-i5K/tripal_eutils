@@ -36,7 +36,7 @@ function tripal_eutils_install() {
  */
 function tripal_eutils_insert_extra_biosample_terms() {
 
-  tripal_insert_cvterm(
+  chado_insert_cvterm(
     [
       'id' => 'NCBI_BioSample_Attributes:samples provided by',
       'name' => 'Samples provided by',
@@ -45,7 +45,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
     ]
   );
 
-  tripal_insert_cvterm(
+  chado_insert_cvterm(
     [
       'id' => 'NCBI_BioSample_Attributes:Publication',
       'name' => 'Publication',
@@ -53,7 +53,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
       'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
-  tripal_insert_cvterm(
+  chado_insert_cvterm(
     [
       'id' => 'NCBI_BioSample_Attributes:note',
       'name' => 'Note',
@@ -77,7 +77,7 @@ function tripal_eutils_insert_biosample_attribute_terms() {
 
   foreach ($terms as $machine_name => $attributes) {
 
-    tripal_insert_cvterm(
+    chado_insert_cvterm(
       [
         'id' => 'NCBI_BioSample_Attributes:' . $machine_name,
         'name' => $attributes['label'],
