@@ -24,18 +24,10 @@ function tripal_eutils_install() {
     'cv_name' => 'local',
   ]);
 
-  chado_insert_cvterm(
-    [
-      'id' => 'NCBI_BioSample_Attributes:submitter_provided_accession',
-      'name' => 'submitter_provided_accession',
-      'cv_name' => 'NCBI BioSample Attributes',
-    ]
-  );
-
-
   tripal_eutils_add_dbs();
   tripal_eutils_insert_biosample_attribute_terms();
   tripal_eutils_install_chado_1_4_tables();
+  tripal_eutils_convert_terms();
 
 }
 
@@ -284,6 +276,15 @@ function tripal_eutils_convert_terms() {
     'description' => 'Attribute and property terms for NCBI.',
     'url' => 'http://www.ncbi.nlm.nih.gov/',
   ]);
+
+  chado_insert_cvterm(
+    [
+      'id' => 'NCBI_BioSample_Attributes:submitter_provided_accession',
+      'name' => 'submitter_provided_accession',
+      'cv_name' => 'NCBI BioSample Attributes',
+    ],
+    ['update_existing' => false]
+  );
 
 
   // Check if the ncbi_utilities name exists within the cv table, if so, get the cv_id
