@@ -40,7 +40,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
     [
       'id' => 'NCBI_BioSample_Attributes:samples provided by',
       'name' => 'Samples provided by',
-      'def' => '',
+      'definition' => '',
       'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
@@ -49,7 +49,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
     [
       'id' => 'NCBI_BioSample_Attributes:Publication',
       'name' => 'Publication',
-      'def' => '',
+      'definition' => '',
       'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
@@ -57,7 +57,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
     [
       'id' => 'NCBI_BioSample_Attributes:note',
       'name' => 'Note',
-      'def' => 'Misc. free text.',
+      'definition' => 'Misc. free text.',
       'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
@@ -81,7 +81,7 @@ function tripal_eutils_insert_biosample_attribute_terms() {
       [
         'id' => 'NCBI_BioSample_Attributes:' . $machine_name,
         'name' => $attributes['label'],
-        'def' => $attributes['def'],
+        'definition' => $attributes['def'],
         'cv_name' => 'NCBI BioSample Attributes',
       ]
     );
