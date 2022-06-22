@@ -51,3 +51,10 @@ Permissions
 ~~~~~~~~~~~~
 
 This module only defines one permission: ``access tripal_eutils admin``.  This permission will allow users to use the admin form to directly insert Chado records into the database given NCBI accessions.  Because this form adds data to your db, we suggest reserving it for administrators.
+
+
+Updating
+~~~~~~~~~~~~
+As of database update 7303, the database and controlled vocabulary for terms used by this module have been converted from ncbi_properties to NCBI Biosample Attributes.
+This was done to match the Tripal Biomaterial module's schema, which also overhauled its terminology, coincidentally also in database update 7303.
+Instructions for updating to the new schema can be found in the `Tripal Biomaterial module <https://github.com/dsenalik/tripal_analysis_expression/>`_. There is a "Module Updating" section that applies to both of these modules.

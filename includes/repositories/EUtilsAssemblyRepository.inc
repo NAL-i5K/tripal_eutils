@@ -130,10 +130,10 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       // for now just use local.
       // $mapper->lookupAttribute($key)
       $term = tripal_insert_cvterm([
-        'id' => 'ncbi_properties:' . $key,
+        'id' => 'NCBI_BioSample_Attributes:' . $key,
         'name' => $key,
         'def' => '',
-        'cv_name' => 'ncbi_properties',
+        'cv_name' => 'NCBI BioSample Attributes',
       ]);
       $this->createProperty($term->cvterm_id, $value);
     }

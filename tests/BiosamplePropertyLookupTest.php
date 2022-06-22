@@ -31,7 +31,7 @@ class BiosamplePropertyLookupTest extends TripalTestCase {
    * @group propertylookup
    */
   public function testTermsInserted() {
-    $term = chado_get_cvterm(['id' => 'ncbi_properties:fao_class']);
+    $term = chado_get_cvterm(['id' => 'NCBI_BioSample_Attributes:fao_class']);
     $this->assertObjectHasAttribute('cvterm_id', $term);
     $this->assertObjectHasAttribute('name', $term);
     $this->assertEquals('FAO classification', $term->name);

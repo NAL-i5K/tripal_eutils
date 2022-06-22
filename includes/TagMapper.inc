@@ -116,20 +116,20 @@ class TagMapper {
     // Please keep this alphabetized for sanity.
     // If updated, please also delete/update terms in the install file.
     return [
-      'age' => $this->getTerm(['id' => 'ncbi_properties:age']),
+      'age' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:age']),
       'bio_material' => NULL,
-      'breed' => $this->getTerm(['id' => 'ncbi_properties:breed']),
-      'collection_date' => $this->getTerm(['id' => 'ncbi_properties:collection_date']),
-      'cultivar' => $this->getTerm(['id' => 'ncbi_properties:cultivar']),
-      'dev_stage' => $this->getTerm(['id' => 'ncbi_properties:dev_stage']),
-      'geo_loc_name' => $this->getTerm(['id' => 'ncbi_properties:geo_loc_name']),
-      'isolation_source' => $this->getTerm(['id' => 'ncbi_properties:isolation_source']),
-      'orgmod_note' => $this->getTerm(['id' => 'ncbi_properties:orgmod_note']),
-      'phenotype' => $this->getTerm(['id' => 'ncbi_properties:phenotype']),
-      'sex' => $this->getTerm(['id' => 'ncbi_properties:sex']),
-      'strain' => $this->getTerm(['id' => 'ncbi_properties:strain']),
-      'sub_species' => $this->getTerm(['id' => 'ncbi_properties:sub_species']),
-      'tissue' => $this->getTerm(['id' => 'ncbi_properties:tissue']),
+      'breed' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:breed']),
+      'collection_date' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:collection_date']),
+      'cultivar' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:cultivar']),
+      'dev_stage' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:dev_stage']),
+      'geo_loc_name' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:geo_loc_name']),
+      'isolation_source' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:isolation_source']),
+      'orgmod_note' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:orgmod_note']),
+      'phenotype' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:phenotype']),
+      'sex' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:sex']),
+      'strain' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:strain']),
+      'sub_species' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:sub_species']),
+      'tissue' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:tissue']),
     ];
   }
 
