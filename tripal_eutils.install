@@ -293,7 +293,6 @@ function tripal_eutils_convert_terms() {
   
   $cv_id = $results->fetchAssoc();
   $cv_id = $cv_id['cv_id'];
-  print_r("Current ncbi_properties cv_id: " . $cv_id . "\n");
 
   // Get the $cv_id of the new NCBI_BioSample_Attributes
   $query = "SELECT cv_id FROM chado.cv WHERE name LIKE 'NCBI_BioSample_Attributes'";
@@ -301,7 +300,6 @@ function tripal_eutils_convert_terms() {
 
   $new_cv_id = $results->fetchAssoc();
   $new_cv_id = $new_cv_id['cv_id'];
-  print_r("New: NCBI_BioSample_Attributes cv_id: " . $new_cv_id . "\n");
 
   // Insert the terms from NCBI's Sample XML file within the new CV (via the $new_cv_id)
   tripal_eutils_insert_biosample_attribute_terms();
