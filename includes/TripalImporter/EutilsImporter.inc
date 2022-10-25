@@ -46,7 +46,8 @@ class EutilsImporter extends TripalImporter {
     ];
 
     $form['accession'] = [
-      '#type' => 'textfield',
+      '#type' => 'textarea',
+      '#rows' => 1,
       '#title' => t('NCBI Accession Number(s)'),
       '#description' => t('Valid examples: (BioSample 744358 120060 SAMN02261463), (Assembly 91111, 751381, GCA_000516895.1), (BioProject 12384, 394253, 66853, PRJNA185471).
                        Separate multiple accessions with comma, semicolon, or space.'),
