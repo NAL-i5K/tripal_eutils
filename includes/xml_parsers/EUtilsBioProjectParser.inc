@@ -54,7 +54,7 @@ class EUtilsBioProjectParser implements EUtilsParserInterface {
         case 'ProjectDescr':
 
           // Information about the project itself.  Includes title, description.
-          $name_string = (string) $child->Name . ': ' . (string) $child->Title;
+          $name_string = implode(': ', array_filter([(string) $child->Name, (string) $child->Title]));
           $info['name'] = $name_string;
           $info['description'] = (string) $child->Description;
 
