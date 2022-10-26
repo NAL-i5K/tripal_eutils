@@ -87,14 +87,26 @@ function tripal_eutils_permission() {
 function tripal_eutils_create_records(string $db, string $accession, bool $create_linked_records, $job = NULL) {
   $accs = preg_split('/[,; ]+/', trim($accession));
   foreach ($accs as $acc) {
-    try {
+    $attempts = 3;
+    $success = false;
+    while ((!$success) and ($attempts)) {
+      try {
 
-      $eutils = new EUtils($create_linked_records, $job);
-      $eutils->get($db, $acc);
-    }
-    catch (Exception $exception) {
+        $eutils = new EUtils($create_linked_records, $job);
+        $eutils->get($db, $acc);
+        $success = true;
+      }
+      catch (Exception $exception) {
 
-      tripal_report_error('tripal_eutils', TRIPAL_ERROR, $exception->getMessage(), [], ['print' => TRUE, 'job' => $job]);
+        if ($attempts > 1) {
+          tripal_report_error('tripal_eutils', TRIPAL_WARNING, 'Download error, retrying '.$exception->getMessage(), [], ['print' => TRUE, 'job' => $job]);
+          sleep(1);
+        }
+        else {
+          tripal_report_error('tripal_eutils', TRIPAL_ERROR, $exception->getMessage(), [], ['print' => TRUE, 'job' => $job]);
+        }
+      }
+      $attempts--;
     }
   }
 }
