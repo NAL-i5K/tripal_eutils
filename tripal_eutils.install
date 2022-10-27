@@ -64,29 +64,27 @@ function tripal_eutils_insert_extra_biosample_terms() {
 }
 
 /**
- *Adds attribute terms for properties.
+ * Updates the NCBI BioSample Attribute CV Terms
+ *
+ * Automatically downloads and imports into the CVterm table the attribute
+ * names for biomaterials.
  */
 function tripal_eutils_insert_biosample_attribute_terms() {
-  // @todo Download the most up-to-date file and use that instead,
-  // the same way the Analysis Expression module does it.
-  $file = __DIR__ . '/mappings/biosample/xml_releases/11-30-18.xml';
+  // We use NCBI biosample attributes to fill the biomaterialprop cv table.
+  // These attributes can be accessed at the following url.
+  $url = "https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml";
+  $xml_str = file_get_contents($url);
+  $xml_obj = simplexml_load_string($xml_str);
 
-  $lookup = new \BiosamplePropertyLookup($file);
-
-  $terms = $lookup->lookupAll();
-
-  foreach ($terms as $machine_name => $attributes) {
-
-    chado_insert_cvterm(
-      [
-        'id' => 'NCBI_BioSample_Attributes:' . $machine_name,
-        'name' => $attributes['label'],
-        'definition' => $attributes['def'],
-        'cv_name' => 'NCBI BioSample Attributes',
-      ]
-    );
+  foreach ($xml_obj->Attribute as $attribute) {
+    chado_insert_cvterm([
+      'id' => 'NCBI_BioSample_Attributes:' . $attribute->Name,
+      'name' => $attribute->Name,
+      'definition' => $attribute->Description,
+      'cv_name' => 'NCBI BioSample Attributes',
+      'db_name' => 'NCBI_BioSample_Attributes',
+    ], ['update_existing' => FALSE]);
   }
-  // Version 1.0 as of November 29 2018: 456 terms.
 }
 
 /**
