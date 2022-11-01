@@ -71,19 +71,22 @@ function tripal_eutils_insert_extra_biosample_terms() {
  */
 function tripal_eutils_insert_biosample_attribute_terms() {
   // We use NCBI biosample attributes to fill the biomaterialprop cv table.
-  // These attributes can be accessed at the following url.
-  $url = "https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml";
-  $xml_str = file_get_contents($url);
-  $xml_obj = simplexml_load_string($xml_str);
+  // These attributes can be accessed at the following url:
+  // https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml
+  $lookup = new \BiosamplePropertyLookup();
 
-  foreach ($xml_obj->Attribute as $attribute) {
-    chado_insert_cvterm([
-      'id' => 'NCBI_BioSample_Attributes:' . $attribute->Name,
-      'name' => $attribute->Name,
-      'definition' => $attribute->Description,
-      'cv_name' => 'NCBI BioSample Attributes',
-      'db_name' => 'NCBI_BioSample_Attributes',
-    ], ['update_existing' => FALSE]);
+  $terms = $lookup->lookupAll();
+
+  foreach ($terms as $machine_name => $attributes) {
+
+    chado_insert_cvterm(
+      [
+        'id' => 'NCBI_BioSample_Attributes:' . $machine_name,
+        'name' => $attributes['label'],
+        'definition' => $attributes['def'],
+        'cv_name' => 'NCBI BioSample Attributes',
+      ]
+    );
   }
 }
 
