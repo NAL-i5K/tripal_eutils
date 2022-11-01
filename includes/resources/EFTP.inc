@@ -32,7 +32,24 @@ class EFTP {
   public function setURL($url) {
 
     $this->url = $url;
-    $file = file_get_contents($url);
+    // Because of occasional intermittent problems with FTP downloads, wrap
+    // this download in a retry loop with a 3 second timeout and 20 retries.
+    $maxtries = 20;
+    $original_timeout = ini_get('default_socket_timeout');
+    ini_set('default_socket_timeout', 3);
+    $file = '';
+    while (($maxtries) and (!$file)) {
+      $file = file_get_contents($url);
+      $maxtries--;
+      if ((!$file) and ($maxtries)) {
+        tripal_report_error('tripal_eutils', TRIPAL_WARNING, 'FTP download error, retrying !maxtries more times',
+          ['!maxtries' => $maxtries], ['print' => TRUE, 'job' => $this->job]);
+      }
+    }
+    // Set FTP timeout back to default
+    if ($original_timeout) {
+      ini_set('default_socket_timeout', $original_timeout);
+    }
     if (!$file) {
       throw new Exception('Unable to connect to FTP resource: ' . $url);
     }

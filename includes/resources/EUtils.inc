@@ -112,8 +112,16 @@ class EUtils {
 
     $repository = (new EUtilsRepositoryFactory($this->create_linked_records))->get($db);
     $repository->setJob($job);
-    $variables = ['!db' => $db, '!accession' => $accession];
-    tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession', $variables, ['print' => TRUE, 'job' => $job]);
+    // For SAMD type of BioSamples the accession is very different from the number part
+    // of the SAMD, so display both when different.
+    if ($backup_accession != $accession) {
+      $orig_accession = ' ('.$backup_accession.')';
+    }
+    else {
+      $orig_accession = '';
+    }
+    $variables = ['!db' => $db, '!accession' => $accession, '!orig_accession' => $orig_accession];
+    tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession!orig_accession', $variables, ['print' => TRUE, 'job' => $job]);
 
     $record = $repository->create($data);
 

@@ -208,7 +208,22 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
       $value = $attribute['value'];
 
       // TODO: the term lookup class should handle this instead.
-      $cvterm = chado_get_cvterm(['id' => 'NCBI_BioSample_Attributes:' . $term_name]);
+      $term_id = 'NCBI_BioSample_Attributes:' . $term_name;
+      $cvterm = chado_get_cvterm(['id' => $term_id]);
+
+      // If this term does not exist, we need to add it.
+      if (!$cvterm) {
+        tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Adding new cvterm !term_id', ['!term_id' => $term_id], [
+          'print' => TRUE,
+          'job' => $this->job,
+        ]);
+        $cvterm = chado_insert_cvterm([
+          'id' => $term_id,
+          'name' => $term_name,
+          'cv_name' => 'NCBI BioSample Attributes',
+        ]);
+      }
+
       $cvterm_id = $cvterm->cvterm_id;
       $this->createProperty($cvterm_id, $value);
     }

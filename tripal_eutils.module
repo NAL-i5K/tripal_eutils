@@ -80,18 +80,40 @@ function tripal_eutils_permission() {
  * @param string $db
  *   The database name (eg, biosample, assembly or bioproject).
  * @param string $accession
- *   The numeric accession.
+ *   The numeric accession, or accessions separated by delimiter of comma, semicolon, or space.
  * @param bool $create_linked_records
  *   Whether to create linked records or not.
  */
 function tripal_eutils_create_records(string $db, string $accession, bool $create_linked_records, $job = NULL) {
-  try {
+  $accs = preg_split('/[,; ]+/', trim($accession));
+  foreach ($accs as $acc) {
+    $attempts = 3;
+    $success = false;
+    while ((!$success) and ($attempts)) {
+      try {
 
-    $eutils = new EUtils($create_linked_records, $job);
-    $eutils->get($db, $accession);
-  }
-  catch (Exception $exception) {
+        $eutils = new EUtils($create_linked_records, $job);
+        $eutils->get($db, $acc);
+        $success = true;
+      }
+      catch (Exception $exception) {
 
-    tripal_report_error('tripal_eutils', TRIPAL_ERROR, $exception->getMessage(), [], ['print' => TRUE, 'job' => $job]);
+        $message = $exception->getMessage();
+        // Distinguish between download error and SQL error, e.g. from reloading same assembly twice.
+        // Download error: "ERROR Could not make request: Status: 400"
+        // SQL error: "SQLSTATE[25P02]: In failed sql transaction: 7 ERROR:  current transaction is aborted, commands ignored until end of transaction block"
+        if (preg_match('/SQL/', $message)) {
+          $attempts = 1;
+        }
+        if ($attempts > 1) {
+          tripal_report_error('tripal_eutils', TRIPAL_WARNING, 'Download error, retrying '.$message, [], ['print' => TRUE, 'job' => $job]);
+          sleep(1);
+        }
+        else {
+          tripal_report_error('tripal_eutils', TRIPAL_ERROR, $message, [], ['print' => TRUE, 'job' => $job]);
+        }
+      }
+      $attempts--;
+    }
   }
 }
