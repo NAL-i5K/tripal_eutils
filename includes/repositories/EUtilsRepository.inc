@@ -119,11 +119,15 @@ abstract class EUtilsRepository {
    * Get accession by dbxref id.
    *
    * @param int $id
+   *   The Chado dbxref id (dbxref.dbxref_id).
    *
    * @return mixed
+   *   The Chado dbxref object.
    */
   public function getAccessionByID($id) {
-    return db_select('chado.dbxref', 'd')->fields('d')->condition(
+
+    $query = chado_db_select('dbxref', 'd');
+    return $query->fields('d')->condition(
       'dbxref_id', $id
     )->execute()->fetchObject();
   }
@@ -147,8 +151,9 @@ abstract class EUtilsRepository {
       return static::$cache['accessions'][$name];
     }
 
-    $accession = db_select('chado.dbxref', 'd')
-      ->fields('d')
+    $query = chado_db_select('dbxref', 'd');
+
+    $accession = $query->fields('d')
       ->condition('accession', $name)
       ->condition('db_id', $db_id)
       ->execute()
@@ -320,39 +325,44 @@ abstract class EUtilsRepository {
   /**
    * Get contact name.
    *
-   * @param static $contact_name
+   * @param string $contact_name
    *   The contact name.
    *
    * @return mixed
-   *   contact record
+   *   contact record.
    *
    * @throws \Exception
    */
-  public function createContact($contact_name) {
+  public function createContact(string $contact_name) {
     if (isset(static::$cache['contacts']) && static::$cache['contacts'][$contact_name]) {
       $contact = static::$cache['contacts'][$contact_name];
     }
     else {
-      $contact = db_select('chado.contact', 'C')->fields('C')->condition(
+      $query = chado_db_select('contact', 'C');
+      $contact = $query->fields('C')->condition(
         'name', $contact_name
       )->execute()->fetchObject();
 
       if (empty($contact)) {
-        $contact_id = db_insert('chado.contact')->fields(
-          [
-            'name' => $contact_name,
-          ]
-        )->execute();
+
+        $values = [
+          'name' => $contact_name,
+          'description' => '',
+        ];
+        $contact = chado_insert_record('contact', $values);
+        $contact_id = $contact['contact_id'];
 
         if (!$contact_id) {
           throw new Exception(
             'Unable to create a contact for ' . $contact_name
           );
         }
-
-        $contact = db_select('chado.contact', 'C')->fields('C')->condition(
+        // Query again because we get an array instead of an object.
+        $query = chado_db_select('contact', 'C');
+        $contact = $query->fields('C')->condition(
           'contact_id', $contact_id
         )->execute()->fetchObject();
+
       }
 
       static::$cache['contacts'][$contact_name] = $contact;
@@ -365,6 +375,7 @@ abstract class EUtilsRepository {
    * Set the Chado record id.
    *
    * @param int $id
+   *   The Chado base record ID.
    *
    * @return $this
    */
@@ -464,7 +475,7 @@ abstract class EUtilsRepository {
   }
 
   /**
-   * Generate query to getch an organism.
+   * Generate query to fetch an organism.
    *
    * Query to check if an organism exists in the DB based on the NCBITaxon
    * accession.
@@ -478,6 +489,7 @@ abstract class EUtilsRepository {
   private function organismQuery($accession) {
     $db = chado_get_db(['name' => 'NCBITaxon']);
 
+    // TODO: cant use chado_db_select here because of the joins.
     $query = db_select('chado.organism_dbxref', 'od');
     $query->join('chado.organism', 'o', 'o.organism_id = od.organism_id');
     $query->fields('o');
@@ -580,7 +592,7 @@ abstract class EUtilsRepository {
    * @param array $projects
    *   Array of base chado record project objects.
    */
-  public function linkProjects($projects) {
+  public function linkProjects(array $projects) {
 
     $base_record = $this->base_record_id;
 
@@ -589,17 +601,19 @@ abstract class EUtilsRepository {
     $table = 'project_' . $base_table;
     foreach ($projects as $project) {
 
-      $exists = db_select('chado.' . $table, 'lt')->fields('lt')->condition(
+      $query = chado_db_select($table, 'lt');
+
+      $exists = $query->fields('lt')->condition(
         'project_id', $project->project_id
       )->condition($base_table . '_id', $base_record)->execute()->fetchObject();
       if (!$exists) {
 
-        db_insert('chado.' . $table)->fields(
-          [
-            'project_id' => $project->project_id,
-            $base_table . '_id' => $base_record,
-          ]
-        )->execute();
+        $values = [
+          'project_id' => $project->project_id,
+          $base_table . '_id' => $base_record,
+        ];
+        chado_insert_record($table, $values);
+
       }
     }
   }

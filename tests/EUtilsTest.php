@@ -49,4 +49,27 @@ class EUtilsTest extends TripalTestCase {
 
     ];
   }
+//
+//  /**
+//   * @group orange
+//   */
+//  public function testChadoInsertRecordCanJoin(){
+//
+//    $pub = factory('chado.pub')->create();
+//    $analysis = factory('chado.analysis')->create();
+//
+//    chado_insert_record('analysis_pub', ['pub_id' => $pub->pub_id, 'analysis_id' => $analysis->analysis_id]);
+//    $connection = chado_db_select('pub', 'p');
+//    $connection->join('{analysis_pub}', 'ap', 'ap.pub_id = p.pub_id');
+//    $connection->fields('p');
+//    $connection->condition('ap.pub_id', $analysis->analysis);
+//    $result = $connection->execute()->fetchObject();
+//
+//    $this->assertNotFalse($result);
+//
+//    var_dump($result);
+//
+//    $this->assertEquals($result->pub_id, $pub->pub_id);
+//
+//  }
 }
