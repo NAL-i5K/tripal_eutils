@@ -75,7 +75,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     // Program and program version come from # Assembly method:
     // $data['attributes']['ftp_attributes']['# Assembly method:'].
-    $method_string = $data['attributes']['ftp_attributes']['# Assembly method:'];
+    $method_string = $data['attributes']['ftp_attributes']['# Assembly method:'] ?? 'Assembly method was not reported';
 
     // TODO: what do we want to do here?  Parse out the version from the
     // assembly program?  But what if we have multiple programs and
@@ -130,10 +130,10 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       // for now just use local.
       // $mapper->lookupAttribute($key)
       $term = tripal_insert_cvterm([
-        'id' => 'ncbi_properties:' . $key,
+        'id' => 'NCBI_BioSample_Attributes:' . $key,
         'name' => $key,
         'def' => '',
-        'cv_name' => 'ncbi_properties',
+        'cv_name' => 'NCBI BioSample Attributes',
       ]);
       $this->createProperty($term->cvterm_id, $value);
     }

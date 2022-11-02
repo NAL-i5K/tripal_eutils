@@ -9,8 +9,8 @@
  */
 function tripal_eutils_install() {
 
-  chado_insert_cv('ncbi_properties',
-    'The ncbi BioSample properties CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
+  chado_insert_cv('NCBI BioSample Attributes',
+    'The ncbi BioSample Attributes CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
 
   chado_insert_cvterm([
     'id' => 'local:full_ncbi_xml',
@@ -24,18 +24,10 @@ function tripal_eutils_install() {
     'cv_name' => 'local',
   ]);
 
-  chado_insert_cvterm(
-    [
-      'id' => 'ncbi_properties:submitter_provided_accession',
-      'name' => 'submitter_provided_accession',
-      'cv_name' => 'ncbi_properties',
-    ]
-  );
-
-
   tripal_eutils_add_dbs();
   tripal_eutils_insert_biosample_attribute_terms();
   tripal_eutils_install_chado_1_4_tables();
+  tripal_eutils_convert_terms();
 
 }
 
@@ -44,56 +36,58 @@ function tripal_eutils_install() {
  */
 function tripal_eutils_insert_extra_biosample_terms() {
 
-  tripal_insert_cvterm(
+  chado_insert_cvterm(
     [
-      'id' => 'ncbi_properties:samples provided by',
+      'id' => 'NCBI_BioSample_Attributes:samples provided by',
       'name' => 'Samples provided by',
-      'def' => '',
-      'cv_name' => 'ncbi_properties',
+      'definition' => '',
+      'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
 
-  tripal_insert_cvterm(
+  chado_insert_cvterm(
     [
-      'id' => 'ncbi_properties:Publication',
+      'id' => 'NCBI_BioSample_Attributes:Publication',
       'name' => 'Publication',
-      'def' => '',
-      'cv_name' => 'ncbi_properties',
+      'definition' => '',
+      'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
-  tripal_insert_cvterm(
+  chado_insert_cvterm(
     [
-      'id' => 'ncbi_properties:note',
+      'id' => 'NCBI_BioSample_Attributes:note',
       'name' => 'Note',
-      'def' => 'Misc. free text.',
-      'cv_name' => 'ncbi_properties',
+      'definition' => 'Misc. free text.',
+      'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
 }
 
 /**
- *Adds attribute terms for properties.
+ * Updates the NCBI BioSample Attribute CV Terms
+ *
+ * Automatically downloads and imports into the CVterm table the attribute
+ * names for biomaterials.
  */
 function tripal_eutils_insert_biosample_attribute_terms() {
-
-  $file = __DIR__ . '/mappings/biosample/xml_releases/11-30-18.xml';
-
-  $lookup = new \BiosamplePropertyLookup($file);
+  // We use NCBI biosample attributes to fill the biomaterialprop cv table.
+  // These attributes can be accessed at the following url:
+  // https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml
+  $lookup = new \BiosamplePropertyLookup();
 
   $terms = $lookup->lookupAll();
 
   foreach ($terms as $machine_name => $attributes) {
 
-    tripal_insert_cvterm(
+    chado_insert_cvterm(
       [
-        'id' => 'ncbi_properties:' . $machine_name,
+        'id' => 'NCBI_BioSample_Attributes:' . $machine_name,
         'name' => $attributes['label'],
-        'def' => $attributes['def'],
-        'cv_name' => 'ncbi_properties',
+        'definition' => $attributes['def'],
+        'cv_name' => 'NCBI BioSample Attributes',
       ]
     );
   }
-  // Version 1.0 as of November 29 2018: 456 terms.
 }
 
 /**
@@ -162,9 +156,9 @@ function tripal_eutils_add_dbs() {
   ]);
 
   chado_insert_db([
-    'name' => 'ncbi_properties',
-    'description' => 'Attribute and property terms for NCBI.',
-    'url' => 'http://www.ncbi.nlm.nih.gov/',
+    'name' => 'NCBI_BioSample_Attributes',
+    'description' => 'This database provides, in XML format, the listing of attribute names for biosamples housed in NCBI.',
+    'url' => 'https://www.ncbi.nlm.nih.gov/biosample/docs/attributes',
   ]);
 
   chado_insert_db([
@@ -267,6 +261,52 @@ function tripal_eutils_create_dbs_for_assembly_xrefs() {
   ]);
 
 }
+
+/**
+ * Convert terms from ncbi_properties to NCBI_BioSample_Attributes
+ */
+function tripal_eutils_convert_terms() {
+
+  // Insert the new cv and db entries, but not the terms from the XML (this means we can't just call
+  // tripal_eutils_install() again).
+  chado_insert_cv('NCBI BioSample Attributes',
+    'The ncbi BioSample Attributes CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
+
+  chado_insert_db([
+    'name' => 'NCBI_BioSample_Attributes',
+    'description' => 'Attribute and property terms for NCBI.',
+    'url' => 'http://www.ncbi.nlm.nih.gov/',
+  ]);
+
+  chado_insert_cvterm(
+    [
+      'id' => 'NCBI_BioSample_Attributes:submitter_provided_accession',
+      'name' => 'submitter_provided_accession',
+      'cv_name' => 'NCBI BioSample Attributes',
+    ],
+    ['update_existing' => false]
+  );
+
+
+  // Check if the ncbi_utilities name exists within the cv table, if so, get the cv_id
+  $query = "SELECT cv_id FROM chado.cv WHERE name LIKE 'ncbi_properties'";
+  $results = db_query($query);
+  
+  $cv_id = $results->fetchAssoc();
+  $cv_id = $cv_id['cv_id'];
+
+  // Get the $cv_id of the new NCBI_BioSample_Attributes
+  $query = "SELECT cv_id FROM chado.cv WHERE name LIKE 'NCBI_BioSample_Attributes'";
+  $results = db_query($query);
+
+  $new_cv_id = $results->fetchAssoc();
+  $new_cv_id = $new_cv_id['cv_id'];
+
+  // Insert the terms from NCBI's Sample XML file within the new CV (via the $new_cv_id)
+  tripal_eutils_insert_biosample_attribute_terms();
+
+}
+
 /**
  * Add extra property terms.
  */
@@ -281,4 +321,11 @@ function tripal_eutils_update_7301() {
 function tripal_eutils_update_7302(){
   tripal_eutils_create_dbs_for_assembly_xrefs();
 
+}
+
+/**
+ * Convert terms from ncbi_properties to NCBI_BioSample_Attributes
+ */
+function tripal_eutils_update_7303() {
+  tripal_eutils_convert_terms();
 }
