@@ -262,8 +262,6 @@ function tripal_eutils_add_dbs() {
   tripal_eutils_create_dbs_for_assembly_xrefs();
 }
 
-}
-
 /**
  * Adds Chado linker tables this module needs.
  *
