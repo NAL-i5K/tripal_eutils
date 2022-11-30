@@ -9,19 +9,17 @@ Tripal EUtilities requires:
 - Tripal 3
 - PHP >= 7.0
 - Drupal 7
-- `Tripal Manage Analyses <https://github.com/statonlab/tripal_manage_analyses.git>`_
 
 Installation
 ------------
 
-``tripal_eutils`` and its dependency ``tripal_manage_analyses`` are not available for deployment via Drush and must be installed via git.
+``tripal_eutils`` is not available for deployment via Drush and must be installed via git.
 
 .. code-block:: shell
 
   cd [location of your custom or contrib modules]
-  git clone https://github.com/statonlab/tripal_manage_analyses.git
   git clone https://github.com/NAL-i5K/tripal_eutils.git
-  drush pm-enable tripal_manage_analyses tripal_eutils -y
+  drush pm-enable tripal_eutils -y
 
 
 Chado
