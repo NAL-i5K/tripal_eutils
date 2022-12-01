@@ -219,6 +219,70 @@ function tripal_eutils_chado_1_4_schema() {
     ],
   ];
 
+  // Linker table between biomaterials and projects.
+  $schema['biomaterial_project'] = [
+    'fields' => [
+      'biomaterial_project_id' => ['type' => 'serial', 'not null' => TRUE],
+      'biomaterial_id' => ['type' => 'int', 'not null' => TRUE],
+      'project_id' => ['type' => 'int', 'not null' => TRUE],
+    ],
+    'primary key' => ['biomaterial_project_id'],
+    'foreign keys' => [
+      'biomaterial' => [
+        'table' => 'biomaterial',
+        'columns' => [
+          'biomaterial_id' => 'biomaterial_id',
+        ],
+      ],
+      'project' => [
+        'table' => 'project',
+        'columns' => [
+          'project_id' => 'project_id',
+        ],
+      ],
+    ],
+    'indexes' => [
+      'biomaterial_project_idx1' => ['biomaterial_id'],
+      'biomaterial_project_idx2' => ['project_id'],
+    ],
+    'unique keys' => [
+      'biomaterial_project_unique_uq1' => ['biomaterial_id', 'project_id'],
+    ],
+  ];
+
+  // Linker table between organisms and analyses.
+  // This table schema is identical to the tripal_manage_analyses module schema.
+  $schema['organism_analysis'] = [
+    'fields' => [
+      'organism_analysis_id' => ['type' => 'serial', 'not null' => TRUE],
+      'organism_id' => ['type' => 'int', 'not null' => TRUE],
+      'analysis_id' => ['type' => 'int', 'not null' => TRUE],
+    ],
+    'primary key' => ['organism_analysis_id'],
+    'foreign keys' => [
+      'organism' => [
+        'table' => 'organism',
+        'columns' => [
+          'organism_id' => 'organism_id',
+        ],
+      ],
+      'analysis' => [
+        'table' => 'analysis',
+        'columns' => [
+          'analysis_id' => 'analysis_id',
+        ],
+      ],
+    ],
+    'indexes' => [
+      'organism_analysis_idx1' => ['organism_id'],
+      'organism_analysis_idx2' => ['analysis_id'],
+
+    ],
+    'unique keys' => [
+      'organism_analysis_unique_uq1' => ['organism_id', 'analysis_id'],
+    ],
+  ];
+
   return $schema;
 
 }
@@ -296,7 +360,6 @@ function tripal_eutils_install_chado_1_4_tables() {
   $schema = tripal_eutils_chado_1_4_schema();
   chado_create_custom_table('biomaterial_project', $schema['biomaterial_project'], TRUE, NULL, FALSE);
   chado_create_custom_table('organism_analysis', $schema['organism_analysis'], TRUE, NULL, FALSE);
-
 }
 
 /**
