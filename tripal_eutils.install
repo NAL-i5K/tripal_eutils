@@ -32,6 +32,15 @@ function tripal_eutils_install() {
 }
 
 /**
+ * Implements hook_uninstall().
+ */
+function tripal_eutils_uninstall() {
+  // Should not be needed because this table is defined by hook_schema, but here we are.
+  db_drop_table('chado.tripal_eutils_tag_dictionary');
+
+}
+
+/**
  * Extra biosample property terms discovered in @ticket 170.
  */
 function tripal_eutils_insert_extra_biosample_terms() {
@@ -53,6 +62,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
       'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
+
   chado_insert_cvterm(
     [
       'id' => 'NCBI_BioSample_Attributes:note',
@@ -61,6 +71,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
       'cv_name' => 'NCBI BioSample Attributes',
     ]
   );
+
 }
 
 /**
@@ -70,7 +81,7 @@ function tripal_eutils_insert_extra_biosample_terms() {
  * names for biomaterials.
  */
 function tripal_eutils_insert_biosample_attribute_terms() {
-  // We use NCBI biosample attributes to fill the biomaterialprop cv table.
+  // We use NCBI biosample attributes to fill the 'NCBI BioSample Attributes' CV.
   // These attributes can be accessed at the following url:
   // https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml
   $lookup = new \BiosamplePropertyLookup();
@@ -88,6 +99,7 @@ function tripal_eutils_insert_biosample_attribute_terms() {
       ]
     );
   }
+
 }
 
 /**
@@ -131,6 +143,79 @@ function tripal_eutils_schema() {
     ],
     'primary key' => [
       'id',
+    ],
+  ];
+  return $schema;
+
+}
+
+/**
+ * Custom tables. These are not deleted on uninstall since they
+ * are chado 1.4 tables.
+ */
+function tripal_eutils_chado_1_4_schema() {
+
+  // Linker table between biomaterials and projects.
+  $schema['biomaterial_project'] = [
+    'fields' => [
+      'biomaterial_project_id' => ['type' => 'serial', 'not null' => TRUE],
+      'biomaterial_id' => ['type' => 'int', 'not null' => TRUE],
+      'project_id' => ['type' => 'int', 'not null' => TRUE],
+    ],
+    'primary key' => ['biomaterial_project_id'],
+    'foreign keys' => [
+      'biomaterial' => [
+        'table' => 'biomaterial',
+        'columns' => [
+          'biomaterial_id' => 'biomaterial_id',
+        ],
+      ],
+      'project' => [
+        'table' => 'project',
+        'columns' => [
+          'project_id' => 'project_id',
+        ],
+      ],
+    ],
+    'indexes' => [
+      'biomaterial_project_idx1' => ['biomaterial_id'],
+      'biomaterial_project_idx2' => ['project_id'],
+    ],
+    'unique keys' => [
+      'biomaterial_project_unique_uq1' => ['biomaterial_id', 'project_id'],
+    ],
+  ];
+
+  // Linker table between organisms and analyses.
+  // This table schema is identical to the tripal_manage_analyses module schema.
+  $schema['organism_analysis'] = [
+    'fields' => [
+      'organism_analysis_id' => ['type' => 'serial', 'not null' => TRUE],
+      'organism_id' => ['type' => 'int', 'not null' => TRUE],
+      'analysis_id' => ['type' => 'int', 'not null' => TRUE],
+    ],
+    'primary key' => ['organism_analysis_id'],
+    'foreign keys' => [
+      'organism' => [
+        'table' => 'organism',
+        'columns' => [
+          'organism_id' => 'organism_id',
+        ],
+      ],
+      'analysis' => [
+        'table' => 'analysis',
+        'columns' => [
+          'analysis_id' => 'analysis_id',
+        ],
+      ],
+    ],
+    'indexes' => [
+      'organism_analysis_idx1' => ['organism_id'],
+      'organism_analysis_idx2' => ['analysis_id'],
+
+    ],
+    'unique keys' => [
+      'organism_analysis_unique_uq1' => ['organism_id', 'analysis_id'],
     ],
   ];
 
@@ -199,13 +284,14 @@ function tripal_eutils_schema() {
   ];
 
   return $schema;
+
 }
 
 /**
  * Add chado db records.
  */
 function tripal_eutils_add_dbs() {
-  tripal_insert_db(
+  chado_insert_db(
     [
       'name' => 'NCBI BioSample',
       'description' => 'The BioSample database contains descriptions of biological source materials used in experimental assays.',
@@ -213,6 +299,7 @@ function tripal_eutils_add_dbs() {
       'url' => 'http://www.ncbi.nlm.nih.gov/biosample/',
     ]
   );
+
   chado_insert_db([
     'name' => 'NCBI SRA',
     'url' => 'https://www.ncbi.nlm.nih.gov/sra/',
@@ -245,6 +332,7 @@ function tripal_eutils_add_dbs() {
     'url' => 'https://www.ncbi.nlm.nih.gov/genbank/',
     'urlprefix' => 'https://www.ncbi.nlm.nih.gov/genbank/{accession}',
   ]);
+
   chado_insert_db([
     'name' => 'NCBI BioProject',
     'description' => "A BioProject is a collection of biological data related to a single initiative, originating from a single organization or from a consortium.",
@@ -260,6 +348,7 @@ function tripal_eutils_add_dbs() {
   ]);
 
   tripal_eutils_create_dbs_for_assembly_xrefs();
+
 }
 
 /**
@@ -268,7 +357,7 @@ function tripal_eutils_add_dbs() {
  * These tables will be in the Chado 1.4 release so let's add them here for now.
  */
 function tripal_eutils_install_chado_1_4_tables() {
-  $schema = tripal_eutils_schema();
+  $schema = tripal_eutils_chado_1_4_schema();
   chado_create_custom_table('biomaterial_project', $schema['biomaterial_project'], TRUE, NULL, FALSE);
   chado_create_custom_table('organism_analysis', $schema['organism_analysis'], TRUE, NULL, FALSE);
 }
@@ -320,22 +409,7 @@ function tripal_eutils_convert_terms() {
     ['update_existing' => false]
   );
 
-
-  // Check if the ncbi_utilities name exists within the cv table, if so, get the cv_id
-  $query = "SELECT cv_id FROM chado.cv WHERE name LIKE 'ncbi_properties'";
-  $results = db_query($query);
-  
-  $cv_id = $results->fetchAssoc();
-  $cv_id = $cv_id['cv_id'];
-
-  // Get the $cv_id of the new NCBI_BioSample_Attributes
-  $query = "SELECT cv_id FROM chado.cv WHERE name LIKE 'NCBI_BioSample_Attributes'";
-  $results = db_query($query);
-
-  $new_cv_id = $results->fetchAssoc();
-  $new_cv_id = $new_cv_id['cv_id'];
-
-  // Insert the terms from NCBI's Sample XML file within the new CV (via the $new_cv_id)
+  // Insert the terms from NCBI's Sample XML file into the 'NCBI BioSample Attributes' CV
   tripal_eutils_insert_biosample_attribute_terms();
 
 }
@@ -361,4 +435,5 @@ function tripal_eutils_update_7302(){
  */
 function tripal_eutils_update_7303() {
   tripal_eutils_convert_terms();
+
 }
