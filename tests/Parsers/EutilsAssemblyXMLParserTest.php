@@ -67,7 +67,7 @@ class EutilsAssemblyXMLParserTest extends TripalTestCase {
     $acc_master = $base_keys['accessions'];
 
     if (!empty($acc_master)) {
-      //we only bother specifying keys for some of hte files.
+      //we only bother specifying keys for some of the files.
       $this->assertEquals($acc_master, $accessions);
     }
 

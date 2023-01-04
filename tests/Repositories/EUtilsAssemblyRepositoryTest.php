@@ -239,7 +239,7 @@ class EUtilsAssemblyRepositoryTest extends TripalTestCase {
 
   private function parseAndCreateAsembly() {
 
-    // Oops, this doesnt work like i expect it to, this code never fires....
+    // Oops, this doesn't work like I expect it to, this code never fires....
     if ($this->repository != NULL) {
       return $this->repository;
     }

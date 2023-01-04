@@ -217,8 +217,8 @@ abstract class EUtilsRepository {
   /**
    * Create a dbxref record.
    *
-   * Creates a new accession record if does not exist and attaches it to
-   * the given record.
+   * Creates a new accession record if it does not exist, and attaches
+   * it to the given record.
    *
    * @param array $accession
    *   Expected keys: db and value, where the full accession is db:value.

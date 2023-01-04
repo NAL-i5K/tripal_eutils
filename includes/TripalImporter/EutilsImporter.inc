@@ -7,7 +7,7 @@ class EutilsImporter extends TripalImporter {
 
 
   public static $name = 'NCBI EUtils Accession loader';
-  public static $description = 'Import a BLAST XML file into Chado';
+  public static $description = 'Import NCBI BioProjects, BioSamples, or Assemblies into Chado';
   public static $machine_name = 'eutils_loader';
   public static $use_analysis = FALSE;
   public static $button_text = 'Import NCBI Record';
@@ -34,7 +34,7 @@ class EutilsImporter extends TripalImporter {
 
     $db_choices = [
       'bioproject' => 'BioProject',
-      'biosample' => 'Biosample',
+      'biosample' => 'BioSample',
       'assembly' => 'Assembly',
     ];
 
