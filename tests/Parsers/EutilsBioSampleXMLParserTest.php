@@ -32,7 +32,7 @@ class EutilsBioSampleXMLParserTest extends TripalTestCase {
       $this->assertNotEmpty($biosample['accessions']);
       $this->assertNotEmpty($biosample['attributes']);
 
-      //Accessions should consist of an aray of arrays.  however hte keys of those arrays seems irregular.
+      //Accessions should consist of an aray of arrays.  however the keys of those arrays seems irregular.
 
       if ($biosample['name'] == 'SAMN02953603'){
         // This sample has a linked project.  Was it parsed?

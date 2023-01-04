@@ -199,7 +199,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    */
   public function linkOrganism($organism) {
     if (!chado_table_exists('organism_analysis')) {
-      throw new Exception('The organism_analysis linker table doesnt exist.  No way to link this organism.');
+      throw new Exception('The organism_analysis linker table doesn't exist. No way to link this organism.');
     }
 
     $result = db_select('chado.organism_analysis', 't')
