@@ -143,13 +143,8 @@ class TagMapper {
       return static::$cache[$term['id']];
     }
 
-    // Some of the terms listed in provideBiosampleAttributeDict()
-    // may not exist in your database, in which case NULL is returned.
-    // Should a warning be printed if there is no such term?
-    $term = chado_get_cvterm($term);
-    if ($term) {
-      static::$cache[$term->cvterm_id] = $term;
-    }
+    $term = tripal_get_cvterm($term);
+    static::$cache[$term->cvterm_id] = $term;
     return $term;
   }
 
