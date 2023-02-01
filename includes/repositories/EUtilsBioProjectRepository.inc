@@ -61,22 +61,23 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
 
     $this->createXMLProp($data['full_ncbi_xml']);
 
-    $links = $data['linked_records'];
-    $pubs = $links['pubs'];
-    $biosamples = $links['biosample'];
-    $assemblies = $links['assembly'];
-    if (!empty($biosamples)) {
-      $this->createLinkedRecords($biosamples, 'biosample');
+    if (array_key_exists('linked_records', $data)) {
+      $links = $data['linked_records'];
+      if (array_key_exists('biosample', $links)) {
+        $biosamples = $links['biosample'];
+        $this->createLinkedRecords($biosamples, 'biosample');
+      }
+      if (array_key_exists('assembly', $links)) {
+        $assemblies = $links['assembly'];
+        $this->createLinkedRecords($assemblies, 'assembly');
+      }
+      // Pubs are linked records but we always want to import them
+      // since they won't cause a link-loop.
+      if (array_key_exists('pubs', $links)) {
+        $pubs = $links['pubs'];
+        $this->createPubs($pubs);
+      }
     }
-    if (!empty($assemblies)) {
-      $this->createLinkedRecords($assemblies, 'assembly');
-    }
-    // Pubs are linked records but we always want to import them
-    // since they wont cause a link-loop.
-    if (!empty($pubs)) {
-      $this->createPubs($pubs);
-    }
-
 
     return $project;
   }
