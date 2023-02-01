@@ -248,8 +248,21 @@ class EUtils {
    * @throws \Exception
    */
   private function checkResponseSuccess($response, string $db, string $accession) {
+    $error_message = '';
+    // Check for download error.
     if (!$response->isSuccessful()) {
       $error_message = $response->hasError() ? $response->errorMessage() : 'Status: ' . $response->status();
+    }
+    else {
+      // Check for other errors, such as accessions that are not yet
+      // public, e.g. "The following ID is not public in BioProject: 123456"
+      $xml = $response->xml();
+      $errors = $xml->xpath('DocumentSummary/error');
+      if ($errors) {
+        $error_message = (string) $errors[0];
+      }
+    }
+    if ($error_message) {
       $variables = ['!db' => $db, '!accession' => $accession];
       $job = $this->job;
       $options = ['print' => TRUE, 'job' => $job];
