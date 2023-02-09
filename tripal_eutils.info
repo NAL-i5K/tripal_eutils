@@ -3,4 +3,5 @@ description = Provides linker field alternatives and tripalImporters for adding 
 project = tripal_eutils
 package = Tripal Extensions
 core = 7.x
+version = 7.x-1.2
 dependencies[] = tripal
