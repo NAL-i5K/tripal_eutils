@@ -274,7 +274,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
       $search = new EUtils(FALSE);
       $pub = $search->get('pubmed', $accession);
 
-      if (property_exists($pub, 'pub_id')) {
+      if ($pub and property_exists($pub, 'pub_id')) {
         $values = [
           'project_id' => $this->base_record_id,
           'pub_id' => $pub->pub_id,
