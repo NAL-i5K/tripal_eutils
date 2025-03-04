@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Component\Utility\UrlHelper;
+
 /**
  * Builds and executes the API request to NCBI.
  *
@@ -127,14 +129,15 @@ class EUtilsRequest {
 
     if (!empty($this->params)) {
       if ($method !== 'POST') {
-        $url .= '?' . http_build_query($this->params);
+        $url .= '?' . UrlHelper::buildQuery($this->params);
       }
       else {
-        $params['data'] = http_build_query($this->params);
+        $params['data'] = UrlHelper::buildQuery($this->params);
       }
     }
 
-    $response = drupal_http_request($url, $params);
+    /** @var GuzzleHttp\Psr7\Response **/
+    $response = \Drupal::httpClient()->get($url, $params);
     return new EUtilsResource($response);
   }
 

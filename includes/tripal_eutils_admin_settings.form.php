@@ -39,7 +39,7 @@ function tripal_eutils_admin_settings_form_validate($form, &$form_state) {
   $url .= '?api_key='.$form_state['values']['api_key'];
 
   // Make the request
-  $response = drupal_http_request($url);
+  $response = \Drupal::httpClient()->get($url);
 
   // Error handling
   if (array_key_exists('error',$response))

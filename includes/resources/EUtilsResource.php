@@ -32,9 +32,9 @@ class EUtilsResource {
    * EUtilsResource constructor.
    *
    * @param object $response
-   *   The object returned by drupal_http_request()
+   *   The object returned by Drupal::httpClient()
    *
-   * @see drupal_http_request()
+   * @see httpClient()
    */
   public function __construct($response) {
     $this->response = $response;
@@ -46,7 +46,7 @@ class EUtilsResource {
    * @return array
    */
   public function headers() {
-    return $this->response->headers;
+    return $this->response->getHeaders();
   }
 
   /**
@@ -56,7 +56,7 @@ class EUtilsResource {
    *   Status code.
    */
   public function status() {
-    return (int) $this->response->code;
+    return (int) $this->response->getStatusCode();
   }
 
   /**
@@ -122,7 +122,7 @@ class EUtilsResource {
    *   The raw body response string.
    */
   public function originalBody() {
-    return $this->response->data;
+    return (string) $this->response->getBody();
   }
 
   /**
@@ -145,7 +145,7 @@ class EUtilsResource {
    * Parse response into DOMDocument.
    *
    * @return \DOMDocument
-   *   The response as  DOMDocument.
+   *   The response as DOMDocument.
    */
   public function dom() {
     $dom = new DOMDocument();
