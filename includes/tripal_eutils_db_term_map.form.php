@@ -6,7 +6,7 @@
  *
  * This form lets users map attributes and other XML tags.
  */
-function tripal_euitils_db_term_map_form($form, &$form_state, $db_type = NULL){
+function tripal_eutils_db_term_map_form($form, &$form_state, $db_type = NULL){
 
   if (!$db_type){
     tripal_set_message('what should we do here? nothing?', TRIPAL_ERROR);
@@ -20,6 +20,6 @@ function tripal_euitils_db_term_map_form($form, &$form_state, $db_type = NULL){
 
 }
 
-function tripal_euitils_db_term_map_form_submit(){
+function tripal_eutils_db_term_map_form_submit(){
 
 }
