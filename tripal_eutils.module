@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Tripal Eutils module file.
+ * Primary module hooks for Tripal Eutils module.
  */
 
 require_once 'includes/EUtilsFactoryInterface.php';
