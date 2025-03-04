@@ -48,9 +48,6 @@ function tripal_eutils_install() {
  * Implements hook_uninstall().
  */
 function tripal_eutils_uninstall() {
-  // Should not be needed because this table is defined by hook_schema, but here we are.
-  db_drop_table('chado.tripal_eutils_tag_dictionary');
-
 }
 
 /**
