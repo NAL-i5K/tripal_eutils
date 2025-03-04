@@ -20,7 +20,6 @@
   </testsuites>
   <filter>
     <whitelist addUncoveredFilesFromWhitelist="true">
-      <directory suffix=".inc">./includes</directory>
       <directory suffix=".php">./includes</directory>
     </whitelist>
   </filter>

@@ -5,43 +5,43 @@
  * Tripal Eutils module file.
  */
 
-require_once 'includes/EUtilsFactoryInterface.inc';
-require_once 'includes/resources/EUtilsResource.inc';
-require_once 'includes/resources/EUtilsRequest.inc';
-require_once 'includes/resources/EFetch.inc';
-require_once 'includes/resources/ESearch.inc';
-require_once 'includes/resources/ESummary.inc';
-require_once 'includes/resources/EUtils.inc';
-require_once 'includes/resources/EFTP.inc';
+require_once 'includes/EUtilsFactoryInterface.php';
+require_once 'includes/resources/EUtilsResource.php';
+require_once 'includes/resources/EUtilsRequest.php';
+require_once 'includes/resources/EFetch.php';
+require_once 'includes/resources/ESearch.php';
+require_once 'includes/resources/ESummary.php';
+require_once 'includes/resources/EUtils.php';
+require_once 'includes/resources/EFTP.php';
 
 // Connects to NCBI to fetch the current biosample property list hosted.
-require_once 'includes/resources/BiosamplePropertyLookup.inc';
+require_once 'includes/resources/BiosamplePropertyLookup.php';
 
 // Parsers.  Convert XML into keyed arrays.
-require_once 'includes/xml_parsers/EUtilsXMLParserFactory.inc';
-require_once 'includes/xml_parsers/EUtilsParserInterface.inc';
-require_once 'includes/xml_parsers/EUtilsBioSampleParser.inc';
-require_once 'includes/xml_parsers/EUtilsBioProjectParser.inc';
-require_once 'includes/xml_parsers/EUtilsAssemblyParser.inc';
-require_once 'includes/xml_parsers/EUtilsPubmedParser.inc';
+require_once 'includes/xml_parsers/EUtilsXMLParserFactory.php';
+require_once 'includes/xml_parsers/EUtilsParserInterface.php';
+require_once 'includes/xml_parsers/EUtilsBioSampleParser.php';
+require_once 'includes/xml_parsers/EUtilsBioProjectParser.php';
+require_once 'includes/xml_parsers/EUtilsAssemblyParser.php';
+require_once 'includes/xml_parsers/EUtilsPubmedParser.php';
 
 // Repositories. Handling DB operations.
-require_once 'includes/repositories/EUtilsRepositoryFactory.inc';
-require_once 'includes/repositories/EUtilsRepository.inc';
-require_once 'includes/repositories/EUtilsBioSampleRepository.inc';
-require_once 'includes/repositories/EUtilsBioProjectRepository.inc';
-require_once 'includes/repositories/EUtilsAssemblyRepository.inc';
-require_once 'includes/repositories/EUtilsPubmedRepository.inc';
+require_once 'includes/repositories/EUtilsRepositoryFactory.php';
+require_once 'includes/repositories/EUtilsRepository.php';
+require_once 'includes/repositories/EUtilsBioSampleRepository.php';
+require_once 'includes/repositories/EUtilsBioProjectRepository.php';
+require_once 'includes/repositories/EUtilsAssemblyRepository.php';
+require_once 'includes/repositories/EUtilsPubmedRepository.php';
 
 // Repository helpers.  Assist with looking up terms.
-require_once 'includes/TagMapper.inc';
+require_once 'includes/TagMapper.php';
 
 // Formatters.
-require_once 'includes/formatters/EUtilsFormatter.inc';
-require_once 'includes/formatters/EUtilsFormatterFactory.inc';
-require_once 'includes/formatters/EUtilsBioSampleFormatter.inc';
-require_once 'includes/formatters/EUtilsBioProjectFormatter.inc';
-require_once 'includes/formatters/EUtilsAssemblyFormatter.inc';
+require_once 'includes/formatters/EUtilsFormatter.php';
+require_once 'includes/formatters/EUtilsFormatterFactory.php';
+require_once 'includes/formatters/EUtilsBioSampleFormatter.php';
+require_once 'includes/formatters/EUtilsBioProjectFormatter.php';
+require_once 'includes/formatters/EUtilsAssemblyFormatter.php';
 
 /**
  * Implements hook_menu().
@@ -53,7 +53,7 @@ function tripal_eutils_menu() {
   $items['admin/tripal/tripal_eutils'] = [
     'title' => 'Tripal EUtils settings',
     'page callback' => 'drupal_get_form',
-    'file' => 'includes/tripal_eutils_admin_settings.form.inc',
+    'file' => 'includes/tripal_eutils_admin_settings.form.php',
     'access arguments' => ['access tripal_eutils admin'],
     'page arguments' => ['tripal_eutils_admin_settings_form'],
   ];
