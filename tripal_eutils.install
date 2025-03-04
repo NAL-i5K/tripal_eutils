@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\tripal_chado\Services\ChadoCustomTable;
+
 /**
  * @file
  * Install, update and uninstall functions for the Tripal Eutils module.
@@ -10,26 +12,36 @@
  */
 function tripal_eutils_install() {
 
-  chado_insert_cv('NCBI BioSample Attributes',
-    'The ncbi BioSample Attributes CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
+  $buddy_service = \Drupal::service('tripal_chado.chado_buddy');
+  /** @var Drupal\tripal_chado\Plugin\ChadoBuddy\ChadoDbxrefBuddy **/
+  $dbxref_instance = $buddy_service->createInstance('chado_dbxref_buddy', []);
+  //** #var Drupal\tripal_chado\Plugin\ChadoBuddy\ChadoCvtermBuddy **/
+  $cvterm_instance = $buddy_service->createInstance('chado_cvterm_buddy', []);
+  $custom_table_service = \Drupal::service('tripal_chado.custom_tables');
 
-  chado_insert_cvterm([
-    'id' => 'local:full_ncbi_xml',
-    'name' => 'full_ncbi_xml',
-    'cv_name' => 'local',
-  ]);
+  $cvterm_instance->upsertCv([
+    'cv.name' => 'NCBI BioSample Attributes',
+    'cv.definition' => 'The ncbi BioSample Attributes CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml',
+  ], []);
 
-  chado_insert_cvterm([
-    'id' => 'local:ncbi_FTP_links',
-    'name' => 'NCBI Data Download FTP Link',
-    'cv_name' => 'local',
-  ]);
+  $cvterm_instance->upsertCvterm([
+    'db.name' => 'local',
+    'dbxref.accession' => 'full_ncbi_xml',
+    'cv.name' => 'local',
+    'cvterm.name' => 'full_ncbi_xml',
+  ], []);
 
-  tripal_eutils_add_dbs();
-  tripal_eutils_insert_biosample_attribute_terms();
-  tripal_eutils_install_chado_1_4_tables();
-  tripal_eutils_convert_terms();
-
+  $cvterm_instance->upsertCvterm([
+    'db.name' => 'local',
+    'dbxref.accession' => 'ncbi_FTP_links',
+    'cv.name' => 'local',
+    'cvterm.name' => 'NCBI Data Download FTP Link',
+  ], []);
+  tripal_eutils_add_dbs($dbxref_instance);
+  tripal_eutils_insert_biosample_attribute_terms($cvterm_instance);
+  tripal_eutils_install_chado_1_4_tables($custom_table_service);
+  tripal_eutils_insert_extra_biosample_terms($cvterm_instance);
+  tripal_eutils_create_dbs_for_assembly_xrefs($dbxref_instance);
 }
 
 /**
@@ -43,36 +55,35 @@ function tripal_eutils_uninstall() {
 
 /**
  * Extra biosample property terms discovered in @ticket 170.
+ *
+ * @param $cvterm_instance
+ *   CVterm buddy service instance
  */
-function tripal_eutils_insert_extra_biosample_terms() {
+function tripal_eutils_insert_extra_biosample_terms($cvterm_instance): void {
 
-  chado_insert_cvterm(
-    [
-      'id' => 'NCBI_BioSample_Attributes:samples provided by',
-      'name' => 'Samples provided by',
-      'definition' => '',
-      'cv_name' => 'NCBI BioSample Attributes',
-    ]
-  );
+  $cvterm_instance->upsertCvterm([
+    'db.name' => 'NCBI_BioSample_Attributes',
+    'dbxref.accession' => 'samples provided by',
+    'cv.name' => 'NCBI BioSample Attributes',
+    'cvterm.name' => 'Samples provided by',
+    'cvterm.definition' => '',
+  ], []);
 
-  chado_insert_cvterm(
-    [
-      'id' => 'NCBI_BioSample_Attributes:Publication',
-      'name' => 'Publication',
-      'definition' => '',
-      'cv_name' => 'NCBI BioSample Attributes',
-    ]
-  );
+  $cvterm_instance->upsertCvterm([
+    'db.name' => 'NCBI_BioSample_Attributes',
+    'dbxref.accession' => 'Publication',
+    'cv.name' => 'NCBI BioSample Attributes',
+    'cvterm.name' => 'Publication',
+    'cvterm.definition' => '',
+  ], []);
 
-  chado_insert_cvterm(
-    [
-      'id' => 'NCBI_BioSample_Attributes:note',
-      'name' => 'Note',
-      'definition' => 'Misc. free text.',
-      'cv_name' => 'NCBI BioSample Attributes',
-    ]
-  );
-
+  $cvterm_instance->upsertCvterm([
+    'db.name' => 'NCBI_BioSample_Attributes',
+    'dbxref.accession' => 'note',
+    'cv.name' => 'NCBI BioSample Attributes',
+    'cvterm.name' => 'Note',
+    'cvterm.definition' => 'Misc. free text.',
+  ], []);
 }
 
 /**
@@ -80,27 +91,26 @@ function tripal_eutils_insert_extra_biosample_terms() {
  *
  * Automatically downloads and imports into the CVterm table the attribute
  * names for biomaterials.
+ *
+ * @param $cvterm_instance
+ *   CVterm buddy service instance
  */
-function tripal_eutils_insert_biosample_attribute_terms() {
+function tripal_eutils_insert_biosample_attribute_terms($cvterm_instance) {
   // We use NCBI biosample attributes to fill the 'NCBI BioSample Attributes' CV.
   // These attributes can be accessed at the following url:
   // https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml
   $lookup = new \BiosamplePropertyLookup();
-
   $terms = $lookup->lookupAll();
 
   foreach ($terms as $machine_name => $attributes) {
-
-    chado_insert_cvterm(
-      [
-        'id' => 'NCBI_BioSample_Attributes:' . $machine_name,
-        'name' => $attributes['label'],
-        'definition' => $attributes['def'],
-        'cv_name' => 'NCBI BioSample Attributes',
-      ]
-    );
+    $cvterm_instance->upsertCvterm([
+      'db.name' => 'NCBI_BioSample_Attributes',
+      'dbxref.accession' => $machine_name,
+      'cv.name' => 'NCBI BioSample Attributes',
+      'cvterm.name' => $attributes['label'],
+      'cvterm.definition' => $attributes['def'],
+    ], []);
   }
-
 }
 
 /**
@@ -110,6 +120,7 @@ function tripal_eutils_schema() {
 
   // This table is not currently used.  It would allow admins to use custom cvterms when loading in properties.  However, for now we want to limit this.
   $schema['tripal_eutils_tag_dictionary'] = [
+    'table' => 'tripal_eutils_tag_dictionary',
     'description' => 'Stores all attribute tags encountered and their mappings',
     'fields' => [
       'id' => [
@@ -147,17 +158,18 @@ function tripal_eutils_schema() {
     ],
   ];
   return $schema;
-
 }
 
 /**
  * Custom tables. These are not deleted on uninstall since they
  * are chado 1.4 tables.
+ *
  */
 function tripal_eutils_chado_1_4_schema() {
 
   // Linker table between biomaterials and projects.
   $schema['biomaterial_project'] = [
+    'table' => 'biomaterial_project',
     'fields' => [
       'biomaterial_project_id' => ['type' => 'serial', 'not null' => TRUE],
       'biomaterial_id' => ['type' => 'int', 'not null' => TRUE],
@@ -190,6 +202,7 @@ function tripal_eutils_chado_1_4_schema() {
   // Linker table between organisms and analyses.
   // This table schema is identical to the tripal_manage_analyses module schema.
   $schema['organism_analysis'] = [
+    'table' => 'organism_analysis',
     'fields' => [
       'organism_analysis_id' => ['type' => 'serial', 'not null' => TRUE],
       'organism_id' => ['type' => 'int', 'not null' => TRUE],
@@ -226,151 +239,113 @@ function tripal_eutils_chado_1_4_schema() {
 
 /**
  * Add chado db records.
+ *
+ * @param $dbxref_instance
+ *   Dbxref buddy service instance
  */
-function tripal_eutils_add_dbs() {
-  chado_insert_db(
-    [
-      'name' => 'NCBI BioSample',
-      'description' => 'The BioSample database contains descriptions of biological source materials used in experimental assays.',
-      'urlprefix' => 'http://www.ncbi.nlm.nih.gov/biosample/{accession}',
-      'url' => 'http://www.ncbi.nlm.nih.gov/biosample/',
-    ]
-  );
+function tripal_eutils_add_dbs($dbxref_instance) {
+  $dbxref_instance->upsertDb([
+    'db.name' => 'NCBI BioSample',
+    'db.description' => 'The BioSample database contains descriptions of biological source materials used in experimental assays.',
+    'db.urlprefix' => 'http://www.ncbi.nlm.nih.gov/biosample/{accession}',
+    'db.url' => 'https://www.ncbi.nlm.nih.gov/biosample/',
+  ], []);
 
-  chado_insert_db([
-    'name' => 'NCBI SRA',
-    'url' => 'https://www.ncbi.nlm.nih.gov/sra/',
-    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/sra/{accession}',
-  ]);
+  $dbxref_instance->upsertDb([
+    'db.name' => 'NCBI SRA',
+    'db.description' => '',
+    'db.urlprefix' => 'https://www.ncbi.nlm.nih.gov/sra/{accession}',
+    'db.url' => 'https://www.ncbi.nlm.nih.gov/sra/',
+  ], []);
 
-  chado_insert_db([
-    'name' => 'NCBI_BioSample_Attributes',
-    'description' => 'This database provides, in XML format, the listing of attribute names for biosamples housed in NCBI.',
-    'url' => 'https://www.ncbi.nlm.nih.gov/biosample/docs/attributes',
-  ]);
+  $dbxref_instance->upsertDb([
+    'db.name' => 'NCBI_BioSample_Attributes',
+    'db.description' => 'This database provides, in XML format, the listing of attribute names for biosamples housed in NCBI.',
+    'db.urlprefix' => '',
+    'db.url' => 'https://www.ncbi.nlm.nih.gov/biosample/docs/attributes',
+  ], []);
 
-  chado_insert_db([
-    'name' => 'NCBI WGS',
-    'url' => 'https://www.ncbi.nlm.nih.gov/Traces/wgs/',
-    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/Traces/wgs/{accession}',
-  ]);
+  $dbxref_instance->upsertDb([
+    'db.name' => 'NCBI WGS',
+    'db.description' => '',
+    'db.urlprefix' => 'https://www.ncbi.nlm.nih.gov/Traces/wgs/{accession}',
+    'db.url' => 'https://www.ncbi.nlm.nih.gov/Traces/wgs/',
+  ], []);
 
-  chado_insert_db([
-    'name' => 'NCBI Refseq',
-    'description' => 'A comprehensive, integrated, non-redundant, well-annotated set of reference sequences including genomic, transcript, and protein.',
-    'url' => 'https://www.ncbi.nlm.nih.gov/refseq/',
-    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/refseq/{accession}',
+  $dbxref_instance->upsertDb([
+    'db.name' => 'NCBI Refseq',
+    'db.description' => 'A comprehensive, integrated, non-redundant, well-annotated set of reference sequences including genomic, transcript, and protein.',
+    'db.urlprefix' => 'https://www.ncbi.nlm.nih.gov/refseq/{accession}',
+    'db.url' => 'https://www.ncbi.nlm.nih.gov/refseq/',
+  ], []);
 
-  ]);
+  $dbxref_instance->upsertDb([
+    'db.name' => 'NCBI GenBank',
+    'db.description' => 'GenBank ® is the NIH genetic sequence database, an annotated collection of all publicly available DNA sequences (Nucleic Acids Research, 2013 Jan;41(D1):D36-42).',
+    'db.urlprefix' => 'https://www.ncbi.nlm.nih.gov/genbank/{accession}',
+    'db.url' => 'https://www.ncbi.nlm.nih.gov/genbank/',
+  ], []);
 
-  chado_insert_db([
-    'name' => 'NCBI GenBank',
-    'description' => 'GenBank ® is the NIH genetic sequence database, an annotated collection of all publicly available DNA sequences (Nucleic Acids Research, 2013 Jan;41(D1):D36-42).',
-    'url' => 'https://www.ncbi.nlm.nih.gov/genbank/',
-    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/genbank/{accession}',
-  ]);
+  $dbxref_instance->upsertDb([
+    'db.name' => 'NCBI BioProject',
+    'db.description' => "A BioProject is a collection of biological data related to a single initiative, originating from a single organization or from a consortium.",
+    'db.urlprefix' => 'https://www.ncbi.nlm.nih.gov/bioproject/{accession}',
+    'db.url' => 'https://www.ncbi.nlm.nih.gov/bioproject/',
+  ], []);
 
-  chado_insert_db([
-    'name' => 'NCBI BioProject',
-    'description' => "A BioProject is a collection of biological data related to a single initiative, originating from a single organization or from a consortium.",
-    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/bioproject/{accession}',
-    'url' => 'https://www.ncbi.nlm.nih.gov/bioproject/',
-  ]);
+  $dbxref_instance->upsertDb([
+    'db.name' => 'NCBI Assembly',
+    'db.description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
+    'db.urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
+    'db.url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
+  ], []);
 
-  chado_insert_db([
-    'name' => 'NCBI Assembly',
-    'description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
-    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
-    'url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
-  ]);
-
-  tripal_eutils_create_dbs_for_assembly_xrefs();
+  tripal_eutils_create_dbs_for_assembly_xrefs($dbxref_instance);
 
 }
 
 /**
- * Adds Chado linker tables this module needs.
+ * Adds Chado linker tables that this module needs.
  *
  * These tables will be in the Chado 1.4 release so let's add them here for now.
+ *
+ * @param $custom_table_service
+ *   The chado custom table service
  */
-function tripal_eutils_install_chado_1_4_tables() {
-  $schema = tripal_eutils_chado_1_4_schema();
-  chado_create_custom_table('biomaterial_project', $schema['biomaterial_project'], TRUE, NULL, FALSE);
-  chado_create_custom_table('organism_analysis', $schema['organism_analysis'], TRUE, NULL, FALSE);
+function tripal_eutils_install_chado_1_4_tables($custom_table_service) {
+  // A list of the tables to be added
+  $tables = ['biomaterial_project', 'organism_analysis'];
+
+  $existing_schema = \Drupal::service('tripal_chado.database')->schema();
+  $new_schema = tripal_eutils_chado_1_4_schema();
+
+  foreach ($tables as $table) {
+    if (!$existing_schema->tableExists($table)) {
+      $new_table = $custom_table_service->create($table);
+      $new_table->setTableSchema($new_schema[$table]);
+    }
+  }
 }
 
 /**
  * Creates db entries for keys introduced in the assembly loader.
  *
+ * @param $dbxref_instance
+ *   DB buddy service instance
  */
-function tripal_eutils_create_dbs_for_assembly_xrefs() {
+function tripal_eutils_create_dbs_for_assembly_xrefs($dbxref_instance) {
 
-  chado_insert_db([
-    'name' => 'Refseq Assembly',
-    'description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
-    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
-    'url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
-  ]);
+  $dbxref_instance->upsertDb([
+    'db.name' => 'Refseq Assembly',
+    'db.description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
+    'db.urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
+    'db.url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
+  ], []);
 
-  chado_insert_db([
-    'name' => 'Genbank Assembly',
-    'description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
-    'urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
-    'url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
-  ]);
-
-}
-
-/**
- * Convert terms from ncbi_properties to NCBI_BioSample_Attributes
- */
-function tripal_eutils_convert_terms() {
-
-  // Insert the new cv and db entries, but not the terms from the XML (this means we can't just call
-  // tripal_eutils_install() again).
-  chado_insert_cv('NCBI BioSample Attributes',
-    'The ncbi BioSample Attributes CV is downloaded from https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/?format=xml.');
-
-  chado_insert_db([
-    'name' => 'NCBI_BioSample_Attributes',
-    'description' => 'Attribute and property terms for NCBI.',
-    'url' => 'http://www.ncbi.nlm.nih.gov/',
-  ]);
-
-  chado_insert_cvterm(
-    [
-      'id' => 'NCBI_BioSample_Attributes:submitter_provided_accession',
-      'name' => 'submitter_provided_accession',
-      'cv_name' => 'NCBI BioSample Attributes',
-    ],
-    ['update_existing' => false]
-  );
-
-  // Insert the terms from NCBI's Sample XML file into the 'NCBI BioSample Attributes' CV
-  tripal_eutils_insert_biosample_attribute_terms();
-
-}
-
-/**
- * Add extra property terms.
- */
-function tripal_eutils_update_7301() {
-  tripal_eutils_insert_extra_biosample_terms();
-
-}
-
-/**
- * Add extra databases
- */
-function tripal_eutils_update_7302(){
-  tripal_eutils_create_dbs_for_assembly_xrefs();
-
-}
-
-/**
- * Convert terms from ncbi_properties to NCBI_BioSample_Attributes
- */
-function tripal_eutils_update_7303() {
-  tripal_eutils_convert_terms();
-
+  $dbxref_instance->upsertDb([
+    'db.name' => 'Genbank Assembly',
+    'db.description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
+    'db.urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
+    'db.url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
+  ], []);
 }
