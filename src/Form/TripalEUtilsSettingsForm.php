@@ -12,13 +12,13 @@ use Drupal\Core\Form\FormStateInterface;
 
 
 /**
- * Class TripalEutilsSettingsForm.
+ * Class TripalEUtilsSettingsForm.
  *
  * @package Drupal\tripal\Form
  *
  * @ingroup tripal
  */
-class TripalEutilsSettingsForm extends FormBase {
+class TripalEUtilsSettingsForm extends FormBase {
 
   /**
    * Returns a unique string identifying the form.
@@ -31,7 +31,7 @@ class TripalEutilsSettingsForm extends FormBase {
   }
 
   /**
-   * Defines the settings form for Tripal Eutils.
+   * Defines the settings form for Tripal EUtils.
    *
    * @param array $form
    *   An associative array containing the structure of the form.

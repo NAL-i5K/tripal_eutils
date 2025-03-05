@@ -25,7 +25,7 @@ if read_the_docs_build:
     subprocess.call('doxygen tripal_eutils_galaxy_doxygen.config', shell=True)
 # -- Project information -----------------------------------------------------
 
-project = u'Tripal Eutils'
+project = u'Tripal EUtils'
 copyright = u'2018 GPL3'
 author = u'Bradford Condon, Abdullah Almsaeed'
 
@@ -155,7 +155,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'tripalEutils', u'Tripal Eutils Documentation',
+    (master_doc, 'TripalEUtils', u'Tripal EUtils Documentation',
      [author], 1)
 ]
 
@@ -166,8 +166,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'TripalEutils', u'Tripal Eutils Documentation',
-     author, 'TripalEutils', 'Import NCBI records into Chado.',
+    (master_doc, 'TripalEUtils', u'Tripal EUtils Documentation',
+     author, 'TripalEUtils', 'Import NCBI records into Chado.',
      'Tripal'),
 ]
 

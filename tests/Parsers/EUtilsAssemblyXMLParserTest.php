@@ -5,7 +5,7 @@ namespace Tests;
 use StatonLab\TripalTestSuite\DBTransaction;
 use StatonLab\TripalTestSuite\TripalTestCase;
 
-class EutilsAssemblyXMLParserTest extends TripalTestCase {
+class EUtilsAssemblyXMLParserTest extends TripalTestCase {
 
   use DBTransaction;
 

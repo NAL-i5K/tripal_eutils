@@ -36,7 +36,7 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
    * Handle the base Chado.analysis record.
    *
    * @param array $data
-   *   From \EutilsAssemblyParser.
+   *   From \EUtilsAssemblyParser.
    */
   private function formatBaseRecord(array $data) {
     if (!isset($data['name'])) {
@@ -105,7 +105,7 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
    * Describes additional records that will be created.
    *
    * @param array $accessions
-   *   the Accessions array from the EutilsAssemblyParser.
+   *   the Accessions array from the EUtilsAssemblyParser.
    */
   private function formatLinkedRecords(array $accessions) {
     $bioproject_found = FALSE;

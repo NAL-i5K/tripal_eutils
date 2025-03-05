@@ -1,6 +1,6 @@
-name: 'Tripal Eutils'
+name: 'Tripal EUtils'
 type: module
-description: 'Provides linker field alternatives and tripalImporters for adding ncbi records to your site'
+description: 'Provides linker field alternatives and tripal importers for adding NCBI records to your site'
 package: Tripal Extensions
 core_version_requirement: ^10 || ^11
 dependencies:

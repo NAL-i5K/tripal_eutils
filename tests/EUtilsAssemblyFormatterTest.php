@@ -7,7 +7,7 @@ use StatonLab\TripalTestSuite\TripalTestCase;
 /**
  *
  */
-class EutilsAssemblyFormatterTest extends TripalTestCase {
+class EUtilsAssemblyFormatterTest extends TripalTestCase {
 
   // Uncomment to auto start and rollback db transactions per test method.
   // use DBTransaction;.
@@ -20,7 +20,7 @@ class EutilsAssemblyFormatterTest extends TripalTestCase {
   public function testWholeFormat() {
 
     $parsed = $this->parseXML();
-    $formatter = new \EutilsAssemblyFormatter();
+    $formatter = new \EUtilsAssemblyFormatter();
     $elements = $formatter->format($parsed);
 
     $this->assertNotEmpty($elements);

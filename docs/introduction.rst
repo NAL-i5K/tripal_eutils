@@ -2,10 +2,10 @@ Introduction & Background
 =========================
 
 
-The Tripal Eutils module connects your Tripal site to NCBI.
+The Tripal EUtils module connects your Tripal site to NCBI.
 
 
-What is Eutils?
+What is EUtils?
 ----------------------
 
 E-utilities is NCBI's API for all of its databases.  Read more at:

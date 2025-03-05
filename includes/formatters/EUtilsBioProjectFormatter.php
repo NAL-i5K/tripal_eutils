@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class EutilsBioProject Formatter.
+ * Class EUtilsBioProject Formatter.
  *
  * @ingroup formatters
  */
@@ -39,7 +39,7 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
    * Handle the base Chado.analysis record.
    *
    * @param array $data
-   *   From \EutilsAssemblyParser.
+   *   From \EUtilsAssemblyParser.
    */
   private function formatBaseRecord(array $data) {
 
@@ -101,7 +101,7 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
    * Describes additional records that will be created.
    *
    * @param array $accessions
-   *   the Accessions array from the EutilsBioProjectParser.
+   *   the Accessions array from the EUtilsBioProjectParser.
    */
   private function formatLinkedRecords(array $accessions) {
 

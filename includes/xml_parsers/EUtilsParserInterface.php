@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Eutils Parsers should accept XML and return an array.
+ * Tripal EUtils Parsers should accept XML and return an array.
  *
  * @defgroup parsers
  */

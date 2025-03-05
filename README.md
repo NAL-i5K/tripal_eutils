@@ -5,7 +5,7 @@
 [![DOI](https://zenodo.org/badge/158557230.svg)](https://zenodo.org/badge/latestdoi/158557230)
 
 
-# Tripal Eutils
+# Tripal EUtils
 
 ![Card](docs/_static/EUtils_card.png)
 
