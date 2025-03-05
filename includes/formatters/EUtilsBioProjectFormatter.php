@@ -29,7 +29,8 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
       $this->formatPublications($pubs);
     }
     catch (Exception $exception) {
-      drupal_set_message($exception->getMessage());
+      \Drupal::service('tripal.logger')
+        ->error($exception->getMessage(), []);
     }
 
     return $this->elements;
@@ -53,16 +54,17 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
       $rows[] = ['Accession', $accession];
     }
 
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
     $this->elements['base'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => 'Project',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
     $this->elements['base']['table'] = [
-      '#markup' => $table,
-      '#type' => 'item',
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#type' => 'table',
     ];
   }
 
@@ -84,15 +86,17 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
       $rows[] = [$key, $value];
     }
 
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
     $this->elements['properties'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => 'Project Properties',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
     $this->elements['properties']['table'] = [
-      '#markup' => $table,
-      '#type' => 'item',
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#type' => 'table',
     ];
 
   }
@@ -131,19 +135,19 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
           $rows[] = [$type, $link];
         }
       }
-
     }
 
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
     $this->elements['links'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => 'Linked Records',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
     $this->elements['links']['table'] = [
-      '#markup' => $table,
-      '#type' => 'item',
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#type' => 'table',
     ];
   }
 
@@ -156,9 +160,10 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
   private function formatPublications(array $pubs) {
 
     $this->elements['pubs'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => 'Publications',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
 
     $rows = [];
@@ -178,11 +183,12 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
       $this->element['pubs']['notice'] = ['#markup' => 'No publications are associated with this Project.'];
 
     }
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
     $this->elements['pubs']['table'] = [
-      '#markup' => $table,
-      '#type' => 'item',
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#type' => 'table',
     ];
   }
 
