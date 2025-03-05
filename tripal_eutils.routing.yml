@@ -4,4 +4,4 @@ tripal.config.tripal_eutils_settings:
     _title: 'Tripal EUtils Configuration'
     _form: 'Drupal\tripal_eutils\Form\TripalEUtilsSettingsForm'
   requirements:
-    _permission: 'administer tripal'
+    _permission: 'access tripal_eutils admin'

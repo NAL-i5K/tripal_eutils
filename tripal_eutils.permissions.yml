@@ -1,0 +1,4 @@
+access tripal_eutils admin:
+  title: 'Submit NCBI Accessions directly via admin form'
+  description: 'Allows importing records from NCBI to Chado'
+  restrict access: true

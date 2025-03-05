@@ -44,37 +44,6 @@ require_once 'includes/formatters/EUtilsBioProjectFormatter.php';
 require_once 'includes/formatters/EUtilsAssemblyFormatter.php';
 
 /**
- * Implements hook_menu().
- */
-function tripal_eutils_menu() {
-
-  // Admin can configure which emails get sent out, more stuff?
-  // Set site-wide admin settings.
-  $items['admin/tripal/tripal_eutils'] = [
-    'title' => 'Tripal EUtils settings',
-    'page callback' => 'drupal_get_form',
-    'file' => 'includes/tripal_eutils_admin_settings.form.php',
-    'access arguments' => ['access tripal_eutils admin'],
-    'page arguments' => ['tripal_eutils_admin_settings_form'],
-  ];
-
-  return $items;
-}
-
-/**
- * Implements hook_permission().
- */
-function tripal_eutils_permission() {
-
-  return [
-    'access tripal_eutils admin' => [
-      'title' => t('Submit NCBI Accessions directly via admin form'),
-    ],
-  ];
-
-}
-
-/**
  * Runs the EUtils class to create the records for an NCBI entry.
  *
  * @param string $db
