@@ -1,0 +1,7 @@
+tripal.config.tripal_eutils_settings:
+  path: 'admin/tripal/config/tripal_eutils_settings'
+  defaults:
+    _title: 'Tripal Eutils Configuration'
+    _form: 'Drupal\tripal_eutils\Form\TripalEutilsSettingsForm'
+  requirements:
+    _permission: 'administer tripal'

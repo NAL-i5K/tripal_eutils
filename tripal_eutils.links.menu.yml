@@ -1,0 +1,8 @@
+# -- Configuration for Tripal Eutils module.
+tripal_eutils.tripal_eutils_settings:
+  title: 'Tripal Eutils Settings'
+  parent: tripal.config
+  description: 'Manage settings for the Tripal Eutils module.'
+  route_name: tripal.config.tripal_eutils_settings
+  weight: 85
+
