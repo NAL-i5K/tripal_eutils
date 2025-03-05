@@ -1,5 +1,8 @@
 <?php
 
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+
 /**
  * EUtilsFormatter Class.
  *
@@ -20,37 +23,30 @@ abstract class EUtilsFormatter {
   abstract public function format(array $data);
 
   /**
-   * Fetch the DB object for an NCBI DB.
+   * Fetch the DB object for an NCBI DB. Case insensitive.
    *
    * @param string $db_name
    *   The DB name as passed by the parser.
+   * @param Drupal\tripal_chado\Plugin\ChadoBuddy\ChadoDbxrefBuddy $dbxref_instance
+   *   A chado buddy dbxref instance
    *
-   * @return bool
-   *   Returns a database object or FALSE.
+   * @return array
+   *   Returns an array of Drupal\tripal_chado\ChadoBuddy\ChadoBuddyRecord,
+   *   which will be empty if $db_name was not found.
    */
-  public function getNCBIDB(string $db_name) {
+  public function getNCBIDB(string $db_name, $dbxref_instance) {
     $name = "NCBI {$db_name}";
 
     if (strtolower($db_name) == 'organism') {
       $name = 'NCBITAXON';
     }
+    // First try with case sensitive on in case there might be two matches
 
-    $db = db_query(
-      'SELECT * FROM chado.db WHERE UPPER(name) = :name',
-      [':name' => strtoupper($name)]
-    )->fetchObject();
-    if ($db) {
-      return $db;
+    $db = $dbxref_instance->getDb(['db.name' => $name], []);
+    if (!$db) {
+      $db = $dbxref_instance->getDb(['db.name' => $name], ['case_insensitive' => 'name']);
     }
-
-    $db = db_query(
-      'SELECT * FROM chado.db WHERE UPPER(name) = :name',
-      [':name' => strtoupper($db_name)]
-    )->fetchObject();
-    if ($db) {
-      return $db;
-    }
-    return FALSE;
+    return $db;
   }
 
   /**
@@ -58,24 +54,31 @@ abstract class EUtilsFormatter {
    *
    * @param string $accession
    *   Accession string.
-   * @param string $db
+   * @param string $db_name
    *   Database lookup string.
    *
    * @return mixed
    *   returns either the accession string, or the accession with a link to the
    *   xref.
    */
-  public function getDbLink(string $accession, string $db) {
-    $db = $this->getNCBIDB($db);
+  public function getDbLink(string $accession, string $db_name) {
+    $buddy_service = \Drupal::service('tripal_chado.chado_buddy');
+    /** @var Drupal\tripal_chado\Plugin\ChadoBuddy\ChadoDbxrefBuddy **/
+    $dbxref_instance = $buddy_service->createInstance('chado_dbxref_buddy', []);
 
-    if (!$db) {
+    // Note that getNCBIDB() is not case sensitive
+    $db_records = $this->getNCBIDB($db_name, $dbxref_instance);
+
+    if (count($db_records)) {
+      $db_records[0]->setValue('dbxref.accession', $accession);
+      $url_string = $dbxref_instance->getDbxrefUrl($db_records[0]);
+      $link = Link::fromTextAndUrl($accession, Url::fromUri($url_string,
+        ['attributes' => ['target' => '_blank']]));
+      return $link;
+    }
+    else {
       return $accession;
     }
-    $fake_dbxref = new stdClass();
-    $fake_dbxref->accession = $accession;
-    $fake_dbxref->db_id = $db;
-    $link = l($accession, chado_get_dbxref_url($fake_dbxref));
-    return $link;
   }
 
 }

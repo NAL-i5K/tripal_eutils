@@ -15,7 +15,7 @@ function tripal_eutils_install() {
   $buddy_service = \Drupal::service('tripal_chado.chado_buddy');
   /** @var Drupal\tripal_chado\Plugin\ChadoBuddy\ChadoDbxrefBuddy **/
   $dbxref_instance = $buddy_service->createInstance('chado_dbxref_buddy', []);
-  //** #var Drupal\tripal_chado\Plugin\ChadoBuddy\ChadoCvtermBuddy **/
+  /** @var Drupal\tripal_chado\Plugin\ChadoBuddy\ChadoCvtermBuddy **/
   $cvterm_instance = $buddy_service->createInstance('chado_cvterm_buddy', []);
   $custom_table_service = \Drupal::service('tripal_chado.custom_tables');
 

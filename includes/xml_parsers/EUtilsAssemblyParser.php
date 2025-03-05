@@ -185,33 +185,22 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
   /**
    * Get the fields the assembly object will need from the FTP.
    *
-   * @param $url
-   *   - the ftp site url extracted form the metadata
+   * @param string $url
+   *   The ftp site url extracted from the metadata
    *
    * @return array
    */
-  public function getFTPData($url) {
-
-    $ftp = new EFTP();
-
-    $ftp->setURL($url);
-
-    $data = [];
+  public function getFTPData(string $url): array {
 
     $fields = ['# Assembly method:'];
 
+    $ftp = new EFTP();
+    $ftp->getURL($url);
+
+    $data = [];
     foreach ($fields as $field) {
       $values = $ftp->getField($field);
-
-      if (count($values) === 0) {
-
-        $value = $values[0];
-      }
-      else {
-        $value = implode('', $values);
-      }
-
-      $data[$field] = $value;
+      $data[$field] = implode('', $values);
     }
 
     return $data;

@@ -90,8 +90,9 @@ class EUtilsBioSampleParser implements EUtilsParserInterface {
     }
 
     $organism = $xml->Description->Organism;
+    $attributes = current((array) $organism->attributes());
 
-    return current($organism->attributes());
+    return $attributes;
   }
 
   /**

@@ -34,11 +34,18 @@ class TagMapper {
   private $dict = NULL;
 
   /**
+   * @var Drupal\tripal_chado\Plugin\ChadoBuddy\ChadoCvtermBuddy
+   */
+  protected $cvterm_instance;
+
+  /**
    * TagMapper constructor.
    *
    *   NCBI database for lookup.
    */
   public function __construct($db) {
+    $buddy_service = \Drupal::service('tripal_chado.chado_buddy');
+    $this->cvterm_instance = $buddy_service->createInstance('chado_cvterm_buddy', []);
     $this->db = $db;
     $this->setDict();
   }
@@ -73,13 +80,14 @@ class TagMapper {
    *   Not sure what it should return, the cvterm_id?
    */
   public function lookup($term_string) {
+dpm("CP101 lookup was called!!!"); //@@@
     $dict = $this->dict;
 
-    if (!isset($dict[$term_string])) {
+    if (!isset($this->dict[$term_string])) {
       return FALSE;
     }
 
-    return $dict[$term_string];
+    return $this->dict[$term_string];
   }
 
   /**
@@ -109,48 +117,48 @@ class TagMapper {
    * Biosample attributes.  derived from the "harmonized name" of <Attribute>s.
    *
    * @return array
-   *   An array of XML tag -> cvterm object mappings.
+   *   An array of XML tag -> cvterm buddy object mappings.
    */
   private function provideBiosampleAttributeDict() {
 
     // Please keep this alphabetized for sanity.
     // If updated, please also delete/update terms in the install file.
     return [
-      'age' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:age']),
+      'age' => $this->getTerm('NCBI_BioSample_Attributes:age'),
       'bio_material' => NULL,
-      'breed' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:breed']),
-      'collection_date' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:collection_date']),
-      'cultivar' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:cultivar']),
-      'dev_stage' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:dev_stage']),
-      'geo_loc_name' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:geo_loc_name']),
-      'isolation_source' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:isolation_source']),
-      'orgmod_note' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:orgmod_note']),
-      'phenotype' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:phenotype']),
-      'sex' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:sex']),
-      'strain' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:strain']),
-      'sub_species' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:sub_species']),
-      'tissue' => $this->getTerm(['id' => 'NCBI_BioSample_Attributes:tissue']),
+      'breed' => $this->getTerm('NCBI_BioSample_Attributes:breed'),
+      'collection_date' => $this->getTerm('NCBI_BioSample_Attributes:collection_date'),
+      'cultivar' => $this->getTerm('NCBI_BioSample_Attributes:cultivar'),
+      'dev_stage' => $this->getTerm('NCBI_BioSample_Attributes:dev_stage'),
+      'geo_loc_name' => $this->getTerm('NCBI_BioSample_Attributes:geo_loc_name'),
+      'isolation_source' => $this->getTerm('NCBI_BioSample_Attributes:isolation_source'),
+      'orgmod_note' => $this->getTerm('NCBI_BioSample_Attributes:orgmod_note'),
+      'phenotype' => $this->getTerm('NCBI_BioSample_Attributes:phenotype'),
+      'sex' => $this->getTerm('NCBI_BioSample_Attributes:sex'),
+      'strain' => $this->getTerm('NCBI_BioSample_Attributes:strain'),
+      'sub_species' => $this->getTerm('NCBI_BioSample_Attributes:sub_species'),
+      'tissue' => $this->getTerm('NCBI_BioSample_Attributes:tissue'),
     ];
   }
 
   /**
-   * @param array $term
+   * @param string $term
    *
    * @return array|mixed
    */
-  private function getTerm(array $term) {
-    if (isset(static::$cache[$term['id']])) {
-      return static::$cache[$term['id']];
+  private function getTerm(string $term) {
+    if (isset(static::$cache[$term])) {
+      return static::$cache[$term];
     }
 
     // Some of the terms listed in provideBiosampleAttributeDict()
     // may not exist in your database, in which case NULL is returned.
     // Should a warning be printed if there is no such term?
-    $term = chado_get_cvterm($term);
-    if ($term) {
-      static::$cache[$term->cvterm_id] = $term;
-    }
-    return $term;
+    $parts = explode(':', $term);
+    $terms = $this->cvterm_instance->getCvterm(['db.name' => $parts[0], 'dbxref.accession' => $parts[1]], []); 
+    $term_record = $terms[0] ?? NULL;
+    static::$cache[$term] = $term_record;
+    return $term_record;
   }
 
   /**

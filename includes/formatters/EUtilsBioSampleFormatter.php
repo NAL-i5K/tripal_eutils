@@ -16,44 +16,41 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
    * @return array
    *   Drupal form elements array of each section in a fieldset.
    */
-  public function format(array $data) {
-
-    $return = [];
-
-    unset($data['full_ncbi_xml']);
+  public function format(array $data): array {
+    $elements = [];
 
     $header = ['Key', 'Value'];
     $rows = [];
-
     $rows[] = ['Name', $data['name']];
     $rows[] = ['Description', $data['description']];
 
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
-    $return['base'] = [
-      '#type' => 'fieldset',
+    $elements['base'] = [
       '#title' => 'BioSample',
+      '#type' => 'details',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
-    $return['base']['table'] = [
-      '#markup' => $table,
-      '#type' => 'item',
+    $elements['base']['table'] = [
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#type' => 'table',
     ];
 
     $attributes = $data['attributes'];
 
     $header = ['Key', 'Value'];
     $rows = [];
+    // The following is very very slow! @todo
     $mapper = new TagMapper('biosample');
 
     foreach ($attributes as $record) {
 
       $label = $mapper->getDisplayLabel($record);
       if (!$label) {
-        tripal_set_message(t('Warning: the property value !value had no label set, and will be ignored.', [
-          '!value',
-          $record['value'],
-        ]), TRIPAL_WARNING);
+        \Drupal::service('tripal.logger')
+          ->warning('Warning: the property value @value had no label set, and will be ignored.',
+            ['@value' => $record['value']]);
         continue;
       }
       $row = [$label, $record['value']];
@@ -61,15 +58,16 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
       $rows[] = $row;
     }
 
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
-    $return['attributes'] = [
-      '#type' => 'fieldset',
+    $elements['attributes'] = [
+      '#type' => 'details',
       '#title' => 'Biosample Attributes',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
-    $return['attributes']['table'] = [
-      '#markup' => $table,
+    $elements['attributes']['table'] = [
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
       '#type' => 'item',
     ];
 
@@ -91,15 +89,16 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
       ];
     }
 
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
-    $return['xref'] = [
-      '#type' => 'fieldset',
+    $elements['xref'] = [
+      '#type' => 'details',
       '#title' => 'Cross References',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
-    $return['xref']['table'] = [
-      '#markup' => $table,
+    $elements['xref']['table'] = [
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
       '#type' => 'item',
     ];
 
@@ -118,19 +117,18 @@ class EUtilsBioSampleFormatter extends EUtilsFormatter {
       }
     }
 
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
-    $return['links'] = [
-      '#type' => 'fieldset',
+    $elements['links'] = [
+      '#type' => 'details',
       '#title' => 'Additional Records',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
-    $return['links']['table'] = [
-      '#markup' => $table,
+    $elements['links']['table'] = [
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
       '#type' => 'item',
     ];
-    return $return;
-
+    return $elements;
   }
-
 }

@@ -24,7 +24,7 @@ class EFTPTest extends TripalTestCase {
 
     $ftp = new \EFTP();
 $url = 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/285/GCF_000002285.3_CanFam3.1/GCF_000002285.3_CanFam3.1_assembly_report.txt';
-    $ftp->setURL($url);
+    $ftp->getURL($url, TRUE);
 
     $result = $ftp->getField('# Assembly method:');
 
@@ -42,11 +42,10 @@ $url = 'ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/285/GCF_000002285.3_C
 
     $ftp = new \EFTP();
     $url = __DIR__ . '/../examples/assembly/ftp/317138_assembly_stats_report.txt';
-        $ftp->setURL($url);
+    $ftp->getURL($url, TRUE);
 
-        $result = $ftp->getField('# Assembly method:');
+    $result = $ftp->getField('# Assembly method:');
 
-        $this->assertNotEmpty($result);
-
+    $this->assertNotEmpty($result);
   }
 }
