@@ -118,7 +118,7 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
     $list = [];
     $trimmed = trim((string) $x);
 
-    // Wrap this in a root in case its malformed.
+    // Wrap this in a root in case it's malformed.
     $wrapped = '<wrap>' . $trimmed . '</wrap>';
     $meta = simplexml_load_string($wrapped);
 
@@ -133,7 +133,9 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
           break;
 
         case 'FtpSites':
-          $list['files'] = $this->processFinalChildren($child, ['type']);
+          $list['files'] = $this->processFinalChildren($child, [
+            'type'
+          ]);
           break;
 
         default:
@@ -220,13 +222,13 @@ class EUtilsAssemblyParser implements EUtilsParserInterface {
     $url = $links['Assembly_stats'] ?? NULL;
 
     if (!$url) {
-      // We dont have the report.  Guess the location.
+      // We dont have the report. Guess the location.
       $url = ($links['RefSeq']) ?? NULL;
 
       if (!$url) {
         $url = ($links['GenBank']) ?? NULL;
       }
-      // We can guess.  Append the last folder and the expected file name.
+      // We can guess. Append the last folder and the expected file name.
       if ($url) {
         if (substr($url, -1) != '/') {
           $url = $url . '/';

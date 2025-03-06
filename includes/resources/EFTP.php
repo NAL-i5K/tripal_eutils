@@ -29,18 +29,24 @@ class EFTP {
    * @throws \Exception
    */
   public function getURL(string $url, bool $local = FALSE): void {
+    // This is an ugly workaround for the error
+    // "Protocol "ftp" not supported or disabled in libcurl"
+    if (preg_match('/^ftp:/', $url)) {
+      $url = preg_replace('/^ftp:/', 'https:', $url);
+    }
 
     $logger = \Drupal::service('tripal.logger');
     $http_client = \Drupal::httpClient();
 
-    //@todo add this to the settings form
-    $retry_count = \Drupal::config('tripal_eutils.settings')->get('tripal_eutils.retry_count') ?? 10;
+    //@todo add these to the settings form
+    $retry_count = \Drupal::config('tripal_eutils.settings')->get('tripal_eutils.retry_count') ?? 3;
     $retry_wait = \Drupal::config('tripal_eutils.settings')->get('tripal_eutils.retry_wait') ?? 2;
 
     // Because of occasional intermittent problems with remote downloads, wrap
     // the download in a retry loop with a configurable number of retries.
     // @todo In the Tripal 3 version, we temporarily reduced the timeout to 3 seconds
     $file = '';
+    $last_error = '';
     while (($retry_count) and (!$file)) {
       $retry_count--;
 
@@ -55,6 +61,7 @@ class EFTP {
         }
       }
       catch (\Exception $e) {
+        $last_error = $e->getMessage();
         // Do nothing here except wait, we will just retry
         if ($retry_count) {
           sleep($retry_wait);
@@ -62,8 +69,8 @@ class EFTP {
       }
 
       if ((!$file) and ($retry_count)) {
-        $logger->warning('Remote site download problem, retrying @retry_count more times',
-          ['@retry_count' => $retry_count]);
+        $logger->warning('Remote site download problem "@problem", retrying @retry_count more times',
+          ['@problem' => $last_error, '@retry_count' => $retry_count]);
       }
     }
     //@todo this should not be an exception

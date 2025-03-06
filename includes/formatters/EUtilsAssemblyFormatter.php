@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Render\Markup;
+
 /**
  * Parse EUtilsAssemblyParser output for display on a form.
  */
@@ -25,7 +27,8 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       $this->formatLinkedRecords($data['accessions']);
     }
     catch (Exception $exception) {
-      drupal_set_message($exception->getMessage());
+      \Drupal::service('tripal.logger')
+        ->error($exception->getMessage(), []);
       return NULL;
     }
 
@@ -59,16 +62,18 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       'Accessions',
     ];
     $rows = [[$name, $description, $sourcename, $type, $program, $xref_string]];
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
 
     $this->elements['base_record'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => 'Analysis Record',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
     $this->elements['base_record']['table'] = [
-      '#markup' => $table,
-      '#type' => 'item',
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#type' => 'table',
     ];
   }
 
@@ -88,16 +93,17 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       $rows[] = [$key, $value];
     }
 
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
     $this->elements['properties'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => 'Properties',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
     $this->elements['properties']['table'] = [
-      '#markup' => $table,
-      '#type' => 'item',
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#type' => 'table',
     ];
   }
 
@@ -160,16 +166,17 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       }
     }
 
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
     $this->elements['links'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => 'Additional Records',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
     $this->elements['links']['table'] = [
-      '#markup' => $table,
-      '#type' => 'item',
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#type' => 'table',
     ];
 
     // We are going to link biosample indirectly via project.
@@ -193,16 +200,17 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
       return;
     }
 
-    $table = theme('table', ['rows' => $rows, 'header' => $header]);
-
     $this->elements['xrefs'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => 'Cross References',
       '#collapsible' => TRUE,
+      '#open' => TRUE,
     ];
     $this->elements['xrefs']['table'] = [
-      '#markup' => $table,
-      '#type' => 'item',
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#type' => 'table',
     ];
 
 
@@ -225,13 +233,12 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
 
     $links = [];
     foreach ($xrefs as $db => $xref) {
-
-      $link = $this->getDbLink($xref, 'assembly');
-      $link = $db . ':' . $link;
-      $links[] = $link;
+      $link = $this->getDbLink($xref, $db, TRUE);
+      $rendered_link = $link->toString();
+      $links[] = $rendered_link;
     }
-
-    return implode(', ', $links);
+    $all_links = Markup::create(implode(', ', $links));
+    return $all_links;
   }
 
 }
