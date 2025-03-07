@@ -155,7 +155,7 @@ dpm("CP101 lookup was called!!!"); //@@@
     // may not exist in your database, in which case NULL is returned.
     // Should a warning be printed if there is no such term?
     $parts = explode(':', $term);
-    $terms = $this->cvterm_instance->getCvterm(['db.name' => $parts[0], 'dbxref.accession' => $parts[1]], []); 
+    $terms = $this->cvterm_instance->getCvterm(['db.name' => $parts[0], 'dbxref.accession' => $parts[1]], []);
     $term_record = $terms[0] ?? NULL;
     static::$cache[$term] = $term_record;
     return $term_record;

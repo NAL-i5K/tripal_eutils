@@ -42,3 +42,54 @@ require_once 'includes/formatters/EUtilsFormatterFactory.php';
 require_once 'includes/formatters/EUtilsBioSampleFormatter.php';
 require_once 'includes/formatters/EUtilsBioProjectFormatter.php';
 require_once 'includes/formatters/EUtilsAssemblyFormatter.php';
+
+
+  /**
+   * Runs the EUtils class to create the records for an NCBI entry.
+   *
+   * @param string $db
+   *   The database name (eg, biosample, assembly or bioproject).
+   * @param string $accession
+   *   The numeric accession, or accessions separated by delimiter of comma, semicolon, or space.
+   * @param bool $create_linked_records
+   *   Whether to create linked records or not.
+   * @param $job
+   *   If present, the Tripal job running this importer
+   */
+  function tripal_eutils_create_records(string $db, string $accession, bool $create_linked_records, $job = NULL) {
+    $retry_count = \Drupal::config('tripal_eutils.settings')->get('tripal_eutils.retry_count') ?? 3;
+    $retry_wait = \Drupal::config('tripal_eutils.settings')->get('tripal_eutils.retry_wait') ?? 2;
+    $logger = \Drupal::service('tripal.logger');
+    $buddy_service = \Drupal::service('tripal_chado.chado_buddy');
+
+    $accs = preg_split('/[,; ]+/', trim($accession));
+    foreach ($accs as $acc) {
+      $attempts = $retry_count;
+      $success = FALSE;
+      while ((!$success) and ($attempts)) {
+        try {
+          $eutils = new EUtils($logger, $buddy_service, $create_linked_records, $job);
+          $eutils->get($db, $acc);
+          $success = TRUE;
+        }
+        catch (Exception $exception) {
+
+          $message = $exception->getMessage();
+          // Distinguish between download error and SQL error, e.g. from reloading same assembly twice.
+          // Download error: "ERROR Could not make request: Status: 400"
+          // SQL error: "SQLSTATE[25P02]: In failed sql transaction: 7 ERROR:  current transaction is aborted, commands>
+          if (preg_match('/SQL/', $message)) {
+            $attempts = 1;
+          }
+          if ($attempts > 1) {
+            $logger->error('Download error, retrying '.$message, []);
+            sleep($retry_wait);
+          }
+          else {
+            $logger->error($message, []);
+          }
+        }
+        $attempts--;
+      }
+    }
+  }

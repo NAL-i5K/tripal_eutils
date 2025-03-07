@@ -5,7 +5,7 @@
  *
  * @ingroup resources
  */
-  class ESummary extends EUtilsRequest {
+class ESummary extends EUtilsRequest {
 
   /**
    * ESummary constructor.
@@ -23,4 +23,4 @@
     }
   }
 
-  }
+}

@@ -58,7 +58,6 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
     $this->base_record_id = $project->project_id;
     $this->createAccessions($data['accessions']);
     $this->createProps($data['attributes']);
-
     $this->createXMLProp($data['full_ncbi_xml']);
 
     if (array_key_exists('linked_records', $data)) {
@@ -100,16 +99,18 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
       return $project;
     }
 
-    $id = db_insert('chado.project')->fields([
-      'name' => $data['name'] ?? '',
-      'description' => $data['description'] ?? '',
-    ])->execute();
+    $id = $this->chado->insert('1:project')
+      ->fields([
+        'name' => $data['name'] ?? '',
+        'description' => $data['description'] ?? '',
+      ])
+      ->execute();
 
     if (!$id) {
       throw new Exception('Unable to create chado.project record');
     }
 
-    $project = db_select('chado.project', 't')
+    $project = $this->chado->select('1:project', 't')
       ->fields('t')
       ->condition('project_id', $id)
       ->execute()
@@ -132,7 +133,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
     }
 
     // Find the project and add it to the cache.
-    $project = db_select('chado.project', 'p')
+    $project = $this->chado->select('1:project', 'p')
       ->fields('p')
       ->condition('name', $name)
       ->execute()
@@ -228,7 +229,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
   public function linkBiomaterial($record) {
     $biomaterial_id = $record->biomaterial_id;
 
-    db_insert('chado.biomaterial_project')->fields([
+    $this->chado->insert('1:biomaterial_project')->fields([
       'biomaterial_id' => $biomaterial_id,
       'project_id' => $this->base_record_id,
     ]);
@@ -244,7 +245,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
   private function linkAssembly($record) {
     $analysis_id = $record->analysis_id;
 
-    $exists = db_select('chado.project_analysis', 't')
+    $exists = $this->chado->select('1:project_analysis', 't')
       ->fields('t')
       ->condition('project_id', $this->base_record_id)
       ->condition('analysis_id', $analysis_id)
@@ -271,7 +272,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
 
     foreach ($pubs as $accession) {
 
-      $search = new EUtils(FALSE);
+      $search = new EUtils($this->logger, $this->buddy_service, FALSE);
       $pub = $search->get('pubmed', $accession);
 
       if ($pub and property_exists($pub, 'pub_id')) {
@@ -279,7 +280,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
           'project_id' => $this->base_record_id,
           'pub_id' => $pub->pub_id,
         ];
-        $exists = db_select('chado.project_pub', 't')
+        $exists = $this->chado->select('1:project_pub', 't')
           ->fields('t')
           ->condition('project_id', $this->base_record_id)
           ->condition('pub_id', $pub->pub_id)

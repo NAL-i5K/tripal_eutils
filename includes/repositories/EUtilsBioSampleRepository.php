@@ -128,15 +128,17 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
       return $biosample;
     }
 
-    $id = db_insert('chado.biomaterial')->fields($data)->execute();
+    $id = $this->chado->insert('1:biomaterial')->fields($data)->execute();
 
     if (!$id) {
       throw new Exception('Unable to create chado.biomaterial record');
     }
 
-    $biosample = db_select('chado.biomaterial', 'B')->fields('B')->condition(
-      'biomaterial_id', $id
-    )->execute()->fetchObject();
+    $biosample = $this->chado->select('1:biomaterial', 'B')
+      ->fields('B')
+      ->condition('biomaterial_id', $id, '=')
+      ->execute()
+      ->fetchObject();
 
     return static::$cache['biosamples'][$biosample->name] = $biosample;
   }
@@ -155,7 +157,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
     }
 
     // Find the biosample and add it to the cache.
-    $biosample = db_select('chado.biomaterial', 'b')
+    $biosample = $this->chado->select('1:biomaterial', 'b')
       ->fields('b')
       ->condition('name', $name)
       ->execute()
@@ -207,25 +209,23 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
       $term_name = $mapper->getLabel($attribute);
       $value = $attribute['value'];
 
-      // TODO: the term lookup class should handle this instead.
-      $term_id = 'NCBI_BioSample_Attributes:' . $term_name;
-      $cvterm = chado_get_cvterm(['id' => $term_id]);
-
-      // If this term does not exist, we need to add it.
-      if (!$cvterm) {
-        tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Adding new cvterm !term_id', ['!term_id' => $term_id], [
-          'print' => TRUE,
-          'job' => $this->job,
-        ]);
-        $cvterm = chado_insert_cvterm([
-          'id' => $term_id,
-          'name' => $term_name,
-          'cv_name' => 'NCBI BioSample Attributes',
-        ]);
-      }
-
-      $cvterm_id = $cvterm->cvterm_id;
-      $this->createProperty($cvterm_id, $value);
+#      // TODO: the term lookup class should handle this instead.
+#      $term_id = 'NCBI_BioSample_Attributes:' . $term_name;
+#      $cvterm = chado_get_cvterm(['id' => $term_id]);
+#
+#      // If this term does not exist, we need to add it.
+#      if (!$cvterm) {
+#        $this->logger->notice('Adding new cvterm @term_id',
+#          ['@term_id' => $term_id]);
+#        $cvterm = chado_insert_cvterm([
+#          'id' => $term_id,
+#          'name' => $term_name,
+#          'cv_name' => 'NCBI BioSample Attributes',
+#        ]);
+#      }
+#
+#      $cvterm_id = $cvterm->cvterm_id;
+      $this->createProperty('NCBI_BioSample_Attributes', 'NCBI BioSample Attributes', $term_name, $value);
     }
   }
 

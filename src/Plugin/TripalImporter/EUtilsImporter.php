@@ -2,10 +2,11 @@
 
 namespace Drupal\tripal_eutils\Plugin\TripalImporter;
 
-use Drupal\tripal_chado\TripalImporter\ChadoImporterBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
+use Drupal\tripal_chado\TripalImporter\ChadoImporterBase;
+use Drupal\tripal_chado\Database\ChadoConnection;
+use Drupal\tripal_chado\ChadoBuddy\PluginManagers\ChadoBuddyPluginManager;
 
 /**
  * Tripal EUtils Importer implementation of the TripalImporterBase.
@@ -69,9 +70,8 @@ class EUtilsImporter extends ChadoImporterBase implements ContainerFactoryPlugin
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('tripal_chado.database')
-#,
-#      $container->get('tripal_chado.chado_buddy')
+      $container->get('tripal_chado.database'),
+      $container->get('tripal_chado.chado_buddy')
     );
   }
 
@@ -79,12 +79,11 @@ class EUtilsImporter extends ChadoImporterBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition,
-                              \Drupal\tripal_chado\Database\ChadoConnection $connection
-#, ChadoBuddyPluginManager $buddy_manager
-) {
+                              ChadoConnection $connection,
+                              ChadoBuddyPluginManager $buddy_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $connection);
-#    $this->buddy_manager = $buddy_manager;
-#    $this->dbxref_buddy = $this->buddy_manager->createInstance('chado_dbxref_buddy', []);
+    $this->buddy_manager = $buddy_manager;
+#@@@remove?    $this->dbxref_buddy = $this->buddy_manager->createInstance('chado_dbxref_buddy', []);
 #    $this->cvterm_buddy = $this->buddy_manager->createInstance('chado_cvterm_buddy', []);
 #    $this->property_buddy = $this->buddy_manager->createInstance('chado_property_buddy', []);
   }
@@ -179,7 +178,7 @@ class EUtilsImporter extends ChadoImporterBase implements ContainerFactoryPlugin
     if ($db and $accession) {
       // If multiple accessions, only preview the first one.
       $accession = preg_replace('/[;, ].*/', '', $accession);
-      $eutils_connection = new \EUtils();
+      $eutils_connection = new \EUtils($this->logger, $this->buddy_manager);
       try {
         $eutils_connection->setPreview();
         $parsed = $eutils_connection->get($db, $accession);
@@ -209,7 +208,7 @@ class EUtilsImporter extends ChadoImporterBase implements ContainerFactoryPlugin
 
     $job = $this->job;
 
-    $this->tripal_eutils_create_records($db, $accessions, $create_linked_records, $job);
+    tripal_eutils_create_records($db, $accessions, $create_linked_records, $job);
   }
 
   /**
@@ -219,48 +218,4 @@ class EUtilsImporter extends ChadoImporterBase implements ContainerFactoryPlugin
 
   }
 
-  /**
-   * Runs the EUtils class to create the records for an NCBI entry.
-   *
-   * @param string $db
-   *   The database name (eg, biosample, assembly or bioproject).
-   * @param string $accession
-   *   The numeric accession, or accessions separated by delimiter of comma, semicolon, or space.
-   * @param bool $create_linked_records
-   *   Whether to create linked records or not.
-   * @param $job
-   *   If present, the Tripal job running this importer
-   */
-  function tripal_eutils_create_records(string $db, string $accession, bool $create_linked_records, $job = NULL) {
-    $accs = preg_split('/[,; ]+/', trim($accession));
-    foreach ($accs as $acc) {
-      $attempts = 3;
-      $success = FALSE;
-      while ((!$success) and ($attempts)) {
-        try {
-          $eutils = new EUtils($create_linked_records, $job);
-          $eutils->get($db, $acc);
-          $success = TRUE;
-        }
-        catch (Exception $exception) {
-
-          $message = $exception->getMessage();
-          // Distinguish between download error and SQL error, e.g. from reloading same assembly twice.
-          // Download error: "ERROR Could not make request: Status: 400"
-          // SQL error: "SQLSTATE[25P02]: In failed sql transaction: 7 ERROR:  current transaction is aborted, commands ignored until end of transaction block"
-          if (preg_match('/SQL/', $message)) {
-            $attempts = 1;
-          }
-          if ($attempts > 1) {
-            tripal_report_error('tripal_eutils', TRIPAL_WARNING, 'Download error, retrying '.$message, [], ['print' => TRUE, 'job' => $job]);
-            sleep(1);
-          }
-          else {
-            tripal_report_error('tripal_eutils', TRIPAL_ERROR, $message, [], ['print' => TRUE, 'job' => $job]);
-          }
-        }
-        $attempts--;
-      }
-    }
-  }
 }

@@ -153,7 +153,7 @@ class EUtilsAssemblyFormatter extends EUtilsFormatter {
         // Convert any accessions to integer to remove duplicates.
         $unique = [];
 
-        $eutils = new EUtils(FALSE);
+        $eutils = new EUtils($this->logger, $this->buddy_service, FALSE);
         foreach ($value as $accession) {
           $accession = $eutils->convertAccessionsToUID('Assembly', $accession);
           $unique[] = $accession;

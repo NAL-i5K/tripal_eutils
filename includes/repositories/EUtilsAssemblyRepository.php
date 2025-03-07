@@ -32,7 +32,6 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     'description',
     'attributes',
     'full_ncbi_xml',
-
   ];
 
   /**
@@ -43,7 +42,6 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    * @var array
    */
   protected $projects = [];
-
 
   /**
    * Cache of data per run.
@@ -77,8 +75,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     // $data['attributes']['ftp_attributes']['# Assembly method:'].
     $method_string = $data['attributes']['ftp_attributes']['# Assembly method:'] ?? 'Assembly method was not reported';
 
-    // TODO: what do we want to do here?  Parse out the version from the
-    // assembly program?  But what if we have multiple programs and
+    // TODO: what do we want to do here? Parse out the version from the
+    // assembly program? But what if we have multiple programs and
     // versions returned, what then?
     $program = $method_string;
     $programvesion = $method_string;
@@ -125,17 +123,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     // $mapper = new TagMapper();
     // add "stats" as properties.
     foreach ($data['attributes']['stats'] as $key => $value) {
-
-      // TODO: use mapper to look up cvterms.
-      // for now just use local.
-      // $mapper->lookupAttribute($key)
-      $term = tripal_insert_cvterm([
-        'id' => 'NCBI_BioSample_Attributes:' . $key,
-        'name' => $key,
-        'def' => '',
-        'cv_name' => 'NCBI BioSample Attributes',
-      ]);
-      $this->createProperty($term->cvterm_id, $value);
+      $this->createProperty('NCBI_BioSample_Attributes', 'NCBI BioSample Attributes', $key, $value);
     }
 
     $this->addFTPLinks($data['attributes']['files']);
@@ -202,7 +190,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       throw new Exception('The organism_analysis linker table doesn\'t exist. No way to link this organism.');
     }
 
-    $result = db_select('chado.organism_analysis', 't')
+    $result = $this->chado->select('1:organism_analysis', 't')
       ->fields('t', ['organism_analysis_id'])
       ->condition('t.organism_id', $organism->organism_id)
       ->condition('t.analysis_id', $this->base_record_id)
@@ -210,7 +198,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       ->fetchField();
 
     if (!$result) {
-      $result = db_insert('chado.organism_analysis')
+      $result = $this->chado->insert('1:organism_analysis')
         ->fields([
           'organism_id' => $organism->organism_id,
           'analysis_id' => $this->base_record_id,
@@ -238,7 +226,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     $base = $this->base_fields;
 
-    $id = db_insert('chado.analysis')->fields([
+    $id = $this->chado->insert('1:analysis')->fields([
       'name' => $base['name'],
       'description' => $base['description'] ?? '',
       'program' => $base['program'],
@@ -254,7 +242,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       throw new Exception('Unable to create chado.analysis record');
     }
 
-    $analysis = db_select('chado.analysis', 't')
+    $analysis = $this->chado->select('1:analysis', 't')
       ->fields('t')
       ->condition('analysis_id', $id)
       ->execute()
@@ -278,7 +266,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
       return static::$cache['analysis'];
     }
 
-    $exists = db_select('chado.analysis', 't')
+    $exists = $this->chado->select('1:analysis', 't')
       ->fields('t')
       ->condition('name', $base['name'])
       ->condition('program', $base['program'])
@@ -288,7 +276,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
 
     if ($exists) {
 
-      // TODO: we need to carefully validate the returned analysis.  We want to be sure we arent overwriting another existing analysis....
+      // @todo: we need to carefully validate the returned analysis. We want to
+      // be sure we arent overwriting another existing analysis...
       return static::$cache['analysis'] = $exists;
     }
 
@@ -303,11 +292,8 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    *   the FTP address.
    */
   public function addFTPLinks($ftps) {
-
-    $cvterm_id = chado_get_cvterm(['id' => 'local:ncbi_FTP_links'])->cvterm_id;
     foreach ($ftps as $type => $ftp) {
-
-      $this->createProperty($cvterm_id, $ftp);
+      $this->createProperty('local', 'local', 'ncbi_FTP_links', $ftp);
     }
   }
 
@@ -321,14 +307,15 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    */
   private function setAnalysisType(string $type) {
 
-    $term = tripal_get_cvterm(['id' => 'rdfs:type']);
+    $terms = $this->cvterm_instance->getCvterm(['db.name' => 'rdfs', 'dbxref.accession' => 'type'], []);
+    $cvterm_id = $terms[0]->getValue('cvterm.cvterm_id');
 
     switch ($type) {
       case 'representative genome':
-        return $this->createProperty($term->cvterm_id, 'genome_assembly');
+        return $this->createProperty('rdfs', 'rdfs', 'type', 'genome_assembly');
 
       default:
-        return $this->createProperty($term->cvterm_id, 'genome_assembly');
+        return $this->createProperty('rdfs', 'rdfs', 'type', 'genome_assembly');
     }
   }
 

@@ -9,12 +9,46 @@ abstract class EUtilsRepository {
 
 
   /**
+   * Chado database connection
+   *
+   * @var object
+   */
+  protected $chado = NULL;
+
+  /**
+   * Chado buddy service
+   *
+   * @var object
+   */
+  protected $buddy_service = NULL;
+
+  /**
+   * Chado buddy CVterm service
+   *
+   * @var object
+   */
+  protected $cvterm_instance = NULL;
+
+  /**
+   * Chado buddy property service
+   *
+   * @var object
+   */
+  protected $property_instance = NULL;
+
+  /**
+   * Tripal logger service
+   *
+   * @var ???
+   */
+  protected $logger = NULL;
+
+  /**
    * TripalJob object for error logging.
    *
    * @var TripalJob
    */
   protected $job = NULL;
-
 
   /**
    * Whether a DB:accession was visited during this run time.
@@ -82,7 +116,12 @@ abstract class EUtilsRepository {
    *   Whether to create linked records.
    */
   public function __construct($create_linked_records = TRUE) {
+    $this->logger = \Drupal::service('tripal.logger');
+    $this->chado = \Drupal::service('tripal_chado.database');
     $this->create_linked_records = $create_linked_records;
+    $this->buddy_service = \Drupal::service('tripal_chado.chado_buddy');
+    $this->cvterm_instance = $this->buddy_service->createInstance('chado_cvterm_buddy', []);
+    $this->property_instance = $this->buddy_service->createInstance('chado_property_buddy', []);
   }
 
   /**
@@ -123,9 +162,10 @@ abstract class EUtilsRepository {
    * @return mixed
    */
   public function getAccessionByID($id) {
-    return db_select('chado.dbxref', 'd')->fields('d')->condition(
-      'dbxref_id', $id
-    )->execute()->fetchObject();
+    return $this->chado->select('1:dbxref', 'd')
+      ->fields('d')->condition('dbxref_id', $id, '=')
+      ->execute()
+      ->fetchObject();
   }
 
   /**
@@ -147,7 +187,7 @@ abstract class EUtilsRepository {
       return static::$cache['accessions'][$name];
     }
 
-    $accession = db_select('chado.dbxref', 'd')
+    $accession = $this->chado->select('1:dbxref', 'd')
       ->fields('d')
       ->condition('accession', $name)
       ->condition('db_id', $db_id)
@@ -174,10 +214,11 @@ abstract class EUtilsRepository {
       return static::$cache['db'][$name];
     }
 
-    $db = db_query(
-      'SELECT * FROM chado.db WHERE UPPER(name) = :name',
-      [':name' => strtoupper($name)]
-    )->fetchObject();
+    $db = $this->chado->select('1:db', 'db')
+      ->fields('db')
+      ->condition('name', $name, 'ILIKE')
+      ->execute()
+      ->fetchObject();
 
     if ($db) {
       return static::$cache['db'][$name] = $db;
@@ -189,29 +230,31 @@ abstract class EUtilsRepository {
   /**
    * Inserts a property associated with the interface using the tripal API.
    *
-   * @param $cvterm_id
-   * @param $value
+   * @param string $termIdNamespace
+   * @param string $termAccession
+   * @param string $value
    *
    * @return bool
    *
    * @throws \Exception
    */
-  public function createProperty($cvterm_id, $value) {
+  public function createProperty($termIdNamespace, $cvName, $termAccession, $value) {
     $this->validateBaseData();
+    try {
+      $property_record = $this->property_instance->upsertProperty($this->base_table, $this->base_record_id, [
+        'db.name' => $termIdNamespace,
+        'cv.name' => $cvName,
+        'cvterm.name' => $termAccession,
+        'dbxref.accession' => $termAccession,
+        $this->base_table . 'prop.value' => $value,
+      ], ['create_cvterm' => TRUE]);
+      return TRUE;
+    }
+    catch (\Exception $e) {
+//@todo log a message
+      return FALSE;
+    }
 
-    $record = [
-      'table' => $this->base_table,
-      'id' => $this->base_record_id,
-    ];
-
-    $property = [
-      'type_id' => $cvterm_id,
-      'value' => $value,
-    ];
-
-    $options = [];
-
-    return chado_insert_property($record, $property, $options);
   }
 
   /**
@@ -241,13 +284,12 @@ abstract class EUtilsRepository {
     }
 
     // Try getting the db record with the prefix NCBI.
-    $db = $this->getDB("NCBI {$accession['db']}");
+    $db = $this->getDB('NCBI ' . $accession['db']);
 
     // Not found! Try getting the DB without any prefixes.
     if (empty($db)) {
       $db = $this->getDB($accession['db']);
     }
-
     // Still not found! Alert the user.
     if (empty($db)) {
       throw new Exception(
@@ -307,14 +349,7 @@ abstract class EUtilsRepository {
    * @throws \Exception
    */
   public function createXMLProp($xml) {
-    if (!isset(static::$cache['accessions']['local:full_ncbi_xml'])) {
-      static::$cache['accessions']['local:full_ncbi_xml'] =
-        tripal_get_cvterm(['id' => 'local:full_ncbi_xml']);
-    }
-
-    $xml_term = static::$cache['accessions']['local:full_ncbi_xml'];
-
-    return $this->createProperty($xml_term->cvterm_id, $xml);
+    return $this->createProperty('local', 'local', 'full_ncbi_xml', $xml);
   }
 
   /**
@@ -333,16 +368,16 @@ abstract class EUtilsRepository {
       $contact = static::$cache['contacts'][$contact_name];
     }
     else {
-      $contact = db_select('chado.contact', 'C')->fields('C')->condition(
-        'name', $contact_name
-      )->execute()->fetchObject();
+      $contact = $this->chado->select('1:contact', 'C')
+        ->fields('C')
+        ->condition('name', $contact_name, '=')
+        ->execute()
+        ->fetchObject();
 
       if (empty($contact)) {
-        $contact_id = db_insert('chado.contact')->fields(
-          [
-            'name' => $contact_name,
-          ]
-        )->execute();
+        $contact_id = $this->chado->insert('1:contact')
+          ->fields(['name' => $contact_name])
+          ->execute();
 
         if (!$contact_id) {
           throw new Exception(
@@ -350,9 +385,11 @@ abstract class EUtilsRepository {
           );
         }
 
-        $contact = db_select('chado.contact', 'C')->fields('C')->condition(
-          'contact_id', $contact_id
-        )->execute()->fetchObject();
+        $contact = $this->chado->select('1:contact', 'C')
+          ->fields('C')
+          ->condition('contact_id', $contact_id, '=')
+          ->execute()
+          ->fetchObject();
       }
 
       static::$cache['contacts'][$contact_name] = $contact;
@@ -379,7 +416,7 @@ abstract class EUtilsRepository {
    * @param TripalJob|NULL $job
    *   Tripal Job object.
    */
-  public function setJob(TripalJob $job = NULL) {
+  public function setJob(Drupal\tripal\Services\TripalJob $job = NULL) {
     $this->job = $job;
   }
 
@@ -413,7 +450,7 @@ abstract class EUtilsRepository {
   }
 
   /**
-   * Given an ncbi taxon organism, return the organism (and create if
+   * Given an NCBI taxon ID, return the organism (and create if
    * necessary).
    *
    * @param $accession
@@ -424,47 +461,53 @@ abstract class EUtilsRepository {
    * @throws \Exception
    */
   public function getOrganism($accession) {
-
     $organism = $this->organismQuery($accession);
-
     if ($organism) {
-      tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Linking pre-existing organism !organism', ['!organism' => $accession], [
-        'print' => TRUE,
-        'job' => $this->job,
-      ]);
-      return $organism;
+      $this->logger->notice('Linking pre-existing organism @organism', ['@organism' => $accession]);
     }
-    // Note: import_existing = TRUE causes the loader to time out.
-    $run_args = [
-      'taxonomy_ids' => $accession,
-      'import_existing' => FALSE,
-    ];
-
-    module_load_include(
-      'inc', 'tripal_chado', 'includes/TripalImporter/TaxonomyImporter'
-    );
-
-    $importer = new \TaxonomyImporter();
-    $importer->create($run_args, $file_details = []);
-    $variables = ['!db' => 'NCBI Taxon (organism)', '!accession' => $accession];
-    tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession', $variables, [
-      'print' => TRUE,
-      'job' => $this->job,
-    ]);
-
-    $importer->run();
-
-    $organism = $this->organismQuery($accession);
-
-    if (!$organism) {
-      throw new Exception('Could not create organism record for ' . $accession);
+//@todo include api key here
+    else {
+      // Create a new organism record in chado
+      $this->logger->notice('Creating new organism @organism', ['@organism' => $accession]);
+      $organism = $this->importOrganism($accession);
+      if (!$organism) {
+        throw new Exception('Could not create organism record for ' . $accession);
+      }
     }
-
     return $organism;
   }
 
   /**
-   * Generate query to getch an organism.
+   * Imports a new organism using its NCBI TaxID value
+   *
+   * @param string $taxid
+   *   The NCBI Taxonomy ID value
+   * @param string $ncbi_api_key
+   *   The optional NCBI API key
+   * @return object
+   *   The organism object from a DB query.
+   */
+  protected function importOrganism(string $taxid, string $ncbi_api_key = NULL) {
+    $importer_manager = \Drupal::service('tripal.importer');
+    $taxonomy_importer = $importer_manager->createInstance('chado_taxonomy_loader');
+    $run_args = [
+      'schema_name' => $this->chado->getSchemaName(),
+      'taxonomy_ids' => $taxid,
+      'use_transaction' => 1,
+      'import_existing' => 0,
+      'ncbi_api_key' => $ncbi_api_key,
+    ];
+    $file_details = [];
+    $taxonomy_importer->createImportJob($run_args, $file_details);
+    $taxonomy_importer->prepareFiles();
+    $taxonomy_importer->run();
+    $taxonomy_importer->postRun();
+    $organism_object = $this->organismQuery($taxid);
+    return $organism_object;
+  }
+
+  /**
+   * Generate query to fetch an organism.
    *
    * Query to check if an organism exists in the DB based on the NCBITaxon
    * accession.
@@ -476,15 +519,14 @@ abstract class EUtilsRepository {
    *   An organism
    */
   private function organismQuery($accession) {
-    $db = chado_get_db(['name' => 'NCBITaxon']);
-
-    $query = db_select('chado.organism_dbxref', 'od');
-    $query->join('chado.organism', 'o', 'o.organism_id = od.organism_id');
+    $query = $this->chado->select('1:organism_dbxref', 'od');
+    $query->join('1:organism', 'o', 'o.organism_id = od.organism_id');
     $query->fields('o');
     // $query->condition('od.organism_id', $munk->organism_id);.
-    $query->join('chado.dbxref', 'd', 'd.dbxref_id = od.dbxref_id');
-    $query->condition('d.accession', $accession);
-    $query->condition('d.db_id', $db->db_id);
+    $query->join('1:dbxref', 'x', 'x.dbxref_id = od.dbxref_id');
+    $query->join('1:db', 'd', 'x.db_id = d.db_id');
+    $query->condition('x.accession', $accession);
+    $query->condition('d.name', 'NCBITaxon');
     $organism = $query->execute()->fetchObject();
 
     return $organism;
@@ -514,10 +556,8 @@ abstract class EUtilsRepository {
 
       $record = $this->lookupNcbiInChado($db, $accession);
       if ($record) {
-        tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Using existing record for  !db : !accession', [
-          '!db' => $db,
-          '!accession' => $accession,
-        ], ['print' => TRUE, 'job' => $this->job]);
+        $this->logger->notice('Using existing record for @db : @accession',
+          ['@db' => $db, '@accession' => $accession]);
 
         $return[] = static::$visited[$db . ':' . $accession] = $record;
         continue;
@@ -527,7 +567,7 @@ abstract class EUtilsRepository {
         // Do not loop through linked records recursively. We only want the
         // the first level of linked records.
         // Logging already happens higher up in EUtils.
-        $record = (new EUtils(FALSE))->get($db, $accession);
+        $record = (new EUtils($this->logger, $this->buddy_service, FALSE))->get($db, $accession);
         $return[] = static::$visited[$db . ':' . $accession] = $record;
       }
     }
@@ -544,7 +584,7 @@ abstract class EUtilsRepository {
    * @param string $db
    *   NCBI (not Chado) db name.
    * @param string $accession
-   *   NCBI accession.  This might be uid, or long form.
+   *   NCBI accession. This might be uid, or long form.
    *
    * @return mixed
    *   returns the chado object or FALSE.
@@ -563,11 +603,11 @@ abstract class EUtilsRepository {
 
     $column = $base_table . '_id';
 
-    $query = db_select('chado.' . $dbx_table, 'dbxl');
+    $query = $this->chado->select('1:' . $dbx_table, 'dbxl');
 
-    $query->join('chado.' . $base_table, 'b', 'b.' . $column . ' = dbxl.' . $column);
+    $query->join('1:' . $base_table, 'b', 'b.' . $column . ' = dbxl.' . $column);
     $query->fields('b');
-    $query->join('chado.dbxref', 'dbx', 'dbx.dbxref_id = dbxl.dbxref_id');
+    $query->join('1:dbxref', 'dbx', 'dbx.dbxref_id = dbxl.dbxref_id');
     $query->condition('dbx.accession', $accession);
     $result = $query->execute()->fetchObject();
 
@@ -589,17 +629,20 @@ abstract class EUtilsRepository {
     $table = 'project_' . $base_table;
     foreach ($projects as $project) {
 
-      $exists = db_select('chado.' . $table, 'lt')->fields('lt')->condition(
-        'project_id', $project->project_id
-      )->condition($base_table . '_id', $base_record)->execute()->fetchObject();
+      $exists = $this->chado->select('1:' . $table, 'lt')
+        ->fields('lt')
+        ->condition('project_id', $project->project_id, '=')
+        ->condition($base_table . '_id', $base_record, '=')
+        ->execute()
+        ->fetchObject();
       if (!$exists) {
 
-        db_insert('chado.' . $table)->fields(
-          [
-            'project_id' => $project->project_id,
-            $base_table . '_id' => $base_record,
-          ]
-        )->execute();
+        $this->chado->insert('1:' . $table)
+          ->fields([
+              'project_id' => $project->project_id,
+              $base_table . '_id' => $base_record,
+            ])
+          ->execute();
       }
     }
   }

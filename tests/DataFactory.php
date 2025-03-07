@@ -137,11 +137,11 @@ Factory::define('chado.featurepos', function (Faker\Generator $faker) {
 
 
 // IMPORTANT!!!!
-// IF you use this factory, call 
+// IF you use this factory, call
 //
 //  $prev_db = chado_set_active('chado');
 //
-// beforehand, and 
+// beforehand, and
 //
 //  chado_set_active($prev_db);
 //
@@ -149,7 +149,7 @@ Factory::define('chado.featurepos', function (Faker\Generator $faker) {
 
 
 Factory::define('chado.featureloc', function (Faker\Generator $faker) {
-  
+
 
  $a = $faker->randomNumber;
  $b = $faker->randomNumber;
@@ -168,7 +168,7 @@ Factory::define('chado.featureloc', function (Faker\Generator $faker) {
    'locgroup' => 0,
    'rank' => 0,
   ];
-  
+
 });
 
 Factory::define('chado.library', function (Faker\Generator $faker) {

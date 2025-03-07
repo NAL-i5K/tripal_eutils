@@ -14,6 +14,20 @@
 class EUtils {
 
   /**
+   * The Tripal Logger service
+   *
+   * @var $logger
+   */
+  protected $logger = NULL;
+
+  /**
+   * Chado buddy CVterm service
+   *
+   * @var $cvterm_instance
+   */
+  protected $cvterm_instance = NULL;
+
+  /**
    * Tracks what objects have been imported so far.
    *
    * @var array
@@ -50,14 +64,20 @@ class EUtils {
   /**
    * EUtils constructor.
    *
+   * @param $logger
+   *   The Tripal Logger service
+   * @param $buddy_service
+   *   The chado buddy service
    * @param bool $create_linked_records
    *   Records referenced in the XML will spawn new EUtils to import if true.
    * @param TripalJob|null $job
    *   Tripal Job object.
    */
-  public function __construct($create_linked_records = TRUE, $job = NULL) {
+  public function __construct($logger, $buddy_service, $create_linked_records = TRUE, $job = NULL) {
+$caller = debug_backtrace()[1]['function']; $line = debug_backtrace()[1]['line']; dpm($caller.'.'.$line, "__construct caller");//@@@
+    $this->logger = $logger;
+    $this->cvterm_instance = $buddy_service->createInstance('chado_cvterm_buddy', []);
     $this->create_linked_records = $create_linked_records;
-
     $this->job = $job;
   }
 
@@ -120,8 +140,8 @@ class EUtils {
     else {
       $orig_accession = '';
     }
-    $variables = ['!db' => $db, '!accession' => $accession, '!orig_accession' => $orig_accession];
-    tripal_report_error('tripal_eutils', TRIPAL_INFO, 'Inserting record into Chado: !db: !accession!orig_accession', $variables, ['print' => TRUE, 'job' => $job]);
+    $variables = ['@db' => $db, '@accession' => $accession, '@orig_accession' => $orig_accession];
+    $this->logger->notice('Inserting record into Chado: @db: @accession@orig_accession', $variables);
 
     $record = $repository->create($data);
 
@@ -263,10 +283,8 @@ class EUtils {
       }
     }
     if ($error_message) {
-      $variables = ['!db' => $db, '!accession' => $accession];
-      $job = $this->job;
-      $options = ['print' => TRUE, 'job' => $job];
-      tripal_report_error('tripal_eutils', TRIPAL_ERROR, 'Cannot fetch NCBI record: !db : !accession', $variables, $options);
+      $variables = ['@db' => $db, '@accession' => $accession];
+      $this->logger->error('Cannot fetch NCBI record: @db : @accession', $variables);
 
       throw new Exception('ERROR Could not make request: ' . $error_message);
     }
