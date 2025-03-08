@@ -9,7 +9,7 @@
 class EUtilsPubmedParser implements EUtilsParserInterface {
 
   /**
-   * Parse an NCBI Pubmed XML.  Uses the core parser code.
+   * Parse an NCBI Pubmed XML. Uses the core parser code.
    *
    * @param \SimpleXMLElement $xml
    *   Simple XML Element.
@@ -20,12 +20,10 @@ class EUtilsPubmedParser implements EUtilsParserInterface {
    * @throws \Exception
    */
   public function parse(SimpleXMLElement $xml) {
-
-    module_load_include('inc', 'tripal_chado', '/includes/loaders/tripal_chado.pub_importer_PMID');
-
-    // Convert back to string for API.
-    return tripal_pub_PMID_parse_pubxml($xml->PubmedArticle->asXML());
-
+    $pub_library_manager = \Drupal::service('tripal.pub_library');
+    $pubmed_plugin = $pub_library_manager->createInstance('tripal_pub_library_PMID', []);
+    $data = $pubmed_plugin->parse($xml->PubmedArticle->asXML());
+    return $data;
   }
 
 }

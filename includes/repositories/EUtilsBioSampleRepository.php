@@ -202,29 +202,10 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
    * @throws \Exception
    */
   public function createProps(array $attributes) {
-
     $mapper = new TagMapper('biosample');
     foreach ($attributes as $attribute) {
-
       $term_name = $mapper->getLabel($attribute);
       $value = $attribute['value'];
-
-#      // TODO: the term lookup class should handle this instead.
-#      $term_id = 'NCBI_BioSample_Attributes:' . $term_name;
-#      $cvterm = chado_get_cvterm(['id' => $term_id]);
-#
-#      // If this term does not exist, we need to add it.
-#      if (!$cvterm) {
-#        $this->logger->notice('Adding new cvterm @term_id',
-#          ['@term_id' => $term_id]);
-#        $cvterm = chado_insert_cvterm([
-#          'id' => $term_id,
-#          'name' => $term_name,
-#          'cv_name' => 'NCBI BioSample Attributes',
-#        ]);
-#      }
-#
-#      $cvterm_id = $cvterm->cvterm_id;
       $this->createProperty('NCBI_BioSample_Attributes', 'NCBI BioSample Attributes', $term_name, $value);
     }
   }
@@ -241,11 +222,20 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
       'biomaterial_id' => $this->base_record_id,
     ];
 
-    $exists = chado_generate_var('biomaterial_project', $values);
-    if (!$exists) {
-      chado_insert_record('biomaterial_project', $values);
+    $existing_link = $this->chado->select('1:biomaterial_project', 'l')
+      ->fields('l')
+      ->condition('project_id', $project_id, '=')
+      ->condition('biomaterial_id', $this->base_record_id, '=')
+      ->execute()
+      ->fetchObject();
+    if (!$existing_link) {
+      $this->chado->insert('1:biomaterial_project')
+        ->fields([
+          'project_id' => $project_id,
+          'biomaterial_id' => $this->base_record_id
+        ])
+      ->execute();
     }
-
   }
 
 }

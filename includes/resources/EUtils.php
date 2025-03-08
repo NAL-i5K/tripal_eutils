@@ -74,7 +74,6 @@ class EUtils {
    *   Tripal Job object.
    */
   public function __construct($logger, $buddy_service, $create_linked_records = TRUE, $job = NULL) {
-$caller = debug_backtrace()[1]['function']; $line = debug_backtrace()[1]['line']; dpm($caller.'.'.$line, "__construct caller");//@@@
     $this->logger = $logger;
     $this->cvterm_instance = $buddy_service->createInstance('chado_cvterm_buddy', []);
     $this->create_linked_records = $create_linked_records;

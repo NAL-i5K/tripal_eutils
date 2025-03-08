@@ -29,16 +29,48 @@ class EUtilsPubmedRepository extends EUtilsRepository {
    *   A Chado publication record object.
    **/
   public function create(array $data) {
-    module_load_include('inc', 'tripal_chado', '/includes/loaders/tripal_chado.pub_importers');
+    $pmid = $data['Publication Dbxref'] ?? NULL;
+    if (!$pmid) {
+      return;
+    }
+    // We will call the publication importer directly
+    $arguments = [
+      'run_args' => [
+        'criteria' => [
+          'criteria' => [
+            1 => [
+              'search_terms' => $pmid,
+              'scope' => 'id',
+              'is_phrase' => 0,
+              'operation' => '',
+            ],
+          ],
+          'days' => '',
+          'disabled' => 0,
+          'do_contact' => 0,
+          'form_state_user_input' => [
+            'plugin_id' => 'tripal_pub_library_PMID'
+          ],
+          'loader_name' => 'internal',
+          'num_criteria' => 1,
+          'remote_db' => 'PMID',
+          'pub_import_id' => NULL,
+        ],
+        'schema_name' => $this->chado->getSchemaName(),
+      ],
+    ];
+    /** @var Drupal\tripal\TripalImporter\PluginManagers\TripalImporterManager **/
+    $importer_manager = \Drupal::service('tripal.importer');
+    $pub_instance = $importer_manager->createInstance('pub_search_query_loader', []);
+    $pub_instance->setArguments($arguments);
+    $result = $pub_instance->run();
 
-    tripal_pub_add_publications([$data], FALSE);
     $uname = $data['Citation'];
     $pub = $this->chado->select('1:pub', 'p')
       ->fields('p')
       ->condition('p.uniquename', $uname)
       ->execute()
       ->fetchObject();
-
     return $pub;
   }
 
