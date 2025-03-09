@@ -34,6 +34,7 @@ class EUtilsPubmedRepository extends EUtilsRepository {
       return;
     }
     // We will call the publication importer directly
+    $api_key = \Drupal::config('tripal_eutils.settings')->get('tripal_eutils.ncbi_api_key');
     $arguments = [
       'run_args' => [
         'criteria' => [
@@ -49,7 +50,8 @@ class EUtilsPubmedRepository extends EUtilsRepository {
           'disabled' => 0,
           'do_contact' => 0,
           'form_state_user_input' => [
-            'plugin_id' => 'tripal_pub_library_PMID'
+            'plugin_id' => 'tripal_pub_library_PMID',
+            'ncbi_api_key' => $api_key,
           ],
           'loader_name' => 'internal',
           'num_criteria' => 1,
