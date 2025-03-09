@@ -63,7 +63,7 @@ class EUtilsPubmedRepository extends EUtilsRepository {
     $importer_manager = \Drupal::service('tripal.importer');
     $pub_instance = $importer_manager->createInstance('pub_search_query_loader', []);
 // Temporary message
-if (!method_exists($pub_instance, 'setArgumentsz')) {
+if (!method_exists($pub_instance, 'setArguments')) {
   $this->logger->warning('Skipped importing publication, this is dependent on Tripal pull request 2151');
   return NULL;
 }

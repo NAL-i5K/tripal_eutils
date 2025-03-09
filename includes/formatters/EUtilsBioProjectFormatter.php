@@ -180,16 +180,16 @@ class EUtilsBioProjectFormatter extends EUtilsFormatter {
     }
 
     if (empty($rows)) {
-      $this->element['pubs']['notice'] = ['#markup' => 'No publications are associated with this Project.'];
-
+      $this->elements['pubs']['notice'] = ['#markup' => 'No publications are associated with this Project.'];
     }
-
-    $this->elements['pubs']['table'] = [
-      '#theme' => 'table',
-      '#header' => $header,
-      '#rows' => $rows,
-      '#type' => 'table',
-    ];
+    else {
+      $this->elements['pubs']['table'] = [
+        '#theme' => 'table',
+        '#header' => $header,
+        '#rows' => $rows,
+        '#type' => 'table',
+      ];
+    }
   }
 
 }
