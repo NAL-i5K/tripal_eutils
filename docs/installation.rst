@@ -6,9 +6,9 @@ Requirements
 
 Tripal EUtilities requires:
 
-- Tripal 3
-- PHP >= 7.0
-- Drupal 7
+- Tripal 4
+- PHP >= 8.1
+- Drupal >= 10.3
 
 Installation
 ------------
@@ -19,19 +19,24 @@ Installation
 
   cd [location of your custom or contrib modules]
   git clone https://github.com/NAL-i5K/tripal_eutils.git
+  git checkout 4.x
   drush pm-enable tripal_eutils -y
 
 
 Chado
 -----
 
-This module requires Chado 1.3 or greater.  Visit ``/admin/tripal/storage/chado/install`` on your site to verify and/or upgrade your Chado version.
+Both Tripal 4 and this module require Chado 1.3 or greater.
+See the `Tripal upgrade documentation <https://tripaldoc.readthedocs.io/en/latest/upgrade_guide/site.html>`_
+for further information about upgrading and migrating Chado.
 
 Setup
 -----
-This module currently functions "as is" without setup.  The Manage Analyses module provides several new fields (analysis and organism linker fields) so you should **Check For New Fields** on the content types your site utilizes that have _organism or _analysis Chado linker tables.
+This module currently functions "as is" without setup.
+After importing records from NCBI, you should **Check For New Fields**
+to add fields for new properties that may have been added.
 
-Additional module-wide settings can be configured at: ``/admin/tripal/tripal_eutils``.
+Module-wide settings can be configured at: ``/admin/tripal/config/tripal_eutils_settings``.
 
 .. image:: /_static/settings_example.png
 
@@ -41,14 +46,21 @@ NCBI API Key
 
 To get the most out of this module, we suggest setting up an NCBI API key for your site.
 
-NCBI limits requests to a maximum of three/second.  If you use this module to import linked records, you may exceed that, and might benefit from adding an API key.
-`This NCBI blog post <https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/>`_ details the reasoning behind their policy, and provides instructions for getting a key.
+NCBI limits requests to a maximum of three/second.
+If you use this module to import linked records, you may
+exceed that, and might benefit from adding an API key.
+`This NCBI blog post <https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/>`_
+details the reasoning behind their policy, and provides instructions for getting a key.
 
 
 Permissions
 ~~~~~~~~~~~~
 
-This module only defines one permission: ``access tripal_eutils admin``.  This permission will allow users to use the admin form to directly insert Chado records into the database given NCBI accessions.  Because this form adds data to your db, we suggest reserving it for administrators.
+This module only defines one permission: ``access tripal_eutils admin``.
+This permission will allow users to use the admin form to directly insert
+Chado records into the database given NCBI accessions.
+Because this form adds data to your database, we suggest reserving this
+permission for administrators.
 
 
 Updating
