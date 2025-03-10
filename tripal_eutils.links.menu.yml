@@ -6,3 +6,9 @@ tripal_eutils.tripal_eutils_settings:
   route_name: tripal.config.tripal_eutils_settings
   weight: 85
 
+dependencies:
+  module:
+    - tripal_eutils
+  enforced:
+    module:
+      - tripal_eutils
