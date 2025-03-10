@@ -80,7 +80,7 @@ class TagMapper {
    *   Not sure what it should return, the cvterm_id?
    */
   public function lookup($term_string) {
-dpm("CP101 lookup was called!!!"); //@@@
+    //@todo this function is not currently used
     $dict = $this->dict;
 
     if (!isset($this->dict[$term_string])) {
