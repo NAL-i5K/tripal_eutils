@@ -154,6 +154,8 @@ function tripal_eutils_schema() {
       'id',
     ],
   ];
+  // @todo because this is unused, we won't install it, but leave the definition for possible future use
+  $schema = [];
   return $schema;
 }
 
