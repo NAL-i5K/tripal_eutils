@@ -34,21 +34,6 @@ class EUtilsImporter extends ChadoImporterBase implements ContainerFactoryPlugin
   protected object $buddy_manager;
 
   /**
-   * Provide the dbxref buddy instance
-   */
-  protected object $dbxref_buddy;
-
-  /**
-   * Provide the cvterm buddy instance
-   */
-  protected object $cvterm_buddy;
-
-  /**
-   * Provide the property buddy instance
-   */
-  protected object $property_buddy;
-
-  /**
    * Implements ContainerFactoryPluginInterface->create().
    *
    * We are injecting an additional dependency here, the
@@ -83,9 +68,6 @@ class EUtilsImporter extends ChadoImporterBase implements ContainerFactoryPlugin
                               ChadoBuddyPluginManager $buddy_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $connection);
     $this->buddy_manager = $buddy_manager;
-#@@@remove?    $this->dbxref_buddy = $this->buddy_manager->createInstance('chado_dbxref_buddy', []);
-#    $this->cvterm_buddy = $this->buddy_manager->createInstance('chado_cvterm_buddy', []);
-#    $this->property_buddy = $this->buddy_manager->createInstance('chado_property_buddy', []);
   }
 
   /**
