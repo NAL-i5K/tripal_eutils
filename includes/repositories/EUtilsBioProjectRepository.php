@@ -149,7 +149,7 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
   /**
    * Iterate through the properties and insert.
    *
-   * TODO:  How do we get the accessions from what we have here?
+   * @todo:  How do we get the accessions from what we have here?
    * What we probably have for project is a set of XML attributes or tags...
    *
    * @param array $properties
@@ -162,12 +162,9 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
    */
   public function createProps(array $properties) {
     foreach ($properties as $property_name => $value) {
-      $accession = 'local:' . $property_name;
-
-      // TODO:  this is not what we want to do.  we want to be smarter about mapping the terms...
-      $cvterm = chado_get_cvterm(['id' => $accession]);
-
-      $this->createProperty($cvterm->cvterm_id, $value);
+      // @todo:  this is not what we want to do. We want to be smarter about mapping the terms...
+print "CP7 createProperty for BioProject repository in local, name \"$property_name\" value \"$value\" - but this is not called???\n"; //@@@
+      $this->createProperty('local', $property_name, $value);
     }
 
     return TRUE;

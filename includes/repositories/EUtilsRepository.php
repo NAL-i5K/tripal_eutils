@@ -232,39 +232,62 @@ abstract class EUtilsRepository {
    *
    * @param string $termIdNamespace
    *   The term namespace, i.e. the name in the db table
-   * @param string $cvname
-   *   The name of the controlled vocabulary
    * @param string $termAccession
    *   The accession for the dbxref table
    * @param string $value
    *   The value of the property
+   * @param string $cvname
+   *   The name of the controlled vocabulary, needed to insert CV term if it does not exist
    * @param string $termName
-   *   The CV term name, defaults to same as termAccession
+   *   The CV term name, needed to insert CV term if it does not exist
    *
    * @return bool
    *
    * @throws \Exception
    */
-  public function createProperty($termIdNamespace, $cvName, $termAccession, $value, $termName = NULL) {
+  public function createProperty($termIdNamespace, $termAccession, $value, $cvName = NULL, $termName = NULL): bool {
     $this->validateBaseData();
-    if (!$termName) {
-      $termName = $termAccession;
-    }
-    try {
-      $property_record = $this->property_instance->upsertProperty($this->base_table, $this->base_record_id, [
-        'db.name' => $termIdNamespace,
-        'cv.name' => $cvName,
-        'cvterm.name' => $termName,
-        'dbxref.accession' => $termAccession,
-        $this->base_table . 'prop.value' => $value,
-      ], ['create_cvterm' => TRUE]);
-      return TRUE;
-    }
-    catch (\Exception $e) {
-//@todo log a message
-      return FALSE;
-    }
 
+    // Any term used here should have already been installed by the
+    // BiosamplePropertyLookup class during the installation of this module.
+    $cvterm_records = $this->cvterm_instance->getCvterm([
+      'db.name' => $termIdNamespace,
+      'dbxref.accession' => $termAccession,
+    ], []);
+    $cvterm_record = $cvterm_records[0] ?? NULL;
+    if (!$cvterm_record) {
+      // If $cvName and $termName were specified, we can insert
+      // the missing term. If not, return FALSE.
+      if ($cvName and $termName) {
+        $cvterm_record = $this->cvterm_instance->insertCvterm([
+          'db.name' => $termIdNamespace,
+          'dbxref.accession' => $termAccession,
+          'cv.name' => $cvName,
+          'cvterm.name' => $termName,
+        ], ['create_cvterm' => TRUE]);
+        if ($cvterm_record) {
+          $this->logger->notice('Added a new "@cvName" controlled vocabulary term "@termName"'
+            . ' with accession "@termIdNamespace:@termAccession',
+            [
+             '@cvName' => $cvName,
+             '@termName' => $termName,
+             '@termIdNamespace' => $termIdNamespace,
+             '@termAccession' => $termAccession,
+            ]);
+        }
+      }
+    }
+    if ($cvterm_record) {
+      $property_values = [
+        'buddy_record' => $cvterm_record,
+        $this->base_table . 'prop.value' => $value,
+      ];
+      $property_record = $this->property_instance->upsertProperty($this->base_table, $this->base_record_id, $property_values, []);
+      if ($property_record) {
+        return TRUE;
+      }
+    }
+    return FALSE;
   }
 
   /**
@@ -359,7 +382,7 @@ abstract class EUtilsRepository {
    * @throws \Exception
    */
   public function createXMLProp($xml) {
-    return $this->createProperty('local', 'local', 'full_ncbi_xml', $xml);
+    return $this->createProperty('local', 'full_ncbi_xml', $xml, 'local', 'full_ncbi_xml');
   }
 
   /**

@@ -206,7 +206,7 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
     foreach ($attributes as $attribute) {
       $term_name = $mapper->getLabel($attribute);
       $value = $attribute['value'];
-      $this->createProperty('NCBI_BioSample_Attributes', 'NCBI BioSample Attributes', $term_name, $value);
+      $this->createProperty('NCBI_BioSample_Attributes', $term_name, $value, 'NCBI BioSample Attributes', $term_name);
     }
   }
 

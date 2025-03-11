@@ -294,7 +294,7 @@ function tripal_eutils_add_dbs($dbxref_instance) {
 
   $dbxref_instance->upsertDb([
     'db.name' => 'NCBI Assembly',
-    'db.description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data..",
+    'db.description' => "A database providing information on the structure of assembled genomes, assembly names and other meta-data, statistical reports, and links to genomic sequence data.",
     'db.urlprefix' => 'https://www.ncbi.nlm.nih.gov/assembly/{accession}',
     'db.url' => 'https://www.ncbi.nlm.nih.gov/assembly/',
   ], []);

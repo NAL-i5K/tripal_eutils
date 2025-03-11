@@ -123,7 +123,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
     // $mapper = new TagMapper();
     // add "stats" as properties.
     foreach ($data['attributes']['stats'] as $key => $value) {
-      $this->createProperty('NCBI_BioSample_Attributes', 'NCBI BioSample Attributes', $key, $value);
+      $this->createProperty('NCBI_BioSample_Attributes', $key, $value, 'NCBI BioSample Attributes', $key);
     }
 
     $this->addFTPLinks($data['attributes']['files']);
@@ -293,7 +293,7 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    */
   public function addFTPLinks($ftps) {
     foreach ($ftps as $type => $ftp) {
-      $this->createProperty('local', 'local', 'ncbi_FTP_links', $ftp);
+      $this->createProperty('local', 'ncbi_FTP_links', $ftp, 'local', 'ncbi_FTP_links');
     }
   }
 
@@ -306,13 +306,14 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    * @return bool
    */
   private function setAnalysisType(string $type) {
+print "CP1 setAnalysisType to \"$type\"\n";//@@@
     switch ($type) {
       case 'representative genome':
-        return $this->createProperty('operation', 'EDAM', '0525', 'genome assembly', 'genome assembly');
+        return $this->createProperty('operation', '0525', 'genome assembly');
 
       default:
         // No other type is expected from NCBI, but if it occurs, create a generic analysis type
-        return $this->createProperty('operation', 'EDAM', '2945', 'analysis', 'analysis');
+        return $this->createProperty('operation', '2945', 'analysis');
     }
   }
 

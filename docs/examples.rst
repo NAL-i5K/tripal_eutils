@@ -4,7 +4,7 @@ Example Created Content
 This page demonstrates examples of content imported by this module.
 These are the linked records inserted starting from the BioProject
 `PRJNA185471 <https://www.ncbi.nlm.nih.gov/bioproject/185471>`_ [#185471]_
-and Genome Assembly `GCA_000516895<https://www.ncbi.nlm.nih.gov/assembly/889828>`_.
+and Genome Assembly `GCA_000516895 <https://www.ncbi.nlm.nih.gov/assembly/889828>`_.
 
 Examples
 --------
