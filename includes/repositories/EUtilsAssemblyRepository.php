@@ -306,16 +306,13 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    * @return bool
    */
   private function setAnalysisType(string $type) {
-
-    $terms = $this->cvterm_instance->getCvterm(['db.name' => 'rdfs', 'dbxref.accession' => 'type'], []);
-    $cvterm_id = $terms[0]->getValue('cvterm.cvterm_id');
-
     switch ($type) {
       case 'representative genome':
-        return $this->createProperty('rdfs', 'rdfs', 'type', 'genome_assembly');
+        return $this->createProperty('operation', 'EDAM', '0525', 'genome assembly', 'genome assembly');
 
       default:
-        return $this->createProperty('rdfs', 'rdfs', 'type', 'genome_assembly');
+        // No other type is expected from NCBI, but if it occurs, create a generic analysis type
+        return $this->createProperty('operation', 'EDAM', '2945', 'analysis', 'analysis');
     }
   }
 

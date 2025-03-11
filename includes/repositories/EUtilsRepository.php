@@ -231,20 +231,30 @@ abstract class EUtilsRepository {
    * Inserts a property associated with the interface using the tripal API.
    *
    * @param string $termIdNamespace
+   *   The term namespace, i.e. the name in the db table
+   * @param string $cvname
+   *   The name of the controlled vocabulary
    * @param string $termAccession
+   *   The accession for the dbxref table
    * @param string $value
+   *   The value of the property
+   * @param string $termName
+   *   The CV term name, defaults to same as termAccession
    *
    * @return bool
    *
    * @throws \Exception
    */
-  public function createProperty($termIdNamespace, $cvName, $termAccession, $value) {
+  public function createProperty($termIdNamespace, $cvName, $termAccession, $value, $termName = NULL) {
     $this->validateBaseData();
+    if (!$termName) {
+      $termName = $termAccession;
+    }
     try {
       $property_record = $this->property_instance->upsertProperty($this->base_table, $this->base_record_id, [
         'db.name' => $termIdNamespace,
         'cv.name' => $cvName,
-        'cvterm.name' => $termAccession,
+        'cvterm.name' => $termName,
         'dbxref.accession' => $termAccession,
         $this->base_table . 'prop.value' => $value,
       ], ['create_cvterm' => TRUE]);

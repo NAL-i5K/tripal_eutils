@@ -13,15 +13,14 @@ Instead they are extracted from the FTP attribute.
 
 Analysis type
 -------------
-The analysis table has no `type_id` column.
-The type is therefore set with the `rdfs:type` property.
-Note that this particular property defines the bundle type in Tripal 4.
 
 The `RefSeq_category` tag is used to determine the analysis type.
 Currently, only the value `representative genome` is supported and
-mapped to the bundle Genome Assembly (operation:0525), via the type
-value 'genome_assembly'.
-We have thus far come across no other values for this key in the database.
+mapped to the "Genome Assembly" bundle via the controlled vocabulary term
+'genome assembly' (operation:0525), which is stored in the `analysisprop` table.
+We have thus far come across no other values for this key in the NCBI database.
+If one should later be used, the analysis will be mapped to a
+generic Analysis content type.
 
 Is an assembly a Chado analysis or project?
 -------------------------------------------
