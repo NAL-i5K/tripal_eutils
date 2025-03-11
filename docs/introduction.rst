@@ -21,9 +21,3 @@ Module features
 - Lookup NCBI records and create Chado base records
 - Add properties, DBXREF links
 - Lookup and insert records linked in the primary record.
-
-
-Planned
-~~~~~~~~~~~~~~
-
-- Provide fields to create entities with only an NCBI accession

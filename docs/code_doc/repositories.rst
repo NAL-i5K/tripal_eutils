@@ -13,24 +13,24 @@ EUtilsRepository
   :members:
 
 EUtilsRepositoryFactory
-----------------------
+-----------------------
 
 .. doxygenclass:: EUtilsRepositoryFactory
   :members:
 
 EUtilsAssemblyRepository
------------------------
+------------------------
 
 .. doxygenclass:: EUtilsAssemblyRepository
   :members:
 
 EUtilsBioProjectRepository
--------------------------
+--------------------------
 .. doxygenclass:: EUtilsBioProjectRepository
   :members:
 
 EUtilsBioSampleRepository
-------------------------
+-------------------------
 
 .. doxygenclass:: EUtilsBioSampleRepository
   :members:

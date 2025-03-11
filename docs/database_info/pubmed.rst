@@ -8,13 +8,15 @@ NCBI pubmed records are mapped into ``chado.pub``.
 
 .. note::
 
-	Developer's note: publications are imported using the Tripal core `tripal_pub_PMID_parse_pubxml()` and `tripal_pub_add_publications()` functions.  Any suggestions or modifications should be made at the `Tripal core repo <https://github.com/tripal/tripal>`_ instead.
+  Developer's note: publications are imported using the Tripal core publication importer plugin.
+  Any suggestions or modifications about publication importing should be made at the
+  `Tripal core repo <https://github.com/tripal/tripal>`_.
 
 .. csv-table:: Pubmed to Chado.pub mappings
-	   :file: ./pubmed.csv
-	   :header-rows: 1
+    :file: ./pubmed.csv
+    :header-rows: 1
 
 
 .. csv-table:: pubmed XML keys to Chado.pubprop mappings
-   	 :file: ./pubmed_properties.csv
-   	 :header-rows: 1
+    :file: ./pubmed_properties.csv
+    :header-rows: 1
