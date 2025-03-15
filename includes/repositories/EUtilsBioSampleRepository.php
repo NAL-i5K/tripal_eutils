@@ -217,10 +217,6 @@ class EUtilsBioSampleRepository extends EUtilsRepository {
    *   Chado.project project_id.
    */
   protected function linkProject(string $project_id) {
-    $values = [
-      'project_id' => $project_id,
-      'biomaterial_id' => $this->base_record_id,
-    ];
 
     $existing_link = $this->chado->select('1:biomaterial_project', 'l')
       ->fields('l')

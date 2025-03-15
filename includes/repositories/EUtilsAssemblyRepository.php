@@ -306,7 +306,6 @@ class EUtilsAssemblyRepository extends EUtilsRepository {
    * @return bool
    */
   private function setAnalysisType(string $type) {
-print "CP1 setAnalysisType to \"$type\"\n";//@@@
     switch ($type) {
       case 'representative genome':
         return $this->createProperty('operation', '0525', 'genome assembly');
@@ -337,14 +336,24 @@ print "CP1 setAnalysisType to \"$type\"\n";//@@@
 
       foreach ($projects as $project) {
 
-        $values = [
-          'biomaterial_id' => $biomaterial->biomaterial_id,
-          'project_id' => $project->project_id,
-        ];
-        // Are this biomaterial and project already linked?  If so continue.
-        $exists = chado_generate_var('biomaterial_project', $values);
-        if (!$exists) {
-          chado_insert_record('biomaterial_project', $values);
+        $result = $this->chado->select('1:biomaterial_project', 'l')
+          ->fields('l', ['biomaterial_project_id'])
+          ->condition('l.biomaterial_id', $biomaterial->biomaterial_id)
+          ->condition('l.project_id', $project->project_id)
+          ->execute()
+          ->fetchField();
+
+        if (!$result) {
+          $result = $this->chado->insert('1:biomaterial_project')
+            ->fields([
+              'biomaterial_id' => $biomaterial->biomaterial_id,
+              'project_id' => $project->project_id,
+            ])
+            ->execute();
+        }
+
+        if (!$result) {
+          throw new Exception('Could not link biomaterial to project.');
         }
       }
     }

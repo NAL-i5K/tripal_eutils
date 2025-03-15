@@ -163,7 +163,6 @@ class EUtilsBioProjectRepository extends EUtilsRepository {
   public function createProps(array $properties) {
     foreach ($properties as $property_name => $value) {
       // @todo:  this is not what we want to do. We want to be smarter about mapping the terms...
-print "CP7 createProperty for BioProject repository in local, name \"$property_name\" value \"$value\" - but this is not called???\n"; //@@@
       $this->createProperty('local', $property_name, $value);
     }
 
@@ -249,11 +248,12 @@ print "CP7 createProperty for BioProject repository in local, name \"$property_n
       ->execute()
       ->fetchObject();
     if (!$exists) {
-      $values = [
-        'analysis_id' => $analysis_id,
-        'project_id' => $this->base_record_id,
-      ];
-      chado_insert_record('project_analysis', $values);
+      $result = $this->chado->insert('1:project_analysis')
+        ->fields([
+          'analysis_id' => $analysis_id,
+          'project_id' => $this->base_record_id,
+        ])
+        ->execute();
     }
   }
 
@@ -285,7 +285,12 @@ print "CP7 createProperty for BioProject repository in local, name \"$property_n
           ->fetchObject();
 
         if (!$exists) {
-          chado_insert_record('project_pub', $values);
+          $result = $this->chado->insert('1:project_pub')
+            ->fields([
+              'project_id' => $this->base_record_id,
+              'pub_id' => $pub->pub_id,
+            ])
+            ->execute();
         }
       }
     }
